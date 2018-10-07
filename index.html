@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PSO2 Affixing Assistant</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="js/plugins/jquery-3.3.1.js"></script>
+    <script src="js/plugins/jquery.connections.js"></script>
+    <script src="js/plugins/jquery.panzoom.js"></script>
+    <script src="js/affixData.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <div class="header icon-bar" oncontextmenu="return false;">
+        <div class="option active"><i class="fa fa-home"></i></div>
+        <div class="option"><i class="fa fa-search" accesskey="s"></i></div>
+        <div class="option"><i class="fa fa-plus" accesskey="n"></i></div>
+        <div class="option"><i class="fa fa-trash"></i></div>
+        <div class="bottom">
+            <div class="option">
+                <input id="zoomcontroller" type="range" step="0.1" min="0.5" max="2" />
+            </div>
+            <div id="panzoomreset" class="option" accesskey="r" title="Resets panning and zoom.">
+                <i class="far fa-dot-circle"></i>
+            </div>
+        </div>
+    </div>
+    <div id="editor">
+        <div id="mastercontainer">
+            <div class="container">
+                <div id="goal" class="page">
+                    <div class="fodder" data-conn="1">
+                        <div class="title">GOAL</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="page" data-conn="1">
+                    <div class="fodder" data-conn="2">
+                        <div class="title">Fodder 0</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 1</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder" data-conn="3">
+                        <div class="title">Fodder 2</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 3</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 4</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 5</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="page" data-conn="3">
+                    <div class="fodder">
+                        <div class="title">Fodder 0</div>
+                        <div class="affix">Lesser Technique III</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 1</div>
+                        <div class="affix">Lesser Technique III</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 2</div>
+                        <div class="affix">Lesser Technique III</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 3</div>
+                        <div class="affix">Lesser Technique III</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 4</div>
+                        <div class="affix">Lesser Technique III</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 5</div>
+                        <div class="affix">Lesser Technique III</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                </div>
+                <div class="page" data-conn="2">
+                    <div class="fodder">
+                        <div class="title">Fodder 0</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 1</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 2</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 3</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 4</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 5</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="fodder">
+                        <div class="title">Fodder 0</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 1</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 2</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 3</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 4</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 5</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="fodder">
+                        <div class="title">Fodder 0</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 1</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 2</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 3</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 4</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 5</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="fodder">
+                        <div class="title">Fodder 0</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 1</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 2</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 3</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 4</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 5</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="fodder">
+                        <div class="title">Fodder 0</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 1</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 2</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 3</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 4</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                    <div class="fodder">
+                        <div class="title">Fodder 5</div>
+                        <div class="affix">Astral Soul</div>
+                        <div class="affix">Ether Factor</div>
+                        <div class="affix">Sentence Power</div>
+                        <div class="affix">Elder Reverie</div>
+                        <div class="affix">Returner V</div>
+                        <div class="affix">Power VI</div>
+                        <div class="affix">Modulator</div>
+                        <div class="affix">Grace Power</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

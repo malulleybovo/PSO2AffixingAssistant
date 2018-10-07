@@ -1,0 +1,122 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: white;
+    font-family: Verdana;
+    font-size: 0.6em;
+    overflow: hidden;
+}
+
+div.header {
+    position: fixed;
+    height: 100%;
+    padding: 0.1em;
+    text-align: center;
+    border-right: solid 1.5px #404040;
+    z-index: 10000;
+}
+.icon-bar {
+    width: 48px;
+    background-color: rgba(105, 105, 105, 1);
+}
+
+.icon-bar div.option {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 20px;
+}
+
+.icon-bar div.bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+.icon-bar div.option:hover {
+    background-color: #000;
+}
+
+.active {
+    background-color: #547fe8;
+}
+
+#editor {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    right: 0;
+}
+
+div.container {
+    text-align: center;
+}
+
+div.container > div {
+    margin:  0.5em 0.5em 2em 0.5em;
+    padding: 0.5em;
+    border-radius: 0.35em;
+    background-color: rgba(128, 128, 128, 1);
+    text-align: center;
+    display: inline-block;
+    transition: 0.25s;
+}
+
+#goal {
+    background-color: #CFB53B;
+}
+
+div.fodder {
+    display: inline-block;
+    transition: 0.25s;
+}
+
+div.fodder > div.title {
+    margin-bottom: 0.25em;
+    padding-bottom: 0.25em;
+    border-bottom: solid 1px #404040;
+}
+
+div.affix {
+    padding: 0.15em 0.5em;
+    background-color: rgba(105, 105, 105, 1);
+    border-top: solid 1.5px #404040;
+    border-left: solid 1.5px #404040;
+    border-right: solid 1.5px #404040;
+}
+
+div.affix:first-child {
+    border-radius: 0.25em 0.25em 0em 0em;
+}
+
+div.affix:last-child {
+    border-radius: 0em 0em 0.25em 0.25em;
+    border-bottom: solid 1.5px #404040;
+}
+
+div.page.spotlight {
+    background-color: rgba(128, 128, 128, 0.25);
+}
+
+div.fodder.spotlight {
+    opacity: 0.25;
+}
+
+connection.spotlight {
+    opacity: 0.25;
+}
+
+connection {
+    z-index: -1;
+    border: 3px solid #d62;
+    border-radius: 100%;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 0;
+    transform: rotate(270deg);
+}
