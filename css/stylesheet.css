@@ -15,7 +15,6 @@ div.header {
     padding: 0.1em;
     text-align: center;
     border-right: solid 1.5px #404040;
-    z-index: 10000;
 }
 .icon-bar {
     width: 48px;
@@ -77,10 +76,11 @@ div.fodder {
 div.title {
     margin-bottom: 0.25em;
     padding-bottom: 0.25em;
-    border-bottom: solid 1px #404040;
+    border-bottom: solid 1.5px #404040;
 }
 
 div.affix {
+    width: 137px;
     padding: 0.15em 0.5em;
     background-color: rgba(105, 105, 105, 1);
     border-top: solid 1.5px #404040;
@@ -118,7 +118,7 @@ connection {
 input[type="range"] {
     width: 100%;
     margin: 0;
-    transform: rotate(270deg);
+    transform: translateY(-7px) rotate(270deg);
 }
 
 div.success-indicator {
@@ -148,4 +148,99 @@ div.produce-button:hover {
 div.boost-container {
     width: 100%;
     margin-top: 0.25em;
+}
+
+div.affix-selection-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+div.affix-selection-container > div {
+    width: 75%;
+    margin: 0 auto;
+    height: 75%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(128, 128, 128, 1);
+    border-radius: 0.5em;
+    border: solid 1.5px #404040;
+    overflow: hidden;
+}
+
+div.affix-selection-container table {
+    width: 100%;
+    height: 100%;
+}
+
+div.affix-selection-container td {
+    vertical-align: top;
+    padding: 1em 2em;
+}
+
+div.affix-selection-container td:first-child {
+    border-right: 1.5px solid #404040;
+}
+
+div.affix-selection-container div.affix {
+    width: 140px;
+}
+
+div.affix-selection-container div.affix > i:hover {
+    color: #d62;
+}
+
+div.affix-selection-container div.affix > i {
+    margin-right: 0.5em;
+    cursor: pointer;
+}
+
+div.affix-selection-container div.stat {
+    padding: 0.15em 0.5em;
+    background-color: rgba(105, 105, 105, 1);
+    border-left: solid 1.5px #404040;
+    border-right: solid 1.5px #404040;
+}
+
+div.affix-selection-container div.stat:first-of-type {
+    border-radius: 0.25em 0.25em 0em 0em;
+    border-top: solid 1.5px #404040;
+}
+
+div.affix-selection-container div.stat:last-of-type {
+    border-radius: 0em 0em 0.25em 0.25em;
+    border-bottom: solid 1.5px #404040;
+}
+
+div.title.bold {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    padding: 0;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 3px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d64;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 4px;
+    height: 16px;
+    background: #d64;
+    cursor: pointer;
 }

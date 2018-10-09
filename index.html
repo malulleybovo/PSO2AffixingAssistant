@@ -17,20 +17,6 @@
     <script src="js/app.js"></script>
 </head>
 <body>
-    <div class="header icon-bar" oncontextmenu="return false;">
-        <div class="option active"><i class="fa fa-home"></i></div>
-        <div class="option"><i class="fa fa-search" accesskey="s"></i></div>
-        <div class="option"><i class="fa fa-plus" accesskey="n"></i></div>
-        <div class="option"><i class="fa fa-trash"></i></div>
-        <div class="bottom">
-            <div class="option">
-                <input id="zoomcontroller" type="range" step="0.1" min="0.5" max="2" />
-            </div>
-            <div id="panzoomreset" class="option" accesskey="r" title="Resets panning and zoom.">
-                <i class="far fa-dot-circle"></i>
-            </div>
-        </div>
-    </div>
     <div id="editor">
         <div id="mastercontainer">
             <div class="container">
@@ -1183,6 +1169,20 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+    <div class="header icon-bar" oncontextmenu="return false;">
+        <div class="option active"><i class="fa fa-home"></i></div>
+        <div class="option"><i class="fa fa-search" accesskey="s"></i></div>
+        <div class="option"><i class="fa fa-plus" accesskey="n"></i></div>
+        <div class="option"><i class="fa fa-trash"></i></div>
+        <div class="bottom">
+            <div class="option">
+                <input id="zoomcontroller" type="range" step="0.1" min="0.5" max="2" class="slider">
+            </div>
+            <div id="panzoomreset" class="option" accesskey="r" title="Resets panning and zoom.">
+                <i class="far fa-dot-circle"></i>
+            </div>
         </div>
     </div>
 </body>
