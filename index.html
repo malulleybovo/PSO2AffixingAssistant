@@ -4,6 +4,8 @@
     <title>PSO2 Affixing Assistant</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="css/dropdown.css">
     <script src="js/plugins/jquery-3.3.1.js"></script>
     <script src="js/plugins/jquery.connections.js"></script>
     <script src="js/plugins/jquery.panzoom.js"></script>
@@ -30,8 +32,8 @@
         <div id="mastercontainer">
             <div class="container">
                 <div id="goal" class="page">
+                    <div class="title">GOAL</div>
                     <div class="fodder" data-conn="1">
-                        <div class="title">GOAL</div>
                         <div class="affix">Astral Soul</div>
                         <div class="affix">Ether Factor</div>
                         <div class="affix">Sentence Power</div>
@@ -40,6 +42,58 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                    </div>
+                    <div class="success-indicator">
+                        <span>Success: </span>
+                        <span>100%</span>
+                    </div>
+                    <div class="boost-container">
+                        <div class="checkbox-container">
+                            <div class="checkbox-holder">
+                                <div>Same</div>
+                                <label class="checkmark-holder">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Ability Success Rate +5%">
+                                    Ability Success Rate +5%
+                                </option>
+                                <option value="Ability Success Rate +10%">
+                                    Ability Success Rate +10%
+                                </option>
+                                <option value="Ability Success Rate +20%">
+                                    Ability Success Rate +20%
+                                </option>
+                                <option value="Ability Success Rate +30%">
+                                    Ability Success Rate +30%
+                                </option>
+                                <option value="Ability Success Rate +40%">
+                                    Ability Success Rate +40%
+                                </option>
+                                <option value="Ability Success Rate +45%">
+                                    Ability Success Rate +45%
+                                </option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Guidance of Life Lv1 (+2%)">
+                                    Guidance of Life Lv1 (+2%)
+                                </option>
+                                <option value="Guidance of Life Lv2 (+5%)">
+                                    Guidance of Life Lv2 (+5%)
+                                </option>
+                                <option value="Guidance of Life Lv3 (+10%)">
+                                    Guidance of Life Lv3 (+10%)
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,6 +109,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>100%</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 1</div>
@@ -66,6 +126,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder" data-conn="3">
                         <div class="title">Fodder 2</div>
@@ -77,6 +143,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>100%</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 3</div>
@@ -88,6 +160,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 4</div>
@@ -99,6 +177,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 5</div>
@@ -110,6 +194,62 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
+                    </div>
+                    <div class="success-indicator">
+                        <span>Success: </span>
+                        <span>100%</span>
+                    </div>
+                    <div class="boost-container">
+                        <div class="checkbox-container">
+                            <div class="checkbox-holder">
+                                <div>Same</div>
+                                <label class="checkmark-holder">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Ability Success Rate +5%">
+                                    Ability Success Rate +5%
+                                </option>
+                                <option value="Ability Success Rate +10%">
+                                    Ability Success Rate +10%
+                                </option>
+                                <option value="Ability Success Rate +20%">
+                                    Ability Success Rate +20%
+                                </option>
+                                <option value="Ability Success Rate +30%">
+                                    Ability Success Rate +30%
+                                </option>
+                                <option value="Ability Success Rate +40%">
+                                    Ability Success Rate +40%
+                                </option>
+                                <option value="Ability Success Rate +45%">
+                                    Ability Success Rate +45%
+                                </option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Guidance of Life Lv1 (+2%)">
+                                    Guidance of Life Lv1 (+2%)
+                                </option>
+                                <option value="Guidance of Life Lv2 (+5%)">
+                                    Guidance of Life Lv2 (+5%)
+                                </option>
+                                <option value="Guidance of Life Lv3 (+10%)">
+                                    Guidance of Life Lv3 (+10%)
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,6 +265,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 1</div>
@@ -136,6 +282,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 2</div>
@@ -147,6 +299,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 3</div>
@@ -158,6 +316,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 4</div>
@@ -169,6 +333,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 5</div>
@@ -180,6 +350,62 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
+                    </div>
+                    <div class="success-indicator">
+                        <span>Success: </span>
+                        <span>100%</span>
+                    </div>
+                    <div class="boost-container">
+                        <div class="checkbox-container">
+                            <div class="checkbox-holder">
+                                <div>Same</div>
+                                <label class="checkmark-holder">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Ability Success Rate +5%">
+                                    Ability Success Rate +5%
+                                </option>
+                                <option value="Ability Success Rate +10%">
+                                    Ability Success Rate +10%
+                                </option>
+                                <option value="Ability Success Rate +20%">
+                                    Ability Success Rate +20%
+                                </option>
+                                <option value="Ability Success Rate +30%">
+                                    Ability Success Rate +30%
+                                </option>
+                                <option value="Ability Success Rate +40%">
+                                    Ability Success Rate +40%
+                                </option>
+                                <option value="Ability Success Rate +45%">
+                                    Ability Success Rate +45%
+                                </option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Guidance of Life Lv1 (+2%)">
+                                    Guidance of Life Lv1 (+2%)
+                                </option>
+                                <option value="Guidance of Life Lv2 (+5%)">
+                                    Guidance of Life Lv2 (+5%)
+                                </option>
+                                <option value="Guidance of Life Lv3 (+10%)">
+                                    Guidance of Life Lv3 (+10%)
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="page" data-conn="2">
@@ -193,6 +419,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 1</div>
@@ -204,6 +436,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 2</div>
@@ -215,6 +453,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 3</div>
@@ -226,6 +470,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 4</div>
@@ -237,6 +487,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 5</div>
@@ -248,6 +504,62 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
+                    </div>
+                    <div class="success-indicator">
+                        <span>Success: </span>
+                        <span>100%</span>
+                    </div>
+                    <div class="boost-container">
+                        <div class="checkbox-container">
+                            <div class="checkbox-holder">
+                                <div>Same</div>
+                                <label class="checkmark-holder">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Ability Success Rate +5%">
+                                    Ability Success Rate +5%
+                                </option>
+                                <option value="Ability Success Rate +10%">
+                                    Ability Success Rate +10%
+                                </option>
+                                <option value="Ability Success Rate +20%">
+                                    Ability Success Rate +20%
+                                </option>
+                                <option value="Ability Success Rate +30%">
+                                    Ability Success Rate +30%
+                                </option>
+                                <option value="Ability Success Rate +40%">
+                                    Ability Success Rate +40%
+                                </option>
+                                <option value="Ability Success Rate +45%">
+                                    Ability Success Rate +45%
+                                </option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Guidance of Life Lv1 (+2%)">
+                                    Guidance of Life Lv1 (+2%)
+                                </option>
+                                <option value="Guidance of Life Lv2 (+5%)">
+                                    Guidance of Life Lv2 (+5%)
+                                </option>
+                                <option value="Guidance of Life Lv3 (+10%)">
+                                    Guidance of Life Lv3 (+10%)
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="page">
@@ -261,6 +573,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 1</div>
@@ -272,6 +590,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 2</div>
@@ -283,6 +607,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 3</div>
@@ -294,6 +624,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 4</div>
@@ -305,6 +641,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 5</div>
@@ -316,6 +658,62 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
+                    </div>
+                    <div class="success-indicator">
+                        <span>Success: </span>
+                        <span>?</span>
+                    </div>
+                    <div class="boost-container">
+                        <div class="checkbox-container">
+                            <div class="checkbox-holder">
+                                <div>Same</div>
+                                <label class="checkmark-holder">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Ability Success Rate +5%">
+                                    Ability Success Rate +5%
+                                </option>
+                                <option value="Ability Success Rate +10%">
+                                    Ability Success Rate +10%
+                                </option>
+                                <option value="Ability Success Rate +20%">
+                                    Ability Success Rate +20%
+                                </option>
+                                <option value="Ability Success Rate +30%">
+                                    Ability Success Rate +30%
+                                </option>
+                                <option value="Ability Success Rate +40%">
+                                    Ability Success Rate +40%
+                                </option>
+                                <option value="Ability Success Rate +45%">
+                                    Ability Success Rate +45%
+                                </option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Guidance of Life Lv1 (+2%)">
+                                    Guidance of Life Lv1 (+2%)
+                                </option>
+                                <option value="Guidance of Life Lv2 (+5%)">
+                                    Guidance of Life Lv2 (+5%)
+                                </option>
+                                <option value="Guidance of Life Lv3 (+10%)">
+                                    Guidance of Life Lv3 (+10%)
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="page">
@@ -329,6 +727,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 1</div>
@@ -340,6 +744,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 2</div>
@@ -351,6 +761,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 3</div>
@@ -362,6 +778,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 4</div>
@@ -373,6 +795,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 5</div>
@@ -384,6 +812,62 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
+                    </div>
+                    <div class="success-indicator">
+                        <span>Success: </span>
+                        <span>?</span>
+                    </div>
+                    <div class="boost-container">
+                        <div class="checkbox-container">
+                            <div class="checkbox-holder">
+                                <div>Same</div>
+                                <label class="checkmark-holder">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Ability Success Rate +5%">
+                                    Ability Success Rate +5%
+                                </option>
+                                <option value="Ability Success Rate +10%">
+                                    Ability Success Rate +10%
+                                </option>
+                                <option value="Ability Success Rate +20%">
+                                    Ability Success Rate +20%
+                                </option>
+                                <option value="Ability Success Rate +30%">
+                                    Ability Success Rate +30%
+                                </option>
+                                <option value="Ability Success Rate +40%">
+                                    Ability Success Rate +40%
+                                </option>
+                                <option value="Ability Success Rate +45%">
+                                    Ability Success Rate +45%
+                                </option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Guidance of Life Lv1 (+2%)">
+                                    Guidance of Life Lv1 (+2%)
+                                </option>
+                                <option value="Guidance of Life Lv2 (+5%)">
+                                    Guidance of Life Lv2 (+5%)
+                                </option>
+                                <option value="Guidance of Life Lv3 (+10%)">
+                                    Guidance of Life Lv3 (+10%)
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="page">
@@ -397,6 +881,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 1</div>
@@ -408,6 +898,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 2</div>
@@ -419,6 +915,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 3</div>
@@ -430,6 +932,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 4</div>
@@ -441,6 +949,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 5</div>
@@ -452,6 +966,62 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
+                    </div>
+                    <div class="success-indicator">
+                        <span>Success: </span>
+                        <span>?</span>
+                    </div>
+                    <div class="boost-container">
+                        <div class="checkbox-container">
+                            <div class="checkbox-holder">
+                                <div>Same</div>
+                                <label class="checkmark-holder">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Ability Success Rate +5%">
+                                    Ability Success Rate +5%
+                                </option>
+                                <option value="Ability Success Rate +10%">
+                                    Ability Success Rate +10%
+                                </option>
+                                <option value="Ability Success Rate +20%">
+                                    Ability Success Rate +20%
+                                </option>
+                                <option value="Ability Success Rate +30%">
+                                    Ability Success Rate +30%
+                                </option>
+                                <option value="Ability Success Rate +40%">
+                                    Ability Success Rate +40%
+                                </option>
+                                <option value="Ability Success Rate +45%">
+                                    Ability Success Rate +45%
+                                </option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Guidance of Life Lv1 (+2%)">
+                                    Guidance of Life Lv1 (+2%)
+                                </option>
+                                <option value="Guidance of Life Lv2 (+5%)">
+                                    Guidance of Life Lv2 (+5%)
+                                </option>
+                                <option value="Guidance of Life Lv3 (+10%)">
+                                    Guidance of Life Lv3 (+10%)
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="page">
@@ -465,6 +1035,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 1</div>
@@ -476,6 +1052,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 2</div>
@@ -487,6 +1069,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 3</div>
@@ -498,6 +1086,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 4</div>
@@ -509,6 +1103,12 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
                     </div>
                     <div class="fodder">
                         <div class="title">Fodder 5</div>
@@ -520,6 +1120,62 @@
                         <div class="affix">Power VI</div>
                         <div class="affix">Modulator</div>
                         <div class="affix">Grace Power</div>
+                        <div class="divider"></div>
+                        <div class="produce-button">PRODUCE</div>
+                        <div class="success-indicator">
+                            <span>Success: </span>
+                            <span>?</span>
+                        </div>
+                    </div>
+                    <div class="success-indicator">
+                        <span>Success: </span>
+                        <span>?</span>
+                    </div>
+                    <div class="boost-container">
+                        <div class="checkbox-container">
+                            <div class="checkbox-holder">
+                                <div>Same</div>
+                                <label class="checkmark-holder">
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Ability Success Rate +5%">
+                                    Ability Success Rate +5%
+                                </option>
+                                <option value="Ability Success Rate +10%">
+                                    Ability Success Rate +10%
+                                </option>
+                                <option value="Ability Success Rate +20%">
+                                    Ability Success Rate +20%
+                                </option>
+                                <option value="Ability Success Rate +30%">
+                                    Ability Success Rate +30%
+                                </option>
+                                <option value="Ability Success Rate +40%">
+                                    Ability Success Rate +40%
+                                </option>
+                                <option value="Ability Success Rate +45%">
+                                    Ability Success Rate +45%
+                                </option>
+                            </select>
+                        </div>
+                        <div class="dropdown-container">
+                            <select>
+                                <option value="Guidance of Life Lv1 (+2%)">
+                                    Guidance of Life Lv1 (+2%)
+                                </option>
+                                <option value="Guidance of Life Lv2 (+5%)">
+                                    Guidance of Life Lv2 (+5%)
+                                </option>
+                                <option value="Guidance of Life Lv3 (+10%)">
+                                    Guidance of Life Lv3 (+10%)
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
