@@ -105,6 +105,112 @@ const CHECKBOX_TEMPLATE = ({ description, isChecked }) =>
         </div>
     </div>`;
 
-const AFFIX_SELECTION_MENU = ({ }) => {
-
+const AFFIX_SELECTION_MENU_TEMPLATE = ({ affixesSelected, categories, datalist }) => {
+    let affixselectionmenu =
+        `<div class="affix-selection-container">
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="title bold">Affixing Goal</div>
+                            <div style="margin-bottom: 1em;">
+                            <div class="affix">
+                                <i class="fa fa-trash"></i>
+                                <span>${(affixesSelected && affixesSelected[0] && affixesSelected[0].name) ? affixesSelected[0].name : `&nbsp;`}</span>
+                            </div>
+                            <div class="affix">
+                                <i class="fa fa-trash"></i>
+                                <span>${(affixesSelected && affixesSelected[1] && affixesSelected[1].name) ? affixesSelected[1].name : `&nbsp;`}</span>
+                            </div>
+                            <div class="affix">
+                                <i class="fa fa-trash"></i>
+                                <span>${(affixesSelected && affixesSelected[2] && affixesSelected[2].name) ? affixesSelected[2].name : `&nbsp;`}</span>
+                            </div>
+                            <div class="affix">
+                                <i class="fa fa-trash"></i>
+                                <span>${(affixesSelected && affixesSelected[3] && affixesSelected[3].name) ? affixesSelected[3].name : `&nbsp;`}</span>
+                            </div>
+                            <div class="affix">
+                                <i class="fa fa-trash"></i>
+                                <span>${(affixesSelected && affixesSelected[4] && affixesSelected[4].name) ? affixesSelected[4].name : `&nbsp;`}</span>
+                            </div>
+                            <div class="affix">
+                                <i class="fa fa-trash"></i>
+                                <span>${(affixesSelected && affixesSelected[5] && affixesSelected[5].name) ? affixesSelected[5].name : `&nbsp;`}</span>
+                            </div>
+                            <div class="affix">
+                                <i class="fa fa-trash"></i>
+                                <span>${(affixesSelected && affixesSelected[6] && affixesSelected[6].name) ? affixesSelected[6].name : `&nbsp;`}</span>
+                            </div>
+                            <div class="affix">
+                                <i class="fa fa-trash"></i>
+                                <span>${(affixesSelected && affixesSelected[7] && affixesSelected[7].name) ? affixesSelected[7].name : `&nbsp;`}</span>
+                            </div>
+                        </div>
+                            <div class="title bold">Stats</div>
+                            <div>
+                                <div class="stat">S-ATK (+100)</div>
+                                <div class="stat">PP (+10)</div>
+                                <div class="stat">DEX (+30)</div>
+                                <div class="stat">S-DEF (+5)</div>
+                                <div class="stat">HP (+50)</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="title bold">Affix Search</div>
+                            ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist })}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>`;
+    return affixselectionmenu;
 };
+
+const FILTER_SEARCH_TEMPLATE = ({ categories, datalist }) => {
+    let filtersearch = `<div class="filtersearchcontainer">
+        <script>
+            filterSearch = function () {
+                let input = $(".filtersearchcontainer > input.searchbar")[0];
+                let filter = input.value.toUpperCase();
+                let li = $(".filtersearchcontainer li");
+                for (var i = 0; i < li.length; i++) {
+                    let div = li[i].getElementsByTagName("div")[0];
+                    if (div.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            };
+        </script>
+        <div>`;
+    if (Array.isArray(categories)) {
+        for (var i = 0; i < categories.length; i++) {
+            filtersearch += RADIO_BUTTON_TEMPLATE({
+                isChecked: i == 0,
+                description: categories[i]
+            });
+        }
+    }
+    filtersearch +=
+        `</div>
+        <input type="text" class="searchbar" onkeyup="filterSearch()" placeholder="Search for affixes.." title="Type in an affix name" maxlength="32">
+        <ul>`;
+    if (Array.isArray(datalist)) {
+        for (var i = 0; i < datalist.length; i++) {
+            filtersearch += `<li><div>${datalist[i].name}</div></li>`;
+        }
+    }
+    filtersearch +=
+        `</ul>
+    </div>`;
+    return filtersearch;
+};
+
+const RADIO_BUTTON_TEMPLATE = ({ id, isChecked, description }) =>
+    `<label class="radiobutton-container">
+        <input type="radio" name="${(id) ? id : `radio`}">
+        <span class="checkmark" ${(isChecked) ? `checked` : ``}></span>
+        <span>${(description) ? description : ``}</span>
+    </label>`;

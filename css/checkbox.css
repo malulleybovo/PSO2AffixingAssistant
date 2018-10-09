@@ -14,17 +14,17 @@
     user-select: none;
 }
 
-    /* Hide the browser's default checkbox */
-    .checkbox-holder input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-    }
+/* Hide the browser's default checkbox */
+.checkbox-holder input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
 
 /* Create a custom checkbox */
-.checkmark {
+.checkbox-holder .checkmark {
     position: absolute;
     top: -0.125em;
     left: -0.125em;
@@ -45,7 +45,7 @@
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
+.checkbox-holder .checkmark:after {
     content: "";
     position: absolute;
     display: none;

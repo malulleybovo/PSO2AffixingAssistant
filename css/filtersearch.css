@@ -1,0 +1,57 @@
+div.filtersearchcontainer * {
+    box-sizing: border-box;
+    color: white;
+}
+
+div.filtersearchcontainer > div {
+    padding-left: 0.5em;
+}
+
+div.filtersearchcontainer input.searchbar {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    background-color: rgba(105, 105, 105, 1);
+    width: 100%;
+    padding: 6px 10px 6px 20px;
+    border: 1px solid #404040;
+    border-radius: 0.25em;
+    margin-bottom: 0.5em;
+}
+
+div.filtersearchcontainer ul {
+    list-style-type: none;
+    padding: 1.5px 0px;
+    margin: 0;
+    height: 30em;
+    overflow-y: scroll;
+    background-color: rgba(105, 105, 105, 1);
+    border: 1.5px solid #404040;
+    border-radius: 0.25em;
+}
+
+div.filtersearchcontainer li div {
+    border-top: 1.5px solid #404040;
+    border-bottom: 1.5px solid #404040;
+    margin-top: -1.5px; /* Prevent double borders */
+    background-color: rgba(105, 105, 105, 1);
+    padding: 0.15em 0.5em;
+    text-decoration: none;
+    display: block;
+}
+
+div.filtersearchcontainer li:hover div {
+    background-color: rgba(128, 128, 128, 1);
+}
+
+div.filtersearchcontainer li:first-of-type div {
+    border-top: none;
+}
+
+div.filtersearchcontainer li:last-of-type div {
+    border-bottom: none;
+}
+
+div.filtersearchcontainer li a:hover:not(.header) {
+    background-color: rgba(128, 128, 128, 1);
+}
