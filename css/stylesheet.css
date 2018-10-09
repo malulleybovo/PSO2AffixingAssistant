@@ -74,7 +74,7 @@ div.fodder {
     transition: 0.25s;
 }
 
-div.fodder > div.title {
+div.title {
     margin-bottom: 0.25em;
     padding-bottom: 0.25em;
     border-bottom: solid 1px #404040;
@@ -119,4 +119,33 @@ input[type="range"] {
     width: 100%;
     margin: 0;
     transform: rotate(270deg);
+}
+
+div.success-indicator {
+    margin-top: 0.25em;
+    padding-top: 0.25em;
+    border-top: solid 1px #404040;
+}
+
+div.divider {
+    margin: 0.25em 0em;
+    border-top: solid 1.2px #404040;
+}
+
+div.produce-button {
+    padding: 0.15em 0.5em;
+    background-color: rgba(105, 105, 105, 1);
+    border: solid 1.5px #404040;
+    border-radius: 0.25em;
+    cursor: default;
+}
+
+div.produce-button:hover {
+    background-color: rgba(128, 128, 128, 1);
+    border: solid 1.5px rgba(105, 105, 105, 1);
+}
+
+div.boost-container {
+    width: 100%;
+    margin-top: 0.25em;
 }
