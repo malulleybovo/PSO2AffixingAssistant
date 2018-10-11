@@ -4,80 +4,72 @@
  * @author malulleybovo (2018)
  */
 
-const CONTAINER_TEMPLATE = ({ pages, successRates, abilitySuccessRateOptions, potentialOptions }) => {
-    let container = '<div class="container">'
-    if (Array.isArray(pages) && Array.isArray(successRates)
-        && pages.length == successRates.length) {
-        for (var i = 0; i < pages.length; i++) {
-            let page = pages[i];
-            let successRate = successRates[i];
-            container += PAGE_TEMPLATE({
-                successRates: successRate,
-                fodders: page,
-                abilitySuccessRateOptions: abilitySuccessRateOptions,
-                potentialOptions: potentialOptions
+const CONTAINER_TEMPLATE = ({ container, isGoal }) => {
+    let containerTemplate = '<div class="container">'
+    if (container && container instanceof Container) {
+        let pages = container.pages;
+        for (var i = 0; i < ((isGoal) ? 1 : pages.length); i++) {
+            containerTemplate += PAGE_TEMPLATE({
+                page: pages[i],
+                isGoal: isGoal
             });
         }
     }
-    container += '</div>';
-    return container;
+    containerTemplate += '</div>';
+    return containerTemplate;
 };
 
-const PAGE_TEMPLATE = ({ successRates, fodders, abilitySuccessRateOptions, potentialOptions }) => {
-    let page = `<div class="page" data-conn="1">`;
-    if (Array.isArray(fodders) && successRates && successRates.fodders
-        && Array.isArray(successRates.fodders) && fodders.length == successRates.fodders.length) {
-        for (var i = 0; i < fodders.length; i++) {
-            let fodder = fodders[i];
-            page += FODDER_TEMPLATE({
-                affixes: fodder,
-                successRate: successRates.fodders[i]
+const PAGE_TEMPLATE = ({ page, isGoal }) => {
+    let pageTempate = `<div ${(isGoal) ? `id="goal" ` : ``}class="page" data-conn="">`;
+    if (page && page instanceof Page) {
+        let fodders = page.fodders;
+        for (var i = 0; i < ((isGoal) ? 1 : fodders.length); i++) {
+            pageTempate += FODDER_TEMPLATE({
+                fodder: fodders[i],
+                id: (isGoal) ? 'GOAL' : ('Fodder ' + i)
             });
         }
-    }
-    page +=
-        `<div class="success-indicator">
+        pageTempate +=
+            `<div class="success-indicator">
             <span>Success: </span>
-            <span>${(successRates && successRates.page >= 0) ? successRates.page + `%` : `?`}</span>
+            <span>${(page.successRate >= 0) ? page.successRate + `%` : `?`}</span>
         </div>
         <div class="boost-container">`
-        + CHECKBOX_TEMPLATE({
-            description: 'Same',
-            isChecked: (successRates && successRates.same) ? successRates.same : false
+            + CHECKBOX_TEMPLATE({
+                description: 'Same',
+                isChecked: page.isSameGear
+            });
+        pageTempate += DROPDOWN_TEMPLATE({
+            options: page.rateBoostOptions,
+            selected: (page.rateBoostIdx >= 0) ? page.rateBoostIdx : undefined
         });
-    if (Array.isArray(abilitySuccessRateOptions)) {
-        page += DROPDOWN_TEMPLATE({
-            options: abilitySuccessRateOptions,
-            selected: (successRates && successRates.abilityRateSelected) ? successRates.abilityRateSelected : undefined
-        });
-    }
-    if (Array.isArray(potentialOptions)) {
-        page += DROPDOWN_TEMPLATE({
-            options: potentialOptions,
-            selected: (successRates && successRates.potentialSelected) ? successRates.potentialSelected : undefined
+        pageTempate += DROPDOWN_TEMPLATE({
+            options: page.potentialOptions,
+            selected: (page.potentialIdx >= 0) ? page.potentialIdx : undefined
         });
     }
-    page += `</div></div>`;
-    return page;
+    pageTempate += `</div></div>`;
+    return pageTempate;
 };
 
-const FODDER_TEMPLATE = ({ dataConnNum, affixes, successRate }) =>
-    `<div class="fodder" ${(dataConnNum >= 0) ? `data-conn="` + dataConnNum + `"` : ``}>
+const FODDER_TEMPLATE = ({ fodder, id }) =>
+    `<div class="fodder" ${(false) ? `data-conn="` + 0 + `"` : ``}>
+            <div class="title">${id}</div>
             <div class="affixes">
-                <div class="affix">${(Array.isArray(affixes) && affixes[0]) ? affixes[0].name : `&nbsp;`}</div >
-                <div class="affix">${(Array.isArray(affixes) && affixes[1]) ? affixes[1].name : `&nbsp;`}</div>
-                <div class="affix">${(Array.isArray(affixes) && affixes[2]) ? affixes[2].name : `&nbsp;`}</div>
-                <div class="affix">${(Array.isArray(affixes) && affixes[3]) ? affixes[3].name : `&nbsp;`}</div>
-                <div class="affix">${(Array.isArray(affixes) && affixes[4]) ? affixes[4].name : `&nbsp;`}</div>
-                <div class="affix">${(Array.isArray(affixes) && affixes[5]) ? affixes[5].name : `&nbsp;`}</div>
-                <div class="affix">${(Array.isArray(affixes) && affixes[6]) ? affixes[6].name : `&nbsp;`}</div>
-                <div class="affix">${(Array.isArray(affixes) && affixes[7]) ? affixes[7].name : `&nbsp;`}</div>
+                <div class="affix">${(fodder.affixes[0]) ? fodder.affixes[0].name : `&nbsp;`}</div >
+                <div class="affix">${(fodder.affixes[1]) ? fodder.affixes[1].name : `&nbsp;`}</div>
+                <div class="affix">${(fodder.affixes[2]) ? fodder.affixes[2].name : `&nbsp;`}</div>
+                <div class="affix">${(fodder.affixes[3]) ? fodder.affixes[3].name : `&nbsp;`}</div>
+                <div class="affix">${(fodder.affixes[4]) ? fodder.affixes[4].name : `&nbsp;`}</div>
+                <div class="affix">${(fodder.affixes[5]) ? fodder.affixes[5].name : `&nbsp;`}</div>
+                <div class="affix">${(fodder.affixes[6]) ? fodder.affixes[6].name : `&nbsp;`}</div>
+                <div class="affix">${(fodder.affixes[7]) ? fodder.affixes[7].name : `&nbsp;`}</div>
             </div>
             <div class="divider"></div>
             <div class="produce-button">PRODUCE</div>
             <div class="success-indicator">
                 <span>Success: </span>
-            <span>${(successRate >= 0) ? successRate + `%` : `?`}</span>
+            <span>${(fodder.successRate >= 0) ? fodder.successRate + `%` : `?`}</span>
             </div>
         </div>`;
 
@@ -114,35 +106,35 @@ const AFFIX_SELECTION_MENU_TEMPLATE = ({ affixesSelected, categories, datalist }
                         <td>
                             <div class="title bold">Affixing Goal</div>
                             <div style="margin-bottom: 1em;">
-                            <div class="affix">
+                            <div class="affix ${(affixesSelected && affixesSelected[0] && affixesSelected[0].name) ? `` : `empty`}">
                                 <i class="fa fa-trash"></i>
                                 <span>${(affixesSelected && affixesSelected[0] && affixesSelected[0].name) ? affixesSelected[0].name : `&nbsp;`}</span>
                             </div>
-                            <div class="affix">
+                            <div class="affix ${(affixesSelected && affixesSelected[1] && affixesSelected[1].name) ? `` : `empty`}">
                                 <i class="fa fa-trash"></i>
                                 <span>${(affixesSelected && affixesSelected[1] && affixesSelected[1].name) ? affixesSelected[1].name : `&nbsp;`}</span>
                             </div>
-                            <div class="affix">
+                            <div class="affix ${(affixesSelected && affixesSelected[2] && affixesSelected[2].name) ? `` : `empty`}">
                                 <i class="fa fa-trash"></i>
                                 <span>${(affixesSelected && affixesSelected[2] && affixesSelected[2].name) ? affixesSelected[2].name : `&nbsp;`}</span>
                             </div>
-                            <div class="affix">
+                            <div class="affix ${(affixesSelected && affixesSelected[3] && affixesSelected[3].name) ? `` : `empty`}">
                                 <i class="fa fa-trash"></i>
                                 <span>${(affixesSelected && affixesSelected[3] && affixesSelected[3].name) ? affixesSelected[3].name : `&nbsp;`}</span>
                             </div>
-                            <div class="affix">
+                            <div class="affix ${(affixesSelected && affixesSelected[4] && affixesSelected[4].name) ? `` : `empty`}">
                                 <i class="fa fa-trash"></i>
                                 <span>${(affixesSelected && affixesSelected[4] && affixesSelected[4].name) ? affixesSelected[4].name : `&nbsp;`}</span>
                             </div>
-                            <div class="affix">
+                            <div class="affix ${(affixesSelected && affixesSelected[5] && affixesSelected[5].name) ? `` : `empty`}">
                                 <i class="fa fa-trash"></i>
                                 <span>${(affixesSelected && affixesSelected[5] && affixesSelected[5].name) ? affixesSelected[5].name : `&nbsp;`}</span>
                             </div>
-                            <div class="affix">
+                            <div class="affix ${(affixesSelected && affixesSelected[6] && affixesSelected[6].name) ? `` : `empty`}">
                                 <i class="fa fa-trash"></i>
                                 <span>${(affixesSelected && affixesSelected[6] && affixesSelected[6].name) ? affixesSelected[6].name : `&nbsp;`}</span>
                             </div>
-                            <div class="affix">
+                            <div class="affix ${(affixesSelected && affixesSelected[7] && affixesSelected[7].name) ? `` : `empty`}">
                                 <i class="fa fa-trash"></i>
                                 <span>${(affixesSelected && affixesSelected[7] && affixesSelected[7].name) ? affixesSelected[7].name : `&nbsp;`}</span>
                             </div>
@@ -159,6 +151,14 @@ const AFFIX_SELECTION_MENU_TEMPLATE = ({ affixesSelected, categories, datalist }
                         <td>
                             <div class="title bold">Affix Search</div>
                             ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist })}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>Cancel</div>
+                        </td>
+                        <td>
+                            <div>Confirm</div>
                         </td>
                     </tr>
                 </table>
