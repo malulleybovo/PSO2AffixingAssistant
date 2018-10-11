@@ -1,6 +1,7 @@
+
 div.filtersearchcontainer * {
     box-sizing: border-box;
-    color: white;
+    color: var(--text-color);
 }
 
 div.filtersearchcontainer > div {
@@ -8,13 +9,12 @@ div.filtersearchcontainer > div {
 }
 
 div.filtersearchcontainer input.searchbar {
-    background-image: url('/css/searchicon.png');
     background-position: 10px 12px;
     background-repeat: no-repeat;
-    background-color: rgba(105, 105, 105, 1);
+    background-color: var(--paint-dark);
     width: 100%;
     padding: 6px 10px 6px 20px;
-    border: 1px solid #404040;
+    border: 1px solid var(--border-color);
     border-radius: 0.25em;
     margin-bottom: 0.5em;
 }
@@ -25,23 +25,32 @@ div.filtersearchcontainer ul {
     margin: 0;
     height: 30em;
     overflow-y: scroll;
-    background-color: rgba(105, 105, 105, 1);
-    border: 1.5px solid #404040;
+    background-color: var(--paint-dark);
+    border: 1.5px solid var(--border-color);
     border-radius: 0.25em;
 }
 
 div.filtersearchcontainer li div {
-    border-top: 1.5px solid #404040;
-    border-bottom: 1.5px solid #404040;
+    border-top: 1.5px solid var(--border-color);
+    border-bottom: 1.5px solid var(--border-color);
     margin-top: -1.5px; /* Prevent double borders */
-    background-color: rgba(105, 105, 105, 1);
+    background-color: var(--paint-dark);
     padding: 0.15em 0.5em;
     text-decoration: none;
     display: block;
+    cursor: pointer;
 }
 
 div.filtersearchcontainer li:hover div {
-    background-color: rgba(128, 128, 128, 1);
+    background-color: var(--paint-light);
+}
+
+div.filtersearchcontainer li div.selected {
+    background-color: var(--alter-paint);
+}
+
+div.filtersearchcontainer li:hover div.selected {
+    background-color: var(--alter-paint-light);
 }
 
 div.filtersearchcontainer li:first-of-type div {
@@ -53,5 +62,5 @@ div.filtersearchcontainer li:last-of-type div {
 }
 
 div.filtersearchcontainer li a:hover:not(.header) {
-    background-color: rgba(128, 128, 128, 1);
+    background-color: var(--paint-light);
 }

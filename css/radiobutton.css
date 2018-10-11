@@ -29,18 +29,18 @@
     left: 0;
     height: 18px;
     width: 18px;
-    background-color: white;
+    background-color: var(--paint-lightest);
     border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
 .radiobutton-container:hover input ~ .checkmark {
-    background-color: #ddd;
+    background-color: var(--paint-lighter);
 }
 
 /* When the radio button is checked, add a blue background */
 .radiobutton-container input:checked ~ .checkmark {
-    background-color: rgba(105, 105, 105, 1);
+    background-color: var(--paint-dark);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -62,5 +62,5 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: white;
+    background: var(--paint-lightest);
 }

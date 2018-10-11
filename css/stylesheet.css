@@ -2,8 +2,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #111;
-    color: white;
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-family: Verdana;
     font-size: 0.6em;
     overflow: hidden;
@@ -14,11 +14,11 @@ div.header {
     height: 100%;
     padding: 0.1em;
     text-align: center;
-    border-right: solid 1.5px #404040;
+    border-right: solid 1.5px var(--border-color);
 }
 .icon-bar {
     width: 48px;
-    background-color: rgba(105, 105, 105, 1);
+    background-color: var(--paint-dark);
 }
 
 .icon-bar div.option {
@@ -26,7 +26,7 @@ div.header {
     text-align: center;
     padding: 12px;
     transition: all 0.3s ease;
-    color: white;
+    color: var(--text-color);
     font-size: 20px;
 }
 
@@ -36,11 +36,11 @@ div.header {
 }
 
 .icon-bar div.option:hover {
-    background-color: #000;
+    background-color: var(--border-color);
 }
 
 .active {
-    background-color: #547fe8;
+    background-color: var(--alter-paint2);
 }
 
 #editor {
@@ -58,34 +58,39 @@ div.container > div {
     margin:  0.5em 0.5em 2em 0.5em;
     padding: 0.5em;
     border-radius: 0.35em;
-    background-color: rgba(128, 128, 128, 1);
+    background-color: var(--paint-light);
     text-align: center;
     display: inline-block;
     transition: 0.25s;
 }
 
 #goal {
-    background-color: #CFB53B;
+    background-color: var(--paint-prime);
 }
 
 div.fodder {
     display: inline-block;
     transition: 0.25s;
+    margin-left: 0.5em;
+}
+
+div.fodder:first-child {
+    margin-left: 0em;
 }
 
 div.title {
     margin-bottom: 0.25em;
     padding-bottom: 0.25em;
-    border-bottom: solid 1.5px #404040;
+    border-bottom: solid 1.5px var(--border-color);
 }
 
 div.affix {
     width: 137px;
     padding: 0.15em 0.5em;
-    background-color: rgba(105, 105, 105, 1);
-    border-top: solid 1.5px #404040;
-    border-left: solid 1.5px #404040;
-    border-right: solid 1.5px #404040;
+    background-color: var(--paint-dark);
+    border-top: solid 1.5px var(--border-color);
+    border-left: solid 1.5px var(--border-color);
+    border-right: solid 1.5px var(--border-color);
 }
 
 div.affix:first-child {
@@ -94,11 +99,11 @@ div.affix:first-child {
 
 div.affix:last-child {
     border-radius: 0em 0em 0.25em 0.25em;
-    border-bottom: solid 1.5px #404040;
+    border-bottom: solid 1.5px var(--border-color);
 }
 
 div.page.spotlight {
-    background-color: rgba(128, 128, 128, 0.25);
+    background-color: var(--paint-light-fade);
 }
 
 div.fodder.spotlight {
@@ -111,12 +116,12 @@ connection.spotlight {
 
 connection {
     z-index: -1;
-    border: 3px solid #d62;
+    border: 3px solid var(--conn-color);
     border-radius: 100%;
 }
 
 input[type="range"] {
-    width: 100%;
+    width: 24px;
     margin: 0;
     transform: translateY(-7px) rotate(270deg);
 }
@@ -124,25 +129,24 @@ input[type="range"] {
 div.success-indicator {
     margin-top: 0.25em;
     padding-top: 0.25em;
-    border-top: solid 1px #404040;
+    border-top: solid 1px var(--border-color);
 }
 
 div.divider {
     margin: 0.25em 0em;
-    border-top: solid 1.2px #404040;
+    border-top: solid 1.2px var(--border-color);
 }
 
 div.produce-button {
     padding: 0.15em 0.5em;
-    background-color: rgba(105, 105, 105, 1);
-    border: solid 1.5px #404040;
+    background-color: var(--paint-dark);
+    border: solid 1.5px var(--border-color);
     border-radius: 0.25em;
     cursor: default;
 }
 
 div.produce-button:hover {
-    background-color: rgba(128, 128, 128, 1);
-    border: solid 1.5px rgba(105, 105, 105, 1);
+    background-color: var(--paint-light);
 }
 
 div.boost-container {
@@ -163,9 +167,9 @@ div.affix-selection-container > div {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(128, 128, 128, 1);
+    background-color: var(--paint-light);
     border-radius: 0.5em;
-    border: solid 1.5px #404040;
+    border: solid 1.5px var(--border-color);
     overflow: hidden;
 }
 
@@ -174,21 +178,63 @@ div.affix-selection-container table {
     height: 100%;
 }
 
-div.affix-selection-container td {
+div.affix-selection-container tr:first-child td {
     vertical-align: top;
     padding: 1em 2em;
 }
 
-div.affix-selection-container td:first-child {
-    border-right: 1.5px solid #404040;
+div.affix-selection-container tr:first-child td:first-child {
+    border-right: 1.5px solid var(--border-color);
+}
+
+div.affix-selection-container tr:last-child td:first-child {
+    padding: 0.5em 0em 1em 2em;
+}
+
+div.affix-selection-container tr:last-child td:last-child {
+    padding: 0.5em 2em 1em 0em;
+}
+
+div.affix-selection-container tr:last-child div {
+    border: 1.5px solid var(--border-color);
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0.35em 0em;
+}
+
+div.affix-selection-container tr:last-child td:first-child div {
+    background-color: var(--paint-dark);
+    border-radius: 0.25em 0em 0em 0.25em;
+}
+
+div.affix-selection-container tr:last-child td:first-child div:hover {
+    background-color: var(--paint-light);
+}
+
+div.affix-selection-container tr:last-child td:last-child div {
+    background-color: var(--alter-paint);
+    border-radius: 0em 0.25em 0.25em 0em;
+}
+
+div.affix-selection-container tr:last-child td:last-child div:hover {
+    background-color: var(--alter-paint-light);
 }
 
 div.affix-selection-container div.affix {
     width: 140px;
 }
 
+div.affix-selection-container div.affix.empty > i {
+    display: none;
+}
+
 div.affix-selection-container div.affix > i:hover {
-    color: #d62;
+    color: var(--alter-paint);
+}
+
+div.affix-selection-container div.affix > i:hover ~ span {
+    color: var(--alter-paint);
 }
 
 div.affix-selection-container div.affix > i {
@@ -198,19 +244,19 @@ div.affix-selection-container div.affix > i {
 
 div.affix-selection-container div.stat {
     padding: 0.15em 0.5em;
-    background-color: rgba(105, 105, 105, 1);
-    border-left: solid 1.5px #404040;
-    border-right: solid 1.5px #404040;
+    background-color: var(--paint-dark);
+    border-left: solid 1.5px var(--border-color);
+    border-right: solid 1.5px var(--border-color);
 }
 
 div.affix-selection-container div.stat:first-of-type {
     border-radius: 0.25em 0.25em 0em 0em;
-    border-top: solid 1.5px #404040;
+    border-top: solid 1.5px var(--border-color);
 }
 
 div.affix-selection-container div.stat:last-of-type {
     border-radius: 0em 0em 0.25em 0.25em;
-    border-bottom: solid 1.5px #404040;
+    border-bottom: solid 1.5px var(--border-color);
 }
 
 div.title.bold {
@@ -223,7 +269,7 @@ div.title.bold {
     width: 100%;
     height: 2px;
     border-radius: 5px;
-    background: #d3d3d3;
+    background: var(--border-color);
     outline: none;
     padding: 0;
 }
@@ -234,13 +280,13 @@ div.title.bold {
     width: 3px;
     height: 10px;
     border-radius: 50%;
-    background: #d64;
+    background: var(--alter-paint);
     cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
     width: 4px;
     height: 16px;
-    background: #d64;
+    background: var(--alter-paint);
     cursor: pointer;
 }

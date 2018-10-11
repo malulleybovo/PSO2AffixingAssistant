@@ -1,0 +1,16 @@
+.theme--default {
+    --background-color: #111;
+    --paint-lightest: #fff;
+    --paint-lighter: #ddd;
+    --paint-light: #808080;
+    --paint-light-fade: rgba(128, 128, 128, 0.25);
+    --paint-dark: #696969;
+    --paint-dark-fade: rgba(105, 105, 105, 0.25);
+    --paint-prime: #CFB53B;
+    --conn-color: #d62;
+    --alter-paint: #d62;
+    --alter-paint-light: #FF7C29;
+    --alter-paint2: #547FE8;
+    --border-color: #404040;
+    --text-color: #fff;
+}

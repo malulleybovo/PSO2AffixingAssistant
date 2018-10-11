@@ -1,13 +1,10 @@
+
 div.dropdown-container {
-    /* display: inline-block; */
     width: 100%;
-    border: 1px solid #111;
     border-radius: 3px;
     overflow: hidden;
-    background-color: rgba(105, 105, 105, 1);
-    border-top: solid 1.5px #404040;
-    border-left: solid 1.5px #404040;
-    border-right: solid 1.5px #404040;
+    background-color: var(--paint-dark);
+    border: solid 1.5px var(--border-color);
     margin-top: 0.25em;
 }
 
@@ -17,11 +14,11 @@ div.dropdown-container select {
     font-size: 1em;
     padding: 0.15em 0.5em;
     background: transparent;
-    border: 0px solid #ccc;
-    color: white;
+    border: 0px solid var(--border-color);
+    color: var(--text-color);
     text-overflow: ellipsis;
 }
 
 div.dropdown-container select option {
-    background-color: rgba(105, 105, 105, 1);
+    background-color: var(--paint-dark);
 }
