@@ -222,7 +222,8 @@ div.boost-container {
     margin-top: 0.25em;
 }
 
-div.affix-selection-container {
+div.affix-selection-container,
+div.choice-selection-container {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -230,43 +231,158 @@ div.affix-selection-container {
     transition: all 0.3s ease;
 }
 
-div.affix-selection-container div.content::-webkit-scrollbar {
+div.affix-selection-container div.content {
+    overflow-x: auto;
+    grid-column-gap: 1em;
+    padding: 0.5em 0em;
+    grid-row: row2-start;
+    display: grid;
+    overflow-y: hidden;
+    grid-template-columns: [col1-start] 33% [col2-start] auto [col3-start];
+    grid-template-rows: 100%;
+    margin: 0.5em 0em;
+}
+
+div.choice-selection-container div.content {
+    overflow-x: auto;
+    grid-column-gap: 1em;
+    padding: 0.5em 0em;
+    grid-row: row2-start;
+    display: grid;
+    overflow-y: hidden;
+    grid-template-columns: [col1-start] min-content [col2-start] min-content [col3-start] min-content [col4-start] min-content [col5-start] min-content [col6-start] min-content [col7-start] min-content [col8-start] min-content;
+    grid-template-rows: 100%;
+    margin: 0.5em 0em;
+}
+
+div.affix-selection-container div.content::-webkit-scrollbar,
+div.choice-selection-container div.content::-webkit-scrollbar {
     height: 4px;
     width: 4px;
     background-color: var(--paint-dark);
 }
 
-div.affix-selection-container div.content::-webkit-scrollbar-thumb{
+div.affix-selection-container div.content::-webkit-scrollbar-thumb,
+div.choice-selection-container div.content::-webkit-scrollbar-thumb {
     height: 4px;
     width: 4px;
     background-color: var(--border-color);
 }
 
-div.affix-selection-container div.content::-webkit-scrollbar-corner {
+div.affix-selection-container div.content::-webkit-scrollbar-corner,
+div.choice-selection-container div.content::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
 
-div.affix-selection-container div.content > div::-webkit-scrollbar {
+div.affix-selection-container div.content > div::-webkit-scrollbar,
+div.choice-selection-container div.content > div::-webkit-scrollbar {
     height: 4px;
     width: 4px;
     background-color: var(--paint-dark);
 }
 
-div.affix-selection-container div.content > div::-webkit-scrollbar-thumb{
+div.affix-selection-container div.content > div::-webkit-scrollbar-thumb,
+div.choice-selection-container div.content > div::-webkit-scrollbar-thumb {
     height: 4px;
     width: 4px;
     background-color: var(--border-color);
 }
 
-div.affix-selection-container div.content > div::-webkit-scrollbar-corner{
+div.affix-selection-container div.content > div::-webkit-scrollbar-corner,
+div.choice-selection-container div.content > div::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
 
-div.affix-selection-container.hidden {
+div.affix-selection-container div.content > div:first-child {
+    display: grid;
+    height: 100%;
+    grid-column: col1-start;
+    grid-template-rows: [row1-start] 5.5% [row2-start] min-content [row3-start] 5.5% [row4-start] min-content;
+    overflow: auto;
+}
+
+div.affix-selection-container div.content > div:last-child {
+    display: grid;
+    height: 100%;
+    grid-column: col2-start;
+    grid-template-rows: [row1-start] 5.5% [row2-start] 80.5%;
+    overflow: auto;
+}
+
+div.choice-selection-container div.content > div {
+    display: grid;
+    height: 100%;
+    grid-column: col1-start;
+    grid-template-rows: [row1-start] 5% [row2-start] 10% [row3-start] 5% [row4-start] 80%;
+    overflow: auto;
+}
+
+div.choice-selection-container div.content > div:first-child {
+    grid-column: col1-start;
+}
+
+div.choice-selection-container div.content > div:nth-child(2) {
+    grid-column: col2-start;
+}
+
+div.choice-selection-container div.content > div:nth-child(3) {
+    grid-column: col3-start;
+}
+
+div.choice-selection-container div.content > div:nth-child(4) {
+    grid-column: col4-start;
+}
+
+div.choice-selection-container div.content > div:nth-child(5) {
+    grid-column: col5-start;
+}
+
+div.choice-selection-container div.content > div:nth-child(6) {
+    grid-column: col6-start;
+}
+
+div.choice-selection-container div.content > div:nth-child(7) {
+    grid-column: col7-start;
+}
+
+div.choice-selection-container div.content > div:nth-child(8) {
+    grid-column: col8-start;
+}
+
+div.affix-selection-container div.content > div > div:first-child,
+div.choice-selection-container div.content > div > div:first-child {
+    grid-row: row1-start;
+    overflow: hidden;
+}
+
+div.affix-selection-container div.content > div:last-child > div:last-child {
+    grid-row: row2-start;
+}
+
+div.affix-selection-container div.content > div:first-child > div:nth-child(2),
+div.choice-selection-container div.content > div > div:nth-child(2) {
+    margin-bottom: 1em;
+    grid-row: row2-start;
+}
+
+div.affix-selection-container div.content > div:first-child > div:nth-child(3),
+div.choice-selection-container div.content > div > div:nth-child(3) {
+    grid-row: row3-start;
+    overflow: hidden;
+}
+
+div.affix-selection-container div.content > div:first-child > div:nth-child(4),
+div.choice-selection-container div.content > div > div:nth-child(4){
+    grid-row: row4-start;
+}
+
+div.affix-selection-container.hidden,
+div.choice-selection-container.hidden{
     opacity: 0;
 }
 
-div.affix-selection-container > div {
+div.affix-selection-container > div,
+div.choice-selection-container > div{
     width: 75%;
     margin: 0 auto;
     height: 75%;
@@ -277,33 +393,32 @@ div.affix-selection-container > div {
     border-radius: 0.5em;
     border: solid 1.5px var(--border-color);
     overflow: hidden;
-}
-
-div.affix-selection-container table {
-    width: 100%;
-    height: 100%;
-}
-
-div.affix-selection-container tr:first-child td {
-    vertical-align: top;
     padding: 1em 2em;
 }
 
-div.affix-selection-container tr:first-child td:first-child {
-    border-right: 1.5px solid var(--border-color);
-    white-space: nowrap;
-    width: 1%;
+div.affix-selection-container div.main-grid,
+div.choice-selection-container div.main-grid {
+    display: grid;
+    grid-template-rows: [row1-start] max-content [row2-start] auto [row3-start] max-content;
+    height: 100%;
 }
 
-div.affix-selection-container tr:last-child td:first-child {
-    padding: 0.5em 0em 1em 2em;
+div.affix-selection-container div.main-grid > div:first-child,
+div.choice-selection-container div.main-grid > div:first-child {
+    grid-row: row1-start;
 }
 
-div.affix-selection-container tr:last-child td:last-child {
-    padding: 0.5em 2em 1em 0em;
+div.affix-selection-container div.main-grid > div:last-child,
+div.choice-selection-container div.main-grid > div:last-child {
+    grid-row: row3-start;
+    display: grid;
+    grid-template-areas: 'col1 col2 col3';
 }
 
-div.affix-selection-container tr:last-child div {
+div.affix-selection-container .cancel-button,
+div.choice-selection-container .cancel-button {
+    background-color: var(--paint-dark);
+    border-radius: 0.25em 0em 0em 0.25em;
     border: 1.5px solid var(--border-color);
     text-align: center;
     font-size: 16px;
@@ -316,9 +431,20 @@ div.affix-selection-container tr:last-child div {
     user-select: none;
 }
 
-div.affix-selection-container tr:last-child td:first-child div {
-    background-color: var(--paint-dark);
-    border-radius: 0.25em 0em 0em 0.25em;
+div.affix-selection-container div.main-grid > div:last-child > div:last-child,
+div.choice-selection-container div.main-grid > div:last-child > div:last-child {
+    grid-column: span 2;
+}
+
+div.affix-selection-container .confirm-button,
+div.choice-selection-container .confirm-button {
+    background-color: var(--alter-paint);
+    border-radius: 0em 0.25em 0.25em 0em;
+    border: 1.5px solid var(--border-color);
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0.35em 0em;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -326,20 +452,16 @@ div.affix-selection-container tr:last-child td:first-child div {
     user-select: none;
 }
 
-div.affix-selection-container tr:last-child td:first-child div:hover {
-    background-color: var(--paint-light);
-}
-
-div.affix-selection-container tr:last-child td:last-child div {
+div.choice-selection-container div.affix.selected {
     background-color: var(--alter-paint);
-    border-radius: 0em 0.25em 0.25em 0em;
 }
 
-div.affix-selection-container tr:last-child td:last-child div:hover {
-    background-color: var(--alter-paint-light);
+div.choice-selection-container .confirm-button.disabled {
+    background-color: var(--paint-dark);
 }
 
-div.affix-selection-container div.affix {
+div.affix-selection-container div.affix,
+div.choice-selection-container div.affix{
     width: 140px;
 }
 

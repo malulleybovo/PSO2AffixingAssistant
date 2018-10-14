@@ -9,6 +9,7 @@ class ViewController {
         // Immutable variables (properties can still change)
         this.filters = [];
         this.affixesSelected = [];
+        this.choicesSelected = [];
         this.assistant = assistant;
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(ViewController.prototype);
@@ -58,11 +59,15 @@ class ViewController {
 
     setAffixSelectionView(bool) {
         if (typeof bool !== 'boolean') return;
+        if ($('div.choice-selection-container').length != 0) {
+            $('div.choice-selection-container').remove();
+        }
         let isVisible = $('div.affix-selection-container').length != 0;
         if (bool) {
             if (!isVisible) {
                 $('body').append(
-                    AFFIX_SELECTION_MENU_TEMPLATE({
+                    SELECTION_MENU_TEMPLATE({
+                        type: 'affixSelection',
                         affixesSelected: this.affixesSelected,
                         categories: this.filters,
                         datalist: this.assistant.data.abilityList // List of all affixes
@@ -72,7 +77,7 @@ class ViewController {
                 });
                 $('div.affix-selection-container li > div').click({ viewcontroller: this }, this.selectAbility);
                 $('div.affix-selection-container div.affix > i').click({ viewcontroller: this }, this.selectAbility);
-                $('div.affix-selection-container tr:last-child td:last-child div').click({ viewcontroller: this }, this.openChoicesSelectionView)
+                $('div.affix-selection-container div.confirm-button').click({ viewcontroller: this }, this.openChoicesSelectionView)
                 this.updateAffixSelectionView();
             }
         }
@@ -91,8 +96,23 @@ class ViewController {
         let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
-        console.log(choices);
-        // TODO populate new view with choices (2 rows, 6 cols => 1st row has choices for affix per col, 2nd row are buttons)
+        if ($('div.choice-selection-container').length != 0) {
+            $('div.choice-selection-container').remove();
+        }
+        vc.choicesSelected.splice(0, vc.choicesSelected.length);
+        for (var i = 0; i < vc.affixesSelected.length; i++) {
+            vc.choicesSelected.push(null);
+        }
+        $('body').append(
+            SELECTION_MENU_TEMPLATE({
+                type: 'choiceSelection',
+                affixesSelected: vc.affixesSelected,
+                categories: vc.filters,
+                datalist: choices
+            }));
+        $('div.choice-selection-container li > div').click({ viewcontroller: vc }, vc.selectChoice);
+        $('div.choice-selection-container div.cancel-button').click({ viewcontroller: vc }, ({ data }) => { data.viewcontroller.setAffixSelectionView(true); });
+        $('div.choice-selection-container div.confirm-button').click({ viewcontroller: vc }, vc.produceFromChoices);
     }
 
     updateView({ pageTreeRoot }) {
@@ -178,6 +198,56 @@ class ViewController {
         vc.updateAffixSelectionView();
     }
 
+    selectChoice({ data }) {
+        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
+        if ($(this).hasClass('selected')) {
+            let $divDataCode = $(this).parents('div[data-code]');
+            if ($divDataCode.length > 0) {
+                let code = $divDataCode.data('code');
+                let affix = vc.assistant.affixDB[code];
+                if (affix && affix.abilityRef) {
+                    let arrIdx = vc.affixesSelected.indexOf(affix.abilityRef);
+                    if (arrIdx >= 0 && arrIdx < vc.affixesSelected.length
+                        && vc.choicesSelected[arrIdx] !== undefined) {
+                        vc.choicesSelected[arrIdx] = null;
+                    }
+                }
+            }
+        }
+        else {
+            let $divDataCode = $(this).parents('div[data-code]');
+            if ($divDataCode.length > 0) {
+                let code = $divDataCode.data('code');
+                let affix = vc.assistant.affixDB[code];
+                if (affix && affix.choices && Array.isArray(affix.choices)) {
+                    let choices = affix.choices;
+                    let choiceIdx = $(this).parent().index();
+                    if (choiceIdx >= 0 && choiceIdx < choices.length) {
+                        let choice = choices[choiceIdx];
+                        let arrIdx = vc.affixesSelected.indexOf(affix.abilityRef);
+                        if (arrIdx >= 0 && arrIdx < vc.affixesSelected.length
+                            && vc.choicesSelected[arrIdx] !== undefined) {
+                            vc.choicesSelected[arrIdx] = choice;
+                        }
+                    }
+                }
+            }
+        }
+        vc.updateChoiceSelectionView();
+    }
+
+    produceFromChoices({ data }) {
+        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
+        if (vc.choicesSelected.includes(null)) return;
+        let choices = vc.choicesSelected;
+        let shouldSpread = false; // TODO allow user to decide
+        let targetNumSlots = vc.affixesSelected.length; // TODO allow user to decide N or N-1
+        let newPage = vc.assistant.buildPageForChoices(choices, shouldSpread, targetNumSlots);
+        console.log(newPage);
+    }
+
     updateAffixSelectionView() {
         $(`div.affix-selection-container li > div`).removeClass('selected');
         let slots = $('div.affix-selection-container div.affix');
@@ -246,6 +316,24 @@ class ViewController {
                 if (value != '') value = ' (' + ((value >= 0) ? '+' : '-') + value + ')';
                 statsViewer.append(`<div class="stat">${key + value}</div>`);
             }
+        }
+    }
+
+    updateChoiceSelectionView() {
+        $(`div.choice-selection-container li > div`).removeClass('selected');
+        $(`div.choice-selection-container div.affix`).removeClass('selected');
+        for (var i = 0; i < this.affixesSelected.length; i++) {
+            let choices = this.assistant.affixDB[this.affixesSelected[i].code].choices;
+            let choiceIdx = choices.indexOf(this.choicesSelected[i]);
+            let optionsList = $(`div.choice-selection-container div[data-code=${this.affixesSelected[i].code}] li > div`);
+            if (choiceIdx >= 0 && choiceIdx < optionsList.length) {
+                $(optionsList[choiceIdx]).addClass('selected')
+                    .parents('div[data-code]').find('div.affix').addClass('selected');
+            }
+        }
+        $(`div.choice-selection-container .confirm-button`).removeClass('disabled');
+        if (this.choicesSelected.includes(null)) {
+            $(`div.choice-selection-container .confirm-button`).addClass('disabled');
         }
     }
 }

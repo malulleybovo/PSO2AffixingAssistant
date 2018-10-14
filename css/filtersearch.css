@@ -1,4 +1,9 @@
 
+div.filtersearchcontainer {
+    display: grid;
+    grid-template-rows: [row1-start] max-content [row2-start] max-content [row3-start] auto;
+}
+
 div.filtersearchcontainer * {
     box-sizing: border-box;
     color: var(--text-color);
@@ -6,6 +11,10 @@ div.filtersearchcontainer * {
 
 div.filtersearchcontainer > div {
     padding-left: 0.5em;
+}
+
+div.filtersearchcontainer > div:first-child {
+    grid-row: row1-start;
 }
 
 div.filtersearchcontainer input.searchbar {
@@ -17,6 +26,7 @@ div.filtersearchcontainer input.searchbar {
     border: 1px solid var(--border-color);
     border-radius: 0.25em;
     margin-bottom: 0.5em;
+    grid-row: row2-start;
 }
 
 div.filtersearchcontainer input::placeholder {
@@ -31,11 +41,11 @@ div.filtersearchcontainer ul {
     list-style-type: none;
     padding: 1.5px 0px;
     margin: 0;
-    height: 30em;
     overflow-y: auto;
     background-color: var(--paint-dark);
     border: 1.5px solid var(--border-color);
     border-radius: 0.25em;
+    grid-row: row3-start;
 }
 
 div.filtersearchcontainer ul::-webkit-scrollbar {
