@@ -246,6 +246,21 @@ class ViewController {
         let targetNumSlots = vc.affixesSelected.length; // TODO allow user to decide N or N-1
         let newPage = vc.assistant.buildPageForChoices(choices, shouldSpread, targetNumSlots);
         console.log(newPage);
+        let pageTreeRoot =
+            (new PageTreeNode(true)).setPage(
+                (new Page()).addFodders(
+                    (new Fodder()).addAffixes(vc.affixesSelected)
+                )
+            )
+                .addRateBoostOptions(['+5%', '+10%', '+20%', '+30%', '+40%', '+45%'])
+                .addPotentialOptions(['+2%', '+5%', '+10%'])
+                .addPageTreeNodes((new PageTreeNode()).setPage(newPage))
+                .connectFodderAtToPageAt(0, 0);
+        vc.updateView({
+            pageTreeRoot: pageTreeRoot
+        });
+        vc.centerViewAtNode('#goal');
+        $('div.choice-selection-container').remove();
     }
 
     updateAffixSelectionView() {

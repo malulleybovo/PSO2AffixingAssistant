@@ -15,6 +15,7 @@ class Assistant {
         this.pageTreeRoot = [];
         this.affixDB = (new AffixDataParser()).parse(data);
         this.data = data;
+        this.junkCodes = ["ZA01", "ZB01", "ZC01", "ZD01", "ZE01", "ZF01", "ZG01", "ZH01", "ZI01"];
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(Assistant.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -122,6 +123,48 @@ class Assistant {
         if (shouldSpread) {
             page = this.spreadFodders(page, targetNumSlots);
         }
+
+        // Add any extra fodder to ensure every page has at least 3 fodders
+        // for additional affixing boost
+        let numFoddersNeeded = 3;
+        let hasFodderWithinTargetSlot = false;
+        for (var i = 0; i < page.size(); i++) {
+            if (page.fodders[i].size() > 0) numFoddersNeeded--;
+            if (!hasFodderWithinTargetSlot && page.fodders[i].size() <= targetNumSlots)
+                hasFodderWithinTargetSlot = true;
+        }
+        // Add an extra fodder in case all fodders exceed the target, this new fodder 
+        // would the have the abilities affixed to in the real process
+        if (!hasFodderWithinTargetSlot && numFoddersNeeded <= 0) numFoddersNeeded = 1;
+        for (var i = 0; i < page.size(); i++) {
+            if (numFoddersNeeded > 0 && page.fodders[i].size() == 0) {
+                page.fodders[i].addAffixes(this.affixDB[this.junkCodes[0]].abilityRef);
+                numFoddersNeeded--;
+            }
+        }
+
+        // Add any extra junk ability to ensure every fodder meets the 
+        // target number of slots (otherwise the gear cannot be affixed)
+        for (var i = 0; i < page.size(); i++) {
+            let fodder = page.fodders[i];
+            if (fodder.size() > 0) {
+                let junks = [];
+                for (var j = 0; j < this.junkCodes.length; j++) {
+                    let junk = this.affixDB[this.junkCodes[j]].abilityRef;
+                    if (fodder.affixes.includes(junk)) continue;
+                    if (fodder.size() + junks.length < targetNumSlots) junks.push(junk);
+                    else break;
+                }
+                if (junks.length > 0) fodder.addAffixes(junks);
+            }
+        }
+
+        // Remove empty fodders from cleanliness
+        let foddersToRemove = [];
+        for (var i = 0; i < page.size(); i++) {
+            if (page.fodders[i].size() == 0) foddersToRemove.push(page.fodders[i]);
+        }
+        page.removeFodders(foddersToRemove);
 
         return page;
 

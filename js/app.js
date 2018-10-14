@@ -140,6 +140,7 @@ $(document).ready(function () {
         pageTreeRoot: structure.node
     });
     VIEW_CONTROLLER.centerViewAtNode('#goal');
+    $('#startnew').click(() => VIEW_CONTROLLER.setAffixSelectionView(true));
 });
 
 $(window).resize(function () {
