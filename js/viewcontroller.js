@@ -31,9 +31,7 @@ class ViewController {
             which: 3,
             minScale: 0.1,
             maxScale: 2,
-            onChange: function (e, panzoom, transform) {
-                $('div.page, div.fodder').connections('update');
-            }
+            onChange: this.updateConnections
         });
         $("#editor").on('wheel', function (e) {
             e.preventDefault();
@@ -45,9 +43,9 @@ class ViewController {
                 focal: e
             });
         });
-        $('#panzoomreset').click(function (e) {
+        $('#panzoomreset').click({ viewcontroller: this }, function (e) {
             e.preventDefault();
-            centerUIAtNode('#goal');
+            e.data.viewcontroller.centerViewAtNode('#goal');
         });
     }
 

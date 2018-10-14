@@ -139,6 +139,7 @@ $(document).ready(function () {
     VIEW_CONTROLLER.updateView({
         pageTreeRoot: structure.node
     });
+    VIEW_CONTROLLER.centerViewAtNode('#goal');
 });
 
 $(window).resize(function () {
