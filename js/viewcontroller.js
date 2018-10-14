@@ -88,7 +88,8 @@ class ViewController {
         if ($('div.affix-selection-container').length != 0) {
             $('div.affix-selection-container').remove();
         }
-        let vc = data.viewcontroller;
+        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
         let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
         console.log(choices);
         // TODO populate new view with choices (2 rows, 6 cols => 1st row has choices for affix per col, 2nd row are buttons)
@@ -148,8 +149,9 @@ class ViewController {
         $('div.page, div.fodder').connections('update');
     }
 
-    selectAbility(e) {
-        let vc = e.data.viewcontroller;
+    selectAbility({ data }) {
+        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
         if ($(this).hasClass('selected') || $(this).parent().hasClass('affix')) {
             let that = this;
             if ($(this).parent().hasClass('affix')) that = $(this).parent()[0];
