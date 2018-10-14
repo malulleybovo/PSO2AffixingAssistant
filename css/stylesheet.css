@@ -5,8 +5,53 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: Verdana;
-    font-size: 0.6em;
+    font-size: 10px;
     overflow: hidden;
+}
+
+@media only screen and (max-device-width: 767px) {
+    body {
+        font-size: 15px; /* Bigger font for mobile */
+    }
+}
+
+div.mgrid {
+    display: grid;
+    grid-template-columns: [col1-start] min-content [col2-start] auto;
+    grid-template-rows: [row1-start] min-content [row2-start] min-content [row3-start] min-content [row4-start] min-content [row5-start] min-content [row6-start] min-content;
+}
+
+div.mgrid > *:first-child {
+    grid-column: col1-start;
+    margin-right: 5em;
+}
+
+div.mgrid > *:last-child {
+    grid-column: col2-start;
+}
+
+div.mgrid > *:last-child > div.mgrid:first-child {
+    grid-row: row1-start;
+}
+
+div.mgrid > *:last-child > div.mgrid:nth-child(2) {
+    grid-row: row2-start;
+}
+
+div.mgrid > *:last-child > div.mgrid:nth-child(3) {
+    grid-row: row3-start;
+}
+
+div.mgrid > *:last-child > div.mgrid:nth-child(4) {
+    grid-row: row4-start;
+}
+
+div.mgrid > *:last-child > div.mgrid:nth-child(5) {
+    grid-row: row5-start;
+}
+
+div.mgrid > *:last-child > div.mgrid:nth-child(6) {
+    grid-row: row6-start;
 }
 
 div.header {
@@ -45,31 +90,44 @@ div.header {
 
 #editor {
     position: fixed;
-    height: 100%;
     width: 100%;
-    right: 0;
+    height: 100%;
+}
+
+#mastercontainer {
+    width: 100%;
+    height: 100%;
+}
+
+#mastercontainer > *:first-child {
+    padding: 10em;
 }
 
 div.container {
     text-align: center;
 }
 
-div.container > div {
-    margin:  0.5em 0.5em 2em 0.5em;
+div.page {
     padding: 0.5em;
     border-radius: 0.35em;
     background-color: var(--paint-light);
     text-align: center;
-    display: inline-block;
     transition: 0.25s;
+    position: relative;
+    top: 50%;
+    transform: perspective(1px) translateY(-50%);
 }
 
 #goal {
     background-color: var(--paint-prime);
 }
 
+div.page > div:first-child {
+    display:flex;
+}
+
 div.fodder {
-    display: inline-block;
+    float: left;
     transition: 0.25s;
     margin-left: 0.5em;
 }
@@ -82,6 +140,10 @@ div.title {
     margin-bottom: 0.25em;
     padding-bottom: 0.25em;
     border-bottom: solid 1.5px var(--border-color);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 div.affix {
@@ -102,15 +164,13 @@ div.affix:last-child {
     border-bottom: solid 1.5px var(--border-color);
 }
 
-div.page.spotlight {
+div.page.despotlight {
     background-color: var(--paint-light-fade);
 }
 
-div.fodder.spotlight {
-    opacity: 0.25;
-}
-
-connection.spotlight {
+connection.despotlight,
+div.page.despotlight > *:not(:first-child),
+div.page.despotlight div.fodder:not(.spotlight) {
     opacity: 0.25;
 }
 
@@ -130,6 +190,10 @@ div.success-indicator {
     margin-top: 0.25em;
     padding-top: 0.25em;
     border-top: solid 1px var(--border-color);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 div.divider {
@@ -142,7 +206,11 @@ div.produce-button {
     background-color: var(--paint-dark);
     border: solid 1.5px var(--border-color);
     border-radius: 0.25em;
-    cursor: default;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 div.produce-button:hover {
@@ -158,6 +226,44 @@ div.affix-selection-container {
     position: fixed;
     width: 100%;
     height: 100%;
+    background-color: var(--overlay-color);
+    transition: all 0.3s ease;
+}
+
+div.affix-selection-container div.content::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+    background-color: var(--paint-dark);
+}
+
+div.affix-selection-container div.content::-webkit-scrollbar-thumb{
+    height: 4px;
+    width: 4px;
+    background-color: var(--border-color);
+}
+
+div.affix-selection-container div.content::-webkit-scrollbar-corner {
+    background-color: var(--paint-dark);
+}
+
+div.affix-selection-container div.content > div::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+    background-color: var(--paint-dark);
+}
+
+div.affix-selection-container div.content > div::-webkit-scrollbar-thumb{
+    height: 4px;
+    width: 4px;
+    background-color: var(--border-color);
+}
+
+div.affix-selection-container div.content > div::-webkit-scrollbar-corner{
+    background-color: var(--paint-dark);
+}
+
+div.affix-selection-container.hidden {
+    opacity: 0;
 }
 
 div.affix-selection-container > div {
@@ -185,6 +291,8 @@ div.affix-selection-container tr:first-child td {
 
 div.affix-selection-container tr:first-child td:first-child {
     border-right: 1.5px solid var(--border-color);
+    white-space: nowrap;
+    width: 1%;
 }
 
 div.affix-selection-container tr:last-child td:first-child {
@@ -201,11 +309,21 @@ div.affix-selection-container tr:last-child div {
     font-size: 16px;
     font-weight: bold;
     padding: 0.35em 0em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 div.affix-selection-container tr:last-child td:first-child div {
     background-color: var(--paint-dark);
     border-radius: 0.25em 0em 0em 0.25em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 div.affix-selection-container tr:last-child td:first-child div:hover {
@@ -268,8 +386,8 @@ div.title.bold {
     -webkit-appearance: none;
     width: 100%;
     height: 2px;
-    border-radius: 5px;
-    background: var(--border-color);
+    border-radius: 1em;
+    background: var(--paint-light);
     outline: none;
     padding: 0;
 }
@@ -277,14 +395,15 @@ div.title.bold {
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 3px;
-    height: 10px;
-    border-radius: 50%;
+    width: 4px;
+    height: 16px;
+    border-radius: 1em;
     background: var(--alter-paint);
     cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
+    border: none;
     width: 4px;
     height: 16px;
     background: var(--alter-paint);

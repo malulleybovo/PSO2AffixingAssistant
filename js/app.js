@@ -4,62 +4,143 @@
  * @author malulleybovo (2018)
  */
 
-let abilityMap = parseAffixData(data);
-
+const ASSISTANT = new Assistant(data);
+const VIEW_CONTROLLER = (new ViewController(ASSISTANT));
 
 $(document).ready(function () {
-    $('div.container').width(4200);
-    setTimeout(function () {
-        let $main = $('div.page:first');
-        $('#editor').scrollLeft($main.offset().left - ($(window).width() - $main.width()) / 2);
-        $('div[data-conn=1]').connections();
-        $('connection:not([data-conn])').attr('data-conn', 1);
-        $('div[data-conn=2]').connections();
-        $('connection:not([data-conn])').attr('data-conn', 2);
-        $('div[data-conn=3]').connections();
-        $('connection:not([data-conn])').attr('data-conn', 3);
-    }, 1);
-    $('div.fodder').hover(spotlightIn, spotlightOut);
-    $("#mastercontainer").panzoom({
-        which: 3,
-        minScale: 0.5,
-        maxScale: 2,
-        $zoomRange: $("#zoomcontroller"),
-        onChange: function (e, panzoom, transform) {
-            $('div.page, div.fodder').connections('update');
-        }
+    //(new AffixDataParser()).printAbilityDB(abilityDB);
+    VIEW_CONTROLLER.setup();
+    structure = {
+        node: (new PageTreeNode(true)).setPage(
+            (new Page()).addFodders(
+                (new Fodder()).addAffixes([
+                    ASSISTANT.affixDB['AA05'].abilityRef,
+                    ASSISTANT.affixDB['AC04'].abilityRef,
+                    ASSISTANT.affixDB['TK11'].abilityRef
+                ])
+            )
+        )
+            .addRateBoostOptions(['+5%', '+10%', '+20%', '+30%', '+40%', '+45%'])
+            .addPotentialOptions(['+2%', '+5%', '+10%'])
+            .addPageTreeNodes(
+            (new PageTreeNode()).setPage(
+                (new Page()).addFodders([
+                    (new Fodder()).addAffixes([
+                        ASSISTANT.affixDB['AA05'].abilityRef,
+                        ASSISTANT.affixDB['AC04'].abilityRef,
+                        ASSISTANT.affixDB['TK11'].abilityRef
+                    ]),
+                    (new Fodder()).addAffixes([
+                        ASSISTANT.affixDB['AA05'].abilityRef,
+                        ASSISTANT.affixDB['AC04'].abilityRef,
+                        ASSISTANT.affixDB['TK11'].abilityRef
+                    ]),
+                    (new Fodder()).addAffixes([
+                        ASSISTANT.affixDB['AA05'].abilityRef,
+                        ASSISTANT.affixDB['AC04'].abilityRef,
+                        ASSISTANT.affixDB['TK11'].abilityRef
+                    ]),
+                    (new Fodder()).addAffixes([
+                        ASSISTANT.affixDB['AA05'].abilityRef,
+                        ASSISTANT.affixDB['AC04'].abilityRef,
+                        ASSISTANT.affixDB['TK11'].abilityRef
+                    ]),
+                    (new Fodder()).addAffixes([
+                        ASSISTANT.affixDB['AA05'].abilityRef,
+                        ASSISTANT.affixDB['AC04'].abilityRef,
+                        ASSISTANT.affixDB['TK11'].abilityRef
+                    ]),
+                    (new Fodder()).addAffixes([
+                        ASSISTANT.affixDB['AA05'].abilityRef,
+                        ASSISTANT.affixDB['AC04'].abilityRef,
+                        ASSISTANT.affixDB['TK11'].abilityRef
+                    ]),
+                ])
+            )
+                .addPageTreeNodes([
+                    (new PageTreeNode()).setPage(
+                        (new Page()).addFodders([
+                            (new Fodder()).addAffixes([
+                                ASSISTANT.affixDB['AA05'].abilityRef,
+                                ASSISTANT.affixDB['AC04'].abilityRef,
+                                ASSISTANT.affixDB['TK11'].abilityRef
+                            ]),
+                            (new Fodder()).addAffixes([
+                                ASSISTANT.affixDB['AA05'].abilityRef,
+                                ASSISTANT.affixDB['AC04'].abilityRef,
+                                ASSISTANT.affixDB['TK11'].abilityRef
+                            ]),
+                            (new Fodder()).addAffixes([
+                                ASSISTANT.affixDB['AA05'].abilityRef,
+                                ASSISTANT.affixDB['AC04'].abilityRef,
+                                ASSISTANT.affixDB['TK11'].abilityRef
+                            ]),
+                            (new Fodder()).addAffixes([
+                                ASSISTANT.affixDB['AA05'].abilityRef,
+                                ASSISTANT.affixDB['AC04'].abilityRef,
+                                ASSISTANT.affixDB['TK11'].abilityRef
+                            ]),
+                            (new Fodder()).addAffixes([
+                                ASSISTANT.affixDB['AA05'].abilityRef,
+                                ASSISTANT.affixDB['AC04'].abilityRef,
+                                ASSISTANT.affixDB['TK11'].abilityRef
+                            ]),
+                            (new Fodder()).addAffixes([
+                                ASSISTANT.affixDB['AA05'].abilityRef,
+                                ASSISTANT.affixDB['AC04'].abilityRef,
+                                ASSISTANT.affixDB['TK11'].abilityRef
+                            ]),
+                        ])
+                    ),
+                    (new PageTreeNode()).setPage(
+                        (new Page()).addFodders(
+                            (new Fodder()).addAffixes([
+                                ASSISTANT.affixDB['AA05'].abilityRef,
+                                ASSISTANT.affixDB['AC04'].abilityRef,
+                                ASSISTANT.affixDB['TK11'].abilityRef
+                            ])
+                        ).setSameGear(true)
+                    ),
+                    (new PageTreeNode()).setPage(
+                        (new Page()).addFodders(
+                            (new Fodder()).addAffixes([
+                                ASSISTANT.affixDB['AA05'].abilityRef,
+                                ASSISTANT.affixDB['AC04'].abilityRef,
+                                ASSISTANT.affixDB['TK11'].abilityRef
+                            ])
+                        ).setPotentialIdx(2)
+                    ),
+                    (new PageTreeNode()).setPage(
+                        (new Page()).addFodders(
+                            (new Fodder()).addAffixes([
+                                ASSISTANT.affixDB['AA05'].abilityRef,
+                                ASSISTANT.affixDB['AC04'].abilityRef,
+                                ASSISTANT.affixDB['TK11'].abilityRef
+                            ])
+                        ).setRateBoostIdx(4)
+                    ),
+                    (new PageTreeNode()).setPage(
+                        (new Page()).addFodders(
+                            (new Fodder()).addAffixes([
+                                ASSISTANT.affixDB['AA05'].abilityRef,
+                                ASSISTANT.affixDB['AC04'].abilityRef,
+                                ASSISTANT.affixDB['TK11'].abilityRef
+                            ])
+                        )
+                    )
+                ]).connectFodderAtToPageAt(0, 0)
+                .connectFodderAtToPageAt(1, 1)
+                .connectFodderAtToPageAt(2, 3)
+                .connectFodderAtToPageAt(3, 2)
+                .connectFodderAtToPageAt(4, 4)
+                .connectFodderAtToPageAt(5, 5) // Failure on this one is correct
+            ).connectFodderAtToPageAt(0, 0)
+    }
+    VIEW_CONTROLLER.updateView({
+        pageTreeRoot: structure.node
     });
-    $('#panzoomreset').click(function () {
-        $("#mastercontainer").panzoom('reset', { animate: false });
-    })
-    printAbilityMap(abilityMap);
 });
 
 $(window).resize(function () {
-    $('div.page, div.fodder').connections('update');
+    VIEW_CONTROLLER.updateConnections();
 })
-
-var timeout;
-function spotlightIn(ev) {
-    if (timeout) clearTimeout(timeout);
-    let connNum = $(ev.currentTarget).attr('data-conn');
-    timeout = setTimeout(function () {
-        if (connNum) {
-            let $t = $('div[data-conn=' + connNum + ']');
-            $('div.page').not($t).addClass('spotlight');
-            $('div.fodder').not($t.children()).not($(ev.currentTarget)).addClass('spotlight');
-            $('connection:not([data-conn=' + connNum + '])').addClass('spotlight');
-        }
-    }, 500);
-}
-
-function spotlightOut(ev) {
-    if (timeout) clearTimeout(timeout);
-    let connNum = $(ev.currentTarget).attr('data-conn');
-    if (connNum) {
-        let $t = $('div[data-conn=' + connNum + ']');
-        $('div.page').not($t).removeClass('spotlight');
-        $('div.fodder').not($t.children()).not($(ev.currentTarget)).removeClass('spotlight');
-        $('connection:not([data-conn=' + connNum + '])').removeClass('spotlight');
-    }
-}

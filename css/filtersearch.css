@@ -19,15 +19,43 @@ div.filtersearchcontainer input.searchbar {
     margin-bottom: 0.5em;
 }
 
+div.filtersearchcontainer input::placeholder {
+    color: var(--paint-lighter);
+}
+
+div.filtersearchcontainer input:focus {
+    outline-color: var(--alter-paint-light);
+}
+
 div.filtersearchcontainer ul {
     list-style-type: none;
     padding: 1.5px 0px;
     margin: 0;
     height: 30em;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: var(--paint-dark);
     border: 1.5px solid var(--border-color);
     border-radius: 0.25em;
+}
+
+div.filtersearchcontainer ul::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+    background-color: var(--paint-dark);
+}
+
+div.filtersearchcontainer ul::-webkit-scrollbar-thumb {
+    height: 4px;
+    width: 4px;
+    background-color: var(--border-color);
+}
+
+div.filtersearchcontainer ul::-webkit-scrollbar-corner {
+    background-color: var(--paint-dark);
+}
+
+div.filtersearchcontainer li {
+    white-space: normal;
 }
 
 div.filtersearchcontainer li div {
