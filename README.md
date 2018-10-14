@@ -1,2 +1,2 @@
 # AffixingAssistant
-version: Alpha v1.0
+version: Alpha v2.0
