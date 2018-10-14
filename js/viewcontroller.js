@@ -128,20 +128,19 @@ class ViewController {
     }
 
     regenerateConnections() {
-        let $connectables = $('div[data-conn]').sort(function (a, b) {
-            return a.dataset.conn > b.dataset.conn;
-        });
-        console.log($connectables);
+        let $connectables = $('div[data-conn]');
+        // Remove all old connections
+        $(`connection`).remove();
+        // Generate new connections
         for (var i = 0; i < $connectables.length; i++) {
-            if (i + 1 < $connectables.length
-                && $connectables[i].dataset.conn == $connectables[i + 1].dataset.conn) {
-                let $existingConn = $(`connection[data-conn=${$connectables[i].dataset.conn}]`);
-                if ($existingConn.length > 0) {
-                    $existingConn.remove();
+            let connectableA = $connectables[i];
+            for (var j = 0; j < $connectables.length; j++) {
+                let connectableB = $connectables[j];
+                if (connectableA.dataset.conn == connectableB.dataset.conn
+                    && $(connectableA).hasClass('fodder') && $(connectableB).hasClass('page')) {
+                    $(connectableA).add(connectableB).connections();
+                    $('connection:not([data-conn])').attr('data-conn', connectableA.dataset.conn);
                 }
-                $($connectables[i]).add($connectables[i + 1]).connections();
-                $('connection:not([data-conn])').attr('data-conn', $connectables[i].dataset.conn);
-                i++;
             }
         }
         return this;
