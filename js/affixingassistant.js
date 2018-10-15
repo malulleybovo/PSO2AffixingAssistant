@@ -652,8 +652,8 @@ class PageTreeNode {
 
     connectFodderAtToPageAt(fodderIdx, pageIdx) {
         if (typeof fodderIdx === 'number' && typeof pageIdx === 'number'
-            && this.page && fodderIdx < this.page.fodders.length
-            && pageIdx < this.children.length) {
+            && this.page && fodderIdx >= 0 && fodderIdx < this.page.fodders.length
+            && pageIdx >= 0 && pageIdx < this.children.length) {
             this.page.fodders[fodderIdx].connectTo(this.children[pageIdx].page);
         }
         return this;

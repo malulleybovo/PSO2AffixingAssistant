@@ -6,14 +6,13 @@
 
 const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
     let treeNodeTemplate = '<div class="mgrid"><div>';
+    level = (typeof level === 'number') ? level : 0;
     offset = (typeof offset === 'number') ? offset : 0;
-    let dataConnId;
-    let capacity = (new Page).CAPACITY;
-    if (typeof level === 'number') dataConnId =
-        ((Math.pow(capacity, level + 1) - 1) / (capacity - 1)) + offset;
-    else dataConnId = 0;
     let connectionOrder = [];
     // Get index of connected
+    // Since the list of pages may be unordered,
+    // the data-conn offset of each fodder may not be ordered
+    let capacity = (new Page).CAPACITY;
     for (var i = 0; i < pageTreeNode.size(); i++) {
         let childPage = pageTreeNode.children[i].page;
         connectionOrder.push(-1);
@@ -23,7 +22,8 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
             let fodder = pageTreeNode.page.fodders[j];
             if (childPage.connectedTo instanceof Fodder
                 && childPage.connectedTo === fodder) {
-                connectionOrder[i] = (offset + j) * capacity;
+                connectionOrder[j] = (offset * capacity) + i;
+                break;
             }
         }
     }
@@ -31,11 +31,11 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
         treeNodeTemplate += PAGE_TEMPLATE({
             page: pageTreeNode.page,
             isGoal: pageTreeNode.isGoal,
-            dataConn: dataConnId,
             rateBoostOptions: pageTreeNode.rateBoostOptions,
             potentialOptions: pageTreeNode.potentialOptions,
-            level: (typeof level === 'number') ? (level + 1) : 0,
-            offsets: connectionOrder
+            level: level,
+            offset: offset,
+            fodderOffsets: connectionOrder
         });
     }
     treeNodeTemplate += '</div><div>';
@@ -43,8 +43,8 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
         for (var i = 0; i < pageTreeNode.size(); i++) {
             treeNodeTemplate += PAGE_TREE_NODE_TEMPLATE({
                 pageTreeNode: pageTreeNode.children[i],
-                level: (typeof level === 'number') ? (level + 1) : 0,
-                offset: (offset + i) * capacity
+                level: (level + 1),
+                offset: (offset * capacity) + i
             });
         }
     }
@@ -52,21 +52,31 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
     return treeNodeTemplate;
 };
 
-const PAGE_TEMPLATE = ({ page, isGoal, dataConn, rateBoostOptions, potentialOptions, level, offsets }) => {
+const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level, offset, fodderOffsets }) => {
+    let capacity = (new Page).CAPACITY;
+    let dataConn;
+    // data-conn is a mapping of the page-fodder connections within a tree structure with a set max number of children per node
+    // base = ((capacity^(level)) - 1) / (capacity - 1)
+    // refers to the start index at every level of the tree (ie: 0 (goal only), 1, 7, 43, 259, 1555...)
+    // offset refers to the offset index of the page within its level down the tree structure
+    if (typeof level === 'number') dataConn =
+        ((Math.pow(capacity, level) - 1) / (capacity - 1)) + offset;
+    else dataConn = 0;
     let pageTempate = `<div ${(isGoal) ? `id="goal" ` : ``}class="page" ${(dataConn >= 0) ? `data-conn="` + dataConn + `"` : ``}><div>`;
     if (page && page instanceof Page) {
         let fodders = page.fodders;
-        let dataConnIdBase;
-        let capacity = (new Page).CAPACITY;
-        if (typeof level === 'number') dataConnIdBase =
+        // Since fodders within the page may connect to pages one level further down the tree,
+        // their data-conn need to use (level + 1).
+        let fodderDataConnBase;
+        if (typeof level === 'number') fodderDataConnBase =
             ((Math.pow(capacity, level + 1) - 1) / (capacity - 1));
-        else dataConnIdBase = 0;
+        else fodderDataConnBase = 0;
         for (var i = 0; i < ((isGoal) ? 1 : fodders.length); i++) {
             pageTempate += FODDER_TEMPLATE({
                 fodder: fodders[i],
                 titleLabel: (isGoal) ? 'GOAL' : ('Fodder ' + i),
                 produceLabel: (isGoal) ? 'CHANGE' : 'PRODUCE',
-                dataConn: dataConnIdBase + offsets[i]
+                dataConn: (fodderOffsets[i] >= 0) ? fodderDataConnBase + fodderOffsets[i] : -1
             });
         }
         pageTempate += `</div>`;

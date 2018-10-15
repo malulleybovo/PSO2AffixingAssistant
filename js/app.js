@@ -10,7 +10,7 @@ const VIEW_CONTROLLER = (new ViewController(ASSISTANT));
 $(document).ready(function () {
     //(new AffixDataParser()).printAbilityDB(abilityDB);
     VIEW_CONTROLLER.setup();
-    structure = {
+    let structure = {
         node: (new PageTreeNode(true)).setPage(
             (new Page()).addFodders(
                 (new Fodder()).addAffixes([
@@ -136,6 +136,7 @@ $(document).ready(function () {
                 .connectFodderAtToPageAt(5, 5) // Failure on this one is correct
             ).connectFodderAtToPageAt(0, 0)
     }
+    VIEW_CONTROLLER.pageTreeRoot = structure.node;
     VIEW_CONTROLLER.updateView({
         pageTreeRoot: structure.node
     });
