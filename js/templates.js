@@ -82,7 +82,7 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level
         pageTempate += `</div>`;
         if (!isGoal) {
             pageTempate += `<div class="success-indicator">
-                <span>Success: </span>
+                <span>Stage Success: </span>
                 <span>${(page.successRate >= 0) ? page.successRate + `%` : `?`}</span>
             </div>`;
         }
@@ -120,7 +120,7 @@ const FODDER_TEMPLATE = ({ fodder, titleLabel, dataConn, produceLabel }) =>
             <div class="divider"></div>
             <div class="produce-button">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? `REPRODUCE` : `PRODUCE`)}</div>
             <div class="success-indicator">
-                <span>Success: </span>
+                <span>Fodder Success: </span>
             <span>${(fodder.successRate >= 0) ? fodder.successRate + `%` : `?`}</span>
             </div>
         </div>`;

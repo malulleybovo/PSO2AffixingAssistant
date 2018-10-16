@@ -43,10 +43,11 @@ class Assistant {
                 (new Fodder()).addAffixes(
                     affixes
                 )
-            ).addRateBoostOptions(this.getRateBoostOptions())
-            .addPotentialOptions(this.getPotentialOptions())
-        );
+            )
+        ).addRateBoostOptions(this.getRateBoostOptions())
+        .addPotentialOptions(this.getPotentialOptions());
         this.setActivePageTreeNode(this.pageTreeRoot);
+        this.setActiveFodder(this.pageTreeRoot.page.fodders[0]);
     }
 
     setActiveFodder(fodder) {

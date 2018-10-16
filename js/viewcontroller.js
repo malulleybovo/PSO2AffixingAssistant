@@ -50,14 +50,15 @@ class ViewController {
         });
     }
 
-    setActiveFodder({ data }) {
-        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+    setActiveFodder(e) {
+        let vc = (this instanceof ViewController) ? this :
+            (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         let found = vc.findFodderAndNodeByDOM(this);
         vc.assistant.setActiveFodder(found.fodder);
         vc.assistant.setActivePageTreeNode(found.pageTreeNode);
         vc.affixesSelected = found.fodder.affixes.slice(0);
-        vc.openChoicesSelectionView({ data });
+        vc.openChoicesSelectionView();
     }
 
     findFodderAndNodeByDOM(fodderElem) {
@@ -108,7 +109,11 @@ class ViewController {
                 });
                 $('div.affix-selection-container li > div').click({ viewcontroller: this }, this.selectAbility);
                 $('div.affix-selection-container div.affix > i').click({ viewcontroller: this }, this.selectAbility);
-                $('div.affix-selection-container div.confirm-button').click({ viewcontroller: this }, this.openChoicesSelectionView)
+                $('div.affix-selection-container div.confirm-button').click({ viewcontroller: this }, function ({ data }) {
+                    data.viewcontroller.openChoicesSelectionView();
+                    $('div.choice-selection-container div.cancel-button').click({ viewcontroller: data.viewcontroller },
+                        ({ data }) => { data.viewcontroller.setAffixSelectionView(true); });
+                });
                 this.updateAffixSelectionView();
             }
         }
@@ -120,11 +125,12 @@ class ViewController {
         return this;
     }
 
-    openChoicesSelectionView({ data }) {
+    openChoicesSelectionView(e) {
         if ($('div.affix-selection-container').length != 0) {
             $('div.affix-selection-container').remove();
         }
-        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+        let vc = (this instanceof ViewController) ? this :
+            (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
         if ($('div.choice-selection-container').length != 0) {
@@ -142,7 +148,8 @@ class ViewController {
                 datalist: choices
             }));
         $('div.choice-selection-container li > div').click({ viewcontroller: vc }, vc.selectChoice);
-        $('div.choice-selection-container div.cancel-button').click({ viewcontroller: vc }, ({ data }) => { data.viewcontroller.setAffixSelectionView(true); });
+        $('div.choice-selection-container div.cancel-button').click(
+            (e) => { $('div.choice-selection-container').remove(); });
         $('div.choice-selection-container div.confirm-button').click({ viewcontroller: vc }, vc.produceFodderFromChoices);
     }
 
@@ -204,8 +211,9 @@ class ViewController {
         $('div.page, div.fodder').connections('update');
     }
 
-    selectAbility({ data }) {
-        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+    selectAbility(e) {
+        let vc = (this instanceof ViewController) ? this :
+            (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         if ($(this).hasClass('selected') || $(this).parent().hasClass('affix')) {
             let that = this;
@@ -233,8 +241,9 @@ class ViewController {
         vc.updateAffixSelectionView();
     }
 
-    selectChoice({ data }) {
-        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+    selectChoice(e) {
+        let vc = (this instanceof ViewController) ? this :
+            (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         if ($(this).hasClass('selected')) {
             let $divDataCode = $(this).parents('div[data-code]');
@@ -272,8 +281,9 @@ class ViewController {
         vc.updateChoiceSelectionView();
     }
 
-    produceFodderFromChoices({ data }) {
-        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+    produceFodderFromChoices(e) {
+        let vc = (this instanceof ViewController) ? this :
+            (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         if (vc.choicesSelected.includes(null)) return;
         let choices = vc.choicesSelected;
