@@ -25,9 +25,6 @@ class ViewController {
             }
         }
         // Mutable variables
-        this.pageTreeRoot = null;
-        this.activePageTreeNode = null;
-        this.activeFodder = null;
     }
 
     setup() {
@@ -57,10 +54,8 @@ class ViewController {
         let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         let found = vc.findFodderAndNodeByDOM(this);
-        if (!(found.fodder instanceof Fodder)) return
-        if (!(found.pageTreeNode instanceof PageTreeNode)) return
-        vc.activeFodder = found.fodder;
-        vc.activePageTreeNode = found.pageTreeNode;
+        vc.assistant.setActiveFodder(found.fodder);
+        vc.assistant.setActivePageTreeNode(found.pageTreeNode);
         vc.affixesSelected = found.fodder.affixes.slice(0);
         vc.openChoicesSelectionView({ data });
     }
@@ -68,14 +63,14 @@ class ViewController {
     findFodderAndNodeByDOM(fodderElem) {
         let $elem = $(fodderElem);
         if (!$elem.hasClass('fodder')) $elem = $elem.parents('div.fodder');
-        if ($elem.length <= 0 || !(this.pageTreeRoot instanceof PageTreeNode)) return;
+        if ($elem.length <= 0 || !(this.assistant.pageTreeRoot instanceof PageTreeNode)) return;
         let indices = [];
         do {
             if ($elem.length > 0) indices.unshift($elem.index());
             $elem = $elem.parents('div.mgrid');
         } while ($elem.length > 0);
         indices.splice(0, 1);
-        let curr = this.pageTreeRoot;
+        let curr = this.assistant.pageTreeRoot;
         for (var i = 0; i < indices.length - 1; i++) {
             curr = curr.children[indices[i]];
         }
@@ -148,13 +143,15 @@ class ViewController {
             }));
         $('div.choice-selection-container li > div').click({ viewcontroller: vc }, vc.selectChoice);
         $('div.choice-selection-container div.cancel-button').click({ viewcontroller: vc }, ({ data }) => { data.viewcontroller.setAffixSelectionView(true); });
-        $('div.choice-selection-container div.confirm-button').click({ viewcontroller: vc }, vc.produceGoalFromChoices);
+        $('div.choice-selection-container div.confirm-button').click({ viewcontroller: vc }, vc.produceFodderFromChoices);
     }
 
-    updateView({ pageTreeRoot }) {
-        if (!pageTreeRoot || !(pageTreeRoot instanceof PageTreeNode)) return;
+    updateView() {
+        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
+        if (!vc.assistant || !vc.assistant.pageTreeRoot || !(vc.assistant.pageTreeRoot instanceof PageTreeNode)) return;
         $('#mastercontainer').empty().append(PAGE_TREE_NODE_TEMPLATE({
-            pageTreeNode: pageTreeRoot
+            pageTreeNode: vc.assistant.pageTreeRoot
         }));
         this.regenerateConnections();
         $('div.fodder').hover(spotlightIn, spotlightOut);
@@ -275,62 +272,34 @@ class ViewController {
         vc.updateChoiceSelectionView();
     }
 
-    produceGoalFromChoices({ data }) {
-        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
-        if (!(vc instanceof ViewController)) return;
-        if (vc.choicesSelected.includes(null)) return;
-        let choices = vc.choicesSelected;
-        let shouldSpread = false; // TODO allow user to decide
-        let targetNumSlots = vc.affixesSelected.length; // TODO allow user to decide N or N-1
-        let newPage = vc.assistant.buildPageForChoices(choices, shouldSpread, targetNumSlots);
-        // If null, treat it as the root. Otherwise, treat it as a branch node
-        let pageTreeRoot = (vc.activePageTreeNode == null) ?
-            (new PageTreeNode(true)).setPage(
-                (new Page()).addFodders(
-                    (new Fodder()).addAffixes(vc.affixesSelected)
-                )
-            ).addRateBoostOptions(['+5%', '+10%', '+20%', '+30%', '+40%', '+45%'])
-                .addPotentialOptions(['+2%', '+5%', '+10%'])
-            : vc.activePageTreeNode;
-        if (vc.activePageTreeNode == null) vc.pageTreeRoot = pageTreeRoot;
-        // Enclose the new page in a tree node
-        let newTreeNode = (new PageTreeNode()).setPage(newPage);
-        // Add new page to the tree data structure
-        pageTreeRoot.addPageTreeNodes(newTreeNode)
-        // Connect the produced fodder to the new page
-        pageTreeRoot.connectFodderAtToPageAt(
-            (vc.activeFodder == null) ? 0 : pageTreeRoot.page.fodders.indexOf(vc.activeFodder),
-            pageTreeRoot.children.indexOf(newTreeNode));
-        // Update the UI to reflect the data changed
-        vc.updateView({
-            pageTreeRoot: vc.pageTreeRoot
-        });
-        vc.centerViewAtNode('#goal');
-        $('div.choice-selection-container').remove();
-    }
-
     produceFodderFromChoices({ data }) {
         let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         if (vc.choicesSelected.includes(null)) return;
         let choices = vc.choicesSelected;
         let shouldSpread = false; // TODO allow user to decide
-        let targetNumSlots = vc.affixesSelected.length; // TODO allow user to decide N or N-1
+        let targetNumSlots = vc.affixesSelected.length - 1; // TODO allow user to decide N or N-1
         let newPage = vc.assistant.buildPageForChoices(choices, shouldSpread, targetNumSlots);
-        console.log(newPage);
-        let pageTreeRoot =
-            (new PageTreeNode(true)).setPage(
-                (new Page()).addFodders(
-                    (new Fodder()).addAffixes(vc.affixesSelected)
-                )
-            )
-                .addRateBoostOptions(['+5%', '+10%', '+20%', '+30%', '+40%', '+45%'])
-                .addPotentialOptions(['+2%', '+5%', '+10%'])
-                .addPageTreeNodes((new PageTreeNode()).setPage(newPage))
-                .connectFodderAtToPageAt(0, 0);
-        vc.updateView({
-            pageTreeRoot: pageTreeRoot
+        if (!newPage) {
+            console.warn(
+                'Attempted to produce a new page with choices %o, but produced page was %o',
+                choices, newPage);
+            return;
+        }
+        // If null, treat it as the root. Otherwise, treat it as a branch node
+        if (!vc.assistant.hasActivePageTreeNode()) {
+            if (vc.assistant.validateAffixes(vc.affixesSelected)) {
+                vc.assistant.setGoal(vc.affixesSelected);
+            }
+        }
+        // Add new page to the tree data structure
+        // And connect the produced fodder to the new page
+        vc.assistant.updateConnection({
+            fodder: vc.assistant.activeFodder,
+            page: newPage
         });
+        // Update the UI to reflect the data changed
+        vc.updateView();
         vc.centerViewAtNode('#goal');
         $('div.choice-selection-container').remove();
     }

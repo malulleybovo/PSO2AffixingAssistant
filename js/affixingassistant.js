@@ -12,9 +12,10 @@ const AFFIX_REL_SOUL = "soul";
 class Assistant {
     constructor(data) {
         // Immutable variables (properties can still change)
-        this.pageTreeRoot = [];
         this.affixDB = (new AffixDataParser()).parse(data);
         this.data = data;
+        this.rateBoostOptions = [];
+        this.potentialOptions = [];
         this.junkCodes = ["ZA01", "ZB01", "ZC01", "ZD01", "ZE01", "ZF01", "ZG01", "ZH01", "ZI01"];
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(Assistant.prototype);
@@ -30,29 +31,81 @@ class Assistant {
             }
         }
         // Mutable variables
+        this.pageTreeRoot = null;
+        this.activePageTreeNode = null;
+        this.activeFodder = null;
     }
 
     setGoal(affixes) {
-        if (affixes) {
-            for (var i = 0; i < affixes.length; i++) {
-                let affix = affixes[i];
-                if (!affix.code || !this.affixDB[affix.code]) {
-                    return;
-                }
-            }
-        }
-        else return;
+        if (!this.validateAffixes(affixes)) return;
         this.pageTreeRoot = (new PageTreeNode(true)).setPage(
             (new Page()).addFodders(
                 (new Fodder()).addAffixes(
                     affixes
                 )
-            )
+            ).addRateBoostOptions(this.getRateBoostOptions())
+            .addPotentialOptions(this.getPotentialOptions())
         );
+        this.setActivePageTreeNode(this.pageTreeRoot);
+    }
+
+    setActiveFodder(fodder) {
+        if (!(fodder instanceof Fodder) || !this.pageTreeRoot
+            || this.pageTreeRoot.find(fodder).length <= 0) return false;
+        this.activeFodder = fodder;
+        return true;
+    }
+
+    setActivePageTreeNode(pageTreeNode) {
+        if (!(pageTreeNode instanceof PageTreeNode) || !this.pageTreeRoot
+            || this.pageTreeRoot.find(pageTreeNode).length <= 0) return false;
+        this.activePageTreeNode = pageTreeNode;
+        return true;
+    }
+
+    hasActiveFodder() {
+        return this.pageTreeRoot && !this.pageTreeRoot.find(this.activeFodder).length > 0;
+    }
+
+    hasActivePageTreeNode() {
+        return this.pageTreeRoot && this.pageTreeRoot.find(this.activePageTreeNode).length > 0;
+    }
+
+    getRateBoostOptions() {
+        if (!this.data || !this.data.optionList || !this.data.optionList.support
+            || !Array.isArray(this.data.optionList.support)) return null;
+        if (this.rateBoostOptions.length > 0) return this.rateBoostOptions;
+        let options = this.data.optionList.support;
+        for (var i = 0; i < options.length; i++) {
+            if (!options[i] || !options[i].id) continue;
+            this.rateBoostOptions.push(options[i].id);
+        }
+        return this.rateBoostOptions;
+    }
+
+    getPotentialOptions() {
+        if (!this.data || !this.data.optionList || !this.data.optionList.potential
+            || !Array.isArray(this.data.optionList.potential)) return null;
+        if (this.potentialOptions.length > 0) return this.potentialOptions;
+        let options = this.data.optionList.potential;
+        for (var i = 0; i < options.length; i++) {
+            if (!options[i] || !options[i].id) continue;
+            this.potentialOptions.push(options[i].id);
+        }
+        return this.potentialOptions;
     }
 
     validateAffixes(affixes) {
-        // TODO
+        if (!this.affixDB) return false;
+        if (affixes) {
+            for (var i = 0; i < affixes.length; i++) {
+                let affix = affixes[i];
+                if (!affix.code || !this.affixDB[affix.code]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     getChoicesForAffixes(affixes) {
@@ -520,13 +573,41 @@ class Assistant {
         let url = '/#!' + this.pageTreeRoot.toURL();
     }
 
+    updateConnection({ fodder, page }) {
+        if (!(fodder instanceof Fodder) || !(page instanceof Page)
+            || this.pageTreeRoot.find(page).length > 0) return false;
+        let trackingRoute = this.pageTreeRoot.find(fodder);
+        // Tracking route, if found, will always be of form [...,PageTreeNode,Page,Fodder]
+        if (trackingRoute.length >= 3 && trackingRoute[trackingRoute.length - 3] instanceof PageTreeNode) {
+            let pageTreeNode = trackingRoute[trackingRoute.length - 3];
+            if (fodder.hasConnection() && fodder.connectedTo !== page) {
+                let pageTrackingRoute = this.pageTreeRoot.find(fodder.connectedTo);
+                if (pageTrackingRoute.length >= 2 && pageTrackingRoute[pageTrackingRoute.length - 2] instanceof PageTreeNode) {
+                    let pageConnTo = pageTrackingRoute[pageTrackingRoute.length - 2];
+                    pageTreeNode.removePageTreeNodes(pageConnTo);
+                }
+                else return false;
+            }
+            pageTreeNode.addPageTreeNodes(
+                (new PageTreeNode()).setPage(page)
+            );
+            fodder.connectTo(page);
+            return true;
+        }
+        return false;
+    }
+
     addPageTreeNodes(pageTreeNodes) {
-        this.pageTreeRoot.addPageTreeNodes(pageTreeNodes)
+        if (this.activePageTreeNode && (this.activePageTreeNode instanceof PageTreeNode)) {
+            this.activePageTreeNode.addPageTreeNodes(pageTreeNodes);
+        }
         return this;
     }
 
     removePageTreeNodes(pageTreeNodes) {
-        this.pageTreeRoot.removePageTreeNodes(pageTreeNodes);
+        if (this.activePageTreeNode && (this.activePageTreeNode instanceof PageTreeNode)) {
+            this.activePageTreeNode.removePageTreeNodes(pageTreeNodes);
+        }
         return this;
     }
 }
@@ -578,8 +659,10 @@ class PageTreeNode {
                 if (this.page == null || this.size() >= this.page.size())
                     break;
                 let pageTreeNode = pageTreeNodes[i];
-                if (pageTreeNode && pageTreeNode instanceof PageTreeNode
-                    && !pageTreeNode.isGoal) { // Cannot have goal as a child
+                let test = this.find(pageTreeNode);
+                if (pageTreeNode && (pageTreeNode instanceof PageTreeNode)
+                    && !pageTreeNode.isGoal // Cannot have goal as a child
+                    && test.length <= 0) { // Deny cycles and duplicates
                     pageTreeNode.addRateBoostOptions(this.rateBoostOptions);
                     pageTreeNode.addPotentialOptions(this.potentialOptions);
                     this.children.push(pageTreeNode);
@@ -589,12 +672,55 @@ class PageTreeNode {
         return this;
     }
 
-    setPage(page) {
-        if (page && page instanceof Page) {
-            this.page = page;
+    find(elem) {
+        let elemType = -1;
+        if (elem instanceof Fodder) elemType = 0;
+        else if (elem instanceof Page) elemType = 1;
+        else if (elem instanceof PageTreeNode) elemType = 2;
+        else return [];
+        let thisPage = this.page;
+        if (thisPage) {
+            if (elemType == 1 && elem === thisPage) {
+                return [
+                    this,
+                    thisPage
+                ];
+            }
+            if (elemType == 0) {
+                for (var i = 0; i < thisPage.size(); i++) {
+                    let fodder = thisPage.fodders[i];
+                    if (elem === fodder) {
+                        return [
+                            this,
+                            thisPage,
+                            fodder
+                        ];
+                    }
+                }
+            }
         }
-        this.page.addRateBoostOptions(this.rateBoostOptions);
-        this.page.addPotentialOptions(this.potentialOptions);
+        for (var i = 0; i < this.size(); i++) {
+            let childNode = this.children[i];
+            if (elemType == 2 && elem === childNode) {
+                return [
+                    this
+                ];
+            }
+            let trackingFound = childNode.find(elem);
+            if (Array.isArray(trackingFound) && trackingFound.length > 0) {
+                trackingFound.unshift(this);
+                return trackingFound;
+            }
+        }
+        return [];
+    }
+
+    setPage(page) {
+        if (page && page instanceof Page && this.find(page).length <= 0) {
+            this.page = page;
+            this.page.addRateBoostOptions(this.rateBoostOptions);
+            this.page.addPotentialOptions(this.potentialOptions);
+        }
         return this;
     }
 
@@ -612,6 +738,40 @@ class PageTreeNode {
             }
         }
         return this;
+    }
+
+    findAndRemove(elem) {
+        let elemType = -1;
+        if (elem instanceof Fodder) elemType = 0;
+        else if (elem instanceof Page) elemType = 1;
+        else if (elem instanceof PageTreeNode) elemType = 2;
+        else return false;
+        let thisPage = this.page;
+        if (thisPage) {
+            if (elemType == 1 && elem === thisPage) {
+                this.page = null;
+                return true;
+            }
+            if (elemType == 0) {
+                for (var i = 0; i < thisPage.fodders; i++) {
+                    let fodder = thisPage.fodders[i];
+                    if (elem === fodder) {
+                        thisPage.fodders.splice(i, 1);
+                        return true;
+                    }
+                }
+            }
+        }
+        for (var i = 0; i < this.size(); i++) {
+            let childNode = this.children[i];
+            if (elemType == 2 && elem === childNode) {
+                this.children.splice(i, 1);
+                return true;
+            }
+            let wasFoundAndRemoved = childNode.findAndRemove(elem);
+            if (wasFoundAndRemoved) return true;
+        }
+        return false;
     }
 
     addRateBoostOptions(options) {
@@ -775,12 +935,18 @@ class Page {
 
     connectTo(fodder) {
         if (fodder == this.connectedTo) return this;
-        if (fodder == null || fodder instanceof Fodder) {
-            this.connectTo(null);
+        if (fodder instanceof Fodder) {
+            if (this.connectedTo instanceof Page) {
+                this.connectedTo.connectedTo = false;
+            }
             this.connectedTo = fodder;
             fodder.connectTo(this);
         }
         return this;
+    }
+
+    hasConnection() {
+        return this.connectedTo instanceof Fodder;
     }
 
     removeFodders(fodders) {
@@ -905,12 +1071,18 @@ class Fodder {
 
     connectTo(page) {
         if (page == this.connectedTo) return this;
-        if (page == null || page instanceof Page) {
-            this.connectTo(null);
+        if (page instanceof Page) {
+            if (this.connectedTo instanceof Fodder) {
+                this.connectedTo.connectedTo = false;
+            }
             this.connectedTo = page;
             page.connectTo(this);
         }
         return this;
+    }
+
+    hasConnection() {
+        return this.connectedTo instanceof Page;
     }
 
     removeAffixes(affixes) {

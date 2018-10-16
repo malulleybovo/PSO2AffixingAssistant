@@ -136,10 +136,8 @@ $(document).ready(function () {
                 .connectFodderAtToPageAt(5, 5) // Failure on this one is correct
             ).connectFodderAtToPageAt(0, 0)
     }
-    VIEW_CONTROLLER.pageTreeRoot = structure.node;
-    VIEW_CONTROLLER.updateView({
-        pageTreeRoot: structure.node
-    });
+    VIEW_CONTROLLER.assistant.pageTreeRoot = structure.node;
+    VIEW_CONTROLLER.updateView();
     VIEW_CONTROLLER.centerViewAtNode('#goal');
     $('#startnew').click(() => VIEW_CONTROLLER.setAffixSelectionView(true));
 });

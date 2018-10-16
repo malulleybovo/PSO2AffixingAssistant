@@ -75,7 +75,7 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level
             pageTempate += FODDER_TEMPLATE({
                 fodder: fodders[i],
                 titleLabel: (isGoal) ? 'GOAL' : ('Fodder ' + i),
-                produceLabel: (isGoal) ? 'CHANGE' : 'PRODUCE',
+                produceLabel: (isGoal) ? 'CHANGE' : null,
                 dataConn: (fodderOffsets[i] >= 0) ? fodderDataConnBase + fodderOffsets[i] : -1
             });
         }
@@ -118,7 +118,7 @@ const FODDER_TEMPLATE = ({ fodder, titleLabel, dataConn, produceLabel }) =>
                 <div class="affix">${(fodder && fodder.affixes[7]) ? fodder.affixes[7].name : `&nbsp;`}</div>
             </div>
             <div class="divider"></div>
-            <div class="produce-button">${(produceLabel) ? produceLabel : `PRODUCE`}</div>
+            <div class="produce-button">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? `REPRODUCE` : `PRODUCE`)}</div>
             <div class="success-indicator">
                 <span>Success: </span>
             <span>${(fodder.successRate >= 0) ? fodder.successRate + `%` : `?`}</span>
