@@ -48,6 +48,7 @@ class ViewController {
             e.preventDefault();
             e.data.viewcontroller.centerViewAtNode('#goal');
         });
+        $('#startnew').click(() => VIEW_CONTROLLER.setAffixSelectionView(true, true));
     }
 
     setActiveFodder(e) {
@@ -58,7 +59,7 @@ class ViewController {
         vc.assistant.setActiveFodder(found.fodder);
         vc.assistant.setActivePageTreeNode(found.pageTreeNode);
         vc.affixesSelected = found.fodder.affixes.slice(0);
-        vc.openChoicesSelectionView();
+        vc.openChoicesSelectionView(true);
     }
 
     findFodderAndNodeByDOM(fodderElem) {
@@ -89,7 +90,7 @@ class ViewController {
         return this;
     }
 
-    setAffixSelectionView(bool) {
+    setAffixSelectionView(bool, shouldAnimate) {
         if (typeof bool !== 'boolean') return;
         if ($('div.choice-selection-container').length != 0) {
             $('div.choice-selection-container').remove();
@@ -104,15 +105,18 @@ class ViewController {
                         categories: this.filters,
                         datalist: this.assistant.data.abilityList // List of all affixes
                     }));
-                $('div.affix-selection-container').animate({}, 10, function () {
-                    $('div.affix-selection-container').removeClass('hidden');
-                });
+                if (shouldAnimate) {
+                    $('div.affix-selection-container').animate({}, 10, function () {
+                        $('div.affix-selection-container').removeClass('hidden');
+                    });
+                }
+                else $('div.affix-selection-container').removeClass('hidden');
                 $('div.affix-selection-container li > div').click({ viewcontroller: this }, this.selectAbility);
                 $('div.affix-selection-container div.affix > i').click({ viewcontroller: this }, this.selectAbility);
                 $('div.affix-selection-container div.confirm-button').click({ viewcontroller: this }, function ({ data }) {
-                    data.viewcontroller.openChoicesSelectionView();
+                    data.viewcontroller.openChoicesSelectionView(false);
                     $('div.choice-selection-container div.cancel-button').click({ viewcontroller: data.viewcontroller },
-                        ({ data }) => { data.viewcontroller.setAffixSelectionView(true); });
+                        ({ data }) => { data.viewcontroller.setAffixSelectionView(true, false); });
                 });
                 this.updateAffixSelectionView();
             }
@@ -125,17 +129,18 @@ class ViewController {
         return this;
     }
 
-    openChoicesSelectionView(e) {
-        if ($('div.affix-selection-container').length != 0) {
-            $('div.affix-selection-container').remove();
-        }
+    openChoicesSelectionView(shouldAnimate, e) {
         let vc = (this instanceof ViewController) ? this :
             (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
-        let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
+        if (vc.affixesSelected.length <= 0) return;
+        if ($('div.affix-selection-container').length != 0) {
+            $('div.affix-selection-container').remove();
+        }
         if ($('div.choice-selection-container').length != 0) {
             $('div.choice-selection-container').remove();
         }
+        let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
         vc.choicesSelected.splice(0, vc.choicesSelected.length);
         for (var i = 0; i < vc.affixesSelected.length; i++) {
             vc.choicesSelected.push(null);
@@ -147,6 +152,12 @@ class ViewController {
                 categories: vc.filters,
                 datalist: choices
             }));
+        if (shouldAnimate) {
+            $('div.choice-selection-container').animate({}, 10, function () {
+                $('div.choice-selection-container').removeClass('hidden');
+            });
+        }
+        else $('div.choice-selection-container').removeClass('hidden');
         $('div.choice-selection-container li > div').click({ viewcontroller: vc }, vc.selectChoice);
         $('div.choice-selection-container div.cancel-button').click(
             (e) => { $('div.choice-selection-container').remove(); });
@@ -287,7 +298,7 @@ class ViewController {
         if (!(vc instanceof ViewController)) return;
         if (vc.choicesSelected.includes(null)) return;
         let choices = vc.choicesSelected;
-        let shouldSpread = false; // TODO allow user to decide
+        let shouldSpread = true; // TODO allow user to decide
         let targetNumSlots = vc.affixesSelected.length - 1; // TODO allow user to decide N or N-1
         let newPage = vc.assistant.buildPageForChoices(choices, shouldSpread, targetNumSlots);
         if (!newPage) {
@@ -382,6 +393,12 @@ class ViewController {
                 if (value != '') value = ' (' + ((value >= 0) ? '+' : '') + value + ')';
                 statsViewer.append(`<div class="stat">${key + value}</div>`);
             }
+        }
+        if (this.affixesSelected.length <= 0) {
+            $(`div.affix-selection-container .confirm-button`).addClass('disabled');
+        }
+        else {
+            $(`div.affix-selection-container .confirm-button`).removeClass('disabled');
         }
     }
 

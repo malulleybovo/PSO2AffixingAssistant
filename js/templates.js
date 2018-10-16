@@ -206,7 +206,7 @@ const RADIO_BUTTON_TEMPLATE = ({ id, isChecked, description }) =>
 
 const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, isGlobalSearch }) => {
     let isAffixSelection = type == 'affixSelection';
-    let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : `choice-selection-container`}">
+    let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : `choice-selection-container`} hidden">
         <div>
             <div class="main-grid">
                 <div class="title bold">${(isAffixSelection) ? `Choose Abilities` : `Choose Method of Making`}</div>
@@ -255,7 +255,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                         <div onclick="${(isAffixSelection) ? `$('div.affix-selection-container').remove();` : ``}" class="cancel-button">Cancel</div>
                     </div>
                     <div>
-                        <div class="confirm-button${(isAffixSelection) ? `` : ` disabled`}"">Confirm</div>
+                        <div class="confirm-button disabled"">Confirm</div>
                     </div>
                 </div>
             </div>

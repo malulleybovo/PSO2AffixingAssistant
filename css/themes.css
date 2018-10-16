@@ -7,6 +7,7 @@
     --paint-light-fade: rgba(128, 128, 128, 0.25);
     --paint-dark: #696969;
     --paint-dark-fade: rgba(105, 105, 105, 0.25);
+    --paint-darker-fade: rgba(40, 40, 40, 0.75);
     --paint-prime: #CFB53B;
     --conn-color: #d62;
     --alter-paint: #d62;

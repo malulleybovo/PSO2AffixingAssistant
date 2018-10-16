@@ -9944,18 +9944,30 @@
             </div>-->
         </div>
     </div>
-    <div class="header icon-bar" oncontextmenu="return false;">
-        <div class="option active"><i class="fa fa-home"></i></div>
-        <div class="option"><i class="fa fa-search" accesskey="s"></i></div>
-        <div id="startnew" class="option"><i class="fa fa-plus" accesskey="n"></i></div>
-        <div class="option"><i class="fa fa-trash"></i></div>
-        <div class="bottom">
-            <div class="option" style="display:none;">
-                <input id="zoomcontroller" type="range" step="0.05" min="0.2" max="1" class="slider">
+    <div class="header" oncontextmenu="return false;">
+        <div>
+            <div>
+                <div id="startnew" class="option" accesskey="n" title="Starts a new affixing formula">
+                    <i class="fa fa-plus" accesskey="n"></i>
+                </div>
+                <div class="option" accesskey="s" title="View affixing formula sheet">
+                    <i class="fa fa-book"></i>
+                </div>
+                <div class="option" accesskey="l" title="Gets a shareable link to this affixing formula">
+                    <i accesskey="s" class="fa fa-external-link-alt"></i>
+                </div>
+                <div class="option" accesskey="t" title="Changes application theme">
+                    <i class="fa fa-window-restore"></i>
+                </div>
+                <div id="panzoomreset" class="option" accesskey="r" title="Resets panning and zoom">
+                    <i class="far fa-dot-circle"></i>
+                </div>
             </div>
-            <div id="panzoomreset" class="option" accesskey="r" title="Resets panning and zoom.">
-                <i class="far fa-dot-circle"></i>
-            </div>
+        </div>
+    </div>
+    <div id="js-disabled">
+        <div>
+            <div>This Humble Assistant Needs JavaScript to Help You... =(</div>
         </div>
     </div>
 </body>

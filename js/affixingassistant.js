@@ -172,10 +172,10 @@ class Assistant {
             || !this.affixDB) return null;
 
         // Generate new page
-        let page = buildPageInPyramid(affixes, targetNumSlots, this);
+        let page = this.buildPageInPyramid(affixes, targetNumSlots);
 
         if (shouldSpread) {
-            page = this.spreadFodders(page, targetNumSlots);
+            this.spreadFodders(page, targetNumSlots);
         }
 
         // Add any extra fodder to ensure every page has at least 3 fodders
@@ -213,6 +213,67 @@ class Assistant {
             }
         }
 
+        // Check if swapping any two affixes would increase the overall success
+        // for every fodderA
+        for (var i = 0; i < page.size(); i++) {
+            let fodderA = page.fodders[i];
+            if (!(fodderA instanceof Fodder)) continue;
+            // for every fodderB
+            for (var k = 0; k != i && k < page.size(); k++) {
+                let fodderB = page.fodders[k];
+                if (!(fodderB instanceof Fodder)) continue;
+                // for every affixA
+                for (var j = 0; j < fodderA.size(); j++) {
+                    let affixA = fodderA.affixes[j];
+                    // for every affixB
+                    for (var m = 0; m < fodderB.size(); m++) {
+                        let affixB = fodderB.affixes[m];
+                        let arr;
+                        // get placementA1 of affixA on fodderA
+                        arr = fodderA.affixes.slice(0);
+                        arr.splice(j, 1);
+                        let placementA1 = this.getPlacement(affixA,
+                            (new Fodder()).addAffixes(arr), -1, targetNumSlots);
+                        if (!placementA1) continue; // Had conflict
+                        // get placementB2 of affixB on fodderA
+                        let placementB2 = this.getPlacement(affixB,
+                            (new Fodder()).addAffixes(arr), -1, targetNumSlots);
+                        if (!placementB2) continue; // Had conflict
+                        arr = fodderB.affixes.slice(0);
+                        arr.splice(m, 1);
+                        // get placementB1 of affixB on fodderB
+                        let placementB1 = this.getPlacement(affixB,
+                            (new Fodder()).addAffixes(arr), -1, targetNumSlots);
+                        if (!placementB1) continue; // Had conflict
+                        // get placementA2 of affixA on fodderB
+                        let placementA2 = this.getPlacement(affixA,
+                            (new Fodder()).addAffixes(arr), -1, targetNumSlots);
+                        if (!placementA2) continue; // Had conflict
+                        // get totalNumOverlaps1 of placements 1
+                        let totalNumOverlaps1 = 0;
+                        if (placementA1.overlap) totalNumOverlaps1 += placementA1.data.overlaps - placementA1.data.numOverlapsInvolvingReceptor;
+                        if (placementB1.overlap) totalNumOverlaps1 += placementB1.data.overlaps - placementB1.data.numOverlapsInvolvingReceptor;
+                        // get totalNumOverlaps2 of placements 2
+                        let totalNumOverlaps2 = 0;
+                        if (placementA2.overlap) totalNumOverlaps2 += placementA2.data.overlaps - placementA2.data.numOverlapsInvolvingReceptor;
+                        if (placementB2.overlap) totalNumOverlaps2 += placementB2.data.overlaps - placementB2.data.numOverlapsInvolvingReceptor;
+                        // get compoundRate1 of placements 1
+                        let compoundRate1 = placementA1.data.compoundRate * placementB1.data.compoundRate;
+                        // get compoundRate2 of placements 2
+                        let compoundRate2 = placementA2.data.compoundRate * placementB2.data.compoundRate;
+                        // if totalNumOverlaps2 > totalNumOverlaps1 && compoundRate2 > compoundRate1
+                        if (totalNumOverlaps2 > totalNumOverlaps1) {
+                            // swap affixA with affixB
+                            fodderA.affixes.splice(j);
+                            fodderB.affixes.splice(m);
+                            fodderA.affixes.push(affixB);
+                            fodderB.affixes.push(affixA);
+                        }
+                    }
+                }
+            }
+        }
+
         // Remove empty fodders from cleanliness
         let foddersToRemove = [];
         for (var i = 0; i < page.size(); i++) {
@@ -221,84 +282,6 @@ class Assistant {
         page.removeFodders(foddersToRemove);
 
         return page;
-
-        function buildPageInPyramid(affixes, targetNumSlots, that) {
-            let page = new Page();
-            let fodders = []
-            for (var i = 0; i < page.CAPACITY; i++) { // One list of affixes per fodder
-                fodders.push(new Fodder());
-            }
-            page.addFodders(fodders);
-            let pageStartIdx = 0;
-
-            // separate affixes into nontransferables and affixes
-            let nontransferables = []
-            let transferables = [];
-            for (var i = 0; i < affixes.length; i++) {
-                let affix = affixes[i];
-                if (that.affixDB[affix.code] && that.affixDB[affix.code].choices
-                    && that.affixDB[affix.code].choices.length <= 0
-                    && !that.isSpecialAbility(affix)) {
-                    nontransferables.push(affix);
-                }
-                else {
-                    transferables.push(affix);
-                }
-            }
-            // FOR NONTRANSFERABLES
-            for (var i = 0; i < nontransferables.length; i++) {
-                if (pageStartIdx >= page.fodders.length) {
-                    // Something went wrong, too many nontransferables to fit
-                }
-                // place receptor on a separate fodder
-                page.fodders[pageStartIdx].addAffixes([ nontransferables[i] ]);
-                pageStartIdx++; // Essentially locks the currrent fodder from edits
-            }
-            // FOR TRANSFERABLES
-            // sort affixes by max transfer rate
-            transferables.sort(function (affixA, affixB) {
-                if (that.affixDB[affixA.code] && that.affixDB[affixA.code].choices[0]
-                    && that.affixDB[affixB.code] && that.affixDB[affixB.code].choices[0]) {
-                    let maxRateA = that.affixDB[affixA.code].choices[0].transferRate;
-                    let maxRateB = that.affixDB[affixB.code].choices[0].transferRate;
-                    return maxRateB - maxRateA;
-                }
-                else {
-                    return -1;
-                }
-            });
-            for (var i = 0; i < transferables.length; i++) {
-                let affix = transferables[i];
-                // for fodders without nontransferables
-                // separate fodders into overlaps and no-overlaps
-                let placements = that.getPossiblePlacements(affix, page, pageStartIdx);
-                let overlaps = placements.overlaps;
-                let nooverlaps = placements.nooverlaps;
-
-                // Try placing on best overlap
-                if (overlaps.length > 0) {
-                    // sort overlaps by rate
-                    overlaps.sort((a, b) => b.compoundRate - a.compoundRate);
-                    if (page.fodders[overlaps[0].index]) {
-                        page.fodders[overlaps[0].index].addAffixes([ affix ]);
-                    }
-                }
-                else if (nooverlaps.length > 0) { // Or try placing on best non-overlap
-                    // sort overlaps by rate
-                    nooverlaps.sort((a, b) => b.compoundRate - a.compoundRate);
-                    if (page.fodders[nooverlaps[0].index]) {
-                        page.fodders[nooverlaps[0].index].addAffixes([ affix ]);
-                    }
-                }
-                else {
-                    // Or something went wrong and affix cannot be placed anywhere
-                    return null;
-                }
-            }
-            return page;
-        }
-
-        
     }
 
     produceFromChoices({ fodder, affixChoices, shouldSpread = false, targetNumSlot }) {
@@ -313,18 +296,122 @@ class Assistant {
         return true;
     }
 
-    spreadFodders(page, targetNumSlots) {
-        if (!(page instanceof Page) || page.fodders.length <= 1) return null;
+    buildPageInPyramid(affixes, targetNumSlots) {
+        let page = new Page();
+        let fodders = []
+        for (var i = 0; i < page.CAPACITY; i++) { // One list of affixes per fodder
+            fodders.push(new Fodder());
+        }
+        page.addFodders(fodders);
+        let pageStartIdx = 0;
+
+        // separate affixes into nontransferables and affixes
+        let nontransferables = []
+        let transferables = [];
+        for (var i = 0; i < affixes.length; i++) {
+            let affix = affixes[i];
+            if (this.affixDB[affix.code] && this.affixDB[affix.code].choices
+                && this.affixDB[affix.code].choices.length <= 0
+                && !this.isSpecialAbility(affix)) {
+                nontransferables.push(affix);
+            }
+            else {
+                transferables.push(affix);
+            }
+        }
+        // FOR NONTRANSFERABLES
+        for (var i = 0; i < nontransferables.length; i++) {
+            if (pageStartIdx >= page.fodders.length) {
+                // Something went wrong, too many nontransferables to fit
+            }
+            // place receptor on a separate fodder
+            page.fodders[pageStartIdx].addAffixes([nontransferables[i]]);
+            pageStartIdx++; // Essentially locks the currrent fodder from edits
+        }
+        // FOR TRANSFERABLES
+        // sort affixes by max transfer rate
+        var that = this;
+        transferables.sort(function (affixA, affixB) {
+            if (that.affixDB[affixA.code] && that.affixDB[affixA.code].choices[0]
+                && that.affixDB[affixB.code] && that.affixDB[affixB.code].choices[0]) {
+                let maxRateA = that.affixDB[affixA.code].choices[0].transferRate;
+                let maxRateB = that.affixDB[affixB.code].choices[0].transferRate;
+                return maxRateB - maxRateA;
+            }
+            else {
+                return -1;
+            }
+        });
+        for (var i = 0; i < transferables.length; i++) {
+            let affix = transferables[i];
+            // for fodders without nontransferables
+            // separate fodders into overlaps and no-overlaps
+            let placements = this.getPossiblePlacements(affix, page, pageStartIdx);
+            let overlaps = placements.overlaps;
+            let nooverlaps = placements.nooverlaps;
+
+            // Try placing on best overlap
+            if (overlaps.length > 0) {
+                // sort overlaps by rate
+                overlaps.sort((a, b) => b.compoundRate - a.compoundRate);
+                if (page.fodders[overlaps[0].index]) {
+                    page.fodders[overlaps[0].index].addAffixes([affix]);
+                }
+            }
+            else if (nooverlaps.length > 0) { // Or try placing on best non-overlap
+                // sort overlaps by rate
+                nooverlaps.sort((a, b) => b.compoundRate - a.compoundRate);
+                if (page.fodders[nooverlaps[0].index]) {
+                    page.fodders[nooverlaps[0].index].addAffixes([affix]);
+                }
+            }
+            else {
+                // Or something went wrong and affix cannot be placed anywhere
+                return null;
+            }
+        }
+        return page;
+    }
+
+    enforceSlotNumOnAll(page, targetNumSlots) {
+        if (!page || !(page instanceof Page) || typeof targetNumSlots !== 'number') return;
+        let numFodders = page.size();
+        let numAbilities = 0;
+        let hasFodderThatExceedsSlots = false;
+        for (var i = 0; i < page.size(); i++) {
+            let fodder = page.fodders[i];
+            numAbilities += fodder.size();
+            if (fodder.size() > targetNumSlots) hasFodderThatExceedsSlots = true;
+        }
+        // Check if the problem is already solved
+        if (!hasFodderThatExceedsSlots) return;
+        // check if page has way too many abilities
+        if (numAbilities > (numFodders * (new Fodder()).CAPACITY)) return;
+    }
+
+    spreadFodders(page, targetNumSlots, targetNumFodders) {
+        if (!(page instanceof Page) || typeof targetNumSlots !== 'number') return null;
+        if (targetNumSlots <= 0) targetNumSlots = 1;
+        if (targetNumSlots > (new Fodder()).CAPACITY) targetNumSlots = (new Fodder()).CAPACITY;
+        targetNumFodders = (typeof targetNumFodders === 'number') ? targetNumFodders : page.size();
+        if (targetNumFodders <= 1) return null;
+        if (targetNumFodders > page.size()) targetNumFodders = page.size();
         // sort fodders based on slot count
-        page.fodders.sort((fodderA, fodderB) => fodderB.affixes.length > fodderA.affixes.length);
+        page.fodders.sort((fodderA, fodderB) => fodderB.size() > fodderA.size());
+        // check if fodders that are not being accounted for still have abilities
+        for (var i = targetNumFodders; i < (new Page()).CAPACITY; i++) {
+            // Prevents spreading abilities within N fodders when more than N fodders are used
+            if (page.fodders[i] && (page.fodders[i] instanceof Fodder)
+                && page.fodders[i].size() > 0) return null;
+        }
         // while highest slot fodder (first) and lowest slot fodder (last) have count difference of at least 2
-        while (Math.abs(page.fodders[0].length - page.fodders[page.length - 1]) > 1) {
+        while (Math.abs(page.fodders[0].size() - page.fodders[page.size() - 1].size()) > 1) {
             // pick fodder with highest slot (first)
             let fodder = page.fodders[0];
             // get boundary index for fodders with at least 2 slots less than highest slot fodder
             let boundaryIdx = -1;
-            for (var i = 1; i < page.fodders.length; i++) {
-                if (Math.abs(fodder.length - page.fodders[i]) > 1) {
+            for (var i = 1; i < targetNumFodders; i++) {
+                if (Math.abs(fodder.size() - page.fodders[i].size()) > 1) {
                     boundaryIdx = i;
                     break;
                 }
@@ -340,20 +427,23 @@ class Assistant {
                     [fodder.affixes.slice(fodder.affixes.indexOf(affixB), 1)]
                     );
                 let placementB = this.getPlacement(affixB, fakeFodder, 0, targetNumSlots);
-                return placementA.numOverlaps - placementB.numOverlaps;
+                if (placementA && placementB) return placementA.numOverlaps - placementB.numOverlaps;
+                else if (!placementA) return -1;
+                else return 1;
             });
             // from affix with lowest to highest overlap count
             let toPageIdx = -1;
             let fromAffixIdx = -1;
             let maxOverlapCount = 0;
-            for (var i = 0; i < fodder.affixes.length; i++) {
+            for (var i = 0; i < fodder.size(); i++) {
                 let affix = fodder.affixes[i];
                 // for fodders at boundary index until end
-                for (var j = boundaryIdx; j < page.fodders.length; j++) {
+                for (var j = boundaryIdx; j < targetNumFodders; j++) {
                     // get placement of affix on fodder
-                    let placement = this.getPlacement(affix, page.fodders[0], 0, targetNumSlots);
+                    let placement = this.getPlacement(affix, page.fodders[j], 0, targetNumSlots);
                     // track affix and fodder with highest overlap count
-                    if (placement && placement.numOverlaps >= maxOverlapCount) {
+                    if (placement && (placement.data.overlaps - placement.data.numOverlapsInvolvingReceptor) >= maxOverlapCount) {
+                        maxOverlapCount = (placement.data.overlaps - placement.data.numOverlapsInvolvingReceptor);
                         toPageIdx = j;
                         fromAffixIdx = i;
                     }
@@ -369,11 +459,11 @@ class Assistant {
                 break;
             }
             // sort fodders based on slot count
-            page.fodders.sort((fodderA, fodderB) => fodderB.affixes.length > fodderA.affixes.length);
+            page.fodders.sort((fodderA, fodderB) => fodderB.size() > fodderA.size());
         }
         let minNumAffixes = 0;
         while (page.fodders[0].affixes.length != minNumAffixes) {
-            for (var j = page.fodders.length - 1; j >= 0; j--) {
+            for (var j = targetNumFodders - 1; j >= 0; j--) {
                 let fodder = page.fodders[j];
                 if (fodder.affixes.length == minNumAffixes) {
                     for (var k = 0; k < j; k++) {
@@ -393,6 +483,7 @@ class Assistant {
                 }
             }
         }
+
         return page;
     }
 
@@ -417,7 +508,8 @@ class Assistant {
                     var fodderAffix = fodder.affixes[k];
                     // if fodder contains affix code preffix or exclude pattern
                     if (fodderAffix.code.startsWith(affixCodePreffix)
-                        || this.testExcludePattern(affix, fodderAffix)) {
+                        || this.testExcludePattern(affix, fodderAffix)
+                        || RECEPTOR_REGEX.test(affix.code) || RECEPTOR_REGEX.test(fodderAffix.code)) {
                         hasConflict = true;
                         break;
                     }
@@ -460,7 +552,7 @@ class Assistant {
                     // if affix is soul and any overlap involves receptor
                     if (affix.rel == AFFIX_REL_SOUL && numOverlapsInvolvingReceptor > 0) {
                         // if overlap is 100% transfer
-                        if (receptorRateFactor != 1) {
+                        if (receptorRateFactor == 1) {
                             // add fodder index and compound rate of overlap choices and max rate of other affixes in fodder to overlaps list
                             return {
                                 overlap: true,
@@ -501,13 +593,15 @@ class Assistant {
     getPossiblePlacements(affix, page, pageStartIdx, targetNumSlots) {
         let placements = {
             overlaps: [],
-            nooverlaps: []
+            nooverlaps: [],
+            compoundRates: []
         }
         for (var j = pageStartIdx; j < page.fodders.length; j++) {
             let placement = this.getPlacement(affix, page.fodders[j], j, targetNumSlots);
             if (placement) {
                 if (placement.overlap) placements.overlaps.push(placement.data);
                 else placements.nooverlaps.push(placement.data);
+                placements.compoundRates.push(placement.data.compoundRate);
             }
         }
         return placements;
@@ -1100,20 +1194,4 @@ class Fodder {
         }
         return this;
     }
-}
-
-function buildPageForAffixes(affixArray) {
-    if (!affixArray || !Array.isArray(affixArray) || affixArray.length <= 0
-        || affixArray.length > MAX_NUM_AFFIX || !abilityMap) return null;
-
-    // GET ALL CHOICES
-    let choiceTable = [];
-    for (var i = 0; i < affixArray.length; i++) {
-        if (abilityMap[affixArray[i]]) {
-            let choices = abilityMap[affixArray[i]].choices;
-            choiceTable.push(choices);
-        }
-    }
-
-    // CHECK OVERLAPS
 }

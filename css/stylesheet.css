@@ -15,6 +15,32 @@ body {
     }
 }
 
+#js-disabled {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background-color: var(--background-color);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#js-disabled > div:first-child {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+}
+
+#js-disabled > div:first-child > div:first-child {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0em 2em;
+}
+
 div.mgrid {
     display: grid;
     grid-template-columns: [col1-start] min-content [col2-start] auto;
@@ -57,35 +83,37 @@ div.mgrid > *:last-child > div.mgrid:nth-child(6) {
 div.header {
     position: fixed;
     height: 100%;
-    padding: 0.1em;
-    text-align: center;
-    border-right: solid 1.5px var(--border-color);
-}
-.icon-bar {
     width: 48px;
-    background-color: var(--paint-dark);
+    text-align: center;
+    margin-left: 0.5em;
+    pointer-events: none;
 }
 
-.icon-bar div.option {
+div.header > div {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+div.header > div > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+div.header div.option {
     display: block;
     text-align: center;
     padding: 12px;
     transition: all 0.3s ease;
     color: var(--text-color);
     font-size: 20px;
+    border-radius: 50%;
+    pointer-events: auto;
 }
 
-.icon-bar div.bottom {
-    position: absolute;
-    bottom: 0;
-}
-
-.icon-bar div.option:hover {
-    background-color: var(--border-color);
-}
-
-.active {
-    background-color: var(--alter-paint2);
+div.header div.option:hover {
+    background-color: var(--paint-darker-fade);
 }
 
 #editor {
@@ -456,6 +484,7 @@ div.choice-selection-container div.affix.selected {
     background-color: var(--alter-paint);
 }
 
+div.affix-selection-container .confirm-button.disabled,
 div.choice-selection-container .confirm-button.disabled {
     background-color: var(--paint-dark);
 }
