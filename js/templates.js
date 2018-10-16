@@ -74,6 +74,7 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level
         for (var i = 0; i < ((isGoal) ? 1 : fodders.length); i++) {
             pageTempate += FODDER_TEMPLATE({
                 fodder: fodders[i],
+                isGoal: isGoal,
                 titleLabel: (isGoal) ? 'GOAL' : ('Fodder ' + i),
                 produceLabel: (isGoal) ? 'CHANGE' : null,
                 dataConn: (fodderOffsets[i] >= 0) ? fodderDataConnBase + fodderOffsets[i] : -1
@@ -104,24 +105,24 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level
     return pageTempate;
 };
 
-const FODDER_TEMPLATE = ({ fodder, titleLabel, dataConn, produceLabel }) =>
+const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel }) =>
     `<div class="fodder" ${(dataConn >= 0) ? `data-conn="` + dataConn + `"` : ``}>
             <div class="title">${titleLabel}</div>
             <div class="affixes">
-                <div class="affix">${(fodder && fodder.affixes[0]) ? fodder.affixes[0].name : `&nbsp;`}</div >
-                <div class="affix">${(fodder && fodder.affixes[1]) ? fodder.affixes[1].name : `&nbsp;`}</div>
-                <div class="affix">${(fodder && fodder.affixes[2]) ? fodder.affixes[2].name : `&nbsp;`}</div>
-                <div class="affix">${(fodder && fodder.affixes[3]) ? fodder.affixes[3].name : `&nbsp;`}</div>
-                <div class="affix">${(fodder && fodder.affixes[4]) ? fodder.affixes[4].name : `&nbsp;`}</div>
-                <div class="affix">${(fodder && fodder.affixes[5]) ? fodder.affixes[5].name : `&nbsp;`}</div>
-                <div class="affix">${(fodder && fodder.affixes[6]) ? fodder.affixes[6].name : `&nbsp;`}</div>
-                <div class="affix">${(fodder && fodder.affixes[7]) ? fodder.affixes[7].name : `&nbsp;`}</div>
+                <div class="affix">${(fodder && fodder.affixes[0]) ? fodder.affixes[0].name : `&nbsp;`}${(fodder.affixes[0]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[0]) ? ` : ${fodder.affixSuccessRates[0]}%` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[1]) ? fodder.affixes[1].name : `&nbsp;`}${(fodder.affixes[1]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[1]) ? ` : ${fodder.affixSuccessRates[1]}%` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[2]) ? fodder.affixes[2].name : `&nbsp;`}${(fodder.affixes[2]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[2]) ? ` : ${fodder.affixSuccessRates[2]}%` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[3]) ? fodder.affixes[3].name : `&nbsp;`}${(fodder.affixes[3]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[3]) ? ` : ${fodder.affixSuccessRates[3]}%` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[4]) ? fodder.affixes[4].name : `&nbsp;`}${(fodder.affixes[4]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[4]) ? ` : ${fodder.affixSuccessRates[4]}%` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[5]) ? fodder.affixes[5].name : `&nbsp;`}${(fodder.affixes[5]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[5]) ? ` : ${fodder.affixSuccessRates[5]}%` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[6]) ? fodder.affixes[6].name : `&nbsp;`}${(fodder.affixes[6]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[6]) ? ` : ${fodder.affixSuccessRates[6]}%` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[7]) ? fodder.affixes[7].name : `&nbsp;`}${(fodder.affixes[7]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[7]) ? ` : ${fodder.affixSuccessRates[7]}%` : `` : ``}</div>
             </div>
             <div class="divider"></div>
             <div class="produce-button">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? `REPRODUCE` : `PRODUCE`)}</div>
             <div class="success-indicator">
-                <span>Fodder Success: </span>
-            <span>${(fodder.successRate >= 0) ? fodder.successRate + `%` : `?`}</span>
+                <span>${(isGoal) ? `Goal` : `Fodder`} Success: </span>
+            <span>${(fodder.overallSuccessRate >= 0) ? fodder.overallSuccessRate + `%` : `?`}</span>
             </div>
         </div>`;
 

@@ -264,8 +264,8 @@ class Assistant {
                         // if totalNumOverlaps2 > totalNumOverlaps1 && compoundRate2 > compoundRate1
                         if (totalNumOverlaps2 > totalNumOverlaps1) {
                             // swap affixA with affixB
-                            fodderA.affixes.splice(j);
-                            fodderB.affixes.splice(m);
+                            fodderA.affixes.splice(j, 1);
+                            fodderB.affixes.splice(m, 1);
                             fodderA.affixes.push(affixB);
                             fodderB.affixes.push(affixA);
                         }
@@ -692,6 +692,115 @@ class Assistant {
         return false;
     }
 
+    calcSuccessRates() {
+        this.calcSuccessRatesStartingAt(this.pageTreeRoot.page);
+    }
+
+    calcSuccessRatesStartingAt(page) {
+        if (!page || !(page instanceof Page)) return;
+        let maxRate = (new Fodder()).MAX_RATE;
+        let minRate = (new Fodder()).MIN_RATE;
+        let additionalBoost = 0;
+        if (page.rateBoostIdx >= 0 && page.rateBoostIdx < page.rateBoostOptions.length) {
+            additionalBoost += this.data.optionList.support[page.rateBoostIdx].fn;
+        }
+        if (page.potentialIdx >= 0 && page.potentialIdx < page.potentialOptions.length) {
+            additionalBoost += this.data.optionList.support[page.potentialIdx];
+        }
+        // for every fodderA in this page
+        for (var i = 0; i < page.size(); i++) {
+            let fodder = page.fodders[i];
+            // if fodderA has not a connection, continue
+            if (!fodder.hasConnection()) continue;
+            // go to the page it is connected to
+            let pageConn = fodder.connectedTo;
+            // get all affixes in that page
+            let abilities = [];
+            let minNumSlots = (new Fodder()).CAPACITY;
+            for (var j = 0; j < pageConn.size(); j++) {
+                abilities = abilities.concat(pageConn.fodders[j].affixes);
+                if (pageConn.fodders[j].size() < minNumSlots)
+                    minNumSlots = pageConn.fodders[j].size();
+            }
+
+            // for every affixA in fodderA
+            let abilitySuccessRates = {};
+            abilitySuccessRates.length = 0;
+            let fodderSuccessRate = -1;
+            for (var k = 0; k < fodder.size(); k++) {
+                let affix = fodder.affixes[k];
+                // for every choice for making affixA
+                for (var m = 0; m < this.affixDB[affix.code].choices.length; m++) {
+                    let choice = this.affixDB[affix.code].choices[m];
+                    // count occurrences of each ability in choice
+                    let choiceCount = countOccurrences(choice.materials);
+                    // count occurrences of each ability in all abilities in page
+                    let abilityCount = countOccurrences(abilities);
+                    // set flag true
+                    let isMatch = true;
+                    // for each different occurence in choice
+                    for (var code in choiceCount) {
+                        // if all bilities have less than count
+                        if (!abilityCount[code] || abilityCount[code] < choiceCount[code]) {
+                            // does not match, so set flag false and break
+                            isMatch = false;
+                            break;
+                        }
+                    }
+                    if (isMatch) {
+                        // match was found, so save the success rate for affixA
+                        abilitySuccessRates[k] = Math.round(choice.transferRate);
+                        if (fodder.size() > minNumSlots) { // If needs upslotting
+                            let upslottingFactor = (fodder.size() > 0) ?
+                                this.data.extraSlot[fodder.size() - 1][pageConn.size() > 2]
+                                : 100; // range 0~100
+                            upslottingFactor = (upslottingFactor - minRate) / (maxRate - minRate); // range 0~1
+                            abilitySuccessRates[k] = Math.floor(abilitySuccessRates[k] * upslottingFactor);
+                        }
+                        if (page.isSameGear) {
+                            let sameGearFactor = this.data.sameBonusBoost[(pageConn.size() > 2) ? 2 : 1];
+                            abilitySuccessRates[k] = Math.floor(abilitySuccessRates[k] * sameGearFactor);
+                        }
+                        if (page.rateBoostIdx >= 0 && page.rateBoostIdx < page.rateBoostOptions.length) {
+                            abilitySuccessRates[k] = this.data.optionList.support[page.rateBoostIdx].fn(abilitySuccessRates[k]);
+                        }
+                        if (page.potentialIdx >= 0 && page.potentialIdx < page.potentialOptions.length) {
+                            abilitySuccessRates[k] = this.data.optionList.potential[page.potentialIdx].fn(abilitySuccessRates[k]);
+                        }
+                        abilitySuccessRates.length++;
+                        if (fodderSuccessRate < 0) fodderSuccessRate = (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
+                        else fodderSuccessRate *= (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
+                        break;
+                    }
+                    else {
+                        // something went wrong, the connection cannot produce this fodder
+                    }
+
+                }
+            }
+            // set page success rate to compound success rates of every affix in fodderA
+            let overallSuccessRate = (abilitySuccessRates.length == fodder.size()) ?
+                Math.round((fodderSuccessRate + minRate) * (maxRate - minRate))
+                : -1;
+            pageConn.setSuccessRate(overallSuccessRate);
+            fodder.setSuccessRate(overallSuccessRate, abilitySuccessRates);
+            // calculate success rates in that page
+            this.calcSuccessRatesStartingAt(pageConn);
+        }
+
+        function countOccurrences(abilities) {
+            var occurrences = {};
+            for (var i = 0; i < abilities.length; i++) {
+                if (typeof occurrences[abilities[i].code] == "undefined") {
+                    occurrences[abilities[i].code] = 1;
+                } else {
+                    occurrences[abilities[i].code]++;
+                }
+            }
+            return occurrences;
+        }
+    }
+
     addPageTreeNodes(pageTreeNodes) {
         if (this.activePageTreeNode && (this.activePageTreeNode instanceof PageTreeNode)) {
             this.activePageTreeNode.addPageTreeNodes(pageTreeNodes);
@@ -1096,6 +1205,7 @@ class Fodder {
         this.MIN_RATE = 0;
         this.MAX_RATE = 100;
         this.affixes = [];
+        this.affixSuccessRates = [];
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(Fodder.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -1110,7 +1220,7 @@ class Fodder {
             }
         }
         // Mutable variables
-        this.successRate = -1;
+        this.overallSuccessRate = -1;
         this.connectedTo = null;
     }
 
@@ -1150,10 +1260,10 @@ class Fodder {
         return this;
     }
 
-    setSuccessRate(rate) {
-        if (typeof rate === 'number' && rate >= this.MIN_RATE
-            && rate <= this.MAX_RATE) {
-            this.successRate = rate;
+    setSuccessRate(overallRate, affixRates) {
+        if (typeof overallRate === 'number') {
+            this.overallSuccessRate = overallRate;
+            this.affixSuccessRates = affixRates;
         }
         else {
             console.warn(

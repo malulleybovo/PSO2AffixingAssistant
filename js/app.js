@@ -28,8 +28,8 @@ $(document).ready(function () {
                 ])
             )
         )
-            .addRateBoostOptions(['+5%', '+10%', '+20%', '+30%', '+40%', '+45%'])
-            .addPotentialOptions(['+2%', '+5%', '+10%'])
+            .addRateBoostOptions(ASSISTANT.getRateBoostOptions())
+            .addPotentialOptions(ASSISTANT.getPotentialOptions())
             .addPageTreeNodes(
             (new PageTreeNode()).setPage(
                 (new Page()).addFodders([

@@ -83,6 +83,26 @@ class ViewController {
         };
     }
 
+    findPageAndNodeByDOM(pageElem) {
+        let $elem = $(pageElem);
+        if (!$elem.hasClass('page')) $elem = $elem.parents('div.page');
+        if ($elem.length <= 0 || !(this.assistant.pageTreeRoot instanceof PageTreeNode)) return;
+        let indices = [];
+        do {
+            if ($elem.length > 0) indices.unshift($elem.index());
+            $elem = $elem.parents('div.mgrid');
+        } while ($elem.length > 0);
+        indices.splice(0, 1);
+        let curr = this.assistant.pageTreeRoot;
+        for (var i = 0; i < indices.length - 1; i++) {
+            curr = curr.children[indices[i]];
+        }
+        return {
+            page: curr.page,
+            pageTreeNode: curr
+        };
+    }
+
     setFilters(filters) {
         if (filters && Array.isArray(filters)) {
             this.filters = filters.slice();
@@ -168,12 +188,39 @@ class ViewController {
         let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         if (!vc.assistant || !vc.assistant.pageTreeRoot || !(vc.assistant.pageTreeRoot instanceof PageTreeNode)) return;
+        vc.assistant.calcSuccessRates();
         $('#mastercontainer').empty().append(PAGE_TREE_NODE_TEMPLATE({
             pageTreeNode: vc.assistant.pageTreeRoot
         }));
         this.regenerateConnections();
         $('div.fodder').hover(spotlightIn, spotlightOut);
         $('div.produce-button').click({ viewcontroller: this }, this.setActiveFodder);
+        $('.boost-container input[type=checkbox]').change({ viewcontroller: this }, (e) => {
+            let $elem = $(e.currentTarget);
+            for (var i = 0; i < $elem.length; i++) {
+                let { page } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
+                if (page) page.setSameGear($elem.prop('checked'));
+            }
+            e.data.viewcontroller.updateView();
+        });
+        $('.boost-container > div.dropdown-container:not(:last-child) select').change({ viewcontroller: this }, (e) => {
+            let $elem = $(e.currentTarget);
+            for (var i = 0; i < $elem.length; i++) {
+                let index = $($elem[i]).find('option:selected').index();
+                let { page } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
+                if (page) page.setRateBoostIdx(index);
+            }
+            e.data.viewcontroller.updateView();
+        });
+        $('.boost-container > div.dropdown-container:last-child select').change({ viewcontroller: this }, (e) => {
+            let $elem = $(e.currentTarget);
+            for (var i = 0; i < $elem.length; i++) {
+                let index = $($elem[i]).find('option:selected').index();
+                let { page } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
+                if (page) page.setPotentialIdx(index);
+            }
+            e.data.viewcontroller.updateView();
+        });
         return this;
     }
 
