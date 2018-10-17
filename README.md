@@ -2,9 +2,9 @@
 
   # PSO2 Affixing Assistant
   #### Version Alpha 4.1
-  #### Compliant with version 1.81 of [Arks Layer's Affix Simulator](https://arks-layer.com/abilitysim/)
 
   ### [Use the Assistant Here](https://malulleybovo.github.io/PSO2AffixingAssistant/)
+  #### Compliant with version 1.81 of [Arks Layer's Affix Simulator](https://arks-layer.com/abilitysim/)
 
   ### NO HASSLE Affixing Formulas at the tip of your fingers
   The Affixing Assistant was designed to find the best affixing formulas to any affix you might need.
