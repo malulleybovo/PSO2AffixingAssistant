@@ -422,14 +422,21 @@ div.formula-sheet-container div.content > div > div:first-child {
     overflow: hidden;
 }
 
-div.affix-selection-container div.content > div:last-child > div:last-child,
-div.formula-sheet-container div.content > div:last-child > div:last-child {
+div.formula-sheet-container div.content > div > div:last-child {
+    grid-row: row2-start;
+    overflow: hidden;
+}
+
+div.formula-sheet-container div.search-results-container {
+    display: none;
+}
+
+div.affix-selection-container div.content > div:last-child > div:last-child {
     grid-row: row2-start;
 }
 
 div.affix-selection-container div.content > div:first-child > div:nth-child(2),
-div.choice-selection-container div.content > div > div:nth-child(2),
-div.formula-sheet-container div.content > div > div:nth-child(2) {
+div.choice-selection-container div.content > div > div:nth-child(2) {
     margin-bottom: 1em;
     grid-row: row2-start;
 }

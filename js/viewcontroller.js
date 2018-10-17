@@ -546,12 +546,12 @@ class ViewController {
         if (!choices || !choices[$(this).attr('data-code')]) return;
         $(`div.formula-sheet-container li > div`).removeClass('selected');
         $(this).addClass('selected');
-        $('div.formula-sheet-container .search-results-container').empty().append(
-            FILTER_SEARCH_TEMPLATE({
-                categories: VIEW_CONTROLLER.filters,
-                datalist: choices[$(this).attr('data-code')]
-            })
-        );
+        let $ref = $('div.formula-sheet-container .search-results-container');
+        $ref.nextAll().remove();
+        $(FILTER_SEARCH_TEMPLATE({
+            categories: VIEW_CONTROLLER.filters,
+            datalist: choices[$(this).attr('data-code')]
+        })).insertAfter($ref);
     }
 
     setShouldUpslot(e) {
