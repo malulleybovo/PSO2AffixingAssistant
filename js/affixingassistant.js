@@ -110,7 +110,11 @@ class Assistant {
     }
 
     getChoicesForAffixes(affixes) {
-        if (!affixes || !Array.isArray(affixes)) return;
+        if (!affixes) return;
+        if (!Array.isArray(affixes)) {
+            if (!affixes.code) return;
+            affixes = [affixes];
+        }
         let choices = {};
         for (var i = 0; i < affixes.length; i++) {
             let affix = affixes[i];

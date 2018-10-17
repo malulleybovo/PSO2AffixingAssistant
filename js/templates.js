@@ -207,10 +207,12 @@ const RADIO_BUTTON_TEMPLATE = ({ id, isChecked, description }) =>
 
 const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, isGlobalSearch }) => {
     let isAffixSelection = type == 'affixSelection';
-    let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : `choice-selection-container`} hidden">
+    let isChoiceSelection = type == 'choiceSelection';
+    let isFormulaSheet = type == 'formulaSheet';
+    let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : (isChoiceSelection) ? `choice-selection-container` : (isFormulaSheet) ? `formula-sheet-container` : ``} hidden">
         <div>
             <div class="main-grid">
-                <div class="title bold">${(isAffixSelection) ? `Choose Abilities` : `Choose Method of Making`}</div>
+                <div class="title bold">${(isAffixSelection) ? `Choose Abilities` : (isChoiceSelection) ? `Choose Method of Making` : (isFormulaSheet) ? `Affixing Formula Sheet` : ``}</div>
                 <div class="content">`;
     if (isAffixSelection) {
         layoutTemplate += `<div>
@@ -232,7 +234,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                         ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist, isGlobalSearch: isGlobalSearch })}
                     </div>`;
     }
-    else {
+    else if (isChoiceSelection) {
         if (affixesSelected && Array.isArray(affixesSelected)) {
             for (var i = 0; i < affixesSelected.length; i++) {
                 if (!affixesSelected[i].code || datalist === undefined
@@ -250,13 +252,23 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
             }
         }
     }
-    layoutTemplate += `</div>
-                <div>
-                    <div>
-                        <div onclick="${(isAffixSelection) ? `$('div.affix-selection-container').remove();` : ``}" class="cancel-button">Cancel</div>
+    else if (isFormulaSheet) {
+        layoutTemplate += `<div>
+                        <div class="title bold">Ability</div>
+                        ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist, isGlobalSearch: isGlobalSearch })}
                     </div>
                     <div>
-                        <div class="confirm-button disabled"">Confirm</div>
+                        <div class="title bold">How To Make</div>
+                        <div class="search-results-container"></div>
+                    </div>`;
+    }
+    layoutTemplate += `</div>
+                <div>
+                    ${(isAffixSelection || isChoiceSelection) ? `<div>
+                        <div onclick="${(isAffixSelection) ? `$('div.affix-selection-container').remove();` : ``}" class="cancel-button">Cancel</div>
+                    </div>
+                    ` : ``}<div>
+                        <div class="confirm-button${(isAffixSelection || isChoiceSelection) ? ` disabled">Confirm`: `">Close`}</div>
                     </div>
                 </div>
             </div>

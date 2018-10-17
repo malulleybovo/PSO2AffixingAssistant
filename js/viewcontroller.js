@@ -51,6 +51,7 @@ class ViewController {
             e.data.viewcontroller.centerViewAtNode('#goal');
         });
         $('#startnew').click(() => VIEW_CONTROLLER.setAffixSelectionView(true, true));
+        $('#openformulasheet').click(() => VIEW_CONTROLLER.openFormulaSheet(true));
     }
 
     setActiveFodder(e) {
@@ -140,6 +141,9 @@ class ViewController {
         if ($('div.choice-selection-container').length != 0) {
             $('div.choice-selection-container').remove();
         }
+        if ($('div.formula-sheet-container').length != 0) {
+            $('div.formula-sheet-container').remove();
+        }
         let isVisible = $('div.affix-selection-container').length != 0;
         if (bool) {
             if (!isVisible) {
@@ -185,6 +189,9 @@ class ViewController {
         if ($('div.choice-selection-container').length != 0) {
             $('div.choice-selection-container').remove();
         }
+        if ($('div.formula-sheet-container').length != 0) {
+            $('div.formula-sheet-container').remove();
+        }
         let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
         vc.choicesSelected.splice(0, vc.choicesSelected.length);
         for (var i = 0; i < vc.affixesSelected.length; i++) {
@@ -207,6 +214,37 @@ class ViewController {
         $('div.choice-selection-container div.cancel-button').click(
             (e) => { $('div.choice-selection-container').remove(); });
         $('div.choice-selection-container div.confirm-button').click({ viewcontroller: vc }, vc.produceFodderFromChoices);
+    }
+
+    openFormulaSheet(shouldAnimate, e) {
+        let vc = (this instanceof ViewController) ? this :
+            (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
+        if ($('div.affix-selection-container').length != 0) {
+            $('div.affix-selection-container').remove();
+        }
+        if ($('div.choice-selection-container').length != 0) {
+            $('div.choice-selection-container').remove();
+        }
+        if ($('div.formula-sheet-container').length != 0) {
+            $('div.formula-sheet-container').remove();
+        }
+        $('body').append(
+            SELECTION_MENU_TEMPLATE({
+                type: 'formulaSheet',
+                categories: VIEW_CONTROLLER.filters,
+                datalist: ASSISTANT.data.abilityList // List of all affixes
+            }));
+        if (shouldAnimate) {
+            $('div.formula-sheet-container').animate({}, 10, function () {
+                $('div.formula-sheet-container').removeClass('hidden');
+            });
+        }
+        else $('div.formula-sheet-container').removeClass('hidden');
+        $('div.formula-sheet-container li > div').click({ viewcontroller: vc }, vc.updateFormulaSheetSearchResults);
+        $('div.formula-sheet-container div.confirm-button').click(() => {
+            $('div.formula-sheet-container').remove();
+        });
     }
 
     updateView() {
@@ -496,6 +534,23 @@ class ViewController {
         if (this.choicesSelected.includes(null)) {
             $(`div.choice-selection-container .confirm-button`).addClass('disabled');
         }
+    }
+
+    updateFormulaSheetSearchResults(e) {
+        let vc = (this instanceof ViewController) ? this : (e && e.data) ? e.data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
+        let choices = vc.assistant.getChoicesForAffixes(
+            vc.assistant.affixDB[$(this).attr('data-code')].abilityRef
+        );
+        if (!choices || !choices[$(this).attr('data-code')]) return;
+        $(`div.formula-sheet-container li > div`).removeClass('selected');
+        $(this).addClass('selected');
+        $('div.formula-sheet-container .search-results-container').empty().append(
+            FILTER_SEARCH_TEMPLATE({
+                categories: VIEW_CONTROLLER.filters,
+                datalist: choices[$(this).attr('data-code')]
+            })
+        );
     }
 }
 

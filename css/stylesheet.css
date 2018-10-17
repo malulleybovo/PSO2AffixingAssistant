@@ -255,7 +255,8 @@ div.boost-container {
 }
 
 div.affix-selection-container,
-div.choice-selection-container {
+div.choice-selection-container,
+div.formula-sheet-container {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -263,7 +264,8 @@ div.choice-selection-container {
     transition: all 0.3s ease;
 }
 
-div.affix-selection-container div.content {
+div.affix-selection-container div.content,
+div.formula-sheet-container div.content {
     overflow-x: auto;
     grid-column-gap: 1em;
     padding: 0.5em 0em;
@@ -288,40 +290,46 @@ div.choice-selection-container div.content {
 }
 
 div.affix-selection-container div.content::-webkit-scrollbar,
-div.choice-selection-container div.content::-webkit-scrollbar {
+div.choice-selection-container div.content::-webkit-scrollbar,
+div.formula-sheet-container div.content::-webkit-scrollbar {
     height: 4px;
     width: 4px;
     background-color: var(--paint-dark);
 }
 
 div.affix-selection-container div.content::-webkit-scrollbar-thumb,
-div.choice-selection-container div.content::-webkit-scrollbar-thumb {
+div.choice-selection-container div.content::-webkit-scrollbar-thumb,
+div.formula-sheet-container div.content::-webkit-scrollbar-thumb {
     height: 4px;
     width: 4px;
     background-color: var(--border-color);
 }
 
 div.affix-selection-container div.content::-webkit-scrollbar-corner,
-div.choice-selection-container div.content::-webkit-scrollbar-corner {
+div.choice-selection-container div.content::-webkit-scrollbar-corner,
+div.formula-sheet-container div.content::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
 
 div.affix-selection-container div.content > div::-webkit-scrollbar,
-div.choice-selection-container div.content > div::-webkit-scrollbar {
+div.choice-selection-container div.content > div::-webkit-scrollbar,
+div.formula-sheet-container div.content > div::-webkit-scrollbar {
     height: 4px;
     width: 4px;
     background-color: var(--paint-dark);
 }
 
 div.affix-selection-container div.content > div::-webkit-scrollbar-thumb,
-div.choice-selection-container div.content > div::-webkit-scrollbar-thumb {
+div.choice-selection-container div.content > div::-webkit-scrollbar-thumb,
+div.formula-sheet-container div.content > div::-webkit-scrollbar-thumb {
     height: 4px;
     width: 4px;
     background-color: var(--border-color);
 }
 
 div.affix-selection-container div.content > div::-webkit-scrollbar-corner,
-div.choice-selection-container div.content > div::-webkit-scrollbar-corner {
+div.choice-selection-container div.content > div::-webkit-scrollbar-corner,
+div.formula-sheet-container div.content > div::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
 
@@ -338,6 +346,22 @@ div.affix-selection-container div.content > div:last-child {
     height: 100%;
     grid-column: col2-start;
     grid-template-rows: [row1-start] 5.5% [row2-start] 80.5%;
+    overflow: auto;
+}
+
+div.formula-sheet-container div.content > div:first-child {
+    display: grid;
+    height: 100%;
+    grid-column: col1-start;
+    grid-template-rows: [row1-start] 5.5% [row2-start] 94.5%;
+    overflow: auto;
+}
+
+div.formula-sheet-container div.content > div:last-child {
+    display: grid;
+    height: 100%;
+    grid-column: col2-start;
+    grid-template-rows: [row1-start] 5.5% [row2-start] 94.5%;
     overflow: auto;
 }
 
@@ -382,17 +406,20 @@ div.choice-selection-container div.content > div:nth-child(8) {
 }
 
 div.affix-selection-container div.content > div > div:first-child,
-div.choice-selection-container div.content > div > div:first-child {
+div.choice-selection-container div.content > div > div:first-child,
+div.formula-sheet-container div.content > div > div:first-child {
     grid-row: row1-start;
     overflow: hidden;
 }
 
-div.affix-selection-container div.content > div:last-child > div:last-child {
+div.affix-selection-container div.content > div:last-child > div:last-child,
+div.formula-sheet-container div.content > div:last-child > div:last-child {
     grid-row: row2-start;
 }
 
 div.affix-selection-container div.content > div:first-child > div:nth-child(2),
-div.choice-selection-container div.content > div > div:nth-child(2) {
+div.choice-selection-container div.content > div > div:nth-child(2),
+div.formula-sheet-container div.content > div > div:nth-child(2) {
     margin-bottom: 1em;
     grid-row: row2-start;
 }
@@ -404,17 +431,19 @@ div.choice-selection-container div.content > div > div:nth-child(3) {
 }
 
 div.affix-selection-container div.content > div:first-child > div:nth-child(4),
-div.choice-selection-container div.content > div > div:nth-child(4){
+div.choice-selection-container div.content > div > div:nth-child(4) {
     grid-row: row4-start;
 }
 
 div.affix-selection-container.hidden,
-div.choice-selection-container.hidden{
+div.choice-selection-container.hidden,
+div.formula-sheet-container.hidden {
     opacity: 0;
 }
 
 div.affix-selection-container > div,
-div.choice-selection-container > div{
+div.choice-selection-container > div,
+div.formula-sheet-container > div {
     width: 75%;
     margin: 0 auto;
     height: 75%;
@@ -429,19 +458,22 @@ div.choice-selection-container > div{
 }
 
 div.affix-selection-container div.main-grid,
-div.choice-selection-container div.main-grid {
+div.choice-selection-container div.main-grid,
+div.formula-sheet-container div.main-grid {
     display: grid;
     grid-template-rows: [row1-start] max-content [row2-start] auto [row3-start] max-content;
     height: 100%;
 }
 
 div.affix-selection-container div.main-grid > div:first-child,
-div.choice-selection-container div.main-grid > div:first-child {
+div.choice-selection-container div.main-grid > div:first-child,
+div.formula-sheet-container div.main-grid > div:first-child {
     grid-row: row1-start;
 }
 
 div.affix-selection-container div.main-grid > div:last-child,
-div.choice-selection-container div.main-grid > div:last-child {
+div.choice-selection-container div.main-grid > div:last-child,
+div.formula-sheet-container div.main-grid > div:last-child {
     grid-row: row3-start;
     display: grid;
     grid-template-areas: 'col1 col2 col3';
@@ -468,8 +500,13 @@ div.choice-selection-container div.main-grid > div:last-child > div:last-child {
     grid-column: span 2;
 }
 
+div.formula-sheet-container div.main-grid > div:last-child > div:last-child {
+    grid-column: span 3;
+}
+
 div.affix-selection-container .confirm-button,
-div.choice-selection-container .confirm-button {
+div.choice-selection-container .confirm-button,
+div.formula-sheet-container .confirm-button {
     background-color: var(--alter-paint);
     border-radius: 0em 0.25em 0.25em 0em;
     border: 1.5px solid var(--border-color);
@@ -484,6 +521,11 @@ div.choice-selection-container .confirm-button {
     user-select: none;
 }
 
+
+div.formula-sheet-container .confirm-button {
+    border-radius: 0.25em;
+}
+
 div.choice-selection-container div.affix.selected {
     background-color: var(--alter-paint);
 }
@@ -494,7 +536,7 @@ div.choice-selection-container .confirm-button.disabled {
 }
 
 div.affix-selection-container div.affix,
-div.choice-selection-container div.affix{
+div.choice-selection-container div.affix {
     width: 140px;
 }
 
