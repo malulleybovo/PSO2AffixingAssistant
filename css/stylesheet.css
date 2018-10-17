@@ -7,6 +7,10 @@ body {
     font-family: Verdana;
     font-size: 10px;
     overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 @media only screen and (max-device-width: 767px) {

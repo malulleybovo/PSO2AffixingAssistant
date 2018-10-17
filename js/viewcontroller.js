@@ -7,6 +7,7 @@
 class ViewController {
     constructor(assistant) {
         // Immutable variables (properties can still change)
+        this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 10000;
         this.filters = [];
         this.affixesSelected = [];
         this.choicesSelected = [];
@@ -25,6 +26,7 @@ class ViewController {
             }
         }
         // Mutable variables
+        this.newlyProducedTimeout = null;
     }
 
     setup() {
@@ -101,6 +103,29 @@ class ViewController {
             page: curr.page,
             pageTreeNode: curr
         };
+    }
+
+    findDOMByPage(page) {
+        if (!page || !(page instanceof Page)
+            || !(this.assistant.pageTreeRoot instanceof PageTreeNode)) return;
+        let trackingRoute = this.assistant.pageTreeRoot.find(page);
+        let $curr = $('.mgrid');
+        if ($curr.length <= 0) return;
+        for (var i = 0; i < trackingRoute.length; i++) {
+            if (trackingRoute[i] instanceof Page && $curr.length > 0)
+                $curr = $($curr.find('div.page')[0]);
+            else if (trackingRoute[i] instanceof PageTreeNode && $curr.length > 0) {
+                let pageTreeNode = trackingRoute[i];
+                let next = trackingRoute[i + 1];
+                if (next && next instanceof PageTreeNode) {
+                    let indexOf = pageTreeNode.children.indexOf(next);
+                    $curr = $curr.find('.mgrid');
+                    $curr = $($curr[indexOf]);
+                }
+            }
+        }
+        return $curr;
+
     }
 
     setFilters(filters) {
@@ -368,7 +393,13 @@ class ViewController {
         });
         // Update the UI to reflect the data changed
         vc.updateView();
-        vc.centerViewAtNode('#goal');
+        let $page = vc.findDOMByPage(newPage)
+        vc.centerViewAtNode($page);
+        spotlightIn($page);
+        if (vc.newlyProducedTimeout) clearTimeout(vc.newlyProducedTimeout);
+        vc.newlyProducedTimeout = setTimeout(function () {
+            if (spotlight === $page) spotlightOut($page);
+        }, vc.NEWLY_PRODUCED_TIMEOUT_IN_MILLI);
         $('div.choice-selection-container').remove();
     }
 
@@ -469,24 +500,31 @@ class ViewController {
 }
 
 var timeout;
+var spotlight;
 function spotlightIn(ev) {
+    if (ev.currentTarget) ev = ev.currentTarget;
     if (timeout) clearTimeout(timeout);
-    let connNum = $(ev.currentTarget).attr('data-conn');
+    let connNum = $(ev).attr('data-conn');
     timeout = setTimeout(function () {
         if (connNum) {
+            $('div[data-conn]').removeClass('spotlight');
+            $('div.page, connection').removeClass('despotlight');
             let $t = $('div[data-conn=' + connNum + ']');
             $('div.page, connection:not([data-conn=' + connNum + '])').not($t).addClass('despotlight');
             $t.addClass('spotlight');
+            spotlight = ev;
         }
     }, 500);
 }
 
 function spotlightOut(ev) {
+    if (ev.currentTarget) ev = ev.currentTarget;
     if (timeout) clearTimeout(timeout);
-    let connNum = $(ev.currentTarget).attr('data-conn');
+    let connNum = $(ev).attr('data-conn');
     if (connNum) {
         let $t = $('div[data-conn=' + connNum + ']');
         $('div.page, connection:not([data-conn=' + connNum + '])').not($t).removeClass('despotlight');
         $t.removeClass('spotlight');
+        spotlight = undefined;
     }
 }
