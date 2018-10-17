@@ -259,7 +259,8 @@ div.boost-container {
 
 div.affix-selection-container,
 div.choice-selection-container,
-div.formula-sheet-container {
+div.formula-sheet-container,
+div.link-container {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -290,6 +291,15 @@ div.formula-sheet-container div.content {
     margin: 0.5em 0em;
 }
 
+div.link-container div.content {
+    overflow-x: auto;
+    padding: 0.5em 0em;
+    grid-row: row2-start;
+    display: grid;
+    overflow-y: hidden;
+    margin: 0.5em 0em;
+}
+
 div.choice-selection-container div.content {
     overflow-x: auto;
     grid-column-gap: 1em;
@@ -304,7 +314,8 @@ div.choice-selection-container div.content {
 
 div.affix-selection-container div.content::-webkit-scrollbar,
 div.choice-selection-container div.content::-webkit-scrollbar,
-div.formula-sheet-container div.content::-webkit-scrollbar {
+div.formula-sheet-container div.content::-webkit-scrollbar,
+div.link-container div.content::-webkit-scrollbar {
     height: 4px;
     width: 4px;
     background-color: var(--paint-dark);
@@ -312,7 +323,8 @@ div.formula-sheet-container div.content::-webkit-scrollbar {
 
 div.affix-selection-container div.content::-webkit-scrollbar-thumb,
 div.choice-selection-container div.content::-webkit-scrollbar-thumb,
-div.formula-sheet-container div.content::-webkit-scrollbar-thumb {
+div.formula-sheet-container div.content::-webkit-scrollbar-thumb,
+div.link-container div.content::-webkit-scrollbar-thumb {
     height: 4px;
     width: 4px;
     background-color: var(--border-color);
@@ -320,13 +332,15 @@ div.formula-sheet-container div.content::-webkit-scrollbar-thumb {
 
 div.affix-selection-container div.content::-webkit-scrollbar-corner,
 div.choice-selection-container div.content::-webkit-scrollbar-corner,
-div.formula-sheet-container div.content::-webkit-scrollbar-corner {
+div.formula-sheet-container div.content::-webkit-scrollbar-corner,
+div.link-container div.content::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
 
 div.affix-selection-container div.content > div::-webkit-scrollbar,
 div.choice-selection-container div.content > div::-webkit-scrollbar,
-div.formula-sheet-container div.content > div::-webkit-scrollbar {
+div.formula-sheet-container div.content > div::-webkit-scrollbar,
+div.link-container div.content > div::-webkit-scrollbar {
     height: 4px;
     width: 4px;
     background-color: var(--paint-dark);
@@ -334,7 +348,8 @@ div.formula-sheet-container div.content > div::-webkit-scrollbar {
 
 div.affix-selection-container div.content > div::-webkit-scrollbar-thumb,
 div.choice-selection-container div.content > div::-webkit-scrollbar-thumb,
-div.formula-sheet-container div.content > div::-webkit-scrollbar-thumb {
+div.formula-sheet-container div.content > div::-webkit-scrollbar-thumb,
+div.link-container div.content > div::-webkit-scrollbar-thumb {
     height: 4px;
     width: 4px;
     background-color: var(--border-color);
@@ -342,7 +357,8 @@ div.formula-sheet-container div.content > div::-webkit-scrollbar-thumb {
 
 div.affix-selection-container div.content > div::-webkit-scrollbar-corner,
 div.choice-selection-container div.content > div::-webkit-scrollbar-corner,
-div.formula-sheet-container div.content > div::-webkit-scrollbar-corner {
+div.formula-sheet-container div.content > div::-webkit-scrollbar-corner,
+div.link-container div.content > div::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
 
@@ -457,7 +473,8 @@ div.choice-selection-container div.content > div > div:nth-child(4) {
 
 div.affix-selection-container.hidden,
 div.choice-selection-container.hidden,
-div.formula-sheet-container.hidden {
+div.formula-sheet-container.hidden,
+div.link-container.hidden {
     opacity: 0;
 }
 
@@ -477,8 +494,22 @@ div.formula-sheet-container > div {
     padding: 1em 2em;
 }
 
+div.link-container > div {
+    width: 75%;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--paint-light);
+    border-radius: 0.5em;
+    border: solid 1.5px var(--border-color);
+    overflow: hidden;
+    padding: 1em 2em;
+}
+
 div.affix-selection-container div.main-grid,
-div.formula-sheet-container div.main-grid {
+div.formula-sheet-container div.main-grid,
+div.link-container div.main-grid {
     display: grid;
     grid-template-rows: [row1-start] max-content [row2-start] auto [row3-start] max-content;
     height: 100%;
@@ -492,12 +523,14 @@ div.choice-selection-container div.main-grid {
 
 div.affix-selection-container div.main-grid > div:first-child,
 div.choice-selection-container div.main-grid > div:first-child,
-div.formula-sheet-container div.main-grid > div:first-child {
+div.formula-sheet-container div.main-grid > div:first-child,
+div.link-container div.main-grid > div:first-child {
     grid-row: row1-start;
 }
 
 div.affix-selection-container div.main-grid > div:last-child,
-div.formula-sheet-container div.main-grid > div:last-child {
+div.formula-sheet-container div.main-grid > div:last-child,
+div.link-container div.main-grid > div:last-child {
     grid-row: row3-start;
     display: grid;
     grid-template-areas: 'col1 col2 col3';
@@ -525,18 +558,25 @@ div.choice-selection-container .cancel-button {
     user-select: none;
 }
 
+div.affix-selection-container .cancel-button:hover,
+div.choice-selection-container .cancel-button:hover {
+    background-color: var(--paint-light);
+}
+
 div.affix-selection-container div.main-grid > div:last-child > div:last-child,
 div.choice-selection-container div.main-grid > div:last-child > div:last-child {
     grid-column: span 2;
 }
 
-div.formula-sheet-container div.main-grid > div:last-child > div:last-child {
+div.formula-sheet-container div.main-grid > div:last-child > div:last-child,
+div.link-container div.main-grid > div:last-child > div:last-child {
     grid-column: span 3;
 }
 
 div.affix-selection-container .confirm-button,
 div.choice-selection-container .confirm-button,
-div.formula-sheet-container .confirm-button {
+div.formula-sheet-container .confirm-button,
+div.link-container .confirm-button {
     background-color: var(--alter-paint);
     border-radius: 0em 0.25em 0.25em 0em;
     border: 1.5px solid var(--border-color);
@@ -551,8 +591,35 @@ div.formula-sheet-container .confirm-button {
     user-select: none;
 }
 
+div.affix-selection-container .confirm-button:hover,
+div.choice-selection-container .confirm-button:hover,
+div.formula-sheet-container .confirm-button:hover,
+div.link-container .confirm-button:hover {
+    background-color: var(--alter-paint-light);
+}
 
-div.formula-sheet-container .confirm-button {
+div.link-container .copy-button {
+    background-color: var(--paint-dark);
+    border-radius: 0.25em;
+    border: 1.5px solid var(--border-color);
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0.35em 0em;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+div.link-container .copy-button:hover {
+    background-color: var(--paint-light);
+}
+
+div.formula-sheet-container .confirm-button,
+div.link-container .confirm-button {
     border-radius: 0.25em;
 }
 
