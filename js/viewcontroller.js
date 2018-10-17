@@ -327,6 +327,7 @@ class ViewController {
                 }
             }
         }
+        $(`connection`).insertAfter('#editor');
         return this;
     }
 
