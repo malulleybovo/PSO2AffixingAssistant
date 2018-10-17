@@ -148,11 +148,10 @@ class ViewController {
         if (bool) {
             if (!isVisible) {
                 $('body').append(
-                    SELECTION_MENU_TEMPLATE({
-                        type: 'affixSelection',
+                    AFFIX_SELECTION_VIEW_TEMPLATE({
                         affixesSelected: this.affixesSelected,
                         categories: this.filters,
-                        datalist: this.assistant.data.abilityList // List of all affixes
+                        abilityList: this.assistant.data.abilityList // List of all affixes
                     }));
                 if (shouldAnimate) {
                     $('div.affix-selection-container').animate({}, 10, function () {
@@ -198,11 +197,9 @@ class ViewController {
             vc.choicesSelected.push(null);
         }
         $('body').append(
-            SELECTION_MENU_TEMPLATE({
-                type: 'choiceSelection',
+            CHOICE_SELECTION_VIEW_TEMPLATE({
                 affixesSelected: vc.affixesSelected,
-                categories: vc.filters,
-                datalist: choices
+                choices: choices
             }));
         if (shouldAnimate) {
             $('div.choice-selection-container').animate({}, 10, function () {
@@ -230,10 +227,9 @@ class ViewController {
             $('div.formula-sheet-container').remove();
         }
         $('body').append(
-            SELECTION_MENU_TEMPLATE({
-                type: 'formulaSheet',
+            FORMULA_SHEET_VIEW_TEMPLATE({
                 categories: VIEW_CONTROLLER.filters,
-                datalist: ASSISTANT.data.abilityList // List of all affixes
+                abilityList: ASSISTANT.data.abilityList // List of all affixes
             }));
         if (shouldAnimate) {
             $('div.formula-sheet-container').animate({}, 10, function () {

@@ -276,3 +276,31 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     </div>`;
     return layoutTemplate;
 }
+
+const AFFIX_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, categories, abilityList, isGlobalSearch }) => {
+    return SELECTION_MENU_TEMPLATE({
+        type: 'affixSelection',
+        affixesSelected: affixesSelected,
+        categories: categories,
+        datalist: abilityList,
+        isGlobalSearch: isGlobalSearch
+    });
+};
+
+const CHOICE_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, choices, isGlobalSearch }) => {
+    return SELECTION_MENU_TEMPLATE({
+        type: 'choiceSelection',
+        affixesSelected: affixesSelected,
+        datalist: choices,
+        isGlobalSearch: isGlobalSearch
+    });
+};
+
+const FORMULA_SHEET_VIEW_TEMPLATE = ({ categories, abilityList, isGlobalSearch }) => {
+    return SELECTION_MENU_TEMPLATE({
+        type: 'formulaSheet',
+        categories: categories,
+        datalist: abilityList,
+        isGlobalSearch: isGlobalSearch
+    });
+};
