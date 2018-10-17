@@ -3,7 +3,7 @@
   # PSO2 Affixing Assistant
   #### Version Alpha 4.1
 
-  ### [Use the Assistant Here](https://malulleybovo.github.io/PSO2AffixingAssistant/)
+  ## [Use the Assistant Here](https://malulleybovo.github.io/PSO2AffixingAssistant/)
   #### Compliant with version 1.81 of [Arks Layer's Affix Simulator](https://arks-layer.com/abilitysim/)
 
   ### NO HASSLE Affixing Formulas at the tip of your fingers
