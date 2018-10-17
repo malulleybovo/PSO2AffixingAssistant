@@ -26,6 +26,8 @@ class ViewController {
             }
         }
         // Mutable variables
+        this.shouldUpslot = true;
+        this.shouldSpread = true;
         this.newlyProducedTimeout = null;
     }
 
@@ -199,7 +201,9 @@ class ViewController {
         $('body').append(
             CHOICE_SELECTION_VIEW_TEMPLATE({
                 affixesSelected: vc.affixesSelected,
-                choices: choices
+                choices: choices,
+                shouldUpslot: vc.shouldUpslot,
+                shouldSpread: vc.shouldSpread
             }));
         if (shouldAnimate) {
             $('div.choice-selection-container').animate({}, 10, function () {
@@ -207,6 +211,8 @@ class ViewController {
             });
         }
         else $('div.choice-selection-container').removeClass('hidden');
+        $('div.choice-selection-container div.options > div.checkbox-container:first-child').click({ viewcontroller: vc }, vc.setShouldUpslot);
+        $('div.choice-selection-container div.options > div.checkbox-container:last-child').click({ viewcontroller: vc }, vc.setShouldSpread);
         $('div.choice-selection-container li > div').click({ viewcontroller: vc }, vc.selectChoice);
         $('div.choice-selection-container div.cancel-button').click(
             (e) => { $('div.choice-selection-container').remove(); });
@@ -404,9 +410,8 @@ class ViewController {
         if (!(vc instanceof ViewController)) return;
         if (vc.choicesSelected.includes(null)) return;
         let choices = vc.choicesSelected;
-        let shouldSpread = true; // TODO allow user to decide
-        let targetNumSlots = vc.affixesSelected.length - 1; // TODO allow user to decide N or N-1
-        let newPage = vc.assistant.buildPageForChoices(choices, shouldSpread, targetNumSlots);
+        let targetNumSlots = vc.affixesSelected.length - ((vc.shouldUpslot) ? 1 : 0);
+        let newPage = vc.assistant.buildPageForChoices(choices, vc.shouldSpread, targetNumSlots);
         if (!newPage) {
             console.warn(
                 'Attempted to produce a new page with choices %o, but produced page was %o',
@@ -547,6 +552,20 @@ class ViewController {
                 datalist: choices[$(this).attr('data-code')]
             })
         );
+    }
+
+    setShouldUpslot(e) {
+        let vc = (this instanceof ViewController) ? this : (e && e.data) ? e.data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
+        let $checkbox = $('div.choice-selection-container div.options div.checkbox-container:first-child input[type=checkbox]');
+        vc.shouldUpslot = $checkbox.prop('checked');
+    }
+
+    setShouldSpread(e) {
+        let vc = (this instanceof ViewController) ? this : (e && e.data) ? e.data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
+        let $checkbox = $('div.choice-selection-container div.options div.checkbox-container:last-child input[type=checkbox]');
+        vc.shouldSpread = $checkbox.prop('checked');
     }
 }
 

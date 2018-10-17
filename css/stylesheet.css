@@ -264,6 +264,16 @@ div.formula-sheet-container {
     transition: all 0.3s ease;
 }
 
+div.choice-selection-container div.options {
+    grid-row: row2-start;
+    display: grid;
+    grid-template-columns: [col1-start] max-content [col2-start] max-content;
+}
+
+div.choice-selection-container div.options > div.checkbox-container {
+    width: unset;
+}
+
 div.affix-selection-container div.content,
 div.formula-sheet-container div.content {
     overflow-x: auto;
@@ -281,7 +291,7 @@ div.choice-selection-container div.content {
     overflow-x: auto;
     grid-column-gap: 1em;
     padding: 0.5em 0em;
-    grid-row: row2-start;
+    grid-row: row3-start;
     display: grid;
     overflow-y: hidden;
     grid-template-columns: [col1-start] min-content [col2-start] min-content [col3-start] min-content [col4-start] min-content [col5-start] min-content [col6-start] min-content [col7-start] min-content [col8-start] min-content;
@@ -458,10 +468,15 @@ div.formula-sheet-container > div {
 }
 
 div.affix-selection-container div.main-grid,
-div.choice-selection-container div.main-grid,
 div.formula-sheet-container div.main-grid {
     display: grid;
     grid-template-rows: [row1-start] max-content [row2-start] auto [row3-start] max-content;
+    height: 100%;
+}
+
+div.choice-selection-container div.main-grid {
+    display: grid;
+    grid-template-rows: [row1-start] max-content [row2-start] min-content [row3-start] auto [row4-start] max-content;
     height: 100%;
 }
 
@@ -472,9 +487,14 @@ div.formula-sheet-container div.main-grid > div:first-child {
 }
 
 div.affix-selection-container div.main-grid > div:last-child,
-div.choice-selection-container div.main-grid > div:last-child,
 div.formula-sheet-container div.main-grid > div:last-child {
     grid-row: row3-start;
+    display: grid;
+    grid-template-areas: 'col1 col2 col3';
+}
+
+div.choice-selection-container div.main-grid > div:last-child {
+    grid-row: row4-start;
     display: grid;
     grid-template-areas: 'col1 col2 col3';
 }

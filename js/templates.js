@@ -205,15 +205,19 @@ const RADIO_BUTTON_TEMPLATE = ({ id, isChecked, description }) =>
         <span>${(description) ? description : ``}</span>
     </label>`;
 
-const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, isGlobalSearch }) => {
+const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, isGlobalSearch, shouldUpslot, shouldSpread }) => {
     let isAffixSelection = type == 'affixSelection';
     let isChoiceSelection = type == 'choiceSelection';
     let isFormulaSheet = type == 'formulaSheet';
     let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : (isChoiceSelection) ? `choice-selection-container` : (isFormulaSheet) ? `formula-sheet-container` : ``} hidden">
         <div>
             <div class="main-grid">
-                <div class="title bold">${(isAffixSelection) ? `Choose Abilities` : (isChoiceSelection) ? `Choose Method of Making` : (isFormulaSheet) ? `Affixing Formula Sheet` : ``}</div>
-                <div class="content">`;
+                <div class="title bold">${(isAffixSelection) ? `Choose Abilities` : (isChoiceSelection) ? `Choose Method of Making` : (isFormulaSheet) ? `Affixing Formula Sheet` : ``}</div>${(isChoiceSelection) ?
+                `<div class="options">
+                    ${CHECKBOX_TEMPLATE({ description: `Affix By Upslotting`, isChecked: shouldUpslot })}
+                    ${CHECKBOX_TEMPLATE({ description: `Use All Six Fodders`, isChecked: shouldSpread })}
+                </div>` 
+            : ``}<div class="content">`;
     if (isAffixSelection) {
         layoutTemplate += `<div>
                         <div class="title bold">Affixing Goal</div>
@@ -240,7 +244,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                 if (!affixesSelected[i].code || datalist === undefined
                     || datalist[affixesSelected[i].code] === undefined) continue;
                 layoutTemplate += `<div${(affixesSelected[i]) ? ` data-code="${affixesSelected[i].code}"` : ``}>
-                        <div class="title bold">Affix</div>
+                        <div class="title bold">Affix ${i + 1}</div>
                         <div>
                             <div class="affix"${(affixesSelected[i]) ? ` title="${affixesSelected[i].effect}"` : ``}${(affixesSelected[i]) ? ` data-code="${affixesSelected[i].code}"` : ``}>
                                 <span>${(affixesSelected[i]) ? `${affixesSelected[i].name}` : `&nbsp;`}</span>
@@ -287,12 +291,14 @@ const AFFIX_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, categories, abilityLis
     });
 };
 
-const CHOICE_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, choices, isGlobalSearch }) => {
+const CHOICE_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, choices, isGlobalSearch, shouldUpslot, shouldSpread }) => {
     return SELECTION_MENU_TEMPLATE({
         type: 'choiceSelection',
         affixesSelected: affixesSelected,
         datalist: choices,
-        isGlobalSearch: isGlobalSearch
+        isGlobalSearch: isGlobalSearch,
+        shouldUpslot: shouldUpslot,
+        shouldSpread: shouldSpread
     });
 };
 
