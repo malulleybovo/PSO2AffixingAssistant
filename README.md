@@ -12,6 +12,21 @@
   2) Tell the assistant which abilities you want to have.
   3) Pick how to make each ability you want.
   4) Enjoy! The assistant will give you the formula you need with maximized success rate.
+
+  ### Affix intermediary stages to reach your goal
+  The Affixing Assistant lets you even optimally produce the fodders you'll need.
+  <br>The process:
+  1) Tap on the *PRODUCE* button on any fodder.
+  3) Pick how to make the fodder.
+  4) Enjoy! The assistant will give you the formula you need with maximized success rate.
+  
+  ### Redo any fodder or even the goal
+  The Affixing Assistant lets you produce the same fodders over and over again.
+  (Warning: this will discard any previous formulas to produce the fodder)
+  <br>The process:
+  1) Tap on the *REPRODUCE* or *CHANGE* button on any fodder that has been produced or the goal.
+  3) Pick how to remake the fodder.
+  4) Enjoy! The assistant will give you the formula you need with maximized success rate.
   
   ### Confused? Look up how to make each affix
   The Affixing Assistant knows all useful ways of making all available abilities.
