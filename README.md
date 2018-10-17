@@ -2,7 +2,7 @@
 
   # PSO2 Affixing Assistant
   #### Version Alpha 4.1
-  #### Compliant with version 1.8.1 of [ARKS Layer's Affixing Simulator](https://arks-layer.com/abilitysim/)
+  #### Compliant with version 1.8.1 of [Arks Layer's Affix Simulator](https://arks-layer.com/abilitysim/)
 
   ### [Use the Assistant Here](https://malulleybovo.github.io/PSO2AffixingAssistant/)
 
