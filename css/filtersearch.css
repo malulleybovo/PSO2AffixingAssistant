@@ -30,7 +30,7 @@ div.filtersearchcontainer input.searchbar {
 }
 
 div.filtersearchcontainer input::placeholder {
-    color: var(--paint-lighter);
+    color: var(--text-color);
 }
 
 div.filtersearchcontainer input:focus {

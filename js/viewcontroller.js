@@ -55,6 +55,14 @@ class ViewController {
         $('#startnew').click(() => VIEW_CONTROLLER.setAffixSelectionView(true, true));
         $('#openformulasheet').click(() => VIEW_CONTROLLER.openFormulaSheet(true));
         $('#getlink').click(() => VIEW_CONTROLLER.openGetLinkView(true));
+        $('#themeswitch').click(() => {
+            if ($('html').hasClass('theme--default')) {
+                $('html').removeClass('theme--default').addClass('theme--bright');
+            }
+            else if($('html').hasClass('theme--bright')) {
+                $('html').removeClass('theme--bright').addClass('theme--default');
+            }
+        });
     }
 
     setActiveFodder(e) {

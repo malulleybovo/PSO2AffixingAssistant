@@ -131,13 +131,7 @@ const LINK_TEMPLATE = ({ link, linkToSim }) => {
         <div>
             <div class="main-grid">
                 <div class="title bold">Link to This Formula</div><div class="content">
-    					<input type="text" value="${link}" onclick="this.setSelectionRange(0, this.value.length)" style="
-    color: white;
-    background: var(--paint-dark);
-    padding: 0.5em;
-    border: none;
-    border-radius: 0.25em;
-">
+    					<input type="text" value="${link}" onclick="this.setSelectionRange(0, this.value.length)">
                     </div>
                 <div>
                     <div>

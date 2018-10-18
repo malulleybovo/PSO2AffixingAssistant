@@ -618,7 +618,7 @@ div.link-container .copy-button a {
     width: 100%;
     height: 100%;
     padding: 0.35em 0em;
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
     outline: 0;
 }
@@ -629,6 +629,13 @@ div.link-container .copy-button:hover {
 
 div.formula-sheet-container .confirm-button,
 div.link-container .confirm-button {
+    border-radius: 0.25em;
+}
+
+div.link-container input {
+    background: var(--paint-dark);
+    padding: 0.5em;
+    border: none;
     border-radius: 0.25em;
 }
 

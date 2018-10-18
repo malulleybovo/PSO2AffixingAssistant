@@ -36,7 +36,7 @@
   2) Search for the ability you need and click it.
   3) Enjoy! The assistant will display every way it knows for making that ability.
 
-  ### Share! Save and share affixing formulas.
+  ### Share! Save and share affixing formulas
   The Affixing Assistant keeps your formula saved via the URL of the website.
   <br>The Process:
   1) Tap on the *share* button on the sidebar.
@@ -48,6 +48,12 @@
   <br>The Process:
   1) Tap on the *share* button on the sidebar.
   2) Tap on the *Open in Affix Simulator* button on the menu.
+  
+  ### Themes at your disposal
+  The Affixing Assistant has bright and dark (default) themes depending on your preference.
+  <br>The Process:
+  1) tap on the *themes* button on the sidebar.
+  2) The assistant will then switch the theme for you!
   
   ### Uh-oh... Can't see what you're looking for? We got you!
   The Affixing Assistant lets you center the goal on screen at any point in case you want to quickly find it.

@@ -16,3 +16,22 @@
     --border-color: #404040;
     --text-color: #fff;
 }
+
+.theme--bright {
+    --background-color: #ffffff;
+    --overlay-color: rgba(0, 0, 0, 0.5);
+    --paint-lightest: #e0e5ee;
+    --paint-lighter: #ccd1d9;
+    --paint-light: #f2f4f7;
+    --paint-light-fade: rgba(242, 244, 247, 0.25);
+    --paint-dark: #e0e5ee;
+    --paint-dark-fade: rgba(224, 229, 238, 0.25);
+    --paint-darker-fade: rgba(62, 63, 65, 0.75);
+    --paint-prime: #ffdfa4;
+    --conn-color: #e85d75;
+    --alter-paint: #e85d75;
+    --alter-paint-light: #ec7a8e;
+    --alter-paint2: #547FE8;
+    --border-color: #4e6e7d;
+    --text-color: #16325c;
+}
