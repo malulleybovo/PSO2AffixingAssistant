@@ -544,7 +544,7 @@
                 "TH01"
             ],
             ref: "TH02",
-            success: 20
+            success: 50
         },
         {
             base: [
@@ -996,6 +996,15 @@
             ],
             ref: "EB05",
             success: 100
+        },
+        {
+            base: [
+                "SB04",
+                "SB05",
+                "TK01"
+            ],
+            ref: "TJ01",
+            success: 10
         }
     ],
     extraSlot: [
@@ -5804,7 +5813,7 @@
             ],
             rel: "soul",
             effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15)",
-            cls: "ef-soult",
+            cls: "ef-soul",
             tooltip: "Used for: ___ The Soul, Ether Soul"
         },
         {
@@ -5842,7 +5851,7 @@
             tooltip: "Used for: ___ The Soul, Omega Memoria"
         },
         {
-            code: "SB21",
+            code: "SB05",
             gid: "EA",
             name: "Historia Soul",
             extend: [
@@ -5955,6 +5964,52 @@
             tooltip: "Made by: 2/3x ARKS Fever"
         },
         {
+            code: "TG02",
+            gid: "AC",
+            name: "Yamato Factor",
+            extend: [
+                0,
+                30,
+                50
+            ],
+            status: 6,
+            effect: "S-ATK(+10),<br>R-ATK(+20),<br>T-ATK(+10),<br>HP(+20),<br>PP(+1)",
+            tooltip: "Used for: Factor Catalyst"
+        },
+        {
+            code: "TG03",
+            gid: "AC",
+            name: "Mother Factor",
+            extend: [
+                0,
+                30,
+                50
+            ],
+            status: 6,
+            effect: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+20),<br>HP(+20),<br>PP(+1)",
+            tooltip: "Used for: Factor Catalyst"
+        },
+        {
+            code: "TG04",
+            gid: "AC",
+            name: "Deus Factor",
+            extend: [
+                0,
+                30,
+                50
+            ],
+            status: 6,
+            effect: "S-ATK(+20),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+20),<br>PP(+1)",
+            tooltip: "Used for: Factor Catalyst"
+        },
+        {
+            code: "TG31",
+            gid: "AC",
+            name: "Ether Factor",
+            effect: "ALL(+30),<br>HP(+10),<br>PP(+6)",
+            tooltip: "Made by: 4x Factor Catalyst + Ether Soul"
+        },
+        {
             code: "TK01",
             gid: "AC",
             name: "Omega Reverie",
@@ -6016,50 +6071,16 @@
             effect: "S-ATK(-20),<br>R-ATK(-20),<br>T-ATK(-20),<br>HP(+50),<br>PP(+5)"
         },
         {
-            code: "TG02",
+            code: "TJ01",
             gid: "AC",
-            name: "Yamato Factor",
+            name: "Omega Memoria",
             extend: [
                 0,
-                30,
-                50
+                50,
+                80
             ],
-            status: 6,
-            effect: "S-ATK(+10),<br>R-ATK(+20),<br>T-ATK(+10),<br>HP(+20),<br>PP(+1)",
-            tooltip: "Used for: Factor Catalyst"
-        },
-        {
-            code: "TG03",
-            gid: "AC",
-            name: "Mother Factor",
-            extend: [
-                0,
-                30,
-                50
-            ],
-            status: 6,
-            effect: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+20),<br>HP(+20),<br>PP(+1)",
-            tooltip: "Used for: Factor Catalyst"
-        },
-        {
-            code: "TG04",
-            gid: "AC",
-            name: "Deus Factor",
-            extend: [
-                0,
-                30,
-                50
-            ],
-            status: 6,
-            effect: "S-ATK(+20),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+20),<br>PP(+1)",
-            tooltip: "Used for: Factor Catalyst"
-        },
-        {
-            code: "TG31",
-            gid: "AC",
-            name: "Ether Factor",
-            effect: "ALL(+30),<br>HP(+10),<br>PP(+6)",
-            tooltip: "Made by: 4x Factor Catalyst + Ether Soul"
+            effect: "ALL(+15),<br>HP(+15),<br>PP(+2)",
+            tooltip: "Made by: Fabula Soul, Historia Soul, Omega Reverie"
         },
         {
             code: "TE01",
@@ -6195,18 +6216,6 @@
             rel: "doom2",
             effect: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
             tooltip: "Made by: 3-5x Doom Break"
-        },
-        {
-            code: "TJ01",
-            gid: "AC",
-            name: "Omega Memoria",
-            extend: [
-                0,
-                50,
-                80
-            ],
-            effect: "ALL(+15),<br>HP(+15),<br>PP(+2)",
-            tooltip: "Made by: Fabula Soul, Historia Soul, Omega Reverie"
         },
         {
             code: "LP01",

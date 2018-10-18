@@ -31,8 +31,8 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
         treeNodeTemplate += PAGE_TEMPLATE({
             page: pageTreeNode.page,
             isGoal: pageTreeNode.isGoal,
-            rateBoostOptions: pageTreeNode.rateBoostOptions,
-            potentialOptions: pageTreeNode.potentialOptions,
+            rateBoostOptions: pageTreeNode.rateBoostOptions.map(a => a.id),
+            potentialOptions: pageTreeNode.potentialOptions.map(a => a.id),
             level: level,
             offset: offset,
             fodderOffsets: connectionOrder
@@ -125,6 +125,31 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel })
             <span>${(fodder.overallSuccessRate >= 0) ? fodder.overallSuccessRate + `%` : `?`}</span>
             </div>
         </div>`;
+
+const LINK_TEMPLATE = ({ link, linkToSim }) => {
+    return `<div class="link-container hidden">
+        <div>
+            <div class="main-grid">
+                <div class="title bold">Link to This Formula</div><div class="content">
+    					<input type="text" value="${link}" onclick="this.setSelectionRange(0, this.value.length)" style="
+    color: white;
+    background: var(--paint-dark);
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.25em;
+">
+                    </div>
+                <div>
+                    <div>
+                        <div class="copy-button"><a>Copy to Clipboard</a></div>
+                        <div class="copy-button"><a  href="${linkToSim}" target="_blank">Open in Affix Simulator</a></div>
+                        <div class="confirm-button">Close</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+}
 
 const DROPDOWN_TEMPLATE = ({ options, selected }) => {
     let dropdown = `<div class="dropdown-container"><select>`;

@@ -7,7 +7,7 @@
 class ViewController {
     constructor(assistant) {
         // Immutable variables (properties can still change)
-        this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 10000;
+        this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 3000;
         this.filters = [];
         this.affixesSelected = [];
         this.choicesSelected = [];
@@ -54,6 +54,7 @@ class ViewController {
         });
         $('#startnew').click(() => VIEW_CONTROLLER.setAffixSelectionView(true, true));
         $('#openformulasheet').click(() => VIEW_CONTROLLER.openFormulaSheet(true));
+        $('#getlink').click(() => VIEW_CONTROLLER.openGetLinkView(true));
     }
 
     setActiveFodder(e) {
@@ -122,7 +123,7 @@ class ViewController {
                 let next = trackingRoute[i + 1];
                 if (next && next instanceof PageTreeNode) {
                     let indexOf = pageTreeNode.children.indexOf(next);
-                    $curr = $curr.find('.mgrid');
+                    $curr = $($curr[0]).children().last().children('.mgrid');
                     $curr = $($curr[indexOf]);
                 }
             }
@@ -145,6 +146,9 @@ class ViewController {
         }
         if ($('div.formula-sheet-container').length != 0) {
             $('div.formula-sheet-container').remove();
+        }
+        if ($('div.link-container').length != 0) {
+            $('div.link-container').remove();
         }
         let isVisible = $('div.affix-selection-container').length != 0;
         if (bool) {
@@ -193,6 +197,9 @@ class ViewController {
         if ($('div.formula-sheet-container').length != 0) {
             $('div.formula-sheet-container').remove();
         }
+        if ($('div.link-container').length != 0) {
+            $('div.link-container').remove();
+        }
         let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
         vc.choicesSelected.splice(0, vc.choicesSelected.length);
         for (var i = 0; i < vc.affixesSelected.length; i++) {
@@ -232,6 +239,9 @@ class ViewController {
         if ($('div.formula-sheet-container').length != 0) {
             $('div.formula-sheet-container').remove();
         }
+        if ($('div.link-container').length != 0) {
+            $('div.link-container').remove();
+        }
         $('body').append(
             FORMULA_SHEET_VIEW_TEMPLATE({
                 categories: VIEW_CONTROLLER.filters,
@@ -249,15 +259,64 @@ class ViewController {
         });
     }
 
-    updateView() {
-        let vc = (this instanceof ViewController) ? this : (data) ? data.viewcontroller : undefined;
+    openGetLinkView(shouldAnimate, e) {
+        let vc = (this instanceof ViewController) ? this :
+            (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
+        if ($('div.affix-selection-container').length != 0) {
+            $('div.affix-selection-container').remove();
+        }
+        if ($('div.choice-selection-container').length != 0) {
+            $('div.choice-selection-container').remove();
+        }
+        if ($('div.formula-sheet-container').length != 0) {
+            $('div.formula-sheet-container').remove();
+        }
+        if ($('div.link-container').length != 0) {
+            $('div.link-container').remove();
+        }
+        $('body').append(
+            LINK_TEMPLATE({
+                link: decodeURI(window.location.href),
+                linkToSim: vc.assistant.toURL(true)
+            }));
+        if (shouldAnimate) {
+            $('div.link-container').animate({}, 10, function () {
+                $('div.link-container').removeClass('hidden');
+            });
+        }
+        else $('div.link-container').removeClass('hidden');
+        $('div.link-container div.copy-button:first-child').click(() => {
+            let copyText = $('div.link-container input[type=text]')[0];
+            if (!copyText) return;
+            copyText.select();
+            document.execCommand("copy");
+        });
+        $('div.link-container div.confirm-button').click(() => {
+            $('div.link-container').remove();
+        });
+    }
+
+    updateFromURL() {
+        let urlParams = window.location.search;
+        if (urlParams == '') return;
+        urlParams = urlParams.substring(1, urlParams.length);
+        urlParams = decodeURIComponent(urlParams);
+        urlParams = VIEW_CONTROLLER.assistant.decodeURLParams(urlParams);
+        if (!this.assistant || !(this.assistant instanceof Assistant)) return;
+        let hasSuceeded = this.assistant.loadFromURLParams(urlParams);
+        if (hasSuceeded) this.updateView();
+    }
+
+    updateView(e) {
+        let vc = (this instanceof ViewController) ? this : (e.data) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         if (!vc.assistant || !vc.assistant.pageTreeRoot || !(vc.assistant.pageTreeRoot instanceof PageTreeNode)) return;
         vc.assistant.calcSuccessRates();
         $('#mastercontainer').empty().append(PAGE_TREE_NODE_TEMPLATE({
             pageTreeNode: vc.assistant.pageTreeRoot
         }));
-        this.regenerateConnections();
+        vc.regenerateConnections();
         $('div.fodder').hover(spotlightIn, spotlightOut);
         $('div.produce-button').click({ viewcontroller: this }, this.setActiveFodder);
         $('.boost-container input[type=checkbox]').change({ viewcontroller: this }, (e) => {
@@ -266,6 +325,7 @@ class ViewController {
                 let { page } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
                 if (page) page.setSameGear($elem.prop('checked'));
             }
+            e.data.viewcontroller.updateURLParams();
             e.data.viewcontroller.updateView();
         });
         $('.boost-container > div.dropdown-container:not(:last-child) select').change({ viewcontroller: this }, (e) => {
@@ -275,6 +335,7 @@ class ViewController {
                 let { page } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
                 if (page) page.setRateBoostIdx(index);
             }
+            e.data.viewcontroller.updateURLParams();
             e.data.viewcontroller.updateView();
         });
         $('.boost-container > div.dropdown-container:last-child select').change({ viewcontroller: this }, (e) => {
@@ -284,14 +345,23 @@ class ViewController {
                 let { page } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
                 if (page) page.setPotentialIdx(index);
             }
+            e.data.viewcontroller.updateURLParams();
             e.data.viewcontroller.updateView();
         });
         return this;
     }
 
+    updateURLParams() {
+        if (!this.assistant || !(this.assistant instanceof Assistant)) return;
+        let oldURL = decodeURIComponent(window.location.search.substring(1, window.location.search));
+        let newURL = this.assistant.toURL();
+        if (newURL == oldURL) return;
+        window.history.pushState("test", "Title", newURL);
+    }
+
     centerViewAtNode(selector) {
         let $node = $(selector);
-        if (selector.length <= 0) return;
+        if ($node.length <= 0) return;
         let pos = $node.position();
         let $container = $("#editor").children().first();
         let zoomScale = $container.panzoom('getMatrix')[0];
@@ -432,6 +502,7 @@ class ViewController {
             page: newPage
         });
         // Update the UI to reflect the data changed
+        vc.updateURLParams();
         vc.updateView();
         let $page = vc.findDOMByPage(newPage)
         vc.centerViewAtNode($page);

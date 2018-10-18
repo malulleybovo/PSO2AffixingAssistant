@@ -17,6 +17,7 @@ class Assistant {
         this.rateBoostOptions = [];
         this.potentialOptions = [];
         this.junkCodes = ["ZA01", "ZB01", "ZC01", "ZD01", "ZE01", "ZF01", "ZG01", "ZH01", "ZI01"];
+        this.SIMULATOR_WEBSITE = "https://arks-layer.com/abilitysim/";
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(Assistant.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -79,7 +80,7 @@ class Assistant {
         let options = this.data.optionList.support;
         for (var i = 0; i < options.length; i++) {
             if (!options[i] || !options[i].id) continue;
-            this.rateBoostOptions.push(options[i].id);
+            this.rateBoostOptions.push(options[i]);
         }
         return this.rateBoostOptions;
     }
@@ -91,7 +92,7 @@ class Assistant {
         let options = this.data.optionList.potential;
         for (var i = 0; i < options.length; i++) {
             if (!options[i] || !options[i].id) continue;
-            this.potentialOptions.push(options[i].id);
+            this.potentialOptions.push(options[i]);
         }
         return this.potentialOptions;
     }
@@ -657,7 +658,6 @@ class Assistant {
         return false;
     }
 
-
     isSpecialAbility(affix) {
         if (!this.data || !this.data.optionList || !this.data.optionList.additional
             || !affix || !affix.name) return false;
@@ -668,8 +668,13 @@ class Assistant {
         return false;
     }
 
-    toURL() {
-        let url = '/#!' + this.pageTreeRoot.toURL();
+    toURL(isForSimulator) {
+        if (isForSimulator && this.pageTreeRoot.size() > 0) { // Do not include goal in link
+            return this.SIMULATOR_WEBSITE + '#!' + this.pageTreeRoot.children[0].toURL(isForSimulator);
+        }
+        else {
+            return '?' + this.encodeURLParams(this.pageTreeRoot.toURL());
+        }
     }
 
     updateConnection({ fodder, page }) {
@@ -687,10 +692,10 @@ class Assistant {
                 }
                 else return false;
             }
+            fodder.connectTo(page);
             pageTreeNode.addPageTreeNodes(
                 (new PageTreeNode()).setPage(page)
             );
-            fodder.connectTo(page);
             return true;
         }
         return false;
@@ -818,6 +823,210 @@ class Assistant {
         }
         return this;
     }
+
+    loadFromURLParams(params) {
+        if (!this.affixDB) return false;
+        let pagesData = params.split('/');
+        let pages = [];
+        for (var i = 0; i < pagesData.length; i++) {
+            let pageData = pagesData[i];
+            if (!pageData || pagesData == '') continue;
+            let targetFodder = pageData.match(/r=([A-Z0-9]{4,}[.]?)*/g);
+            if (!targetFodder || !targetFodder[0] || targetFodder == '') continue;
+            let targetAffixes = targetFodder[0].match(/[A-Z0-9]{4,}/g);
+            if (!targetAffixes || targetAffixes.length <= 0) continue;
+            let pageAllFodders = pageData.match(/(s=([A-Z0-9]{4,}[.]?)*)((&[0-9])=([A-Z0-9]{4,}[.]?)*)*/g);
+            let pageFoddersAffixes = [];
+            for (var j = 0; j < pageAllFodders.length; j++) {
+                let pageOneFodder = pageAllFodders[j];
+                if (!pageOneFodder || pageOneFodder <= 0) continue;
+                let fodderAllAffixes = pageOneFodder.match(/([A-Z0-9]{4,}[.]?)+/g);
+                if (!fodderAllAffixes || fodderAllAffixes <= 0) continue;
+                for (var k = 0; k < fodderAllAffixes.length; k++) {
+                    let fodderOneAffixes = fodderAllAffixes[k];
+                    let pageFodderAffixes = fodderOneAffixes.match(/[A-Z0-9]{4,}/g);
+                    if (!pageFodderAffixes || pageFodderAffixes.length <= 0) continue;
+                    pageFoddersAffixes.push(pageFodderAffixes);
+                }
+            }
+            let boosts = pageData.match(/o=([A-Z0-9]{3,}[.]?)*/g);
+            if (!boosts || !boosts[0] || boosts == '') continue;
+            boosts = boosts[0].match(/[A-Z0-9]{3,}/g);
+            if (!boosts || !Array.isArray(boosts)) boosts = [];
+            let connDist = -1;
+            let fodderIdx = -1;
+            let dist = pageData.match(/d=[0-9]+.[0-9]+/);
+            if (dist && dist[0]) {
+                dist = dist[0].match(/[0-9]+/g);
+                if (dist && dist.length > 1) {
+                    connDist = parseInt(dist[0]);
+                    fodderIdx = parseInt(dist[1]);
+                }
+            }
+            let connections = [];
+            for (var j = 0; j < pageFoddersAffixes.length; j++) {
+                let pageFodderAffixes = pageFoddersAffixes[j];
+                connections.push(null);
+                for (var k = 0; k < pageFodderAffixes.length; k++) {
+                    if (this.affixDB[pageFodderAffixes[k]]) {
+                        pageFodderAffixes[k] = this.affixDB[pageFodderAffixes[k]].abilityRef;
+                    }
+                }
+            }
+            for (var j = 0; j < targetAffixes.length; j++) {
+                if (this.affixDB[targetAffixes[j]])
+                    targetAffixes[j] = this.affixDB[targetAffixes[j]].abilityRef;
+            }
+            pages.push({
+                fodders: pageFoddersAffixes,
+                target: targetAffixes,
+                boosts: boosts,
+                connections: connections,
+                isConnected: false,
+                connDist: connDist,
+                fodderIdx: fodderIdx
+            });
+        }
+        if (pages.length <= 0 || !pages[0].target || pages[0].target.length <= 0) return false;
+        let goalPage = pages[0];
+        for (var i = 0; i < pages.length; i++) {
+            let pageA = pages[i];
+            for (var j = 0; j < pageA.fodders.length; j++) {
+                let fodderA = pageA.fodders[j];
+                for (var k = 0; k < pages.length; k++) {
+                    if (k == i) continue;
+                    let pageB = pages[k];
+                    if (pageB && !pageB.isConnected && pageB.target) {
+                        let isMatch = true;
+                        if (fodderA.length == pageB.target.length) {
+                            for (var m = 0; m < pageB.target.length; m++) {
+                                let targetAffix = pageB.target[m];
+                                if (!fodderA.includes(targetAffix)) {
+                                    isMatch = false;
+                                    break;
+                                }
+                            }
+                        }
+                        else isMatch = false;
+                        if (isMatch && pageB.connDist >= 0 && pageB.fodderIdx >= 0) {
+                            if (Math.abs(k - i) != pageB.connDist || j != pageB.fodderIdx)
+                                isMatch = false;
+                        }
+                        if (isMatch) {
+                            // Map indices 0,1,2,3,4,5 to 0,2,4,5,3,1 (even increasing, odd decreasing)
+                            // to display pages nicely
+                            let idx = -1;
+                            if (j < 3) idx = 2 * j;
+                            else idx = 11 - 2 * j;
+                            pageA.connections[idx] = pageB;
+                            pageB.isConnected = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        let filteredPages = [];
+        let pageTreeRoot = createPageTree(goalPage);
+        if (!pageTreeRoot || !(pageTreeRoot instanceof PageTreeNode)) return false;
+        this.setGoal(goalPage.target);
+        this.pageTreeRoot.page.fodders[0].connectTo(pageTreeRoot.page);
+        this.pageTreeRoot.addPageTreeNodes(pageTreeRoot);
+        return true;
+
+        function createPageTree(pageData) {
+            // create pagetreenode
+            let fodders = [];
+            for (var i = 0; i < pageData.fodders.length; i++) {
+                fodders.push(
+                    (new Fodder()).addAffixes(
+                        pageData.fodders[i]
+                    )
+                );
+            }
+            // for each connection, create sub tree and add as child
+            let children = [];
+            for (var i = 0; i < pageData.connections.length; i++) {
+                let connection = pageData.connections[i];
+                if (connection == null) continue;
+                let childNode = createPageTree(connection);
+                if (childNode && childNode instanceof PageTreeNode
+                    && childNode.page && childNode.page instanceof Page) {
+                    // Map indices 0,2,4,5,3,1 (even increasing, odd decreasing) to 0,1,2,3,4,5
+                    // to display pages nicely
+                    let idx = -1;
+                    if (i % 2 == 0) idx = Math.round(i / 2);
+                    else idx = Math.round((11 - i) / 2);
+                    childNode.page.connectTo(fodders[idx]);
+                    children.push(childNode);
+                }
+            }
+            let page = (new Page()).addFodders(
+                fodders
+            );
+            let pageTreeNode = (new PageTreeNode()).setPage(
+                page
+            ).addPageTreeNodes(
+                children
+            )
+            // return root
+            return pageTreeNode;
+        }
+    }
+
+    // LZW-compress a string
+    encodeURLParams(s) {
+        if (typeof s !== 'string' || s == '') return '';
+        let dict = {};
+        let data = (s + "").split("");
+        let out = [];
+        let currChar;
+        let phrase = data[0];
+        let code = 256;
+        for (var i = 1; i < data.length; i++) {
+            currChar = data[i];
+            if (dict[phrase + currChar] != null) {
+                phrase += currChar;
+            }
+            else {
+                out.push(phrase.length > 1 ? dict[phrase] : phrase.charCodeAt(0));
+                dict[phrase + currChar] = code;
+                code++;
+                phrase = currChar;
+            }
+        }
+        out.push(phrase.length > 1 ? dict[phrase] : phrase.charCodeAt(0));
+        for (var i = 0; i < out.length; i++) {
+            out[i] = String.fromCharCode(out[i]);
+        }
+        return out.join("");
+    }
+
+    // Decompress an LZW-encoded string
+    decodeURLParams(s) {
+        let dict = {};
+        let data = (s + "").split("");
+        let currChar = data[0];
+        let oldPhrase = currChar;
+        let out = [currChar];
+        let code = 256;
+        let phrase;
+        for (var i = 1; i < data.length; i++) {
+            let currCode = data[i].charCodeAt(0);
+            if (currCode < 256) {
+                phrase = data[i];
+            }
+            else {
+                phrase = dict[currCode] ? dict[currCode] : (oldPhrase + currChar);
+            }
+            out.push(phrase);
+            currChar = phrase.charAt(0);
+            dict[code] = oldPhrase + currChar;
+            code++;
+            oldPhrase = phrase;
+        }
+        return out.join("");
+    }
 }
 
 class PageTreeNode {
@@ -844,13 +1053,56 @@ class PageTreeNode {
         this.page = null;
     }
 
-    toURL() {
+    toURL(isForSimulator) {
         let url = '';
-        for (var i = 0; i < this.size(); i++) {
-            if (this.children[i] instanceof Page) {
-                url += this.children[i].toURL();
+        let queue = [];
+        let curr;
+        queue.push({
+            node: this,
+            connDist: -1,
+            fodderIdx: -1
+        });
+        let idx = 0;
+        while (queue.length > idx) {
+            curr = queue[idx].node;
+            for (var i = 0; i < curr.size(); i++) {
+                if (curr.children[i] && curr.children[i] instanceof PageTreeNode) {
+                    queue.push({
+                        node: curr.children[i],
+                        connDist: -1,
+                        fodderIdx: -1
+                    });
+                }
+            }
+            idx++;
+        }
+        for (var i = 0; i < queue.length; i++) {
+            let nodeA = queue[i].node;
+            if (nodeA.page instanceof Page) {
+                for (var j = i + 1; j < queue.length; j++) {
+                    let nodeB = queue[j].node;
+                    if (nodeB.page instanceof Page) {
+                        for (var k = 0; k < nodeA.page.size(); k++) {
+                            let fodderA = nodeA.page.fodders[k];
+                            if (fodderA instanceof Fodder
+                                && fodderA.connectedTo === nodeB.page) {
+                                // Distance from pageB to pageA
+                                queue[j].connDist = j - i;
+                                // Index of connected fodder in pageA
+                                queue[j].fodderIdx = k;
+                            }
+                        }
+                    }
+                }
             }
         }
+        for (var i = 0; i < queue.length; i++) {
+            let node = queue[i].node;
+            if (node.page instanceof Page) {
+                url += node.page.toURL(queue[i].connDist, queue[i].fodderIdx, isForSimulator);
+            }
+        }
+
         return url;
     }
 
@@ -870,10 +1122,40 @@ class PageTreeNode {
                 let test = this.find(pageTreeNode);
                 if (pageTreeNode && (pageTreeNode instanceof PageTreeNode)
                     && !pageTreeNode.isGoal // Cannot have goal as a child
-                    && test.length <= 0) { // Deny cycles and duplicates
-                    pageTreeNode.addRateBoostOptions(this.rateBoostOptions);
-                    pageTreeNode.addPotentialOptions(this.potentialOptions);
+                    && test.length <= 0 // Deny cycles and duplicates
+                    && pageTreeNode.page.connectedTo instanceof Fodder) {
+                    pageTreeNode.addRateBoostOptions(this.rateBoostOptions)
+                        .addPotentialOptions(this.potentialOptions);
                     this.children.push(pageTreeNode);
+                    let newEvenChildren = [];
+                    for (var k = 0; k < this.page.size(); k += 2) {
+                        let fodder = this.page.fodders[k];
+                        if (!fodder || !(fodder.connectedTo instanceof Page))
+                            continue;
+                        for (var j = 0; j < this.size(); j++) {
+                            let childNode = this.children[j];
+                            if (!childNode || !childNode.page || !(childNode.page.connectedTo instanceof Fodder))
+                                continue;
+                            if (fodder.connectedTo === childNode.page) {
+                                newEvenChildren.push(childNode);
+                            }
+                        }
+                    }
+                    let newOddChildren = [];
+                    for (var k = 1; k < this.page.size(); k += 2) {
+                        let fodder = this.page.fodders[k];
+                        if (!fodder || !(fodder.connectedTo instanceof Page))
+                            continue;
+                        for (var j = 0; j < this.size(); j++) {
+                            let childNode = this.children[j];
+                            if (!childNode || !childNode.page || !(childNode.page.connectedTo instanceof Fodder))
+                                continue;
+                            if (fodder.connectedTo === childNode.page) {
+                                newOddChildren.unshift(childNode);
+                            }
+                        }
+                    }
+                    this.children = newEvenChildren.concat(newOddChildren);
                 }
             }
         }
@@ -987,7 +1269,7 @@ class PageTreeNode {
             if (!Array.isArray(options)) options = [options];
             for (var i = 0; i < options.length; i++) {
                 let rateBoostOption = options[i];
-                if (rateBoostOption && typeof rateBoostOption === 'string'
+                if (rateBoostOption && rateBoostOption.id && typeof rateBoostOption.id === 'string'
                     && !this.rateBoostOptions.includes(rateBoostOption)) {
                     this.rateBoostOptions.push(rateBoostOption);
                     this.page.addRateBoostOptions(rateBoostOption);
@@ -1005,7 +1287,7 @@ class PageTreeNode {
             if (!Array.isArray(options)) options = [options];
             for (var i = 0; i < options.length; i++) {
                 let potentialOption = options[i];
-                if (potentialOption && typeof potentialOption === 'string'
+                if (potentialOption && potentialOption.id && typeof potentialOption.id === 'string'
                     && !this.potentialOptions.includes(potentialOption)) {
                     this.potentialOptions.push(potentialOption);
                     this.page.addPotentialOptions(potentialOption);
@@ -1058,23 +1340,30 @@ class Page {
         this.connectedTo = null;
     }
 
-    toURL() {
+    toURL(connDist, connFodderIdx, isForSimulator) {
         let url = '';
         for (var i = 0; i < this.size(); i++) {
-            url += ((i == 0) ? 's=' : (i + '=')) + this.fodders[i].toURL() + '&';
+            url += ((i == 0) ? '/s=' : (i + '=')) + this.fodders[i].toURL() + '&';
         }
         url += 'r=';
         if (this.connectedTo) {
             url += this.connectedTo.toURL();
         }
         url += '&o=';
-        if (this.rateBoostOptions && this.rateBoostOptions[this.rateBoostIdx]) {
+        if (this.rateBoostOptions && this.rateBoostOptions[this.rateBoostIdx]
+            && this.rateBoostOptions[this.rateBoostIdx].value) {
             url += this.rateBoostOptions[this.rateBoostIdx].value;
         }
         // TODO for Special Ability like elegant and grace
-        if (this.potentialOptions && this.potentialOptions[this.potentialIdx]) {
+        if (this.potentialOptions && this.potentialOptions[this.potentialIdx]
+            && this.potentialOptions[this.potentialIdx].value) {
             url += '.' + this.potentialOptions[this.potentialIdx].value;
         }
+        // Custom fodder-page connection identifying data
+        if (!isForSimulator && connDist >= 0 && connFodderIdx >= 0) {
+            url += '&d=' + connDist + '.' + connFodderIdx;
+        }
+
         return url;
     }
 
@@ -1178,7 +1467,7 @@ class Page {
             if (!Array.isArray(options)) options = [options];
             for (var i = 0; i < options.length; i++) {
                 let rateBoostOption = options[i];
-                if (rateBoostOption && typeof rateBoostOption === 'string'
+                if (rateBoostOption && rateBoostOption.id && typeof rateBoostOption.id === 'string'
                     && !this.rateBoostOptions.includes(rateBoostOption)) {
                     this.rateBoostOptions.push(rateBoostOption);
                 }
@@ -1192,7 +1481,7 @@ class Page {
             if (!Array.isArray(options)) options = [options];
             for (var i = 0; i < options.length; i++) {
                 let potentialOption = options[i];
-                if (potentialOption && typeof potentialOption === 'string'
+                if (potentialOption && potentialOption.id && typeof potentialOption.id === 'string'
                     && !this.potentialOptions.includes(potentialOption)) {
                     this.potentialOptions.push(potentialOption);
                 }

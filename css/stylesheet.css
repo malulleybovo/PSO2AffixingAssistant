@@ -605,13 +605,22 @@ div.link-container .copy-button {
     text-align: center;
     font-size: 16px;
     font-weight: bold;
-    padding: 0.35em 0em;
     margin-bottom: 0.5em;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+div.link-container .copy-button a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 0.35em 0em;
+    color: white;
+    text-decoration: none;
+    outline: 0;
 }
 
 div.link-container .copy-button:hover {
