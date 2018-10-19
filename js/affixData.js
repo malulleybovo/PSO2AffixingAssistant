@@ -236,7 +236,7 @@
             },
             {
                 id: "Add Ability (Defense Inherit)",
-                name: "Guard  Receptor",
+                name: "Guard Receptor",
                 value: "B31",
                 extend: 100,
                 effect: "ALL(+5)"

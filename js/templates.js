@@ -118,21 +118,22 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
             </div>
             ${(fodder.affixSuccessRates.length > 0) ?
             `<div class="boost-container" >
-            ${CHECKBOX_TEMPLATE({
-                label: `Same Equipment`,
-                description: `Is fodder made with identical equipment?`,
-                isChecked: isSameGear
-            })
-            + DROPDOWN_TEMPLATE({
-                options: rateBoostOptions,
-                selected: (rateBoostIdx >= 0) ? rateBoostIdx : undefined,
-                description: `Is fodder using Affix Boost Item?`
-            })
-            + DROPDOWN_TEMPLATE({
-                options: potentialOptions,
-                selected: (potentialIdx >= 0) ? potentialIdx : undefined,
-                description: `Does equipment have potential that boosts affixing?`
-            })}
+                ${CHECKBOX_TEMPLATE({
+                    label: `Same Equipment`,
+                    description: `Is fodder made with identical equipment?`,
+                    isChecked: isSameGear
+                })
+                + DROPDOWN_TEMPLATE({
+                    options: rateBoostOptions,
+                    selected: (rateBoostIdx >= 0) ? rateBoostIdx : undefined,
+                    description: `Is fodder using Affix Boost Item?`
+                })
+                + DROPDOWN_TEMPLATE({
+                    options: potentialOptions,
+                    selected: (potentialIdx >= 0) ? potentialIdx : undefined,
+                    description: `Does equipment have potential that boosts affixing?`
+                })
+                + ((fodder && fodder.addAbilityItemInUse) ? `<div class="affix">${fodder.addAbilityItemInUse.name}</div>` : ``)}
             </div>` : ``}
         </div>`;
 
@@ -216,6 +217,10 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch }) => {
         for (var i = 0; i < datalist.length; i++) {
             if (datalist[i].code) {
                 filtersearch += `<li><div title="${datalist[i].effect.replace(/<br>/g, ' ')}" data-code="${datalist[i].code}">${datalist[i].name}</div></li>`;
+            }
+            else if (datalist[i].isAddAbilityItem) {
+                let choice = `${datalist[i].transferRate}% : ${datalist[i].name}`;
+                filtersearch += `<li><div>${choice}</div></li>`;
             }
             else if (datalist[i].materials) {
                 let choice = `${datalist[i].transferRate}% : ${datalist[i].materials.map((mat) => mat.name).join(", ")}`;

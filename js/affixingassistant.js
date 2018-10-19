@@ -38,7 +38,6 @@ class Assistant {
     }
 
     reset() {
-        this.pageTreeRoot = null;
         this.activePageTreeNode = null;
         this.activeFodder = null;
     }
@@ -740,6 +739,11 @@ class Assistant {
                 // for every choice for making affixA
                 for (var m = 0; m < this.affixDB[affix.code].choices.length; m++) {
                     let choice = this.affixDB[affix.code].choices[m];
+                    if (choice.isAddAbilityItem) {
+                        abilitySuccessRates[k] = Math.min(Math.max(choice.extend, minRate), maxRate);
+                        abilitySuccessRates.length++;
+                        continue;
+                    }
                     // count occurrences of each ability in choice
                     let choiceCount = countOccurrences(choice.materials);
                     // count occurrences of each ability in all abilities in page
@@ -930,6 +934,49 @@ class Assistant {
         if (!pageTreeRoot || !(pageTreeRoot instanceof PageTreeNode)) return false;
         this.setGoal(goalPage.target);
         this.pageTreeRoot.page.fodders[0].connectTo(pageTreeRoot.page);
+        if (this.data && this.data.optionList && this.data.optionList.support) {
+            for (var j = 0; j < goalPage.boosts.length; j++) {
+                let boost = goalPage.boosts[j];
+                for (var k = 0; k < this.data.optionList.support.length; k++) {
+                    let supportItem = this.data.optionList.support[k];
+                    if (supportItem.value == boost) {
+                        this.pageTreeRoot.page.fodders[0].rateBoostIdx = k;
+                        break;
+                    }
+                }
+            }
+        }
+        if (this.data && this.data.optionList && this.data.optionList.additional) {
+            for (var j = 0; j < goalPage.boosts.length; j++) {
+                let boost = goalPage.boosts[j];
+                for (var k = 0; k < this.data.optionList.additional.length; k++) {
+                    let addAbilityItem = this.data.optionList.additional[k];
+                    if (addAbilityItem.value == boost) {
+                        this.pageTreeRoot.page.fodders[0].addAbilityItemInUse = {
+                            transferRate: addAbilityItem.extend,
+                            materials: [],
+                            isAddAbilityItem: true,
+                            name: addAbilityItem.id,
+                            value: addAbilityItem.value,
+                            extend: addAbilityItem.extend
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        if (this.data && this.data.optionList && this.data.optionList.potential) {
+            for (var j = 0; j < goalPage.boosts.length; j++) {
+                let boost = goalPage.boosts[j];
+                for (var k = 0; k < this.data.optionList.potential.length; k++) {
+                    let potential = this.data.optionList.potential[k];
+                    if (potential.value == boost) {
+                        this.pageTreeRoot.page.fodders[0].potentialIdx = k;
+                        break;
+                    }
+                }
+            }
+        }
         this.pageTreeRoot.addPageTreeNodes(pageTreeRoot);
         return true;
 
@@ -958,6 +1005,52 @@ class Assistant {
                     else idx = Math.round((11 - i) / 2);
                     childNode.page.connectTo(fodders[idx]);
                     children.push(childNode);
+                    if (childNode.page.connectedTo && childNode.page.connectedTo instanceof Fodder
+                        && data && data.optionList && data.optionList.support) {
+                        for (var j = 0; j < connection.boosts.length; j++) {
+                            let boost = connection.boosts[j];
+                            for (var k = 0; k < data.optionList.support.length; k++) {
+                                let supportItem = data.optionList.support[k];
+                                if (supportItem.value == boost) {
+                                    childNode.page.connectedTo.rateBoostIdx = k;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (childNode.page.connectedTo && childNode.page.connectedTo instanceof Fodder
+                        && data && data.optionList && data.optionList.additional) {
+                        for (var j = 0; j < connection.boosts.length; j++) {
+                            let boost = connection.boosts[j];
+                            for (var k = 0; k < data.optionList.additional.length; k++) {
+                                let addAbilityItem = data.optionList.additional[k];
+                                if (addAbilityItem.value == boost) {
+                                    childNode.page.connectedTo.addAbilityItemInUse = {
+                                        transferRate: addAbilityItem.extend,
+                                        materials: [],
+                                        isAddAbilityItem: true,
+                                        name: addAbilityItem.id,
+                                        value: addAbilityItem.value,
+                                        extend: addAbilityItem.extend
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (childNode.page.connectedTo && childNode.page.connectedTo instanceof Fodder
+                        && data && data.optionList && data.optionList.potential) {
+                        for (var j = 0; j < connection.boosts.length; j++) {
+                            let boost = connection.boosts[j];
+                            for (var k = 0; k < data.optionList.potential.length; k++) {
+                                let potential = data.optionList.potential[k];
+                                if (potential.value == boost) {
+                                    childNode.page.connectedTo.potentialIdx = k;
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
             }
             let page = (new Page()).addFodders(
@@ -1389,11 +1482,11 @@ class PageTreeNode {
                 if (potentialOption && potentialOption.id && typeof potentialOption.id === 'string'
                     && !this.potentialOptions.includes(potentialOption)) {
                     this.potentialOptions.push(potentialOption);
-                    this.page.addPotentialOptions(potentialOption);
-                    for (var j = 0; j < this.size(); j++) {
-                        this.children[j].addPotentialOptions(potentialOption);
-                    }
                 }
+            }
+            this.page.addPotentialOptions(options);
+            for (var i = 0; i < this.size(); i++) {
+                this.children[i].addPotentialOptions(options);
             }
         }
         return this;
@@ -1446,14 +1539,19 @@ class Page {
             url += this.connectedTo.toURL();
         }
         url += '&o=';
+        let hasAddedRate = false;
         if (this.connectedTo && this.connectedTo.rateBoostOptions && this.connectedTo.rateBoostOptions[this.connectedTo.rateBoostIdx]
             && this.connectedTo.rateBoostOptions[this.connectedTo.rateBoostIdx].value) {
             url += this.connectedTo.rateBoostOptions[this.connectedTo.rateBoostIdx].value;
+            hasAddedRate = true;
         }
         // TODO for Special Ability like elegant and grace
+        if (this.connectedTo && this.connectedTo instanceof Fodder && this.connectedTo.addAbilityItemInUse) {
+            url += ((hasAddedRate) ? '.' : '') + this.connectedTo.addAbilityItemInUse.value;
+        }
         if (this.connectedTo && this.connectedTo.potentialOptions && this.connectedTo.potentialOptions[this.connectedTo.potentialIdx]
             && this.connectedTo.potentialOptions[this.connectedTo.potentialIdx].value) {
-            url += '.' + this.connectedTo.potentialOptions[this.connectedTo.potentialIdx].value;
+            url += ((hasAddedRate) ? '.' : '') + this.connectedTo.potentialOptions[this.connectedTo.potentialIdx].value;
         }
         // Custom fodder-page connection identifying data
         if (!isForSimulator && connDist >= 0 && connFodderIdx >= 0) {
@@ -1566,6 +1664,9 @@ class Page {
                     this.potentialOptions.push(potentialOption);
                 }
             }
+            for (var i = 0; i < this.size(); i++) {
+                this.fodders[i].addPotentialOptions(options);
+            }
         }
         return this;
     }
@@ -1600,6 +1701,7 @@ class Fodder {
         this.isSameGear = false;
         this.rateBoostIdx = 0;
         this.potentialIdx = 0;
+        this.addAbilityItemInUse = null;
     }
 
     toURL() {
@@ -1636,6 +1738,18 @@ class Fodder {
             }
         }
         return this;
+    }
+
+    setAddAbilityInUse(addAbilities) {
+        if (!addAbilities) return false;
+        if (!Array.isArray(addAbilities)) addAbilities = [addAbilities];
+        for (var i = 0; i < addAbilities.length; i++) {
+            let addAbility = addAbilities[i];
+            if (addAbility.isAddAbilityItem) {
+                this.addAbilityItemInUse = addAbility;
+                return true;
+            }
+        }
     }
 
     setSuccessRate(overallRate, affixRates) {

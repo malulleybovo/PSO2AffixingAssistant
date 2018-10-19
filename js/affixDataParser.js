@@ -280,6 +280,29 @@ class AffixDataParser {
                 }
             }
         }
+        if (data.abilityList && data.optionList && data.optionList.additional) {
+            for (var i = 0; i < data.optionList.additional.length; i++) {
+                let additionalChoice = data.optionList.additional[i];
+                if (!additionalChoice.name || !additionalChoice.id
+                    || !additionalChoice.value || !additionalChoice.extend
+                    || !additionalChoice.effect) continue;
+                for (var j = data.abilityList.length; j >= 0; j--) {
+                    if (data.abilityList[j] && data.abilityList[j].name == additionalChoice.name) {
+                        if (abilityDB[data.abilityList[j].code]) {
+                            abilityDB[data.abilityList[j].code].choices.push({
+                                transferRate: additionalChoice.extend,
+                                materials: [],
+                                isAddAbilityItem: true,
+                                name: additionalChoice.id,
+                                value: additionalChoice.value,
+                                extend: additionalChoice.extend
+                            });
+                        }
+                        break;
+                    }
+                }
+            }
+        }
         // SORT CHOICES BY TRANSFER RATE
         for (code in abilityDB) {
             let thisAbility = abilityDB[code];

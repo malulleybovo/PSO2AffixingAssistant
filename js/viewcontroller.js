@@ -509,6 +509,7 @@ class ViewController {
                 vc.assistant.setGoal(vc.affixesSelected);
             }
         }
+        vc.assistant.activeFodder.setAddAbilityInUse(choices);
         // Add new page to the tree data structure
         // And connect the produced fodder to the new page
         vc.assistant.updateConnection({

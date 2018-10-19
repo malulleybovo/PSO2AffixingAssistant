@@ -258,6 +258,11 @@ div.boost-container {
     margin-top: 0.25em;
 }
 
+div.boost-container div.affix {
+    margin-top: 0.25em;
+    border-radius: 0.25em;
+}
+
 div.affix-selection-container,
 div.choice-selection-container,
 div.formula-sheet-container,
