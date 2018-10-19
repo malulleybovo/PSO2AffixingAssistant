@@ -37,6 +37,12 @@ class Assistant {
         this.activeFodder = null;
     }
 
+    reset() {
+        this.pageTreeRoot = null;
+        this.activePageTreeNode = null;
+        this.activeFodder = null;
+    }
+
     setGoal(affixes) {
         if (!this.validateAffixes(affixes)) return;
         this.pageTreeRoot = (new PageTreeNode(true)).setPage(

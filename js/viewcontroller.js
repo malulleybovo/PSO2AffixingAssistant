@@ -52,7 +52,11 @@ class ViewController {
             e.preventDefault();
             e.data.viewcontroller.centerViewAtNode('#goal');
         });
-        $('#startnew').click(() => VIEW_CONTROLLER.setAffixSelectionView(true, true));
+        $('#startnew').click(() => {
+            VIEW_CONTROLLER.affixesSelected = VIEW_CONTROLLER.assistant.pageTreeRoot.page.fodders[0].affixes.slice(0);
+            VIEW_CONTROLLER.assistant.reset();
+            VIEW_CONTROLLER.setAffixSelectionView(true, true);
+        });
         $('#openformulasheet').click(() => VIEW_CONTROLLER.openFormulaSheet(true));
         $('#getlink').click(() => VIEW_CONTROLLER.openGetLinkView(true));
         $('#themeswitch').click(() => {
