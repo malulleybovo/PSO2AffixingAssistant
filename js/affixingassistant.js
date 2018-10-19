@@ -977,6 +977,11 @@ class Assistant {
                 }
             }
         }
+        for (var j = 0; j < goalPage.boosts.length; j++) {
+            let boost = goalPage.boosts[j];
+            if (boost == 'D01') this.pageTreeRoot.page.fodders[0].isSameGear = false;
+            else if (boost == 'D02') this.pageTreeRoot.page.fodders[0].isSameGear = true;
+        }
         this.pageTreeRoot.addPageTreeNodes(pageTreeRoot);
         return true;
 
@@ -1050,6 +1055,11 @@ class Assistant {
                                 }
                             }
                         }
+                    }
+                    for (var j = 0; j < connection.boosts.length; j++) {
+                        let boost = connection.boosts[j];
+                        if (boost == 'D01') childNode.page.connectedTo.isSameGear = false;
+                        else if (boost == 'D02') childNode.page.connectedTo.isSameGear = true;
                     }
                 }
             }
@@ -1545,13 +1555,20 @@ class Page {
             url += this.connectedTo.rateBoostOptions[this.connectedTo.rateBoostIdx].value;
             hasAddedRate = true;
         }
-        // TODO for Special Ability like elegant and grace
+        // Special Ability like elegant and grace
+        let hasAddedSpecial = false;
         if (this.connectedTo && this.connectedTo instanceof Fodder && this.connectedTo.addAbilityItemInUse) {
             url += ((hasAddedRate) ? '.' : '') + this.connectedTo.addAbilityItemInUse.value;
+            hasAddedSpecial = true;
         }
+        let hasAddedPotential = false;
         if (this.connectedTo && this.connectedTo.potentialOptions && this.connectedTo.potentialOptions[this.connectedTo.potentialIdx]
             && this.connectedTo.potentialOptions[this.connectedTo.potentialIdx].value) {
-            url += ((hasAddedRate) ? '.' : '') + this.connectedTo.potentialOptions[this.connectedTo.potentialIdx].value;
+            url += ((hasAddedRate || hasAddedSpecial) ? '.' : '') + this.connectedTo.potentialOptions[this.connectedTo.potentialIdx].value;
+            hasAddedPotential = true;
+        }
+        if (this.connectedTo && this.connectedTo.isSameGear) {
+            url += ((hasAddedRate || hasAddedSpecial || hasAddedPotential) ? '.' : '') + ((this.connectedTo.isSameGear) ? 'D02' : 'D01');
         }
         // Custom fodder-page connection identifying data
         if (!isForSimulator && connDist >= 0 && connFodderIdx >= 0) {

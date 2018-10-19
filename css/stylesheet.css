@@ -258,7 +258,7 @@ div.boost-container {
     margin-top: 0.25em;
 }
 
-div.boost-container div.affix {
+div.fodder > div.affix:last-child {
     margin-top: 0.25em;
     border-radius: 0.25em;
 }

@@ -132,9 +132,9 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
                     options: potentialOptions,
                     selected: (potentialIdx >= 0) ? potentialIdx : undefined,
                     description: `Does equipment have potential that boosts affixing?`
-                })
-                + ((fodder && fodder.addAbilityItemInUse) ? `<div class="affix">${fodder.addAbilityItemInUse.name}</div>` : ``)}
+                })}
             </div>` : ``}
+            ${((fodder && fodder.addAbilityItemInUse) ? `<div class="affix">${fodder.addAbilityItemInUse.name}</div>` : ``)}
         </div>`;
 
 const LINK_TEMPLATE = ({ link, linkToSim }) => {
