@@ -8,7 +8,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: Verdana;
-    font-size: 10px;
+    font-size: 14px;
     overflow: hidden;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -18,7 +18,7 @@ body {
 
 @media only screen and (max-device-width: 767px) {
     body {
-        font-size: 15px; /* Bigger font for mobile */
+        font-size: 16px; /* Bigger font for mobile */
     }
 }
 
@@ -182,7 +182,7 @@ div.title {
 }
 
 div.affix {
-    width: 137px;
+    width: 150px;
     padding: 0.15em 0.5em;
     background-color: var(--paint-dark);
     border-top: solid 1.5px var(--border-color);

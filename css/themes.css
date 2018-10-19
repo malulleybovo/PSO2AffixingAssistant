@@ -18,7 +18,7 @@
 }
 
 .theme--bright {
-    --background-color: #ffffff;
+    --background-color: #dddde7;
     --overlay-color: rgba(0, 0, 0, 0.5);
     --paint-lightest: #e0e5ee;
     --paint-lighter: #ccd1d9;
