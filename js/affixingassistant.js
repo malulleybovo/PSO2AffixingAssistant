@@ -764,23 +764,23 @@ class Assistant {
                     }
                     if (isMatch) {
                         // match was found, so save the success rate for affixA
-                        abilitySuccessRates[k] = Math.round(choice.transferRate);
+                        abilitySuccessRates[k] = Math.min(Math.max(Math.round(choice.transferRate), minRate), maxRate);
                         if (fodder.size() > minNumSlots) { // If needs upslotting
                             let upslottingFactor = (fodder.size() > 0) ?
                                 this.data.extraSlot[fodder.size() - 1][pageConn.size() > 2]
                                 : 100; // range 0~100
                             upslottingFactor = (upslottingFactor - minRate) / (maxRate - minRate); // range 0~1
-                            abilitySuccessRates[k] = Math.floor(abilitySuccessRates[k] * upslottingFactor);
+                            abilitySuccessRates[k] = Math.min(Math.max(Math.floor(abilitySuccessRates[k] * upslottingFactor), minRate), maxRate);
                         }
                         if (page.isSameGear) {
                             let sameGearFactor = this.data.sameBonusBoost[(pageConn.size() > 2) ? 2 : 1];
-                            abilitySuccessRates[k] = Math.floor(abilitySuccessRates[k] * sameGearFactor);
+                            abilitySuccessRates[k] = Math.min(Math.max(Math.floor(abilitySuccessRates[k] * sameGearFactor), minRate), maxRate);
                         }
                         if (page.rateBoostIdx >= 0 && page.rateBoostIdx < page.rateBoostOptions.length) {
-                            abilitySuccessRates[k] = this.data.optionList.support[page.rateBoostIdx].fn(abilitySuccessRates[k]);
+                            abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.support[page.rateBoostIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
                         }
                         if (page.potentialIdx >= 0 && page.potentialIdx < page.potentialOptions.length) {
-                            abilitySuccessRates[k] = this.data.optionList.potential[page.potentialIdx].fn(abilitySuccessRates[k]);
+                            abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.potential[page.potentialIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
                         }
                         abilitySuccessRates.length++;
                         if (fodderSuccessRate < 0) fodderSuccessRate = (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
@@ -795,7 +795,7 @@ class Assistant {
             }
             // set page success rate to compound success rates of every affix in fodderA
             let overallSuccessRate = (abilitySuccessRates.length == fodder.size()) ?
-                Math.round((fodderSuccessRate + minRate) * (maxRate - minRate))
+                Math.min(Math.max(Math.round((fodderSuccessRate * (maxRate - minRate)) + minRate), minRate), maxRate)
                 : -1;
             pageConn.setSuccessRate(overallSuccessRate);
             fodder.setSuccessRate(overallSuccessRate, abilitySuccessRates);
