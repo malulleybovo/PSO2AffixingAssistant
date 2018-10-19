@@ -1,6 +1,7 @@
 <div align="center">
 
   # PSO2 Affixing Assistant
+  Effortless affixing solutions to PSO2 problems
   #### Version Alpha 5.0
 
   ## [Use the Assistant Here](https://malulleybovo.github.io/PSO2AffixingAssistant/)
