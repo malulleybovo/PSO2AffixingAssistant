@@ -715,13 +715,6 @@ class Assistant {
         if (!page || !(page instanceof Page)) return;
         let maxRate = (new Fodder()).MAX_RATE;
         let minRate = (new Fodder()).MIN_RATE;
-        let additionalBoost = 0;
-        if (page.rateBoostIdx >= 0 && page.rateBoostIdx < page.rateBoostOptions.length) {
-            additionalBoost += this.data.optionList.support[page.rateBoostIdx].fn;
-        }
-        if (page.potentialIdx >= 0 && page.potentialIdx < page.potentialOptions.length) {
-            additionalBoost += this.data.optionList.support[page.potentialIdx];
-        }
         // for every fodderA in this page
         for (var i = 0; i < page.size(); i++) {
             let fodder = page.fodders[i];
@@ -772,15 +765,15 @@ class Assistant {
                             upslottingFactor = (upslottingFactor - minRate) / (maxRate - minRate); // range 0~1
                             abilitySuccessRates[k] = Math.min(Math.max(Math.floor(abilitySuccessRates[k] * upslottingFactor), minRate), maxRate);
                         }
-                        if (page.isSameGear) {
+                        if (fodder.isSameGear) {
                             let sameGearFactor = this.data.sameBonusBoost[(pageConn.size() > 2) ? 2 : 1];
                             abilitySuccessRates[k] = Math.min(Math.max(Math.floor(abilitySuccessRates[k] * sameGearFactor), minRate), maxRate);
                         }
-                        if (page.rateBoostIdx >= 0 && page.rateBoostIdx < page.rateBoostOptions.length) {
-                            abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.support[page.rateBoostIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
+                        if (fodder.rateBoostIdx >= 0 && fodder.rateBoostIdx < fodder.rateBoostOptions.length) {
+                            abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.support[fodder.rateBoostIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
                         }
-                        if (page.potentialIdx >= 0 && page.potentialIdx < page.potentialOptions.length) {
-                            abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.potential[page.potentialIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
+                        if (fodder.potentialIdx >= 0 && fodder.potentialIdx < fodder.potentialOptions.length) {
+                            abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.potential[fodder.potentialIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
                         }
                         abilitySuccessRates.length++;
                         if (fodderSuccessRate < 0) fodderSuccessRate = (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
@@ -1033,6 +1026,106 @@ class Assistant {
         }
         return out.join("");
     }
+
+    query({ searchRoot, dataClass, properties }) {
+        let queue = [];
+        let root = (searchRoot && searchRoot instanceof PageTreeNode) ? searchRoot : this.pageTreeRoot;
+        let results = [];
+        queue.unshift(root);
+        while (queue.length > 0) {
+            let node = queue.pop();
+            for (var i = 0; i < node.size(); i++) {
+                let child = node.children[i];
+                queue.unshift(child);
+            }
+            if (isRefAMatch(node)) results.push(node);
+            if (node.page && node.page instanceof Page) {
+                if (isRefAMatch(node.page)) results.push(node.page);
+                for (var i = 0; i < node.page.size(); i++) {
+                    let fodder = node.page.fodders[i];
+                    if (fodder && fodder instanceof Fodder) {
+                        if (isRefAMatch(fodder)) results.push(fodder);
+                    }
+                }
+            }
+        }
+        return results;
+
+        function isRefAMatch(ref) {
+            console.log();
+            let isMatch = true;
+            if (dataClass) {
+                if (ref instanceof dataClass) {
+                    if (properties) {
+                        for (var key in properties) {
+                            if (typeof properties[key] !== 'object') {
+                                if (ref[key] != properties[key]) {
+                                    isMatch = false;
+                                    break;
+                                }
+                            }
+                            else {
+                                for (var propKey in properties[key]) {
+                                    if (typeof properties[key][propKey] !== 'object') {
+                                        if (ref[key][propKey] != properties[key][propKey]) {
+                                            isMatch = false;
+                                            break;
+                                        }
+                                    }
+                                    else {
+                                        for (var propKey2 in properties[key][propKey]) {
+                                            if (typeof properties[key][propKey][propKey2] !== 'object') {
+                                                if (ref[key][propKey][propKey2] != properties[key][propKey][propKey2]) {
+                                                    isMatch = false;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    isMatch = false;
+                }
+            }
+            else {
+                if (properties) {
+                    for (var key in properties) {
+                        if (typeof properties[key] !== 'object') {
+                            if (ref[key] != properties[key]) {
+                                isMatch = false;
+                                break;
+                            }
+                        }
+                        else {
+                            for (var propKey in properties[key]) {
+                                if (typeof properties[key][propKey] !== 'object') {
+                                    if (ref[key][propKey] != properties[key][propKey]) {
+                                        isMatch = false;
+                                        break;
+                                    }
+                                }
+                                else {
+                                    for (var propKey2 in properties[key][propKey]) {
+                                        if (typeof properties[key][propKey][propKey2] !== 'object') {
+                                            if (ref[key][propKey][propKey2] != properties[key][propKey][propKey2]) {
+                                                isMatch = false;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return isMatch;
+        }
+    }
 }
 
 class PageTreeNode {
@@ -1278,11 +1371,11 @@ class PageTreeNode {
                 if (rateBoostOption && rateBoostOption.id && typeof rateBoostOption.id === 'string'
                     && !this.rateBoostOptions.includes(rateBoostOption)) {
                     this.rateBoostOptions.push(rateBoostOption);
-                    this.page.addRateBoostOptions(rateBoostOption);
-                    for (var j = 0; j < this.size(); j++) {
-                        this.children[j].addRateBoostOptions(rateBoostOption);
-                    }
                 }
+            }
+            this.page.addRateBoostOptions(options);
+            for (var i = 0; i < this.size(); i++) {
+                this.children[i].addRateBoostOptions(options);
             }
         }
         return this;
@@ -1340,9 +1433,6 @@ class Page {
         }
         // Mutable variables
         this.successRate = -1;
-        this.isSameGear = false;
-        this.rateBoostIdx = 0;
-        this.potentialIdx = 0;
         this.connectedTo = null;
     }
 
@@ -1356,14 +1446,14 @@ class Page {
             url += this.connectedTo.toURL();
         }
         url += '&o=';
-        if (this.rateBoostOptions && this.rateBoostOptions[this.rateBoostIdx]
-            && this.rateBoostOptions[this.rateBoostIdx].value) {
-            url += this.rateBoostOptions[this.rateBoostIdx].value;
+        if (this.connectedTo && this.connectedTo.rateBoostOptions && this.connectedTo.rateBoostOptions[this.connectedTo.rateBoostIdx]
+            && this.connectedTo.rateBoostOptions[this.connectedTo.rateBoostIdx].value) {
+            url += this.connectedTo.rateBoostOptions[this.connectedTo.rateBoostIdx].value;
         }
         // TODO for Special Ability like elegant and grace
-        if (this.potentialOptions && this.potentialOptions[this.potentialIdx]
-            && this.potentialOptions[this.potentialIdx].value) {
-            url += '.' + this.potentialOptions[this.potentialIdx].value;
+        if (this.connectedTo && this.connectedTo.potentialOptions && this.connectedTo.potentialOptions[this.connectedTo.potentialIdx]
+            && this.connectedTo.potentialOptions[this.connectedTo.potentialIdx].value) {
+            url += '.' + this.connectedTo.potentialOptions[this.connectedTo.potentialIdx].value;
         }
         // Custom fodder-page connection identifying data
         if (!isForSimulator && connDist >= 0 && connFodderIdx >= 0) {
@@ -1386,6 +1476,8 @@ class Page {
                 let fodder = fodders[i];
                 if (fodder && fodder instanceof Fodder) {
                     if (this.size() < this.CAPACITY) {
+                        fodder.addRateBoostOptions(this.rateBoostOptions);
+                        fodder.addPotentialOptions(this.potentialOptions);
                         this.fodders.push(fodder);
                     }
                     else {
@@ -1411,27 +1503,6 @@ class Page {
                 `Page %o success rate was not changed from ${this.successRate} to ${rate}.`,
                 this
             );
-        }
-        return this;
-    }
-
-    setSameGear(bool) {
-        if (typeof bool === 'boolean') {
-            this.isSameGear = bool;
-        }
-        return this;
-    }
-
-    setRateBoostIdx(idx) {
-        if (typeof idx === 'number' && idx >= 0) {
-            this.rateBoostIdx = idx;
-        }
-        return this;
-    }
-
-    setPotentialIdx(idx) {
-        if (typeof idx === 'number' && idx >= 0) {
-            this.potentialIdx = idx;
         }
         return this;
     }
@@ -1478,6 +1549,9 @@ class Page {
                     this.rateBoostOptions.push(rateBoostOption);
                 }
             }
+            for (var i = 0; i < this.size(); i++) {
+                this.fodders[i].addRateBoostOptions(options);
+            }
         }
         return this;
     }
@@ -1505,6 +1579,8 @@ class Fodder {
         this.MAX_RATE = 100;
         this.affixes = [];
         this.affixSuccessRates = [];
+        this.rateBoostOptions = [];
+        this.potentialOptions = [];
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(Fodder.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -1521,6 +1597,9 @@ class Fodder {
         // Mutable variables
         this.overallSuccessRate = -1;
         this.connectedTo = null;
+        this.isSameGear = false;
+        this.rateBoostIdx = 0;
+        this.potentialIdx = 0;
     }
 
     toURL() {
@@ -1573,6 +1652,27 @@ class Fodder {
         return this;
     }
 
+    setSameGear(bool) {
+        if (typeof bool === 'boolean') {
+            this.isSameGear = bool;
+        }
+        return this;
+    }
+
+    setRateBoostIdx(idx) {
+        if (typeof idx === 'number' && idx >= 0) {
+            this.rateBoostIdx = idx;
+        }
+        return this;
+    }
+
+    setPotentialIdx(idx) {
+        if (typeof idx === 'number' && idx >= 0) {
+            this.potentialIdx = idx;
+        }
+        return this;
+    }
+
     connectTo(page) {
         if (page == this.connectedTo) return this;
         if (page instanceof Page) {
@@ -1598,6 +1698,34 @@ class Fodder {
                 let affix = affixes[i];
                 if (affix && this.affixes.includes(affix)) {
                     this.affixes.splice(this.affixes.indexOf(affix), 1)
+                }
+            }
+        }
+        return this;
+    }
+
+    addRateBoostOptions(options) {
+        if (options) {
+            if (!Array.isArray(options)) options = [options];
+            for (var i = 0; i < options.length; i++) {
+                let rateBoostOption = options[i];
+                if (rateBoostOption && rateBoostOption.id && typeof rateBoostOption.id === 'string'
+                    && !this.rateBoostOptions.includes(rateBoostOption)) {
+                    this.rateBoostOptions.push(rateBoostOption);
+                }
+            }
+        }
+        return this;
+    }
+
+    addPotentialOptions(options) {
+        if (options) {
+            if (!Array.isArray(options)) options = [options];
+            for (var i = 0; i < options.length; i++) {
+                let potentialOption = options[i];
+                if (potentialOption && potentialOption.id && typeof potentialOption.id === 'string'
+                    && !this.potentialOptions.includes(potentialOption)) {
+                    this.potentialOptions.push(potentialOption);
                 }
             }
         }

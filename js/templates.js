@@ -76,8 +76,13 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level
                 fodder: fodders[i],
                 isGoal: isGoal,
                 titleLabel: (isGoal) ? 'GOAL' : ('Fodder ' + i),
-                produceLabel: (isGoal) ? 'CHANGE' : null,
-                dataConn: (fodderOffsets[i] >= 0) ? fodderDataConnBase + fodderOffsets[i] : -1
+                produceLabel: (isGoal) ? 'RE-AFFIX IT' : null,
+                dataConn: (fodderOffsets[i] >= 0) ? fodderDataConnBase + fodderOffsets[i] : -1,
+                isSameGear: page.fodders[i].isSameGear,
+                rateBoostOptions: rateBoostOptions,
+                rateBoostIdx: page.fodders[i].rateBoostIdx,
+                potentialOptions: potentialOptions,
+                potentialIdx: page.fodders[i].potentialIdx
             });
         }
         pageTempate += `</div>`;
@@ -87,43 +92,48 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level
                 <span>${(page.successRate >= 0) ? page.successRate + `%` : `?`}</span>
             </div>`;
         }
-        pageTempate += `<div class="boost-container">`
-            + CHECKBOX_TEMPLATE({
-                description: 'Same',
-                isChecked: page.isSameGear
-            })
-            + DROPDOWN_TEMPLATE({
-                options: rateBoostOptions,
-                selected: (page.rateBoostIdx >= 0) ? page.rateBoostIdx : undefined
-            })
-            + DROPDOWN_TEMPLATE({
-                options: potentialOptions,
-                selected: (page.potentialIdx >= 0) ? page.potentialIdx : undefined
-            });
     }
-    pageTempate += `</div></div>`;
+    pageTempate += `</div>`;
     return pageTempate;
 };
 
-const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel }) =>
+const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, isSameGear, rateBoostOptions, rateBoostIdx, potentialOptions, potentialIdx }) =>
     `<div class="fodder" ${(dataConn >= 0) ? `data-conn="` + dataConn + `"` : ``}>
             <div class="title">${titleLabel}</div>
             <div class="affixes">
-                <div class="affix">${(fodder && fodder.affixes[0]) ? fodder.affixes[0].name : `&nbsp;`}${(fodder.affixes[0]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[0]) ? ` : ${fodder.affixSuccessRates[0]}%` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[1]) ? fodder.affixes[1].name : `&nbsp;`}${(fodder.affixes[1]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[1]) ? ` : ${fodder.affixSuccessRates[1]}%` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[2]) ? fodder.affixes[2].name : `&nbsp;`}${(fodder.affixes[2]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[2]) ? ` : ${fodder.affixSuccessRates[2]}%` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[3]) ? fodder.affixes[3].name : `&nbsp;`}${(fodder.affixes[3]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[3]) ? ` : ${fodder.affixSuccessRates[3]}%` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[4]) ? fodder.affixes[4].name : `&nbsp;`}${(fodder.affixes[4]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[4]) ? ` : ${fodder.affixSuccessRates[4]}%` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[5]) ? fodder.affixes[5].name : `&nbsp;`}${(fodder.affixes[5]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[5]) ? ` : ${fodder.affixSuccessRates[5]}%` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[6]) ? fodder.affixes[6].name : `&nbsp;`}${(fodder.affixes[6]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[6]) ? ` : ${fodder.affixSuccessRates[6]}%` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[7]) ? fodder.affixes[7].name : `&nbsp;`}${(fodder.affixes[7]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[7]) ? ` : ${fodder.affixSuccessRates[7]}%` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[0]) ? fodder.affixes[0].name : `&nbsp;`}${(fodder.affixes[0]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[0]) ? ` : <span title="${fodder.affixSuccessRates[0]}% chance of transfering this ability">${fodder.affixSuccessRates[0]}%</span>` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[1]) ? fodder.affixes[1].name : `&nbsp;`}${(fodder.affixes[1]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[1]) ? ` : <span title="${fodder.affixSuccessRates[1]}% chance of transfering this ability">${fodder.affixSuccessRates[1]}%</span>` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[2]) ? fodder.affixes[2].name : `&nbsp;`}${(fodder.affixes[2]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[2]) ? ` : <span title="${fodder.affixSuccessRates[2]}% chance of transfering this ability">${fodder.affixSuccessRates[2]}%</span>` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[3]) ? fodder.affixes[3].name : `&nbsp;`}${(fodder.affixes[3]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[3]) ? ` : <span title="${fodder.affixSuccessRates[3]}% chance of transfering this ability">${fodder.affixSuccessRates[3]}%</span>` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[4]) ? fodder.affixes[4].name : `&nbsp;`}${(fodder.affixes[4]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[4]) ? ` : <span title="${fodder.affixSuccessRates[4]}% chance of transfering this ability">${fodder.affixSuccessRates[4]}%</span>` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[5]) ? fodder.affixes[5].name : `&nbsp;`}${(fodder.affixes[5]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[5]) ? ` : <span title="${fodder.affixSuccessRates[5]}% chance of transfering this ability">${fodder.affixSuccessRates[5]}%</span>` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[6]) ? fodder.affixes[6].name : `&nbsp;`}${(fodder.affixes[6]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[6]) ? ` : <span title="${fodder.affixSuccessRates[6]}% chance of transfering this ability">${fodder.affixSuccessRates[6]}%</span>` : `` : ``}</div>
+                <div class="affix">${(fodder && fodder.affixes[7]) ? fodder.affixes[7].name : `&nbsp;`}${(fodder.affixes[7]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[7]) ? ` : <span title="${fodder.affixSuccessRates[7]}% chance of transfering this ability">${fodder.affixSuccessRates[7]}%</span>` : `` : ``}</div>
             </div>
             <div class="divider"></div>
-            <div class="produce-button">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? `REPRODUCE` : `PRODUCE`)}</div>
-            <div class="success-indicator">
+            <div class="produce-button">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? `RE-AFFIX IT` : `AFFIX IT`)}</div>
+            <div class="success-indicator" title="Success in making this equipment">
                 <span>${(isGoal) ? `Goal` : `Fodder`} Success: </span>
             <span>${(fodder.overallSuccessRate >= 0) ? fodder.overallSuccessRate + `%` : `?`}</span>
             </div>
+            ${(fodder.affixSuccessRates.length > 0) ?
+            `<div class="boost-container" >
+            ${CHECKBOX_TEMPLATE({
+                label: `Same Equipment`,
+                description: `Is fodder made with identical equipment?`,
+                isChecked: isSameGear
+            })
+            + DROPDOWN_TEMPLATE({
+                options: rateBoostOptions,
+                selected: (rateBoostIdx >= 0) ? rateBoostIdx : undefined,
+                description: `Is fodder using Affix Boost Item?`
+            })
+            + DROPDOWN_TEMPLATE({
+                options: potentialOptions,
+                selected: (potentialIdx >= 0) ? potentialIdx : undefined,
+                description: `Does equipment have potential that boosts affixing?`
+            })}
+            </div>` : ``}
         </div>`;
 
 const LINK_TEMPLATE = ({ link, linkToSim }) => {
@@ -145,8 +155,10 @@ const LINK_TEMPLATE = ({ link, linkToSim }) => {
     </div>`;
 }
 
-const DROPDOWN_TEMPLATE = ({ options, selected }) => {
-    let dropdown = `<div class="dropdown-container"><select>`;
+const DROPDOWN_TEMPLATE = ({ options, selected, description }) => {
+    let dropdown = `<div class="dropdown-container"`;
+    if (description) dropdown += ` title="${description}"`;
+    dropdown += `><select>`;
     if (Array.isArray(options)) {
         if (typeof selected === 'number' && selected >= options.length)
             selected = 0;
@@ -160,10 +172,10 @@ const DROPDOWN_TEMPLATE = ({ options, selected }) => {
     return dropdown;
 };
 
-const CHECKBOX_TEMPLATE = ({ description, isChecked }) => 
+const CHECKBOX_TEMPLATE = ({ label, description, isChecked }) => 
     `<div class="checkbox-container">
         <div class="checkbox-holder">
-            <div>${(description) ? description : ``}</div>
+            <div${(description) ? ` title ="${description}"` : ``}>${(label) ? label : ``}</div>
             <label class="checkmark-holder">
                 <input type="checkbox" ${(isChecked) ? `checked` : ``}>
                 <span class="checkmark"></span>
@@ -233,8 +245,8 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
             <div class="main-grid">
                 <div class="title bold">${(isAffixSelection) ? `Choose Abilities` : (isChoiceSelection) ? `Choose Method of Making` : (isFormulaSheet) ? `Affixing Formula Sheet` : ``}</div>${(isChoiceSelection) ?
                 `<div class="options">
-                    ${CHECKBOX_TEMPLATE({ description: `Affix By Upslotting`, isChecked: shouldUpslot })}
-                    ${CHECKBOX_TEMPLATE({ description: `Use All Six Fodders`, isChecked: shouldSpread })}
+                    ${CHECKBOX_TEMPLATE({ label: `Affix By Upslotting`, description: `Using equipment with less slots to make gear with more slots`, isChecked: shouldUpslot })}
+                    ${CHECKBOX_TEMPLATE({ label: `Use All Six Fodders`, description: `Makes it cheaper to produce the intermediary equipment`, isChecked: shouldSpread })}
                 </div>` 
             : ``}<div class="content">`;
     if (isAffixSelection) {

@@ -101,10 +101,12 @@ class ViewController {
         };
     }
 
-    findPageAndNodeByDOM(pageElem) {
-        let $elem = $(pageElem);
+    findPageAndNodeByDOM(fodderElem) {
+        let $fodderElem = $(fodderElem);
+        if (!$fodderElem.hasClass('fodder')) $fodderElem = $fodderElem.parents('div.fodder');
+        let $elem = $(fodderElem);
         if (!$elem.hasClass('page')) $elem = $elem.parents('div.page');
-        if ($elem.length <= 0 || !(this.assistant.pageTreeRoot instanceof PageTreeNode)) return;
+        if ($fodderElem.length <= 0 || $elem.length <= 0 || !(this.assistant.pageTreeRoot instanceof PageTreeNode)) return;
         let indices = [];
         do {
             if ($elem.length > 0) indices.unshift($elem.index());
@@ -116,7 +118,7 @@ class ViewController {
             curr = curr.children[indices[i]];
         }
         return {
-            page: curr.page,
+            fodder: curr.page.fodders[$fodderElem.index()],
             pageTreeNode: curr
         };
     }
@@ -334,8 +336,8 @@ class ViewController {
         $('.boost-container input[type=checkbox]').change({ viewcontroller: this }, (e) => {
             let $elem = $(e.currentTarget);
             for (var i = 0; i < $elem.length; i++) {
-                let { page } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
-                if (page) page.setSameGear($elem.prop('checked'));
+                let { fodder } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
+                if (fodder) fodder.setSameGear($elem.prop('checked'));
             }
             e.data.viewcontroller.updateURLParams();
             e.data.viewcontroller.updateView();
@@ -344,8 +346,8 @@ class ViewController {
             let $elem = $(e.currentTarget);
             for (var i = 0; i < $elem.length; i++) {
                 let index = $($elem[i]).find('option:selected').index();
-                let { page } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
-                if (page) page.setRateBoostIdx(index);
+                let { fodder } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
+                if (fodder) fodder.setRateBoostIdx(index);
             }
             e.data.viewcontroller.updateURLParams();
             e.data.viewcontroller.updateView();
@@ -354,8 +356,8 @@ class ViewController {
             let $elem = $(e.currentTarget);
             for (var i = 0; i < $elem.length; i++) {
                 let index = $($elem[i]).find('option:selected').index();
-                let { page } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
-                if (page) page.setPotentialIdx(index);
+                let { fodder } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
+                if (fodder) fodder.setPotentialIdx(index);
             }
             e.data.viewcontroller.updateURLParams();
             e.data.viewcontroller.updateView();
