@@ -211,12 +211,12 @@ class Assistant {
         // target number of slots (otherwise the gear cannot be affixed)
         for (var i = 0; i < page.size(); i++) {
             let fodder = page.fodders[i];
-            if (fodder.size() > 0) {
+            if (fodder.size(true) > 0) {
                 let junks = [];
                 for (var j = 0; j < this.junkCodes.length; j++) {
                     let junk = this.affixDB[this.junkCodes[j]].abilityRef;
                     if (fodder.affixes.includes(junk)) continue;
-                    if (fodder.size() + junks.length < targetNumSlots) junks.push(junk);
+                    if (fodder.size(true) + junks.length < targetNumSlots) junks.push(junk);
                     else break;
                 }
                 if (junks.length > 0) fodder.addAffixes(junks);
@@ -364,15 +364,21 @@ class Assistant {
             if (overlaps.length > 0) {
                 // sort overlaps by rate
                 overlaps.sort((a, b) => b.compoundRate - a.compoundRate);
-                if (page.fodders[overlaps[0].index]) {
-                    page.fodders[overlaps[0].index].addAffixes([affix]);
+                for (var j = 0; j < nooverlaps.length; j++) {
+                    if (page.fodders[overlaps[j].index] && page.fodders[nooverlaps[j].index].affixes.length < targetNumSlots) {
+                        page.fodders[overlaps[j].index].addAffixes([affix]);
+                        break;
+                    }
                 }
             }
             else if (nooverlaps.length > 0) { // Or try placing on best non-overlap
                 // sort overlaps by rate
                 nooverlaps.sort((a, b) => b.compoundRate - a.compoundRate);
-                if (page.fodders[nooverlaps[0].index]) {
-                    page.fodders[nooverlaps[0].index].addAffixes([affix]);
+                for (var j = 0; j < nooverlaps.length; j++) {
+                    if (page.fodders[nooverlaps[j].index] && page.fodders[nooverlaps[j].index].affixes.length < targetNumSlots) {
+                        page.fodders[nooverlaps[j].index].addAffixes([affix]);
+                        break;
+                    }
                 }
             }
             else {
@@ -528,24 +534,43 @@ class Assistant {
                         let isOverlap = false;
                         let hasReceptor = false;
                         // Get top choice that overlaps (which might involve a receptor)
-                        for (var m = 0; m < fodderAffixChoices.length; m++) {
-                            var fodderAffixChoice = fodderAffixChoices[m];
-                            for (var n = 0; n < fodderAffixChoice.materials.length; n++) {
-                                let choiceAffix = fodderAffixChoice.materials[n];
-                                if (RECEPTOR_REGEX.test(choiceAffix.code)) hasReceptor = true;
-                                if (affix == choiceAffix) isOverlap = true;
-                            }
-                            if (isOverlap) {
-                                compoundRate *= fodderAffixChoice.transferRate / 100;
-                                if (hasReceptor) receptorRateFactor *= fodderAffixChoice.transferRate / 100;
+                        let affixChoices = this.affixDB[affix.code].choices;
+                        let rateMultiplier = 1;
+                        let m = 0;
+                        let n = 0;
+                        while (m < fodderAffixChoices.length && n < affixChoices.length) {
+                            let fodderAffixChoice = fodderAffixChoices[m];
+                            let choice = affixChoices[n];
+
+                            let combined = this.getAffixInstancesInvolvedIn([choice, fodderAffixChoice]);
+                            if (combined.length < choice.length + fodderAffixChoice) {
+                                isOverlap = true;
+                                rateMultiplier *= (fodderAffixChoice.transferRate / 100);
+                                if (combined.materials.filter((mat) => mat.code.match(RECEPTOR_REGEX))) {
+                                    hasReceptor = true;
+                                }
                                 break;
+                            }
+
+                            // goes through 0:0, 0:1, 1:0, 1:1, 1:2, 2:1, 2:2 ... m:n
+                            // ensures it checks lowest array indices for both arrays first
+                            if (m >= fodderAffixChoices.length - 1) n++;
+                            else if (n >= affixChoices.length - 1) m++;
+                            else {
+                                if ((n == m) || (m - n == 1)) n++;
+                                else if (n - m == 1) { m++; n--; }
                             }
                         }
                         if (isOverlap) {
                             numOverlaps++;
-                            if (hasReceptor) numOverlapsInvolvingReceptor++;
+                            compoundRate *= rateMultiplier;
+                            if (hasReceptor) {
+                                numOverlapsInvolvingReceptor++;
+                                receptorRateFactor *= rateMultiplier;
+                            }
                         }
                         else {
+                            // for no-overlap, multiply the best transfer rate of every ability in fodder
                             if (fodderAffixChoices[0])
                                 compoundRate *= fodderAffixChoices[0].transferRate / 100;
                         }
@@ -708,10 +733,19 @@ class Assistant {
         if (!this.data || !this.data.optionList || !this.data.optionList.additional
             || !affix || !affix.name) return false;
 
-        for (var entry in this.data.optionList.additional) {
+        for (var key in this.data.optionList.additional) {
+            let entry = this.data.optionList.additional[key];
             if (entry.name && entry.name == affix.name) return true;
         }
         return false;
+    }
+
+    numSpecialAbilitiesIn(affixes) {
+        let num = 0;
+        for (var i = 0; i < affixes.length; i++) {
+            if (this.isSpecialAbility(affixes[i])) num++;
+        }
+        return num;
     }
 
     toURL(isForSimulator) {
@@ -1779,8 +1813,18 @@ class Fodder {
         return url;
     }
 
-    size() {
-        return this.affixes.length;
+    size(isCountingAll) {
+        let numSpecial = 0;
+        if (!isCountingAll) {
+            for (var i = 0; i < this.affixes.length; i++) {
+                let affix = this.affixes[i];
+                for (var key in ASSISTANT.data.optionList.additional) {
+                    let entry = ASSISTANT.data.optionList.additional[key];
+                    if (entry.name && entry.name == affix.name) numSpecial++;
+                }
+            }
+        }
+        return this.affixes.length - numSpecial;
     }
 
     addAffixes(affixes) {

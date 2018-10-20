@@ -2363,7 +2363,7 @@
         {
             code: "HB01",
             gid: "DA",
-            name: "Shot Resist I",
+            name: "Shoot Resist I",
             lvup: "HB02",
             extend: [
                 100,
@@ -2376,7 +2376,7 @@
         {
             code: "HB02",
             gid: "DA",
-            name: "Shot Resist II",
+            name: "Shoot Resist II",
             lvup: "HB03",
             extend: [
                 60,
@@ -2393,7 +2393,7 @@
         {
             code: "HB03",
             gid: "DA",
-            name: "Shot Resist III",
+            name: "Shoot Resist III",
             lvup: "HB04",
             extend: [
                 60,
@@ -2410,7 +2410,7 @@
         {
             code: "HB04",
             gid: "DA",
-            name: "Shot Resist IV",
+            name: "Shoot Resist IV",
             lvup: "HB05",
             extend: [
                 40,
@@ -2427,7 +2427,7 @@
         {
             code: "HB05",
             gid: "DA",
-            name: "Shot Resist V",
+            name: "Shoot Resist V",
             extend: [
                 20,
                 40,
@@ -4679,7 +4679,7 @@
                 100,
                 100
             ],
-            effect: "Bullet Bow damage is boosted by 3% during<br>Rapid Shot.",
+            effect: "Bullet Bow damage is boosted by 3% during<br>Rapid Shoot.",
             noEx: true
         },
         {
@@ -7394,19 +7394,19 @@
         {
             code: "XI08",
             gid: "E",
-            name: "Noble Shot",
+            name: "Noble Shoot",
             effect: "R-ATK(+30),PP(+3)"
         },
         {
             code: "XI12",
             gid: "E",
-            name: "Elegant Shot",
+            name: "Elegant Shoot",
             effect: "R-ATK(+40),PP(+4)"
         },
         {
             code: "XI53",
             gid: "E",
-            name: "Grace Shot",
+            name: "Grace Shoot",
             effect: "R-ATK(+50),PP(+5)"
         },
         {
