@@ -496,7 +496,7 @@ class ViewController {
         if (!(vc instanceof ViewController)) return;
         if (vc.choicesSelected.includes(null)) return;
         let choices = vc.choicesSelected;
-        let targetNumSlots = vc.affixesSelected.length - ((vc.shouldUpslot) ? 1 : 0);
+        let targetNumSlots = vc.affixesSelected.length - ((vc.shouldUpslot && vc.affixesSelected.length > 1) ? 1 : 0);
         let newPage = vc.assistant.buildPageForChoices(choices, vc.shouldSpread, targetNumSlots);
         if (!newPage) {
             console.warn(

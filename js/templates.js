@@ -249,8 +249,8 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
         <div onclick="event.stopPropagation();">
             <div class="main-grid">
                 <div class="title bold">${(isAffixSelection) ? `Choose Abilities` : (isChoiceSelection) ? `Choose Method of Making` : (isFormulaSheet) ? `Affixing Formula Sheet` : ``}</div>${(isChoiceSelection) ?
-                `<div class="options">
-                    ${CHECKBOX_TEMPLATE({ label: `Affix By Upslotting`, description: `Using equipment with less slots to make gear with more slots`, isChecked: shouldUpslot })}
+                `<div class="options">${(affixesSelected.length > 1) ? `
+                    ${CHECKBOX_TEMPLATE({ label: `Affix By Upslotting`, description: `Using equipment with less slots to make gear with more slots`, isChecked: shouldUpslot })}` : ``}
                     ${CHECKBOX_TEMPLATE({ label: `Use All Six Fodders`, description: `Makes it cheaper to produce the intermediary equipment`, isChecked: shouldSpread })}
                 </div>` 
             : ``}<div class="content">`;
