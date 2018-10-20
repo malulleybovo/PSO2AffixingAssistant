@@ -79,6 +79,10 @@ div.filtersearchcontainer li div {
     cursor: pointer;
 }
 
+div.filtersearchcontainer li div.option-disabled {
+    opacity: 0.25;
+}
+
 div.filtersearchcontainer li:hover div {
     background-color: var(--paint-light);
 }

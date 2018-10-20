@@ -165,7 +165,7 @@ class Assistant {
 
         let lists = [];
         for (var i = 0; i < choicesArray.length; i++) {
-            if (choicesArray[i].materials) {
+            if (choicesArray[i] && choicesArray[i].materials) {
                 lists.push(choicesArray[i].materials.slice());
             }
         }
@@ -661,6 +661,47 @@ class Assistant {
             }
         }
         return false;
+    }
+
+    doAffixesHavePossiblePlacement({ choices, targetNumSlots = (new Fodder()).CAPACITY, targetNumFodders = (new Page()).CAPACITY }) {
+        if (targetNumSlots <= 0 || targetNumFodders <= 0) return false;
+        let affixes = this.getAffixInstancesInvolvedIn(choices);
+        if (!affixes || !Array.isArray(affixes)) return false;
+        let numNontransferables = 0;
+        let numDuplPerTransferable = {};
+        for (var i = 0; i < affixes.length; i++) {
+            let affixA = affixes[i];
+            if (!affixA.code) continue;
+            // Count duplicates per affix
+            if (this.affixDB[affixA.code] && this.affixDB[affixA.code].choices
+                && this.affixDB[affixA.code].choices.length <= 0
+                && !this.isSpecialAbility(affixA)) {
+                numNontransferables++;
+            }
+            else {
+                numDuplPerTransferable[affixA.code] = (numDuplPerTransferable[affixA.code] || 0) + 1;
+            }
+        }
+        if (affixes.length - numNontransferables > (targetNumFodders - numNontransferables) * targetNumSlots) {
+            // Too many affixes to place in few places
+            return false;
+        }
+        for (var codeA in numDuplPerTransferable) {
+            let numConflicts = numDuplPerTransferable[codeA];
+            for (var codeB in numDuplPerTransferable) {
+                if (codeA == codeB) continue;
+                let preffixCodeA = codeA.match(/^[A-Z]{2,}/)[0];
+                if (!preffixCodeA) preffixCodeA = "-1";
+                if (codeB.startsWith(preffixCodeA) || this.testExcludePattern({ code: codeA }, { code: codeB })) {
+                    numConflicts += numDuplPerTransferable[codeB];
+                }
+            }
+            if (numConflicts > targetNumFodders - numNontransferables) {
+                // Too many conflicts to separate in the available fodders
+                return false;
+            }
+        }
+        return true;
     }
 
     isSpecialAbility(affix) {

@@ -453,6 +453,7 @@ class ViewController {
         let vc = (this instanceof ViewController) ? this :
             (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
+        if ($(this).hasClass('option-disabled')) return;
         if ($(this).hasClass('selected')) {
             let $divDataCode = $(this).parents('div[data-code]');
             if ($divDataCode.length > 0) {
@@ -617,6 +618,23 @@ class ViewController {
                 $(optionsList[choiceIdx]).addClass('selected')
                     .parents('div[data-code]').find('div.affix').addClass('selected');
             }
+            let searchResults = $(`div.choice-selection-container div.filtersearchcontainer`)[i];
+            if (searchResults) {
+                for (var j = 0; j < choices.length; j++) {
+                    let $option = $($(searchResults).find('li > div')[j]);
+                    if ($option.hasClass('selected')) continue;
+                    if ($option.length > 0) {
+                        $option.removeClass('option-disabled');
+                        let testChoices = this.choicesSelected.slice(0);
+                        testChoices[i] = choices[j];
+                        if (!this.assistant.doAffixesHavePossiblePlacement({
+                            choices: testChoices,
+                            targetNumSlots: this.affixesSelected.length - (this.shouldUpslot ? 1 : 0)
+                        }))
+                            $option.addClass('option-disabled');
+                    }
+                }
+            }
         }
         $(`div.choice-selection-container .confirm-button`).removeClass('disabled');
         if (this.choicesSelected.includes(null)) {
@@ -646,6 +664,7 @@ class ViewController {
         if (!(vc instanceof ViewController)) return;
         let $checkbox = $('div.choice-selection-container div.options div.checkbox-container:first-child input[type=checkbox]');
         vc.shouldUpslot = $checkbox.prop('checked');
+        vc.updateChoiceSelectionView();
     }
 
     setShouldSpread(e) {
@@ -653,6 +672,7 @@ class ViewController {
         if (!(vc instanceof ViewController)) return;
         let $checkbox = $('div.choice-selection-container div.options div.checkbox-container:last-child input[type=checkbox]');
         vc.shouldSpread = $checkbox.prop('checked');
+        vc.updateChoiceSelectionView();
     }
 }
 
