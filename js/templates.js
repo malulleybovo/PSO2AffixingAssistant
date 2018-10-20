@@ -138,8 +138,8 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
         </div>`;
 
 const LINK_TEMPLATE = ({ link, linkToSim }) => {
-    return `<div class="link-container hidden">
-        <div>
+    return `<div class="link-container hidden" onclick="$(this).remove();">
+        <div onclick="event.stopPropagation();">
             <div class="main-grid">
                 <div class="title bold">Link to This Formula</div><div class="content">
     					<input type="text" value="${link}" onfocus="this.setSelectionRange(0, this.value.length)">
@@ -245,8 +245,8 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     let isAffixSelection = type == 'affixSelection';
     let isChoiceSelection = type == 'choiceSelection';
     let isFormulaSheet = type == 'formulaSheet';
-    let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : (isChoiceSelection) ? `choice-selection-container` : (isFormulaSheet) ? `formula-sheet-container` : ``} hidden">
-        <div>
+    let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : (isChoiceSelection) ? `choice-selection-container` : (isFormulaSheet) ? `formula-sheet-container` : ``} hidden" onclick="$(this).remove();">
+        <div onclick="event.stopPropagation();">
             <div class="main-grid">
                 <div class="title bold">${(isAffixSelection) ? `Choose Abilities` : (isChoiceSelection) ? `Choose Method of Making` : (isFormulaSheet) ? `Affixing Formula Sheet` : ``}</div>${(isChoiceSelection) ?
                 `<div class="options">
