@@ -332,7 +332,7 @@ class ViewController {
         }));
         vc.regenerateConnections();
         $('div.fodder').hover(spotlightIn, spotlightOut);
-        $('div.produce-button').click({ viewcontroller: this }, this.setActiveFodder);
+        $('div.produce-button:not(.disabled)').click({ viewcontroller: this }, this.setActiveFodder);
         $('.boost-container input[type=checkbox]').change({ viewcontroller: this }, (e) => {
             let $elem = $(e.currentTarget);
             for (var i = 0; i < $elem.length; i++) {

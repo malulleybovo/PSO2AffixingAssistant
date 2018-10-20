@@ -111,7 +111,7 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
                 <div class="affix">${(fodder && fodder.affixes[7]) ? fodder.affixes[7].name : `&nbsp;`}${(fodder.affixes[7]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[7]) ? ` : <span title="${fodder.affixSuccessRates[7]}% chance of transfering this ability">${fodder.affixSuccessRates[7]}%</span>` : `` : ``}</div>
             </div>
             <div class="divider"></div>
-            <div class="produce-button">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? `RE-AFFIX IT` : `AFFIX IT`)}</div>
+            <div class="produce-button${((fodder.hasNonTransferableAffixes()) ? ` disabled">CANNOT AFFIX` : `">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? `RE-AFFIX IT` : `AFFIX IT`)}`)}</div>
             <div class="success-indicator" title="Success in making this equipment">
                 <span>${(isGoal) ? `Goal` : `Fodder`} Success: </span>
             <span>${(fodder.overallSuccessRate >= 0) ? fodder.overallSuccessRate + `%` : `?`}</span>

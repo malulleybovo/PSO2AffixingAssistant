@@ -242,15 +242,22 @@ div.produce-button {
     background-color: var(--paint-dark);
     border: solid 1.5px var(--border-color);
     border-radius: 0.25em;
-    cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 
-div.produce-button:hover {
+div.produce-button:not(.disabled) {
+    cursor: pointer;
+}
+
+div.produce-button:not(.disabled):hover {
     background-color: var(--paint-light);
+}
+
+div.produce-button.disabled {
+    opacity: 0.5;
 }
 
 div.boost-container {

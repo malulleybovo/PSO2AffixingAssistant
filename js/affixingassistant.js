@@ -1952,4 +1952,11 @@ class Fodder {
         }
         return this;
     }
+
+    hasNonTransferableAffixes() {
+        for (var i = 0; i < this.affixes.length; i++) {
+            if (ASSISTANT.affixDB[this.affixes[i].code].choices.length <= 0) return true;
+        }
+        return false;
+    }
 }
