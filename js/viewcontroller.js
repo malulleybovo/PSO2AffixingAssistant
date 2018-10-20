@@ -520,7 +520,7 @@ class ViewController {
         // Update the UI to reflect the data changed
         vc.updateURLParams();
         vc.updateView();
-        let $page = vc.findDOMByPage(newPage)
+        let $page = vc.findDOMByPage(vc.assistant.activePageTreeNode.page)
         vc.centerViewAtNode($page);
         spotlightIn($page);
         if (vc.newlyProducedTimeout) clearTimeout(vc.newlyProducedTimeout);

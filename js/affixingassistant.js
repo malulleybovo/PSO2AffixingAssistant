@@ -1455,6 +1455,7 @@ class PageTreeNode {
         else if (elem instanceof PageTreeNode) elemType = 2;
         else return [];
         let thisPage = this.page;
+        if (elemType == 2 && elem === this) return [this];
         if (thisPage) {
             if (elemType == 1 && elem === thisPage) {
                 return [
@@ -1477,11 +1478,6 @@ class PageTreeNode {
         }
         for (var i = 0; i < this.size(); i++) {
             let childNode = this.children[i];
-            if (elemType == 2 && elem === childNode) {
-                return [
-                    this
-                ];
-            }
             let trackingFound = childNode.find(elem);
             if (Array.isArray(trackingFound) && trackingFound.length > 0) {
                 trackingFound.unshift(this);
