@@ -53,7 +53,7 @@ class ViewController {
             e.data.viewcontroller.centerViewAtNode('#goal');
         });
         $('#startnew').click(() => {
-            VIEW_CONTROLLER.affixesSelected = VIEW_CONTROLLER.assistant.pageTreeRoot.page.fodders[0].affixes.slice(0);
+            VIEW_CONTROLLER.affixesSelected = VIEW_CONTROLLER.assistant.getGoalAffixes();
             VIEW_CONTROLLER.assistant.reset();
             VIEW_CONTROLLER.setAffixSelectionView(true, true);
         });

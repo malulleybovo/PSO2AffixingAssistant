@@ -747,6 +747,15 @@ class Assistant {
         return false;
     }
 
+    getGoalAffixes() {
+        if (this.pageTreeRoot && this.pageTreeRoot instanceof PageTreeNode
+            && this.pageTreeRoot.page && this.pageTreeRoot.page.fodders
+            && this.pageTreeRoot.page.fodders[0] && this.pageTreeRoot.page.fodders[0].affixes
+            && Array.isArray(this.pageTreeRoot.page.fodders[0].affixes))
+            return this.pageTreeRoot.page.fodders[0].affixes.slice(0);
+        else return [];
+    }
+
     calcSuccessRates() {
         this.calcSuccessRatesStartingAt(this.pageTreeRoot.page);
     }

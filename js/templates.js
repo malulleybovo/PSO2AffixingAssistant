@@ -142,7 +142,7 @@ const LINK_TEMPLATE = ({ link, linkToSim }) => {
         <div>
             <div class="main-grid">
                 <div class="title bold">Link to This Formula</div><div class="content">
-    					<input type="text" value="${link}" onclick="this.setSelectionRange(0, this.value.length)">
+    					<input type="text" value="${link}" onfocus="this.setSelectionRange(0, this.value.length)">
                     </div>
                 <div>
                     <div>
@@ -211,7 +211,7 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch }) => {
     }
     filtersearch +=
         `</div>
-        <input type="text" class="searchbar" onkeyup="filterSearch(this)" placeholder="Search for affixes.." title="Type in an affix name" maxlength="32">
+        <input type="text" class="searchbar" onkeyup="filterSearch(this)" onfocus="this.setSelectionRange(0, this.value.length)" placeholder="Search for affixes.." title="Type in an affix name" maxlength="32">
         <ul>`;
     if (Array.isArray(datalist)) {
         for (var i = 0; i < datalist.length; i++) {
