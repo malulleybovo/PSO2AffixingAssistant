@@ -584,10 +584,6 @@ class ViewController {
             else allStats['T-DEF'] = allStats['ALL'];
             if (allStats['DEX']) allStats['DEX'] += allStats['ALL'];
             else allStats['DEX'] = allStats['ALL'];
-            if (allStats['HP']) allStats['HP'] += allStats['ALL'];
-            else allStats['HP'] = allStats['ALL'];
-            if (allStats['PP']) allStats['PP'] += allStats['ALL'];
-            else allStats['PP'] = allStats['ALL'];
             delete allStats['ALL'];
         }
         let statsViewer = $(`div.affix-selection-container div.stats-viewer`);
