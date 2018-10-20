@@ -6,7 +6,7 @@
 
 const MAX_NUM_AFFIX = 8;
 const MAX_NUM_FODDERS = 6;
-const RECEPTOR_REGEX = /(X[A-F][0-9]{2})|(XI3[0-2])/;
+const RECEPTOR_REGEX = /(X[A-G][0-9]{2})/;
 const AFFIX_REL_SOUL = "soul";
 
 class Assistant {
