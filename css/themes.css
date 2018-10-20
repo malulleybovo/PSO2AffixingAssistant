@@ -2,6 +2,7 @@
     --background-color: #111;
     --overlay-color: rgba(0, 0, 0, 0.5);
     --paint-lightest: #fff;
+    --paint-lighter2: #fff;
     --paint-lighter: #ddd;
     --paint-light: #808080;
     --paint-light-fade: rgba(128, 128, 128, 0.25);
@@ -18,20 +19,21 @@
 }
 
 .theme--bright {
-    --background-color: #dddde7;
+    --background-color: #ffffff;
     --overlay-color: rgba(0, 0, 0, 0.5);
-    --paint-lightest: #e0e5ee;
-    --paint-lighter: #ccd1d9;
-    --paint-light: #f2f4f7;
+    --paint-lightest: #242729;
+    --paint-lighter2: #eff0f1;
+    --paint-lighter: #E4E6E7;
+    --paint-light: #fafafb;
     --paint-light-fade: rgba(242, 244, 247, 0.25);
-    --paint-dark: #e0e5ee;
+    --paint-dark: #eff0f1;
     --paint-dark-fade: rgba(224, 229, 238, 0.25);
-    --paint-darker-fade: rgba(62, 63, 65, 0.75);
-    --paint-prime: #ffdfa4;
-    --conn-color: #e85d75;
-    --alter-paint: #e85d75;
-    --alter-paint-light: #ec7a8e;
+    --paint-darker-fade: rgba(62, 63, 65, 0.25);
+    --paint-prime: #ffb935;
+    --conn-color: #F48024;
+    --alter-paint: #ffb935;
+    --alter-paint-light: #FFC05C;
     --alter-paint2: #547FE8;
-    --border-color: #4e6e7d;
-    --text-color: #16325c;
+    --border-color: #939A9F;
+    --text-color: #242729;
 }

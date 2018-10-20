@@ -522,6 +522,7 @@ class ViewController {
         vc.updateView();
         let $page = vc.findDOMByPage(vc.assistant.activePageTreeNode.page)
         vc.centerViewAtNode($page);
+        $page = vc.findDOMByPage(newPage);
         spotlightIn($page);
         if (vc.newlyProducedTimeout) clearTimeout(vc.newlyProducedTimeout);
         vc.newlyProducedTimeout = setTimeout(function () {
