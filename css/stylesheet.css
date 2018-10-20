@@ -379,7 +379,7 @@ div.affix-selection-container div.content > div:first-child {
     display: grid;
     height: 100%;
     grid-column: col1-start;
-    grid-template-rows: [row1-start] 5.5% [row2-start] min-content [row3-start] 5.5% [row4-start] min-content;
+    grid-template-rows: [row1-start] 5.5% [row2-start] min-content [row3-start] 5.5% [row4-start] auto;
     overflow: auto;
 }
 
@@ -387,7 +387,7 @@ div.affix-selection-container div.content > div:last-child {
     display: grid;
     height: 100%;
     grid-column: col2-start;
-    grid-template-rows: [row1-start] 5.5% [row2-start] 80.5%;
+    grid-template-rows: [row1-start] 5.5% [row2-start] 94.5%;
     overflow: auto;
 }
 
@@ -685,19 +685,13 @@ div.affix-selection-container div.affix > i {
 
 div.affix-selection-container div.stat {
     padding: 0.15em 0.5em;
+}
+
+div.affix-selection-container div.stats-viewer {
+    overflow: auto;
+    border-radius: 0.25em;
     background-color: var(--paint-dark);
-    border-left: solid 1.5px var(--border-color);
-    border-right: solid 1.5px var(--border-color);
-}
-
-div.affix-selection-container div.stat:first-of-type {
-    border-radius: 0.25em 0.25em 0em 0em;
-    border-top: solid 1.5px var(--border-color);
-}
-
-div.affix-selection-container div.stat:last-of-type {
-    border-radius: 0em 0em 0.25em 0.25em;
-    border-bottom: solid 1.5px var(--border-color);
+    border: solid 1.5px var(--border-color);
 }
 
 div.title.bold {
