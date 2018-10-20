@@ -367,7 +367,7 @@ class ViewController {
 
     updateURLParams() {
         if (!this.assistant || !(this.assistant instanceof Assistant)) return;
-        let oldURL = decodeURIComponent(window.location.search.substring(1, window.location.search));
+        let oldURL = '?' + decodeURIComponent(window.location.search.substring(1, window.location.search.length));
         let newURL = this.assistant.toURL();
         if (newURL == oldURL) return;
         window.history.pushState("test", "Title", newURL);
