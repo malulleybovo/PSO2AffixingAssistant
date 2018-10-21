@@ -101,16 +101,17 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
     `<div class="fodder" ${(dataConn >= 0) ? `data-conn="` + dataConn + `"` : ``}>
             <div class="title">${titleLabel}</div>
             <div class="affixes">
-                <div class="affix">${(fodder && fodder.affixes[0]) ? fodder.affixes[0].name : `&nbsp;`}${(fodder.affixes[0]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[0]) ? ` : <span title="${fodder.affixSuccessRates[0]}% chance of transfering this ability">${fodder.affixSuccessRates[0]}%</span>` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[1]) ? fodder.affixes[1].name : `&nbsp;`}${(fodder.affixes[1]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[1]) ? ` : <span title="${fodder.affixSuccessRates[1]}% chance of transfering this ability">${fodder.affixSuccessRates[1]}%</span>` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[2]) ? fodder.affixes[2].name : `&nbsp;`}${(fodder.affixes[2]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[2]) ? ` : <span title="${fodder.affixSuccessRates[2]}% chance of transfering this ability">${fodder.affixSuccessRates[2]}%</span>` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[3]) ? fodder.affixes[3].name : `&nbsp;`}${(fodder.affixes[3]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[3]) ? ` : <span title="${fodder.affixSuccessRates[3]}% chance of transfering this ability">${fodder.affixSuccessRates[3]}%</span>` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[4]) ? fodder.affixes[4].name : `&nbsp;`}${(fodder.affixes[4]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[4]) ? ` : <span title="${fodder.affixSuccessRates[4]}% chance of transfering this ability">${fodder.affixSuccessRates[4]}%</span>` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[5]) ? fodder.affixes[5].name : `&nbsp;`}${(fodder.affixes[5]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[5]) ? ` : <span title="${fodder.affixSuccessRates[5]}% chance of transfering this ability">${fodder.affixSuccessRates[5]}%</span>` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[6]) ? fodder.affixes[6].name : `&nbsp;`}${(fodder.affixes[6]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[6]) ? ` : <span title="${fodder.affixSuccessRates[6]}% chance of transfering this ability">${fodder.affixSuccessRates[6]}%</span>` : `` : ``}</div>
-                <div class="affix">${(fodder && fodder.affixes[7]) ? fodder.affixes[7].name : `&nbsp;`}${(fodder.affixes[7]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[7]) ? ` : <span title="${fodder.affixSuccessRates[7]}% chance of transfering this ability">${fodder.affixSuccessRates[7]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[0] && fodder.affixes[0].noEx) ? ` ssa` : ``}">${(fodder && fodder.affixes[0]) ? fodder.affixes[0].name : `&nbsp;`}${(fodder.affixes[0]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[0]) ? ` : <span title="${fodder.affixSuccessRates[0]}% chance of transfering this ability">${fodder.affixSuccessRates[0]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[1] && fodder.affixes[1].noEx) ? ` ssa` : ``}">${(fodder && fodder.affixes[1]) ? fodder.affixes[1].name : `&nbsp;`}${(fodder.affixes[1]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[1]) ? ` : <span title="${fodder.affixSuccessRates[1]}% chance of transfering this ability">${fodder.affixSuccessRates[1]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[2] && fodder.affixes[2].noEx) ? ` ssa` : ``}">${(fodder && fodder.affixes[2]) ? fodder.affixes[2].name : `&nbsp;`}${(fodder.affixes[2]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[2]) ? ` : <span title="${fodder.affixSuccessRates[2]}% chance of transfering this ability">${fodder.affixSuccessRates[2]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[3] && fodder.affixes[3].noEx) ? ` ssa` : ``}">${(fodder && fodder.affixes[3]) ? fodder.affixes[3].name : `&nbsp;`}${(fodder.affixes[3]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[3]) ? ` : <span title="${fodder.affixSuccessRates[3]}% chance of transfering this ability">${fodder.affixSuccessRates[3]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[4] && fodder.affixes[4].noEx) ? ` ssa` : ``}">${(fodder && fodder.affixes[4]) ? fodder.affixes[4].name : `&nbsp;`}${(fodder.affixes[4]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[4]) ? ` : <span title="${fodder.affixSuccessRates[4]}% chance of transfering this ability">${fodder.affixSuccessRates[4]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[5] && fodder.affixes[5].noEx) ? ` ssa` : ``}">${(fodder && fodder.affixes[5]) ? fodder.affixes[5].name : `&nbsp;`}${(fodder.affixes[5]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[5]) ? ` : <span title="${fodder.affixSuccessRates[5]}% chance of transfering this ability">${fodder.affixSuccessRates[5]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[6] && fodder.affixes[6].noEx) ? ` ssa` : ``}">${(fodder && fodder.affixes[6]) ? fodder.affixes[6].name : `&nbsp;`}${(fodder.affixes[6]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[6]) ? ` : <span title="${fodder.affixSuccessRates[6]}% chance of transfering this ability">${fodder.affixSuccessRates[6]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[7] && fodder.affixes[7].noEx) ? ` ssa` : ``}">${(fodder && fodder.affixes[7]) ? fodder.affixes[7].name : `&nbsp;`}${(fodder.affixes[7]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[7]) ? ` : <span title="${fodder.affixSuccessRates[7]}% chance of transfering this ability">${fodder.affixSuccessRates[7]}%</span>` : `` : ``}</div>
             </div>
             <div class="divider"></div>
+            ${((fodder && fodder.specialAbilityFactor) ? `<div class="affix special-ability-factor">Special Ability Factor<br>(${fodder.specialAbilityFactor.name})</div><div class="divider"></div>` : ``)}
             <div class="produce-button${((fodder.hasNonTransferableAffixes()) ? ` disabled">CANNOT AFFIX` : `">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? `RE-AFFIX IT` : `AFFIX IT`)}`)}</div>
             <div class="success-indicator" title="Success in making this equipment">
                 <span>${(isGoal) ? `Goal` : `Fodder`} Success: </span>
@@ -134,7 +135,7 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
                     description: `Does equipment have potential that boosts affixing?`
                 })}
             </div>` : ``}
-            ${((fodder && fodder.addAbilityItemInUse) ? `<div class="affix">${fodder.addAbilityItemInUse.name}</div>` : ``)}
+            ${((fodder && fodder.addAbilityItemInUse) ? `<div class="affix add-ability">${fodder.addAbilityItemInUse.name}</div>` : ``)}
         </div>`;
 
 const LINK_TEMPLATE = ({ link, linkToSim }) => {
@@ -220,6 +221,10 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch }) => {
             }
             else if (datalist[i].isAddAbilityItem) {
                 let choice = `${datalist[i].transferRate}% : ${datalist[i].name}`;
+                filtersearch += `<li><div>${choice}</div></li>`;
+            }
+            else if (datalist[i].isAbilityFactor) {
+                let choice = `${datalist[i].transferRate}% : Special Ability Factor`;
                 filtersearch += `<li><div>${choice}</div></li>`;
             }
             else if (datalist[i].materials) {

@@ -29,6 +29,7 @@ class ViewController {
         this.shouldUpslot = true;
         this.shouldSpread = true;
         this.newlyProducedTimeout = null;
+        this.isIncludingFoddersIntrinsicFactor = false;
     }
 
     setup() {
@@ -182,6 +183,7 @@ class ViewController {
                 $('div.affix-selection-container li > div').click({ viewcontroller: this }, this.selectAbility);
                 $('div.affix-selection-container div.affix > i').click({ viewcontroller: this }, this.selectAbility);
                 $('div.affix-selection-container div.confirm-button').click({ viewcontroller: this }, function ({ data }) {
+                    if ($('div.affix-selection-container div.confirm-button.disabled').length > 0) return;
                     data.viewcontroller.openChoicesSelectionView(false);
                     $('div.choice-selection-container div.cancel-button').click({ viewcontroller: data.viewcontroller },
                         ({ data }) => { data.viewcontroller.setAffixSelectionView(true, false); });
@@ -202,6 +204,7 @@ class ViewController {
             (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         if (vc.affixesSelected.length <= 0) return;
+        vc.isIncludingFoddersIntrinsicFactor = false;
         if ($('div.affix-selection-container').length != 0) {
             $('div.affix-selection-container').remove();
         }
@@ -218,6 +221,19 @@ class ViewController {
         vc.choicesSelected.splice(0, vc.choicesSelected.length);
         for (var i = 0; i < vc.affixesSelected.length; i++) {
             vc.choicesSelected.push(null);
+        }
+        if (vc.assistant.activeFodder && vc.assistant.activeFodder.specialAbilityFactor) {
+            let factor = vc.assistant.activeFodder.specialAbilityFactor;
+            vc.affixesSelected.push(factor);
+            vc.isIncludingFoddersIntrinsicFactor = true;
+            let factorChoices = vc.assistant.affixDB[factor.code].choices;
+            for (var i = 0; i < factorChoices.length; i++) {
+                if (factorChoices[i].isAbilityFactor) {
+                    choices[factor.code] = [factorChoices[i]];
+                    vc.choicesSelected.push(null);
+                    break;
+                }
+            }
         }
         $('body').append(
             CHOICE_SELECTION_VIEW_TEMPLATE({
@@ -496,7 +512,8 @@ class ViewController {
         if (!(vc instanceof ViewController)) return;
         if (vc.choicesSelected.includes(null)) return;
         let choices = vc.choicesSelected;
-        let targetNumSlots = vc.affixesSelected.length - ((vc.shouldUpslot && vc.affixesSelected.length > 1) ? 1 : 0);
+        let targetNumSlots = vc.affixesSelected.length - (vc.isIncludingFoddersIntrinsicFactor ? 1 : 0)
+            - ((vc.shouldUpslot && vc.affixesSelected.length > 1) ? 1 : 0);
         let newPage = vc.assistant.buildPageForChoices(choices, vc.shouldSpread, targetNumSlots);
         if (!newPage) {
             console.warn(
@@ -596,7 +613,8 @@ class ViewController {
                 statsViewer.append(`<div class="stat">${key + value}</div>`);
             }
         }
-        if (this.affixesSelected.length <= 0) {
+        if (this.affixesSelected.length <= 0
+            || (this.affixesSelected.length == 1 && this.assistant.isSpecialAbility(this.affixesSelected[0]))) {
             $(`div.affix-selection-container .confirm-button`).addClass('disabled');
         }
         else {
@@ -626,7 +644,7 @@ class ViewController {
                         testChoices[i] = choices[j];
                         if (!this.assistant.doAffixesHavePossiblePlacement({
                             choices: testChoices,
-                            targetNumSlots: this.affixesSelected.length - (this.shouldUpslot ? 1 : 0)
+                            targetNumSlots: this.affixesSelected.length - ((this.affixesSelected.length > 1 && this.shouldUpslot) ? 1 : 0)
                         }))
                             $option.addClass('option-disabled');
                     }

@@ -294,8 +294,26 @@ class AffixDataParser {
                                 materials: [],
                                 isAddAbilityItem: true,
                                 name: additionalChoice.id,
-                                value: additionalChoice.value,
-                                extend: additionalChoice.extend
+                                value: additionalChoice.value
+                            });
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        if (data.abilityList && data.abilityFactor && Array.isArray(data.abilityFactor)) {
+            for (var i = 0; i < data.abilityFactor.length; i++) {
+                let factorChoice = data.abilityFactor[i];
+                if (!factorChoice.name) continue;
+                for (var j = data.abilityList.length; j >= 0; j--) {
+                    if (data.abilityList[j] && data.abilityList[j].name == factorChoice.name) {
+                        if (abilityDB[data.abilityList[j].code]) {
+                            abilityDB[data.abilityList[j].code].choices.push({
+                                transferRate: 100,
+                                materials: [],
+                                isAbilityFactor: true,
+                                abilityRef: abilityDB[data.abilityList[j].code].abilityRef
                             });
                         }
                         break;

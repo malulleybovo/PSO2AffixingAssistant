@@ -48,7 +48,7 @@ class Assistant {
             (new Page()).addFodders(
                 (new Fodder()).addAffixes(
                     affixes
-                )
+                ).setGoal(true)
             )
         ).addRateBoostOptions(this.getRateBoostOptions())
         .addPotentialOptions(this.getPotentialOptions());
@@ -178,8 +178,14 @@ class Assistant {
     // *Assumes costs is an array of affix codes from most expensive (index 0) to least
     buildPageForChoices(choices, shouldSpread, targetNumSlots) {
         let affixes = this.getAffixInstancesInvolvedIn(choices);
-        if (!affixes || !Array.isArray(affixes) || affixes.length <= 0
-            || !this.affixDB) return null;
+        if (!affixes || !Array.isArray(affixes) || !this.affixDB) return null;
+        let numSpecialAbilityFactor = 0;
+        for (var i = 0; i < choices.length; i++) {
+            let choice = choices[i];
+            if (!choice) continue;
+            if (choice.isAbilityFactor) numSpecialAbilityFactor++;
+        }
+        if (affixes.length <= 0 && numSpecialAbilityFactor <= 0) return null;
 
         // Generate new page
         let page = this.buildPageInPyramid(affixes, targetNumSlots);
@@ -211,12 +217,12 @@ class Assistant {
         // target number of slots (otherwise the gear cannot be affixed)
         for (var i = 0; i < page.size(); i++) {
             let fodder = page.fodders[i];
-            if (fodder.size(true) > 0) {
+            if (fodder.size() > 0 || i <= numSpecialAbilityFactor) {
                 let junks = [];
                 for (var j = 0; j < this.junkCodes.length; j++) {
                     let junk = this.affixDB[this.junkCodes[j]].abilityRef;
                     if (fodder.affixes.includes(junk)) continue;
-                    if (fodder.size(true) + junks.length < targetNumSlots) junks.push(junk);
+                    if (fodder.size() + junks.length < targetNumSlots) junks.push(junk);
                     else break;
                 }
                 if (junks.length > 0) fodder.addAffixes(junks);
@@ -284,6 +290,26 @@ class Assistant {
             }
         }
 
+        // Add any Special Ability Factor
+        let choicesWithFactor = [];
+        for (var i = 0; i < choices.length; i++) {
+            let choice = choices[i];
+            if (choice.isAbilityFactor && choice.abilityRef) {
+                choicesWithFactor.unshift(choice);
+            }
+        }
+        for (var i = 0; i < page.size(); i++) {
+            if (choicesWithFactor.length <= 0) break;
+            let fodder = page.fodders[i];
+            let transferablesData = this.getTransferablesAndNonTransferables(fodder.affixes);
+            let hasNonTransferable = transferablesData.hasNonTransferable;
+            if (!hasNonTransferable) {
+                fodder.setSpecialAbilityFactor(
+                    choicesWithFactor.pop().abilityRef
+                );
+            }
+        }
+
         // Remove empty fodders from cleanliness
         let foddersToRemove = [];
         for (var i = 0; i < page.size(); i++) {
@@ -316,19 +342,9 @@ class Assistant {
         let pageStartIdx = 0;
 
         // separate affixes into nontransferables and affixes
-        let nontransferables = []
-        let transferables = [];
-        for (var i = 0; i < affixes.length; i++) {
-            let affix = affixes[i];
-            if (this.affixDB[affix.code] && this.affixDB[affix.code].choices
-                && this.affixDB[affix.code].choices.length <= 0
-                && !this.isSpecialAbility(affix)) {
-                nontransferables.push(affix);
-            }
-            else {
-                transferables.push(affix);
-            }
-        }
+        let transferablesData = this.getTransferablesAndNonTransferables(affixes);
+        let nontransferables = transferablesData.nontransferables;
+        let transferables = transferablesData.transferables;
         // FOR NONTRANSFERABLES
         for (var i = 0; i < nontransferables.length; i++) {
             if (pageStartIdx >= page.fodders.length) {
@@ -690,23 +706,33 @@ class Assistant {
 
     doAffixesHavePossiblePlacement({ choices, targetNumSlots = (new Fodder()).CAPACITY, targetNumFodders = (new Page()).CAPACITY }) {
         if (targetNumSlots <= 0 || targetNumFodders <= 0) return false;
+        let numSpecialAbilityFactor = 0;
+        for (var i = 0; i < choices.length; i++) {
+            let choice = choices[i];
+            if (!choice) continue;
+            if (choice.isAbilityFactor) numSpecialAbilityFactor++;
+        }
+        if (numSpecialAbilityFactor > 5) {
+            let a = true;
+        }
+        if (numSpecialAbilityFactor > targetNumFodders) {
+            // Too many Special Ability Factors
+            return false;
+        }
         let affixes = this.getAffixInstancesInvolvedIn(choices);
         if (!affixes || !Array.isArray(affixes)) return false;
-        let numNontransferables = 0;
-        let numDuplPerTransferable = {};
-        for (var i = 0; i < affixes.length; i++) {
-            let affixA = affixes[i];
-            if (!affixA.code) continue;
-            // Count duplicates per affix
-            if (this.affixDB[affixA.code] && this.affixDB[affixA.code].choices
-                && this.affixDB[affixA.code].choices.length <= 0
-                && !this.isSpecialAbility(affixA)) {
-                numNontransferables++;
-            }
-            else {
-                numDuplPerTransferable[affixA.code] = (numDuplPerTransferable[affixA.code] || 0) + 1;
-            }
+        let transferablesData = this.getTransferablesAndNonTransferables(affixes);
+        let numDuplPerTransferable = transferablesData.numDuplPerTransferable;
+        let numNontransferables = transferablesData.numNontransferables;
+        if (numNontransferables > 0) {
+            let a = true;
         }
+        // Separate Nontransferables from Special Ability Factors
+        if (numNontransferables + numSpecialAbilityFactor > targetNumFodders) {
+            // Too many special affixes to fit
+            return false;
+        }
+        // Check if there is enough slots to fit all transferable abilities
         if (affixes.length - numNontransferables > (targetNumFodders - numNontransferables) * targetNumSlots) {
             // Too many affixes to place in few places
             return false;
@@ -727,6 +753,36 @@ class Assistant {
             }
         }
         return true;
+    }
+
+    getTransferablesAndNonTransferables(affixes) {
+        let numDuplPerTransferable = {};
+        let nontransferables = []
+        let transferables = [];
+        for (var i = 0; i < affixes.length; i++) {
+            let affix = affixes[i];
+            if (!affix.code) continue;
+            // Count duplicates per affix
+            if (this.affixDB[affix.code] && this.affixDB[affix.code].choices // Has choices
+                && !this.isSpecialAbility(affix) // Is not an Add Ability
+                && (this.affixDB[affix.code].choices.length <= 0 // Cannot bew transferred
+                    || (this.affixDB[affix.code].choices.length == 1 // Or can only be transferred as a Special Ability Factor
+                        && this.affixDB[affix.code].choices[0].isAbilityFactor))) {
+                nontransferables.push(affix);
+            }
+            else {
+                transferables.push(affix);
+                numDuplPerTransferable[affix.code] = (numDuplPerTransferable[affix.code] || 0) + 1;
+            }
+        }
+
+        return {
+            numNontransferables: nontransferables.length,
+            hasNonTransferable: nontransferables.length != 0,
+            numDuplPerTransferable: numDuplPerTransferable,
+            nontransferables: nontransferables,
+            transferables: transferables
+        };
     }
 
     isSpecialAbility(affix) {
@@ -776,6 +832,16 @@ class Assistant {
             pageTreeNode.addPageTreeNodes(
                 (new PageTreeNode()).setPage(page)
             );
+            fodder.affixIndicesFromFactor = [];
+            for (var i = 0; i < page.size(); i++) {
+                let fodderInPage = page.fodders[i];
+                if (fodderInPage.specialAbilityFactor
+                    && fodder.affixes.includes(fodderInPage.specialAbilityFactor)) {
+                    fodder.affixIndicesFromFactor.push(
+                        fodder.affixes.indexOf(fodderInPage.specialAbilityFactor)
+                    );
+                }
+            }
             return true;
         }
         return false;
@@ -823,25 +889,35 @@ class Assistant {
                 // for every choice for making affixA
                 for (var m = 0; m < this.affixDB[affix.code].choices.length; m++) {
                     let choice = this.affixDB[affix.code].choices[m];
-                    if (choice.isAddAbilityItem) {
-                        abilitySuccessRates[k] = Math.min(Math.max(choice.extend, minRate), maxRate);
+                    // Check if Add Ability
+                    if (choice.isAddAbilityItem || affix.noEx) {
+                        abilitySuccessRates[k] = Math.min(Math.max(choice.transferRate, minRate), maxRate);
                         abilitySuccessRates.length++;
-                        continue;
+                        if (fodderSuccessRate < 0) fodderSuccessRate = (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
+                        else fodderSuccessRate *= (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
+                        break;
                     }
-                    // count occurrences of each ability in choice
-                    let choiceCount = countOccurrences(choice.materials);
-                    // count occurrences of each ability in all abilities in page
-                    let abilityCount = countOccurrences(abilities);
                     // set flag true
                     let isMatch = true;
-                    // for each different occurence in choice
-                    for (var code in choiceCount) {
-                        // if all bilities have less than count
-                        if (!abilityCount[code] || abilityCount[code] < choiceCount[code]) {
-                            // does not match, so set flag false and break
-                            isMatch = false;
-                            break;
+                    // Check if Special Ability Factor
+                    if (!fodder.affixIndicesFromFactor.includes(k)) {
+                        // count occurrences of each ability in choice
+                        let choiceCount = countOccurrences(choice.materials);
+                        // count occurrences of each ability in all abilities in page
+                        let abilityCount = countOccurrences(abilities);
+                        // for each different occurence in choice
+                        for (var code in choiceCount) {
+                            // if all bilities have less than count
+                            if (!abilityCount[code] || abilityCount[code] < choiceCount[code]) {
+                                // does not match, so set flag false and break
+                                isMatch = false;
+                                break;
+                            }
                         }
+                    }
+                    else {
+                        // if a special ability factor, fake transfer rate to max
+                        choice = { transferRate: 100 };
                     }
                     if (isMatch) {
                         // match was found, so save the success rate for affixA
@@ -918,20 +994,20 @@ class Assistant {
         for (var i = 0; i < pagesData.length; i++) {
             let pageData = pagesData[i];
             if (!pageData || pagesData == '') continue;
-            let targetFodder = pageData.match(/r=([A-Z0-9]{4,}[.]?)*/g);
+            let targetFodder = pageData.match(/r=(\*?[A-Z0-9]{4,}[.]?)*/g);
             if (!targetFodder || !targetFodder[0] || targetFodder == '') continue;
-            let targetAffixes = targetFodder[0].match(/[A-Z0-9]{4,}/g);
+            let targetAffixes = targetFodder[0].match(/\*?[A-Z0-9]{4,}/g);
             if (!targetAffixes || targetAffixes.length <= 0) continue;
-            let pageAllFodders = pageData.match(/(s=([A-Z0-9]{4,}[.]?)*)((&[0-9])=([A-Z0-9]{4,}[.]?)*)*/g);
+            let pageAllFodders = pageData.match(/(s=(\*?[A-Z0-9]{4,}[.]?)*)((&[0-9])=(\*?[A-Z0-9]{4,}[.]?)*)*/g);
             let pageFoddersAffixes = [];
             for (var j = 0; j < pageAllFodders.length; j++) {
                 let pageOneFodder = pageAllFodders[j];
                 if (!pageOneFodder || pageOneFodder <= 0) continue;
-                let fodderAllAffixes = pageOneFodder.match(/([A-Z0-9]{4,}[.]?)+/g);
+                let fodderAllAffixes = pageOneFodder.match(/(\*?[A-Z0-9]{4,}[.]?)+/g);
                 if (!fodderAllAffixes || fodderAllAffixes <= 0) continue;
                 for (var k = 0; k < fodderAllAffixes.length; k++) {
                     let fodderOneAffixes = fodderAllAffixes[k];
-                    let pageFodderAffixes = fodderOneAffixes.match(/[A-Z0-9]{4,}/g);
+                    let pageFodderAffixes = fodderOneAffixes.match(/\*?[A-Z0-9]{4,}/g);
                     if (!pageFodderAffixes || pageFodderAffixes.length <= 0) continue;
                     pageFoddersAffixes.push(pageFodderAffixes);
                 }
@@ -954,15 +1030,39 @@ class Assistant {
             for (var j = 0; j < pageFoddersAffixes.length; j++) {
                 let pageFodderAffixes = pageFoddersAffixes[j];
                 connections.push(null);
+                let newPageFodderAffixes = [];
                 for (var k = 0; k < pageFodderAffixes.length; k++) {
-                    if (this.affixDB[pageFodderAffixes[k]]) {
-                        pageFodderAffixes[k] = this.affixDB[pageFodderAffixes[k]].abilityRef;
+                    // If Special Ability Factor
+                    if (pageFodderAffixes[k].startsWith('*')) {
+                        if (pageFodderAffixes.specialAbilityFactor) continue;
+                        let newCode = pageFodderAffixes[k].slice(1, pageFodderAffixes[k].length);
+                        if (this.affixDB[newCode]) {
+                            newPageFodderAffixes.specialAbilityFactor = this.affixDB[newCode].abilityRef;
+                        }
+                    }
+                    else if (this.affixDB[pageFodderAffixes[k]]) {
+                        newPageFodderAffixes.push(this.affixDB[pageFodderAffixes[k]].abilityRef);
                     }
                 }
+                pageFoddersAffixes[j] = newPageFodderAffixes;
             }
             for (var j = 0; j < targetAffixes.length; j++) {
+                // If Special Ability Factor
+                if (targetAffixes[j].startsWith('*')) {
+                    targetAffixes[j] = targetAffixes[j].slice(1, targetAffixes[j].length);
+                }
                 if (this.affixDB[targetAffixes[j]])
                     targetAffixes[j] = this.affixDB[targetAffixes[j]].abilityRef;
+            }
+            let affixIndicesFromFactor = [];
+            for (var j = 0; j < pageFoddersAffixes.length; j++) {
+                let fodderInPage = pageFoddersAffixes[j];
+                if (fodderInPage.specialAbilityFactor
+                    && targetAffixes.includes(fodderInPage.specialAbilityFactor)) {
+                    affixIndicesFromFactor.push(
+                        targetAffixes.indexOf(fodderInPage.specialAbilityFactor)
+                    );
+                }
             }
             pages.push({
                 fodders: pageFoddersAffixes,
@@ -971,7 +1071,8 @@ class Assistant {
                 connections: connections,
                 isConnected: false,
                 connDist: connDist,
-                fodderIdx: fodderIdx
+                fodderIdx: fodderIdx,
+                affixIndicesFromFactor: affixIndicesFromFactor
             });
         }
         if (pages.length <= 0 || !pages[0].target || pages[0].target.length <= 0) return false;
@@ -1014,10 +1115,11 @@ class Assistant {
             }
         }
         let filteredPages = [];
-        let pageTreeRoot = createPageTree(goalPage);
-        if (!pageTreeRoot || !(pageTreeRoot instanceof PageTreeNode)) return false;
+        let newPageTreeRoot = createPageTree(goalPage);
+        if (!newPageTreeRoot || !(newPageTreeRoot instanceof PageTreeNode)) return false;
         this.setGoal(goalPage.target);
-        this.pageTreeRoot.page.fodders[0].connectTo(pageTreeRoot.page);
+        this.pageTreeRoot.page.fodders[0].affixIndicesFromFactor = goalPage.affixIndicesFromFactor;
+        this.pageTreeRoot.page.fodders[0].connectTo(newPageTreeRoot.page);
         if (this.data && this.data.optionList && this.data.optionList.support) {
             for (var j = 0; j < goalPage.boosts.length; j++) {
                 let boost = goalPage.boosts[j];
@@ -1041,8 +1143,14 @@ class Assistant {
                             materials: [],
                             isAddAbilityItem: true,
                             name: addAbilityItem.id,
-                            value: addAbilityItem.value,
-                            extend: addAbilityItem.extend
+                            value: addAbilityItem.value
+                        }
+                        for (var m = this.data.abilityList.length - 1; m >= 0; m--) {
+                            let ability = this.data.abilityList[m];
+                            if (ability.name == addAbilityItem.name) {
+                                this.pageTreeRoot.page.fodders[0].addAffixes(ability);
+                                break;
+                            }
                         }
                         break;
                     }
@@ -1066,18 +1174,28 @@ class Assistant {
             if (boost == 'D01') this.pageTreeRoot.page.fodders[0].isSameGear = false;
             else if (boost == 'D02') this.pageTreeRoot.page.fodders[0].isSameGear = true;
         }
-        this.pageTreeRoot.addPageTreeNodes(pageTreeRoot);
+        this.pageTreeRoot.addPageTreeNodes(newPageTreeRoot);
         return true;
 
         function createPageTree(pageData) {
             // create pagetreenode
             let fodders = [];
             for (var i = 0; i < pageData.fodders.length; i++) {
-                fodders.push(
-                    (new Fodder()).addAffixes(
+                let newFodder = (new Fodder()).addAffixes(
                         pageData.fodders[i]
-                    )
-                );
+                    );
+                if (pageData.fodders[i].specialAbilityFactor) {
+                    newFodder.setSpecialAbilityFactor(pageData.fodders[i].specialAbilityFactor);
+                }
+                // Map indices 0,1,2,3,4,5 to 0,2,4,5,3,1 (even increasing, odd decreasing)
+                // to display pages nicely
+                let idx = -1;
+                if (i < 3) idx = 2 * i;
+                else idx = 11 - 2 * i;
+                if (pageData.connections[idx]) {
+                    newFodder.affixIndicesFromFactor = pageData.connections[idx].affixIndicesFromFactor;
+                }
+                fodders.push(newFodder);
             }
             // for each connection, create sub tree and add as child
             let children = [];
@@ -1119,8 +1237,7 @@ class Assistant {
                                         materials: [],
                                         isAddAbilityItem: true,
                                         name: addAbilityItem.id,
-                                        value: addAbilityItem.value,
-                                        extend: addAbilityItem.extend
+                                        value: addAbilityItem.value
                                     }
                                     break;
                                 }
@@ -1626,7 +1743,7 @@ class Page {
         }
         url += 'r=';
         if (this.connectedTo) {
-            url += this.connectedTo.toURL();
+            url += this.connectedTo.toURL(true);
         }
         url += '&o=';
         let hasAddedRate = false;
@@ -1776,6 +1893,7 @@ class Fodder {
         this.MIN_RATE = 0;
         this.MAX_RATE = 100;
         this.affixes = [];
+        this.affixIndicesFromFactor = [];
         this.affixSuccessRates = [];
         this.rateBoostOptions = [];
         this.potentialOptions = [];
@@ -1793,34 +1911,35 @@ class Fodder {
             }
         }
         // Mutable variables
+        this.isGoal = false;
         this.overallSuccessRate = -1;
         this.connectedTo = null;
         this.isSameGear = false;
         this.rateBoostIdx = 0;
         this.potentialIdx = 0;
         this.addAbilityItemInUse = null;
+        this.specialAbilityFactor = null;
     }
 
-    toURL() {
+    setGoal(bool) {
+        if (typeof bool === 'boolean') this.isGoal = bool;
+        return this;
+    }
+
+    toURL(isForTarget) {
         let url = '';
         for (var i = 0; i < this.size(); i++) {
-            url += this.affixes[i].code + ((i < this.size() - 1) ? '.' : '');
+            url += ((isForTarget && this.affixIndicesFromFactor.includes(i)) ? '*' : '')
+                + this.affixes[i].code + ((i < this.size() - 1) ? '.' : '');
+        }
+        if (!isForTarget && (this.specialAbilityFactor && this.specialAbilityFactor.code)) {
+            url += ((this.size() > 0) ? '.' : '') + '*' + this.specialAbilityFactor.code;
         }
         return url;
     }
 
-    size(isCountingAll) {
-        let numSpecial = 0;
-        if (!isCountingAll) {
-            for (var i = 0; i < this.affixes.length; i++) {
-                let affix = this.affixes[i];
-                for (var key in ASSISTANT.data.optionList.additional) {
-                    let entry = ASSISTANT.data.optionList.additional[key];
-                    if (entry.name && entry.name == affix.name) numSpecial++;
-                }
-            }
-        }
-        return this.affixes.length - numSpecial;
+    size() {
+        return this.affixes.length;
     }
 
     addAffixes(affixes) {
@@ -1857,6 +1976,13 @@ class Fodder {
                 return true;
             }
         }
+        return false;
+    }
+
+    setSpecialAbilityFactor(abilityFactor) {
+        if (!abilityFactor || !abilityFactor.code) return false;
+        this.specialAbilityFactor = abilityFactor;
+        return true;
     }
 
     setSuccessRate(overallRate, affixRates) {
@@ -1955,7 +2081,9 @@ class Fodder {
 
     hasNonTransferableAffixes() {
         for (var i = 0; i < this.affixes.length; i++) {
-            if (ASSISTANT.affixDB[this.affixes[i].code].choices.length <= 0) return true;
+            if (ASSISTANT.affixDB[this.affixes[i].code].choices.length <= 0 // Cannot bew transferred
+                || (ASSISTANT.affixDB[this.affixes[i].code].choices.length == 1 // Or can only be transferred as a Special Ability Factor
+                    && ASSISTANT.affixDB[this.affixes[i].code].choices[0].isAbilityFactor)) return true;
         }
         return false;
     }

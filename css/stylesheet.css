@@ -266,9 +266,55 @@ div.boost-container {
     margin-top: 0.25em;
 }
 
-div.fodder > div.affix:last-child {
+div.fodder > div.affix.special-ability-factor {
     margin-top: 0.25em;
     border-radius: 0.25em;
+    border: solid 1.5px var(--border-color);
+}
+
+div.fodder > div.affix.special-ability-factor:before {
+    background: url("res/specialAbilityFactorIcon.png") no-repeat;
+    position: relative;
+    height: 14px;
+    content: "";
+    left: -5px;
+    display: inline-block;
+    top: 1.2px;
+    width: 14px;
+    background-size: cover;
+    background-position: center center;
+}
+
+div.fodder > div.affix.add-ability:before {
+    background: url("res/addSpecialAbilityIcon.png") no-repeat;
+    position: relative;
+    height: 14px;
+    content: "";
+    left: -5px;
+    display: inline-block;
+    top: 1.2px;
+    width: 14px;
+    background-size: cover;
+    background-position: center center;
+}
+
+div.affixes > div.affix.ssa:before {
+    background: url("res/sclassSpecialAbilityIcon.png") no-repeat;
+    position: relative;
+    height: 14px;
+    content: "";
+    left: -5px;
+    display: inline-block;
+    top: 1.2px;
+    width: 14px;
+    background-size: cover;
+    background-position: center center;
+}
+
+div.fodder > div.affix.add-ability {
+    margin-top: 0.25em;
+    border-radius: 0.25em;
+    border: solid 1.5px var(--border-color);
 }
 
 div.affix-selection-container,
