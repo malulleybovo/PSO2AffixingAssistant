@@ -22,3 +22,37 @@ div.dropdown-container select {
 div.dropdown-container select option {
     background-color: var(--paint-dark);
 }
+
+div.dropdown-container.success-rate select {
+    width: 93%;
+}
+
+div.dropdown-container.success-rate:before {
+    background: url("res/successRateIcon.png") no-repeat;
+    position: relative;
+    height: 14px;
+    content: "";
+    left: 5px;
+    display: inline-block;
+    top: 1.2px;
+    width: 14px;
+    background-size: cover;
+    background-position: center center;
+}
+
+div.dropdown-container.equipment-potential select {
+    width: 93%;
+}
+
+div.dropdown-container.equipment-potential:before {
+    background: url("res/equipmentPotentialIcon.png") no-repeat;
+    position: relative;
+    height: 14px;
+    content: "";
+    left: 5px;
+    display: inline-block;
+    top: 1.2px;
+    width: 14px;
+    background-size: cover;
+    background-position: center center;
+}

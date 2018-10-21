@@ -1,0 +1,49 @@
+Go to: https://pso2.arks-visiphone.com/wiki/Ability_Factors
+Make sure JavaScript is enabled (to use jQuery)
+Open Developer Tools => console
+Run the following:
+
+$entries = $('table.wikitable.table-compact tr');
+factorData = [];
+out = null;
+for (var i = 0; i < $entries.length; i++) {
+    $entry = $($entries[i]).find('td');
+    if ($entry.length <= 0) continue;
+    let newData = {};
+    if ($entry.length >= 1) {
+        let $content = $($entry[0]).contents()
+            .filter(function() {
+                return $(this).is('br') || this.nodeType === 3;
+            });
+        $($entry[0]).children().not($content).remove();
+        newData.jpName = $entry[0].innerHTML.trim();
+    }
+    if ($entry.length >= 2) {
+        let $content = $($entry[1]).contents()
+            .filter(function() {
+                return $(this).is('br') || this.nodeType === 3;
+            });
+        $($entry[1]).children().not($content).remove();
+        newData.name = $entry[1].innerHTML.trim();
+    }
+    if ($entry.length >= 4) {
+        
+    }
+    if (typeof newData.jpName === 'string'
+        && typeof newData.name === 'string') {
+        if (out == null) {
+            out= `,
+    abilityFactor: [
+        { name: \`${newData.name}\`, jpName: \`${newData.jpName}\` }`;
+        }
+        else {
+            out += `,
+        { name: \`${newData.name}\`, jpName: \`${newData.jpName}\` }`;
+        }
+        factorData.push(newData);
+    }
+}
+if (out != null) {
+    out += `
+    ]`;
+}

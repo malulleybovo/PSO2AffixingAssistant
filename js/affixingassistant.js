@@ -552,29 +552,45 @@ class Assistant {
                         // Get top choice that overlaps (which might involve a receptor)
                         let affixChoices = this.affixDB[affix.code].choices;
                         let rateMultiplier = 1;
-                        let m = 0;
-                        let n = 0;
-                        while (m < fodderAffixChoices.length && n < affixChoices.length) {
-                            let fodderAffixChoice = fodderAffixChoices[m];
-                            let choice = affixChoices[n];
-
-                            let combined = this.getAffixInstancesInvolvedIn([choice, fodderAffixChoice]);
-                            if (combined.length < choice.length + fodderAffixChoice) {
-                                isOverlap = true;
-                                rateMultiplier *= (fodderAffixChoice.transferRate / 100);
-                                if (combined.materials.filter((mat) => mat.code.match(RECEPTOR_REGEX))) {
-                                    hasReceptor = true;
-                                }
-                                break;
+                        // Check for overlap with the affix itself
+                        for (var m = 0; m < fodderAffixChoices.length; m++) {
+                            var fodderAffixChoice = fodderAffixChoices[m];
+                            for (var n = 0; n < fodderAffixChoice.materials.length; n++) {
+                                let choiceAffix = fodderAffixChoice.materials[n];
+                                if (RECEPTOR_REGEX.test(choiceAffix.code)) hasReceptor = true;
+                                if (affix == choiceAffix) isOverlap = true;
                             }
+                            if (isOverlap) {
+                                compoundRate *= fodderAffixChoice.transferRate / 100;
+                                if (hasReceptor) receptorRateFactor *= fodderAffixChoice.transferRate / 100;
+                            }
+                        }
+                        // If no overlap with it, check for overlap with choices for making the affix
+                        if (!isOverlap) {
+                            let m = 0;
+                            let n = 0;
+                            while (m < fodderAffixChoices.length && n < affixChoices.length) {
+                                let fodderAffixChoice = fodderAffixChoices[m];
+                                let choice = affixChoices[n];
 
-                            // goes through 0:0, 0:1, 1:0, 1:1, 1:2, 2:1, 2:2 ... m:n
-                            // ensures it checks lowest array indices for both arrays first
-                            if (m >= fodderAffixChoices.length - 1) n++;
-                            else if (n >= affixChoices.length - 1) m++;
-                            else {
-                                if ((n == m) || (m - n == 1)) n++;
-                                else if (n - m == 1) { m++; n--; }
+                                let combined = this.getAffixInstancesInvolvedIn([choice, fodderAffixChoice]);
+                                if (combined.length < choice.length + fodderAffixChoice) {
+                                    isOverlap = true;
+                                    rateMultiplier *= (fodderAffixChoice.transferRate / 100);
+                                    if (combined.materials.filter((mat) => mat.code.match(RECEPTOR_REGEX))) {
+                                        hasReceptor = true;
+                                    }
+                                    break;
+                                }
+
+                                // goes through 0:0, 0:1, 1:0, 1:1, 1:2, 2:1, 2:2 ... m:n
+                                // ensures it checks lowest array indices for both arrays first
+                                if (m >= fodderAffixChoices.length - 1) n++;
+                                else if (n >= affixChoices.length - 1) m++;
+                                else {
+                                    if ((n == m) || (m - n == 1)) n++;
+                                    else if (n - m == 1) { m++; n--; }
+                                }
                             }
                         }
                         if (isOverlap) {
