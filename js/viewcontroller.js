@@ -329,7 +329,13 @@ class ViewController {
 
     updateFromURL() {
         let urlParams = window.location.search;
-        if (urlParams == '') return;
+        if (urlParams == '') {
+            this.displayWelcomeScreen(true);
+            return;
+        }
+        else {
+            this.displayWelcomeScreen(false);
+        }
         urlParams = urlParams.substring(1, urlParams.length);
         urlParams = decodeURIComponent(urlParams);
         urlParams = VIEW_CONTROLLER.assistant.decodeURLParams(urlParams);
@@ -378,7 +384,19 @@ class ViewController {
             e.data.viewcontroller.updateURLParams();
             e.data.viewcontroller.updateView();
         });
+        vc.displayWelcomeScreen(false);
         return this;
+    }
+
+    displayWelcomeScreen(shouldOpen) {
+        if (shouldOpen) {
+            if ($('div.welcome').length > 0) return;
+            if ($('#editor').length > 0) $(WELCOME_VIEW()).insertAfter($('#editor'));
+            else $('body').prepend($(WELCOME_VIEW()));
+        }
+        else {
+            $('div.welcome').remove();
+        }
     }
 
     updateURLParams() {

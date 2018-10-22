@@ -4,6 +4,22 @@
  * @author malulleybovo (2018)
  */
 
+const WELCOME_VIEW = () => `<div class="welcome">
+        <div>
+            <div>
+                <div class="content">
+                    <div>
+                        <h1>PSO2 Affixing Assistant</h1>
+                    </div>
+                    <p>How it works:</p>
+                    <div>
+                        <img src="css/res/howItWorks.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+
 const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
     let treeNodeTemplate = '<div class="mgrid"><div>';
     level = (typeof level === 'number') ? level : 0;

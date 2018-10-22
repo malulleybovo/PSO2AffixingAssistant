@@ -22,7 +22,8 @@ body {
     }
 }
 
-#js-disabled {
+#js-disabled,
+div.welcome {
     position: fixed;
     height: 100%;
     width: 100%;
@@ -34,7 +35,8 @@ body {
     user-select: none;
 }
 
-#js-disabled > div:first-child {
+#js-disabled > div:first-child,
+div.welcome > div:first-child {
     display: table;
     position: absolute;
     height: 100%;
@@ -42,10 +44,37 @@ body {
     font-size: 18px;
 }
 
-#js-disabled > div:first-child > div:first-child {
+#js-disabled > div:first-child > div:first-child,
+div.welcome > div:first-child > div:first-child {
     display: table-cell;
     vertical-align: middle;
     padding: 0em 2em;
+}
+
+div.welcome div.content {
+    text-align: center;
+}
+
+div.welcome div.content > div:first-child {
+    display: inline-block;
+}
+
+div.welcome div.content > div:last-child {
+    border-radius: 1em;
+    display: grid;
+    height: 100%;
+}
+
+div.welcome h1 {
+    border-bottom: 2px solid var(--alter-paint);
+    padding: 0em 1em 0.2em 1em;
+}
+
+div.welcome img {
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 50vh;
+    margin: auto;
 }
 
 div.mgrid {
