@@ -380,8 +380,8 @@ class Assistant {
             if (overlaps.length > 0) {
                 // sort overlaps by rate
                 overlaps.sort((a, b) => b.compoundRate - a.compoundRate);
-                for (var j = 0; j < nooverlaps.length; j++) {
-                    if (page.fodders[overlaps[j].index] && page.fodders[nooverlaps[j].index].affixes.length < targetNumSlots) {
+                for (var j = 0; j < overlaps.length; j++) {
+                    if (page.fodders[overlaps[j].index] && page.fodders[overlaps[j].index].affixes.length < targetNumSlots) {
                         page.fodders[overlaps[j].index].addAffixes([affix]);
                         break;
                     }
@@ -728,9 +728,6 @@ class Assistant {
             if (!choice) continue;
             if (choice.isAbilityFactor) numSpecialAbilityFactor++;
         }
-        if (numSpecialAbilityFactor > 5) {
-            let a = true;
-        }
         if (numSpecialAbilityFactor > targetNumFodders) {
             // Too many Special Ability Factors
             return false;
@@ -740,9 +737,6 @@ class Assistant {
         let transferablesData = this.getTransferablesAndNonTransferables(affixes);
         let numDuplPerTransferable = transferablesData.numDuplPerTransferable;
         let numNontransferables = transferablesData.numNontransferables;
-        if (numNontransferables > 0) {
-            let a = true;
-        }
         // Separate Nontransferables from Special Ability Factors
         if (numNontransferables + numSpecialAbilityFactor > targetNumFodders) {
             // Too many special affixes to fit
@@ -923,25 +917,33 @@ class Assistant {
                     }
                     // set flag true
                     let isMatch = true;
-                    // Check if Special Ability Factor
+                    // Check if affix in this fodder comes from some fodder with Special Ability Factor
                     if (!fodder.affixIndicesFromFactor.includes(k)) {
-                        // count occurrences of each ability in choice
-                        let choiceCount = countOccurrences(choice.materials);
-                        // count occurrences of each ability in all abilities in page
-                        let abilityCount = countOccurrences(abilities);
-                        // for each different occurence in choice
-                        for (var code in choiceCount) {
-                            // if all bilities have less than count
-                            if (!abilityCount[code] || abilityCount[code] < choiceCount[code]) {
-                                // does not match, so set flag false and break
-                                isMatch = false;
-                                break;
+                        // If affix is not from factor, but choice is for factors, it is not a match
+                        if (choice.isAbilityFactor) {
+                            isMatch = false;
+                        }
+                        else {
+                            // count occurrences of each ability in choice
+                            let choiceCount = countOccurrences(choice.materials);
+                            // count occurrences of each ability in all abilities in page
+                            let abilityCount = countOccurrences(abilities);
+                            // for each different occurence in choice
+                            for (var code in choiceCount) {
+                                // if all bilities have less than count
+                                if (!abilityCount[code] || abilityCount[code] < choiceCount[code]) {
+                                    // does not match, so set flag false and break
+                                    isMatch = false;
+                                    break;
+                                }
                             }
                         }
                     }
                     else {
-                        // if a special ability factor, fake transfer rate to max
-                        choice = { transferRate: 100 };
+                        // If affix is from factor, but choice is not for factors, it is not a match
+                        if (!choice.isAbilityFactor) {
+                            isMatch = false;
+                        }
                     }
                     if (isMatch) {
                         // match was found, so save the success rate for affixA
@@ -951,11 +953,11 @@ class Assistant {
                                 this.data.extraSlot[fodder.size() - 1][pageConn.size() > 2]
                                 : 100; // range 0~100
                             upslottingFactor = (upslottingFactor - minRate) / (maxRate - minRate); // range 0~1
-                            abilitySuccessRates[k] = Math.min(Math.max(Math.floor(abilitySuccessRates[k] * upslottingFactor), minRate), maxRate);
+                            abilitySuccessRates[k] = Math.min(Math.max(Math.round(abilitySuccessRates[k] * upslottingFactor), minRate), maxRate);
                         }
                         if (fodder.isSameGear) {
                             let sameGearFactor = this.data.sameBonusBoost[(pageConn.size() > 2) ? 2 : 1];
-                            abilitySuccessRates[k] = Math.min(Math.max(Math.floor(abilitySuccessRates[k] * sameGearFactor), minRate), maxRate);
+                            abilitySuccessRates[k] = Math.min(Math.max(Math.round(abilitySuccessRates[k] * sameGearFactor), minRate), maxRate);
                         }
                         if (fodder.rateBoostIdx >= 0 && fodder.rateBoostIdx < fodder.rateBoostOptions.length) {
                             abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.support[fodder.rateBoostIdx].fn(abilitySuccessRates[k]), minRate), maxRate);

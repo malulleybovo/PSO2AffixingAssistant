@@ -193,7 +193,8 @@ class AffixDataParser {
                         for (var n = 0; n < allChoicesOfMaterials.length; n++) {
                             let newChoice = {
                                 transferRate: extAbility.success,
-                                materials: allChoicesOfMaterials[n]
+                                materials: allChoicesOfMaterials[n],
+                                type: 0
                             }
                             if (abilityCode == "$$") {
                                 let code = allChoicesOfMaterials[n][allChoicesOfMaterials[n].length - 1].code;
@@ -227,7 +228,7 @@ class AffixDataParser {
                                 for (var m = 0; m < abilityDB[code].choices.length; m++) {
                                     let thisChoice = abilityDB[code].choices[m];
                                     switch (thisChoice.type) {
-                                        case 0:
+                                        case 0: // From extends
                                             if (data.boostPoint[thisAbility.rel].extend
                                                 && data.boostPoint[thisAbility.rel].extend.hasOwnProperty(abilityDB[code].abilityRef.status)) {
                                                 let index = parseInt(code[thisAbility.code.length - 1]);
@@ -249,7 +250,7 @@ class AffixDataParser {
                                                 abilityDB[code].choices.push(additionalChoice);
                                             }
                                             break;
-                                        case 1:
+                                        case 1: // From generates
                                             if (data.boostPoint[thisAbility.rel].create
                                                 && data.boostPoint[thisAbility.rel].create.hasOwnProperty(abilityDB[code].abilityRef.status)) {
                                                 let index = parseInt(code[thisAbility.code.length - 1]);
