@@ -821,6 +821,14 @@ class Assistant {
     }
 
     toURL(isForSimulator) {
+        if (!this.pageTreeRoot) {
+            if (isForSimulator) {
+                return this.SIMULATOR_WEBSITE;
+            }
+            else {
+                return '';
+            }
+        }
         if (isForSimulator && this.pageTreeRoot.size() > 0) { // Do not include goal in link
             return this.SIMULATOR_WEBSITE + '#!' + this.pageTreeRoot.children[0].toURL(isForSimulator);
         }
