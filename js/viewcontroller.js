@@ -44,7 +44,7 @@ class ViewController {
 
     setup() {
         $("#editor").children().first().panzoom({
-            which: 3,
+            which: (window.opera || navigator.userAgent.match(/Opera|OPR\//)) ? 2 : 3,
             minScale: 0.1,
             maxScale: 2,
             onChange: this.updateConnections
