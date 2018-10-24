@@ -1456,6 +1456,22 @@ class Assistant {
             return isMatch;
         }
     }
+
+    getTreeDepth() {
+        if (!this.pageTreeRoot) return 0;
+        else return getDepthAt(this.pageTreeRoot);
+
+        function getDepthAt(node) {
+            if (!(node instanceof PageTreeNode)) return 0;
+            let maxDepth = 0;
+            for (var i = 0; i < node.size(); i++) {
+                let childNode = node.children[i];
+                let depthOfChild = getDepthAt(childNode);
+                if (depthOfChild > maxDepth) maxDepth = depthOfChild;
+            }
+            return 1 + maxDepth;
+        }
+    }
 }
 
 class PageTreeNode {

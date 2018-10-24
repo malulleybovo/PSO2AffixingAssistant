@@ -4,6 +4,16 @@
  * @author malulleybovo (2018)
  */
 
+const timeData = {
+    chooseAffixStartTime: (new Date()).getTime(),
+    chooseMethodStartTime: (new Date()).getTime(),
+    formulaSheetStartTime: (new Date()).getTime(),
+    shareLinkStartTime: (new Date()).getTime()
+};
+const stringData = {
+    affixingSrc: ''
+}
+
 class ViewController {
     constructor(assistant) {
         // Immutable variables (properties can still change)
@@ -52,10 +62,19 @@ class ViewController {
         $('#panzoomreset').click({ viewcontroller: this }, function (e) {
             e.preventDefault();
             e.data.viewcontroller.centerViewAtNode('#goal');
+            try {
+                gaRequests.send('main', 'buttonClick', {
+                    'View Type': 'Main View',
+                    'Interface Type': 'Center At Goal Button',
+                    'Number Of Interfaces Used': 1
+                });
+            }
+            catch (e) { }
         });
         $('#startnew').click(() => {
             VIEW_CONTROLLER.affixesSelected = VIEW_CONTROLLER.assistant.getGoalAffixes();
             VIEW_CONTROLLER.assistant.reset();
+            stringData.affixingSrc = 'Setting Goal';
             VIEW_CONTROLLER.setAffixSelectionView(true, true);
         });
         $('#openformulasheet').click(() => VIEW_CONTROLLER.openFormulaSheet(true));
@@ -63,10 +82,40 @@ class ViewController {
         $('#themeswitch').click(() => {
             if ($('html').hasClass('theme--default')) {
                 $('html').removeClass('theme--default').addClass('theme--bright');
+                try {
+                    gaRequests.send('main', 'buttonClick', {
+                        'View Type': 'Main View',
+                        'Interface Type': 'Switch Theme Button',
+                        'Number Of Interfaces Used': 1,
+                        'Theme Type': 'Bright Theme',
+                        'Number of Themes Used': 1
+                    });
+                }
+                catch (e) { }
             }
             else if($('html').hasClass('theme--bright')) {
                 $('html').removeClass('theme--bright').addClass('theme--default');
+                try {
+                    gaRequests.send('main', 'buttonClick', {
+                        'View Type': 'Main View',
+                        'Interface Type': 'Switch Theme Button',
+                        'Number Of Interfaces Used': 1,
+                        'Theme Type': 'Default Theme',
+                        'Number of Themes Used': 1
+                    });
+                }
+                catch (e) { }
             }
+        });
+        $('div#reportbug').click(() => {
+            try {
+                gaRequests.send('main', 'buttonClick', {
+                    'View Type': 'Main View',
+                    'Interface Type': 'Report Bug Button',
+                    'Number Of Interfaces Used': 1
+                });
+            }
+            catch (e) { }
         });
     }
 
@@ -78,6 +127,41 @@ class ViewController {
         vc.assistant.setActiveFodder(found.fodder);
         vc.assistant.setActivePageTreeNode(found.pageTreeNode);
         vc.affixesSelected = found.fodder.affixes.slice(0);
+        if (vc.assistant.pageTreeRoot == null || vc.assistant.pageTreeRoot == found.fodder) {
+            stringData.affixingSrc = 'Reproducing Goal';
+            try {
+                gaRequests.send('main', 'buttonClick', {
+                    'View Type': 'Main View',
+                    'Interface Type': 'Reproduce Button',
+                    'Number Of Interfaces Used': 1
+                });
+            }
+            catch (e) { }
+        }
+        else if (found.fodder instanceof Fodder) {
+            if (found.fodder.connectedTo && found.fodder.connectedTo instanceof Page) {
+                stringData.affixingSrc = 'Reproducing Intermediary Fodder';
+                try {
+                    gaRequests.send('main', 'buttonClick', {
+                        'View Type': 'Main View',
+                        'Interface Type': 'Reproduce Button',
+                        'Number Of Interfaces Used': 1
+                    });
+                }
+                catch (e) { }
+            }
+            else {
+                stringData.affixingSrc = 'Producing Intermediary Fodder';
+                try {
+                    gaRequests.send('main', 'buttonClick', {
+                        'View Type': 'Main View',
+                        'Interface Type': 'Produce Button',
+                        'Number Of Interfaces Used': 1
+                    });
+                }
+                catch (e) { }
+            }
+        }
         vc.openChoicesSelectionView(true);
     }
 
@@ -176,17 +260,55 @@ class ViewController {
                     }));
                 if (shouldAnimate) {
                     $('div.affix-selection-container').animate({}, 10, function () {
+                        timeData.chooseAffixStartTime = (new Date()).getTime();
                         $('div.affix-selection-container').removeClass('hidden');
+                        try {
+                            gaRequests.send('main', 'buttonClick', {
+                                'View Type': 'Main View',
+                                'Interface Type': 'Set Goal Button',
+                                'Number Of Interfaces Used': 1
+                            });
+                        }
+                        catch (e) { }
                     });
                 }
                 else $('div.affix-selection-container').removeClass('hidden');
                 $('div.affix-selection-container li > div').click({ viewcontroller: this }, this.selectAbility);
                 $('div.affix-selection-container div.affix > i').click({ viewcontroller: this }, this.selectAbility);
+                $('div.affix-selection-container div.cancel-button').click({ viewcontroller: this }, function ({ data }) {
+                    $('div.affix-selection-container').remove();
+                    try {
+                        gaRequests.send('affix', 'cancel', {
+                            'View Type': 'Choose Affix View',
+                            'Transaction Type': 'Cancel',
+                            'Time Spent In View': (new Date()).getTime() - timeData.chooseAffixStartTime
+                        });
+                    }
+                    catch (e) { }
+                });
                 $('div.affix-selection-container div.confirm-button').click({ viewcontroller: this }, function ({ data }) {
                     if ($('div.affix-selection-container div.confirm-button.disabled').length > 0) return;
+                    try {
+                        gaRequests.send('affix', 'confirm', {
+                            'View Type': 'Choose Affix View',
+                            'Transaction Type': 'Confirm',
+                            'Time Spent In View': (new Date()).getTime() - timeData.chooseAffixStartTime
+                        });
+                    }
+                    catch (e) { }
                     data.viewcontroller.openChoicesSelectionView(false);
                     $('div.choice-selection-container div.cancel-button').click({ viewcontroller: data.viewcontroller },
-                        ({ data }) => { data.viewcontroller.setAffixSelectionView(true, false); });
+                        ({ data }) => {
+                            data.viewcontroller.setAffixSelectionView(true, false);
+                            try {
+                                gaRequests.send('method', 'cancel', {
+                                    'View Type': 'Choose Method of Making View',
+                                    'Transaction Type': 'Cancel',
+                                    'Time Spent In View': (new Date()).getTime() - timeData.chooseMethodStartTime
+                                });
+                            }
+                            catch (e) { }
+                        });
                 });
                 this.updateAffixSelectionView();
             }
@@ -244,6 +366,7 @@ class ViewController {
             }));
         if (shouldAnimate) {
             $('div.choice-selection-container').animate({}, 10, function () {
+                timeData.chooseMethodStartTime = (new Date()).getTime();
                 $('div.choice-selection-container').removeClass('hidden');
             });
         }
@@ -252,7 +375,17 @@ class ViewController {
         $('div.choice-selection-container div.options > div.checkbox-container:last-child').click({ viewcontroller: vc }, vc.setShouldSpread);
         $('div.choice-selection-container li > div').click({ viewcontroller: vc }, vc.selectChoice);
         $('div.choice-selection-container div.cancel-button').click(
-            (e) => { $('div.choice-selection-container').remove(); });
+            (e) => {
+                $('div.choice-selection-container').remove();
+                try {
+                    gaRequests.send('method', 'cancel', {
+                        'View Type': 'Choose Method of Making View',
+                        'Transaction Type': 'Cancel',
+                        'Time Spent In View': (new Date()).getTime() - timeData.chooseMethodStartTime
+                    });
+                }
+                catch (e) { }
+            });
         $('div.choice-selection-container div.confirm-button').click({ viewcontroller: vc }, vc.produceFodderFromChoices);
     }
 
@@ -279,13 +412,30 @@ class ViewController {
             }));
         if (shouldAnimate) {
             $('div.formula-sheet-container').animate({}, 10, function () {
+                timeData.formulaSheetStartTime = (new Date()).getTime();
                 $('div.formula-sheet-container').removeClass('hidden');
+                try {
+                    gaRequests.send('main', 'buttonClick', {
+                        'View Type': 'Main View',
+                        'Interface Type': 'Formula Sheet Button',
+                        'Number Of Interfaces Used': 1
+                    });
+                }
+                catch (e) { }
             });
         }
         else $('div.formula-sheet-container').removeClass('hidden');
         $('div.formula-sheet-container li > div').click({ viewcontroller: vc }, vc.updateFormulaSheetSearchResults);
         $('div.formula-sheet-container div.confirm-button').click(() => {
             $('div.formula-sheet-container').remove();
+            try {
+                gaRequests.send('formula', 'close', {
+                    'View Type': 'Formula Sheet View',
+                    'Transaction Type': 'Close',
+                    'Time Spent In View': (new Date()).getTime() - timeData.formulaSheetStartTime
+                });
+            }
+            catch (e) { }
         });
     }
 
@@ -312,7 +462,16 @@ class ViewController {
             }));
         if (shouldAnimate) {
             $('div.link-container').animate({}, 10, function () {
+                timeData.shareLinkStartTime = (new Date()).getTime();
                 $('div.link-container').removeClass('hidden');
+                try {
+                    gaRequests.send('main', 'buttonClick', {
+                        'View Type': 'Main View',
+                        'Interface Type': 'Share Link Button',
+                        'Number Of Interfaces Used': 1
+                    });
+                }
+                catch (e) { }
             });
         }
         else $('div.link-container').removeClass('hidden');
@@ -321,9 +480,35 @@ class ViewController {
             if (!copyText) return;
             copyText.select();
             document.execCommand("copy");
+            try {
+                gaRequests.send('share', 'buttonClick', {
+                    'View Type': 'Share Link View',
+                    'Link Type': 'Link to Assistant',
+                    'Number Of Links Used': 1
+                });
+            }
+            catch (e) { }
+        });
+        $($('div.link-container div.copy-button')[1]).find('a').click(() => {
+            try {
+                gaRequests.send('share', 'buttonClick', {
+                    'View Type': 'Share Link View',
+                    'Link Type': 'Link to Simulator',
+                    'Number Of Links Used': 1
+                });
+            }
+            catch (e) { }
         });
         $('div.link-container div.confirm-button').click(() => {
             $('div.link-container').remove();
+            try {
+                gaRequests.send('share', 'close', {
+                    'View Type': 'Share Link View',
+                    'Transaction Type': 'Close',
+                    'Time Spent In View': (new Date()).getTime() - timeData.shareLinkStartTime
+                });
+            }
+            catch (e) { }
         });
     }
 
@@ -363,6 +548,14 @@ class ViewController {
             }
             e.data.viewcontroller.updateURLParams();
             e.data.viewcontroller.updateView();
+            try {
+                gaRequests.send('main', 'checkboxCheck', {
+                    'View Type': 'Main View',
+                    'Interface Type': 'Same Equipment Checkbox',
+                    'Number Of Interfaces Used': 1
+                });
+            }
+            catch (e) { }
         });
         $('.boost-container > div.dropdown-container:not(:last-child) select').change({ viewcontroller: this }, (e) => {
             let $elem = $(e.currentTarget);
@@ -373,6 +566,14 @@ class ViewController {
             }
             e.data.viewcontroller.updateURLParams();
             e.data.viewcontroller.updateView();
+            try {
+                gaRequests.send('main', 'dropdownChange', {
+                    'View Type': 'Main View',
+                    'Interface Type': 'Ability Rate Boost Dropdown',
+                    'Number Of Interfaces Used': 1
+                });
+            }
+            catch (e) { }
         });
         $('.boost-container > div.dropdown-container:last-child select').change({ viewcontroller: this }, (e) => {
             let $elem = $(e.currentTarget);
@@ -383,6 +584,14 @@ class ViewController {
             }
             e.data.viewcontroller.updateURLParams();
             e.data.viewcontroller.updateView();
+            try {
+                gaRequests.send('main', 'dropdownChange', {
+                    'View Type': 'Main View',
+                    'Interface Type': 'Equipment Potential Dropdown',
+                    'Number Of Interfaces Used': 1
+                });
+            }
+            catch (e) { }
         });
         vc.displayWelcomeScreen(false);
         return this;
@@ -465,6 +674,28 @@ class ViewController {
                     vc.assistant.affixDB[$(that).attr('data-code')].abilityRef
                 ), 1
             );
+            if (!$(this).parent().hasClass('affix')) {
+                try {
+                    gaRequests.send('affix', 'select', {
+                        'View Type': 'Choose Affix View',
+                        'Selection Type': 'Deselecting',
+                        'Selection Medium': ($('div.affix-selection-container input.searchbar').val() != '') ? 'Search Bar' : 'Manual',
+                        'Number Of Abilities Selected': 1
+                    });
+                }
+                catch (e) { }
+            }
+            else {
+                try {
+                    gaRequests.send('affix', 'select', {
+                        'View Type': 'Choose Affix View',
+                        'Selection Type': 'Deselecting',
+                        'Selection Medium': 'Affixes Selected',
+                        'Number Of Abilities Selected': 1
+                    });
+                }
+                catch (e) { }
+            }
         }
         else {
             let selAffix = vc.assistant.affixDB[$(this).attr('data-code')].abilityRef;
@@ -478,6 +709,15 @@ class ViewController {
             }
             if (!hadConflict && vc.affixesSelected.length < 8) {
                 vc.affixesSelected.push(vc.assistant.affixDB[$(this).attr('data-code')].abilityRef);
+                try {
+                    gaRequests.send('affix', 'select', {
+                        'View Type': 'Choose Affix View',
+                        'Selection Type': 'Selecting',
+                        'Selection Medium': ($('div.affix-selection-container input.searchbar').val() != '') ? 'Search Bar' : 'Manual',
+                        'Number Of Abilities Selected': 1
+                    });
+                }
+                catch (e) { }
             }
         }
         vc.updateAffixSelectionView();
@@ -498,6 +738,15 @@ class ViewController {
                     if (arrIdx >= 0 && arrIdx < vc.affixesSelected.length
                         && vc.choicesSelected[arrIdx] !== undefined) {
                         vc.choicesSelected[arrIdx] = null;
+                        try {
+                            gaRequests.send('method', 'select', {
+                                'View Type': 'Choose Method of Making View',
+                                'Selection Type': 'Deselecting',
+                                'Selection Medium': ($($('div.choice-selection-container input.searchbar')[arrIdx]).val() != '') ? 'Search Bar' : 'Manual',
+                                'Number Of Abilities Selected': 1
+                            });
+                        }
+                        catch (e) { }
                     }
                 }
             }
@@ -516,6 +765,15 @@ class ViewController {
                         if (arrIdx >= 0 && arrIdx < vc.affixesSelected.length
                             && vc.choicesSelected[arrIdx] !== undefined) {
                             vc.choicesSelected[arrIdx] = choice;
+                            try {
+                                gaRequests.send('method', 'select', {
+                                    'View Type': 'Choose Method of Making View',
+                                    'Selection Type': 'Selecting',
+                                    'Selection Medium': ($($('div.choice-selection-container input.searchbar')[arrIdx]).val() != '') ? 'Search Bar' : 'Manual',
+                                    'Number Of Abilities Selected': 1
+                                });
+                            }
+                            catch (e) { }
                         }
                     }
                 }
@@ -564,6 +822,18 @@ class ViewController {
             if (spotlight === $page) spotlightOut($page);
         }, vc.NEWLY_PRODUCED_TIMEOUT_IN_MILLI);
         $('div.choice-selection-container').remove();
+        try {
+            gaRequests.send('method', 'confirm', {
+                'View Type': 'Choose Method of Making View',
+                'Transaction Type': 'Confirm',
+                'Time Spent In View': (new Date()).getTime() - timeData.chooseMethodStartTime,
+                'Affix Type (Upslot)': (vc.shouldUpslot) ? 'Upslot' : 'Same Slot',
+                'Affix Type (Spread)': (vc.shouldSpread) ? 'Spread' : 'Compact',
+                'Affix Origin': stringData.affixingSrc,
+                'Number Of Affix Requests': 1
+            });
+        }
+        catch (e) { }
     }
 
     updateAffixSelectionView() {
@@ -690,6 +960,15 @@ class ViewController {
             categories: VIEW_CONTROLLER.filters,
             datalist: choices[$(this).attr('data-code')]
         })).insertAfter($ref);
+        try {
+            gaRequests.send('formula', 'select', {
+                'View Type': 'Formula Sheet View',
+                'Selection Type': 'Selecting',
+                'Selection Medium': ($($('div.formula-sheet-container input.searchbar')[0]).val() != '') ? 'Search Bar' : 'Manual',
+                'Number Of Abilities Selected': 1
+            });
+        }
+        catch (e) { }
     }
 
     setShouldUpslot(e) {

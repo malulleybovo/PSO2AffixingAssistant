@@ -328,7 +328,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     layoutTemplate += `</div>
                 <div>
                     ${(isAffixSelection || isChoiceSelection) ? `<div>
-                        <div onclick="${(isAffixSelection) ? `$('div.affix-selection-container').remove();` : ``}" class="cancel-button">Cancel</div>
+                        <div class="cancel-button">Cancel</div>
                     </div>
                     ` : ``}<div>
                         <div class="confirm-button${(isAffixSelection || isChoiceSelection) ? ` disabled">Confirm`: `">Close`}</div>
