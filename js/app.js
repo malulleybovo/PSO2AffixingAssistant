@@ -33,7 +33,7 @@ window.addEventListener("beforeunload", function (event) {
         let depth = ASSISTANT.getTreeDepth();
         gaRequests.send('main', 'entry', {
             'Time Spent In App': ((new Date()).getTime() - sessionStartTime) / 1000,
-            'Number Of Levels Created': depth,
+            'Number Of Levels Created': 1,
             'Tree Depth': depth.toString()
         });
     }
