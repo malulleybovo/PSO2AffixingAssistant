@@ -67,5 +67,7 @@
   1) Tap on the *bug* button on the side bar.
   2) Tell me what the bug was, and how I can reproduce the bug you found!
   3) A fix to the bug you found will come soon! Thanks for reporting!
-
+  
+  
+  PSO2AffixingAssistant@2018 - by [malulleybovo](https://github.com/malulleybovo/)
 </div>
