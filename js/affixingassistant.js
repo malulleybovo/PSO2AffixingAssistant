@@ -397,22 +397,25 @@ class Assistant {
             let nooverlaps = placements.nooverlaps;
 
             // Try placing on best overlap
+            let hasAdded = false;
             if (overlaps.length > 0) {
                 // sort overlaps by rate
                 overlaps.sort((a, b) => b.compoundRate - a.compoundRate);
                 for (var j = 0; j < overlaps.length; j++) {
                     if (page.fodders[overlaps[j].index] && page.fodders[overlaps[j].index].affixes.length < targetNumSlots) {
                         page.fodders[overlaps[j].index].addAffixes([affix]);
+                        hasAdded = true;
                         break;
                     }
                 }
             }
-            else if (nooverlaps.length > 0) { // Or try placing on best non-overlap
+            if (!hasAdded && nooverlaps.length > 0) { // Or try placing on best non-overlap
                 // sort overlaps by rate
                 nooverlaps.sort((a, b) => b.compoundRate - a.compoundRate);
                 for (var j = 0; j < nooverlaps.length; j++) {
                     if (page.fodders[nooverlaps[j].index] && page.fodders[nooverlaps[j].index].affixes.length < targetNumSlots) {
                         page.fodders[nooverlaps[j].index].addAffixes([affix]);
+                        hasAdded = true;
                         break;
                     }
                 }
