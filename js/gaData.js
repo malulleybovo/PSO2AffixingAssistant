@@ -75,5 +75,15 @@ const gaRequests = Object.freeze({
                 }
             }
         } catch (e) { }
+    },
+    sendException: function (errMsg, isFatal) {
+        try {
+            if (ga && typeof ga === 'function' && gaEvts.locations[location] && gaEvts.actions[action]) {
+                ga('send', 'exception', {
+                    'exDescription': errMsg,
+                    'exFatal': (isFatal) ? true : false
+                });
+            }
+        } catch (e) { }
     }
 });

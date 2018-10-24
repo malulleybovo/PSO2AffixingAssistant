@@ -132,6 +132,10 @@ class Assistant {
                     `Could not find choices for affix %o because it was not found in the database.`,
                     affix
                 );
+                try {
+                    let msg = (ASSISTANT.pageTreeRoot) ? ASSISTANT.pageTreeRoot.toString() : `root={${ASSISTANT.pageTreeRoot}}`;
+                    gaRequests.sendException(msg)
+                } catch (e) { }
             }
         }
         return choices;
@@ -189,6 +193,22 @@ class Assistant {
 
         // Generate new page
         let page = this.buildPageInPyramid(affixes, targetNumSlots);
+
+        if (page == null) {
+            try {
+                let msg = `@Assistant.buildPageForChoices => page created was null from { affixes: [ `;
+                if (affixes && affixes.length) {
+                    for (var i = 0; i < affixes.length; i++) {
+                        if (affixes[i] && affixes[i].code) msg += `${affixes[i]}, `;
+                        else msg += `NoCode={${affixes[i]}}, `;
+                    }
+                }
+                else msg += `NotDefined={${affixes}}`;
+                msg += ` ], targetNumSlots: ${targetNumSlots} /// pageTreeRoot => `;
+                msg += (ASSISTANT.pageTreeRoot) ? ASSISTANT.pageTreeRoot.toString() : `root={${ASSISTANT.pageTreeRoot}}`;
+                gaRequests.sendException(msg);
+            } catch (e) { }
+        }
 
         if (shouldSpread) {
             this.spreadFodders(page, targetNumSlots);
@@ -1555,6 +1575,21 @@ class PageTreeNode {
         return this.children.length;
     }
 
+    toString() {
+        let info = `Node={ isGoal: ${this.isGoal}, page: `;
+        if (this.page && this.page instanceof Page)
+            info += this.page.toString();
+        else info += `NoPage={this.page}`;
+        info += `, children: [ `;
+        for (var i = 0; i < this.size(); i++) {
+            if (this.children[i] && this.children[i] instanceof PageTreeNode)
+                info += `${this.children[i].toString()}, `;
+            else info += `NotANode={this.children[i]}, `;
+        }
+        info += ` ]`;
+        return info;
+    }
+
     addPageTreeNodes(pageTreeNodes) {
         if (pageTreeNodes && pageTreeNodes instanceof PageTreeNode) {
             pageTreeNodes = [pageTreeNodes];
@@ -1821,6 +1856,23 @@ class Page {
         return this.fodders.length;
     }
 
+    toString(printOnlyHighLevel) {
+        let info = `Page={ fodders: [ `;
+        for (var i = 0; i < this.size(); i++) {
+            if (this.fodders[i] && this.fodders[i] instanceof Fodder) info += `${this.fodders[i].toString(printOnlyHighLevel)}, `;
+            else info += `NotAFodder={${this.fodders[i]}}, `;
+        }
+        info += `], successRate: ${this.successRate}, `;
+        if (!printOnlyHighLevel && this.connectedTo) {
+            info += `connectedTo: { `;
+            if (this.connectedTo instanceof Fodder) info += this.connectedTo.toString(true);
+            else info += `NotAFodder={${this.connectedTo}}`;
+            info += ` }`;
+        }
+        info += ` }`;
+        return info;
+    }
+
     addFodders(fodders) {
         if (fodders && fodders instanceof Fodder) {
             fodders = [fodders];
@@ -1857,6 +1909,11 @@ class Page {
                 `Page %o success rate was not changed from ${this.successRate} to ${rate}.`,
                 this
             );
+            try {
+                let msg = `@Page.setSuccessRate => rate not set from ${this.successRate} to ${rate} /// this => ${this.toString()} /// pageTreeRoot => `;
+                msg = (ASSISTANT.pageTreeRoot) ? ASSISTANT.pageTreeRoot.toString() : `root={${ASSISTANT.pageTreeRoot}}`;
+                gaRequests.sendException(msg);
+            } catch (e) { }
         }
         return this;
     }
@@ -1984,6 +2041,39 @@ class Fodder {
         return this.affixes.length;
     }
 
+    toString(printOnlyHighLevel) {
+        let info = `Fodder={ affixes: [ `;
+        for (var i = 0; i < this.size(); i++) {
+            if (this.affixes[i] && this.affixes[i].code && this.affixes[i].name) info += `Affix="${this.affixes[i].name}", `;
+            else info += `NotAnAffix="${this.affixes[i]}", `;
+        }
+        info += `], idcesFromFactor: [ `;
+        for (var i = 0; i < this.affixIndicesFromFactor.length; i++) {
+            info += `${this.affixIndicesFromFactor[i]}, `;
+        }
+        info += `], affixRates: [ `;
+        for (var i = 0; i < this.affixSuccessRates.length; i++) {
+            info += `${this.affixSuccessRates[i]}, `;
+        }
+        info += `], isGoal: ${this.isGoal}, overallRate: ${this.overallSuccessRate}, `;
+        if (!printOnlyHighLevel && this.connectedTo) {
+            info += `connectedTo={ `;
+            if (this.connectedTo instanceof Page) info += this.connectedTo.toString(true);
+            else info += `NotAPage={${this.connectedTo}}`;
+            info += ` }`;
+        }
+        info += `, isSame: ${this.isSameGear}, rateIdx: ${this.rateBoostIdx}, potIdx: ${this.potentialIdx}, addAbility: `;
+        if (this.addAbilityItemInUse && this.addAbilityItemInUse.name)
+            info += `${this.addAbilityItemInUse.name}`;
+        else info += `${this.addAbilityItemInUse}`;
+        info += `, factor: `;
+        if (this.specialAbilityFactor && this.specialAbilityFactor.code)
+            info += `${this.specialAbilityFactor.code}`;
+        else info += `${this.specialAbilityFactor}`;
+        info += ` }`;
+        return info;
+    }
+
     addAffixes(affixes) {
         if (affixes && affixes.code) {
             affixes = [affixes];
@@ -2037,6 +2127,11 @@ class Fodder {
                 `Page %o success rate was not changed from ${this.successRate} to ${rate}.`,
                 this
             );
+            try {
+                let msg = `@Fodder.setSuccessRate => rate not set from ${this.successRate} to ${rate} /// this => ${this.toString()} /// pageTreeRoot => `;
+                msg = (ASSISTANT.pageTreeRoot) ? ASSISTANT.pageTreeRoot.toString() : `root={${ASSISTANT.pageTreeRoot}}`;
+                gaRequests.sendException(msg)
+            } catch (e) { }
         }
         return this;
     }
