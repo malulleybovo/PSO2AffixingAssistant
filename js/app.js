@@ -4,6 +4,8 @@
  * @author malulleybovo (2018)
  */
 
+const sessionType = (window.location.search == '') ?
+    'New Session' : 'Returning Session';
 const sessionStartTime = (new Date()).getTime();
 const ASSISTANT = new Assistant(data);
 const VIEW_CONTROLLER = (new ViewController(ASSISTANT));
@@ -18,8 +20,7 @@ window.addEventListener("load", function (event) {
         gaRequests.create();
         if (window && window.location) {
             gaRequests.send('main', 'entry', {
-                'Session Type': (window.location.search == '') ?
-                    'New Session' : 'Returning Session',
+                'Session Type': sessionType,
                 'Number Of Sessions': 1
             });
         }
@@ -56,6 +57,7 @@ $(window).bind('popstate',
         VIEW_CONTROLLER.updateFromURL();
         try {
             gaRequests.send('main', 'entry', {
+                'Session Type': sessionType,
                 'Number Of History States Popped': 1
             });
         }
