@@ -281,7 +281,7 @@ class ViewController {
                         gaRequests.send('affix', 'cancel', {
                             'View Type': 'Choose Affix View',
                             'Transaction Type': 'Cancel',
-                            'Time Spent In View': (new Date()).getTime() - timeData.chooseAffixStartTime
+                            'Time Spent In View': ((new Date()).getTime() - timeData.chooseAffixStartTime) / 1000
                         });
                     }
                     catch (e) { }
@@ -292,7 +292,7 @@ class ViewController {
                         gaRequests.send('affix', 'confirm', {
                             'View Type': 'Choose Affix View',
                             'Transaction Type': 'Confirm',
-                            'Time Spent In View': (new Date()).getTime() - timeData.chooseAffixStartTime
+                            'Time Spent In View': ((new Date()).getTime() - timeData.chooseAffixStartTime) / 1000
                         });
                     }
                     catch (e) { }
@@ -304,7 +304,7 @@ class ViewController {
                                 gaRequests.send('method', 'cancel', {
                                     'View Type': 'Choose Method of Making View',
                                     'Transaction Type': 'Cancel',
-                                    'Time Spent In View': (new Date()).getTime() - timeData.chooseMethodStartTime
+                                    'Time Spent In View': ((new Date()).getTime() - timeData.chooseMethodStartTime) / 1000
                                 });
                             }
                             catch (e) { }
@@ -381,7 +381,7 @@ class ViewController {
                     gaRequests.send('method', 'cancel', {
                         'View Type': 'Choose Method of Making View',
                         'Transaction Type': 'Cancel',
-                        'Time Spent In View': (new Date()).getTime() - timeData.chooseMethodStartTime
+                        'Time Spent In View': ((new Date()).getTime() - timeData.chooseMethodStartTime) / 1000
                     });
                 }
                 catch (e) { }
@@ -432,7 +432,7 @@ class ViewController {
                 gaRequests.send('formula', 'close', {
                     'View Type': 'Formula Sheet View',
                     'Transaction Type': 'Close',
-                    'Time Spent In View': (new Date()).getTime() - timeData.formulaSheetStartTime
+                    'Time Spent In View': ((new Date()).getTime() - timeData.formulaSheetStartTime) / 1000
                 });
             }
             catch (e) { }
@@ -505,7 +505,7 @@ class ViewController {
                 gaRequests.send('share', 'close', {
                     'View Type': 'Share Link View',
                     'Transaction Type': 'Close',
-                    'Time Spent In View': (new Date()).getTime() - timeData.shareLinkStartTime
+                    'Time Spent In View': ((new Date()).getTime() - timeData.shareLinkStartTime) / 1000
                 });
             }
             catch (e) { }
@@ -826,7 +826,7 @@ class ViewController {
             gaRequests.send('method', 'confirm', {
                 'View Type': 'Choose Method of Making View',
                 'Transaction Type': 'Confirm',
-                'Time Spent In View': (new Date()).getTime() - timeData.chooseMethodStartTime,
+                'Time Spent In View': ((new Date()).getTime() - timeData.chooseMethodStartTime) / 1000,
                 'Affix Type (Upslot)': (vc.shouldUpslot) ? 'Upslot' : 'Same Slot',
                 'Affix Type (Spread)': (vc.shouldSpread) ? 'Spread' : 'Compact',
                 'Affix Origin': stringData.affixingSrc,
