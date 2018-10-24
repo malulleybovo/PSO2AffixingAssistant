@@ -1143,7 +1143,7 @@ class Assistant {
                         }
                         else isMatch = false;
                         if (isMatch && pageB.connDist >= 0 && pageB.fodderIdx >= 0) {
-                            if (Math.abs(k - i) != pageB.connDist || j != pageB.fodderIdx)
+                            if ((k - i) != pageB.connDist || j != pageB.fodderIdx)
                                 isMatch = false;
                         }
                         if (isMatch) {
