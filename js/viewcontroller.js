@@ -475,7 +475,7 @@ class ViewController {
             });
         }
         else $('div.link-container').removeClass('hidden');
-        $('div.link-container div.copy-button:first-child').click(() => {
+        $('div.link-container div.copy-button:nth-child(3)').click(() => {
             let copyText = $('div.link-container input[type=text]')[0];
             if (!copyText) return;
             copyText.select();

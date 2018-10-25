@@ -420,7 +420,7 @@ class Assistant {
                     }
                 }
             }
-            else {
+            if (!hasAdded) {
                 // Or something went wrong and affix cannot be placed anywhere
                 return null;
             }
