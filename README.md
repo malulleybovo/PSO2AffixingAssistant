@@ -4,7 +4,7 @@
   Effortless affixing solutions to PSO2 problems
 
   ## [Use the Assistant Here](https://malulleybovo.github.io/PSO2AffixingAssistant/)
-  #### Version 0.1.0 (Beta)
+  #### Version 0.2.0 (Beta)
   #### Compliant with version 1.81 of [Arks Layer's Affix Simulator](https://arks-layer.com/abilitysim/)
 
   ### NO HASSLE Affixing Formulas at the tip of your fingers
