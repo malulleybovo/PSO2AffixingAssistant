@@ -48,7 +48,7 @@ div.welcome > div:first-child {
 div.welcome > div:first-child > div:first-child {
     display: table-cell;
     vertical-align: middle;
-    padding: 0em 2em;
+    padding: 0em 3.5em;
 }
 
 div.welcome div.content {
@@ -57,12 +57,6 @@ div.welcome div.content {
 
 div.welcome div.content > div:first-child {
     display: inline-block;
-}
-
-div.welcome div.content > div:last-child {
-    border-radius: 1em;
-    display: grid;
-    height: 100%;
 }
 
 div.welcome h1 {
@@ -77,43 +71,26 @@ div.welcome img {
     margin: auto;
 }
 
-div.mgrid {
-    display: grid;
-    grid-template-columns: [col1-start] min-content [col2-start] auto;
-    grid-template-rows: [row1-start] min-content [row2-start] min-content [row3-start] min-content [row4-start] min-content [row5-start] min-content [row6-start] min-content;
+table.mgrid {
+    table-layout: auto;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
 }
 
-div.mgrid > *:first-child {
-    grid-column: col1-start;
-    margin-right: 5em;
+table.mgrid td {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 1px;
+    white-space: nowrap;
+    padding-inline-start: 5em;
 }
 
-div.mgrid > *:last-child {
-    grid-column: col2-start;
-}
-
-div.mgrid > *:last-child > div.mgrid:first-child {
-    grid-row: row1-start;
-}
-
-div.mgrid > *:last-child > div.mgrid:nth-child(2) {
-    grid-row: row2-start;
-}
-
-div.mgrid > *:last-child > div.mgrid:nth-child(3) {
-    grid-row: row3-start;
-}
-
-div.mgrid > *:last-child > div.mgrid:nth-child(4) {
-    grid-row: row4-start;
-}
-
-div.mgrid > *:last-child > div.mgrid:nth-child(5) {
-    grid-row: row5-start;
-}
-
-div.mgrid > *:last-child > div.mgrid:nth-child(6) {
-    grid-row: row6-start;
+table.mgrid td > div {
+    display: inline-block;
+    padding: 0.25em;
+    margin: 0.25em;
 }
 
 div.header {
@@ -178,9 +155,6 @@ div.page {
     background-color: var(--paint-light);
     text-align: center;
     transition: 0.25s;
-    position: relative;
-    top: 50%;
-    transform: perspective(1px) translateY(-50%);
     border: 1px solid var(--border-color);
 }
 
@@ -346,6 +320,39 @@ div.fodder > div.affix.add-ability {
     border: solid 1.5px var(--border-color);
 }
 
+div.title.bold {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2px;
+    border-radius: 1em;
+    background: var(--paint-light);
+    outline: none;
+    padding: 0;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 4px;
+    height: 16px;
+    border-radius: 1em;
+    background: var(--alter-paint);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    border: none;
+    width: 4px;
+    height: 16px;
+    background: var(--alter-paint);
+    cursor: pointer;
+}
+
 div.affix-selection-container,
 div.choice-selection-container,
 div.formula-sheet-container,
@@ -357,48 +364,170 @@ div.link-container {
     transition: all 0.3s ease;
 }
 
-div.choice-selection-container div.options {
-    grid-row: row2-start;
-    display: grid;
-    grid-template-columns: [col1-start] max-content [col2-start] max-content;
+div.affix-selection-container.hidden,
+div.choice-selection-container.hidden,
+div.formula-sheet-container.hidden,
+div.link-container.hidden {
+    opacity: 0;
 }
 
-div.choice-selection-container div.options > div.checkbox-container {
-    width: unset;
+div.affix-selection-container > div,
+div.choice-selection-container > div,
+div.formula-sheet-container > div,
+div.link-container > div {
+    width: 75%;
+    margin: 0 auto;
+    height: 75%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--paint-light);
+    border-radius: 0.5em;
+    border: solid 1.5px var(--border-color);
+    overflow: hidden;
+    padding: 1em 2em;
+}
+
+div.affix-selection-container div.main-grid,
+div.choice-selection-container div.main-grid,
+div.formula-sheet-container div.main-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 div.affix-selection-container div.content,
+div.choice-selection-container div.content,
 div.formula-sheet-container div.content {
-    overflow-x: auto;
-    grid-column-gap: 1em;
+    width: 100%;
+    height: 100%;
     padding: 0.5em 0em;
-    grid-row: row2-start;
-    display: grid;
-    overflow-y: hidden;
-    grid-template-columns: [col1-start] 33% [col2-start] auto [col3-start];
-    grid-template-rows: 100%;
     margin: 0.5em 0em;
+    overflow: auto;
 }
 
-div.link-container div.content {
-    overflow-x: auto;
-    padding: 0.5em 0em;
-    grid-row: row2-start;
-    display: grid;
-    overflow-y: hidden;
-    margin: 0.5em 0em;
+div.affix-selection-container div.content > div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
 }
 
-div.choice-selection-container div.content {
-    overflow-x: auto;
-    grid-column-gap: 1em;
-    padding: 0.5em 0em;
-    grid-row: row3-start;
-    display: grid;
-    overflow-y: hidden;
-    grid-template-columns: [col1-start] min-content [col2-start] min-content [col3-start] min-content [col4-start] min-content [col5-start] min-content [col6-start] min-content [col7-start] min-content [col8-start] min-content;
-    grid-template-rows: 100%;
-    margin: 0.5em 0em;
+div.affix-selection-container div.content > div > div:first-child {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin-right: 0.5em;
+    min-width: 160px;
+}
+
+div.affix-selection-container div.content > div > div:last-child {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    margin-left: 0.5em;
+    min-width: 160px;
+}
+
+div.affix-selection-container div.main-grid > div:last-child,
+div.choice-selection-container div.main-grid > div:last-child {
+    display: flex;
+    width: 100%;
+}
+
+div.affix-selection-container div.selection-container {
+    margin-bottom: 1em;
+}
+
+div.affix-selection-container .cancel-button,
+div.choice-selection-container .cancel-button {
+    background-color: var(--paint-dark);
+    border-radius: 0.25em 0em 0em 0.25em;
+    border: 1.5px solid var(--border-color);
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0.35em 0em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 40%;
+}
+
+div.affix-selection-container .cancel-button:hover,
+div.choice-selection-container .cancel-button:hover {
+    background-color: var(--paint-light);
+}
+
+div.affix-selection-container .confirm-button,
+div.choice-selection-container .confirm-button,
+div.formula-sheet-container .confirm-button,
+div.link-container .confirm-button {
+    background-color: var(--alter-paint);
+    border-radius: 0em 0.25em 0.25em 0em;
+    border: 1.5px solid var(--border-color);
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0.35em 0em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 60%;
+}
+
+div.affix-selection-container .confirm-button:hover,
+div.choice-selection-container .confirm-button:hover,
+div.formula-sheet-container .confirm-button:hover,
+div.link-container .confirm-button:hover {
+    background-color: var(--alter-paint-light);
+}
+
+div.affix-selection-container .confirm-button.disabled,
+div.choice-selection-container .confirm-button.disabled {
+    background-color: var(--paint-dark);
+}
+
+div.affix-selection-container div.affix,
+div.choice-selection-container div.affix {
+    width: 140px;
+}
+
+div.affix-selection-container div.affix.empty > i {
+    display: none;
+}
+
+div.affix-selection-container div.affix > i:hover {
+    color: var(--alter-paint);
+}
+
+div.affix-selection-container div.affix > i:hover ~ span {
+    color: var(--alter-paint);
+}
+
+div.affix-selection-container div.affix > i {
+    margin-right: 0.5em;
+    cursor: pointer;
+}
+
+div.affix-selection-container div.stat {
+    padding: 0.15em 0.5em;
+}
+
+div.affix-selection-container div.stats-viewer {
+    overflow-y: auto;
+    border-radius: 0.25em;
+    background-color: var(--paint-dark);
+    border: solid 1.5px var(--border-color);
 }
 
 div.affix-selection-container div.content::-webkit-scrollbar,
@@ -451,240 +580,84 @@ div.link-container div.content > div::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
 
-div.affix-selection-container div.content > div:first-child {
-    display: grid;
+div.choice-selection-container div.options {
+    display: flex;
+}
+
+div.choice-selection-container div.options > div.checkbox-container {
+    width: unset;
+    margin: 0;
+}
+
+div.choice-selection-container div.content {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+div.choice-selection-container div.content > div {
+    flex: 0 0 auto;
+    width: 240px;
     height: 100%;
-    grid-column: col1-start;
-    grid-template-rows: [row1-start] 5.5% [row2-start] min-content [row3-start] 5.5% [row4-start] auto;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
     overflow: auto;
 }
 
-div.affix-selection-container div.content > div:last-child {
-    display: grid;
+div.choice-selection-container div.content > div:not(:last-child) {
+    margin-right: 1em;
+}
+
+div.choice-selection-container div.content > div > div:nth-child(2) {
+    margin-bottom: 1.5em;
+}
+
+div.choice-selection-container div.affix.selected {
+    background-color: var(--alter-paint);
+}
+
+div.formula-sheet-container div.content {
+    display: flex;
+}
+
+div.formula-sheet-container div.content > div {
+    min-width: 160px;
     height: 100%;
-    grid-column: col2-start;
-    grid-template-rows: [row1-start] 5.5% [row2-start] 94.5%;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
     overflow: auto;
 }
 
 div.formula-sheet-container div.content > div:first-child {
-    display: grid;
-    height: 100%;
-    grid-column: col1-start;
-    grid-template-rows: [row1-start] 5.5% [row2-start] 94.5%;
-    overflow: auto;
+    width: 40%;
+    margin-right: 0.5em;
 }
 
 div.formula-sheet-container div.content > div:last-child {
-    display: grid;
-    height: 100%;
-    grid-column: col2-start;
-    grid-template-rows: [row1-start] 5.5% [row2-start] 94.5%;
-    overflow: auto;
-}
-
-div.choice-selection-container div.content > div {
-    display: grid;
-    height: 100%;
-    grid-column: col1-start;
-    grid-template-rows: [row1-start] 5% [row2-start] 10% [row3-start] 5% [row4-start] 80%;
-    overflow: auto;
-}
-
-div.choice-selection-container div.content > div:first-child {
-    grid-column: col1-start;
-}
-
-div.choice-selection-container div.content > div:nth-child(2) {
-    grid-column: col2-start;
-}
-
-div.choice-selection-container div.content > div:nth-child(3) {
-    grid-column: col3-start;
-}
-
-div.choice-selection-container div.content > div:nth-child(4) {
-    grid-column: col4-start;
-}
-
-div.choice-selection-container div.content > div:nth-child(5) {
-    grid-column: col5-start;
-}
-
-div.choice-selection-container div.content > div:nth-child(6) {
-    grid-column: col6-start;
-}
-
-div.choice-selection-container div.content > div:nth-child(7) {
-    grid-column: col7-start;
-}
-
-div.choice-selection-container div.content > div:nth-child(8) {
-    grid-column: col8-start;
-}
-
-div.affix-selection-container div.content > div > div:first-child,
-div.choice-selection-container div.content > div > div:first-child,
-div.formula-sheet-container div.content > div > div:first-child {
-    grid-row: row1-start;
-    overflow: hidden;
-}
-
-div.formula-sheet-container div.content > div > div:last-child {
-    grid-row: row2-start;
-    overflow: hidden;
+    width: 60%;
+    margin-left: 0.5em;
 }
 
 div.formula-sheet-container div.search-results-container {
     display: none;
 }
 
-div.affix-selection-container div.content > div:last-child > div:last-child {
-    grid-row: row2-start;
-}
-
-div.affix-selection-container div.content > div:first-child > div:nth-child(2),
-div.choice-selection-container div.content > div > div:nth-child(2) {
-    margin-bottom: 1em;
-    grid-row: row2-start;
-}
-
-div.affix-selection-container div.content > div:first-child > div:nth-child(3),
-div.choice-selection-container div.content > div > div:nth-child(3) {
-    grid-row: row3-start;
-    overflow: hidden;
-}
-
-div.affix-selection-container div.content > div:first-child > div:nth-child(4),
-div.choice-selection-container div.content > div > div:nth-child(4) {
-    grid-row: row4-start;
-}
-
-div.affix-selection-container.hidden,
-div.choice-selection-container.hidden,
-div.formula-sheet-container.hidden,
-div.link-container.hidden {
-    opacity: 0;
-}
-
-div.affix-selection-container > div,
-div.choice-selection-container > div,
-div.formula-sheet-container > div {
-    width: 75%;
-    margin: 0 auto;
-    height: 75%;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: var(--paint-light);
-    border-radius: 0.5em;
-    border: solid 1.5px var(--border-color);
-    overflow: hidden;
-    padding: 1em 2em;
+div.formula-sheet-container .confirm-button,
+div.link-container .confirm-button {
+    width: 100%;
+    border-radius: 0.25em;
 }
 
 div.link-container > div {
-    width: 75%;
-    margin: 0 auto;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: var(--paint-light);
-    border-radius: 0.5em;
-    border: solid 1.5px var(--border-color);
-    overflow: hidden;
-    padding: 1em 2em;
+    height: auto;
 }
 
-div.affix-selection-container div.main-grid,
-div.formula-sheet-container div.main-grid,
 div.link-container div.main-grid {
-    display: grid;
-    grid-template-rows: [row1-start] max-content [row2-start] auto [row3-start] max-content;
+    width: 100%;
     height: 100%;
-}
-
-div.choice-selection-container div.main-grid {
-    display: grid;
-    grid-template-rows: [row1-start] max-content [row2-start] min-content [row3-start] auto [row4-start] max-content;
-    height: 100%;
-}
-
-div.affix-selection-container div.main-grid > div:first-child,
-div.choice-selection-container div.main-grid > div:first-child,
-div.formula-sheet-container div.main-grid > div:first-child,
-div.link-container div.main-grid > div:first-child {
-    grid-row: row1-start;
-}
-
-div.affix-selection-container div.main-grid > div:last-child,
-div.formula-sheet-container div.main-grid > div:last-child,
-div.link-container div.main-grid > div:last-child {
-    grid-row: row3-start;
-    display: grid;
-    grid-template-areas: 'col1 col2 col3';
-}
-
-div.choice-selection-container div.main-grid > div:last-child {
-    grid-row: row4-start;
-    display: grid;
-    grid-template-areas: 'col1 col2 col3';
-}
-
-div.affix-selection-container .cancel-button,
-div.choice-selection-container .cancel-button {
-    background-color: var(--paint-dark);
-    border-radius: 0.25em 0em 0em 0.25em;
-    border: 1.5px solid var(--border-color);
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 0.35em 0em;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-div.affix-selection-container .cancel-button:hover,
-div.choice-selection-container .cancel-button:hover {
-    background-color: var(--paint-light);
-}
-
-div.affix-selection-container div.main-grid > div:last-child > div:last-child,
-div.choice-selection-container div.main-grid > div:last-child > div:last-child {
-    grid-column: span 2;
-}
-
-div.formula-sheet-container div.main-grid > div:last-child > div:last-child,
-div.link-container div.main-grid > div:last-child > div:last-child {
-    grid-column: span 3;
-}
-
-div.affix-selection-container .confirm-button,
-div.choice-selection-container .confirm-button,
-div.formula-sheet-container .confirm-button,
-div.link-container .confirm-button {
-    background-color: var(--alter-paint);
-    border-radius: 0em 0.25em 0.25em 0em;
-    border: 1.5px solid var(--border-color);
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 0.35em 0em;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-div.affix-selection-container .confirm-button:hover,
-div.choice-selection-container .confirm-button:hover,
-div.formula-sheet-container .confirm-button:hover,
-div.link-container .confirm-button:hover {
-    background-color: var(--alter-paint-light);
+    display: flex;
+    flex-direction: column;
 }
 
 div.link-container .copy-button {
@@ -716,89 +689,13 @@ div.link-container .copy-button:hover {
     background-color: var(--paint-light);
 }
 
-div.formula-sheet-container .confirm-button,
-div.link-container .confirm-button {
-    border-radius: 0.25em;
-}
-
 div.link-container input {
-    background: var(--paint-dark);
-    padding: 0.5em;
-    border: none;
-    border-radius: 0.25em;
-}
-
-div.choice-selection-container div.affix.selected {
-    background-color: var(--alter-paint);
-}
-
-div.affix-selection-container .confirm-button.disabled,
-div.choice-selection-container .confirm-button.disabled {
-    background-color: var(--paint-dark);
-}
-
-div.affix-selection-container div.affix,
-div.choice-selection-container div.affix {
-    width: 140px;
-}
-
-div.affix-selection-container div.affix.empty > i {
-    display: none;
-}
-
-div.affix-selection-container div.affix > i:hover {
-    color: var(--alter-paint);
-}
-
-div.affix-selection-container div.affix > i:hover ~ span {
-    color: var(--alter-paint);
-}
-
-div.affix-selection-container div.affix > i {
-    margin-right: 0.5em;
-    cursor: pointer;
-}
-
-div.affix-selection-container div.stat {
-    padding: 0.15em 0.5em;
-}
-
-div.affix-selection-container div.stats-viewer {
-    overflow: auto;
-    border-radius: 0.25em;
-    background-color: var(--paint-dark);
-    border: solid 1.5px var(--border-color);
-}
-
-div.title.bold {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.slider {
-    -webkit-appearance: none;
     width: 100%;
-    height: 2px;
-    border-radius: 1em;
-    background: var(--paint-light);
-    outline: none;
-    padding: 0;
-}
-
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 4px;
-    height: 16px;
-    border-radius: 1em;
-    background: var(--alter-paint);
-    cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
+    background: var(--paint-dark);
     border: none;
-    width: 4px;
-    height: 16px;
-    background: var(--alter-paint);
-    cursor: pointer;
+    border-radius: 0.25em;
+    padding: 0.5em 0em;
+    margin: 0.5em 0em;
+    overflow-x: auto;
+    overflow-y: hidden;
 }

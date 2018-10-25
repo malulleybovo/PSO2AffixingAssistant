@@ -172,7 +172,7 @@ class ViewController {
         let indices = [];
         do {
             if ($elem.length > 0) indices.unshift($elem.index());
-            $elem = $elem.parents('div.mgrid');
+            $elem = $elem.parents('table.mgrid');
         } while ($elem.length > 0);
         indices.splice(0, 1);
         let curr = this.assistant.pageTreeRoot;
@@ -195,7 +195,7 @@ class ViewController {
         let indices = [];
         do {
             if ($elem.length > 0) indices.unshift($elem.index());
-            $elem = $elem.parents('div.mgrid');
+            $elem = $elem.parents('table.mgrid');
         } while ($elem.length > 0);
         indices.splice(0, 1);
         let curr = this.assistant.pageTreeRoot;

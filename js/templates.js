@@ -21,7 +21,7 @@ const WELCOME_VIEW = () => `<div class="welcome">
     </div>`;
 
 const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
-    let treeNodeTemplate = '<div class="mgrid"><div>';
+    let treeNodeTemplate = '<table class="mgrid"><tr><td>';
     level = (typeof level === 'number') ? level : 0;
     offset = (typeof offset === 'number') ? offset : 0;
     let connectionOrder = [];
@@ -54,7 +54,7 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
             fodderOffsets: connectionOrder
         });
     }
-    treeNodeTemplate += '</div><div>';
+    treeNodeTemplate += '</td><td>';
     if (pageTreeNode.size() > 0) {
         for (var i = 0; i < pageTreeNode.size(); i++) {
             treeNodeTemplate += PAGE_TREE_NODE_TEMPLATE({
@@ -64,7 +64,7 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
             });
         }
     }
-    treeNodeTemplate += '</div></div>';
+    treeNodeTemplate += '</td></tr></table>';
     return treeNodeTemplate;
 };
 
@@ -160,16 +160,11 @@ const LINK_TEMPLATE = ({ link, linkToSim }) => {
     return `<div class="link-container hidden" onclick="$(this).remove();">
         <div onclick="event.stopPropagation();">
             <div class="main-grid">
-                <div class="title bold">Link to This Formula</div><div class="content">
-    					<input type="text" value="${link}" onfocus="this.setSelectionRange(0, this.value.length)">
-                    </div>
-                <div>
-                    <div>
-                        <div class="copy-button"><a>Copy to Clipboard</a></div>
-                        <div class="copy-button"><a  href="${linkToSim}" target="_blank">Open in Affix Simulator</a></div>
-                        <div class="confirm-button">Close</div>
-                    </div>
-                </div>
+                <div class="title bold">Link to This Formula</div>
+    			<input type="text" value="${link}" onfocus="this.setSelectionRange(0, this.value.length)">
+                <div class="copy-button"><a>Copy to Clipboard</a></div>
+                <div class="copy-button"><a  href="${linkToSim}" target="_blank">Open in Affix Simulator</a></div>
+                <div class="confirm-button">Close</div>
             </div>
         </div>
     </div>`;
@@ -278,9 +273,9 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                 </div>` 
             : ``}<div class="content">`;
     if (isAffixSelection) {
-        layoutTemplate += `<div>
+        layoutTemplate += `<div><div>
                         <div class="title bold">Affixing Goal</div>
-                        <div>`;
+                        <div class="selection-container">`;
         for (var i = 0; i < (new Fodder).CAPACITY; i++) {
             layoutTemplate += `<div class="affix${(affixesSelected[i]) ? `` : ` empty`}"${(affixesSelected[i]) ? ` title="${affixesSelected[i].effect}"` : ``}${(affixesSelected[i]) ? ` data-code="${affixesSelected[i].code}"` : ``}>
                                 <i class="fa fa-trash"></i>
@@ -295,7 +290,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                     <div>
                         <div class="title bold">Choices</div>
                         ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist, isGlobalSearch: isGlobalSearch })}
-                    </div>`;
+                    </div></div>`;
     }
     else if (isChoiceSelection) {
         if (affixesSelected && Array.isArray(affixesSelected)) {
@@ -327,12 +322,9 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     }
     layoutTemplate += `</div>
                 <div>
-                    ${(isAffixSelection || isChoiceSelection) ? `<div>
-                        <div class="cancel-button">Cancel</div>
-                    </div>
-                    ` : ``}<div>
-                        <div class="confirm-button${(isAffixSelection || isChoiceSelection) ? ` disabled">Confirm`: `">Close`}</div>
-                    </div>
+                    ${(isAffixSelection || isChoiceSelection) ? 
+                    `<div class="cancel-button">Cancel</div>` : ``}
+                    <div class="confirm-button${(isAffixSelection || isChoiceSelection) ? ` disabled">Confirm`: `">Close`}</div>
                 </div>
             </div>
         </div>
