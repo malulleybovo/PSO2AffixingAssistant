@@ -703,6 +703,7 @@ div.link-container input {
     overflow-y: hidden;
     font-family: Verdana;
     font-size: var(--app-font-size);
+    color: var(--text-color);
 }
 
 div.link-container input:focus {
@@ -766,8 +767,7 @@ div.link-container input::selection {
 
     div.affix-selection-container .confirm-button,
     div.choice-selection-container .confirm-button,
-    div.formula-sheet-container .confirm-button,
-    div.link-container .confirm-button {
+    div.formula-sheet-container .confirm-button {
         height: 100%;
     }
 
