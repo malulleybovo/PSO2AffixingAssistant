@@ -786,7 +786,7 @@ div.link-container input::selection {
         width: 50%;
     }
 
-    div.affix-selection-container div.content > div {
-        min-height: unset;
+    div.affix-selection-container div.content {
+        height: unset;
     }
 }
