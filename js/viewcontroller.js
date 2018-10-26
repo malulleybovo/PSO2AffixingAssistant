@@ -662,22 +662,10 @@ class ViewController {
         if ($node.length <= 0) return;
         let $container = $("#mastercontainer");
         if ($container.has($node).length <= 0) return;
-        let pos = { left: 0, top: 0 };
-        let $curr = $node;
-        let test = '';
-        while ($curr.attr('id') != 'mastercontainer') {
-            let currPos = $curr.position();
-            pos.left += currPos.left;
-            pos.top += currPos.top;
-            test += $curr.prop("tagName") + '' + currPos.left + ' ';
-            // Move to next parent
-            $curr = $curr.parent();
-        }
         let zoomScale = $container.panzoom('getMatrix')[0];
-        alert(test)
         let toNodeCenter = {
-            left: ($node.outerWidth() / 2) + (Math.round(pos.left) / zoomScale),
-            top: ($node.outerHeight() / 2) + (Math.round(pos.top) / zoomScale)
+            left: ($node.outerWidth() / 2) + (Math.round($node.offset().left - $container.offset().left) / zoomScale),
+            top: ($node.outerHeight() / 2) + (Math.round($node.offset().top - $container.offset().top) / zoomScale)
         }
         let newpos = {
             left: ($(window).outerWidth() / 2) - toNodeCenter.left
