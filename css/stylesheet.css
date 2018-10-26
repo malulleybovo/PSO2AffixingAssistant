@@ -810,4 +810,8 @@ div.link-container input::selection {
     div.affix {
         width: 360px;
     }
+
+    div.choice-selection-container div.content > div {
+        min-height: 320px;
+    }
 }
