@@ -787,6 +787,6 @@ div.link-container input::selection {
     }
 
     div.affix-selection-container div.content {
-        height: unset;
+        height: 80%;
     }
 }
