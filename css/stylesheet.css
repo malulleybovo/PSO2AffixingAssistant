@@ -818,4 +818,8 @@ div.link-container input::selection {
     div.choice-selection-container div.content > div {
         min-height: 320px;
     }
+
+    connection {
+        border: 6px solid var(--conn-color);
+    }
 }
