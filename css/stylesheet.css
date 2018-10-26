@@ -749,7 +749,7 @@ div.link-container input::selection {
 
     div.affix-selection-container div.affix,
     div.choice-selection-container div.affix {
-        width: 80%;
+        width: 89%;
     }
 
     div.affixes > div.affix.ssa:before,
@@ -784,5 +784,9 @@ div.link-container input::selection {
     div.affix-selection-container .confirm-button,
     div.choice-selection-container .confirm-button {
         width: 50%;
+    }
+
+    div.affix-selection-container div.content > div {
+        min-height: 240px;
     }
 }
