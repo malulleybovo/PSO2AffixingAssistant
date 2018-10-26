@@ -786,9 +786,11 @@ div.link-container input::selection {
         width: 50%;
     }
 
-    div.affix-selection-container div.content > div > div:first-child,
-    div.affix-selection-container div.content > div > div:last-child,
-    div.choice-selection-container div.content > div {
-        height: 80%;
+    div.affix-selection-container div.content {
+        height: 82.5%;
+    }
+
+    div.choice-selection-container div.content {
+        height: 70%;
     }
 }
