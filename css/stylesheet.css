@@ -23,56 +23,6 @@ body {
     user-select: none;
 }
 
-@media only screen and (max-device-width: 767px) {
-    html {
-        --app-font-size: 42px;
-        --app-font-size-bigger: 42px;
-        --app-font-size-biggest: 46px;
-        --app-icon-font-size: 56px;
-    }
-
-    div.header div.option {
-        padding: 24px;
-    }
-
-    div.affix {
-        width: 552px;
-    }
-
-    div.affix-selection-container div.selection-container {
-        overflow: auto;
-    }
-
-    div.affix-selection-container div.affix,
-    div.choice-selection-container div.affix {
-        width: 80%;
-    }
-
-    div.affixes > div.affix.ssa:before,
-    div.fodder > div.affix.special-ability-factor:before {
-        width: 40px;
-        height: 40px;
-        left: -10px;
-        top: 5px;
-    }
-
-    div.affix-selection-container .cancel-button,
-    div.choice-selection-container .cancel-button {
-        height: 100%;
-    }
-
-    div.affix-selection-container .confirm-button,
-    div.choice-selection-container .confirm-button,
-    div.formula-sheet-container .confirm-button,
-    div.link-container .confirm-button {
-        height: 100%;
-    }
-
-    div.choice-selection-container div.content > div {
-        width: 630px;
-    }
-}
-
 #js-disabled,
 div.welcome {
     position: fixed;
@@ -751,4 +701,54 @@ div.link-container input {
     margin: 0.5em 0em;
     overflow-x: auto;
     overflow-y: hidden;
+}
+
+@media only screen and (max-device-width: 767px) {
+    html {
+        --app-font-size: 42px;
+        --app-font-size-bigger: 42px;
+        --app-font-size-biggest: 46px;
+        --app-icon-font-size: 56px;
+    }
+
+    div.header div.option {
+        padding: 24px;
+    }
+
+    div.affix {
+        width: 552px;
+    }
+
+    div.affix-selection-container div.selection-container {
+        overflow: auto;
+    }
+
+    div.affix-selection-container div.affix,
+    div.choice-selection-container div.affix {
+        width: 80%;
+    }
+
+    div.affixes > div.affix.ssa:before,
+    div.fodder > div.affix.special-ability-factor:before {
+        width: 40px;
+        height: 40px;
+        left: -10px;
+        top: 5px;
+    }
+
+    div.affix-selection-container .cancel-button,
+    div.choice-selection-container .cancel-button {
+        height: 100%;
+    }
+
+    div.affix-selection-container .confirm-button,
+    div.choice-selection-container .confirm-button,
+    div.formula-sheet-container .confirm-button,
+    div.link-container .confirm-button {
+        height: 100%;
+    }
+
+    div.choice-selection-container div.content > div {
+        width: 630px;
+    }
 }
