@@ -672,6 +672,7 @@ class ViewController {
             $curr = $curr.parent();
         }
         let zoomScale = $container.panzoom('getMatrix')[0];
+        alert($node.outerWidth() + ' ' + pos.left + ' ' + $node.outerHeight() + ' ' + pos.top + ' ' + zoomScale)
         let toNodeCenter = {
             left: ($node.outerWidth() / 2) + (Math.round(pos.left) / zoomScale),
             top: ($node.outerHeight() / 2) + (Math.round(pos.top) / zoomScale)
