@@ -1,4 +1,11 @@
 
+html {
+    --app-font-size: 14px;
+    --app-font-size-bigger: 16px;
+    --app-font-size-biggest: 18px;
+    --app-icon-font-size: 20px;
+}
+
 body {
     position: fixed;
     height: 100%;
@@ -8,7 +15,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: Verdana;
-    font-size: 14px;
+    font-size: var(--app-font-size);
     overflow: hidden;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -17,8 +24,52 @@ body {
 }
 
 @media only screen and (max-device-width: 767px) {
-    body {
-        font-size: 16px; /* Bigger font for mobile */
+    html {
+        --app-font-size: 42px;
+        --app-font-size-bigger: 42px;
+        --app-font-size-biggest: 46px;
+        --app-icon-font-size: 56px;
+    }
+
+    div.header div.option {
+        padding: 24px;
+    }
+
+    div.affix {
+        width: 552px;
+    }
+
+    div.affix-selection-container div.selection-container {
+        overflow: auto;
+    }
+
+    div.affix-selection-container div.affix,
+    div.choice-selection-container div.affix {
+        width: 80%;
+    }
+
+    div.affixes > div.affix.ssa:before,
+    div.fodder > div.affix.special-ability-factor:before {
+        width: 40px;
+        height: 40px;
+        left: -10px;
+        top: 5px;
+    }
+
+    div.affix-selection-container .cancel-button,
+    div.choice-selection-container .cancel-button {
+        height: 100%;
+    }
+
+    div.affix-selection-container .confirm-button,
+    div.choice-selection-container .confirm-button,
+    div.formula-sheet-container .confirm-button,
+    div.link-container .confirm-button {
+        height: 100%;
+    }
+
+    div.choice-selection-container div.content > div {
+        width: 630px;
     }
 }
 
@@ -41,7 +92,7 @@ div.welcome > div:first-child {
     position: absolute;
     height: 100%;
     width: 100%;
-    font-size: 18px;
+    font-size: var(--app-font-size-biggest);
 }
 
 #js-disabled > div:first-child > div:first-child,
@@ -84,7 +135,7 @@ table.mgrid td {
     text-align: center;
     width: 1px;
     white-space: nowrap;
-    padding-inline-start: 5em;
+    padding-left: 5em;
 }
 
 table.mgrid td > div {
@@ -120,7 +171,7 @@ div.header div.option {
     padding: 12px;
     transition: all 0.3s ease;
     color: var(--text-color);
-    font-size: 20px;
+    font-size: var(--app-icon-font-size);
     border-radius: 50%;
     pointer-events: auto;
 }
@@ -136,8 +187,8 @@ div.header div.option:hover {
 }
 
 #mastercontainer {
-    width: 100%;
-    height: 100%;
+    display: inline-block;
+    padding: 10em;
 }
 
 #mastercontainer > *:first-child {
@@ -321,7 +372,7 @@ div.fodder > div.affix.add-ability {
 }
 
 div.title.bold {
-    font-size: 16px;
+    font-size: var(--app-font-size-bigger);
     font-weight: bold;
 }
 
@@ -450,7 +501,7 @@ div.choice-selection-container .cancel-button {
     border-radius: 0.25em 0em 0em 0.25em;
     border: 1.5px solid var(--border-color);
     text-align: center;
-    font-size: 16px;
+    font-size: var(--app-font-size-bigger);
     font-weight: bold;
     padding: 0.35em 0em;
     cursor: pointer;
@@ -459,6 +510,7 @@ div.choice-selection-container .cancel-button {
     -ms-user-select: none;
     user-select: none;
     width: 40%;
+    min-height: 19px;
 }
 
 div.affix-selection-container .cancel-button:hover,
@@ -474,7 +526,7 @@ div.link-container .confirm-button {
     border-radius: 0em 0.25em 0.25em 0em;
     border: 1.5px solid var(--border-color);
     text-align: center;
-    font-size: 16px;
+    font-size: var(--app-font-size-bigger);
     font-weight: bold;
     padding: 0.35em 0em;
     cursor: pointer;
@@ -483,6 +535,7 @@ div.link-container .confirm-button {
     -ms-user-select: none;
     user-select: none;
     width: 60%;
+    min-height: 19px;
 }
 
 div.affix-selection-container .confirm-button:hover,
@@ -665,7 +718,7 @@ div.link-container .copy-button {
     border-radius: 0.25em;
     border: 1.5px solid var(--border-color);
     text-align: center;
-    font-size: 16px;
+    font-size: var(--app-font-size-bigger);
     font-weight: bold;
     margin-bottom: 0.5em;
     cursor: pointer;

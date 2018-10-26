@@ -14,7 +14,14 @@
   2) Tell the assistant which abilities you want to have.
   3) Pick how to make each ability you want.
   4) Enjoy! The assistant will give you the formula you need with maximized success rate.
-
+  
+  ### Responsive navigation
+  Easily and quickly move around and zoom to visualize information.
+  <br>How it works:
+  1) Left click and drag (or touch and drag) to move around.
+  2) Left click to perform actions like touching buttons.
+  3) Scroll up and down (or pinch and zoom) to zoom into and out of the content.
+  
   ### Affix intermediary stages to reach your goal
   The Affixing Assistant lets you even optimally produce the fodders you'll need.
   <br>How it works:

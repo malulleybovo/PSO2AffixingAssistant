@@ -2,6 +2,7 @@
  * View Controller
  *
  * @author malulleybovo (2018)
+ * @license GNU General Public License v3.0
  */
 
 const timeData = {
@@ -44,9 +45,11 @@ class ViewController {
 
     setup() {
         $("#editor").children().first().panzoom({
-            which: (window.opera || navigator.userAgent.match(/Opera|OPR\//)) ? 2 : 3,
+            which: 1,
             minScale: 0.1,
             maxScale: 2,
+            onPan: () => { if (!this.isPanning) { this.isPanning = true; } },
+            onEnd: () => { setTimeout(() => { if (this.isPanning) { this.isPanning = false; } }, 1); },
             onChange: this.updateConnections
         });
         $("#editor").on('wheel', function (e) {
@@ -122,6 +125,7 @@ class ViewController {
     setActiveFodder(e) {
         let vc = (this instanceof ViewController) ? this :
             (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
+        if (vc.isPanning) return;
         if (!(vc instanceof ViewController)) return;
         let found = vc.findFodderAndNodeByDOM(this);
         vc.assistant.setActiveFodder(found.fodder);
@@ -222,7 +226,7 @@ class ViewController {
                 let next = trackingRoute[i + 1];
                 if (next && next instanceof PageTreeNode) {
                     let indexOf = pageTreeNode.children.indexOf(next);
-                    $curr = $($curr[0]).children().last().children('.mgrid');
+                    $curr = $($($curr[0]).find('td')[1]).children('.mgrid');
                     $curr = $($curr[indexOf]);
                 }
             }
@@ -526,7 +530,24 @@ class ViewController {
         urlParams = VIEW_CONTROLLER.assistant.decodeURLParams(urlParams);
         if (!this.assistant || !(this.assistant instanceof Assistant)) return;
         let hasSuceeded = this.assistant.loadFromURLParams(urlParams);
-        if (hasSuceeded) this.updateView();
+        if (hasSuceeded) {
+            let $container = $('#mastercontainer');
+            let dimsBefore = {
+                width: $container.outerWidth(),
+                height: $container.outerHeight()
+            }
+            this.updateView();
+            let newpos = {
+                left: $container.panzoom('getMatrix')[4]
+                    * $container.outerWidth() / dimsBefore.width,
+                top: $container.panzoom('getMatrix')[5]
+                    * $container.outerHeight() / dimsBefore.height
+            }
+            $container.panzoom('pan', newpos.left, newpos.top, {
+                animate: false,
+            });
+            this.isPanning = false;
+        }
     }
 
     updateView(e) {
@@ -539,8 +560,14 @@ class ViewController {
         }));
         vc.regenerateConnections();
         $('div.fodder').hover(spotlightIn, spotlightOut);
-        $('div.produce-button:not(.disabled)').click({ viewcontroller: this }, this.setActiveFodder);
+        $('div.produce-button:not(.disabled)').click({ viewcontroller: this }, this.setActiveFodder)
+            .on('mousedown touchstart', function (e) {
+            // Allow clickable elements within panzoom on mobile
+            e.stopImmediatePropagation();
+        });
         $('.boost-container input[type=checkbox]').change({ viewcontroller: this }, (e) => {
+            // Prevents checkbox from trigger function IFF user is panning
+            if (e.data.viewcontroller.isPanning) return;
             let $elem = $(e.currentTarget);
             for (var i = 0; i < $elem.length; i++) {
                 let { fodder } = e.data.viewcontroller.findPageAndNodeByDOM($elem[i]);
@@ -556,6 +583,14 @@ class ViewController {
                 });
             }
             catch (e) { }
+        });
+        $('.checkmark').click((e) => {
+            // Prevents checkbox from toggling IFF user is panning
+            if (this.isPanning) e.preventDefault();
+        });
+        $('.checkbox-container').on('mousedown touchstart', function (e) {
+            // Allow clickable elements within panzoom on mobile
+            e.stopImmediatePropagation();
         });
         $('.boost-container > div.dropdown-container:not(:last-child) select').change({ viewcontroller: this }, (e) => {
             let $elem = $(e.currentTarget);
@@ -574,6 +609,9 @@ class ViewController {
                 });
             }
             catch (e) { }
+        }).on('pointerdown mousedown touchstart', function (e) {
+            // Allow clickable elements within panzoom on mobile
+            e.stopImmediatePropagation();
         });
         $('.boost-container > div.dropdown-container:last-child select').change({ viewcontroller: this }, (e) => {
             let $elem = $(e.currentTarget);
@@ -592,6 +630,9 @@ class ViewController {
                 });
             }
             catch (e) { }
+        }).on('pointerdown mousedown touchstart', function (e) {
+            // Allow clickable elements within panzoom on mobile
+            e.stopImmediatePropagation();
         });
         vc.displayWelcomeScreen(false);
         return this;
@@ -619,8 +660,17 @@ class ViewController {
     centerViewAtNode(selector) {
         let $node = $(selector);
         if ($node.length <= 0) return;
-        let pos = $node.position();
-        let $container = $("#editor").children().first();
+        let $container = $("#mastercontainer");
+        if ($container.has($node).length <= 0) return;
+        let pos = { left: 0, top: 0 };
+        let $curr = $node;
+        while ($curr.attr('id') != 'mastercontainer') {
+            let currPos = $curr.position();
+            pos.left += currPos.left;
+            pos.top += currPos.top;
+            // Move to next parent
+            $curr = $curr.parent();
+        }
         let zoomScale = $container.panzoom('getMatrix')[0];
         let toNodeCenter = {
             left: ($node.outerWidth() / 2) + (Math.round(pos.left) / zoomScale),
@@ -635,6 +685,7 @@ class ViewController {
         $container.panzoom('pan', newpos.left, newpos.top, {
             animate: false,
         });
+        this.isPanning = false;
         return this;
     }
 

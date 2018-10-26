@@ -2,6 +2,7 @@
  * PSO2 Affixing Assistant
  * 
  * @author malulleybovo (2018)
+ * @license GNU General Public License v3.0
  */
 
 const sessionType = (window.location.search == '') ?
@@ -41,7 +42,6 @@ window.addEventListener("beforeunload", function (event) {
 });
 
 $(document).ready(function () {
-    //(new AffixDataParser()).printAbilityDB(abilityDB);
     VIEW_CONTROLLER.setup();
     VIEW_CONTROLLER.updateFromURL();
     VIEW_CONTROLLER.updateView();

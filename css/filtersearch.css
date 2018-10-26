@@ -27,6 +27,8 @@ div.filtersearchcontainer input.searchbar {
 
 div.filtersearchcontainer input::placeholder {
     color: var(--text-color);
+    font-family: Verdana;
+    font-size: var(--app-font-size);
 }
 
 div.filtersearchcontainer input:focus {

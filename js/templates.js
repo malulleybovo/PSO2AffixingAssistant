@@ -2,6 +2,7 @@
  * HTML Templates
  * 
  * @author malulleybovo (2018)
+ * @license GNU General Public License v3.0
  */
 
 const WELCOME_VIEW = () => `<div class="welcome">

@@ -2,6 +2,7 @@
  * Affixing Assistant
  * 
  * @author malulleybovo (2018)
+ * @license GNU General Public License v3.0
  */
 
 const MAX_NUM_AFFIX = 8;
@@ -1405,7 +1406,6 @@ class Assistant {
         return results;
 
         function isRefAMatch(ref) {
-            console.log();
             let isMatch = true;
             if (dataClass) {
                 if (ref instanceof dataClass) {

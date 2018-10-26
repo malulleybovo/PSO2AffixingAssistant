@@ -2,6 +2,7 @@
  * Affix Data Parser
  * 
  * @author malulleybovo (2018)
+ * @license GNU General Public License v3.0
  */
 
 class AffixDataParser {

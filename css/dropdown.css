@@ -8,6 +8,16 @@ div.dropdown-container {
     margin-top: 0.25em;
 }
 
+@media only screen and (max-device-width: 767px) {
+    div.dropdown-container.success-rate:before,
+    div.dropdown-container.equipment-potential:before {
+        width: 40px;
+        height: 40px;
+        top: 5px;
+        left: 10px;
+    }
+}
+
 div.dropdown-container select {
     width: 100%;
     font-family: Verdana;
