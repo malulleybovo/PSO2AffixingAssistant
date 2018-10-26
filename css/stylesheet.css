@@ -774,4 +774,15 @@ div.link-container input::selection {
     div.choice-selection-container div.content > div {
         width: 630px;
     }
+
+    div.affix-selection-container div.content > div > div:first-child,
+    div.affix-selection-container div.content > div > div:last-child,
+    div.formula-sheet-container div.content > div:first-child,
+    div.formula-sheet-container div.content > div:last-child,
+    div.affix-selection-container .cancel-button,
+    div.choice-selection-container .cancel-button,
+    div.affix-selection-container .confirm-button,
+    div.choice-selection-container .confirm-button {
+        width: 50%;
+    }
 }
