@@ -787,10 +787,10 @@ div.link-container input::selection {
     }
 
     div.affix-selection-container div.content {
-        height: 82.5%;
+        height: 82%;
     }
 
     div.choice-selection-container div.content {
-        height: 70%;
+        height: 72%;
     }
 }
