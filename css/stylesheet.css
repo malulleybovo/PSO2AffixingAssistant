@@ -820,6 +820,6 @@ div.link-container input::selection {
     }
 
     connection {
-        border: 4px solid var(--conn-color);
+        border: 3px solid var(--conn-color);
     }
 }
