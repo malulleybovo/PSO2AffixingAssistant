@@ -799,8 +799,8 @@ div.link-container input::selection {
     html {
         --app-font-size: 24px;
         --app-font-size-bigger: 24px;
-        --app-font-size-biggest: 46px;
-        --app-icon-font-size: 38px;
+        --app-font-size-biggest: 28px;
+        --app-icon-font-size: 32px;
     }
 
     div.header div.option {
