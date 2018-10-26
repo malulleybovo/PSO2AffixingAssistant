@@ -74,3 +74,9 @@
         width: 434px;
     }
 }
+
+@media only screen and (max-device-width: 767px) and (orientation: landscape) {
+    .checkbox-container {
+        width: 248px;
+    }
+}

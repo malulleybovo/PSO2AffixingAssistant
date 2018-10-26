@@ -720,9 +720,6 @@ div.link-container input::selection {
         --app-font-size-bigger: 42px;
         --app-font-size-biggest: 46px;
         --app-icon-font-size: 56px;
-        -ms-text-size-adjust: 100%;
-        -webkit-text-size-adjust: 100%;
-        text-size-adjust: 100%;
     }
 
     div.header div.option {
@@ -794,6 +791,23 @@ div.link-container input::selection {
     }
 
     div.choice-selection-container div.content {
-        height: 73%;
+        height: 72%;
+    }
+}
+
+@media only screen and (max-device-width: 767px) and (orientation: landscape) {
+    html {
+        --app-font-size: 24px;
+        --app-font-size-bigger: 24px;
+        --app-font-size-biggest: 46px;
+        --app-icon-font-size: 38px;
+    }
+
+    div.header div.option {
+        padding: 14px;
+    }
+
+    div.affix {
+        width: 360px;
     }
 }

@@ -115,3 +115,9 @@ div.filtersearchcontainer li a:hover:not(.header) {
         padding: 20px;
     }
 }
+
+@media only screen and (max-device-width: 767px) and (orientation: landscape) {
+    div.filtersearchcontainer input.searchbar {
+        padding: 12px;
+    }
+}
