@@ -793,6 +793,10 @@ div.link-container input::selection {
     div.choice-selection-container div.content {
         height: 72%;
     }
+
+    connection {
+        border: 8px solid var(--conn-color);
+    }
 }
 
 @media only screen and (max-device-width: 767px) and (orientation: landscape) {
