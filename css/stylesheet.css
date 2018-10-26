@@ -701,6 +701,16 @@ div.link-container input {
     margin: 0.5em 0em;
     overflow-x: auto;
     overflow-y: hidden;
+    font-family: Verdana;
+    font-size: var(--app-font-size);
+}
+
+div.link-container input:focus {
+    outline-color: var(--alter-paint-light);
+}
+
+div.link-container input::selection {
+    background: var(--alter-paint-lighter);
 }
 
 @media only screen and (max-device-width: 767px) {
@@ -717,6 +727,19 @@ div.link-container input {
 
     div.affix {
         width: 552px;
+    }
+
+    div.affix-selection-container > div,
+    div.choice-selection-container > div,
+    div.formula-sheet-container > div {
+        width: 90%;
+        height: 90%;
+        padding: 5%;
+    }
+
+    div.link-container > div {
+        width: 90%;
+        padding: 5%;
     }
 
     div.affix-selection-container div.selection-container {

@@ -37,6 +37,10 @@ div.filtersearchcontainer input:focus {
     outline-color: var(--alter-paint-light);
 }
 
+div.filtersearchcontainer input::selection {
+    background: var(--alter-paint-lighter);
+}
+
 div.filtersearchcontainer ul {
     list-style-type: none;
     padding: 1.5px 0px;
@@ -104,4 +108,10 @@ div.filtersearchcontainer li:last-of-type div {
 
 div.filtersearchcontainer li a:hover:not(.header) {
     background-color: var(--paint-light);
+}
+
+@media only screen and (max-device-width: 767px) {
+    div.filtersearchcontainer input.searchbar {
+        padding: 20px;
+    }
 }
