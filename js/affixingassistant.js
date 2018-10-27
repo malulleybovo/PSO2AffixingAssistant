@@ -1495,6 +1495,54 @@ class Assistant {
             return 1 + maxDepth;
         }
     }
+
+    colorChoices(sets) {
+        let overlapCodes = {};
+        for (var i = 0; i < sets.length; i++) {
+            let choices = sets[i];
+            let codes = {};
+            for (var j = 0; j < choices.length; j++) {
+                let choice = choices[j];
+                for (var k = 0; k < choice.materials.length; k++) {
+                    let affix = choice.materials[k];
+                    codes[affix.code] = 1;
+                }
+            }
+            for (var code in codes) {
+                (overlapCodes[code] !== undefined) ?
+                    (overlapCodes[code]++) : (overlapCodes[code] = 0)
+            }
+        }
+        let colorNum = 0;
+        for (var code in overlapCodes) {
+            if (overlapCodes[code] == undefined || overlapCodes[code] == 0) {
+                delete overlapCodes[code];
+            }
+            else {
+                overlapCodes[code] = {
+                    colorNum: colorNum,
+                    count: overlapCodes[code]
+                };
+                colorNum++;
+            }
+        }
+        let colored = [];
+        for (var i = 0; i < sets.length; i++) {
+            let setA = sets[i];
+            for (var j = 0; j < setA.length; j++) {
+                let choiceA = setA[j];
+                for (var k = 0; k < choiceA.materials.length; k++) {
+                    let affix = choiceA.materials[k];
+                    if (overlapCodes[affix.code] !== undefined && overlapCodes[affix.code].count > 0) {
+                        if (colored[i] === undefined) colored[i] = [];
+                        if (colored[i][j] === undefined) colored[i][j] = [];
+                        colored[i][j][k] = overlapCodes[affix.code].colorNum;
+                    }
+                }
+            }
+        }
+        return colored;
+    }
 }
 
 class PageTreeNode {

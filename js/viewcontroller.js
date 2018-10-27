@@ -19,6 +19,7 @@ class ViewController {
     constructor(assistant) {
         // Immutable variables (properties can still change)
         this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 3000;
+        this.COLOR_PALETTE_SIZE = 25;
         this.filters = [];
         this.affixesSelected = [];
         this.choicesSelected = [];
@@ -391,6 +392,8 @@ class ViewController {
                 catch (e) { }
             });
         $('div.choice-selection-container div.confirm-button').click({ viewcontroller: vc }, vc.produceFodderFromChoices);
+
+        vc.colorizeOverlappingChoices(choices);
     }
 
     openFormulaSheet(shouldAnimate, e) {
@@ -1027,6 +1030,26 @@ class ViewController {
         let $checkbox = $('div.choice-selection-container div.options div.checkbox-container:last-child input[type=checkbox]');
         vc.shouldSpread = $checkbox.prop('checked');
         vc.updateChoiceSelectionView();
+    }
+
+    colorizeOverlappingChoices(choices) {
+        let colors = this.assistant.colorChoices(Object.values(choices));
+        if (Array.isArray(colors)) {
+            let $sets = $('div.choice-selection-container div.content > div');
+            for (var i = 0; i < $sets.length; i++) {
+                if (colors[i] == undefined) continue;
+                let $lis = $($sets[i]).find('li');
+                for (var j = 0; j < $lis.length; j++) {
+                    if (colors[i][j] == undefined) continue;
+                    let $spans = $($lis[j]).find('span');
+                    for (var k = 0; k < $spans.length; k++) {
+                        if (colors[i][j][k] != undefined) {
+                            $($spans[k]).addClass(`type${colors[i][j][k] % this.COLOR_PALETTE_SIZE}`);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

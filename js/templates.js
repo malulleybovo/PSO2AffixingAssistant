@@ -242,7 +242,7 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch }) => {
                 filtersearch += `<li><div>${choice}</div></li>`;
             }
             else if (datalist[i].materials) {
-                let choice = `${datalist[i].transferRate}% : ${datalist[i].materials.map((mat) => mat.name).join(", ")}`;
+                let choice = `${datalist[i].transferRate}% : <span>${datalist[i].materials.map((mat) => mat.name).join("</span>, <span>")}</span>`;
                 filtersearch += `<li><div>${choice}</div></li>`;
             }
         }

@@ -597,6 +597,111 @@ div.choice-selection-container div.content {
     flex-wrap: nowrap;
 }
 
+div.choice-selection-container li span {
+    padding: 0em 0.1em;
+    border-radius: 0.25em;
+}
+
+div.choice-selection-container li span.type0 {
+    background-color: #6497b1;
+}
+
+div.choice-selection-container li span.type1 {
+    background-color: #a54a7b;
+}
+
+div.choice-selection-container li span.type2 {
+    background-color: #f1c27d;
+}
+
+div.choice-selection-container li span.type3 {
+    background-color: #8874a3;
+}
+
+div.choice-selection-container li span.type4 {
+    background-color: #29a8ab;
+}
+
+div.choice-selection-container li span.type5 {
+    background-color: #ff5588;
+}
+
+div.choice-selection-container li span.type6 {
+    background-color: #59cfa4;
+}
+
+div.choice-selection-container li span.type7 {
+    background-color: #24a7ff;
+}
+
+div.choice-selection-container li span.type8 {
+    background-color: #feb2a8;
+}
+
+div.choice-selection-container li span.type9 {
+    background-color: #35a79c;
+}
+
+div.choice-selection-container li span.type10 {
+    background-color: #ffb685;
+}
+
+div.choice-selection-container li span.type11 {
+    background-color: #4178a4;
+}
+
+div.choice-selection-container li span.type12 {
+    background-color: #7bc043;
+}
+
+div.choice-selection-container li span.type13 {
+    background-color: #0096fa;
+}
+
+div.choice-selection-container li span.type14 {
+    background-color: #63ace5;
+}
+
+div.choice-selection-container li span.type15 {
+    background-color: #68b0ab;
+}
+
+div.choice-selection-container li span.type16 {
+    background-color: #bc53a7;
+}
+
+div.choice-selection-container li span.type17 {
+    background-color: #f6cd61;
+}
+
+div.choice-selection-container li span.type18 {
+    background-color: #3da4ab;
+}
+
+div.choice-selection-container li span.type19 {
+    background-color: #0e9aa7;
+}
+
+div.choice-selection-container li span.type20 {
+    background-color: #d16161;
+}
+
+div.choice-selection-container li span.type21 {
+    background-color: #c9ada7;
+}
+
+div.choice-selection-container li span.type22 {
+    background-color: #797ea0;
+}
+
+div.choice-selection-container li span.type23 {
+    background-color: #aa767c;
+}
+
+div.choice-selection-container li span.type24 {
+    background-color: #d6a184;
+}
+
 div.choice-selection-container div.content > div {
     flex: 0 0 auto;
     width: 240px;
