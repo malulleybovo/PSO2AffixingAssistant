@@ -10,9 +10,9 @@ const WELCOME_VIEW = () => `<div class="welcome">
             <div>
                 <div class="content">
                     <div>
-                        <h1>PSO2 Affixing Assistant</h1>
+                        <h1>${lang.app.appTitle[langCode]}</h1>
                     </div>
-                    <p>How it works:</p>
+                    <p>${lang.app.subHeader[langCode]}</p>
                     <div>
                         <img src="css/res/howItWorks.png">
                     </div>
@@ -21,7 +21,7 @@ const WELCOME_VIEW = () => `<div class="welcome">
         </div>
     </div>`;
 
-const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
+const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset, langCode }) => {
     let treeNodeTemplate = '<table class="mgrid"><tr><td>';
     level = (typeof level === 'number') ? level : 0;
     offset = (typeof offset === 'number') ? offset : 0;
@@ -45,14 +45,29 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
         }
     }
     if (pageTreeNode.page && (pageTreeNode.page instanceof Page)) {
+        let rateOpts = [];
+        for (var i = 0; i < pageTreeNode.rateBoostOptions.length; i++) {
+            let opt = pageTreeNode.rateBoostOptions[i];
+            if (opt) opt = lang['support'][opt.id];
+            if (opt) opt = opt[langCode];
+            if (opt) rateOpts.push(opt);
+        }
+        let potOpts = [];
+        for (var i = 0; i < pageTreeNode.potentialOptions.length; i++) {
+            let opt = pageTreeNode.potentialOptions[i];
+            if (opt) opt = lang['potential'][opt.id];
+            if (opt) opt = opt[langCode];
+            if (opt) potOpts.push(opt);
+        }
         treeNodeTemplate += PAGE_TEMPLATE({
             page: pageTreeNode.page,
             isGoal: pageTreeNode.isGoal,
-            rateBoostOptions: pageTreeNode.rateBoostOptions.map(a => a.id),
-            potentialOptions: pageTreeNode.potentialOptions.map(a => a.id),
+            rateBoostOptions: rateOpts,
+            potentialOptions: potOpts,
             level: level,
             offset: offset,
-            fodderOffsets: connectionOrder
+            fodderOffsets: connectionOrder,
+            langCode: langCode
         });
     }
     treeNodeTemplate += '</td><td>';
@@ -61,7 +76,8 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
             treeNodeTemplate += PAGE_TREE_NODE_TEMPLATE({
                 pageTreeNode: pageTreeNode.children[i],
                 level: (level + 1),
-                offset: (offset * capacity) + i
+                offset: (offset * capacity) + i,
+                langCode: langCode
             });
         }
     }
@@ -69,7 +85,7 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset }) => {
     return treeNodeTemplate;
 };
 
-const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level, offset, fodderOffsets }) => {
+const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level, offset, fodderOffsets, langCode }) => {
     let capacity = (new Page).CAPACITY;
     let dataConn;
     // data-conn is a mapping of the page-fodder connections within a tree structure with a set max number of children per node
@@ -92,20 +108,21 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level
             pageTempate += FODDER_TEMPLATE({
                 fodder: fodders[i],
                 isGoal: isGoal,
-                titleLabel: (isGoal) ? 'GOAL' : ('Fodder ' + i),
-                produceLabel: (isGoal) ? 'RE-AFFIX IT' : null,
+                titleLabel: (isGoal) ? lang.app.goalFodderTitle[langCode] : (lang.app.fodderTitle[langCode] + ' ' + i),
+                produceLabel: (isGoal) ? lang.app.reAffixLabel[langCode] : null,
                 dataConn: (fodderOffsets[i] >= 0) ? fodderDataConnBase + fodderOffsets[i] : -1,
                 isSameGear: page.fodders[i].isSameGear,
                 rateBoostOptions: rateBoostOptions,
                 rateBoostIdx: page.fodders[i].rateBoostIdx,
                 potentialOptions: potentialOptions,
-                potentialIdx: page.fodders[i].potentialIdx
+                potentialIdx: page.fodders[i].potentialIdx,
+                langCode: langCode
             });
         }
         pageTempate += `</div>`;
         if (!isGoal) {
             pageTempate += `<div class="success-indicator">
-                <span>Stage Success: </span>
+                <span>${lang.app.stageSuccessLabel[langCode]}: </span>
                 <span>${(page.successRate >= 0) ? page.successRate + `%` : `?`}</span>
             </div>`;
         }
@@ -114,58 +131,61 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level
     return pageTempate;
 };
 
-const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, isSameGear, rateBoostOptions, rateBoostIdx, potentialOptions, potentialIdx }) =>
+const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, isSameGear, rateBoostOptions, rateBoostIdx, potentialOptions, potentialIdx, langCode }) =>
     `<div class="fodder" ${(dataConn >= 0) ? `data-conn="` + dataConn + `"` : ``}>
             <div class="title">${titleLabel}</div>
             <div class="affixes">
-                <div class="affix${(fodder && fodder.affixes[0] && fodder.affixes[0].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[0] && fodder.affixes[0].effect) ? ` title="${fodder.affixes[0].effect.replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[0]) ? fodder.affixes[0].name : `&nbsp;`}${(fodder.affixes[0]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[0]) ? ` : <span title="${fodder.affixSuccessRates[0]}% chance of transfering this ability">${fodder.affixSuccessRates[0]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[1] && fodder.affixes[1].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[1] && fodder.affixes[1].effect) ? ` title="${fodder.affixes[1].effect.replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[1]) ? fodder.affixes[1].name : `&nbsp;`}${(fodder.affixes[1]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[1]) ? ` : <span title="${fodder.affixSuccessRates[1]}% chance of transfering this ability">${fodder.affixSuccessRates[1]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[2] && fodder.affixes[2].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[2] && fodder.affixes[2].effect) ? ` title="${fodder.affixes[2].effect.replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[2]) ? fodder.affixes[2].name : `&nbsp;`}${(fodder.affixes[2]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[2]) ? ` : <span title="${fodder.affixSuccessRates[2]}% chance of transfering this ability">${fodder.affixSuccessRates[2]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[3] && fodder.affixes[3].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[3] && fodder.affixes[3].effect) ? ` title="${fodder.affixes[3].effect.replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[3]) ? fodder.affixes[3].name : `&nbsp;`}${(fodder.affixes[3]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[3]) ? ` : <span title="${fodder.affixSuccessRates[3]}% chance of transfering this ability">${fodder.affixSuccessRates[3]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[4] && fodder.affixes[4].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[4] && fodder.affixes[4].effect) ? ` title="${fodder.affixes[4].effect.replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[4]) ? fodder.affixes[4].name : `&nbsp;`}${(fodder.affixes[4]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[4]) ? ` : <span title="${fodder.affixSuccessRates[4]}% chance of transfering this ability">${fodder.affixSuccessRates[4]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[5] && fodder.affixes[5].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[5] && fodder.affixes[5].effect) ? ` title="${fodder.affixes[5].effect.replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[5]) ? fodder.affixes[5].name : `&nbsp;`}${(fodder.affixes[5]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[5]) ? ` : <span title="${fodder.affixSuccessRates[5]}% chance of transfering this ability">${fodder.affixSuccessRates[5]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[6] && fodder.affixes[6].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[6] && fodder.affixes[6].effect) ? ` title="${fodder.affixes[6].effect.replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[6]) ? fodder.affixes[6].name : `&nbsp;`}${(fodder.affixes[6]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[6]) ? ` : <span title="${fodder.affixSuccessRates[6]}% chance of transfering this ability">${fodder.affixSuccessRates[6]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[7] && fodder.affixes[7].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[7] && fodder.affixes[7].effect) ? ` title="${fodder.affixes[7].effect.replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[7]) ? fodder.affixes[7].name : `&nbsp;`}${(fodder.affixes[7]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[7]) ? ` : <span title="${fodder.affixSuccessRates[7]}% chance of transfering this ability">${fodder.affixSuccessRates[7]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[0] && fodder.affixes[0].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[0] && lang[fodder.affixes[0].code] && lang[fodder.affixes[0].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[0].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[0] && lang[fodder.affixes[0].code]) ? lang[fodder.affixes[0].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[0]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[0]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[0])}">${fodder.affixSuccessRates[0]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[1] && fodder.affixes[1].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[1] && lang[fodder.affixes[1].code] && lang[fodder.affixes[1].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[0].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[1] && lang[fodder.affixes[1].code]) ? lang[fodder.affixes[1].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[1]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[1]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[1])}">${fodder.affixSuccessRates[1]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[2] && fodder.affixes[2].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[2] && lang[fodder.affixes[2].code] && lang[fodder.affixes[2].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[0].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[2] && lang[fodder.affixes[2].code]) ? lang[fodder.affixes[2].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[2]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[2]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[2])}">${fodder.affixSuccessRates[2]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[3] && fodder.affixes[3].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[3] && lang[fodder.affixes[3].code] && lang[fodder.affixes[3].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[0].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[3] && lang[fodder.affixes[3].code]) ? lang[fodder.affixes[3].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[3]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[3]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[3])}">${fodder.affixSuccessRates[3]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[4] && fodder.affixes[4].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[4] && lang[fodder.affixes[4].code] && lang[fodder.affixes[4].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[0].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[4] && lang[fodder.affixes[4].code]) ? lang[fodder.affixes[4].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[4]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[4]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[4])}">${fodder.affixSuccessRates[4]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[5] && fodder.affixes[5].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[5] && lang[fodder.affixes[5].code] && lang[fodder.affixes[5].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[0].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[5] && lang[fodder.affixes[5].code]) ? lang[fodder.affixes[5].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[5]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[5]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[5])}">${fodder.affixSuccessRates[5]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[6] && fodder.affixes[6].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[6] && lang[fodder.affixes[6].code] && lang[fodder.affixes[6].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[0].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[6] && lang[fodder.affixes[6].code]) ? lang[fodder.affixes[6].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[6]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[6]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[6])}">${fodder.affixSuccessRates[6]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[7] && fodder.affixes[7].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[7] && lang[fodder.affixes[7].code] && lang[fodder.affixes[7].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[0].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[7] && lang[fodder.affixes[7].code]) ? lang[fodder.affixes[7].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[7]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[7]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[7])}">${fodder.affixSuccessRates[7]}%</span>` : `` : ``}</div>
             </div>
             <div class="divider"></div>
-            ${((fodder && fodder.specialAbilityFactor) ? `<div class="affix special-ability-factor">Special Ability Factor<br>(${fodder.specialAbilityFactor.name})</div><div class="divider"></div>` : ``)}
-            <div class="produce-button${((fodder.hasNonTransferableAffixes()) ? ` disabled">CANNOT AFFIX` : `">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? `RE-AFFIX IT` : `AFFIX IT`)}`)}</div>
-            <div class="success-indicator" title="Success in making this equipment">
-                <span>${(isGoal) ? `Goal` : `Fodder`} Success: </span>
+            ${((fodder && fodder.specialAbilityFactor) ? `<div class="affix special-ability-factor">${lang.app.factorLabel[langCode]}<br>(${lang[fodder.specialAbilityFactor.code]['name_' + langCode]})</div><div class="divider"></div>` : ``)}
+            <div class="produce-button${((fodder.hasNonTransferableAffixes()) ? ` disabled">${lang.app.cannotAffixLabel[langCode]}` : `">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? lang.app.reAffixLabel[langCode] : lang.app.affixLabel[langCode])}`)}</div>
+            <div class="success-indicator" title="${lang.app.fodderSuccessDivTitle[langCode]}">
+                <span>${(isGoal) ? lang.app.goalLabel[langCode] : lang.app.fodderLabel[langCode]} ${lang.app.fodderSuccessLabel[langCode]}: </span>
             <span>${(fodder.overallSuccessRate >= 0) ? fodder.overallSuccessRate + `%` : `?`}</span>
             </div>
             ${(fodder.affixSuccessRates.length > 0) ?
             `<div class="boost-container" >
                 ${CHECKBOX_TEMPLATE({
-                    label: `Same Equipment`,
-                    description: `Is fodder made with identical equipment?`,
+                    label: lang.app.sameEquipLabel[langCode],
+                    description: lang.app.sameEquipDescription[langCode],
                     isChecked: isSameGear
                 })
                 + DROPDOWN_TEMPLATE({
                     type: 0,
                     options: rateBoostOptions,
                     selected: (rateBoostIdx >= 0) ? rateBoostIdx : undefined,
-                    description: `Is fodder using Affix Boost Item?`
+                    description: lang.app.rateBoostDescription[langCode]
                 })
                 + DROPDOWN_TEMPLATE({
                     type: 1,
                     options: potentialOptions,
                     selected: (potentialIdx >= 0) ? potentialIdx : undefined,
-                    description: `Does equipment have potential that boosts affixing?`
+                    description: lang.app.potDescription[langCode]
                 })}
             </div>` : ``}
-            ${((fodder && fodder.addAbilityItemInUse) ? `<div class="affix add-ability">${fodder.addAbilityItemInUse.name}</div>` : ``)}
+            ${((fodder && fodder.addAbilityItemInUse
+                && lang['additional'][fodder.addAbilityItemInUse.name]
+                && lang['additional'][fodder.addAbilityItemInUse.name][langCode]) ? 
+                `<div class="affix add-ability">${lang['additional'][fodder.addAbilityItemInUse.name][langCode]}</div>` : ``)}
         </div>`;
 
-const LINK_TEMPLATE = ({ link, linkToSim }) => {
+const LINK_TEMPLATE = ({ link, linkToSim, langCode }) => {
     return `<div class="link-container hidden" onclick="$(this).remove();">
         <div onclick="event.stopPropagation();">
             <div class="main-grid">
-                <div class="title bold">Link to This Formula</div>
+                <div class="title bold">${lang.app.shareFormulaTitle[langCode]}</div>
     			<input type="text" value="${link}" onfocus="this.setSelectionRange(0, this.value.length)">
-                <div class="copy-button"><a>Copy to Clipboard</a></div>
-                <div class="copy-button"><a  href="${linkToSim}" target="_blank">Open in Affix Simulator</a></div>
-                <div class="confirm-button">Close</div>
+                <div class="copy-button"><a>${lang.app.shareFormulaButton[langCode]}</a></div>
+                <div class="copy-button"><a  href="${linkToSim}" target="_blank">${lang.app.openInSimButton}</a></div>
+                <div class="confirm-button">${lang.app.closeButton}</div>
             </div>
         </div>
     </div>`;
@@ -199,7 +219,7 @@ const CHECKBOX_TEMPLATE = ({ label, description, isChecked }) =>
         </div>
     </div>`;
 
-const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch }) => {
+const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode }) => {
     let filtersearch = `<div class="filtersearchcontainer">
         <script>
             filterSearch = function (input) {
@@ -226,23 +246,28 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch }) => {
     }
     filtersearch +=
         `</div>
-        <input type="text" class="searchbar" onkeyup="filterSearch(this)" onfocus="this.setSelectionRange(0, this.value.length)" placeholder="Search for affixes.." title="Type in an affix name" maxlength="32">
+        <input type="text" class="searchbar" onkeyup="filterSearch(this)" onfocus="this.setSelectionRange(0, this.value.length)" placeholder="${lang.app.filterSearchPlaceholder[langCode]}" title="Type in an affix name" maxlength="32">
         <ul>`;
     if (Array.isArray(datalist)) {
         for (var i = 0; i < datalist.length; i++) {
-            if (datalist[i].code) {
-                filtersearch += `<li><div title="${datalist[i].effect.replace(/<br>/g, ' ')}" data-code="${datalist[i].code}">${datalist[i].name}</div></li>`;
+            if (datalist[i].code && lang[datalist[i].code]) {
+                filtersearch += `<li><div title="${lang[datalist[i].code]['effect_' + langCode].replace(/<br>/g, ' ')}" data-code="${datalist[i].code}">${lang[datalist[i].code]['name_' + langCode]}</div></li>`;
             }
-            else if (datalist[i].isAddAbilityItem) {
-                let choice = `${datalist[i].transferRate}% : ${datalist[i].name}`;
+            else if (datalist[i].isAddAbilityItem && lang['additional'][datalist[i].name]) {
+                let choice = `${datalist[i].transferRate}% : ${lang['additional'][datalist[i].name][langCode]}`;
                 filtersearch += `<li><div>${choice}</div></li>`;
             }
             else if (datalist[i].isAbilityFactor) {
-                let choice = `${datalist[i].transferRate}% : Special Ability Factor`;
+                let choice = `${datalist[i].transferRate}% : ${lang.app.factorLabel[langCode]}`;
                 filtersearch += `<li><div>${choice}</div></li>`;
             }
             else if (datalist[i].materials) {
-                let choice = `${datalist[i].transferRate}% : <span>${datalist[i].materials.map((mat) => mat.name).join("</span>, <span>")}</span>`;
+                let choice = `${datalist[i].transferRate}% : `;
+                for (var j = 0; j < datalist[i].materials.length; j++) {
+                    if (datalist[i].materials[j] == undefined || !lang[datalist[i].materials[j].code]) continue;
+                    choice += `<span>${lang[datalist[i].materials[j].code]['name_' + langCode]}</span>`;
+                    if (j < datalist[i].materials.length - 1) choice += ', ';
+                }
                 filtersearch += `<li><div>${choice}</div></li>`;
             }
         }
@@ -260,37 +285,37 @@ const RADIO_BUTTON_TEMPLATE = ({ id, isChecked, description }) =>
         <span>${(description) ? description : ``}</span>
     </label>`;
 
-const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, isGlobalSearch, shouldUpslot, shouldSpread }) => {
+const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, isGlobalSearch, shouldUpslot, shouldSpread, langCode }) => {
     let isAffixSelection = type == 'affixSelection';
     let isChoiceSelection = type == 'choiceSelection';
     let isFormulaSheet = type == 'formulaSheet';
     let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : (isChoiceSelection) ? `choice-selection-container` : (isFormulaSheet) ? `formula-sheet-container` : ``} hidden" onclick="$(this).remove();">
         <div onclick="event.stopPropagation();">
             <div class="main-grid">
-                <div class="title bold">${(isAffixSelection) ? `Choose Abilities` : (isChoiceSelection) ? `Choose Method of Making` : (isFormulaSheet) ? `Affixing Formula Sheet` : ``}</div>${(isChoiceSelection) ?
+                <div class="title bold">${(isAffixSelection) ? lang.app.chooseAffixTitle[langCode] : (isChoiceSelection) ? lang.app.chooseMethodTitle[langCode] : (isFormulaSheet) ? lang.app.formulaSheetTitle[langCode] : ``}</div>${(isChoiceSelection) ?
                 `<div class="options">${(affixesSelected.length > 1) ? `
-                    ${CHECKBOX_TEMPLATE({ label: `Affix By Upslotting`, description: `Using equipment with less slots to make gear with more slots`, isChecked: shouldUpslot })}` : ``}
-                    ${CHECKBOX_TEMPLATE({ label: `Use All Six Fodders`, description: `Makes it cheaper to produce the intermediary equipment`, isChecked: shouldSpread })}
+                    ${CHECKBOX_TEMPLATE({ label: lang.app.upslottingLabel[langCode], description: lang.app.upslottingDescription[langCode], isChecked: shouldUpslot })}` : ``}
+                    ${CHECKBOX_TEMPLATE({ label: lang.app.spreadLabel[langCode], description: lang.app.spreadDescription[langCode], isChecked: shouldSpread })}
                 </div>` 
             : ``}<div class="content">`;
     if (isAffixSelection) {
         layoutTemplate += `<div><div>
-                        <div class="title bold">Affixing Goal</div>
+                        <div class="title bold">${lang.app.affixingSelectionTitle[langCode]}</div>
                         <div class="selection-container">`;
         for (var i = 0; i < (new Fodder).CAPACITY; i++) {
-            layoutTemplate += `<div class="affix${(affixesSelected[i]) ? `` : ` empty`}"${(affixesSelected[i]) ? ` title="${affixesSelected[i].effect}"` : ``}${(affixesSelected[i]) ? ` data-code="${affixesSelected[i].code}"` : ``}>
+            layoutTemplate += `<div class="affix${(affixesSelected[i]) ? `` : ` empty`}"${(affixesSelected[i]) ? ` title="${lang[affixesSelected[i].code]['effect_' + langCode]}"` : ``}${(affixesSelected[i]) ? ` data-code="${affixesSelected[i].code}"` : ``}>
                                 <i class="fa fa-trash"></i>
-                                <span>${(affixesSelected[i]) ? `${affixesSelected[i].name}` : `&nbsp;`}</span>
+                                <span>${(affixesSelected[i] && affixesSelected[i].code && lang[affixesSelected[i].code] && lang[affixesSelected[i].code]['name_' + langCode]) ? `${lang[affixesSelected[i].code]['name_' + langCode]}` : `&nbsp;`}</span>
                             </div>`;
         }
         layoutTemplate += `</div>
-                        <div class="title bold">Stats</div>
+                        <div class="title bold">${lang.app.statsViewerTitle[langCode]}</div>
                         <div class="stats-viewer">
                         </div>
                     </div>
                     <div>
-                        <div class="title bold">Choices</div>
-                        ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist, isGlobalSearch: isGlobalSearch })}
+                        <div class="title bold">${lang.app.affixChoices[langCode]}</div>
+                        ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist, isGlobalSearch: isGlobalSearch, langCode: langCode })}
                     </div></div>`;
     }
     else if (isChoiceSelection) {
@@ -299,33 +324,33 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                 if (!affixesSelected[i].code || datalist === undefined
                     || datalist[affixesSelected[i].code] === undefined) continue;
                 layoutTemplate += `<div${(affixesSelected[i]) ? ` data-code="${affixesSelected[i].code}"` : ``}>
-                        <div class="title bold">Affix ${i + 1}</div>
+                        <div class="title bold">${lang.app.affixChoiceLabel[langCode]} ${i + 1}</div>
                         <div>
-                            <div class="affix"${(affixesSelected[i]) ? ` title="${affixesSelected[i].effect}"` : ``}${(affixesSelected[i]) ? ` data-code="${affixesSelected[i].code}"` : ``}>
-                                <span>${(affixesSelected[i]) ? `${affixesSelected[i].name}` : `&nbsp;`}</span>
+                            <div class="affix"${(affixesSelected[i]) ? ` title="${lang[affixesSelected[i].code]['effect_' + langCode]}"` : ``}${(affixesSelected[i]) ? ` data-code="${affixesSelected[i].code}"` : ``}>
+                                <span>${(affixesSelected[i] && affixesSelected[i].code && lang[affixesSelected[i].code] && lang[affixesSelected[i].code]['name_' + langCode]) ? `${lang[affixesSelected[i].code]['name_' + langCode]}` : `&nbsp;`}</span>
                             </div>
                         </div>
-                        <div class="title bold">Choices</div>
-                        ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist[affixesSelected[i].code], isGlobalSearch: isGlobalSearch })}
+                        <div class="title bold">${lang.app.affixChoices[langCode]}</div>
+                        ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist[affixesSelected[i].code], isGlobalSearch: isGlobalSearch, langCode: langCode })}
                     </div>`;
             }
         }
     }
     else if (isFormulaSheet) {
         layoutTemplate += `<div>
-                        <div class="title bold">Ability</div>
-                        ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist, isGlobalSearch: isGlobalSearch })}
+                        <div class="title bold">${lang.app.abilityListTitle[langCode]}</div>
+                        ${FILTER_SEARCH_TEMPLATE({ categories: categories, datalist: datalist, isGlobalSearch: isGlobalSearch, langCode: langCode })}
                     </div>
                     <div>
-                        <div class="title bold">How To Make</div>
+                        <div class="title bold">${lang.app.abilityFormulasTitle[langCode]}</div>
                         <div class="search-results-container"></div>
                     </div>`;
     }
     layoutTemplate += `</div>
                 <div>
                     ${(isAffixSelection || isChoiceSelection) ? 
-                    `<div class="cancel-button">Cancel</div>` : ``}
-                    <div class="confirm-button${(isAffixSelection || isChoiceSelection) ? ` disabled">Confirm`: `">Close`}</div>
+                    `<div class="cancel-button">${lang.app.cancelButton[langCode]}</div>` : ``}
+                    <div class="confirm-button${(isAffixSelection || isChoiceSelection) ? ` disabled">${lang.app.confirmButton[langCode]}`: `">${lang.app.closeButton[langCode]}`}</div>
                 </div>
             </div>
         </div>
@@ -333,32 +358,35 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     return layoutTemplate;
 }
 
-const AFFIX_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, categories, abilityList, isGlobalSearch }) => {
+const AFFIX_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, categories, abilityList, isGlobalSearch, langCode }) => {
     return SELECTION_MENU_TEMPLATE({
         type: 'affixSelection',
         affixesSelected: affixesSelected,
         categories: categories,
         datalist: abilityList,
-        isGlobalSearch: isGlobalSearch
+        isGlobalSearch: isGlobalSearch,
+        langCode: langCode
     });
 };
 
-const CHOICE_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, choices, isGlobalSearch, shouldUpslot, shouldSpread }) => {
+const CHOICE_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, choices, isGlobalSearch, shouldUpslot, shouldSpread, langCode }) => {
     return SELECTION_MENU_TEMPLATE({
         type: 'choiceSelection',
         affixesSelected: affixesSelected,
         datalist: choices,
         isGlobalSearch: isGlobalSearch,
         shouldUpslot: shouldUpslot,
-        shouldSpread: shouldSpread
+        shouldSpread: shouldSpread,
+        langCode: langCode
     });
 };
 
-const FORMULA_SHEET_VIEW_TEMPLATE = ({ categories, abilityList, isGlobalSearch }) => {
+const FORMULA_SHEET_VIEW_TEMPLATE = ({ categories, abilityList, isGlobalSearch, langCode }) => {
     return SELECTION_MENU_TEMPLATE({
         type: 'formulaSheet',
         categories: categories,
         datalist: abilityList,
-        isGlobalSearch: isGlobalSearch
+        isGlobalSearch: isGlobalSearch,
+        langCode: langCode
     });
 };

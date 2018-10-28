@@ -20,6 +20,7 @@ class ViewController {
         // Immutable variables (properties can still change)
         this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 3000;
         this.COLOR_PALETTE_SIZE = 25;
+        this.languages = ['en', 'jp'];
         this.filters = [];
         this.affixesSelected = [];
         this.choicesSelected = [];
@@ -38,6 +39,7 @@ class ViewController {
             }
         }
         // Mutable variables
+        this.langCode = this.languages[0];
         this.shouldUpslot = true;
         this.shouldSpread = true;
         this.newlyProducedTimeout = null;
@@ -83,6 +85,7 @@ class ViewController {
         });
         $('#openformulasheet').click(() => VIEW_CONTROLLER.openFormulaSheet(true));
         $('#getlink').click(() => VIEW_CONTROLLER.openGetLinkView(true));
+        $('#langswitch').click(() => this.toggleLanguage());
         $('#themeswitch').click(() => {
             if ($('html').hasClass('theme--default')) {
                 $('html').removeClass('theme--default').addClass('theme--bright');
@@ -121,6 +124,7 @@ class ViewController {
             }
             catch (e) { }
         });
+        this.updateMenuBarDescriptions();
     }
 
     setActiveFodder(e) {
@@ -261,7 +265,8 @@ class ViewController {
                     AFFIX_SELECTION_VIEW_TEMPLATE({
                         affixesSelected: this.affixesSelected,
                         categories: this.filters,
-                        abilityList: this.assistant.data.abilityList // List of all affixes
+                        abilityList: this.assistant.data.abilityList, // List of all affixes
+                        langCode: this.langCode
                     }));
                 if (shouldAnimate) {
                     $('div.affix-selection-container').animate({}, 10, function () {
@@ -367,7 +372,8 @@ class ViewController {
                 affixesSelected: vc.affixesSelected,
                 choices: choices,
                 shouldUpslot: vc.shouldUpslot,
-                shouldSpread: vc.shouldSpread
+                shouldSpread: vc.shouldSpread,
+                langCode: vc.langCode
             }));
         if (shouldAnimate) {
             $('div.choice-selection-container').animate({}, 10, function () {
@@ -415,7 +421,8 @@ class ViewController {
         $('body').append(
             FORMULA_SHEET_VIEW_TEMPLATE({
                 categories: VIEW_CONTROLLER.filters,
-                abilityList: ASSISTANT.data.abilityList // List of all affixes
+                abilityList: ASSISTANT.data.abilityList, // List of all affixes
+                langCode: VIEW_CONTROLLER.langCode
             }));
         if (shouldAnimate) {
             $('div.formula-sheet-container').animate({}, 10, function () {
@@ -465,7 +472,8 @@ class ViewController {
         $('body').append(
             LINK_TEMPLATE({
                 link: decodeURI(window.location.href),
-                linkToSim: vc.assistant.toURL(true)
+                linkToSim: vc.assistant.toURL(true),
+                langCode: vc.langCode
             }));
         if (shouldAnimate) {
             $('div.link-container').animate({}, 10, function () {
@@ -559,7 +567,8 @@ class ViewController {
         if (!vc.assistant || !vc.assistant.pageTreeRoot || !(vc.assistant.pageTreeRoot instanceof PageTreeNode)) return;
         vc.assistant.calcSuccessRates();
         $('#mastercontainer').empty().append(PAGE_TREE_NODE_TEMPLATE({
-            pageTreeNode: vc.assistant.pageTreeRoot
+            pageTreeNode: vc.assistant.pageTreeRoot,
+            langCode: vc.langCode
         }));
         vc.regenerateConnections();
         $('div.fodder').hover(spotlightIn, spotlightOut);
@@ -887,13 +896,17 @@ class ViewController {
         let allStats = {};
         for (var i = 0; i < slots.length; i++) {
             if (this.affixesSelected[i]) {
-                $(slots[i]).attr('title', this.affixesSelected[i].effect.replace(/<br>/g, ' '))
+                let name = (lang[this.affixesSelected[i].code] && lang[this.affixesSelected[i].code]['name_' + this.langCode]) ?
+                    lang[this.affixesSelected[i].code]['name_' + this.langCode] : lang[this.affixesSelected[i].code]['name_en'];
+                let effect = (lang[this.affixesSelected[i].code] && lang[this.affixesSelected[i].code]['effect_' + this.langCode]) ?
+                    lang[this.affixesSelected[i].code]['effect_' + this.langCode] : lang[this.affixesSelected[i].code]['effect_en'];
+                $(slots[i]).attr('title', effect.replace(/<br>/g, ' '))
                     .attr('data-code', this.affixesSelected[i].code)
                     .removeClass('empty')
-                    .find('span').text(this.affixesSelected[i].name);
+                    .find('span').text(name);
                 $(`div.affix-selection-container li > div[data-code="${this.affixesSelected[i].code}"]`)
                     .addClass('selected');
-                let stats = this.affixesSelected[i].effect.split('<br>');
+                let stats = effect.split('<br>');
                 if (stats.length == 1) stats = stats[0].split(',');
                 for (var j = 0; j < stats.length; j++) {
                     let stat = stats[j];
@@ -920,22 +933,15 @@ class ViewController {
                     .find('span').html('&nbsp;');
             }
         }
-        if (allStats['ALL']) {
-            if (allStats['S-ATK']) allStats['S-ATK'] += allStats['ALL'];
-            else allStats['S-ATK'] = allStats['ALL'];
-            if (allStats['R-ATK']) allStats['R-ATK'] += allStats['ALL'];
-            else allStats['R-ATK'] = allStats['ALL'];
-            if (allStats['T-ATK']) allStats['T-ATK'] += allStats['ALL'];
-            else allStats['T-ATK'] = allStats['ALL'];
-            if (allStats['S-DEF']) allStats['S-DEF'] += allStats['ALL'];
-            else allStats['S-DEF'] = allStats['ALL'];
-            if (allStats['R-DEF']) allStats['R-DEF'] += allStats['ALL'];
-            else allStats['R-DEF'] = allStats['ALL'];
-            if (allStats['T-DEF']) allStats['T-DEF'] += allStats['ALL'];
-            else allStats['T-DEF'] = allStats['ALL'];
-            if (allStats['DEX']) allStats['DEX'] += allStats['ALL'];
-            else allStats['DEX'] = allStats['ALL'];
-            delete allStats['ALL'];
+        for (var key in lang.synonyms[this.langCode]) {
+            if (allStats[key]) {
+                let val = lang.synonyms[this.langCode][key];
+                for (var j = 0; j < val.length; j++) {
+                    if (allStats[val[j]]) allStats[val[j]] += allStats[key];
+                    else allStats[val[j]] = allStats[key];
+                }
+                delete allStats['ALL'];
+            }
         }
         let statsViewer = $(`div.affix-selection-container div.stats-viewer`);
         if (statsViewer.length > 0) {
@@ -1003,7 +1009,8 @@ class ViewController {
         $ref.nextAll().remove();
         $(FILTER_SEARCH_TEMPLATE({
             categories: VIEW_CONTROLLER.filters,
-            datalist: choices[$(this).attr('data-code')]
+            datalist: choices[$(this).attr('data-code')],
+            langCode: VIEW_CONTROLLER.langCode
         })).insertAfter($ref);
         try {
             gaRequests.send('formula', 'select', {
@@ -1050,6 +1057,26 @@ class ViewController {
                 }
             }
         }
+    }
+
+    toggleLanguage() {
+        let idx = this.languages.indexOf(this.langCode);
+        if (idx >= 0) {
+            this.langCode = this.languages[(idx + 1) % this.languages.length];
+            this.updateView();
+            this.updateMenuBarDescriptions();
+        }
+        return this;
+    }
+
+    updateMenuBarDescriptions() {
+        $('#startnew').attr('title', lang.app.menuStartNewDescription[this.langCode]);
+        $('#openformulasheet').attr('title', lang.app.menuFormulaSheetDescription[this.langCode]);
+        $('#getlink').attr('title', lang.app.menuShareDescription[this.langCode]);
+        $('#langswitch').attr('title', lang.app.menuLanguageDescription[this.langCode]);
+        $('#themeswitch').attr('title', lang.app.menuThemesDescription[this.langCode]);
+        $('#panzoomreset').attr('title', lang.app.menuTargetDescription[this.langCode]);
+        $('div#reportbug').attr('title', lang.app.menuBugDescription[this.langCode]);
     }
 }
 

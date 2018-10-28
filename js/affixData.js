@@ -214,7 +214,7 @@
                 effect: "T-ATK(+50),PP(+5)"
             },
             {
-                id: "Add Ability (Offense Focus) ",
+                id: "Add Ability (Offense Focus)",
                 name: "Offense Boost",
                 value: "B20",
                 extend: 100,
@@ -3757,13 +3757,157 @@
         {
             code: "LA25",
             gid: "L1",
-            name: "S1:Vigor Enhancment",
+            name: "S1:Vigor Enhancement",
             extend: [
                 100,
                 100,
                 100
             ],
             effect: "Boost self HP recovery by 40%.",
+            noEx: true
+        },
+        {
+            code: "LA78",
+            gid: "L1",
+            name: "S1:Violent Invigoration",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase damage and PP recovery.<br>Reduce PP consumption.<br>Effect resets when damage is taken.",
+            noEx: true
+        },
+        {
+            code: "LA79",
+            gid: "L1",
+            name: "S1:Phanatical Advantage",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase power by 5%<br>and reduce damage taken by 12%<br>in the Quest Solo Training: Phanatical Phantoms.",
+            noEx: true
+        },
+        {
+            code: "LA80",
+            gid: "L1",
+            name: "S1:Powering Intent",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase damage dealt to bosses by 4%.",
+            noEx: true
+        },
+        {
+            code: "LA81",
+            gid: "L1",
+            name: "S1:Rupturing Excess",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase PP recovery rate by 40% when attacking breakable parts.",
+            noEx: true
+        },
+        {
+            code: "LA82",
+            gid: "L1",
+            name: "S1:Spirited Response",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increases PP regeneration rate (+80%) while sheathed.",
+            noEx: true
+        },
+        {
+            code: "LA83",
+            gid: "L1",
+            name: "S1:Rupturing Intent",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase damage against breakable parts by 4%.",
+            noEx: true
+        },
+        {
+            code: "LA84",
+            gid: "L1",
+            name: "S1:Sturdy Intent",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase damage by 4% if your weapon's element or equipped Guard Ring match the enemy's elemental weakness.",
+            noEx: true
+        },
+        {
+            code: "LA85",
+            gid: "L1",
+            name: "S1:Phantasmal Intent",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Power based on the Photon Blast Gauge.",
+            noEx: true
+        },
+        {
+            code: "LA86",
+            gid: "L1",
+            name: "S1:Photon Reduction 2",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Reduce PP consumption by 10%.",
+            noEx: true
+        },
+        {
+            code: "LA87",
+            gid: "L1",
+            name: "S1:Brilliant Ruin 2",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Recover PP when an enemy near you is defeated. (+4 PP)",
+            noEx: true
+        },
+        {
+            code: "LA88",
+            gid: "L1",
+            name: "S1:Flowing Intent",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase power every second. Maxes at 4% (30s to MAX).",
+            noEx: true
+        },
+        {
+            code: "LA89",
+            gid: "L1",
+            name: "S1:Lethal Intent",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Reduce HP by 5% every 20 seconds and increase Power by 4%.",
             noEx: true
         },
         {
@@ -4199,6 +4343,18 @@
             noEx: true
         },
         {
+            code: "LB89",
+            gid: "L2",
+            name: "S2:Instant Reduction",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Reduces PP consumption by 12% when Just Attacking different PAs or Techniques.",
+            noEx: true
+        },
+        {
             code: "LC01",
             gid: "L3",
             name: "S3:Offensive Intent",
@@ -4213,7 +4369,7 @@
         {
             code: "LC02",
             gid: "L3",
-            name: "S3:Vital Will",
+            name: "S3:Vital Intent",
             extend: [
                 100,
                 100,
@@ -4508,6 +4664,30 @@
                 100
             ],
             effect: "Increase Automatic PP Recovery by 20%.",
+            noEx: true
+        },
+        {
+            code: "LC88",
+            gid: "L3",
+            name: "S3:Rupturing Intent",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase damage against breakable parts by 4%.",
+            noEx: true
+        },
+        {
+            code: "LC89",
+            gid: "L3",
+            name: "S3:Nature's Gleam",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Natural PP Recovery by 23% when S1:Red Petal Flash, S1:Blue Ocean Flash, or S1:White Snow Flash are active.",
             noEx: true
         },
         {
@@ -6741,7 +6921,7 @@
         {
             code: "TD08",
             gid: "EB",
-            name: "Ceramo Fever",
+            name: "Ceremo Fever",
             extend: [
                 100,
                 100,
