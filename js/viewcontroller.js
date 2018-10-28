@@ -653,8 +653,8 @@ class ViewController {
     displayWelcomeScreen(shouldOpen) {
         if (shouldOpen) {
             if ($('div.welcome').length > 0) return;
-            if ($('#editor').length > 0) $(WELCOME_VIEW()).insertAfter($('#editor'));
-            else $('body').prepend($(WELCOME_VIEW()));
+            if ($('#editor').length > 0) $(WELCOME_VIEW(this.langCode)).insertAfter($('#editor'));
+            else $('body').prepend($(WELCOME_VIEW(this.langCode)));
         }
         else {
             $('div.welcome').remove();
@@ -1065,6 +1065,8 @@ class ViewController {
             this.langCode = this.languages[(idx + 1) % this.languages.length];
             this.updateView();
             this.updateMenuBarDescriptions();
+            if ($('div.welcome h1').length > 0) $('div.welcome h1').text(lang.app.appTitle[this.langCode]);
+            if ($('div.welcome p').length > 0) $('div.welcome p').text(lang.app.subHeader[this.langCode]);
         }
         return this;
     }

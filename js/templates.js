@@ -5,7 +5,7 @@
  * @license GNU General Public License v3.0
  */
 
-const WELCOME_VIEW = () => `<div class="welcome">
+const WELCOME_VIEW = (langCode) => `<div class="welcome">
         <div>
             <div>
                 <div class="content">
@@ -184,8 +184,8 @@ const LINK_TEMPLATE = ({ link, linkToSim, langCode }) => {
                 <div class="title bold">${lang.app.shareFormulaTitle[langCode]}</div>
     			<input type="text" value="${link}" onfocus="this.setSelectionRange(0, this.value.length)">
                 <div class="copy-button"><a>${lang.app.shareFormulaButton[langCode]}</a></div>
-                <div class="copy-button"><a  href="${linkToSim}" target="_blank">${lang.app.openInSimButton}</a></div>
-                <div class="confirm-button">${lang.app.closeButton}</div>
+                <div class="copy-button"><a  href="${linkToSim}" target="_blank">${lang.app.openInSimButton[langCode]}</a></div>
+                <div class="confirm-button">${lang.app.closeButton[langCode]}</div>
             </div>
         </div>
     </div>`;
