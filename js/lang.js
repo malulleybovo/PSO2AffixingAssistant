@@ -182,12 +182,18 @@ const lang = Object.freeze({
             jp: "問題を報告"
         }
     },
+    "filters": {
+        en: ["All", "S-ATK", "R-ATK", "T-ATK", "PP", "HP"],
+        jp: ["全", "打撃力", "射撃力", "法撃力", "PP", "HP"]
+    },
     "synonyms": {
         en: {
-            "ALL": ["S-ATK", "R-ATK", "T-ATK", "DEX", "S-DEF", "R-DEF", "T-DEF"]
+            "ALL": ["S-ATK", "R-ATK", "T-ATK", "DEX", "S-DEF", "R-DEF", "T-DEF"],
+            "All Resist": ["Flame Resist", "Ice Resist", "Lightning Resist", "Wind Resist", "Light Resist", "Dark Resist"]
         },
         jp: {
-            "ALL": ["打撃力", "射撃力", "法撃力", "技量", "打撃防御", "射撃防御", "法撃防御"]
+            "ALL": ["打撃力", "射撃力", "法撃力", "技量", "打撃防御", "射撃防御", "法撃防御"],
+            "All Resist": ["炎耐性", "氷耐性", "雷耐性", "風耐性", "光耐性", "闇耐性"]
         }
     },
     "support": {

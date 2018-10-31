@@ -2,7 +2,7 @@
 .radiobutton-container {
     display: inline-block;
     position: relative;
-    padding-left: 2.25em;
+    padding-left: 1.75em;
     padding-right: 0.5em;
     margin-bottom: 1em;
     cursor: default;
@@ -57,10 +57,38 @@
 
 /* Style the indicator (dot/circle) */
 .radiobutton-container .checkmark:after {
-    top: 5.5px;
-    left: 5.5px;
-    width: 7px;
-    height: 7px;
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
     border-radius: 50%;
     background: var(--paint-lightest);
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .radiobutton-container .checkmark {
+        height: 28px;
+        width: 28px;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    .radiobutton-container .checkmark {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+@media only screen and (max-device-width: 767px) {
+    .radiobutton-container .checkmark {
+        height: 48px;
+        width: 48px;
+    }
+}
+
+@media only screen and (max-device-width: 767px) and (orientation: landscape) {
+    .radiobutton-container .checkmark {
+        height: 32px;
+        width: 32px;
+    }
 }

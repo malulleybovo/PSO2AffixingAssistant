@@ -251,15 +251,15 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode
     if (Array.isArray(datalist)) {
         for (var i = 0; i < datalist.length; i++) {
             if (datalist[i].code && lang[datalist[i].code]) {
-                filtersearch += `<li><div title="${lang[datalist[i].code]['effect_' + langCode].replace(/<br>/g, ' ')}" data-code="${datalist[i].code}">${lang[datalist[i].code]['name_' + langCode]}</div></li>`;
+                filtersearch += `<li data-idx="${i}"><div title="${lang[datalist[i].code]['effect_' + langCode].replace(/<br>/g, ' ')}" data-code="${datalist[i].code}">${lang[datalist[i].code]['name_' + langCode]}</div></li>`;
             }
             else if (datalist[i].isAddAbilityItem && lang['additional'][datalist[i].name]) {
                 let choice = `${datalist[i].transferRate}% : ${lang['additional'][datalist[i].name][langCode]}`;
-                filtersearch += `<li><div>${choice}</div></li>`;
+                filtersearch += `<li data-idx="${i}"><div>${choice}</div></li>`;
             }
             else if (datalist[i].isAbilityFactor) {
                 let choice = `${datalist[i].transferRate}% : ${lang.app.factorLabel[langCode]}`;
-                filtersearch += `<li><div>${choice}</div></li>`;
+                filtersearch += `<li data-idx="${i}"><div>${choice}</div></li>`;
             }
             else if (datalist[i].materials) {
                 let choice = `${datalist[i].transferRate}% : `;
@@ -268,7 +268,7 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode
                     choice += `<span>${lang[datalist[i].materials[j].code]['name_' + langCode]}</span>`;
                     if (j < datalist[i].materials.length - 1) choice += ', ';
                 }
-                filtersearch += `<li><div>${choice}</div></li>`;
+                filtersearch += `<li data-idx="${i}"><div>${choice}</div></li>`;
             }
         }
     }

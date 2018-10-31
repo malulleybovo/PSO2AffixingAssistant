@@ -57,6 +57,26 @@ div.dropdown-container.equipment-potential:before {
     background-position: center center;
 }
 
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    div.dropdown-container.success-rate:before,
+    div.dropdown-container.equipment-potential:before {
+        width: 24px;
+        height: 24px;
+        top: 3px;
+        left: 7px;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    div.dropdown-container.success-rate:before,
+    div.dropdown-container.equipment-potential:before {
+        width: 16px;
+        height: 16px;
+        top: 2px;
+        left: 7px;
+    }
+}
+
 @media only screen and (max-device-width: 767px) {
     div.dropdown-container.success-rate:before,
     div.dropdown-container.equipment-potential:before {
@@ -64,5 +84,15 @@ div.dropdown-container.equipment-potential:before {
         height: 40px;
         top: 5px;
         left: 10px;
+    }
+}
+
+@media only screen and (max-device-width: 767px) and (orientation: landscape) {
+    div.dropdown-container.success-rate:before,
+    div.dropdown-container.equipment-potential:before {
+        width: 24px;
+        height: 24px;
+        top: 3px;
+        left: 7px;
     }
 }

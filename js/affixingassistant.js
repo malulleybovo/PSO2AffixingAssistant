@@ -185,12 +185,14 @@ class Assistant {
         let affixes = this.getAffixInstancesInvolvedIn(choices);
         if (!affixes || !Array.isArray(affixes) || !this.affixDB) return null;
         let numSpecialAbilityFactor = 0;
+        let numAddAbility = 0;
         for (var i = 0; i < choices.length; i++) {
             let choice = choices[i];
             if (!choice) continue;
             if (choice.isAbilityFactor) numSpecialAbilityFactor++;
+            if (choice.isAddAbilityItem) numAddAbility++;
         }
-        if (affixes.length <= 0 && numSpecialAbilityFactor <= 0) return null;
+        if (affixes.length <= 0 && numSpecialAbilityFactor <= 0 && numAddAbility <= 0) return null;
 
         // Generate new page
         let page = this.buildPageInPyramid(affixes, targetNumSlots);
@@ -2269,9 +2271,7 @@ class Fodder {
 
     hasNonTransferableAffixes() {
         for (var i = 0; i < this.affixes.length; i++) {
-            if (ASSISTANT.affixDB[this.affixes[i].code].choices.length <= 0 // Cannot bew transferred
-                || (ASSISTANT.affixDB[this.affixes[i].code].choices.length == 1 // Or can only be transferred as a Special Ability Factor
-                    && ASSISTANT.affixDB[this.affixes[i].code].choices[0].isAbilityFactor)) return true;
+            if (ASSISTANT.affixDB[this.affixes[i].code].choices.length <= 0) return true;
         }
         return false;
     }

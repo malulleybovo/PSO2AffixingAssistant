@@ -21,7 +21,6 @@ class ViewController {
         this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 3000;
         this.COLOR_PALETTE_SIZE = 25;
         this.languages = ['en', 'jp'];
-        this.filters = [];
         this.affixesSelected = [];
         this.choicesSelected = [];
         this.assistant = assistant;
@@ -40,6 +39,7 @@ class ViewController {
         }
         // Mutable variables
         this.langCode = this.languages[0];
+        this.filters = lang.filters[this.langCode];
         this.shouldUpslot = true;
         this.shouldSpread = true;
         this.newlyProducedTimeout = null;
@@ -51,8 +51,15 @@ class ViewController {
             which: 1,
             minScale: 0.1,
             maxScale: 2,
-            onPan: () => { if (!this.isPanning) { this.isPanning = true; } },
-            onEnd: () => { setTimeout(() => { if (this.isPanning) { this.isPanning = false; } }, 1); },
+            onPan: () => {
+                if (this.isPanning === undefined) { this.isPanning = false; } // Debounce panning
+                else if (this.isPanning === false) { this.isPanning = true; }
+            },
+            onEnd: () => {
+                setTimeout(() => {
+                    if (this.isPanning === true || this.isPanning === false) { this.isPanning = undefined; }
+                }, 1);
+            },
             onChange: this.updateConnections
         });
         $("#editor").on('wheel', function (e) {
@@ -285,6 +292,40 @@ class ViewController {
                 else $('div.affix-selection-container').removeClass('hidden');
                 $('div.affix-selection-container li > div').click({ viewcontroller: this }, this.selectAbility);
                 $('div.affix-selection-container div.affix > i').click({ viewcontroller: this }, this.selectAbility);
+                $('div.affix-selection-container div.filtersearchcontainer input[type=radio]').change(function () {
+                    let filter = $(this).siblings().last().text();
+                    if (lang.synonyms[VIEW_CONTROLLER.langCode]) {
+                        for (var key in lang.synonyms[VIEW_CONTROLLER.langCode]) {
+                            if (lang.synonyms[VIEW_CONTROLLER.langCode][key]
+                                && lang.synonyms[VIEW_CONTROLLER.langCode][key].includes(filter)) {
+                                filter = `(${filter}|${key})`;
+                            }
+                        }
+                    }
+                    let regex = new RegExp(filter + '\\([\\+-]{1}[0-9]+\\)');
+                    $(`div.affix-selection-container ul`).append($(`div.affix-selection-container li`).sort((a, b) => {
+                        if ($(this).siblings().last().text() == 'All') {
+                            return $(a).data('idx') - $(b).data('idx');
+                        }
+                        let statsA = $(a.firstChild).attr('title');
+                        let matchesA = statsA.match(regex);
+                        let statsB = $(b.firstChild).attr('title');
+                        let matchesB = statsB.match(regex);
+                        if (matchesA && matchesB) {
+                            let valA = matchesA[0].match(/[0-9]+/)[0];
+                            if (/\(-/.test(matchesA[0])) valA *= -1;
+                            let valB = matchesB[0].match(/[0-9]+/)[0];
+                            if (/\(-/.test(matchesB[0])) valB *= -1;
+                            return valB - valA;
+                        }
+                        else if (matchesA) {
+                            return -1;
+                        }
+                        else if (matchesB) {
+                            return 1;
+                        }
+                    }))
+                });
                 $('div.affix-selection-container div.cancel-button').click({ viewcontroller: this }, function ({ data }) {
                     $('div.affix-selection-container').remove();
                     try {
@@ -352,7 +393,11 @@ class ViewController {
         let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
         vc.choicesSelected.splice(0, vc.choicesSelected.length);
         for (var i = 0; i < vc.affixesSelected.length; i++) {
-            vc.choicesSelected.push(null);
+            if (!vc.affixesSelected[i] || !vc.affixesSelected[i].code) continue;
+            if (choices[vc.affixesSelected[i].code]
+                && choices[vc.affixesSelected[i].code].length == 1)
+                vc.choicesSelected.push(choices[vc.affixesSelected[i].code][0]);
+            else vc.choicesSelected.push(null);
         }
         if (vc.assistant.activeFodder && vc.assistant.activeFodder.specialAbilityFactor) {
             let factor = vc.assistant.activeFodder.specialAbilityFactor;
@@ -362,7 +407,10 @@ class ViewController {
             for (var i = 0; i < factorChoices.length; i++) {
                 if (factorChoices[i].isAbilityFactor) {
                     choices[factor.code] = [factorChoices[i]];
-                    vc.choicesSelected.push(null);
+                    if (choices[factor.code]
+                        && choices[factor.code].length == 1)
+                        vc.choicesSelected.push(choices[factor.code][0]);
+                    else vc.choicesSelected.push(null);
                     break;
                 }
             }
@@ -375,6 +423,7 @@ class ViewController {
                 shouldSpread: vc.shouldSpread,
                 langCode: vc.langCode
             }));
+        vc.updateChoiceSelectionView();
         if (shouldAnimate) {
             $('div.choice-selection-container').animate({}, 10, function () {
                 timeData.chooseMethodStartTime = (new Date()).getTime();
@@ -420,7 +469,7 @@ class ViewController {
         }
         $('body').append(
             FORMULA_SHEET_VIEW_TEMPLATE({
-                categories: VIEW_CONTROLLER.filters,
+                categories: [],
                 abilityList: ASSISTANT.data.abilityList, // List of all affixes
                 langCode: VIEW_CONTROLLER.langCode
             }));
@@ -558,7 +607,7 @@ class ViewController {
             $container.panzoom('pan', newpos.left, newpos.top, {
                 animate: false,
             });
-            this.isPanning = false;
+            this.isPanning = undefined;
         }
     }
 
@@ -573,7 +622,7 @@ class ViewController {
         }));
         vc.regenerateConnections();
         $('div.fodder').hover(spotlightIn, spotlightOut);
-        $('div.produce-button:not(.disabled)').click({ viewcontroller: this }, this.setActiveFodder)
+        $('div.produce-button:not(.disabled)').on('pointerup', { viewcontroller: this }, this.setActiveFodder)
             .on('mousedown touchstart', function (e) {
             // Allow clickable elements within panzoom on mobile
             e.stopImmediatePropagation();
@@ -689,7 +738,7 @@ class ViewController {
         $container.panzoom('pan', newpos.left, newpos.top, {
             animate: false,
         });
-        this.isPanning = false;
+        this.isPanning = undefined;
         return this;
     }
 
@@ -941,7 +990,7 @@ class ViewController {
                     if (allStats[val[j]]) allStats[val[j]] += allStats[key];
                     else allStats[val[j]] = allStats[key];
                 }
-                delete allStats['ALL'];
+                delete allStats[key];
             }
         }
         let statsViewer = $(`div.affix-selection-container div.stats-viewer`);
@@ -953,8 +1002,7 @@ class ViewController {
                 statsViewer.append(`<div class="stat">${key + value}</div>`);
             }
         }
-        if (this.affixesSelected.length <= 0
-            || (this.affixesSelected.length == 1 && this.assistant.isSpecialAbility(this.affixesSelected[0]))) {
+        if (this.affixesSelected.length <= 0) {
             $(`div.affix-selection-container .confirm-button`).addClass('disabled');
         }
         else {
@@ -1009,7 +1057,7 @@ class ViewController {
         let $ref = $('div.formula-sheet-container .search-results-container');
         $ref.nextAll().remove();
         $(FILTER_SEARCH_TEMPLATE({
-            categories: VIEW_CONTROLLER.filters,
+            categories: [],
             datalist: choices[$(this).attr('data-code')],
             langCode: VIEW_CONTROLLER.langCode
         })).insertAfter($ref);
@@ -1064,6 +1112,7 @@ class ViewController {
         let idx = this.languages.indexOf(this.langCode);
         if (idx >= 0) {
             this.langCode = this.languages[(idx + 1) % this.languages.length];
+            this.filters = lang.filters[this.langCode];
             this.updateView();
             this.updateMenuBarDescriptions();
             if ($('div.welcome h1').length > 0) $('div.welcome h1').text(lang.app.appTitle[this.langCode]);

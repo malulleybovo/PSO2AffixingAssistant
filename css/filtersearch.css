@@ -110,6 +110,18 @@ div.filtersearchcontainer li a:hover:not(.header) {
     background-color: var(--paint-light);
 }
 
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    div.filtersearchcontainer input.searchbar {
+        padding: 12px;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    div.filtersearchcontainer input.searchbar {
+        padding: 6px;
+    }
+}
+
 @media only screen and (max-device-width: 767px) {
     div.filtersearchcontainer input.searchbar {
         padding: 20px;
