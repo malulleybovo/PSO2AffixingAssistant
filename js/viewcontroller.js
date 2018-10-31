@@ -348,7 +348,7 @@ class ViewController {
                     }
                     catch (e) { }
                     data.viewcontroller.openChoicesSelectionView(false);
-                    $('div.choice-selection-container div.cancel-button').click({ viewcontroller: data.viewcontroller },
+                    $('div.choice-selection-container div.cancel-button').unbind('click').click({ viewcontroller: data.viewcontroller },
                         ({ data }) => {
                             data.viewcontroller.setAffixSelectionView(true, false);
                             try {
