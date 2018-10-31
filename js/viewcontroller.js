@@ -531,6 +531,7 @@ class ViewController {
         let urlParams = window.location.search;
         if (urlParams == '') {
             this.displayWelcomeScreen(true);
+            this.assistant.pageTreeRoot = null;
             return;
         }
         else {
