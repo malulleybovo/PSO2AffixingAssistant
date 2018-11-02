@@ -29,7 +29,8 @@ const gaEvts = Object.freeze({
         affix: 'Choose Affix View',
         method: 'Choose Method View',
         share: 'Share Link View',
-        formula: 'Formula Sheet View'
+        formula: 'Formula Sheet View',
+        wishlist: 'Fodder Wish List'
     },
     actions: {
         confirm: 'Confirm',

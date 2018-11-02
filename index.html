@@ -8,16 +8,15 @@
         gtag('js', new Date());
         gtag('config', 'UA-127916812-1');
     </script>
-    <script src="js/gaData.js"></script>
-    <link rel="icon" href="css/res/favicon.png" type="image/png">
+    <link rel="icon" href="build/res/favicon.png" type="image/png">
     <title>PSO2 Affixing Assistant</title>
+    <meta name="description" content="The easiest and quickest PSO2 affixing helper in the web. Make complex affixing formulas in seconds without the need of prior affixing knowledge (unlike the PSO2 affixing simulator). Customizable and also available in japanese." />
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/stylesheet.min.css">
+    <link rel="stylesheet" href="build/stylesheet.min.css">
     <script src="build/jquery-3.3.1.min.js"></script>
     <script src="build/jquery.connections.min.js"></script>
     <script src="build/jquery.panzoom.min.js"></script>
-    <script src="js/affixData.js"></script>
     <script src="build/affixingassistant.min.js"></script>
 </head>
 <body>
@@ -31,25 +30,35 @@
                 <div id="startnew" class="option" accesskey="n" title="Check or change the affixing goal">
                     <i class="fa fa-plus" accesskey="n"></i>
                 </div>
+                <div id="openwishlist" class="option" accesskey="w" title="View fodders needed">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
                 <div id="openformulasheet" class="option" accesskey="f" title="View affixing formula sheet">
                     <i class="fa fa-book"></i>
                 </div>
                 <div id="getlink" class="option" accesskey="s" title="Share the link to this affixing formula">
-                    <i accesskey="s" class="fa fa-external-link-alt"></i>
+                    <i class="fa fa-external-link-alt"></i>
                 </div>
-                <div id="langswitch" class="option" accesskey="l" title="Switch languase (english / japanese)">
-                    <i class="fas fa-language"></i>
-                </div>
-                <div id="themeswitch" class="option" accesskey="t" title="Change application theme">
-                    <i class="fa fa-window-restore"></i>
-                </div>
-                <div id="panzoomreset" class="option" accesskey="r" title="Display affixing goal">
-                    <i class="far fa-dot-circle"></i>
+                <div id="settings" class="option" title="Settings (language/theme)">
+                    <div id="settingslist" class="hidden" tabindex="-1"
+                         onblur="(!$('#settingslist').data('blur')) ? $('#settingslist').addClass('hidden') : null">
+                        <div id="langswitch" class="option" accesskey="l" title="Switch languase (english / japanese)">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div id="themeswitch" class="option" accesskey="t" title="Change application theme">
+                            <i class="fa fa-window-restore"></i>
+                        </div>
+                    </div>
+                    <i class="fas fa-cog" onmousedown="$('#settingslist').data('blur', $('#settingslist').is(':focus'))"
+                       onclick="($('#settingslist').hasClass('hidden')) ? $('#settingslist').removeClass('hidden').focus() : $('#settingslist').addClass('hidden')"></i>
                 </div>
                 <div id="reportbug" class="option" accesskey="b" title="Report a problem">
                     <a href="https://github.com/malulleybovo/PSO2AffixingAssistant/issues" target="_blank" style="color: inherit;">
                         <i class="fas fa-bug"></i>
                     </a>
+                </div>
+                <div id="panzoomreset" class="option" accesskey="r" title="Display affixing goal">
+                    <i class="far fa-dot-circle"></i>
                 </div>
             </div>
         </div>

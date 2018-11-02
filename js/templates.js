@@ -270,6 +270,9 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode
                 }
                 filtersearch += `<li data-idx="${i}"><div>${choice}</div></li>`;
             }
+            else if (typeof datalist[i] === 'string') {
+                filtersearch += `<li data-idx="${i}"><div>${datalist[i]}</div></li>`;
+            }
         }
     }
     filtersearch +=
@@ -289,10 +292,11 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     let isAffixSelection = type == 'affixSelection';
     let isChoiceSelection = type == 'choiceSelection';
     let isFormulaSheet = type == 'formulaSheet';
-    let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : (isChoiceSelection) ? `choice-selection-container` : (isFormulaSheet) ? `formula-sheet-container` : ``} hidden" onclick="$(this).remove();">
+    let isWishList = type == 'wishList';
+    let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : (isChoiceSelection) ? `choice-selection-container` : (isFormulaSheet) ? `formula-sheet-container` : (isWishList) ? `wish-list-container` : ``} hidden" onclick="$(this).remove();">
         <div onclick="event.stopPropagation();">
             <div class="main-grid">
-                <div class="title bold">${(isAffixSelection) ? lang.app.chooseAffixTitle[langCode] : (isChoiceSelection) ? lang.app.chooseMethodTitle[langCode] : (isFormulaSheet) ? lang.app.formulaSheetTitle[langCode] : ``}</div>${(isChoiceSelection) ?
+                <div class="title bold">${(isAffixSelection) ? lang.app.chooseAffixTitle[langCode] : (isChoiceSelection) ? lang.app.chooseMethodTitle[langCode] : (isFormulaSheet) ? lang.app.formulaSheetTitle[langCode] : (isWishList) ? lang.app.wishListTitle[langCode] : ``}</div>${(isChoiceSelection) ?
                 `<div class="options">${(affixesSelected.length > 1) ? `
                     ${CHECKBOX_TEMPLATE({ label: lang.app.upslottingLabel[langCode], description: lang.app.upslottingDescription[langCode], isChecked: shouldUpslot })}` : ``}
                     ${CHECKBOX_TEMPLATE({ label: lang.app.spreadLabel[langCode], description: lang.app.spreadDescription[langCode], isChecked: shouldSpread })}
@@ -346,6 +350,12 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                         <div class="search-results-container"></div>
                     </div>`;
     }
+    else if (isWishList) {
+        layoutTemplate += WISH_LIST_TEMPLATE({
+            fodderList: datalist,
+            langCode: langCode
+        });
+    }
     layoutTemplate += `</div>
                 <div>
                     ${(isAffixSelection || isChoiceSelection) ? 
@@ -390,3 +400,38 @@ const FORMULA_SHEET_VIEW_TEMPLATE = ({ categories, abilityList, isGlobalSearch, 
         langCode: langCode
     });
 };
+
+const WISH_LIST_VIEW_TEMPLATE = ({ fodderList, langCode }) => {
+    return SELECTION_MENU_TEMPLATE({
+        type: 'wishList',
+        datalist: fodderList,
+        langCode: langCode
+    });
+};
+
+const WISH_LIST_TEMPLATE = ({ fodderList, langCode }) => {
+    if (!fodderList || !Array.isArray(fodderList)) return '';
+    let affixLists = [];
+    let counts = [];
+    for (var i = 0; i < fodderList.length; i++) {
+        if (!fodderList[i] || !(fodderList[i] instanceof Fodder)
+            || fodderList[i].size() <= 0) continue;
+        let currList = fodderList[i].affixes.filter(a => !a.code.startsWith('Z')).map(a => lang[a.code]['name_' + langCode]).sort().join(lang.app.wishListItemDivider[langCode]);
+        if (fodderList[i].specialAbilityFactor && fodderList[i].specialAbilityFactor.code) {
+            currList += lang.app.wishListFactorDescription[langCode](lang[fodderList[i].specialAbilityFactor.code]['name_' + langCode]);
+        }
+        let testIdx = affixLists.indexOf(currList);
+        if (testIdx >= 0) counts[testIdx]++;
+        else {
+            affixLists.push(currList);
+            counts.push(1);
+        }
+    }
+    for (var i = 0; i < affixLists.length; i++) {
+        affixLists[i] = lang.app.wishListAbilityDescription[langCode](counts[i], fodderList[i].size(), affixLists[i]);
+    }
+    return FILTER_SEARCH_TEMPLATE({
+        datalist: affixLists,
+        langCode: langCode
+    });
+}

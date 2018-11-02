@@ -1386,6 +1386,7 @@ class Assistant {
     query({ searchRoot, dataClass, properties }) {
         let queue = [];
         let root = (searchRoot && searchRoot instanceof PageTreeNode) ? searchRoot : this.pageTreeRoot;
+        if (!root) return [];
         let results = [];
         queue.unshift(root);
         while (queue.length > 0) {
@@ -1544,6 +1545,24 @@ class Assistant {
             }
         }
         return colored;
+    }
+
+    getToBuyList() {
+        let outlyingPageTreeNodes = ASSISTANT.query({
+            dataClass: PageTreeNode,
+            properties: {
+                children: { length: 0 }
+            }
+        });
+        if (!outlyingPageTreeNodes) return [];
+        let foddersToBuy = [];
+        for (var i = 0; i < outlyingPageTreeNodes.length; i++) {
+            let node = outlyingPageTreeNodes[i];
+            if (!node.page || !(node.page instanceof Page)
+                || node.page.size() <= 0) continue;
+            foddersToBuy = foddersToBuy.concat(node.page.fodders);
+        }
+        return foddersToBuy;
     }
 }
 

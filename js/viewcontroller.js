@@ -9,7 +9,8 @@ const timeData = {
     chooseAffixStartTime: (new Date()).getTime(),
     chooseMethodStartTime: (new Date()).getTime(),
     formulaSheetStartTime: (new Date()).getTime(),
-    shareLinkStartTime: (new Date()).getTime()
+    shareLinkStartTime: (new Date()).getTime(),
+    wishListStartTime: (new Date()).getTime()
 };
 const stringData = {
     affixingSrc: ''
@@ -51,6 +52,7 @@ class ViewController {
             which: 1,
             minScale: 0.1,
             maxScale: 2,
+            onStart: () => $('#settingslist').blur(),
             onPan: () => {
                 if (this.isPanning === undefined) { this.isPanning = false; } // Debounce panning
                 else if (this.isPanning === false) { this.isPanning = true; }
@@ -90,6 +92,7 @@ class ViewController {
             stringData.affixingSrc = 'Setting Goal';
             VIEW_CONTROLLER.setAffixSelectionView(true, true);
         });
+        $('#openwishlist').click(() => VIEW_CONTROLLER.openFodderWishList(true));
         $('#openformulasheet').click(() => VIEW_CONTROLLER.openFormulaSheet(true));
         $('#getlink').click(() => VIEW_CONTROLLER.openGetLinkView(true));
         $('#langswitch').click(() => this.toggleLanguage());
@@ -265,6 +268,9 @@ class ViewController {
         if ($('div.link-container').length != 0) {
             $('div.link-container').remove();
         }
+        if ($('div.wish-list-container').length != 0) {
+            $('div.wish-list-container').remove();
+        }
         let isVisible = $('div.affix-selection-container').length != 0;
         if (bool) {
             if (!isVisible) {
@@ -390,6 +396,9 @@ class ViewController {
         if ($('div.link-container').length != 0) {
             $('div.link-container').remove();
         }
+        if ($('div.wish-list-container').length != 0) {
+            $('div.wish-list-container').remove();
+        }
         let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
         vc.choicesSelected.splice(0, vc.choicesSelected.length);
         for (var i = 0; i < vc.affixesSelected.length; i++) {
@@ -467,6 +476,9 @@ class ViewController {
         if ($('div.link-container').length != 0) {
             $('div.link-container').remove();
         }
+        if ($('div.wish-list-container').length != 0) {
+            $('div.wish-list-container').remove();
+        }
         $('body').append(
             FORMULA_SHEET_VIEW_TEMPLATE({
                 categories: [],
@@ -517,6 +529,9 @@ class ViewController {
         }
         if ($('div.link-container').length != 0) {
             $('div.link-container').remove();
+        }
+        if ($('div.wish-list-container').length != 0) {
+            $('div.wish-list-container').remove();
         }
         $('body').append(
             LINK_TEMPLATE({
@@ -1123,12 +1138,63 @@ class ViewController {
 
     updateMenuBarDescriptions() {
         $('#startnew').attr('title', lang.app.menuStartNewDescription[this.langCode]);
+        $('#openwishlist').attr('title', lang.app.menuWishListDescription[this.langCode]);
         $('#openformulasheet').attr('title', lang.app.menuFormulaSheetDescription[this.langCode]);
         $('#getlink').attr('title', lang.app.menuShareDescription[this.langCode]);
         $('#langswitch').attr('title', lang.app.menuLanguageDescription[this.langCode]);
         $('#themeswitch').attr('title', lang.app.menuThemesDescription[this.langCode]);
         $('#panzoomreset').attr('title', lang.app.menuTargetDescription[this.langCode]);
         $('div#reportbug').attr('title', lang.app.menuBugDescription[this.langCode]);
+    }
+
+    openFodderWishList(shouldAnimate) {
+        if (!this.assistant || !(this.assistant instanceof Assistant)) return;
+        if ($('div.affix-selection-container').length != 0) {
+            $('div.affix-selection-container').remove();
+        }
+        if ($('div.choice-selection-container').length != 0) {
+            $('div.choice-selection-container').remove();
+        }
+        if ($('div.formula-sheet-container').length != 0) {
+            $('div.formula-sheet-container').remove();
+        }
+        if ($('div.link-container').length != 0) {
+            $('div.link-container').remove();
+        }
+        if ($('div.wish-list-container').length != 0) {
+            $('div.wish-list-container').remove();
+        }
+        $('body').append(
+            WISH_LIST_VIEW_TEMPLATE({
+                fodderList: this.assistant.getToBuyList(),
+                langCode: this.langCode
+            }));
+        if (shouldAnimate) {
+            $('div.wish-list-container').animate({}, 10, function () {
+                timeData.wishListStartTime = (new Date()).getTime();
+                $('div.wish-list-container').removeClass('hidden');
+                try {
+                    gaRequests.send('main', 'buttonClick', {
+                        'View Type': 'Main View',
+                        'Interface Type': 'Wish List Button',
+                        'Number Of Interfaces Used': 1
+                    });
+                }
+                catch (e) { }
+            });
+        }
+        else $('div.wish-list-container').removeClass('hidden');
+        $('div.wish-list-container div.confirm-button').click(() => {
+            $('div.wish-list-container').remove();
+            try {
+                gaRequests.send('wishlist', 'close', {
+                    'View Type': 'Fodder Wish List',
+                    'Transaction Type': 'Close',
+                    'Time Spent In View': ((new Date()).getTime() - timeData.wishListStartTime) / 1000
+                });
+            }
+            catch (e) { }
+        });
     }
 }
 

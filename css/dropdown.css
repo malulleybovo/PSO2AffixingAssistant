@@ -17,6 +17,7 @@ div.dropdown-container select {
     border: 0px solid var(--border-color);
     color: var(--text-color);
     text-overflow: ellipsis;
+    outline: none;
 }
 
 div.dropdown-container select option {

@@ -130,6 +130,24 @@ div.header div.option:hover {
     background-color: var(--paint-darker-fade);
 }
 
+div.header div#settingslist {
+    position: absolute;
+    width: 100%;
+    left: 100%;
+    transform: translateY(-50%);
+    margin-top: 12px;
+    transition: 0.25s;
+    outline: none;
+    transform-origin: top;
+    overflow: hidden;
+}
+
+div.header div#settingslist.hidden {
+    opacity: 0;
+    transform: scale(0.01);
+    width: 0px;
+}
+
 #editor {
     position: fixed;
     width: 100%;
@@ -357,7 +375,8 @@ div.title.bold {
 div.affix-selection-container,
 div.choice-selection-container,
 div.formula-sheet-container,
-div.link-container {
+div.link-container,
+div.wish-list-container {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -368,14 +387,16 @@ div.link-container {
 div.affix-selection-container.hidden,
 div.choice-selection-container.hidden,
 div.formula-sheet-container.hidden,
-div.link-container.hidden {
+div.link-container.hidden,
+div.wish-list-container.hidden {
     opacity: 0;
 }
 
 div.affix-selection-container > div,
 div.choice-selection-container > div,
 div.formula-sheet-container > div,
-div.link-container > div {
+div.link-container > div,
+div.wish-list-container > div {
     width: 75%;
     margin: 0 auto;
     height: 75%;
@@ -391,7 +412,8 @@ div.link-container > div {
 
 div.affix-selection-container div.main-grid,
 div.choice-selection-container div.main-grid,
-div.formula-sheet-container div.main-grid {
+div.formula-sheet-container div.main-grid,
+div.wish-list-container div.main-grid {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -400,7 +422,8 @@ div.formula-sheet-container div.main-grid {
 
 div.affix-selection-container div.content,
 div.choice-selection-container div.content,
-div.formula-sheet-container div.content {
+div.formula-sheet-container div.content,
+div.wish-list-container div.content {
     width: 100%;
     height: 100%;
     padding: 0.5em 0em;
@@ -471,7 +494,8 @@ div.choice-selection-container .cancel-button:hover {
 div.affix-selection-container .confirm-button,
 div.choice-selection-container .confirm-button,
 div.formula-sheet-container .confirm-button,
-div.link-container .confirm-button {
+div.link-container .confirm-button,
+div.wish-list-container .confirm-button {
     background-color: var(--alter-paint);
     border-radius: 0em 0.25em 0.25em 0em;
     border: 1.5px solid var(--border-color);
@@ -491,7 +515,8 @@ div.link-container .confirm-button {
 div.affix-selection-container .confirm-button:hover,
 div.choice-selection-container .confirm-button:hover,
 div.formula-sheet-container .confirm-button:hover,
-div.link-container .confirm-button:hover {
+div.link-container .confirm-button:hover,
+div.wish-list-container .confirm-button:hover {
     background-color: var(--alter-paint-light);
 }
 
@@ -536,7 +561,8 @@ div.affix-selection-container div.stats-viewer {
 div.affix-selection-container div.content::-webkit-scrollbar,
 div.choice-selection-container div.content::-webkit-scrollbar,
 div.formula-sheet-container div.content::-webkit-scrollbar,
-div.link-container div.content::-webkit-scrollbar {
+div.link-container div.content::-webkit-scrollbar,
+div.wish-list-container div.content::-webkit-scrollbar {
     height: 4px;
     width: 4px;
     background-color: var(--paint-dark);
@@ -545,7 +571,8 @@ div.link-container div.content::-webkit-scrollbar {
 div.affix-selection-container div.content::-webkit-scrollbar-thumb,
 div.choice-selection-container div.content::-webkit-scrollbar-thumb,
 div.formula-sheet-container div.content::-webkit-scrollbar-thumb,
-div.link-container div.content::-webkit-scrollbar-thumb {
+div.link-container div.content::-webkit-scrollbar-thumb,
+div.wish-list-container div.content::-webkit-scrollbar-thumb {
     height: 4px;
     width: 4px;
     background-color: var(--border-color);
@@ -554,14 +581,16 @@ div.link-container div.content::-webkit-scrollbar-thumb {
 div.affix-selection-container div.content::-webkit-scrollbar-corner,
 div.choice-selection-container div.content::-webkit-scrollbar-corner,
 div.formula-sheet-container div.content::-webkit-scrollbar-corner,
-div.link-container div.content::-webkit-scrollbar-corner {
+div.link-container div.content::-webkit-scrollbar-corner,
+div.wish-list-container div.content::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
 
 div.affix-selection-container div.content > div::-webkit-scrollbar,
 div.choice-selection-container div.content > div::-webkit-scrollbar,
 div.formula-sheet-container div.content > div::-webkit-scrollbar,
-div.link-container div.content > div::-webkit-scrollbar {
+div.link-container div.content > div::-webkit-scrollbar,
+div.wish-list-container div.content > div::-webkit-scrollbar {
     height: 4px;
     width: 4px;
     background-color: var(--paint-dark);
@@ -570,7 +599,8 @@ div.link-container div.content > div::-webkit-scrollbar {
 div.affix-selection-container div.content > div::-webkit-scrollbar-thumb,
 div.choice-selection-container div.content > div::-webkit-scrollbar-thumb,
 div.formula-sheet-container div.content > div::-webkit-scrollbar-thumb,
-div.link-container div.content > div::-webkit-scrollbar-thumb {
+div.link-container div.content > div::-webkit-scrollbar-thumb,
+div.wish-list-container div.content > div::-webkit-scrollbar-thumb {
     height: 4px;
     width: 4px;
     background-color: var(--border-color);
@@ -579,7 +609,8 @@ div.link-container div.content > div::-webkit-scrollbar-thumb {
 div.affix-selection-container div.content > div::-webkit-scrollbar-corner,
 div.choice-selection-container div.content > div::-webkit-scrollbar-corner,
 div.formula-sheet-container div.content > div::-webkit-scrollbar-corner,
-div.link-container div.content > div::-webkit-scrollbar-corner {
+div.link-container div.content > div::-webkit-scrollbar-corner,
+div.wish-list-container div.content > div::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
 
@@ -724,11 +755,13 @@ div.choice-selection-container div.affix.selected {
     background-color: var(--alter-paint);
 }
 
-div.formula-sheet-container div.content {
+div.formula-sheet-container div.content,
+div.wish-list-container div.content {
     display: flex;
 }
 
-div.formula-sheet-container div.content > div {
+div.formula-sheet-container div.content > div,
+div.wish-list-container div.content > div {
     min-width: 160px;
     height: 100%;
     min-height: 160px;
@@ -752,7 +785,8 @@ div.formula-sheet-container div.search-results-container {
 }
 
 div.formula-sheet-container .confirm-button,
-div.link-container .confirm-button {
+div.link-container .confirm-button,
+div.wish-list-container .confirm-button {
     width: 100%;
     border-radius: 0.25em;
 }
@@ -819,6 +853,10 @@ div.link-container input::selection {
     background: var(--alter-paint-lighter);
 }
 
+div.wish-list-container div.content > div {
+    width: 100%;
+}
+
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     html {
         --app-font-size: 24px;
@@ -837,7 +875,8 @@ div.link-container input::selection {
 
     div.affix-selection-container > div,
     div.choice-selection-container > div,
-    div.formula-sheet-container > div {
+    div.formula-sheet-container > div,
+    div.wish-list-container > div {
         width: 90%;
         height: 90%;
         padding: 5%;
@@ -872,7 +911,8 @@ div.link-container input::selection {
 
     div.affix-selection-container .confirm-button,
     div.choice-selection-container .confirm-button,
-    div.formula-sheet-container .confirm-button {
+    div.formula-sheet-container .confirm-button,
+    div.wish-list-container .confirm-button {
         height: 100%;
     }
 
@@ -948,7 +988,8 @@ div.link-container input::selection {
 
     div.affix-selection-container > div,
     div.choice-selection-container > div,
-    div.formula-sheet-container > div {
+    div.formula-sheet-container > div,
+    div.wish-list-container > div {
         width: 90%;
         height: 90%;
         padding: 5%;
@@ -984,7 +1025,8 @@ div.link-container input::selection {
 
     div.affix-selection-container .confirm-button,
     div.choice-selection-container .confirm-button,
-    div.formula-sheet-container .confirm-button {
+    div.formula-sheet-container .confirm-button,
+    div.wish-list-container .confirm-button {
         height: 100%;
     }
 

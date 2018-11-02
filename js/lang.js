@@ -105,6 +105,22 @@ const lang = Object.freeze({
             en: "Affixing Formula Sheet",
             jp: "合成フォーミュラシート"
         },
+        wishListTitle: {
+            en: "Fodders To Buy",
+            jp: "購入する装備"
+        },
+        wishListItemDivider: {
+            en: ', ',
+            jp: '、'
+        },
+        wishListFactorDescription: {
+            en: (name) => ` (Special Ability Factor: ${name})`,
+            jp: (name) => `（特殊能力因子：${name}）`
+        },
+        wishListAbilityDescription: {
+            en: (amount, numSlots, description) => `${(amount > 1) ? `(${amount}x) ` : ``}${numSlots}s Fodder: ${description}`,
+            jp: (amount, numSlots, description) => `${(amount > 1) ? `（${amount}倍）` : ``}${numSlots}スロット装備：${description}`
+        },
         upslottingLabel: {
             en: "Affix By Upslotting",
             jp: "増加カウントによる合成"
@@ -156,6 +172,10 @@ const lang = Object.freeze({
         menuStartNewDescription: {
             en: "Check or change the affixing goal",
             jp: "合成目標を確認または変更する"
+        },
+        menuWishListDescription: {
+            en: "View fodders needed",
+            jp: "必要な装備を見る"
         },
         menuFormulaSheetDescription: {
             en: "View affixing formula sheet",
