@@ -288,13 +288,14 @@ div.boost-container {
     margin-top: 0.25em;
 }
 
-div.fodder > div.affix.special-ability-factor {
+div.affix.special-ability-factor,
+div.affix.blank-special-ability-factor {
     margin-top: 0.25em;
     border-radius: 0.25em;
     border: solid 1.5px var(--border-color);
 }
 
-div.fodder > div.affix.special-ability-factor:before {
+div.affix.special-ability-factor:before {
     background: url("res/specialAbilityFactorIcon.png") no-repeat;
     position: relative;
     height: 14px;
@@ -374,6 +375,7 @@ div.title.bold {
 
 div.affix-selection-container,
 div.choice-selection-container,
+div.review-tweak-container,
 div.formula-sheet-container,
 div.link-container,
 div.wish-list-container {
@@ -386,6 +388,7 @@ div.wish-list-container {
 
 div.affix-selection-container.hidden,
 div.choice-selection-container.hidden,
+div.review-tweak-container.hidden,
 div.formula-sheet-container.hidden,
 div.link-container.hidden,
 div.wish-list-container.hidden {
@@ -394,6 +397,7 @@ div.wish-list-container.hidden {
 
 div.affix-selection-container > div,
 div.choice-selection-container > div,
+div.review-tweak-container > div,
 div.formula-sheet-container > div,
 div.link-container > div,
 div.wish-list-container > div {
@@ -412,6 +416,7 @@ div.wish-list-container > div {
 
 div.affix-selection-container div.main-grid,
 div.choice-selection-container div.main-grid,
+div.review-tweak-container div.main-grid,
 div.formula-sheet-container div.main-grid,
 div.wish-list-container div.main-grid {
     width: 100%;
@@ -422,6 +427,7 @@ div.wish-list-container div.main-grid {
 
 div.affix-selection-container div.content,
 div.choice-selection-container div.content,
+div.review-tweak-container div.content,
 div.formula-sheet-container div.content,
 div.wish-list-container div.content {
     width: 100%;
@@ -459,7 +465,8 @@ div.affix-selection-container div.content > div > div:last-child {
 }
 
 div.affix-selection-container div.main-grid > div:last-child,
-div.choice-selection-container div.main-grid > div:last-child {
+div.choice-selection-container div.main-grid > div:last-child,
+div.review-tweak-container div.main-grid > div:last-child {
     display: flex;
     width: 100%;
 }
@@ -469,7 +476,8 @@ div.affix-selection-container div.selection-container {
 }
 
 div.affix-selection-container .cancel-button,
-div.choice-selection-container .cancel-button {
+div.choice-selection-container .cancel-button,
+div.review-tweak-container .cancel-button {
     background-color: var(--paint-dark);
     border-radius: 0.25em 0em 0em 0.25em;
     border: 1.5px solid var(--border-color);
@@ -487,12 +495,14 @@ div.choice-selection-container .cancel-button {
 }
 
 div.affix-selection-container .cancel-button:hover,
-div.choice-selection-container .cancel-button:hover {
+div.choice-selection-container .cancel-button:hover,
+div.review-tweak-container .cancel-button:hover {
     background-color: var(--paint-light);
 }
 
 div.affix-selection-container .confirm-button,
 div.choice-selection-container .confirm-button,
+div.review-tweak-container .confirm-button,
 div.formula-sheet-container .confirm-button,
 div.link-container .confirm-button,
 div.wish-list-container .confirm-button {
@@ -514,6 +524,7 @@ div.wish-list-container .confirm-button {
 
 div.affix-selection-container .confirm-button:hover,
 div.choice-selection-container .confirm-button:hover,
+div.review-tweak-container .confirm-button:hover,
 div.formula-sheet-container .confirm-button:hover,
 div.link-container .confirm-button:hover,
 div.wish-list-container .confirm-button:hover {
@@ -560,6 +571,7 @@ div.affix-selection-container div.stats-viewer {
 
 div.affix-selection-container div.content::-webkit-scrollbar,
 div.choice-selection-container div.content::-webkit-scrollbar,
+div.review-tweak-container div.content::-webkit-scrollbar,
 div.formula-sheet-container div.content::-webkit-scrollbar,
 div.link-container div.content::-webkit-scrollbar,
 div.wish-list-container div.content::-webkit-scrollbar {
@@ -570,6 +582,7 @@ div.wish-list-container div.content::-webkit-scrollbar {
 
 div.affix-selection-container div.content::-webkit-scrollbar-thumb,
 div.choice-selection-container div.content::-webkit-scrollbar-thumb,
+div.review-tweak-container div.content::-webkit-scrollbar-thumb,
 div.formula-sheet-container div.content::-webkit-scrollbar-thumb,
 div.link-container div.content::-webkit-scrollbar-thumb,
 div.wish-list-container div.content::-webkit-scrollbar-thumb {
@@ -580,6 +593,7 @@ div.wish-list-container div.content::-webkit-scrollbar-thumb {
 
 div.affix-selection-container div.content::-webkit-scrollbar-corner,
 div.choice-selection-container div.content::-webkit-scrollbar-corner,
+div.review-tweak-container div.content::-webkit-scrollbar-corner,
 div.formula-sheet-container div.content::-webkit-scrollbar-corner,
 div.link-container div.content::-webkit-scrollbar-corner,
 div.wish-list-container div.content::-webkit-scrollbar-corner {
@@ -588,6 +602,7 @@ div.wish-list-container div.content::-webkit-scrollbar-corner {
 
 div.affix-selection-container div.content > div::-webkit-scrollbar,
 div.choice-selection-container div.content > div::-webkit-scrollbar,
+div.review-tweak-container div.content > div::-webkit-scrollbar,
 div.formula-sheet-container div.content > div::-webkit-scrollbar,
 div.link-container div.content > div::-webkit-scrollbar,
 div.wish-list-container div.content > div::-webkit-scrollbar {
@@ -598,6 +613,7 @@ div.wish-list-container div.content > div::-webkit-scrollbar {
 
 div.affix-selection-container div.content > div::-webkit-scrollbar-thumb,
 div.choice-selection-container div.content > div::-webkit-scrollbar-thumb,
+div.review-tweak-container div.content > div::-webkit-scrollbar-thumb,
 div.formula-sheet-container div.content > div::-webkit-scrollbar-thumb,
 div.link-container div.content > div::-webkit-scrollbar-thumb,
 div.wish-list-container div.content > div::-webkit-scrollbar-thumb {
@@ -608,6 +624,7 @@ div.wish-list-container div.content > div::-webkit-scrollbar-thumb {
 
 div.affix-selection-container div.content > div::-webkit-scrollbar-corner,
 div.choice-selection-container div.content > div::-webkit-scrollbar-corner,
+div.review-tweak-container div.content > div::-webkit-scrollbar-corner,
 div.formula-sheet-container div.content > div::-webkit-scrollbar-corner,
 div.link-container div.content > div::-webkit-scrollbar-corner,
 div.wish-list-container div.content > div::-webkit-scrollbar-corner {
@@ -751,8 +768,26 @@ div.choice-selection-container div.content > div > div:nth-child(2) {
     margin-bottom: 1.5em;
 }
 
-div.choice-selection-container div.affix.selected {
+div.choice-selection-container div.affix.selected,
+div.review-tweak-container div.affix.selected {
     background-color: var(--alter-paint);
+}
+
+div.review-tweak-container div.content {
+    text-align: center;
+}
+
+div.review-tweak-container div.content > div:not(:first-child) {
+    display: inline-block;
+    margin: 0.75em;
+}
+
+div.review-tweak-container div.potential-target {
+    border: 1.5px solid var(--alter-paint);
+}
+
+div.review-tweak-container div.not-a-target {
+    opacity: 0.4;
 }
 
 div.formula-sheet-container div.content,
@@ -875,6 +910,7 @@ div.wish-list-container div.content > div {
 
     div.affix-selection-container > div,
     div.choice-selection-container > div,
+    div.review-tweak-container > div,
     div.formula-sheet-container > div,
     div.wish-list-container > div {
         width: 90%;
@@ -897,7 +933,7 @@ div.wish-list-container div.content > div {
 
     div.affixes > div.affix.ssa:before,
     div.fodder > div.affix.add-ability:before,
-    div.fodder > div.affix.special-ability-factor:before {
+    div.affix.special-ability-factor:before {
         width: 24px;
         height: 24px;
         left: -7px;
@@ -905,12 +941,14 @@ div.wish-list-container div.content > div {
     }
 
     div.affix-selection-container .cancel-button,
-    div.choice-selection-container .cancel-button {
+    div.choice-selection-container .cancel-button,
+    div.review-tweak-container .cancel-button {
         height: 100%;
     }
 
     div.affix-selection-container .confirm-button,
     div.choice-selection-container .confirm-button,
+    div.review-tweak-container .confirm-button,
     div.formula-sheet-container .confirm-button,
     div.wish-list-container .confirm-button {
         height: 100%;
@@ -926,8 +964,10 @@ div.wish-list-container div.content > div {
     div.formula-sheet-container div.content > div:last-child,
     div.affix-selection-container .cancel-button,
     div.choice-selection-container .cancel-button,
+    div.review-tweak-container .cancel-button,
     div.affix-selection-container .confirm-button,
-    div.choice-selection-container .confirm-button {
+    div.choice-selection-container .confirm-button,
+    div.review-tweak-container .confirm-button {
         width: 50%;
     }
 
@@ -954,7 +994,7 @@ div.wish-list-container div.content > div {
 
     div.affixes > div.affix.ssa:before,
     div.fodder > div.affix.add-ability:before,
-    div.fodder > div.affix.special-ability-factor:before {
+    div.affix.special-ability-factor:before {
         width: 16px;
         height: 16px;
         left: -5px;
@@ -988,6 +1028,7 @@ div.wish-list-container div.content > div {
 
     div.affix-selection-container > div,
     div.choice-selection-container > div,
+    div.review-tweak-container > div,
     div.formula-sheet-container > div,
     div.wish-list-container > div {
         width: 90%;
@@ -1011,7 +1052,7 @@ div.wish-list-container div.content > div {
 
     div.affixes > div.affix.ssa:before,
     div.fodder > div.affix.add-ability:before,
-    div.fodder > div.affix.special-ability-factor:before {
+    div.affix.special-ability-factor:before {
         width: 40px;
         height: 40px;
         left: -10px;
@@ -1019,12 +1060,14 @@ div.wish-list-container div.content > div {
     }
 
     div.affix-selection-container .cancel-button,
-    div.choice-selection-container .cancel-button {
+    div.choice-selection-container .cancel-button,
+    div.review-tweak-container .cancel-button {
         height: 100%;
     }
 
     div.affix-selection-container .confirm-button,
     div.choice-selection-container .confirm-button,
+    div.review-tweak-container .confirm-button,
     div.formula-sheet-container .confirm-button,
     div.wish-list-container .confirm-button {
         height: 100%;
@@ -1040,8 +1083,10 @@ div.wish-list-container div.content > div {
     div.formula-sheet-container div.content > div:last-child,
     div.affix-selection-container .cancel-button,
     div.choice-selection-container .cancel-button,
+    div.review-tweak-container .cancel-button,
     div.affix-selection-container .confirm-button,
-    div.choice-selection-container .confirm-button {
+    div.choice-selection-container .confirm-button,
+    div.review-tweak-container .confirm-button {
         width: 50%;
     }
 
@@ -1049,7 +1094,8 @@ div.wish-list-container div.content > div {
         height: 81%;
     }
 
-    div.choice-selection-container div.content {
+    div.choice-selection-container div.content,
+    div.review-tweak-container div.content {
         height: 72%;
     }
 
@@ -1076,7 +1122,7 @@ div.wish-list-container div.content > div {
 
     div.affixes > div.affix.ssa:before,
     div.fodder > div.affix.add-ability:before,
-    div.fodder > div.affix.special-ability-factor:before {
+    div.affix.special-ability-factor:before {
         width: 24px;
         height: 24px;
         left: -7px;

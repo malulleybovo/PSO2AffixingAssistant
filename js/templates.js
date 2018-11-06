@@ -147,10 +147,9 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
             <div class="divider"></div>
             ${((fodder && fodder.specialAbilityFactor) ? `<div class="affix special-ability-factor">${lang.app.factorLabel[langCode]}<br>(${lang[fodder.specialAbilityFactor.code]['name_' + langCode]})</div><div class="divider"></div>` : ``)}
             <div class="produce-button${((fodder.hasNonTransferableAffixes()) ? ` disabled">${lang.app.cannotAffixLabel[langCode]}` : `">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? lang.app.reAffixLabel[langCode] : lang.app.affixLabel[langCode])}`)}</div>
-            <div class="success-indicator" title="${lang.app.fodderSuccessDivTitle[langCode]}">
+            ${(fodder.overallSuccessRate >= 0) ? `<div class="success-indicator" title="${lang.app.fodderSuccessDivTitle[langCode]}">
                 <span>${(isGoal) ? lang.app.goalLabel[langCode] : lang.app.fodderLabel[langCode]} ${lang.app.fodderSuccessLabel[langCode]}: </span>
-            <span>${(fodder.overallSuccessRate >= 0) ? fodder.overallSuccessRate + `%` : `?`}</span>
-            </div>
+            <span>${fodder.overallSuccessRate + `%`}</span></div>` : ``}
             ${(fodder.affixSuccessRates.length > 0) ?
             `<div class="boost-container" >
                 ${CHECKBOX_TEMPLATE({
@@ -254,15 +253,17 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode
                 filtersearch += `<li data-idx="${i}"><div title="${lang[datalist[i].code]['effect_' + langCode].replace(/<br>/g, ' ')}" data-code="${datalist[i].code}">${lang[datalist[i].code]['name_' + langCode]}</div></li>`;
             }
             else if (datalist[i].isAddAbilityItem && lang['additional'][datalist[i].name]) {
-                let choice = `${datalist[i].transferRate}% : ${lang['additional'][datalist[i].name][langCode]}`;
+                let choice = `<span class="rate">${datalist[i].transferRate}</span>% : ${lang['additional'][datalist[i].name][langCode]}`;
                 filtersearch += `<li data-idx="${i}"><div>${choice}</div></li>`;
             }
             else if (datalist[i].isAbilityFactor) {
-                let choice = `${datalist[i].transferRate}% : ${lang.app.factorLabel[langCode]}`;
+                let choice = `<span${(!datalist[i].abilityRef.noEx) ?
+                    ` class="rate"` : ``}>${datalist[i].transferRate}</span>% : ${lang.app.factorLabel[langCode]}`;
                 filtersearch += `<li data-idx="${i}"><div>${choice}</div></li>`;
             }
             else if (datalist[i].materials) {
-                let choice = `${datalist[i].transferRate}% : `;
+                let choice = `<span${(datalist[i].materials[0] && !datalist[i].materials[0].noEx) ?
+                    ` class="rate"` : ``}>${datalist[i].transferRate}</span>% : `;
                 for (var j = 0; j < datalist[i].materials.length; j++) {
                     if (datalist[i].materials[j] == undefined || !lang[datalist[i].materials[j].code]) continue;
                     choice += `<span>${lang[datalist[i].materials[j].code]['name_' + langCode]}</span>`;
@@ -288,15 +289,50 @@ const RADIO_BUTTON_TEMPLATE = ({ id, isChecked, description }) =>
         <span>${(description) ? description : ``}</span>
     </label>`;
 
+const REVIEWING_PANEL = ({ fodders, langCode }) => {
+    panel = `<div><div>${lang.app.reviewTweakTooltip1[langCode]}</div><div>${lang.app.reviewTweakTooltip2[langCode]}</div></div>`;
+    let hasFactor = false;
+    for (var i = 0; i < fodders.length; i++) {
+        if (fodders[i].specialAbilityFactor && fodders[i].specialAbilityFactor.code) {
+            hasFactor = true;
+            break;
+        }
+    }
+    for (var i = 0; i < fodders.length; i++) {
+        let fodderInReview = fodders[i];
+        panel += `<div data-fodderidx="${i}"><div class="title bold">${lang.app.fodderTitle[langCode]} ${i}</div><div>`;
+        for (var j = 0; j < fodderInReview.size(); j++) {
+            let affix = fodderInReview.affixes[j];
+            if (!affix.code) continue;
+            panel += `<div class="affix swappable"${(affix) ? ` title="${lang[affix.code]['effect_' + langCode]}"` : ``}${(affix) ? ` data-code="${affix.code}"` : ``}>
+                                <span>${(affix && affix.code && lang[affix.code] && lang[affix.code]['name_' + langCode]) ? `${lang[affix.code]['name_' + langCode]}` : `&nbsp;`}</span>
+                            </div>`;
+        }
+        panel += `</div>`;
+        if (hasFactor) panel += `<div class="divider"></div><div data-fodderidx="${i}" class="affix swappable${((fodderInReview && fodderInReview.specialAbilityFactor) ? ` special-ability-factor">${lang.app.factorLabel[langCode]}<br>(${lang[fodderInReview.specialAbilityFactor.code]['name_' + langCode]})` : ` blank-special-ability-factor">&nbsp;<br>&nbsp;`)}</div>`;
+        panel += `</div>`;
+    }
+    return panel;
+};
+
 const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, isGlobalSearch, shouldUpslot, shouldSpread, langCode }) => {
     let isAffixSelection = type == 'affixSelection';
     let isChoiceSelection = type == 'choiceSelection';
+    let isReviewTweak = type == 'reviewTweak';
     let isFormulaSheet = type == 'formulaSheet';
     let isWishList = type == 'wishList';
-    let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` : (isChoiceSelection) ? `choice-selection-container` : (isFormulaSheet) ? `formula-sheet-container` : (isWishList) ? `wish-list-container` : ``} hidden" onclick="$(this).remove();">
+    let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` :
+                                            (isChoiceSelection) ? `choice-selection-container` :
+                                                (isReviewTweak) ? `review-tweak-container` :
+                                                    (isFormulaSheet) ? `formula-sheet-container` :
+                                                        (isWishList) ? `wish-list-container` : ``} hidden" onclick="$(this).remove();">
         <div onclick="event.stopPropagation();">
             <div class="main-grid">
-                <div class="title bold">${(isAffixSelection) ? lang.app.chooseAffixTitle[langCode] : (isChoiceSelection) ? lang.app.chooseMethodTitle[langCode] : (isFormulaSheet) ? lang.app.formulaSheetTitle[langCode] : (isWishList) ? lang.app.wishListTitle[langCode] : ``}</div>${(isChoiceSelection) ?
+                <div class="title bold">${(isAffixSelection) ? lang.app.chooseAffixTitle[langCode] :
+                                            (isChoiceSelection) ? lang.app.chooseMethodTitle[langCode] :
+                                                (isReviewTweak) ? lang.app.reviewTweakTitle[langCode] :
+                                                    (isFormulaSheet) ? lang.app.formulaSheetTitle[langCode] :
+                                                        (isWishList) ? lang.app.wishListTitle[langCode] : ``}</div>${(isChoiceSelection) ?
                 `<div class="options">${(affixesSelected.length > 1) ? `
                     ${CHECKBOX_TEMPLATE({ label: lang.app.upslottingLabel[langCode], description: lang.app.upslottingDescription[langCode], isChecked: shouldUpslot })}` : ``}
                     ${CHECKBOX_TEMPLATE({ label: lang.app.spreadLabel[langCode], description: lang.app.spreadDescription[langCode], isChecked: shouldSpread })}
@@ -340,6 +376,9 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
             }
         }
     }
+    else if (isReviewTweak) {
+        layoutTemplate += REVIEWING_PANEL({ fodders: datalist, langCode: langCode });
+    }
     else if (isFormulaSheet) {
         layoutTemplate += `<div>
                         <div class="title bold">${lang.app.abilityListTitle[langCode]}</div>
@@ -358,9 +397,11 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     }
     layoutTemplate += `</div>
                 <div>
-                    ${(isAffixSelection || isChoiceSelection) ? 
+                    ${(isAffixSelection || isChoiceSelection || isReviewTweak) ? 
                     `<div class="cancel-button">${lang.app.cancelButton[langCode]}</div>` : ``}
-                    <div class="confirm-button${(isAffixSelection || isChoiceSelection) ? ` disabled">${lang.app.confirmButton[langCode]}`: `">${lang.app.closeButton[langCode]}`}</div>
+                    <div class="confirm-button${(isAffixSelection || isChoiceSelection) ? ` disabled">${lang.app.confirmButton[langCode]}` :
+                                                    (isReviewTweak) ? `">${lang.app.confirmButton[langCode]}` :
+                                                        `">${lang.app.closeButton[langCode]}`}</div>
                 </div>
             </div>
         </div>
@@ -387,6 +428,14 @@ const CHOICE_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, choices, isGlobalSear
         isGlobalSearch: isGlobalSearch,
         shouldUpslot: shouldUpslot,
         shouldSpread: shouldSpread,
+        langCode: langCode
+    });
+};
+
+const REVIEW_TWEAK_VIEW_TEMPLATE = ({ fodders, langCode }) => {
+    return SELECTION_MENU_TEMPLATE({
+        type: 'reviewTweak',
+        datalist: fodders,
         langCode: langCode
     });
 };

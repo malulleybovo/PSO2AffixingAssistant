@@ -10,7 +10,8 @@ const timeData = {
     chooseMethodStartTime: (new Date()).getTime(),
     formulaSheetStartTime: (new Date()).getTime(),
     shareLinkStartTime: (new Date()).getTime(),
-    wishListStartTime: (new Date()).getTime()
+    wishListStartTime: (new Date()).getTime(),
+    reviewTweakStartTime: (new Date()).getTime()
 };
 const stringData = {
     affixingSrc: ''
@@ -43,8 +44,11 @@ class ViewController {
         this.filters = lang.filters[this.langCode];
         this.shouldUpslot = true;
         this.shouldSpread = true;
+        this.pageInReview = null;
         this.newlyProducedTimeout = null;
+        this.affixTweakSelection = null;
         this.isIncludingFoddersIntrinsicFactor = false;
+        this.choiceSelectionViewShouldClose = true;
     }
 
     setup() {
@@ -262,6 +266,9 @@ class ViewController {
         if ($('div.choice-selection-container').length != 0) {
             $('div.choice-selection-container').remove();
         }
+        if ($('div.review-tweak-container').length != 0) {
+            $('div.review-tweak-container').remove();
+        }
         if ($('div.formula-sheet-container').length != 0) {
             $('div.formula-sheet-container').remove();
         }
@@ -353,19 +360,7 @@ class ViewController {
                         });
                     }
                     catch (e) { }
-                    data.viewcontroller.openChoicesSelectionView(false);
-                    $('div.choice-selection-container div.cancel-button').unbind('click').click({ viewcontroller: data.viewcontroller },
-                        ({ data }) => {
-                            data.viewcontroller.setAffixSelectionView(true, false);
-                            try {
-                                gaRequests.send('method', 'cancel', {
-                                    'View Type': 'Choose Method of Making View',
-                                    'Transaction Type': 'Cancel',
-                                    'Time Spent In View': ((new Date()).getTime() - timeData.chooseMethodStartTime) / 1000
-                                });
-                            }
-                            catch (e) { }
-                        });
+                    data.viewcontroller.openChoicesSelectionView(false, true);
                 });
                 this.updateAffixSelectionView();
             }
@@ -378,7 +373,7 @@ class ViewController {
         return this;
     }
 
-    openChoicesSelectionView(shouldAnimate, e) {
+    openChoicesSelectionView(shouldAnimate, shouldReturnToAffixSelection, shouldRetainChoices, e) {
         let vc = (this instanceof ViewController) ? this :
             (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
@@ -390,6 +385,9 @@ class ViewController {
         if ($('div.choice-selection-container').length != 0) {
             $('div.choice-selection-container').remove();
         }
+        if ($('div.review-tweak-container').length != 0) {
+            $('div.review-tweak-container').remove();
+        }
         if ($('div.formula-sheet-container').length != 0) {
             $('div.formula-sheet-container').remove();
         }
@@ -400,30 +398,33 @@ class ViewController {
             $('div.wish-list-container').remove();
         }
         let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
-        vc.choicesSelected.splice(0, vc.choicesSelected.length);
-        for (var i = 0; i < vc.affixesSelected.length; i++) {
-            if (!vc.affixesSelected[i] || !vc.affixesSelected[i].code) continue;
-            if (choices[vc.affixesSelected[i].code]
-                && choices[vc.affixesSelected[i].code].length == 1)
-                vc.choicesSelected.push(choices[vc.affixesSelected[i].code][0]);
-            else vc.choicesSelected.push(null);
-        }
-        if (vc.assistant.activeFodder && vc.assistant.activeFodder.specialAbilityFactor) {
-            let factor = vc.assistant.activeFodder.specialAbilityFactor;
-            vc.affixesSelected.push(factor);
-            vc.isIncludingFoddersIntrinsicFactor = true;
-            let factorChoices = vc.assistant.affixDB[factor.code].choices;
-            for (var i = 0; i < factorChoices.length; i++) {
-                if (factorChoices[i].isAbilityFactor) {
-                    choices[factor.code] = [factorChoices[i]];
-                    if (choices[factor.code]
-                        && choices[factor.code].length == 1)
-                        vc.choicesSelected.push(choices[factor.code][0]);
-                    else vc.choicesSelected.push(null);
-                    break;
+        if (!shouldRetainChoices) {
+            vc.choicesSelected.splice(0, vc.choicesSelected.length);
+            for (var i = 0; i < vc.affixesSelected.length; i++) {
+                if (!vc.affixesSelected[i] || !vc.affixesSelected[i].code) continue;
+                if (choices[vc.affixesSelected[i].code]
+                    && choices[vc.affixesSelected[i].code].length == 1)
+                    vc.choicesSelected.push(choices[vc.affixesSelected[i].code][0]);
+                else vc.choicesSelected.push(null);
+            }
+            if (vc.assistant.activeFodder && vc.assistant.activeFodder.specialAbilityFactor) {
+                let factor = vc.assistant.activeFodder.specialAbilityFactor;
+                vc.affixesSelected.push(factor);
+                vc.isIncludingFoddersIntrinsicFactor = true;
+                let factorChoices = vc.assistant.affixDB[factor.code].choices;
+                for (var i = 0; i < factorChoices.length; i++) {
+                    if (factorChoices[i].isAbilityFactor) {
+                        choices[factor.code] = [factorChoices[i]];
+                        if (choices[factor.code]
+                            && choices[factor.code].length == 1)
+                            vc.choicesSelected.push(choices[factor.code][0]);
+                        else vc.choicesSelected.push(null);
+                        break;
+                    }
                 }
             }
         }
+        vc.choiceSelectionViewShouldClose = !shouldReturnToAffixSelection;
         $('body').append(
             CHOICE_SELECTION_VIEW_TEMPLATE({
                 affixesSelected: vc.affixesSelected,
@@ -443,21 +444,128 @@ class ViewController {
         $('div.choice-selection-container div.options > div.checkbox-container:first-child').click({ viewcontroller: vc }, vc.setShouldUpslot);
         $('div.choice-selection-container div.options > div.checkbox-container:last-child').click({ viewcontroller: vc }, vc.setShouldSpread);
         $('div.choice-selection-container li > div').click({ viewcontroller: vc }, vc.selectChoice);
-        $('div.choice-selection-container div.cancel-button').click(
+        if (shouldReturnToAffixSelection) {
+            $('div.choice-selection-container div.cancel-button').click(
+                (e) => {
+                    vc.setAffixSelectionView(true, false);
+                    try {
+                        gaRequests.send('method', 'cancel', {
+                            'View Type': 'Choose Method of Making View',
+                            'Transaction Type': 'Cancel',
+                            'Time Spent In View': ((new Date()).getTime() - timeData.chooseMethodStartTime) / 1000
+                        });
+                    }
+                    catch (e) { }
+                });
+        }
+        else {
+            $('div.choice-selection-container div.cancel-button').click(
+                (e) => {
+                    $('div.choice-selection-container').remove();
+                    try {
+                        gaRequests.send('method', 'cancel', {
+                            'View Type': 'Choose Method of Making View',
+                            'Transaction Type': 'Cancel',
+                            'Time Spent In View': ((new Date()).getTime() - timeData.chooseMethodStartTime) / 1000
+                        });
+                    }
+                    catch (e) { }
+                });
+        }
+        $('div.choice-selection-container div.confirm-button').click({ viewcontroller: vc }, vc.produceFodderFromChoices);
+
+        vc.colorizeOverlappingChoices(choices);
+    }
+
+    openReviewAndTweakScreen(shouldAnimate) {
+        if ($('div.affix-selection-container').length != 0) {
+            $('div.affix-selection-container').remove();
+        }
+        if ($('div.choice-selection-container').length != 0) {
+            $('div.choice-selection-container').remove();
+        }
+        if ($('div.review-tweak-container').length != 0) {
+            $('div.review-tweak-container').remove();
+        }
+        if ($('div.formula-sheet-container').length != 0) {
+            $('div.formula-sheet-container').remove();
+        }
+        if ($('div.link-container').length != 0) {
+            $('div.link-container').remove();
+        }
+        if ($('div.wish-list-container').length != 0) {
+            $('div.wish-list-container').remove();
+        }
+        this.affixTweakSelection = null;
+        $('body').append(
+            REVIEW_TWEAK_VIEW_TEMPLATE({
+                fodders: this.pageInReview.fodders,
+                langCode: this.langCode
+            }));
+        if (shouldAnimate) {
+            $('div.review-tweak-container').animate({}, 10, function () {
+                timeData.reviewTweakStartTime = (new Date()).getTime();
+                $('div.review-tweak-container').removeClass('hidden');
+            });
+        }
+        else $('div.review-tweak-container').removeClass('hidden');
+        this.updateReviewPanel();
+        $('div.review-tweak-container div.cancel-button').click(
             (e) => {
-                $('div.choice-selection-container').remove();
+                $('div.review-tweak-container').remove();
+                this.openChoicesSelectionView(false, !this.choiceSelectionViewShouldClose, true);
                 try {
-                    gaRequests.send('method', 'cancel', {
-                        'View Type': 'Choose Method of Making View',
+                    gaRequests.send('tweak', 'cancel', {
+                        'View Type': 'Review And Tweak View',
                         'Transaction Type': 'Cancel',
-                        'Time Spent In View': ((new Date()).getTime() - timeData.chooseMethodStartTime) / 1000
+                        'Time Spent In View': ((new Date()).getTime() - timeData.reviewTweakStartTime) / 1000
                     });
                 }
                 catch (e) { }
             });
-        $('div.choice-selection-container div.confirm-button').click({ viewcontroller: vc }, vc.produceFodderFromChoices);
-
-        vc.colorizeOverlappingChoices(choices);
+        $('div.review-tweak-container div.confirm-button').click(
+            () => {
+                $('div.review-tweak-container').remove();
+                // If null, treat it as the root. Otherwise, treat it as a branch node
+                if (!this.assistant.hasActivePageTreeNode()) {
+                    if (this.assistant.validateAffixes(this.affixesSelected)) {
+                        this.assistant.setGoal(this.affixesSelected);
+                    }
+                }
+                this.assistant.activeFodder.setAddAbilityInUse(this.choicesSelected);
+                // Add new page to the tree data structure
+                // And connect the produced fodder to the new page
+                this.assistant.updateConnection({
+                    fodder: this.assistant.activeFodder,
+                    page: this.pageInReview
+                });
+                // Remove any redundant fodders within (i.e.: containing only junk)
+                this.assistant.removeRedundantFodders(this.pageInReview);
+                // Update the UI to reflect the data changed
+                this.updateURLParams();
+                this.updateView();
+                let $page = this.findDOMByPage(this.assistant.activePageTreeNode.page)
+                this.centerViewAtNode($page);
+                $page = this.findDOMByPage(this.pageInReview);
+                spotlightIn($page);
+                if (this.newlyProducedTimeout) clearTimeout(this.newlyProducedTimeout);
+                this.newlyProducedTimeout = setTimeout(function () {
+                    if (spotlight === $page) spotlightOut($page);
+                }, this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI);
+                this.pageInReview = null;
+                try {
+                    gaRequests.send('tweak', 'confirm', {
+                        'View Type': 'Review And Tweak View',
+                        'Transaction Type': 'Confirm',
+                        'Time Spent In View': ((new Date()).getTime() - timeData.reviewTweakStartTime) / 1000,
+                        'Affix Type (Upslot)': (this.shouldUpslot) ? 'Upslot' : 'Same Slot',
+                        'Affix Type (Spread)': (this.shouldSpread) ? 'Spread' : 'Compact',
+                        'Affix Origin': stringData.affixingSrc,
+                        'Number Of Affix Requests': 1
+                    });
+                }
+                catch (e) { }
+            });
     }
 
     openFormulaSheet(shouldAnimate, e) {
@@ -469,6 +577,9 @@ class ViewController {
         }
         if ($('div.choice-selection-container').length != 0) {
             $('div.choice-selection-container').remove();
+        }
+        if ($('div.review-tweak-container').length != 0) {
+            $('div.review-tweak-container').remove();
         }
         if ($('div.formula-sheet-container').length != 0) {
             $('div.formula-sheet-container').remove();
@@ -523,6 +634,9 @@ class ViewController {
         }
         if ($('div.choice-selection-container').length != 0) {
             $('div.choice-selection-container').remove();
+        }
+        if ($('div.review-tweak-container').length != 0) {
+            $('div.review-tweak-container').remove();
         }
         if ($('div.formula-sheet-container').length != 0) {
             $('div.formula-sheet-container').remove();
@@ -901,6 +1015,103 @@ class ViewController {
         vc.updateChoiceSelectionView();
     }
 
+    handleTweak(e) {
+        let vc = e.data.vc;
+        if (!vc.pageInReview) return;
+        let thisFodderIdx = $(this).closest('div[data-fodderidx]').data('fodderidx');
+        let thisAffixIdx = $(this).index();
+        let thisFodder = vc.pageInReview.fodders[thisFodderIdx];
+        // If already selected one ability to swap
+        if (vc.affixTweakSelection) {
+            // If selected the same ability, start over
+            if (!vc.affixTweakSelection.isFactor
+                && thisFodderIdx == vc.affixTweakSelection.fodderIdx
+                && thisAffixIdx == vc.affixTweakSelection.affixIdx) {
+                vc.affixTweakSelection = null;
+                $(`div.review-tweak-container div.swappable`).removeClass('selected');
+                $(`div.review-tweak-container div.swappable`)
+                    .removeClass('potential-target')
+                    .removeClass('not-a-target');
+                return;
+            }
+            if (vc.affixTweakSelection.isFactor) {
+                if (!$(this).hasClass('blank-special-ability-factor')
+                    && !$(this).hasClass('special-ability-factor')) return;
+                let tempFactor = thisFodder.specialAbilityFactor;
+                thisFodder.specialAbilityFactor =
+                    vc.pageInReview.fodders[vc.affixTweakSelection.fodderIdx].specialAbilityFactor;
+                vc.pageInReview.fodders[vc.affixTweakSelection.fodderIdx].specialAbilityFactor = tempFactor;
+                vc.updateReviewPanel();
+                return;
+            }
+            // If already selected two abilities to swap, check if they can be swapped
+            let fodderSelected = vc.pageInReview.fodders[vc.affixTweakSelection.fodderIdx];
+            if (vc.assistant.testSwap(thisFodder, thisAffixIdx,
+                fodderSelected, vc.affixTweakSelection.affixIdx)) {
+                // If they can, swap them
+                let tempAbility = thisFodder.affixes[thisAffixIdx];
+                thisFodder.affixes[thisAffixIdx] = fodderSelected.affixes[vc.affixTweakSelection.affixIdx];
+                fodderSelected.affixes[vc.affixTweakSelection.affixIdx] = tempAbility;
+                vc.assistant.refillJunk(thisFodder);
+                vc.assistant.refillJunk(fodderSelected);
+                vc.updateReviewPanel();
+                $(`div.review-tweak-container div.swappable`).removeClass('selected');
+                $(`div.review-tweak-container div.swappable`)
+                    .removeClass('potential-target')
+                    .removeClass('not-a-target');
+            }
+        }
+        else { // If no ability has been selected to be swapped yet
+            // Save the first selection
+            $(this).addClass('selected');
+            vc.affixTweakSelection = {
+                fodderIdx: thisFodderIdx,
+                affixIdx: thisAffixIdx,
+                isFactor: $(this).hasClass('special-ability-factor')
+                    || $(this).hasClass('blank-special-ability-factor')
+            }
+            $(`div.review-tweak-container div.swappable`)
+                .removeClass('potential-target')
+                .removeClass('not-a-target');
+            // Check every ability in every other fodder for possible swap candidates
+            for (var i = 0; i < vc.pageInReview.size(); i++) {
+                let thatFodder = vc.pageInReview.fodders[i];
+                let $swappables = $(`div.review-tweak-container div[data-fodderidx='${i}']`)
+                    .find('div.swappable').not('.selected');
+                if (vc.affixTweakSelection.isFactor) {
+                    $swappables.not(`.blank-special-ability-factor`)
+                        .not(`.special-ability-factor`)
+                        .addClass('not-a-target');
+                }
+                else {
+                    for (var j = 0; j < thatFodder.size(); j++) {
+                        if ($swappables.length <= j) break;
+                        if (vc.assistant.testSwap(thisFodder, thisAffixIdx, thatFodder, j)) {
+                            $($swappables[j]).addClass('potential-target');
+                        }
+                        else {
+                            $($swappables[j]).addClass('not-a-target');
+                        }
+                    }
+                }
+            }
+            if ($(this).hasClass('blank-special-ability-factor')) {
+                $(`div.review-tweak-container div.blank-special-ability-factor.swappable`)
+                    .not(this).addClass('not-a-target');
+                $(`div.review-tweak-container div.special-ability-factor.swappable`)
+                    .not(this).addClass('potential-target');
+            }
+            else if ($(this).hasClass('special-ability-factor')) {
+                $(`div.review-tweak-container div.special-ability-factor.swappable,div.review-tweak-container div.blank-special-ability-factor.swappable`)
+                    .not(this).addClass('potential-target');
+            }
+            else {
+                $(`div.review-tweak-container div.special-ability-factor.swappable,div.review-tweak-container div.blank-special-ability-factor.swappable`)
+                    .not(this).addClass('not-a-target');
+            }
+        }
+    }
+
     produceFodderFromChoices(e) {
         let vc = (this instanceof ViewController) ? this :
             (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
@@ -916,40 +1127,14 @@ class ViewController {
                 choices, newPage);
             return;
         }
-        // If null, treat it as the root. Otherwise, treat it as a branch node
-        if (!vc.assistant.hasActivePageTreeNode()) {
-            if (vc.assistant.validateAffixes(vc.affixesSelected)) {
-                vc.assistant.setGoal(vc.affixesSelected);
-            }
-        }
-        vc.assistant.activeFodder.setAddAbilityInUse(choices);
-        // Add new page to the tree data structure
-        // And connect the produced fodder to the new page
-        vc.assistant.updateConnection({
-            fodder: vc.assistant.activeFodder,
-            page: newPage
-        });
-        // Update the UI to reflect the data changed
-        vc.updateURLParams();
-        vc.updateView();
-        let $page = vc.findDOMByPage(vc.assistant.activePageTreeNode.page)
-        vc.centerViewAtNode($page);
-        $page = vc.findDOMByPage(newPage);
-        spotlightIn($page);
-        if (vc.newlyProducedTimeout) clearTimeout(vc.newlyProducedTimeout);
-        vc.newlyProducedTimeout = setTimeout(function () {
-            if (spotlight === $page) spotlightOut($page);
-        }, vc.NEWLY_PRODUCED_TIMEOUT_IN_MILLI);
         $('div.choice-selection-container').remove();
+        vc.pageInReview = newPage;
+        vc.openReviewAndTweakScreen();
         try {
             gaRequests.send('method', 'confirm', {
                 'View Type': 'Choose Method of Making View',
                 'Transaction Type': 'Confirm',
-                'Time Spent In View': ((new Date()).getTime() - timeData.chooseMethodStartTime) / 1000,
-                'Affix Type (Upslot)': (vc.shouldUpslot) ? 'Upslot' : 'Same Slot',
-                'Affix Type (Spread)': (vc.shouldSpread) ? 'Spread' : 'Compact',
-                'Affix Origin': stringData.affixingSrc,
-                'Number Of Affix Requests': 1
+                'Time Spent In View': ((new Date()).getTime() - timeData.chooseMethodStartTime) / 1000
             });
         }
         catch (e) { }
@@ -1038,8 +1223,15 @@ class ViewController {
             }
             let searchResults = $(`div.choice-selection-container div.filtersearchcontainer`)[i];
             if (searchResults) {
+                let upslottingFactor = (this.affixesSelected.length > 0) ?
+                    this.assistant.data.extraSlot[this.affixesSelected.length - 1].true / 100
+                    : 1; // range 0~1
                 for (var j = 0; j < choices.length; j++) {
                     let $option = $($(searchResults).find('li > div')[j]);
+                    let $transferRate = $option.find('span.rate');
+                    if ($transferRate.length > 0) {
+                        $transferRate.text(Math.floor(((this.shouldUpslot ? upslottingFactor : 1)) * choices[j].transferRate));
+                    }
                     if ($option.hasClass('selected')) continue;
                     if ($option.length > 0) {
                         $option.removeClass('option-disabled');
@@ -1058,6 +1250,12 @@ class ViewController {
         if (this.choicesSelected.includes(null)) {
             $(`div.choice-selection-container .confirm-button`).addClass('disabled');
         }
+    }
+
+    updateReviewPanel() {
+        this.affixTweakSelection = null;
+        $(`div.review-tweak-container div.content`).empty().append(REVIEWING_PANEL({ fodders: this.pageInReview.fodders, langCode: this.langCode }));
+        $('div.review-tweak-container div.swappable').click({ vc: this }, this.handleTweak);
     }
 
     updateFormulaSheetSearchResults(e) {
@@ -1112,7 +1310,7 @@ class ViewController {
                 let $lis = $($sets[i]).find('li');
                 for (var j = 0; j < $lis.length; j++) {
                     if (colors[i][j] == undefined) continue;
-                    let $spans = $($lis[j]).find('span');
+                    let $spans = $($lis[j]).find('span').not('.rate');
                     for (var k = 0; k < $spans.length; k++) {
                         if (colors[i][j][k] != undefined) {
                             $($spans[k]).addClass(`type${colors[i][j][k] % this.COLOR_PALETTE_SIZE}`);
@@ -1154,6 +1352,9 @@ class ViewController {
         }
         if ($('div.choice-selection-container').length != 0) {
             $('div.choice-selection-container').remove();
+        }
+        if ($('div.review-tweak-container').length != 0) {
+            $('div.review-tweak-container').remove();
         }
         if ($('div.formula-sheet-container').length != 0) {
             $('div.formula-sheet-container').remove();

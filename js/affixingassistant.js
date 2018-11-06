@@ -7,12 +7,13 @@
 
 const MAX_NUM_AFFIX = 8;
 const MAX_NUM_FODDERS = 6;
-const RECEPTOR_REGEX = /(X[A-G][0-9]{2})/;
+const RECEPTOR_REGEX = /(X[A-F][0-9]{2})/;
 const AFFIX_REL_SOUL = "soul";
 
 class Assistant {
     constructor(data) {
         // Immutable variables (properties can still change)
+        this.IDEAL_MIN_PAGE_SIZE = 3;
         this.affixDB = (new AffixDataParser()).parse(data);
         this.data = data;
         this.rateBoostOptions = [];
@@ -567,7 +568,22 @@ class Assistant {
                     // if fodder contains affix code preffix or exclude pattern
                     if (fodderAffix.code.startsWith(affixCodePreffix)
                         || this.testExcludePattern(affix, fodderAffix)
-                        || RECEPTOR_REGEX.test(affix.code) || RECEPTOR_REGEX.test(fodderAffix.code)) {
+                        || RECEPTOR_REGEX.test(affix.code) || RECEPTOR_REGEX.test(fodderAffix.code)
+                        || this.affixDB[affix.code].choices.length <= 0
+                        || this.affixDB[fodderAffix.code].choices.length <= 0) {
+                        hasConflict = true;
+                        break;
+                    }
+                    if (affixChoices[0] && affixChoices[0].isAddAbilityItem
+                        && this.affixDB[fodderAffix.code].choices.length == 1
+                        && this.affixDB[fodderAffix.code].choices[0].materials.includes(affix)) {
+                        hasConflict = true;
+                        break;
+                    }
+                    if (this.affixDB[fodderAffix.code].choices[0]
+                        && this.affixDB[fodderAffix.code].choices[0].isAddAbilityItem
+                        && affixChoices.length == 1
+                        && affixChoices[0].materials.includes(fodderAffix)) {
                         hasConflict = true;
                         break;
                     }
@@ -584,11 +600,23 @@ class Assistant {
                             for (var n = 0; n < fodderAffixChoice.materials.length; n++) {
                                 let choiceAffix = fodderAffixChoice.materials[n];
                                 if (RECEPTOR_REGEX.test(choiceAffix.code)) hasReceptor = true;
-                                if (affix == choiceAffix) isOverlap = true;
+                                if (affix == choiceAffix) {
+                                    isOverlap = true;
+                                    compoundRate *= fodderAffixChoice.transferRate / 100;
+                                    if (hasReceptor) receptorRateFactor *= fodderAffixChoice.transferRate / 100;
+                                }
                             }
-                            if (isOverlap) {
-                                compoundRate *= fodderAffixChoice.transferRate / 100;
-                                if (hasReceptor) receptorRateFactor *= fodderAffixChoice.transferRate / 100;
+                        }
+                        for (var m = 0; m < affixChoices.length; m++) {
+                            var affixChoice = affixChoices[m];
+                            for (var n = 0; n < affixChoice.materials.length; n++) {
+                                let choiceAffix = affixChoice.materials[n];
+                                if (RECEPTOR_REGEX.test(choiceAffix.code)) hasReceptor = true;
+                                if (affix == choiceAffix) {
+                                    isOverlap = true;
+                                    compoundRate *= affixChoice.transferRate / 100;
+                                    if (hasReceptor) receptorRateFactor *= affixChoice.transferRate / 100;
+                                }
                             }
                         }
                         // If no overlap with it, check for overlap with choices for making the affix
@@ -744,6 +772,99 @@ class Assistant {
             }
         }
         return false;
+    }
+
+    testSwap(fodderA, affixAIdx, fodderB, affixBIdx) {
+        if (affixAIdx < 0 || !(fodderA instanceof Fodder) || affixAIdx >= fodderA.size()
+            || affixBIdx < 0 || !(fodderB instanceof Fodder) || affixBIdx >= fodderB.size())
+            return false;
+        let affixA = fodderA.affixes[affixAIdx];
+        let affixB = fodderB.affixes[affixBIdx];
+        // Ignore meaningless swaps
+        if (affixA.code == affixB.code
+            || fodderA == fodderB) return false;
+        let cloneA = fodderA.clone((a) => a != affixA && !a.code.startsWith('Z'));
+        let cloneB = fodderB.clone((b) => b != affixB && !b.code.startsWith('Z'));
+        let testA = this.getPlacement(affixA, cloneB, -1, fodderB.size());
+        let testB = this.getPlacement(affixB, cloneA, -1, fodderA.size());
+        return testA && testB;
+    }
+
+    refillJunk(fodder) {
+        if (!fodder || !(fodder instanceof Fodder) || fodder.size() <= 0) return;
+        let i = 0;
+        let initialSize = fodder.size();
+        while (i < fodder.size()) {
+            let affix = fodder.affixes[i];
+            if (affix && affix.code && this.junkCodes.includes(affix.code)) {
+                fodder.affixes.splice(i, 1);
+            }
+            else i++;
+        }
+        let junkIdx = 0;
+        while (fodder.size() < initialSize && junkIdx < this.junkCodes.length) {
+            fodder.affixes.push(this.affixDB[this.junkCodes[junkIdx]].abilityRef);
+            junkIdx++;
+        }
+    }
+
+    removeRedundantFodders(page) {
+        if (!page || !(page instanceof Page)) return;
+        let junkIdxNeeded = {};
+        if (page.connectedTo && page.connectedTo instanceof Fodder) {
+            for (var i = 0; i < page.connectedTo.size(); i++) {
+                let idx = this.junkCodes.indexOf(page.connectedTo.affixes[i].code);
+                if (idx >= 0) (junkIdxNeeded[idx]) ? junkIdxNeeded[idx]++ : junkIdxNeeded[idx] = 1;
+            }
+        }
+        page.fodders.sort((a, b) => {
+            let numJunkInA = 0;
+            for (var i = 0; i < a.size(); i++) {
+                let idx = this.junkCodes.indexOf(a.affixes[i].code);
+                if (idx < 0) numJunkInA++;
+            }
+            let numJunkInB = 0;
+            for (var i = 0; i < b.size(); i++) {
+                let idx = this.junkCodes.indexOf(b.affixes[i].code);
+                if (idx < 0) numJunkInB++;
+            }
+            return numJunkInB - numJunkInA;
+        });
+        var i = 0;
+        let canRemove = false;
+        while (i < page.size() && page.size() > this.IDEAL_MIN_PAGE_SIZE) {
+            let fodder = page.fodders[i];
+            let hasOnlyJunk = true;
+            for (var j = 0; j < fodder.size(); j++) {
+                let affix = fodder.affixes[j];
+                let idx = this.junkCodes.indexOf(affix.code);
+                if (idx < 0) {
+                    hasOnlyJunk = false;
+                }
+                else {
+                    if (junkIdxNeeded[idx] > 0) {
+                        junkIdxNeeded[idx]--;
+                        if (junkIdxNeeded[idx] <= 0) delete junkIdxNeeded[idx];
+                    }
+                    else {
+                        for (var key in junkIdxNeeded) {
+                            if (junkIdxNeeded[key] > 0 && !fodder.affixes.includes(
+                                this.affixDB[this.junkCodes[key]].abilityRef)) {
+                                fodder.affixes[j] = this.affixDB[this.junkCodes[key]].abilityRef;
+                                junkIdxNeeded[key]--;
+                                if (junkIdxNeeded[key] <= 0) delete junkIdxNeeded[key];
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            if (hasOnlyJunk && canRemove) {
+                page.fodders.splice(i, 1);
+            }
+            else i++;
+            if (Object.keys(junkIdxNeeded).length <= 0) canRemove = true;
+        }
     }
 
     doAffixesHavePossiblePlacement({ choices, targetNumSlots = (new Fodder()).CAPACITY, targetNumFodders = (new Page()).CAPACITY }) {
@@ -933,42 +1054,44 @@ class Assistant {
                 // for every choice for making affixA
                 for (var m = 0; m < this.affixDB[affix.code].choices.length; m++) {
                     let choice = this.affixDB[affix.code].choices[m];
+                    // set flag true
+                    let isMatch = true;
                     // Check if Add Ability
                     if (choice.isAddAbilityItem || affix.noEx) {
                         abilitySuccessRates[k] = Math.min(Math.max(choice.transferRate, minRate), maxRate);
                         abilitySuccessRates.length++;
                         if (fodderSuccessRate < 0) fodderSuccessRate = (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
                         else fodderSuccessRate *= (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
-                        break;
+                        if (affix.noEx) break;
                     }
-                    // set flag true
-                    let isMatch = true;
-                    // Check if affix in this fodder comes from some fodder with Special Ability Factor
-                    if (!fodder.affixIndicesFromFactor.includes(k)) {
-                        // If affix is not from factor, but choice is for factors, it is not a match
-                        if (choice.isAbilityFactor) {
-                            isMatch = false;
-                        }
-                        else {
-                            // count occurrences of each ability in choice
-                            let choiceCount = countOccurrences(choice.materials);
-                            // count occurrences of each ability in all abilities in page
-                            let abilityCount = countOccurrences(abilities);
-                            // for each different occurence in choice
-                            for (var code in choiceCount) {
-                                // if all bilities have less than count
-                                if (!abilityCount[code] || abilityCount[code] < choiceCount[code]) {
-                                    // does not match, so set flag false and break
-                                    isMatch = false;
-                                    break;
+                    else {
+                        // Check if affix in this fodder comes from some fodder with Special Ability Factor
+                        if (!fodder.affixIndicesFromFactor.includes(k)) {
+                            // If affix is not from factor, but choice is for factors, it is not a match
+                            if (choice.isAbilityFactor) {
+                                isMatch = false;
+                            }
+                            else {
+                                // count occurrences of each ability in choice
+                                let choiceCount = countOccurrences(choice.materials);
+                                // count occurrences of each ability in all abilities in page
+                                let abilityCount = countOccurrences(abilities);
+                                // for each different occurence in choice
+                                for (var code in choiceCount) {
+                                    // if all bilities have less than count
+                                    if (!abilityCount[code] || abilityCount[code] < choiceCount[code]) {
+                                        // does not match, so set flag false and break
+                                        isMatch = false;
+                                        break;
+                                    }
                                 }
                             }
                         }
-                    }
-                    else {
-                        // If affix is from factor, but choice is not for factors, it is not a match
-                        if (!choice.isAbilityFactor) {
-                            isMatch = false;
+                        else {
+                            // If affix is from factor, but choice is not for factors, it is not a match
+                            if (!choice.isAbilityFactor) {
+                                isMatch = false;
+                            }
                         }
                     }
                     if (isMatch) {
@@ -979,7 +1102,7 @@ class Assistant {
                                 this.data.extraSlot[fodder.size() - 1][pageConn.size() > 2]
                                 : 100; // range 0~100
                             upslottingFactor = (upslottingFactor - minRate) / (maxRate - minRate); // range 0~1
-                            abilitySuccessRates[k] = Math.min(Math.max(Math.round(abilitySuccessRates[k] * upslottingFactor), minRate), maxRate);
+                            abilitySuccessRates[k] = Math.min(Math.max(Math.floor(abilitySuccessRates[k] * upslottingFactor), minRate), maxRate);
                         }
                         if (fodder.isSameGear) {
                             let sameGearFactor = this.data.sameBonusBoost[(pageConn.size() > 2) ? 2 : 1];
@@ -2293,5 +2416,14 @@ class Fodder {
             if (ASSISTANT.affixDB[this.affixes[i].code].choices.length <= 0) return true;
         }
         return false;
+    }
+
+    clone(abilityFilterFunction) {
+        let clone = (new Fodder());
+        if (abilityFilterFunction && typeof abilityFilterFunction === 'function')
+            clone.addAffixes(this.affixes.filter(abilityFilterFunction));
+        else clone.addAffixes(this.affixes);
+        clone.setSpecialAbilityFactor(this.specialAbilityFactor);
+        return clone;
     }
 }

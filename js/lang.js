@@ -101,6 +101,18 @@ const lang = Object.freeze({
             en: "Choose Method of Making",
             jp: "作り方を選ぶ"
         },
+        reviewTweakTitle: {
+            en: "Review and Tweak",
+            jp: "レビューと微調整"
+        },
+        reviewTweakTooltip1: {
+            en: "Select abilities to change places",
+            jp: "場所を変更する能力を選択する"
+        },
+        reviewTweakTooltip2: {
+            en: "And press confirm when ready",
+            jp: "準備ができたら確定を押してください"
+        },
         formulaSheetTitle: {
             en: "Affixing Formula Sheet",
             jp: "合成フォーミュラシート"
@@ -167,11 +179,11 @@ const lang = Object.freeze({
         },
         confirmButton: {
             en: "Confirm",
-            jp: "確認"
+            jp: "確定"
         },
         menuStartNewDescription: {
             en: "Check or change the affixing goal",
-            jp: "合成目標を確認または変更する"
+            jp: "合成目標を確定または変更する"
         },
         menuWishListDescription: {
             en: "View fodders needed",
