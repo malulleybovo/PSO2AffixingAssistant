@@ -1264,16 +1264,23 @@ class ViewController {
         let choices = vc.assistant.getChoicesForAffixes(
             vc.assistant.affixDB[$(this).attr('data-code')].abilityRef
         );
-        if (!choices || !choices[$(this).attr('data-code')]) return;
+        let uses = vc.assistant.getUsesFor(
+            vc.assistant.affixDB[$(this).attr('data-code')].abilityRef);
+        if (!choices || !uses || !choices[$(this).attr('data-code')]) return;
         $(`div.formula-sheet-container li > div`).removeClass('selected');
         $(this).addClass('selected');
         let $ref = $('div.formula-sheet-container .search-results-container');
-        $ref.nextAll().remove();
+        $ref.nextUntil('div.title').remove();
         $(FILTER_SEARCH_TEMPLATE({
             categories: [],
             datalist: choices[$(this).attr('data-code')],
             langCode: VIEW_CONTROLLER.langCode
-        })).insertAfter($ref);
+        })).insertAfter($ref[0]);
+        $(FILTER_SEARCH_TEMPLATE({
+            categories: [],
+            datalist: uses,
+            langCode: VIEW_CONTROLLER.langCode
+        })).insertAfter($ref[1]);
         try {
             gaRequests.send('formula', 'select', {
                 'View Type': 'Formula Sheet View',

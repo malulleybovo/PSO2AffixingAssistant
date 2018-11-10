@@ -327,11 +327,17 @@ class AffixDataParser {
         for (code in abilityDB) {
             let thisAbility = abilityDB[code];
             thisAbility.choices.sort(function (a, b) {
-                if (a.transferRate <= b.transferRate)
-                    return 1;
+                let judgement = 0;
+                if (a.transferRate < b.transferRate)
+                    judgement++;
                 if (a.transferRate > b.transferRate)
-                    return -1;
-                return 0;
+                    judgement--;
+                if (judgement == 0) {
+                    if (a.materials.length > b.materials.length)
+                        judgement++;
+                    else judgement--;
+                }
+                return judgement;
             });
         }
         // REMOVE REDUNDANT CHOICES

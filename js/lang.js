@@ -117,6 +117,10 @@ const lang = Object.freeze({
             en: "Affixing Formula Sheet",
             jp: "合成フォーミュラシート"
         },
+        affixUse: {
+            en: (successRate, affixName, choicesString) => `${successRate}% Making ${affixName} with: ${choicesString}`,
+            jp: (successRate, affixName, choicesString) => `${successRate}%と一緒に${affixName}を作る: ${choicesString}`
+        },
         wishListTitle: {
             en: "Fodders To Buy",
             jp: "購入する装備"
@@ -172,6 +176,10 @@ const lang = Object.freeze({
         abilityFormulasTitle: {
             en: "How To Make",
             jp: "作成方法"
+        },
+        abilityFormulaUsesTitle: {
+            en: "Used To Make",
+            jp: "合成に使用"
         },
         cancelButton: {
             en: "Cancel",

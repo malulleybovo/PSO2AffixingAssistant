@@ -271,6 +271,19 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode
                 }
                 filtersearch += `<li data-idx="${i}"><div>${choice}</div></li>`;
             }
+            else if (datalist[i].makeAffix && datalist[i].withChoice) {
+                let materials = '';
+                for (var j = 0; j < datalist[i].withChoice.materials.length; j++) {
+                    if (datalist[i].withChoice.materials[j] == undefined
+                        || !lang[datalist[i].withChoice.materials[j].code]) continue;
+                    materials += `${lang[datalist[i].withChoice.materials[j].code]['name_' + langCode]}`;
+                    if (j < datalist[i].withChoice.materials.length - 1) materials += ', ';
+                }
+                filtersearch += `<li data-idx="${i}"><div>${
+                    lang.app.affixUse[langCode](datalist[i].withChoice.transferRate,
+                        lang[datalist[i].makeAffix.code]['name_' + langCode], materials
+                    )}</div></li>`;
+            }
             else if (typeof datalist[i] === 'string') {
                 filtersearch += `<li data-idx="${i}"><div>${datalist[i]}</div></li>`;
             }
@@ -386,6 +399,8 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                     </div>
                     <div>
                         <div class="title bold">${lang.app.abilityFormulasTitle[langCode]}</div>
+                        <div class="search-results-container"></div>
+                        <div class="title bold">${lang.app.abilityFormulaUsesTitle[langCode]}</div>
                         <div class="search-results-container"></div>
                     </div>`;
     }

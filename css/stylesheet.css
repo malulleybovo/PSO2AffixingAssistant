@@ -768,9 +768,21 @@ div.choice-selection-container div.content > div > div:nth-child(2) {
     margin-bottom: 1.5em;
 }
 
-div.choice-selection-container div.affix.selected,
+div.choice-selection-container div.affix.selected {
+    background-color: var(--alter-paint);
+}
+
 div.review-tweak-container div.affix.selected {
     background-color: var(--alter-paint);
+    border: 1.5px solid var(--border-color)
+}
+
+div.review-tweak-container div.affix:not(.not-a-target):hover {
+    background-color: var(--paint-light);
+}
+
+div.review-tweak-container div.affix.selected:hover {
+    background-color: var(--alter-paint-light);
 }
 
 div.review-tweak-container div.content {
@@ -783,7 +795,25 @@ div.review-tweak-container div.content > div:not(:first-child) {
 }
 
 div.review-tweak-container div.potential-target {
-    border: 1.5px solid var(--alter-paint);
+    border-top: none;
+    border-bottom: 1.5px solid var(--alter-paint);
+    border-left: 1.5px solid var(--alter-paint);
+    border-right: 1.5px solid var(--alter-paint);
+}
+
+div.review-tweak-container div.potential-target:first-child,
+div.review-tweak-container div.potential-target.special-ability-factor,
+div.review-tweak-container div.potential-target.blank-special-ability-factor {
+    border-top: 1.5px solid var(--alter-paint);
+}
+
+div.review-tweak-container div.not-a-target + div.potential-target {
+    border-top: 1.5px solid var(--alter-paint);
+}
+
+div.review-tweak-container div.potential-target + div.not-a-target,
+div.review-tweak-container div.swappable.selected + div.not-a-target {
+    border-top: none;
 }
 
 div.review-tweak-container div.not-a-target {
@@ -813,10 +843,16 @@ div.formula-sheet-container div.content > div:first-child {
 div.formula-sheet-container div.content > div:last-child {
     width: 60%;
     margin-left: 0.5em;
+    display: flex;
+    flex-direction: column;
 }
 
-div.formula-sheet-container div.search-results-container {
-    display: none;
+div.formula-sheet-container div.content > div:last-child > div:nth-child(3) {
+    padding-bottom: 0.5em;
+}
+
+div.formula-sheet-container div.content > div:last-child > div.filtersearchcontainer {
+    min-height: 40%;
 }
 
 div.formula-sheet-container .confirm-button,

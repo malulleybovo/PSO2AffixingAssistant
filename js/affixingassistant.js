@@ -241,7 +241,7 @@ class Assistant {
         // target number of slots (otherwise the gear cannot be affixed)
         for (var i = 0; i < page.size(); i++) {
             let fodder = page.fodders[i];
-            if (fodder.size() > 0 || i <= numSpecialAbilityFactor) {
+            if (fodder.size() >= 0 || i <= numSpecialAbilityFactor) {
                 let junks = [];
                 for (var j = 0; j < this.junkCodes.length; j++) {
                     let junk = this.affixDB[this.junkCodes[j]].abilityRef;
@@ -333,13 +333,6 @@ class Assistant {
                 );
             }
         }
-
-        // Remove empty fodders from cleanliness
-        let foddersToRemove = [];
-        for (var i = 0; i < page.size(); i++) {
-            if (page.fodders[i].size() == 0) foddersToRemove.push(page.fodders[i]);
-        }
-        page.removeFodders(foddersToRemove);
 
         return page;
     }
@@ -782,7 +775,8 @@ class Assistant {
         let affixB = fodderB.affixes[affixBIdx];
         // Ignore meaningless swaps
         if (affixA.code == affixB.code
-            || fodderA == fodderB) return false;
+            || fodderA == fodderB
+            || (affixA.code.startsWith('Z') && affixB.code.startsWith('Z'))) return false;
         let cloneA = fodderA.clone((a) => a != affixA && !a.code.startsWith('Z'));
         let cloneB = fodderB.clone((b) => b != affixB && !b.code.startsWith('Z'));
         let testA = this.getPlacement(affixA, cloneB, -1, fodderB.size());
@@ -1686,6 +1680,24 @@ class Assistant {
             foddersToBuy = foddersToBuy.concat(node.page.fodders);
         }
         return foddersToBuy;
+    }
+
+    getUsesFor(affix) {
+        if (!affix || !affix.code || !this.affixDB) return [];
+        let uses = [];
+        for (var code in this.affixDB) {
+            let test = this.affixDB[code];
+            for (var i = 0; i < test.choices.length; i++) {
+                let choice = test.choices[i];
+                if (choice.materials.includes(affix)) {
+                    uses.push({
+                        makeAffix: test.abilityRef,
+                        withChoice: choice
+                    });
+                }
+            }
+        }
+        return uses;
     }
 }
 
