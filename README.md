@@ -4,6 +4,7 @@
   Effortless affixing solutions to PSO2 problems
 
   ## [Use the Assistant Here](https://malulleybovo.github.io/PSO2AffixingAssistant/)
+  #### [Like it? Check out my Symbol Art Editor Online here too!](https://www.github.com/malulleybovo/SymbolArtEditorOnline/)
   #### Version 0.4.0 (Beta)
   #### Compliant with version 1.81 of [Arks Layer's Affix Simulator](https://arks-layer.com/abilitysim/)
 
