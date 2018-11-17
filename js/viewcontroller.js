@@ -751,7 +751,7 @@ class ViewController {
         }));
         vc.regenerateConnections();
         $('div.fodder').hover(spotlightIn, spotlightOut);
-        $('div.produce-button:not(.disabled)').on('pointerup', { viewcontroller: this }, this.setActiveFodder)
+        $('div.produce-button:not(.disabled)').click({ viewcontroller: this }, this.setActiveFodder)
             .on('mousedown touchstart', function (e) {
             // Allow clickable elements within panzoom on mobile
             e.stopImmediatePropagation();
