@@ -133,9 +133,15 @@ const lang = Object.freeze({
             en: (name) => ` (Special Ability Factor: ${name})`,
             jp: (name) => `（特殊能力因子：${name}）`
         },
+        wishListAbilityItem: {
+            en: (fodder) => `${fodder.size()}s Fodder: ${fodder.affixes.filter(a => !a.code.startsWith('Z'))
+                .map(a => lang[a.code].name_en).sort().join(lang.app.wishListItemDivider.en)}`,
+            jp: (fodder) => `${fodder.size()}スロット装備：${fodder.affixes.filter(a => !a.code.startsWith('Z'))
+                .map(a => lang[a.code].name_jp).sort().join(lang.app.wishListItemDivider.jp)}`
+        },
         wishListAbilityDescription: {
-            en: (amount, numSlots, description) => `${(amount > 1) ? `(${amount}x) ` : ``}${numSlots}s Fodder: ${description}`,
-            jp: (amount, numSlots, description) => `${(amount > 1) ? `（${amount}倍）` : ``}${numSlots}スロット装備：${description}`
+            en: (amount, description) => `${(amount > 1) ? `(${amount}x) ` : ``}${description}`,
+            jp: (amount, description) => `${(amount > 1) ? `（${amount}倍）` : ``}${description}`
         },
         upslottingLabel: {
             en: "Affix By Upslotting",

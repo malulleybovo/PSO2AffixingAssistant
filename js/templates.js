@@ -480,7 +480,7 @@ const WISH_LIST_TEMPLATE = ({ fodderList, langCode }) => {
     for (var i = 0; i < fodderList.length; i++) {
         if (!fodderList[i] || !(fodderList[i] instanceof Fodder)
             || fodderList[i].size() <= 0) continue;
-        let currList = fodderList[i].affixes.filter(a => !a.code.startsWith('Z')).map(a => lang[a.code]['name_' + langCode]).sort().join(lang.app.wishListItemDivider[langCode]);
+        let currList = lang.app.wishListAbilityItem[langCode](fodderList[i]);
         if (fodderList[i].specialAbilityFactor && fodderList[i].specialAbilityFactor.code) {
             currList += lang.app.wishListFactorDescription[langCode](lang[fodderList[i].specialAbilityFactor.code]['name_' + langCode]);
         }
@@ -492,7 +492,7 @@ const WISH_LIST_TEMPLATE = ({ fodderList, langCode }) => {
         }
     }
     for (var i = 0; i < affixLists.length; i++) {
-        affixLists[i] = lang.app.wishListAbilityDescription[langCode](counts[i], fodderList[i].size(), affixLists[i]);
+        affixLists[i] = lang.app.wishListAbilityDescription[langCode](counts[i], affixLists[i]);
     }
     return FILTER_SEARCH_TEMPLATE({
         datalist: affixLists,

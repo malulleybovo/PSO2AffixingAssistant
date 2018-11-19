@@ -1531,7 +1531,7 @@ class Assistant {
                 if (ref instanceof dataClass) {
                     if (properties) {
                         for (var key in properties) {
-                            if (typeof properties[key] !== 'object') {
+                            if (properties[key] === null || typeof properties[key] !== 'object') {
                                 if (ref[key] != properties[key]) {
                                     isMatch = false;
                                     break;
@@ -1665,21 +1665,12 @@ class Assistant {
     }
 
     getToBuyList() {
-        let outlyingPageTreeNodes = ASSISTANT.query({
-            dataClass: PageTreeNode,
+        return ASSISTANT.query({
+            dataClass: Fodder,
             properties: {
-                children: { length: 0 }
+                connectedTo: null
             }
         });
-        if (!outlyingPageTreeNodes) return [];
-        let foddersToBuy = [];
-        for (var i = 0; i < outlyingPageTreeNodes.length; i++) {
-            let node = outlyingPageTreeNodes[i];
-            if (!node.page || !(node.page instanceof Page)
-                || node.page.size() <= 0) continue;
-            foddersToBuy = foddersToBuy.concat(node.page.fodders);
-        }
-        return foddersToBuy;
     }
 
     getUsesFor(affix) {
