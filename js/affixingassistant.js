@@ -968,7 +968,7 @@ class Assistant {
             return this.SIMULATOR_WEBSITE + '#!' + this.pageTreeRoot.children[0].toURL(isForSimulator);
         }
         else {
-            return '?' + this.encodeURLParams(this.pageTreeRoot.toURL());
+            return this.encodeURLParams(this.pageTreeRoot.toURL());
         }
     }
 

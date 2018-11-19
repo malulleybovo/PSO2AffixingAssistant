@@ -717,6 +717,16 @@ class ViewController {
         }
         urlParams = urlParams.substring(1, urlParams.length);
         urlParams = decodeURIComponent(urlParams);
+        // Check language choice within params
+        if (urlParams.match(/^\/l=..\//)) {
+            // Extract '/l=..' of the start of the params and get language '..'
+            let loadedLang = urlParams.slice(0, 5).slice(3, 5);
+            // Remove language data from string for parsing
+            urlParams = urlParams.slice(5);
+            if (this.languages.includes(loadedLang)) {
+                this.langCode = loadedLang;
+            }
+        }
         urlParams = VIEW_CONTROLLER.assistant.decodeURLParams(urlParams);
         if (!this.assistant || !(this.assistant instanceof Assistant)) return;
         let hasSuceeded = this.assistant.loadFromURLParams(urlParams);
@@ -843,7 +853,7 @@ class ViewController {
     updateURLParams() {
         if (!this.assistant || !(this.assistant instanceof Assistant)) return;
         let oldURL = '?' + decodeURIComponent(window.location.search.substring(1, window.location.search.length));
-        let newURL = this.assistant.toURL();
+        let newURL = `?${this.langCode != 'en' ? '/l=' + this.langCode : ''}` + this.assistant.toURL();
         if (newURL == oldURL) return;
         window.history.pushState("test", "Title", newURL);
     }
@@ -1333,6 +1343,7 @@ class ViewController {
         if (idx >= 0) {
             this.langCode = this.languages[(idx + 1) % this.languages.length];
             this.filters = lang.filters[this.langCode];
+            this.updateURLParams();
             this.updateView();
             this.updateMenuBarDescriptions();
             if ($('div.welcome h1').length > 0) $('div.welcome h1').text(lang.app.appTitle[this.langCode]);
