@@ -828,7 +828,7 @@ class Assistant {
         let canRemove = false;
         while (i < page.size() && page.size() > this.IDEAL_MIN_PAGE_SIZE) {
             let fodder = page.fodders[i];
-            let hasOnlyJunk = true;
+            let hasOnlyJunk = fodder.specialAbilityFactor == null;
             for (var j = 0; j < fodder.size(); j++) {
                 let affix = fodder.affixes[j];
                 let idx = this.junkCodes.indexOf(affix.code);
@@ -1053,10 +1053,12 @@ class Assistant {
                     // Check if Add Ability
                     if (choice.isAddAbilityItem || affix.noEx) {
                         abilitySuccessRates[k] = Math.min(Math.max(choice.transferRate, minRate), maxRate);
-                        abilitySuccessRates.length++;
-                        if (fodderSuccessRate < 0) fodderSuccessRate = (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
-                        else fodderSuccessRate *= (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
-                        if (affix.noEx) break;
+                        if (affix.noEx) {
+                            abilitySuccessRates.length++;
+                            if (fodderSuccessRate < 0) fodderSuccessRate = (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
+                            else fodderSuccessRate *= (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
+                            break;
+                        }
                     }
                     else {
                         // Check if affix in this fodder comes from some fodder with Special Ability Factor
