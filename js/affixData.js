@@ -60,7 +60,7 @@
             },
             {
                 id: "Ability Success Rate +50%",
-                name: "+45%",
+                name: "+50%",
                 value: "A08",
                 fn: function (a) {
                     return Math.min(a + 50,
@@ -653,6 +653,17 @@
             ref: "VJ01",
             success: 10
         },
+		{
+            base: [
+                "TK02",
+                "TK03",
+                "TK04",
+                "TK05",
+                "TK06"
+            ],
+            ref: "VJ03",
+            success: 10
+        },
         {
             base: [
                 "VJ01",
@@ -670,7 +681,7 @@
                 "TG03",
                 "TG04"
             ],
-            ref: "VJ11",
+            ref: "VJ02",
             success: 10
         },
         {
@@ -707,13 +718,24 @@
         },
         {
             base: [
-                "VJ11",
-                "VJ11",
-                "VJ11",
-                "VJ11",
+                "VJ02",
+                "VJ02",
+                "VJ02",
+                "VJ02",
                 "SA11"
             ],
             ref: "TG31",
+            success: 60
+        },
+		{
+            base: [
+                "VJ03",
+                "VJ03",
+                "VJ03",
+                "VJ03",
+                "TJ01"
+            ],
+            ref: "TK10",
             success: 60
         },
         {
@@ -1470,7 +1492,8 @@
             "Soul Catalyst",
             "Factor Catalyst",
             "Necky Smile",
-            "Doom Break",
+            "Doom Break I",
+			"Doom Break II",
             "Extreceptor",
             "All Resist I",
             "All Resist II",
