@@ -2384,29 +2384,41 @@ const lang = Object.freeze({
         effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>HP(+20),<br>PP(+1)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15),<br>HP(+20),<br>PP(+1)"
     },
-    "TK11": {
+    "TK02": {
         name_en: "Elder Reverie",
         name_jp: "エルダー・レヴリー",
         effect_en: "S-ATK(+40),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(-2)",
         effect_jp: "打撃力(+40),<br>射撃力(+20),<br>法撃力(+20),<br>PP(-2)"
     },
-    "TK21": {
+    "TK03": {
         name_en: "Loser Reverie",
         name_jp: "ルーサー・レヴリー",
         effect_en: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+40),<br>HP(-20)",
         effect_jp: "打撃力(+20),<br>射撃力(+20),<br>法撃力(+40),<br>HP(-20)"
     },
-    "TK31": {
+    "TK04": {
         name_en: "Apprezina Reverie",
         name_jp: "アプレジナ・レヴリー",
         effect_en: "S-ATK(+20),<br>R-ATK(+40),<br>T-ATK(+20),<br>HP(-10),<br>PP(-1)",
         effect_jp: "打撃力(+20),<br>射撃力(+40),<br>法撃力(+20),<br>HP(-10),<br>PP(-1)"
     },
-    "TK41": {
+    "TK05": {
         name_en: "Double Reverie",
         name_jp: "ダブル・レヴリー",
         effect_en: "S-ATK(-20),<br>R-ATK(-20),<br>T-ATK(-20),<br>HP(+50),<br>PP(+5)",
         effect_jp: "打撃力(-20),<br>射撃力(-20),<br>法撃力(-20),<br>HP(+50),<br>PP(+5)"
+    },
+    "TK06": {
+        name_en: "Persona Reverie",
+        name_jp: "ペルソナ・レヴリー",
+        effect_en: "S-ATK(+40),R-ATK(+40),T-ATK(+40),S-DEF(-20),R-DEF(-20),T-DEF(-20)",
+        effect_jp: "打撃力(+40),射撃力(+40),法撃力(+40),打撃防御(-20),射撃防御(-20),法撃防御(-20)"
+    },
+    "TK10": {
+        name_en: "Mana Reverie",
+        name_jp: "マナ・レヴリー",
+        effect_en: "S-ATK(+50),R-ATK(+50),T-ATK(+50),HP(+20),PP(+4)",
+        effect_jp: "打撃力(+50),射撃力(+50),法撃力(+50),HP(+20),PP(+4)"
     },
     "TJ01": {
         name_en: "Omega Memoria",
@@ -2972,9 +2984,15 @@ const lang = Object.freeze({
         effect_en: "HP(+10),<br>PP(+1)",
         effect_jp: "HP(+10),<br>PP(+1)"
     },
-    "VJ11": {
+    "VJ02": {
         name_en: "Factor Catalyst",
         name_jp: "ファクター・カタリスト",
+        effect_en: "HP(+10),<br>PP(+1)",
+        effect_jp: "HP(+10),<br>PP(+1)"
+    },
+    "VJ03": {
+        name_en: "Reverie Catalyst",
+        name_jp: "レヴリー・カタリスト",
         effect_en: "HP(+10),<br>PP(+1)",
         effect_jp: "HP(+10),<br>PP(+1)"
     },

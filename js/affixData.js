@@ -6054,7 +6054,7 @@
                 90
             ],
             extup: [
-                "TK"
+                "TK0"
             ],
             rel: "soul",
             effect: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+20)",
@@ -6071,7 +6071,7 @@
                 90
             ],
             extup: [
-                "TK"
+                "TK0"
             ],
             rel: "soul",
             effect: "S-DEF(+25),<br>R-DEF(+25),<br>T-DEF(+25),<br>HP(+30),<br>PP(+2)",
@@ -6234,7 +6234,7 @@
             tooltip: "Used for: Omega Memoria"
         },
         {
-            code: "TK11",
+            code: "TK02",
             gid: "AC",
             name: "Elder Reverie",
             extend: [
@@ -6246,7 +6246,7 @@
             effect: "S-ATK(+40),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(-2)"
         },
         {
-            code: "TK21",
+            code: "TK03",
             gid: "AC",
             name: "Loser Reverie",
             extend: [
@@ -6258,7 +6258,7 @@
             effect: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+40),<br>HP(-20)"
         },
         {
-            code: "TK31",
+            code: "TK04",
             gid: "AC",
             name: "Apprezina Reverie",
             extend: [
@@ -6270,7 +6270,7 @@
             effect: "S-ATK(+20),<br>R-ATK(+40),<br>T-ATK(+20),<br>HP(-10),<br>PP(-1)"
         },
         {
-            code: "TK41",
+            code: "TK05",
             gid: "AC",
             name: "Double Reverie",
             extend: [
@@ -6280,6 +6280,27 @@
             ],
             status: 6,
             effect: "S-ATK(-20),<br>R-ATK(-20),<br>T-ATK(-20),<br>HP(+50),<br>PP(+5)"
+        },
+        {
+            code: "TK06",
+            gid: "AC",
+            name: "Persona Reverie",
+            extend: [
+                0,
+                30,
+                50
+            ],
+            status: 6,
+            effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>S-DEF(-20),<br>R-DEF(-20),<br>T-DEF(-20)",
+            tooltip: "Used for: Reverie Catalyst"
+        },
+        {
+            code: "TK10",
+            gid: "AC",
+            name: "Mana Reverie",
+            status: 6,
+            effect: "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>HP(+20),<br>PP(+4)",
+            tooltip: "Made by: Omega Memoria + 4x Reverie Catalyst"
         },
         {
             code: "TJ01",
@@ -7386,7 +7407,7 @@
             tooltip: "Made by: Elder Soul, Loser Soul, Apprentice Soul,<br>Double Soul, Persona Soul<br>Used for: Astral Soul"
         },
         {
-            code: "VJ11",
+            code: "VJ02",
             gid: "YA",
             name: "Factor Catalyst",
             extend: [
@@ -7396,6 +7417,18 @@
             ],
             effect: "HP(+10),<br>PP(+1)",
             tooltip: "Made by: Deus Factor, Mother Factor, Yamato Factor<br>Used for: Ether Factor"
+        },
+        {
+            code: "VJ03",
+            gid: "YA",
+            name: "Reverie Catalyst",
+            extend: [
+                0,
+                10,
+                30
+            ],
+            effect: "HP(+10),<br>PP(+1)",
+            tooltip: "Made by: Elder Reverie, Loser Reverie, Apprezina Reverie, Double Reverie, Persona Reverie<br>Used for: Mana Reverie"
         },
         {
             code: "VK03",

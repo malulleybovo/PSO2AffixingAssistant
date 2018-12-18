@@ -1211,8 +1211,11 @@ class Assistant {
                             newPageFodderAffixes.specialAbilityFactor = this.affixDB[newCode].abilityRef;
                         }
                     }
-                    else if (this.affixDB[pageFodderAffixes[k]]) {
-                        newPageFodderAffixes.push(this.affixDB[pageFodderAffixes[k]].abilityRef);
+                    else {
+                        let theCode = handleLegacyAffixCodes(pageFodderAffixes[k]);
+                        if (this.affixDB[theCode]) {
+                            newPageFodderAffixes.push(this.affixDB[theCode].abilityRef);
+                        }
                     }
                 }
                 pageFoddersAffixes[j] = newPageFodderAffixes;
@@ -1222,8 +1225,10 @@ class Assistant {
                 if (targetAffixes[j].startsWith('*')) {
                     targetAffixes[j] = targetAffixes[j].slice(1, targetAffixes[j].length);
                 }
-                if (this.affixDB[targetAffixes[j]])
-                    targetAffixes[j] = this.affixDB[targetAffixes[j]].abilityRef;
+                let theCode = handleLegacyAffixCodes(targetAffixes[j]);
+                if (this.affixDB[theCode]) {
+                    targetAffixes[j] = this.affixDB[theCode].abilityRef;
+                }
             }
             let affixIndicesFromFactor = [];
             for (var j = 0; j < pageFoddersAffixes.length; j++) {
@@ -1445,6 +1450,21 @@ class Assistant {
             )
             // return root
             return pageTreeNode;
+        }
+
+        /**
+         * Handles URLs containing outdated ability codes by swapping them
+         * with the most up-to-date code. Limitation: if a new code uses a previosly outdate code.
+         */
+        function handleLegacyAffixCodes(legacyCode) {
+            switch (legacyCode) {
+                case "TK11": return "TK02"; // Legacy Elder Reverie Code
+                case "TK21": return "TK03"; // Legacy Loser Reverie Code
+                case "TK31": return "TK04"; // Legacy Apprezina Reverie Code
+                case "TK41": return "TK05"; // Legacy Double Reverie Code
+                case "VJ11": return "VJ02"; // Legacy Double Reverie Code
+                default: return legacyCode; // If not legacy, keep the actual code
+            }
         }
     }
 
