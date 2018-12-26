@@ -21,7 +21,7 @@ const WELCOME_VIEW = (langCode) => `<div class="welcome">
         </div>
     </div>`;
 
-const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset, langCode }) => {
+const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset, boostWeekOptions, boostWeekIdx, langCode }) => {
     let treeNodeTemplate = '<table class="mgrid"><tr><td>';
     level = (typeof level === 'number') ? level : 0;
     offset = (typeof offset === 'number') ? offset : 0;
@@ -64,6 +64,8 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset, langCode }) => {
             isGoal: pageTreeNode.isGoal,
             rateBoostOptions: rateOpts,
             potentialOptions: potOpts,
+            boostWeekOptions: boostWeekOptions,
+            boostWeekIdx: boostWeekIdx,
             level: level,
             offset: offset,
             fodderOffsets: connectionOrder,
@@ -77,6 +79,8 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset, langCode }) => {
                 pageTreeNode: pageTreeNode.children[i],
                 level: (level + 1),
                 offset: (offset * capacity) + i,
+                boostWeekOptions: boostWeekOptions,
+                boostWeekIdx: boostWeekIdx,
                 langCode: langCode
             });
         }
@@ -85,7 +89,7 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset, langCode }) => {
     return treeNodeTemplate;
 };
 
-const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level, offset, fodderOffsets, langCode }) => {
+const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, boostWeekOptions, boostWeekIdx, level, offset, fodderOffsets, langCode }) => {
     let capacity = (new Page).CAPACITY;
     let dataConn;
     // data-conn is a mapping of the page-fodder connections within a tree structure with a set max number of children per node
@@ -116,6 +120,8 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level
                 rateBoostIdx: page.fodders[i].rateBoostIdx,
                 potentialOptions: potentialOptions,
                 potentialIdx: page.fodders[i].potentialIdx,
+                boostWeekOptions: boostWeekOptions,
+                boostWeekIdx: boostWeekIdx,
                 langCode: langCode
             });
         }
@@ -131,7 +137,7 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, level
     return pageTempate;
 };
 
-const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, isSameGear, rateBoostOptions, rateBoostIdx, potentialOptions, potentialIdx, langCode }) =>
+const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, isSameGear, rateBoostOptions, rateBoostIdx, potentialOptions, potentialIdx, boostWeekOptions, boostWeekIdx, langCode }) =>
     `<div class="fodder" ${(dataConn >= 0) ? `data-conn="` + dataConn + `"` : ``}>
             <div class="title">${titleLabel}</div>
             <div class="affixes">
@@ -151,7 +157,7 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
                 <span>${(isGoal) ? lang.app.goalLabel[langCode] : lang.app.fodderLabel[langCode]} ${lang.app.fodderSuccessLabel[langCode]}: </span>
             <span>${fodder.overallSuccessRate + `%`}</span></div>` : ``}
             ${(fodder.affixSuccessRates.length > 0) ?
-            `<div class="boost-container" >
+            `<div class="boost-container individual" >
                 ${CHECKBOX_TEMPLATE({
                     label: lang.app.sameEquipLabel[langCode],
                     description: lang.app.sameEquipDescription[langCode],
@@ -173,7 +179,15 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
             ${((fodder && fodder.addAbilityItemInUse
                 && lang['additional'][fodder.addAbilityItemInUse.name]
                 && lang['additional'][fodder.addAbilityItemInUse.name][langCode]) ? 
-                `<div class="affix add-ability">${lang['additional'][fodder.addAbilityItemInUse.name][langCode]}</div>` : ``)}
+                `<div class="affix add-ability">${lang['additional'][fodder.addAbilityItemInUse.name][langCode]}</div>` : ``)}${
+            (isGoal) ?
+            `<div class="divider"></div><div class="boost-container global" >`
+            + DROPDOWN_TEMPLATE({
+                type: 2,
+                options: boostWeekOptions.map(lang.app.boostWeekOption[langCode]),
+                selected: boostWeekIdx,
+                description: lang.app.boostWeekDescription[langCode]
+                }) + `</div>` : ''}
         </div>`;
 
 const LINK_TEMPLATE = ({ link, linkToSim, langCode }) => {

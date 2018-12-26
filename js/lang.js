@@ -73,6 +73,14 @@ const lang = Object.freeze({
             en: "Does equipment have potential that boosts affixing?",
             jp: "装置は合成を促進する 潜在能力を持っていますか？"
         },
+        boostWeekOption: {
+            en: (option) => `+${option}% Boost Week`,
+            jp: (option) => `+${option}%ブーストウィーク`
+        },
+        boostWeekDescription: {
+            en: "Additional affixing boost from boost week",
+            jp: "ブースト週間からの追加の固定ブースト"
+        },
         shareFormulaTitle: {
             en: "Link to This Formula",
             jp: "この数式へのリンク"

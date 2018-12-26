@@ -757,6 +757,8 @@ class ViewController {
         vc.assistant.calcSuccessRates();
         $('#mastercontainer').empty().append(PAGE_TREE_NODE_TEMPLATE({
             pageTreeNode: vc.assistant.pageTreeRoot,
+            boostWeekOptions: vc.assistant.boostWeekVals,
+            boostWeekIdx: vc.assistant.boostWeekIdx,
             langCode: vc.langCode
         }));
         vc.regenerateConnections();
@@ -793,7 +795,7 @@ class ViewController {
             // Allow clickable elements within panzoom on mobile
             e.stopImmediatePropagation();
         });
-        $('.boost-container > div.dropdown-container:not(:last-child) select').change({ viewcontroller: this }, (e) => {
+        $('.boost-container.individual > div.dropdown-container:not(:last-child) select').change({ viewcontroller: this }, (e) => {
             let $elem = $(e.currentTarget);
             for (var i = 0; i < $elem.length; i++) {
                 let index = $($elem[i]).find('option:selected').index();
@@ -814,7 +816,7 @@ class ViewController {
             // Allow clickable elements within panzoom on mobile
             e.stopImmediatePropagation();
         });
-        $('.boost-container > div.dropdown-container:last-child select').change({ viewcontroller: this }, (e) => {
+        $('.boost-container.individual > div.dropdown-container:last-child select').change({ viewcontroller: this }, (e) => {
             let $elem = $(e.currentTarget);
             for (var i = 0; i < $elem.length; i++) {
                 let index = $($elem[i]).find('option:selected').index();
@@ -827,6 +829,26 @@ class ViewController {
                 gaRequests.send('main', 'dropdownChange', {
                     'View Type': 'Main View',
                     'Interface Type': 'Equipment Potential Dropdown',
+                    'Number Of Interfaces Used': 1
+                });
+            }
+            catch (e) { }
+        }).on('pointerdown mousedown touchstart', function (e) {
+            // Allow clickable elements within panzoom on mobile
+            e.stopImmediatePropagation();
+        });
+        $('.boost-container.global > div.dropdown-container:last-child select').change({ viewcontroller: this }, (e) => {
+            let $elem = $(e.currentTarget);
+            for (var i = 0; i < $elem.length; i++) {
+                let index = $($elem[i]).find('option:selected').index();
+                e.data.viewcontroller.assistant.setBoostWeekIdx(index);
+            }
+            e.data.viewcontroller.updateURLParams();
+            e.data.viewcontroller.updateView();
+            try {
+                gaRequests.send('main', 'dropdownChange', {
+                    'View Type': 'Main View',
+                    'Interface Type': 'Boost Week Dropdown',
                     'Number Of Interfaces Used': 1
                 });
             }

@@ -18,6 +18,8 @@ class Assistant {
         this.data = data;
         this.rateBoostOptions = [];
         this.potentialOptions = [];
+        this.boostWeekIdx = 0; // Boost idx from boost week
+        this.boostWeekVals = [0, 5, 10]; // Boost values from boost week
         this.junkCodes = ["ZA01", "ZB01", "ZC01", "ZD01", "ZE01", "ZF01", "ZG01", "ZH01", "ZI01"];
         this.SIMULATOR_WEBSITE = "https://arks-layer.com/abilitysim/";
         // Make functions immutable
@@ -968,7 +970,7 @@ class Assistant {
             return this.SIMULATOR_WEBSITE + '#!' + this.pageTreeRoot.children[0].toURL(isForSimulator);
         }
         else {
-            return this.encodeURLParams(this.pageTreeRoot.toURL());
+            return this.encodeURLParams(`${(this.boostWeekIdx > 0) ? `/bw=${this.boostWeekIdx}` : ``}` + this.pageTreeRoot.toURL());
         }
     }
 
@@ -1110,6 +1112,10 @@ class Assistant {
                         if (fodder.potentialIdx >= 0 && fodder.potentialIdx < fodder.potentialOptions.length) {
                             abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.potential[fodder.potentialIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
                         }
+                        if (this.boostWeekIdx > 0) {
+                            abilitySuccessRates[k] += this.boostWeekVals[this.boostWeekIdx];
+                            abilitySuccessRates[k] = Math.min(Math.max(abilitySuccessRates[k], minRate), maxRate);
+                        }
                         abilitySuccessRates.length++;
                         if (fodderSuccessRate < 0) fodderSuccessRate = (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
                         else fodderSuccessRate *= (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
@@ -1165,6 +1171,11 @@ class Assistant {
         for (var i = 0; i < pagesData.length; i++) {
             let pageData = pagesData[i];
             if (!pageData || pagesData == '') continue;
+            let boostWeekIdx = pageData.match(/bw=[0-9]/);
+            if (boostWeekIdx && boostWeekIdx[0]) {
+                this.boostWeekIdx = parseInt(boostWeekIdx[0].match(/[0-9]/));
+                continue;
+            }
             let targetFodder = pageData.match(/r=(\*?[A-Z0-9]{4,}[.]?)*/g);
             if (!targetFodder || !targetFodder[0] || targetFodder == '') continue;
             let targetAffixes = targetFodder[0].match(/\*?[A-Z0-9]{4,}/g);
@@ -1711,6 +1722,12 @@ class Assistant {
             }
         }
         return uses;
+    }
+
+    setBoostWeekIdx(idx) {
+        if (idx >= 0 && idx < this.boostWeekVals.length) {
+            this.boostWeekIdx = idx;
+        }
     }
 }
 
