@@ -168,8 +168,11 @@ class Assistant {
     // based on the choices the users made.
     // *Assumes choices are for distinct affixes
     getAffixInstancesInvolvedIn(choicesArray) {
-        if (!choicesArray || !Array.isArray(choicesArray) || choicesArray.length <= 0
-            || choicesArray.length > MAX_NUM_AFFIX || !this.affixDB) return null;
+        if (!choicesArray || !Array.isArray(choicesArray)
+            || choicesArray.length <= 0 || !this.affixDB) return null;
+        let numAbilityFactorChoices = choicesArray.filter((a) => a != null && a.isAbilityFactor).length;
+        let numNormalChoices = choicesArray.length - numAbilityFactorChoices;
+        if (numNormalChoices > MAX_NUM_AFFIX) return null;
 
         let lists = [];
         for (var i = 0; i < choicesArray.length; i++) {
