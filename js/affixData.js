@@ -324,10 +324,6 @@
                 "UB"
             ],
             [
-                "YA",
-                "UC"
-            ],
-            [
                 "XG", // Mark Receptor
                 "XI" // With other Add Abilities
             ]
@@ -360,10 +356,6 @@
             [
                 "VB*",
                 "VC*"
-            ],
-            [
-                "YA*",
-                "UC*"
             ],
             [
                 "XG", // Mark Receptor
