@@ -372,6 +372,21 @@ class Assistant {
             if (pageStartIdx >= page.fodders.length) {
                 // Something went wrong, too many nontransferables to fit
             }
+            let hasAddedToExisting = false;
+            if (/^X[ACF]/.test(nontransferables[i].code)) {
+                for (var j = 0; j < page.size() && j < pageStartIdx; j++) {
+                    for (var k = 0; k < page.fodders[j].size(); k++) {
+                        if (/^X[ACF]/.test(page.fodders[j].affixes[k].code)
+                            && page.fodders[j].affixes[k].code != nontransferables[i].code) {
+                            page.fodders[j].addAffixes([nontransferables[i]]);
+                            hasAddedToExisting = true;
+                            break;
+                        }
+                    }
+                    if (hasAddedToExisting) break;
+                }
+            }
+            if (hasAddedToExisting) continue;
             // place receptor on a separate fodder
             page.fodders[pageStartIdx].addAffixes([nontransferables[i]]);
             pageStartIdx++; // Essentially locks the currrent fodder from edits
@@ -565,10 +580,7 @@ class Assistant {
                     var fodderAffix = fodder.affixes[k];
                     // if fodder contains affix code preffix or exclude pattern
                     if (fodderAffix.code.startsWith(affixCodePreffix)
-                        || this.testExcludePattern(affix, fodderAffix)
-                        || RECEPTOR_REGEX.test(affix.code) || RECEPTOR_REGEX.test(fodderAffix.code)
-                        || this.affixDB[affix.code].choices.length <= 0
-                        || this.affixDB[fodderAffix.code].choices.length <= 0) {
+                        || this.testExcludePattern(affix, fodderAffix)) {
                         hasConflict = true;
                         break;
                     }
@@ -760,6 +772,12 @@ class Assistant {
             let checkA = false;
             let checkB = false;
             for (var j = 0; j < patterns[i].length; j++) {
+                if (patterns[i][j].endsWith(':regex')) {
+                    let testRegex = new RegExp(patterns[i][j].slice(0, patterns[i][j].length - 6))
+                    if (testRegex.test(codeA)) checkA = true;
+                    if (testRegex.test(codeB)) checkB = true;
+                    continue;
+                }
                 if (patterns[i][j].endsWith('*'))
                     patterns[i][j] = patterns[i][j].slice(0, patterns[i][j].length - 1);
                 if (codeA.startsWith(patterns[i][j])) checkA = true;

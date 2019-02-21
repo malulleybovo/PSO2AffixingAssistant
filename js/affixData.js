@@ -360,6 +360,18 @@
             [
                 "XG", // Mark Receptor
                 "XI" // With other Add Abilities
+            ],
+            [
+                "^X[ABDE][0-9]{2}:regex"
+            ],
+            [
+                "^X[CBDE][0-9]{2}:regex"
+            ],
+            [
+                "^X[FBDE][0-9]{2}:regex"
+            ],
+            [
+                "^X[IBDE][0-9]{2}:regex"
             ]
         ]
     },
