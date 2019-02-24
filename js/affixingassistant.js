@@ -270,9 +270,13 @@ class Assistant {
                 // for every affixA
                 for (var j = 0; j < fodderA.size(); j++) {
                     let affixA = fodderA.affixes[j];
+                    // Skip checking non-transferables
+                    if (this.affixDB[affixA.code].choices.length == 0) continue;
                     // for every affixB
                     for (var m = 0; m < fodderB.size(); m++) {
                         let affixB = fodderB.affixes[m];
+                        // Skip checking non-transferables
+                        if (this.affixDB[affixB.code].choices.length == 0) continue;
                         let arr;
                         // get placementA1 of affixA on fodderA
                         arr = fodderA.affixes.slice(0);
