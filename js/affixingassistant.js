@@ -768,6 +768,11 @@ class Assistant {
             || !affixB || !affixA.code || !affixB.code
             || !this.data.excludePattern.select) return true;
 
+        if (this.affixDB[affixA.code].choices.length == 0
+            && !RECEPTOR_REGEX.test(affixB.code)) return true;
+        if (this.affixDB[affixB.code].choices.length == 0
+            && !RECEPTOR_REGEX.test(affixA.code)) return true;
+
         let codeA = affixA.code;
         let codeB = affixB.code;
         let patterns = this.data.excludePattern.select;
