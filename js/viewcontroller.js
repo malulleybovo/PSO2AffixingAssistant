@@ -380,7 +380,6 @@ class ViewController {
         if (!(vc instanceof ViewController)) return;
         if (vc.affixesSelected.length <= 0) return;
         vc.isIncludingFoddersIntrinsicFactor = false;
-        vc.shouldUseTrainer = false;
         if ($('div.affix-selection-container').length != 0) {
             $('div.affix-selection-container').remove();
         }
@@ -401,6 +400,7 @@ class ViewController {
         }
         let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
         if (!shouldRetainChoices) {
+            vc.shouldUseTrainer = false;
             vc.choicesSelected.splice(0, vc.choicesSelected.length);
             for (var i = 0; i < vc.affixesSelected.length; i++) {
                 if (!vc.affixesSelected[i] || !vc.affixesSelected[i].code) continue;
