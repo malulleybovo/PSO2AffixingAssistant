@@ -20,6 +20,7 @@ class Assistant {
         this.potentialOptions = [];
         this.boostWeekIdx = 0; // Boost idx from boost week
         this.boostWeekVals = [0, 5, 10]; // Boost values from boost week
+        this.trainerCode = "VO01";
         this.junkCodes = ["ZA01", "ZB01", "ZC01", "ZD01", "ZE01", "ZF01", "ZG01", "ZH01", "ZI01"];
         this.SIMULATOR_WEBSITE = "https://arks-layer.com/abilitysim/";
         // Make functions immutable
@@ -187,7 +188,7 @@ class Assistant {
     // STEP 5: Use all the unique affixes and the cost of each to build a new page
     // that produces the desired result.
     // *Assumes costs is an array of affix codes from most expensive (index 0) to least
-    buildPageForChoices(choices, shouldSpread, targetNumSlots) {
+    buildPageForChoices(choices, shouldSpread, targetNumSlots, shouldUseTrainer) {
         let affixes = this.getAffixInstancesInvolvedIn(choices);
         if (!affixes || !Array.isArray(affixes) || !this.affixDB) return null;
         let numSpecialAbilityFactor = 0;
@@ -201,7 +202,7 @@ class Assistant {
         if (affixes.length <= 0 && numSpecialAbilityFactor <= 0 && numAddAbility <= 0) return null;
 
         // Generate new page
-        let page = this.buildPageInPyramid(affixes, targetNumSlots);
+        let page = this.buildPageInPyramid(affixes, targetNumSlots, shouldUseTrainer);
 
         if (page == null) {
             try {
@@ -358,7 +359,7 @@ class Assistant {
         return true;
     }
 
-    buildPageInPyramid(affixes, targetNumSlots) {
+    buildPageInPyramid(affixes, targetNumSlots, shouldUseTrainer) {
         let page = new Page();
         let fodders = []
         for (var i = 0; i < page.CAPACITY; i++) { // One list of affixes per fodder
@@ -396,6 +397,11 @@ class Assistant {
             pageStartIdx++; // Essentially locks the currrent fodder from edits
         }
         // FOR TRANSFERABLES
+        if (shouldUseTrainer && page.size() > pageStartIdx // If using Guidance Trainer
+            && !transferables.includes(this.affixDB[this.trainerCode].abilityRef)) { // But not transfering it
+            // Add one instance of Guidance Trainer just to increase success rate
+            page.fodders[pageStartIdx].addAffixes(this.affixDB[this.trainerCode].abilityRef);
+        }
         // sort affixes by max transfer rate
         var that = this;
         transferables.sort(function (affixA, affixB) {
@@ -898,7 +904,7 @@ class Assistant {
         }
     }
 
-    doAffixesHavePossiblePlacement({ choices, targetNumSlots = (new Fodder()).CAPACITY, targetNumFodders = (new Page()).CAPACITY }) {
+    doAffixesHavePossiblePlacement({ choices, targetNumSlots = (new Fodder()).CAPACITY, targetNumFodders = (new Page()).CAPACITY }, isUsingTrainer = false) {
         if (targetNumSlots <= 0 || targetNumFodders <= 0) return false;
         let numSpecialAbilityFactor = 0;
         for (var i = 0; i < choices.length; i++) {
@@ -921,7 +927,7 @@ class Assistant {
             return false;
         }
         // Check if there is enough slots to fit all transferable abilities
-        if (affixes.length - numNontransferables > (targetNumFodders - numNontransferables) * targetNumSlots) {
+        if (affixes.length - numNontransferables + (isUsingTrainer ? 1 : 0) > (targetNumFodders - numNontransferables) * targetNumSlots) {
             // Too many affixes to place in few places
             return false;
         }
@@ -953,7 +959,7 @@ class Assistant {
             // Count duplicates per affix
             if (this.affixDB[affix.code] && this.affixDB[affix.code].choices // Has choices
                 && !this.isSpecialAbility(affix) // Is not an Add Ability
-                && (this.affixDB[affix.code].choices.length <= 0 // Cannot bew transferred
+                && (this.affixDB[affix.code].choices.length <= 0 // Cannot be transferred
                     || (this.affixDB[affix.code].choices.length == 1 // Or can only be transferred as a Special Ability Factor
                         && this.affixDB[affix.code].choices[0].isAbilityFactor))) {
                 nontransferables.push(affix);
@@ -1146,6 +1152,10 @@ class Assistant {
                         }
                         if (fodder.potentialIdx >= 0 && fodder.potentialIdx < fodder.potentialOptions.length) {
                             abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.potential[fodder.potentialIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
+                        }
+                        // Success rate up if main fodder (fodder0) has Guidance Trainer ability
+                        if (pageConn.size() > 0 && pageConn.fodders[0].affixes.includes(this.affixDB[this.trainerCode].abilityRef)) {
+                            abilitySuccessRates[k] = Math.min(Math.max(abilitySuccessRates[k] + 5, minRate), maxRate);
                         }
                         if (this.boostWeekIdx > 0) {
                             abilitySuccessRates[k] += this.boostWeekVals[this.boostWeekIdx];

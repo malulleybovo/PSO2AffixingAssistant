@@ -13,6 +13,10 @@ const lang = Object.freeze({
             en: "GOAL",
             jp: "ゴール"
         },
+        mainFodderTitle: {
+            en: "Main Fodder",
+            jp: "主装備"
+        },
         fodderTitle: {
             en: "Fodder",
             jp: "装備"
@@ -166,6 +170,14 @@ const lang = Object.freeze({
         spreadDescription: {
             en: "Makes it cheaper to produce the intermediary equipment",
             jp: "仲介機器を生産するのが安くなる"
+        },
+        trainerLabel: {
+            en: "Guidance Trainer +5%",
+            jp: "錬成の導き"
+        },
+        trainerDescription: {
+            en: "Increases affixing success rate by 5% (it must be in the main fodder)",
+            jp: "特殊能力の成功率を5％上昇させる(それは主装備の中にある必要があります)"
         },
         affixingSelectionTitle: {
             en: "Affixing Goal",
@@ -3021,6 +3033,12 @@ const lang = Object.freeze({
         name_jp: "エンぺ・エンブレイス",
         effect_en: "Adds 90 EXP to NT weapon grinds.",
         effect_jp: "新世武器強化時の経験値が90増加する。"
+    },
+    "VO01": {
+        name_en: "Guidance Trainer",
+        name_jp: "錬成の導き",
+        effect_en: "Increase Special Ability Addition success rate by 5%.",
+        effect_jp: "特殊能力の成功率を5％上昇させる。"
     },
     "VK05": {
         name_en: "NT Weapon Booster",

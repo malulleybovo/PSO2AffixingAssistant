@@ -112,7 +112,7 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, boost
             pageTempate += FODDER_TEMPLATE({
                 fodder: fodders[i],
                 isGoal: isGoal,
-                titleLabel: (isGoal) ? lang.app.goalFodderTitle[langCode] : (lang.app.fodderTitle[langCode] + ' ' + i),
+                titleLabel: (isGoal) ? lang.app.goalFodderTitle[langCode] : i == 0 ? lang.app.mainFodderTitle[langCode] : (lang.app.fodderTitle[langCode] + ' ' + i),
                 produceLabel: (isGoal) ? lang.app.reAffixLabel[langCode] : null,
                 dataConn: (fodderOffsets[i] >= 0) ? fodderDataConnBase + fodderOffsets[i] : -1,
                 isSameGear: page.fodders[i].isSameGear,
@@ -327,7 +327,7 @@ const REVIEWING_PANEL = ({ fodders, langCode }) => {
     }
     for (var i = 0; i < fodders.length; i++) {
         let fodderInReview = fodders[i];
-        panel += `<div data-fodderidx="${i}"><div class="title bold">${lang.app.fodderTitle[langCode]} ${i}</div><div>`;
+        panel += `<div data-fodderidx="${i}"><div class="title bold">${i == 0 ? lang.app.mainFodderTitle[langCode] : (lang.app.fodderTitle[langCode] + ' ' + i)}</div><div>`;
         for (var j = 0; j < fodderInReview.size(); j++) {
             let affix = fodderInReview.affixes[j];
             if (!affix.code) continue;
@@ -342,7 +342,7 @@ const REVIEWING_PANEL = ({ fodders, langCode }) => {
     return panel;
 };
 
-const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, isGlobalSearch, shouldUpslot, shouldSpread, langCode }) => {
+const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, isGlobalSearch, shouldUpslot, shouldSpread, shouldUseTrainer, langCode }) => {
     let isAffixSelection = type == 'affixSelection';
     let isChoiceSelection = type == 'choiceSelection';
     let isReviewTweak = type == 'reviewTweak';
@@ -363,6 +363,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                 `<div class="options">${(affixesSelected.length > 1) ? `
                     ${CHECKBOX_TEMPLATE({ label: lang.app.upslottingLabel[langCode], description: lang.app.upslottingDescription[langCode], isChecked: shouldUpslot })}` : ``}
                     ${CHECKBOX_TEMPLATE({ label: lang.app.spreadLabel[langCode], description: lang.app.spreadDescription[langCode], isChecked: shouldSpread })}
+                    ${CHECKBOX_TEMPLATE({ label: lang.app.trainerLabel[langCode], description: lang.app.trainerDescription[langCode], isChecked: shouldUseTrainer })}
                 </div>` 
             : ``}<div class="content">`;
     if (isAffixSelection) {
@@ -449,7 +450,7 @@ const AFFIX_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, categories, abilityLis
     });
 };
 
-const CHOICE_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, choices, isGlobalSearch, shouldUpslot, shouldSpread, langCode }) => {
+const CHOICE_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, choices, isGlobalSearch, shouldUpslot, shouldSpread, shouldUseTrainer, langCode }) => {
     return SELECTION_MENU_TEMPLATE({
         type: 'choiceSelection',
         affixesSelected: affixesSelected,
@@ -457,6 +458,7 @@ const CHOICE_SELECTION_VIEW_TEMPLATE = ({ affixesSelected, choices, isGlobalSear
         isGlobalSearch: isGlobalSearch,
         shouldUpslot: shouldUpslot,
         shouldSpread: shouldSpread,
+        shouldUseTrainer: shouldUseTrainer,
         langCode: langCode
     });
 };

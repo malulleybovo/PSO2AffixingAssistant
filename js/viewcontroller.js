@@ -44,6 +44,7 @@ class ViewController {
         this.filters = lang.filters[this.langCode];
         this.shouldUpslot = true;
         this.shouldSpread = true;
+        this.shouldUseTrainer = false;
         this.pageInReview = null;
         this.newlyProducedTimeout = null;
         this.affixTweakSelection = null;
@@ -379,6 +380,7 @@ class ViewController {
         if (!(vc instanceof ViewController)) return;
         if (vc.affixesSelected.length <= 0) return;
         vc.isIncludingFoddersIntrinsicFactor = false;
+        vc.shouldUseTrainer = false;
         if ($('div.affix-selection-container').length != 0) {
             $('div.affix-selection-container').remove();
         }
@@ -431,6 +433,7 @@ class ViewController {
                 choices: choices,
                 shouldUpslot: vc.shouldUpslot,
                 shouldSpread: vc.shouldSpread,
+                shouldUseTrainer: vc.shouldUseTrainer,
                 langCode: vc.langCode
             }));
         vc.updateChoiceSelectionView();
@@ -442,7 +445,8 @@ class ViewController {
         }
         else $('div.choice-selection-container').removeClass('hidden');
         $('div.choice-selection-container div.options > div.checkbox-container:first-child').click({ viewcontroller: vc }, vc.setShouldUpslot);
-        $('div.choice-selection-container div.options > div.checkbox-container:last-child').click({ viewcontroller: vc }, vc.setShouldSpread);
+        $('div.choice-selection-container div.options > div.checkbox-container:nth-child(2)').click({ viewcontroller: vc }, vc.setShouldSpread);
+        $('div.choice-selection-container div.options > div.checkbox-container:last-child').click({ viewcontroller: vc }, vc.setShouldUseTrainer);
         $('div.choice-selection-container li > div').click({ viewcontroller: vc }, vc.selectChoice);
         if (shouldReturnToAffixSelection) {
             $('div.choice-selection-container div.cancel-button').click(
@@ -1152,7 +1156,7 @@ class ViewController {
         let choices = vc.choicesSelected;
         let targetNumSlots = vc.affixesSelected.length - (vc.isIncludingFoddersIntrinsicFactor ? 1 : 0)
             - ((vc.shouldUpslot && vc.affixesSelected.length > 1) ? 1 : 0);
-        let newPage = vc.assistant.buildPageForChoices(choices, vc.shouldSpread, targetNumSlots);
+        let newPage = vc.assistant.buildPageForChoices(choices, vc.shouldSpread, targetNumSlots, vc.shouldUseTrainer);
         if (!newPage) {
             console.warn(
                 'Attempted to produce a new page with choices %o, but produced page was %o',
@@ -1335,8 +1339,16 @@ class ViewController {
     setShouldSpread(e) {
         let vc = (this instanceof ViewController) ? this : (e && e.data) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
-        let $checkbox = $('div.choice-selection-container div.options div.checkbox-container:last-child input[type=checkbox]');
+        let $checkbox = $('div.choice-selection-container div.options div.checkbox-container:nth-child(2) input[type=checkbox]');
         vc.shouldSpread = $checkbox.prop('checked');
+        vc.updateChoiceSelectionView();
+    }
+
+    setShouldUseTrainer(e) {
+        let vc = (this instanceof ViewController) ? this : (e && e.data) ? e.data.viewcontroller : undefined;
+        if (!(vc instanceof ViewController)) return;
+        let $checkbox = $('div.choice-selection-container div.options div.checkbox-container:last-child input[type=checkbox]');
+        vc.shouldUseTrainer = $checkbox.prop('checked');
         vc.updateChoiceSelectionView();
     }
 

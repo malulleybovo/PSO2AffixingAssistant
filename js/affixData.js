@@ -7468,6 +7468,17 @@
             effect: "Adds 90 EXP to NT weapon grinds."
         },
         {
+            code: "VO01",
+            gid: "YA",
+            name: "Guidance Trainer",
+            extend: [
+                0,
+                50,
+                80
+            ],
+            effect: "Boosts Special Ability<br>transfer success rate onto this item by 5%."
+        },
+        {
             code: "VK05",
             gid: "YA",
             name: "NT Weapon Booster",
