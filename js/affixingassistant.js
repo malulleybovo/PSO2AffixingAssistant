@@ -451,8 +451,80 @@ class Assistant {
                     }
                 }
             }
+            // Check if ability can be placed in any available spot or swapped with an already placed ability
+            // (This is an excetional scenario that may produce fodders that are harder to make)
             if (!hasAdded) {
-                // Or something went wrong and affix cannot be placed anywhere
+                let foddersFull = [];
+                let foddersNotFull = [];
+                for (var j = 0; j < page.size(); j++) {
+                    let fodder = page.fodders[j];
+                    // Check fodders with space available
+                    if (fodder.size() < targetNumSlots) {
+                        foddersNotFull.push(fodder);
+                    }
+                    else {
+                        foddersFull.push(fodder);
+                    }
+                }
+                // Try checking for a possible available spot
+                for (var j = 0; j < foddersNotFull.length; j++) {
+                    let placement = this.getPlacement(affix, foddersNotFull[j], -1, targetNumSlots);
+                    if (placement) {
+                        foddersNotFull[j].addAffixes(affix);
+                        hasAdded = true;
+                        break;
+                    }
+                }
+                // If still did not work, try moving an ability in a full fodder to another fodder
+                // and placing this ability in it instead.
+                if (!hasAdded) {
+                    // Find a good candidate
+                    let candidates = [];
+                    // For every full fodder
+                    for (var j = 0; j < foddersFull.length; j++) {
+                        // For every ability in the full fodder
+                        for (var k = 0; k < foddersFull.size(); k++) {
+                            let checkFodder = foddersFull[j].clone();
+                            // Remove just one ability of the cloned fodder
+                            checkFodder.affixes.splice(k, 1);
+                            // Check if the new ability can be placed in its place
+                            let checkPlacement = this.getPlacement(affix, checkFodder, -1, targetNumSlots);
+                            // If it can, save this possibility and the coumpound rate it had
+                            if (checkPlacement) {
+                                candidates.push({
+                                    fodder: foddersFull[j],
+                                    idxRemoved: k,
+                                    compoundRate: checkPlacement.compoundRate
+                                });
+                            }
+                        }
+                    }
+                    // Sort all swap possibilities by compount rate (from high to low)
+                    candidates.sort((a, b) => a.compoundRate - b.compoundRate);
+                    // From best candidates to worst candidates
+                    for (var j = 0; j < candidates.length; j++) {
+                        let abilityThatMaySwap = candidates.fodder.affixes[candidates.idxRemoved];
+                        // For every non-full fodder
+                        for (var k = 0; k < foddersNotFull.length; k++) {
+                            // Move ability that may be swapped into first non-full fodder that it can be placed into
+                            let placement = this.getPlacement(abilityThatMaySwap, foddersNotFull[k], -1, targetNumSlots);
+                            if (placement) {
+                                candidates.fodder.affixes.splice(candidates.idxRemoved, 1); // Remove from old fodder
+                                foddersNotFull[k].addAffixes(abilityToSwap); // Into new fodder
+                                // Add new ability into the now available space
+                                candidates.fodder.addAffixes(affix);
+                                hasAdded = true;
+                                break;
+                            }
+                        }
+                        if (hasAdded) break;
+                    }
+                }
+
+            }
+            // If all attempts to add all abilities fail...
+            if (!hasAdded) {
+                // Something went wrong and affix cannot be placed anywhere
                 return null;
             }
         }
