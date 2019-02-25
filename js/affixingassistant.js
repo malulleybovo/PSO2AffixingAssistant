@@ -399,6 +399,10 @@ class Assistant {
         // sort affixes by max transfer rate
         var that = this;
         transferables.sort(function (affixA, affixB) {
+            // Leave junk as lowest priority
+            if (that.junkCodes.includes(affixA.code)) return 1;
+            if (that.junkCodes.includes(affixB.code)) return -1;
+            // Sort non-junk abilities
             if (that.affixDB[affixA.code] && that.affixDB[affixA.code].choices[0]
                 && that.affixDB[affixB.code] && that.affixDB[affixB.code].choices[0]) {
                 let maxRateA = that.affixDB[affixA.code].choices[0].transferRate;
@@ -843,7 +847,7 @@ class Assistant {
                 if (idx >= 0) (junkIdxNeeded[idx]) ? junkIdxNeeded[idx]++ : junkIdxNeeded[idx] = 1;
             }
         }
-        page.fodders.sort((a, b) => {
+        let clonedFoddersArr = page.fodders.slice(0).sort((a, b) => {
             let numJunkInA = 0;
             for (var i = 0; i < a.size(); i++) {
                 let idx = this.junkCodes.indexOf(a.affixes[i].code);
@@ -859,7 +863,7 @@ class Assistant {
         var i = 0;
         let canRemove = false;
         while (i < page.size() && page.size() > this.IDEAL_MIN_PAGE_SIZE) {
-            let fodder = page.fodders[i];
+            let fodder = clonedFoddersArr[i];
             let hasOnlyJunk = fodder.specialAbilityFactor == null;
             for (var j = 0; j < fodder.size(); j++) {
                 let affix = fodder.affixes[j];
@@ -886,7 +890,8 @@ class Assistant {
                 }
             }
             if (hasOnlyJunk && canRemove) {
-                page.fodders.splice(i, 1);
+                page.fodders.splice(page.fodders.indexOf(clonedFoddersArr[i]), 1);
+                clonedFoddersArr.splice(i, 1);
             }
             else i++;
             if (Object.keys(junkIdxNeeded).length <= 0) canRemove = true;
