@@ -56,7 +56,7 @@ class Assistant {
                 ).setGoal(true)
             )
         ).addRateBoostOptions(this.getRateBoostOptions())
-        .addPotentialOptions(this.getPotentialOptions());
+            .addPotentialOptions(this.getPotentialOptions());
         this.setActivePageTreeNode(this.pageTreeRoot);
         this.setActiveFodder(this.pageTreeRoot.page.fodders[0]);
     }
@@ -483,7 +483,7 @@ class Assistant {
                     // For every full fodder
                     for (var j = 0; j < foddersFull.length; j++) {
                         // For every ability in the full fodder
-                        for (var k = 0; k < foddersFull.size(); k++) {
+                        for (var k = 0; k < foddersFull[j].size(); k++) {
                             let checkFodder = foddersFull[j].clone();
                             // Remove just one ability of the cloned fodder
                             checkFodder.affixes.splice(k, 1);
@@ -503,16 +503,17 @@ class Assistant {
                     candidates.sort((a, b) => a.compoundRate - b.compoundRate);
                     // From best candidates to worst candidates
                     for (var j = 0; j < candidates.length; j++) {
-                        let abilityThatMaySwap = candidates.fodder.affixes[candidates.idxRemoved];
+                        let candidate = candidates[j]
+                        let abilityThatMaySwap = candidate.fodder.affixes[candidate.idxRemoved];
                         // For every non-full fodder
                         for (var k = 0; k < foddersNotFull.length; k++) {
                             // Move ability that may be swapped into first non-full fodder that it can be placed into
                             let placement = this.getPlacement(abilityThatMaySwap, foddersNotFull[k], -1, targetNumSlots);
                             if (placement) {
-                                candidates.fodder.affixes.splice(candidates.idxRemoved, 1); // Remove from old fodder
-                                foddersNotFull[k].addAffixes(abilityToSwap); // Into new fodder
+                                candidate.fodder.affixes.splice(candidate.idxRemoved, 1); // Remove from old fodder
+                                foddersNotFull[k].addAffixes(abilityThatMaySwap); // Into new fodder
                                 // Add new ability into the now available space
-                                candidates.fodder.addAffixes(affix);
+                                candidate.fodder.addAffixes(affix);
                                 hasAdded = true;
                                 break;
                             }
@@ -579,11 +580,11 @@ class Assistant {
             fodder.affixes.sort((affixA, affixB) => {
                 let fakeFodder = (new Fodder()).addAffixes(
                     [fodder.affixes.slice(fodder.affixes.indexOf(affixA), 1)]
-                    );
+                );
                 let placementA = this.getPlacement(affixA, fakeFodder, 0, targetNumSlots);
                 fakeFodder = (new Fodder()).addAffixes(
                     [fodder.affixes.slice(fodder.affixes.indexOf(affixB), 1)]
-                    );
+                );
                 let placementB = this.getPlacement(affixB, fakeFodder, 0, targetNumSlots);
                 if (placementA && placementB) return placementA.numOverlaps - placementB.numOverlaps;
                 else if (!placementA) return -1;
@@ -610,7 +611,7 @@ class Assistant {
             // move affix found to fodder found
             if (toPageIdx >= 0 && fromAffixIdx >= 0) {
                 let affixToMove = fodder.affixes.splice(fromAffixIdx, 1)[0];
-                page.fodders[toPageIdx].addAffixes([ affixToMove ]);
+                page.fodders[toPageIdx].addAffixes([affixToMove]);
             }
             else {
                 // Something went wrong, no affix found
@@ -630,7 +631,7 @@ class Assistant {
                         }
                         else if (k + 1 < j && page.fodders[k].affixes.length > page.fodders[k + 1].affixes.length
                             && this.getPlacement(page.fodders[k].affixes[page.fodders[k].affixes.length - 1], page.fodders[j], j, targetNumSlots)) {
-                            fodder.addAffixes([ page.fodders[k].affixes.pop() ]);
+                            fodder.addAffixes([page.fodders[k].affixes.pop()]);
                             break;
                         }
                     }
@@ -976,7 +977,7 @@ class Assistant {
         }
     }
 
-    doAffixesHavePossiblePlacement({ choices, targetNumSlots = (new Fodder()).CAPACITY, targetNumFodders = (new Page()).CAPACITY }, isUsingTrainer = false) {
+    doAffixesHavePossiblePlacement({ choices, targetNumSlots = (new Fodder()).CAPACITY, targetNumFodders = (new Page()).CAPACITY, isUsingTrainer = false }) {
         if (targetNumSlots <= 0 || targetNumFodders <= 0) return false;
         let numSpecialAbilityFactor = 0;
         for (var i = 0; i < choices.length; i++) {
@@ -993,6 +994,8 @@ class Assistant {
         let transferablesData = this.getTransferablesAndNonTransferables(affixes);
         let numDuplPerTransferable = transferablesData.numDuplPerTransferable;
         let numNontransferables = transferablesData.numNontransferables;
+        // Disregard isUsingTrainer flag if already transfering Guidance Trainer
+        if (affixes.includes(this.affixDB[this.trainerCode].abilityRef)) isUsingTrainer = false;
         // Separate Nontransferables from Special Ability Factors
         if (numNontransferables + numSpecialAbilityFactor > targetNumFodders) {
             // Too many special affixes to fit

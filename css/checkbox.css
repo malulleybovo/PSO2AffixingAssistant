@@ -4,6 +4,10 @@
     margin: 0 auto;
 }
 
+.checkbox-container.disabled {
+    opacity: 0.5;
+}
+
 .checkbox-holder {
     position: relative;
     padding-left: 1.5em;

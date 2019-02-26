@@ -1275,11 +1275,24 @@ class ViewController {
                         testChoices[i] = choices[j];
                         if (!this.assistant.doAffixesHavePossiblePlacement({
                             choices: testChoices,
-                            targetNumSlots: this.affixesSelected.length - ((this.affixesSelected.length > 1 && this.shouldUpslot) ? 1 : 0)
+                            targetNumSlots: this.affixesSelected.length - ((this.affixesSelected.length > 1 && this.shouldUpslot) ? 1 : 0),
+                            isUsingTrainer: this.shouldUseTrainer
                         }))
                             $option.addClass('option-disabled');
                     }
                 }
+            }
+            let $trainerCheckbox = $('div.choice-selection-container div.options div.checkbox-container:last-child');
+            $trainerCheckbox.removeClass('disabled');
+            $trainerCheckbox.find('input[type=checkbox]').attr('disabled', false);
+            if ($trainerCheckbox.length > 0 && !this.shouldUseTrainer
+                && !this.assistant.doAffixesHavePossiblePlacement({
+                    choices: this.choicesSelected,
+                    targetNumSlots: this.affixesSelected.length - ((this.affixesSelected.length > 1 && this.shouldUpslot) ? 1 : 0),
+                    isUsingTrainer: !this.shouldUseTrainer
+                })) {
+                    $trainerCheckbox.addClass('disabled');
+                    $trainerCheckbox.find('input[type=checkbox]').attr('disabled', true);
             }
         }
         $(`div.choice-selection-container .confirm-button`).removeClass('disabled');
@@ -1348,6 +1361,7 @@ class ViewController {
         let vc = (this instanceof ViewController) ? this : (e && e.data) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         let $checkbox = $('div.choice-selection-container div.options div.checkbox-container:last-child input[type=checkbox]');
+        if ($checkbox.hasClass('disabled')) return;
         vc.shouldUseTrainer = $checkbox.prop('checked');
         vc.updateChoiceSelectionView();
     }
