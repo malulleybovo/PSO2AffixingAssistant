@@ -360,18 +360,6 @@
             [
                 "XG", // Mark Receptor
                 "XI" // With other Add Abilities
-            ],
-            [
-                "^X[ABDE][0-9]{2}:regex"
-            ],
-            [
-                "^X[CBDE][0-9]{2}:regex"
-            ],
-            [
-                "^X[FBDE][0-9]{2}:regex"
-            ],
-            [
-                "^X[IBDE][0-9]{2}:regex"
             ]
         ]
     },
@@ -1520,6 +1508,36 @@
             "Polytan Smile",
             "Phrase Decay",
             "Arkuma Smile"
+        ]
+    },
+    pairingExceptions: {
+        strict: [ // Always checked
+            [ // Extreme Receptor + Any Soul
+                "XB01",
+                "R"
+            ],
+            [ // Soul Receptor + Gift Receptor
+                "XA",
+                "XC"
+            ],
+            [ // Soul Receptor + Factor Receptor
+                "XA",
+                "XF"
+            ],
+            [ // Gift Receptor + Factor Receptor
+                "XC",
+                "XF"
+            ]
+        ],
+        lenient: [ // Only checked if explicitly told to (used for tweaks)
+            [ // Soul Receptor + Anything (due to Special Ability Factor)
+                "XA",
+                ""
+            ],
+            [ // Factor Receptor + Anything (due to Special Ability Factor)
+                "XF",
+                ""
+            ]
         ]
     },
     abilityList: [

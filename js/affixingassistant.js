@@ -646,7 +646,7 @@ class Assistant {
         return page;
     }
 
-    getPlacement(affix, fodder, pageIdx, targetNumSlots) {
+    getPlacement(affix, fodder, pageIdx, targetNumSlots, testExceptionPairing = false) {
         // if fodder is at capacity (either at same slot as result or at max 8)
         if (!(fodder instanceof Fodder) || (targetNumSlots && fodder.affixes.length >= targetNumSlots)) {
             // continue to next fodder
@@ -666,8 +666,8 @@ class Assistant {
                 for (var k = 0; k < fodder.affixes.length; k++) {
                     var fodderAffix = fodder.affixes[k];
                     // if fodder contains affix code preffix or exclude pattern
-                    if (fodderAffix.code.startsWith(affixCodePreffix)
-                        || this.testExcludePattern(affix, fodderAffix)) {
+                    if (fodderAffix.code.startsWith(affixCodePreffix) // If of same type
+                        || this.testExcludePattern(affix, fodderAffix, testExceptionPairing)) {
                         hasConflict = true;
                         break;
                     }
@@ -846,15 +846,23 @@ class Assistant {
             || this.testExcludePattern(affixA, affixB);
     }
 
-    testExcludePattern(affixA, affixB) {
+    testExcludePattern(affixA, affixB, testExceptionPairing) {
         if (!this.data || !this.data.excludePattern || !affixA
             || !affixB || !affixA.code || !affixB.code
             || !this.data.excludePattern.select) return true;
 
-        if (this.affixDB[affixA.code].choices.length == 0
-            && !RECEPTOR_REGEX.test(affixB.code)) return true;
-        if (this.affixDB[affixB.code].choices.length == 0
-            && !RECEPTOR_REGEX.test(affixA.code)) return true;
+        // If not an exception pair
+        if (!this.isExceptionPair(affixA, affixB, testExceptionPairing)) {
+            // Check for conflict when one or both abilities are receptors
+            if (RECEPTOR_REGEX.test(affixA.code)
+                || RECEPTOR_REGEX.test(affixB.code)) return true;
+            // Check for conflict when one or both are non-transferable but not receptor
+            // such as Temptation and Another History
+            if (this.affixDB[affixA.code].choices.length == 0
+                && !RECEPTOR_REGEX.test(affixB.code)) return true;
+            if (this.affixDB[affixB.code].choices.length == 0
+                && !RECEPTOR_REGEX.test(affixA.code)) return true;
+        }
 
         let codeA = affixA.code;
         let codeB = affixB.code;
@@ -894,9 +902,33 @@ class Assistant {
             || (affixA.code.startsWith('Z') && affixB.code.startsWith('Z'))) return false;
         let cloneA = fodderA.clone((a) => a != affixA && !a.code.startsWith('Z'));
         let cloneB = fodderB.clone((b) => b != affixB && !b.code.startsWith('Z'));
-        let testA = this.getPlacement(affixA, cloneB, -1, fodderB.size());
-        let testB = this.getPlacement(affixB, cloneA, -1, fodderA.size());
+        let testA = this.getPlacement(affixA, cloneB, -1, fodderB.size(), true /*pairing exception enabled*/);
+        let testB = this.getPlacement(affixB, cloneA, -1, fodderA.size(), true /*pairing exception enabled*/);
         return testA && testB;
+    }
+
+    isExceptionPair(affixA, affixB, isLenient = false) {
+        if (!affixA || !affixB || !affixA.code || !affixB.code || !this.affixDB
+            || !this.affixDB[affixA.code] || !this.affixDB[affixB.code]) return false;
+
+        let isExcPair = false;
+        let testCases = this.data.pairingExceptions.strict.slice(0);
+        if (isLenient) testCases.push(...this.data.pairingExceptions.lenient.slice(0));
+        for (var i = 0; i < testCases.length; i++) {
+            let excPair = testCases[i];
+            if (excPair.length < 2) continue;
+
+            let hasAffixAPassedA = affixA.code.startsWith('Z') || excPair[0] == "" || affixA.code.startsWith(excPair[0]),
+                hasAffixAPassedB = affixA.code.startsWith('Z') || excPair[1] == "" || affixA.code.startsWith(excPair[1]);
+            let hasAffixBPassedA = affixB.code.startsWith('Z') || excPair[0] == "" || affixB.code.startsWith(excPair[0]),
+                hasAffixBPassedB = affixB.code.startsWith('Z') || excPair[1] == "" || affixB.code.startsWith(excPair[1]);
+            if ((hasAffixAPassedA && hasAffixBPassedB)
+                || (hasAffixAPassedB && hasAffixBPassedA)) {
+                isExcPair = true;
+                break;
+            }
+        }
+        return isExcPair;
     }
 
     refillJunk(fodder) {

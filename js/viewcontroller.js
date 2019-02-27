@@ -286,7 +286,8 @@ class ViewController {
                     AFFIX_SELECTION_VIEW_TEMPLATE({
                         affixesSelected: this.affixesSelected,
                         categories: this.filters,
-                        abilityList: this.assistant.data.abilityList, // List of all affixes
+                        abilityList: this.assistant.data.abilityList.filter( // List of all transferable affixes
+                            a => this.assistant.affixDB[a.code].choices.length > 0),
                         langCode: this.langCode
                     }));
                 if (shouldAnimate) {
