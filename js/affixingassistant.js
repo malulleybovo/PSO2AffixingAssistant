@@ -343,6 +343,19 @@ class Assistant {
                 );
             }
         }
+        // Sort fodders to display the optimal Main Fodder
+        page.fodders.sort((a, b) => {
+            // Leave fodders with nontransferables for last
+            if (a.affixes.filter(a => this.affixDB[a.code].choices.length == 0).length > 0) return 1;
+            if (b.affixes.filter(a => this.affixDB[a.code].choices.length == 0).length > 0) return -1;
+            // Sort fodders by lowest slots
+            if (a.affixes.filter(a => !a.code.startsWith('Z')).length
+                > b.affixes.filter(a => !a.code.startsWith('Z')).length)
+                // Prioritize b, unless a has trainer
+                return a.affixes.includes(this.affixDB[this.trainerCode].abilityRef) ? -1 : 1;
+            // Else prioritize a, unless b has trainer
+            else return b.affixes.includes(this.affixDB[this.trainerCode].abilityRef) ? 1 : -1;
+        });
 
         return page;
     }
@@ -1031,13 +1044,13 @@ class Assistant {
         if (affixes.includes(this.affixDB[this.trainerCode].abilityRef)) isUsingTrainer = false;
         // Account for exception pairing when checking limits
         for (var i = 0; i < transferablesData.nontransferables.length; i++) {
-            let nonTrnasfA = transferablesData.nontransferables[i];
+            let nonTransfA = transferablesData.nontransferables[i];
             let testSlots = 1;
             for (var j = 0; j != i && j < transferablesData.nontransferables.length; j++) {
-                let nonTrnasfB = transferablesData.nontransferables[j];
+                let nonTransfB = transferablesData.nontransferables[j];
                 // For every two different non-transferables, if they are an exception pair
                 // and there is space to put them together
-                if (this.isExceptionPair(nonTrnasfA, nonTrnasfB)
+                if (this.isExceptionPair(nonTransfA, nonTransfB)
                     && testSlots < targetNumSlots && numNontransferables > 0) {
                     // Decrease the number of fodders needed to fit the non-transferables
                     numNontransferables--;
@@ -1048,7 +1061,7 @@ class Assistant {
                 let transfB = transferablesData.transferables[j];
                 // For every pairing between non-transferable and transferable,
                 // if they form a exception pair and there is space to fit them together
-                if (this.isExceptionPair(nonTrnasfA, transfB)
+                if (this.isExceptionPair(nonTransfA, transfB)
                     && testSlots < targetNumSlots && numTransferables > 0) {
                     // Decrease number of spots needed to fit all abilities
                     numTransferables--;
