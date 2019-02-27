@@ -1026,15 +1026,43 @@ class Assistant {
         let transferablesData = this.getTransferablesAndNonTransferables(affixes);
         let numDuplPerTransferable = transferablesData.numDuplPerTransferable;
         let numNontransferables = transferablesData.numNontransferables;
+        let numTransferables = affixes.length - numNontransferables;
         // Disregard isUsingTrainer flag if already transfering Guidance Trainer
         if (affixes.includes(this.affixDB[this.trainerCode].abilityRef)) isUsingTrainer = false;
+        // Account for exception pairing when checking limits
+        for (var i = 0; i < transferablesData.nontransferables.length; i++) {
+            let nonTrnasfA = transferablesData.nontransferables[i];
+            let testSlots = 1;
+            for (var j = 0; j != i && j < transferablesData.nontransferables.length; j++) {
+                let nonTrnasfB = transferablesData.nontransferables[j];
+                // For every two different non-transferables, if they are an exception pair
+                // and there is space to put them together
+                if (this.isExceptionPair(nonTrnasfA, nonTrnasfB)
+                    && testSlots < targetNumSlots && numNontransferables > 0) {
+                    // Decrease the number of fodders needed to fit the non-transferables
+                    numNontransferables--;
+                    testSlots++;
+                }
+            }
+            for (var j = 0; j < transferablesData.transferables.length; j++) {
+                let transfB = transferablesData.transferables[j];
+                // For every pairing between non-transferable and transferable,
+                // if they form a exception pair and there is space to fit them together
+                if (this.isExceptionPair(nonTrnasfA, transfB)
+                    && testSlots < targetNumSlots && numTransferables > 0) {
+                    // Decrease number of spots needed to fit all abilities
+                    numTransferables--;
+                    testSlots++;
+                }
+            }
+        }
         // Separate Nontransferables from Special Ability Factors
         if (numNontransferables + numSpecialAbilityFactor > targetNumFodders) {
             // Too many special affixes to fit
             return false;
         }
         // Check if there is enough slots to fit all transferable abilities
-        if (affixes.length - numNontransferables + (isUsingTrainer ? 1 : 0) > (targetNumFodders - numNontransferables) * targetNumSlots) {
+        if (numTransferables + (isUsingTrainer ? 1 : 0) > (targetNumFodders - numNontransferables) * targetNumSlots) {
             // Too many affixes to place in few places
             return false;
         }
