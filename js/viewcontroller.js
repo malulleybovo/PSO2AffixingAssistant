@@ -50,6 +50,7 @@ class ViewController {
         this.affixTweakSelection = null;
         this.isIncludingFoddersIntrinsicFactor = false;
         this.choiceSelectionViewShouldClose = true;
+        this.ratingsTime = { timeout: undefined };
     }
 
     setup() {
@@ -558,6 +559,10 @@ class ViewController {
                     if (spotlight === $page) spotlightOut($page);
                 }, this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI);
                 this.pageInReview = null;
+
+                // Briefly ask if user would like to rate the new formula made
+                setTimeout(() => { this.peekRateItView() }, 1000);
+
                 try {
                     gaRequests.send('tweak', 'confirm', {
                         'View Type': 'Review And Tweak View',
@@ -1463,6 +1468,51 @@ class ViewController {
             }
             catch (e) { }
         });
+    }
+
+    peekRateItView() {
+        let skipRatingTime = 15000; //15 seconds
+        let ratingsTime = this.ratingsTime;
+        let description = this.assistant.activeFodder.size() + "s "
+            + this.assistant.activeFodder.affixes.map(a => a.name).join(', ');
+        // If stars already showing, just extend the duration
+        if ($('.rateit-container').length > 0) {
+            $('.rateit-container label').unbind('click');
+        }
+        else {
+            // Show rating stars to users in case they want to rate the assistant
+            $('body').append(RATE_IT_STARS_TEMPLATE({ langCode: this.langCode }));
+            $('.rateit-container').animate({}, 10, function () {
+                $('.rateit-container').removeClass('hidden');
+            });
+        }
+        $('.rateit-container label').bind('click', function () {
+            $('.rateit-container label').unbind('click');
+            let newRate = $(this).data('rate');
+            try {
+                gaRequests.send('main', 'buttonClick', {
+                    'View Type': 'Main View',
+                    'Rating Value': `${newRate} Star${newRate > 1 ? "s" : ""}`, // The value of the rating 1-5
+                    'Rating Description': `${newRate} Star${newRate > 1 ? "s" : ""} in making: ${description}`,
+                    'Ratings Given': 1 // Yet another rating given
+                });
+            }
+            catch (e) { }
+            $('.rateit-container').addClass('rated');
+            removeRatingContainer(1000);
+        });
+        removeRatingContainer(skipRatingTime);
+
+        // Removes the rating stars after a certain time
+        function removeRatingContainer(delay) {
+            if (ratingsTime.timeout !== undefined) clearTimeout(ratingsTime.timeout);
+            if ($('.rateit-container').length == 0) return;
+            ratingsTime.timeout = setTimeout(function () {
+                ratingsTime.timeout = undefined;
+                $('.rateit-container').addClass('hidden');
+                setTimeout(() => $('.rateit-container').remove(), 500);
+            }, delay);
+        }
     }
 }
 

@@ -20,7 +20,10 @@ const gaLabels = Object.freeze({
     'Number Of Levels Created': 'metric9',
     'Tree Depth': 'dimension11',
     'Number of Themes Used': 'metric10',
-    'Theme Type': 'dimension12'
+    'Theme Type': 'dimension12',
+    'Ratings Given': 'metric11',
+    'Rating Value': 'dimension13',
+    'Rating Description': 'dimension14'
 });
 
 const gaEvts = Object.freeze({

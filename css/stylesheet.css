@@ -928,6 +928,56 @@ div.wish-list-container div.content > div {
     width: 100%;
 }
 
+.rateit-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.rateit-container.hidden {
+    opacity: 0;
+}
+
+.rateit-container.rated > .before {
+    display: none;
+}
+
+.rateit-container:not(.rated) > .after {
+    display: none;
+}
+
+.rating { 
+    border: none;
+    display: inline-block;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    content: "\f005";
+    font-weight: 900;
+}
+
+.rating > .half:before { 
+    content: "\f089";
+    position: absolute;
+}
+
+.rating > label { 
+    color: #fff; 
+    float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rateit-container:not(.rated) .rating:not(:checked) > label:hover, /* hover current star */
+.rateit-container:not(.rated) .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     html {
         --app-font-size: 24px;
