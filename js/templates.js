@@ -518,13 +518,13 @@ const WISH_LIST_TEMPLATE = ({ fodderList, langCode }) => {
 
 const RATE_IT_STARS_TEMPLATE = ({ langCode }) => 
     `<div class="rateit-container hidden">
-        <div class="after">Thank You!</div>
-        <div class="before">Rate the New Formula?</div>
+        <div class="after">${lang.app.rateStarsRated[langCode]}</div>
+        <div class="before">${lang.app.rateStarsRequest[langCode]}</div>
         <fieldset class="rating">
-            <input type="radio" id="star5" name="rating" value="5"><label class="full" for="star5" data-rate="5" title="Incredible"></label>
-            <input type="radio" id="star4" name="rating" value="4"><label class="full" for="star4" data-rate="4" title="Great"></label>
+            <input type="radio" id="star5" name="rating" value="5"><label class="full" for="star5" data-rate="5" title="${lang.app.rateStars5AltText[langCode]}"></label>
+            <input type="radio" id="star4" name="rating" value="4"><label class="full" for="star4" data-rate="4" title="${lang.app.rateStars4AltText[langCode]}"></label>
             <input type="radio" id="star3" name="rating" value="3"><label class="full" for="star3" data-rate="3" title="OK"></label>
-            <input type="radio" id="star2" name="rating" value="2"><label class="full" for="star2" data-rate="2" title="Bad"></label>
-            <input type="radio" id="star1" name="rating" value="1"><label class="full" for="star1" data-rate="1" title="Terrible"></label>
+            <input type="radio" id="star2" name="rating" value="2"><label class="full" for="star2" data-rate="2" title="${lang.app.rateStars2AltText[langCode]}"></label>
+            <input type="radio" id="star1" name="rating" value="1"><label class="full" for="star1" data-rate="1" title="${lang.app.rateStars1AltText[langCode]}"></label>
         </fieldset>
     </div>`;

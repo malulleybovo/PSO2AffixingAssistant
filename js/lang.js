@@ -85,6 +85,30 @@ const lang = Object.freeze({
             en: "Additional affixing boost from boost week",
             jp: "ブースト週間からの追加の固定ブースト"
         },
+        rateStarsRequest: {
+            en: "Rate the New Formula?",
+            jp: "新しい式を評価しますか？"
+        },
+        rateStarsRated: {
+            en: "Thank You!",
+            jp: "ありがとう！"
+        },
+        rateStars1AltText: {
+            en: "Terrible",
+            jp: "ひどい"
+        },
+        rateStars2AltText: {
+            en: "Bad",
+            jp: "悪い"
+        },
+        rateStars4AltText: {
+            en: "Great",
+            jp: "良い"
+        },
+        rateStars5AltText: {
+            en: "Incredible",
+            jp: "すごい"
+        },
         shareFormulaTitle: {
             en: "Link to This Formula",
             jp: "この数式へのリンク"
