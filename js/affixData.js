@@ -7887,6 +7887,7 @@
         { name: `Act The Soul`, jpName: `アクト・ジ・ソール` },
         { name: `Till The Soul`, jpName: `ティル・ジ・ソール` },
         { name: `Magi The Soul`, jpName: `マギー・ジ・ソール` },
+        { name: `Reverie Catalyst`, jpName: `レヴリー・カタリスト` },
         { name: `S1:Photon Reduction`, jpName: `S1:光子縮減` },
         { name: `S1:Offensive Intent`, jpName: `S1:剛撃の志` },
         { name: `S1:Brilliant Ruin`, jpName: `S1:滅域輝与` },
