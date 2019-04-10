@@ -3956,6 +3956,78 @@
             noEx: true
         },
         {
+            code: "LA90",
+            gid: "L1",
+            name: "S1:Augment Intent",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Power based on the number of Special Abilities attached to this weapon. Maxes at 4%.",
+            noEx: true
+        },
+        {
+            code: "LA91",
+            gid: "L1",
+            name: "S1:Strike Boost",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Power by 1% for every 60 S-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 S-ATK is affixed to this weapon.",
+            noEx: true
+        },
+        {
+            code: "LA92",
+            gid: "L1",
+            name: "S1:Shoot Boost",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Power by 1% for every 60 R-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 R-ATK is affixed to this weapon.",
+            noEx: true
+        },
+        {
+            code: "LA93",
+            gid: "L1",
+            name: "S1:Tech Boost",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Power by 1% for every 60 T-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 T-ATK is affixed to this weapon.",
+            noEx: true
+        },
+        {
+            code: "LA94",
+            gid: "L1",
+            name: "S1:Reckless Strike",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Power every three times you are attacked. Upon being attacked a tenth time, release an explosion that incapacitates you and damages all nearby targets.",
+            noEx: true
+        },
+        {
+            code: "LA95",
+            gid: "L1",
+            name: "S1:Eclipsing Decay",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Grant a 25% chance to inflict the Jellen status when attacking an enemy.",
+            noEx: true
+        },
+        {
             code: "LB01",
             gid: "L2",
             name: "S2:Sturdy Recovery",
@@ -4400,6 +4472,54 @@
             noEx: true
         },
         {
+            code: "LB90",
+            gid: "L2",
+            name: "S2:Flaming Guard",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Fire Attribute and Burn Resistance. Increase damage against enemies weak to Fire.",
+            noEx: true
+        },
+        {
+            code: "LB91",
+            gid: "L2",
+            name: "S2:Freezing Guard",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Ice Attribute and Freeze Resistance. Increase damage against enemies weak to Ice.",
+            noEx: true
+        },
+        {
+            code: "LB92",
+            gid: "L2",
+            name: "S2:Runner's High",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Natural PP Recovery by 100% and restore 15% HP every 5 seconds when running.",
+            noEx: true
+        },
+        {
+            code: "LB93",
+            gid: "L2",
+            name: "S2:Skill Reduction",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Reduce PP consumption for 30 seconds upon hitting with a PA/Technique. Has a low chance to grant amplified effects. Triggers Recast upon activation.",
+            noEx: true
+        },
+        {
             code: "LC01",
             gid: "L3",
             name: "S3:Offensive Intent",
@@ -4736,6 +4856,54 @@
             noEx: true
         },
         {
+            code: "LC90",
+            gid: "L3",
+            name: "S3:Calming Exhilaration",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Recover 70 HP when you hit with a normal attack. Has a cooldown between uses.",
+            noEx: true
+        },
+        {
+            code: "LC91",
+            gid: "L3",
+            name: "S3:Fortifying Strike",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Decrease damage taken by 1% for every 300, 000 damage dealt. Maxes at 15%.",
+            noEx: true
+        },
+        {
+            code: "LC92",
+            gid: "L3",
+            name: "S3:Curtailed Strike",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Decrease PP consumption by 1% for every 300, 000 damage dealt. Maxes at 15%.",
+            noEx: true
+        },
+        {
+            code: "LC93",
+            gid: "L3",
+            name: "S3:Wise Strike",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase Critical Hit Rate by 2% for every 300, 000 damage dealt. Maxes at 30%.",
+            noEx: true
+        },
+        {
             code: "LD07",
             gid: "L4",
             name: "S4:Marvelous Aegis",
@@ -4985,6 +5153,18 @@
                 100
             ],
             effect: "Generates a barrier (-50% Damage Taken,<br>Negate Knockback) at regular intervals",
+            noEx: true
+        },
+        {
+            code: "LD0S",
+            gid: "L4",
+            name: "S4:Colored Spectrum",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Decrease Natural PP Recovery but decrease PP consumption when S1:Red Petal / Blue Ocean / White Snow / Yellow Moon / Green Leaf / Black Shadow Flash are active.",
             noEx: true
         },
         {
@@ -7893,6 +8073,9 @@
         { name: `S1:Brilliant Ruin`, jpName: `S1:滅域輝与` },
         { name: `S1:Sturdy Intent`, jpName: `S1:依属の志` },
         { name: `S1:Phantasmal Intent`, jpName: `S1:幻精の志` },
+        { name: `S1:Strike Boost`, jpName: `S1:打撃増幅` },
+        { name: `S1:Shoot Boost`, jpName: `S1:射撃増幅` },
+        { name: `S1:Tech Boost`, jpName: `S1:法撃増幅` },
         { name: `S2:Wise Skill`, jpName: `S2:妙技の巧` },
         { name: `S2:Radiant Strike`, jpName: `S2:輝剰の撃` },
         { name: `S2:Guardian Armor`, jpName: `S2:守護の備` },

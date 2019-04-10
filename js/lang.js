@@ -1438,6 +1438,42 @@ const lang = Object.freeze({
         effect_en: "Reduce HP by 5% every 20 seconds and increase Power by 4%.",
         effect_jp: "20秒毎に最大HPの5%ダメージを負う代わりに威力が4%上昇する。"
     },
+    "LA90": {
+        name_en: "S1:Augment Intent",
+        name_jp: "S1:錬成の志",
+        effect_en: "Increase Power based on the number of Special Abilities attached to this weapon. Maxes at 4%.",
+        effect_jp: "特殊能力の付与数に応じて威力上昇。最大で4%。"
+    },
+    "LA91": {
+        name_en: "S1:Strike Boost",
+        name_jp: "S1:打撃増幅",
+        effect_en: "Increase Power by 1% for every 60 S-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 S-ATK is affixed to this weapon.",
+        effect_jp: "特殊能力の追加打撃能力60毎に、威力1%上昇し200以上でさらに2%上昇。"
+    },
+    "LA92": {
+        name_en: "S1:Shoot Boost",
+        name_jp: "S1:射撃増幅",
+        effect_en: "Increase Power by 1% for every 60 R-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 R-ATK is affixed to this weapon.",
+        effect_jp: "特殊能力の追加射撃能力60毎に、威力1%上昇し200以上でさらに2%上昇。"
+    },
+    "LA93": {
+        name_en: "S1:Tech Boost",
+        name_jp: "S1:法撃増幅",
+        effect_en: "Increase Power by 1% for every 60 T-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 T-ATK is affixed to this weapon.",
+        effect_jp: "特殊能力の追加法撃能力60毎に、威力1%上昇し200以上でさらに2%上昇。"
+    },
+    "LA94": {
+        name_en: "S1:Reckless Strike",
+        name_jp: "S1:賭死の撃",
+        effect_en: "Increase Power every three times you are attacked. Upon being attacked a tenth time, release an explosion that incapacitates you and damages all nearby targets.",
+        effect_jp: "被ダメージの回数に応じて威力上昇。最大段階時の被ダメージで自身が戦闘不能になり周囲に与ダメージ。"
+    },
+    "LA95": {
+        name_en: "S1:Eclipsing Decay",
+        name_jp: "S1:失力の蝕",
+        effect_en: "Grant a 25% chance to inflict the Jellen status when attacking an enemy.",
+        effect_jp: "命中時に25％の確率でジェルンを付与。"
+    },
     "LB01": {
         name_en: "S2:Sturdy Recovery",
         name_jp: "S2:剛乱活与",
@@ -1660,6 +1696,30 @@ const lang = Object.freeze({
         effect_en: "Reduces PP consumption by 12% when Just Attacking different PAs or Techniques.",
         effect_jp: "別のPAやテクニックをジャストアタックするとPP消費量を12%軽減。"
     },
+    "LB90": {
+        name_en: "S2:Flaming Guard",
+        name_jp: "S2:火炎の備志",
+        effect_en: "Increase Fire Attribute and Burn Resistance. Increase damage against enemies weak to Fire.",
+        effect_jp: "炎属性、バーン耐性が上昇。敵の弱点属性が炎属性の時、威力上昇"
+    },
+    "LB91": {
+        name_en: "S2:Freezing Guard",
+        name_jp: "S2:氷雪の備志",
+        effect_en: "Increase Ice Attribute and Freeze Resistance. Increase damage against enemies weak to Ice.",
+        effect_jp: "氷属性、フリーズ耐性が上昇。敵の弱点属性が氷属性の時、威力上昇"
+    },
+    "LB92": {
+        name_en: "S2:Runner's High",
+        name_jp: "S2:走者高揚",
+        effect_en: "Increase Natural PP Recovery by 100% and restore 15% HP every 5 seconds when running.",
+        effect_jp: "ダッシュ状態時PP自然回復量が100%上昇しHPが5秒ごとに回復。"
+    },
+    "LB93": {
+        name_en: "S2:Skill Reduction",
+        name_jp: "S2:技巧縮減",
+        effect_en: "Reduce PP consumption for 30 seconds upon hitting with a PA/Technique. Has a low chance to grant amplified effects. Triggers Recast upon activation.",
+        effect_jp: "フォトンアーツまたはテクニック命中後30秒間、PPの消費量を軽減。また、まれに大きく軽減することがある。効果発動後にリキャストが発生。"
+    },
     "LC01": {
         name_en: "S3:Offensive Intent",
         name_jp: "S3:剛撃の志",
@@ -1828,6 +1888,30 @@ const lang = Object.freeze({
         effect_en: "Increase Natural PP Recovery by 23% when S1:Red Petal Flash, S1:Blue Ocean Flash, or S1:White Snow Flash are active.",
         effect_jp: "花ノ赤閃・海ノ青閃・雪ノ白閃が発動中、PP自然回復量23%上昇。"
     },
+    "LC90": {
+        name_en: "S3:Calming Exhilaration",
+        name_jp: "S3:静心活与",
+        effect_en: "Recover 70 HP when you hit with a normal attack. Has a cooldown between uses.",
+        effect_jp: "通常攻撃が命中した時HPが70回復。発動後リキャスト発生。"
+    },
+    "LC91": {
+        name_en: "S3:Fortifying Strike",
+        name_jp: "S3:撃流の備",
+        effect_en: "Decrease damage taken by 1% for every 300, 000 damage dealt. Maxes at 15%.",
+        effect_jp: "与ダメージ300000ごとに被ダメージが1%軽減。（最大15%まで）"
+    },
+    "LC92": {
+        name_en: "S3:Curtailed Strike",
+        name_jp: "S3:撃流縮減",
+        effect_en: "Decrease PP consumption by 1% for every 300, 000 damage dealt. Maxes at 15%.",
+        effect_jp: "与ダメージ300000ごとにPP消費量が1%軽減。（最大15%まで）"
+    },
+    "LC93": {
+        name_en: "S3:Wise Strike",
+        name_jp: "S3:撃流の巧",
+        effect_en: "Increase Critical Hit Rate by 2% for every 300, 000 damage dealt. Maxes at 30%.",
+        effect_jp: "与ダメージ300000ごとにクリティカル率が2%上昇。（最大30%まで）"
+    },
     "LD07": {
         name_en: "S4:Marvelous Aegis",
         name_jp: "S4:瞬護輝与",
@@ -1953,6 +2037,12 @@ const lang = Object.freeze({
         name_jp: "S4:聖者の盾",
         effect_en: "Generates a barrier (-50% Damage Taken,<br>Negate Knockback) at regular intervals",
         effect_jp: "一定間隔で被ダメージを軽減するバリアを展開。"
+    },
+    "LD0S": {
+        name_en: "S4:Colored Spectrum",
+        name_jp: "S4:六色の輝秤",
+        effect_en: "Decrease Natural PP Recovery but decrease PP consumption when S1:Red Petal / Blue Ocean / White Snow / Yellow Moon / Green Leaf / Black Shadow Flash are active.",
+        effect_jp: "花・海・葉・月・雪・影のいずれかが発動中、PP自然回復は減少するがPP消費量は低下する。"
     },
     "OA01": {
         name_en: "Mutation I",
