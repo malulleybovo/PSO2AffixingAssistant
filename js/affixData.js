@@ -3813,6 +3813,7 @@
         },
         {
             code: "LA78",
+            simCode: "LA2C",
             gid: "L1",
             name: "S1:Violent Invigoration",
             extend: [
@@ -3825,6 +3826,7 @@
         },
         {
             code: "LA79",
+            simCode: "LA2D",
             gid: "L1",
             name: "S1:Phanatical Advantage",
             extend: [
@@ -3837,6 +3839,7 @@
         },
         {
             code: "LA80",
+            simCode: "LA27",
             gid: "L1",
             name: "S1:Powering Intent",
             extend: [
@@ -3849,6 +3852,7 @@
         },
         {
             code: "LA81",
+            simCode: "LA29",
             gid: "L1",
             name: "S1:Rupturing Excess",
             extend: [
@@ -3861,6 +3865,7 @@
         },
         {
             code: "LA82",
+            simCode: "LA26",
             gid: "L1",
             name: "S1:Spirited Response",
             extend: [
@@ -3873,6 +3878,7 @@
         },
         {
             code: "LA83",
+            simCode: "LA28",
             gid: "L1",
             name: "S1:Rupturing Intent",
             extend: [
@@ -3885,6 +3891,7 @@
         },
         {
             code: "LA84",
+            simCode: "LA2B",
             gid: "L1",
             name: "S1:Sturdy Intent",
             extend: [
@@ -3897,6 +3904,7 @@
         },
         {
             code: "LA85",
+            simCode: "LA2A",
             gid: "L1",
             name: "S1:Phantasmal Intent",
             extend: [
@@ -3909,6 +3917,7 @@
         },
         {
             code: "LA86",
+            simCode: "LA2E",
             gid: "L1",
             name: "S1:Photon Reduction 2",
             extend: [
@@ -3921,6 +3930,7 @@
         },
         {
             code: "LA87",
+            simCode: "LA2G",
             gid: "L1",
             name: "S1:Brilliant Ruin 2",
             extend: [
@@ -3933,6 +3943,7 @@
         },
         {
             code: "LA88",
+            simCode: "LA2I",
             gid: "L1",
             name: "S1:Flowing Intent",
             extend: [
@@ -3945,6 +3956,7 @@
         },
         {
             code: "LA89",
+            simCode: "LA2H",
             gid: "L1",
             name: "S1:Lethal Intent",
             extend: [
@@ -3957,6 +3969,7 @@
         },
         {
             code: "LA90",
+            simCode: "LA2N",
             gid: "L1",
             name: "S1:Augment Intent",
             extend: [
@@ -3969,6 +3982,7 @@
         },
         {
             code: "LA91",
+            simCode: "LA2J",
             gid: "L1",
             name: "S1:Strike Boost",
             extend: [
@@ -3981,6 +3995,7 @@
         },
         {
             code: "LA92",
+            simCode: "LA2K",
             gid: "L1",
             name: "S1:Shoot Boost",
             extend: [
@@ -3993,6 +4008,7 @@
         },
         {
             code: "LA93",
+            simCode: "LA2L",
             gid: "L1",
             name: "S1:Tech Boost",
             extend: [
@@ -4005,6 +4021,7 @@
         },
         {
             code: "LA94",
+            simCode: "LA2M",
             gid: "L1",
             name: "S1:Reckless Strike",
             extend: [
@@ -4017,6 +4034,7 @@
         },
         {
             code: "LA95",
+            simCode: "LA2O",
             gid: "L1",
             name: "S1:Eclipsing Decay",
             extend: [
@@ -4461,6 +4479,7 @@
         },
         {
             code: "LB89",
+            simCode: "LB1S",
             gid: "L2",
             name: "S2:Instant Reduction",
             extend: [
@@ -4473,6 +4492,7 @@
         },
         {
             code: "LB90",
+            simCode: "LB1V",
             gid: "L2",
             name: "S2:Flaming Guard",
             extend: [
@@ -4485,6 +4505,7 @@
         },
         {
             code: "LB91",
+            // simCode: "LB1V", // Currently the same as S2:Flaming Guard. This was wrong on the PSO2 Simulator site when this was updated here.
             gid: "L2",
             name: "S2:Freezing Guard",
             extend: [
@@ -4497,6 +4518,7 @@
         },
         {
             code: "LB92",
+            simCode: "LB1U",
             gid: "L2",
             name: "S2:Runner's High",
             extend: [
@@ -4509,6 +4531,7 @@
         },
         {
             code: "LB93",
+            simCode: "LB1W",
             gid: "L2",
             name: "S2:Skill Reduction",
             extend: [
@@ -4833,6 +4856,7 @@
         },
         {
             code: "LC88",
+            // simCode: "LC1I", // Currently the same as S2:Flaming Guard. This was wrong on the PSO2 Simulator site when this was updated here.
             gid: "L3",
             name: "S3:Rupturing Intent",
             extend: [
@@ -4845,6 +4869,7 @@
         },
         {
             code: "LC89",
+            // simCode: "LC1H", // Currently the same as S2:Flaming Guard. This was wrong on the PSO2 Simulator site when this was updated here.
             gid: "L3",
             name: "S3:Nature's Gleam",
             extend: [
@@ -4857,6 +4882,7 @@
         },
         {
             code: "LC90",
+            // simCode: "LC1J", // Currently the same as S2:Flaming Guard. This was wrong on the PSO2 Simulator site when this was updated here.
             gid: "L3",
             name: "S3:Calming Exhilaration",
             extend: [
@@ -4869,6 +4895,7 @@
         },
         {
             code: "LC91",
+            // simCode: "LC1K", // Currently the same as S2:Flaming Guard. This was wrong on the PSO2 Simulator site when this was updated here.
             gid: "L3",
             name: "S3:Fortifying Strike",
             extend: [
@@ -4881,6 +4908,7 @@
         },
         {
             code: "LC92",
+            simCode: "LC1L",
             gid: "L3",
             name: "S3:Curtailed Strike",
             extend: [
@@ -4893,6 +4921,7 @@
         },
         {
             code: "LC93",
+            simCode: "LC1M",
             gid: "L3",
             name: "S3:Wise Strike",
             extend: [
@@ -7634,6 +7663,7 @@
         },
         {
             code: "VK03",
+            simCode: "VL01",
             gid: "YA",
             name: "Polytan Smile",
             extend: [
@@ -7645,6 +7675,7 @@
         },
         {
             code: "VK04",
+            simCode: "VM01",
             gid: "YA",
             name: "Arkuma Smile",
             extend: [
@@ -7656,6 +7687,7 @@
         },
         {
             code: "VK01",
+            simCode: "VN01",
             gid: "YA",
             name: "Emper Embrace",
             extend: [
@@ -7678,6 +7710,7 @@
         },
         {
             code: "VK05",
+            simCode: "VP01",
             gid: "YA",
             name: "NT Weapon Booster",
             extend: [

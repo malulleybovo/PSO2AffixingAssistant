@@ -2246,11 +2246,11 @@ class Page {
     toURL(connDist, connFodderIdx, isForSimulator) {
         let url = '';
         for (var i = 0; i < this.size(); i++) {
-            url += ((i == 0) ? '/s=' : (i + '=')) + this.fodders[i].toURL() + '&';
+            url += ((i == 0) ? '/s=' : (i + '=')) + this.fodders[i].toURL(isForSimulator, false) + '&';
         }
         url += 'r=';
         if (this.connectedTo) {
-            url += this.connectedTo.toURL(true);
+            url += this.connectedTo.toURL(isForSimulator, true);
         }
         url += '&o=';
         let hasAddedRate = false;
@@ -2455,14 +2455,20 @@ class Fodder {
         return this;
     }
 
-    toURL(isForTarget) {
+    toURL(isForSimulator, isForTarget) {
         let url = '';
         for (var i = 0; i < this.size(); i++) {
+            // Use code for simulator correspondency if applicable
+            let code = (isForSimulator && this.affixes[i].simCode !== undefined) ?
+                this.affixes[i].simCode : this.affixes[i].code;
             url += ((isForTarget && this.affixIndicesFromFactor.includes(i)) ? '*' : '')
-                + this.affixes[i].code + ((i < this.size() - 1) ? '.' : '');
+                + code + ((i < this.size() - 1) ? '.' : '');
         }
         if (!isForTarget && (this.specialAbilityFactor && this.specialAbilityFactor.code)) {
-            url += ((this.size() > 0) ? '.' : '') + '*' + this.specialAbilityFactor.code;
+            // Use code for simulator correspondency if applicable
+            let code = (isForSimulator && this.specialAbilityFactor.simCode !== undefined) ?
+                this.specialAbilityFactor.simCode : this.specialAbilityFactor.code;
+            url += ((this.size() > 0) ? '.' : '') + '*' + code;
         }
         return url;
     }
