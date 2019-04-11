@@ -1025,13 +1025,16 @@ class Assistant {
     doAffixesHavePossiblePlacement({ choices, targetNumSlots = (new Fodder()).CAPACITY, targetNumFodders = (new Page()).CAPACITY, isUsingTrainer = false }) {
         if (targetNumSlots <= 0 || targetNumFodders <= 0) return false;
         let numSpecialAbilityFactor = 0;
+        let numAddAbilityItems = 0;
         for (var i = 0; i < choices.length; i++) {
             let choice = choices[i];
             if (!choice) continue;
             if (choice.isAbilityFactor) numSpecialAbilityFactor++;
+            if (choice.isAddAbilityItem) numAddAbilityItems++;
         }
-        if (numSpecialAbilityFactor > targetNumFodders) {
-            // Too many Special Ability Factors
+        if (numSpecialAbilityFactor > targetNumFodders
+            || numAddAbilityItems > 1) {
+            // Too many Special Ability Factors or Add Ability Items
             return false;
         }
         let affixes = this.getAffixInstancesInvolvedIn(choices);

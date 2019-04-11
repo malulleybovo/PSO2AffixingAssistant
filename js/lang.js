@@ -428,6 +428,118 @@ const lang = Object.freeze({
         "Add Ability (Mark Receptor)": {
             en: "Add Ability (Mark Receptor)",
             jp: "特殊能力追加(マークレセプター)"
+        },
+        "S1 Add: Photon Reduction 2": {
+            en: "S1 Add: Photon Reduction 2",
+            jp: "S1追加:光子縮減2"
+        },
+        "S1 Add: Brilliant Ruin 2": {
+            en: "S1 Add: Brilliant Ruin 2",
+            jp: "S1追加:滅域輝与2"
+        },
+        "S1 Add: Flowing Intent": {
+            en: "S1 Add: Flowing Intent",
+            jp: "S1追加:時流の志"
+        },
+        "S1 Add: Lethal Intent": {
+            en: "S1 Add: Lethal Intent",
+            jp: "S1追加:死中の志"
+        },
+        "S1 Add: Reckless Strike": {
+            en: "S1 Add: Reckless Strike",
+            jp: "S1追加:賭死の撃"
+        },
+        "S1 Add: Eclipsing Decay": {
+            en: "S1 Add: Eclipsing Decay",
+            jp: "S1追加:失力の蝕"
+        },
+        "S1 Add: Augment Intent": {
+            en: "S1 Add: Augment Intent",
+            jp: "S1追加:錬成の志"
+        },
+        "S2 Add: Umbrageous Melody": {
+            en: "S2 Add: Umbrageous Melody",
+            jp: "S2追加:月葉影の歌"
+        },
+        "S2 Add: Nature's Reduction 2": {
+            en: "S2 Add: Nature's Reduction 2",
+            jp: "S2追加:花海雪の縮減2"
+        },
+        "S2 Add: Umbrageous Radiance 2": {
+            en: "S2 Add: Umbrageous Radiance 2",
+            jp: "S2追加:月葉影の輝剰2"
+        },
+        "S2 Add: Wise Skill 2": {
+            en: "S2 Add: Wise Skill 2",
+            jp: "S2追加:妙技の巧2"
+        },
+        "S2 Add: Skilled Strike 2": {
+            en: "S2 Add: Skilled Strike 2",
+            jp: "S2追加:妙撃の志2"
+        },
+        "S2 Add: Radiant Strike 2": {
+            en: "S2 Add: Radiant Strike 2",
+            jp: "S2追加:輝剰の撃2"
+        },
+        "S2 Add: Runner's High": {
+            en: "S2 Add: Runner's High",
+            jp: "S2追加:走者高揚"
+        },
+        "S2 Add: Skill Reduction": {
+            en: "S2 Add: Skill Reduction",
+            jp: "S2追加:技巧縮減"
+        },
+        "S3 Add: Nature's Melody": {
+            en: "S3 Add: Nature's Melody",
+            jp: "S3追加:花海雪の歌"
+        },
+        "S3 Add: Nature's Gleam 2": {
+            en: "S3 Add: Nature's Gleam 2",
+            jp: "S3追加:花海雪の輝勢2"
+        },
+        "S3 Add: Flowing Grace": {
+            en: "S3 Add: Flowing Grace",
+            jp: "追加:時流の恵"
+        },
+        "S3 Add: Flowing Exhilaration 2": {
+            en: "S3 Add: Flowing Exhilaration 2",
+            jp: "S3追加:時流活与2"
+        },
+        "S3 Add: Radiating Grace 2": {
+            en: "S3 Add: Radiating Grace 2",
+            jp: "S3追加:輝勢の恵2"
+        },
+        "S3 Add: Calming Exhilaration": {
+            en: "S3 Add: Calming Exhilaration",
+            jp: "S3追加:撃流の備"
+        },
+        "S3 Add: Curtailed Strike": {
+            en: "S3 Add: Curtailed Strike",
+            jp: "S3追加:撃流縮減"
+        },
+        "S3 Add: Wise Strike": {
+            en: "S3 Add: Wise Strike",
+            jp: "追加:撃流の巧"
+        },
+        "S4 Add: Heavenly Protection": {
+            en: "S4 Add: Heavenly Protection",
+            jp: "S4追加:天輝の守護"
+        },
+        "S4 Add: Calming Intent": {
+            en: "S4 Add: Calming Intent",
+            jp: "S4追加:静心の志"
+        },
+        "S4 Add: Mysterious Strike": {
+            en: "S4 Add: Mysterious Strike",
+            jp: "S4追加:妙撃の秤"
+        },
+        "S4 Add: Saint Shield": {
+            en: "S4 Add: Saint Shield",
+            jp: "S4追加:聖者の盾"
+        },
+        "S4 Add: Colored Spectrum": {
+            en: "S4 Add: Colored Spectrum",
+            jp: "S4追加:六色の輝秤"
         }
     },
     "potential": {

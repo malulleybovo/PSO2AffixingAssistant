@@ -286,8 +286,8 @@ class AffixDataParser {
             for (var i = 0; i < data.optionList.additional.length; i++) {
                 let additionalChoice = data.optionList.additional[i];
                 if (!additionalChoice.name || !additionalChoice.id
-                    || !additionalChoice.value || !additionalChoice.extend
-                    || !additionalChoice.effect) continue;
+                    || additionalChoice.value == undefined || additionalChoice.extend == undefined
+                    || additionalChoice.effect == undefined) continue;
                 for (var j = data.abilityList.length; j >= 0; j--) {
                     if (data.abilityList[j] && data.abilityList[j].name == additionalChoice.name) {
                         if (abilityDB[data.abilityList[j].code]) {

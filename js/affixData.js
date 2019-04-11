@@ -254,6 +254,209 @@
                 value: "XG01",
                 extend: 100,
                 effect: "ALL(+10)"
+            },
+            {
+                id: "S1 Add: Photon Reduction 2",
+                name: "S1:Photon Reduction 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S1 Add: Brilliant Ruin 2",
+                name: "S1:Brilliant Ruin 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S1 Add: Flowing Intent",
+                name: "S1:Flowing Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S1 Add: Lethal Intent",
+                name: "S1:Lethal Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S1 Add: Reckless Strike",
+                name: "S1:Reckless Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S1 Add: Eclipsing Decay",
+                name: "S1:Eclipsing Decay",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S1 Add: Augment Intent",
+                name: "S1:Augment Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S2 Add: Umbrageous Melody",
+                name: "S2:Umbrageous Melody",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S2 Add: Nature's Reduction 2",
+                name: "S2:Nature's Reduction 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S2 Add: Umbrageous Radiance 2",
+                name: "S2:Umbrageous Radiance 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S2 Add: Wise Skill 2",
+                name: "S2:Wise Skill 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S2 Add: Skilled Strike 2",
+                name: "S2:Skilled Strike 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S2 Add: Radiant Strike 2",
+                name: "S2:Radiant Strike 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S2 Add: Runner's High",
+                name: "S2:Runner's High",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S2 Add: Skill Reduction",
+                name: "S2:Skill Reduction",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S3 Add: Nature's Melody",
+                name: "S3:Nature's Melody",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S3 Add: Nature's Gleam 2",
+                name: "S3:Nature's Gleam 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S3 Add: Flowing Grace",
+                name: "S3:Flowing Grace",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S3 Add: Flowing Exhilaration 2",
+                name: "S3:Flowing Exhilaration 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S3 Add: Radiating Grace 2",
+                name: "S3:Radiating Grace 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S3 Add: Calming Exhilaration",
+                name: "S3:Calming Exhilaration",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S3 Add: Fortifying Strike",
+                name: "S3:Fortifying Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S3 Add: Curtailed Strike",
+                name: "S3:Curtailed Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S3 Add: Wise Strike",
+                name: "S3:Wise Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S4 Add: Heavenly Protection",
+                name: "S4:Heavenly Protection",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S4 Add: Calming Intent",
+                name: "S4: Calming Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S4 Add: Mysterious Strike",
+                name: "S4:Mysterious Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S4 Add: Saint Shield",
+                name: "S4:Saint Shield",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                id: "S4 Add: Colored Spectrum",
+                name: "S4:Colored Spectrum",
+                value: "",
+                extend: 100,
+                effect: ""
             }
         ],
         potential: [
