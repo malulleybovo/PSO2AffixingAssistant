@@ -657,12 +657,16 @@ class ViewController {
         if ($('div.wish-list-container').length != 0) {
             $('div.wish-list-container').remove();
         }
-        $('body').append(
-            LINK_TEMPLATE({
-                link: decodeURI(window.location.href),
-                linkToSim: vc.assistant.toURL(true),
-                langCode: vc.langCode
-            }));
+    this.getShortURL()
+			.then(shortlink => {
+				console.log('got the shortlink:' + shortlink);
+				$('body').append(
+					LINK_TEMPLATE({
+						link: decodeURI(window.location.href),
+						linkToSim: vc.assistant.toURL(true),
+						smollink: shortlink,
+						langCode: vc.langCode
+				}));
         if (shouldAnimate) {
             $('div.link-container').animate({}, 10, function () {
                 timeData.shareLinkStartTime = (new Date()).getTime();
@@ -674,7 +678,7 @@ class ViewController {
                         'Number Of Interfaces Used': 1
                     });
                 }
-                catch (e) { }
+                catch (e) {  }
             });
         }
         else $('div.link-container').removeClass('hidden');
@@ -713,6 +717,11 @@ class ViewController {
             }
             catch (e) { }
         });
+		})
+		.catch(error => {
+        // do the same but without the short link I guess
+		console.log(error);
+		});
     }
 
     updateFromURL() {
@@ -1468,6 +1477,18 @@ class ViewController {
             }
             catch (e) { }
         });
+    }
+
+    getShortURL() {
+        return fetch('https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl=' + encodeURIComponent(window.location.href))
+            .then(response => {
+              if (response.ok) {
+				  console.log('Got the JSON Response!');
+                return response.json();
+              }
+              console.log('Unable to shorten URL');
+            })
+            .then(data => data.data.url);
     }
 
     peekRateItView() {

@@ -1,6 +1,6 @@
 /**
  * HTML Templates
- * 
+ *
  * @author malulleybovo (2018)
  * @license GNU General Public License v3.0
  */
@@ -178,7 +178,7 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
             </div>` : ``}
             ${((fodder && fodder.addAbilityItemInUse
                 && lang['additional'][fodder.addAbilityItemInUse.name]
-                && lang['additional'][fodder.addAbilityItemInUse.name][langCode]) ? 
+                && lang['additional'][fodder.addAbilityItemInUse.name][langCode]) ?
                 `<div class="affix add-ability">${lang['additional'][fodder.addAbilityItemInUse.name][langCode]}</div>` : ``)}${
             (isGoal) ?
             `<div class="divider"></div><div class="boost-container global" >`
@@ -190,12 +190,13 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
                 }) + `</div>` : ''}
         </div>`;
 
-const LINK_TEMPLATE = ({ link, linkToSim, langCode }) => {
+const LINK_TEMPLATE = ({ link, linkToSim, smollink, langCode }) => {
     return `<div class="link-container hidden" onclick="$(this).remove();">
         <div onclick="event.stopPropagation();">
             <div class="main-grid">
                 <div class="title bold">${lang.app.shareFormulaTitle[langCode]}</div>
     			<input type="text" value="${link}" onfocus="this.setSelectionRange(0, this.value.length)">
+				<input type="text" value="${smollink}" onfocus="this.setSelectionRange(0, this.value.length)">
                 <div class="copy-button"><a>${lang.app.shareFormulaButton[langCode]}</a></div>
                 <div class="copy-button"><a  href="${linkToSim}" target="_blank">${lang.app.openInSimButton[langCode]}</a></div>
                 <div class="confirm-button">${lang.app.closeButton[langCode]}</div>
@@ -213,7 +214,7 @@ const DROPDOWN_TEMPLATE = ({ type, options, selected, description }) => {
             selected = 0;
         for (var i = 0; i < options.length; i++) {
             let isSelected = (typeof selected === 'number' && selected == i) || (selected == options[i]);
-            dropdown += 
+            dropdown +=
                 `<option value="${options[i]}" ${(isSelected) ? `selected` : ``}>${options[i]}</option>`;
         }
     }
@@ -221,7 +222,7 @@ const DROPDOWN_TEMPLATE = ({ type, options, selected, description }) => {
     return dropdown;
 };
 
-const CHECKBOX_TEMPLATE = ({ label, description, isChecked }) => 
+const CHECKBOX_TEMPLATE = ({ label, description, isChecked }) =>
     `<div class="checkbox-container">
         <div class="checkbox-holder">
             <div${(description) ? ` title ="${description}"` : ``}>${(label) ? label : ``}</div>
@@ -364,7 +365,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                     ${CHECKBOX_TEMPLATE({ label: lang.app.upslottingLabel[langCode], description: lang.app.upslottingDescription[langCode], isChecked: shouldUpslot })}` : ``}
                     ${CHECKBOX_TEMPLATE({ label: lang.app.spreadLabel[langCode], description: lang.app.spreadDescription[langCode], isChecked: shouldSpread })}
                     ${CHECKBOX_TEMPLATE({ label: lang.app.trainerLabel[langCode], description: lang.app.trainerDescription[langCode], isChecked: shouldUseTrainer })}
-                </div>` 
+                </div>`
             : ``}<div class="content">`;
     if (isAffixSelection) {
         layoutTemplate += `<div><div>
@@ -427,7 +428,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     }
     layoutTemplate += `</div>
                 <div>
-                    ${(isAffixSelection || isChoiceSelection || isReviewTweak) ? 
+                    ${(isAffixSelection || isChoiceSelection || isReviewTweak) ?
                     `<div class="cancel-button">${lang.app.cancelButton[langCode]}</div>` : ``}
                     <div class="confirm-button${(isAffixSelection || isChoiceSelection) ? ` disabled">${lang.app.confirmButton[langCode]}` :
                                                     (isReviewTweak) ? `">${lang.app.confirmButton[langCode]}` :
@@ -516,7 +517,7 @@ const WISH_LIST_TEMPLATE = ({ fodderList, langCode }) => {
     });
 }
 
-const RATE_IT_STARS_TEMPLATE = ({ langCode }) => 
+const RATE_IT_STARS_TEMPLATE = ({ langCode }) =>
     `<div class="rateit-container hidden">
         <div class="after">${lang.app.rateStarsRated[langCode]}</div>
         <div class="before">${lang.app.rateStarsRequest[langCode]}</div>
