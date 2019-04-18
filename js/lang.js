@@ -114,8 +114,12 @@ const lang = Object.freeze({
             jp: "この数式へのリンク"
         },
         shareFormulaButton: {
-            en: "Copy to Clipboard",
-            jp: "クリップボードにコピー"
+            en: "Copy to Clipboard (Long)",
+            jp: "クリップボードにコピー(長いです)"
+        },
+        shareFormulaButtonShort: {
+            en: "Copy to Clipboard (Short)",
+            jp: "クリップボードにコピー(ショート)"
         },
         openInSimButton: {
             en: "Open in Affix Simulator",

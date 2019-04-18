@@ -190,14 +190,17 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
                 }) + `</div>` : ''}
         </div>`;
 
-const LINK_TEMPLATE = ({ link, linkToSim, smollink, langCode }) => {
+const LINK_TEMPLATE = ({ link, linkToSim, smallLink, langCode }) => {
     return `<div class="link-container hidden" onclick="$(this).remove();">
         <div onclick="event.stopPropagation();">
             <div class="main-grid">
                 <div class="title bold">${lang.app.shareFormulaTitle[langCode]}</div>
     			<input type="text" value="${link}" onfocus="this.setSelectionRange(0, this.value.length)">
-				<input type="text" value="${smollink}" onfocus="this.setSelectionRange(0, this.value.length)">
                 <div class="copy-button"><a>${lang.app.shareFormulaButton[langCode]}</a></div>
+				${ smallLink ?
+                `<input type="text" value="${smallLink}" onfocus="this.setSelectionRange(0, this.value.length)">
+                <div class="copy-button"><a>${lang.app.shareFormulaButtonShort[langCode]}</a></div>`
+                : ``}
                 <div class="copy-button"><a  href="${linkToSim}" target="_blank">${lang.app.openInSimButton[langCode]}</a></div>
                 <div class="confirm-button">${lang.app.closeButton[langCode]}</div>
             </div>

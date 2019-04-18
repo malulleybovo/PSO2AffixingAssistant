@@ -26,6 +26,7 @@ class ViewController {
         this.affixesSelected = [];
         this.choicesSelected = [];
         this.assistant = assistant;
+        this.requestSafetyFlag = false;
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(ViewController.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -100,7 +101,7 @@ class ViewController {
         });
         $('#openwishlist').click(() => VIEW_CONTROLLER.openFodderWishList(true));
         $('#openformulasheet').click(() => VIEW_CONTROLLER.openFormulaSheet(true));
-        $('#getlink').click(() => VIEW_CONTROLLER.openGetLinkView(true));
+        $('#getlink').click(() => VIEW_CONTROLLER.getShortURLThenOpenLinkView());
         $('#langswitch').click(() => this.toggleLanguage());
         $('#themeswitch').click(() => {
             if ($('html').hasClass('theme--default')) {
@@ -635,7 +636,7 @@ class ViewController {
         });
     }
 
-    openGetLinkView(shouldAnimate, e) {
+    openGetLinkView({ shouldAnimate, e, shortLink }) {
         let vc = (this instanceof ViewController) ? this :
             (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
@@ -657,16 +658,13 @@ class ViewController {
         if ($('div.wish-list-container').length != 0) {
             $('div.wish-list-container').remove();
         }
-    this.getShortURL()
-			.then(shortlink => {
-				console.log('got the shortlink:' + shortlink);
-				$('body').append(
-					LINK_TEMPLATE({
-						link: decodeURI(window.location.href),
-						linkToSim: vc.assistant.toURL(true),
-						smollink: shortlink,
-						langCode: vc.langCode
-				}));
+		$('body').append(
+			LINK_TEMPLATE({
+				link: decodeURI(window.location.href),
+				linkToSim: vc.assistant.toURL(true),
+				smallLink: shortLink,
+				langCode: vc.langCode
+		}));
         if (shouldAnimate) {
             $('div.link-container').animate({}, 10, function () {
                 timeData.shareLinkStartTime = (new Date()).getTime();
@@ -682,8 +680,9 @@ class ViewController {
             });
         }
         else $('div.link-container').removeClass('hidden');
+        // Copy Long Link Button Handler
         $('div.link-container div.copy-button:nth-child(3)').click(() => {
-            let copyText = $('div.link-container input[type=text]')[0];
+            let copyText = $('div.link-container input[type=text]:nth-child(2)')[0];
             if (!copyText) return;
             copyText.select();
             document.execCommand("copy");
@@ -696,7 +695,22 @@ class ViewController {
             }
             catch (e) { }
         });
-        $($('div.link-container div.copy-button')[1]).find('a').click(() => {
+        // Copy Short Link Button Handler
+        $('div.link-container div.copy-button:nth-child(5)').click(() => {
+            let copyText = $('div.link-container input[type=text]:nth-child(4)')[0];
+            if (!copyText) return;
+            copyText.select();
+            document.execCommand("copy");
+            try {
+                gaRequests.send('share', 'buttonClick', {
+                    'View Type': 'Share Link View',
+                    'Link Type': 'Link to Assistant',
+                    'Number Of Links Used': 1
+                });
+            }
+            catch (e) { }
+        });
+        $('div.link-container div.copy-button:nth-child(6)').find('a').click(() => {
             try {
                 gaRequests.send('share', 'buttonClick', {
                     'View Type': 'Share Link View',
@@ -717,11 +731,35 @@ class ViewController {
             }
             catch (e) { }
         });
-		})
-		.catch(error => {
-        // do the same but without the short link I guess
-		console.log(error);
-		});
+    }
+
+    getShortURLThenOpenLinkView() {
+        if (this.requestSafetyFlag) return;
+        this.requestSafetyFlag = true;
+        fetch(
+            'https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
+            + encodeURIComponent(window.location.href))
+            // Request Short URL
+            .then(response => {
+                this.requestSafetyFlag = false;
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            // Retrieve URL
+            .then(data => data.data.url)
+            // Display View
+            .then(shortlink => {
+                this.openGetLinkView({
+                    shouldAnimate: true,
+                    shortLink: shortlink
+                });
+            })
+            // Request Fail
+            .catch(error => {
+                this.requestSafetyFlag = false;
+                console.log(error);
+            });
     }
 
     updateFromURL() {
@@ -1477,18 +1515,6 @@ class ViewController {
             }
             catch (e) { }
         });
-    }
-
-    getShortURL() {
-        return fetch('https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl=' + encodeURIComponent(window.location.href))
-            .then(response => {
-              if (response.ok) {
-				  console.log('Got the JSON Response!');
-                return response.json();
-              }
-              console.log('Unable to shorten URL');
-            })
-            .then(data => data.data.url);
     }
 
     peekRateItView() {
