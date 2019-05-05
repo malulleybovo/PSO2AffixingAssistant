@@ -1169,6 +1169,19 @@ class Assistant {
         return false;
     }
 
+    /**
+     * Checks whether an ability in a Fodder A can be swapped with
+     * another ability in a Fodder B. Cases when they cannot be
+     * swapped include existence of conflicts within each Fodder
+     * after swapping and other scenarios that cause the Fodder
+     * success rate to top at 0% (impossible to make).
+     *
+     * @param fodderA One of the fodders to test the ability swap on
+     * @param affixAIdx The index of the ability in fodderA to swap
+     * @param fodderB The other fodder to test the ability swap on
+     * @param affixBIdx The index of the ability in fodderB to swap
+     * @returns True if the abilities can be swapped. False otherwise.
+     */
     testSwap(fodderA, affixAIdx, fodderB, affixBIdx) {
         if (affixAIdx < 0 || !(fodderA instanceof Fodder) || affixAIdx >= fodderA.size()
             || affixBIdx < 0 || !(fodderB instanceof Fodder) || affixBIdx >= fodderB.size())
@@ -1183,28 +1196,7 @@ class Assistant {
         let cloneB = fodderB.clone((b) => b != affixB && !b.code.startsWith('Z'));
         let testA = this.getPlacement(affixA, cloneB, fodderB.size(), true /*pairing exception enabled*/);
         let testB = this.getPlacement(affixB, cloneA, fodderA.size(), true /*pairing exception enabled*/);
-        return testA && testB;
-    }
-
-    getSwap(fodderA, affixAIdx, fodderB, affixBIdx) {
-        if (affixAIdx < 0 || !(fodderA instanceof Fodder) || affixAIdx >= fodderA.size()
-            || affixBIdx < 0 || !(fodderB instanceof Fodder) || affixBIdx >= fodderB.size())
-            return false;
-        let affixA = fodderA.affixes[affixAIdx];
-        let affixB = fodderB.affixes[affixBIdx];
-        // Ignore meaningless swaps
-        if (affixA.code == affixB.code
-            || fodderA == fodderB
-            || (affixA.code.startsWith('Z') && affixB.code.startsWith('Z'))) return false;
-        let cloneA = fodderA.clone((a) => a != affixA && !a.code.startsWith('Z'));
-        let cloneB = fodderB.clone((b) => b != affixB && !b.code.startsWith('Z'));
-        let testA = this.getPlacement(affixA, cloneB, fodderB.size(), true /*pairing exception enabled*/);
-        let testB = this.getPlacement(affixB, cloneA, fodderA.size(), true /*pairing exception enabled*/);
-        return {
-            result: testA && testB,
-            dataA: testA,
-            dataB: testB
-        }
+        return testA.compoundRate > 0 && testB.compoundRate > 0;
     }
 
     isExceptionPair(affixA, affixB, isLenient = false) {
