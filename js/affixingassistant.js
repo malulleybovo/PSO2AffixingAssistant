@@ -185,10 +185,24 @@ class Assistant {
         return this.unionOfListsWithDuplicates(lists);
     }
 
-    // STEP 5: Use all the unique affixes and the cost of each to build a new page
-    // that produces the desired result.
-    // *Assumes costs is an array of affix codes from most expensive (index 0) to least
-    buildPageForChoices(choices, shouldSpread, targetNumSlots, shouldUseTrainer) {
+    /**
+     * Builds a Page that produces the desired goal through the choices given
+     * such that success rate and overlap count for making each of the fodders
+     * in the page are maximized. The page success rate is already determined
+     * by the choices given, so this algorithm optimizes each of the fodders
+     * that go into this page to further facilitate affixing
+     *
+     * @param choices The choices to make each ability needed in the goal
+     * @param targetNumSlots The desired number of slots on the outcome
+     * @param shouldSpread If true, will try to fit the choices in all
+     * available fodders. Otherwise, will try to condense the choices in the
+     * minimum number of fodders possible such that success rate and overlap
+     * count are maximized
+     * @param shouldUseTrainer If true, ensures that the outcome contains a
+     * Guidance Trainer instance to give additional boost
+     * @returns The page that produces the goal given by the choices
+     */
+    buildPageWith(choices, targetNumSlots, shouldSpread, shouldUseTrainer) {
         let affixes = this.getAffixInstancesInvolvedIn(choices);
         if (!affixes || !Array.isArray(affixes) || !this.affixDB) return null;
         let numSpecialAbilityFactor = 0;
@@ -199,192 +213,33 @@ class Assistant {
             if (choice.isAbilityFactor) numSpecialAbilityFactor++;
             if (choice.isAddAbilityItem) numAddAbility++;
         }
-        if (affixes.length <= 0 && numSpecialAbilityFactor <= 0 && numAddAbility <= 0) return null;
+        // Check if theres nothing to be added
+        if (affixes.length <= 0
+            && numSpecialAbilityFactor <= 0
+            && numAddAbility <= 0) return null;
 
         // Generate new page
-        let page = this.buildPageInPyramid(affixes, targetNumSlots, shouldUseTrainer);
-
-        if (page == null) {
-            try {
-                let msg = `@Assistant.buildPageForChoices => page created was null from { affixes: [ `;
-                if (affixes && affixes.length) {
-                    for (var i = 0; i < affixes.length; i++) {
-                        if (affixes[i] && affixes[i].code) msg += `${affixes[i]}, `;
-                        else msg += `NoCode={${affixes[i]}}, `;
-                    }
-                }
-                else msg += `NotDefined={${affixes}}`;
-                msg += ` ], targetNumSlots: ${targetNumSlots} /// pageTreeRoot => `;
-                msg += (ASSISTANT.pageTreeRoot) ? ASSISTANT.pageTreeRoot.toString() : `root={${ASSISTANT.pageTreeRoot}}`;
-                gaRequests.sendException(msg);
-            } catch (e) { }
-        }
-
-        if (shouldSpread) {
-            this.spreadFodders(page, targetNumSlots);
-        }
-
-        // Add any extra fodder to ensure every page has at least 3 fodders
-        // for additional affixing boost
-        let numFoddersNeeded = 3;
-        let hasFodderWithinTargetSlot = false;
-        for (var i = 0; i < page.size(); i++) {
-            if (page.fodders[i].size() > 0) numFoddersNeeded--;
-            if (!hasFodderWithinTargetSlot && page.fodders[i].size() <= targetNumSlots)
-                hasFodderWithinTargetSlot = true;
-        }
-        // Add an extra fodder in case all fodders exceed the target, this new fodder 
-        // would the have the abilities affixed to in the real process
-        if (!hasFodderWithinTargetSlot && numFoddersNeeded <= 0) numFoddersNeeded = 1;
-        for (var i = 0; i < page.size(); i++) {
-            if (numFoddersNeeded > 0 && page.fodders[i].size() == 0) {
-                page.fodders[i].addAffixes(this.affixDB[this.junkCodes[0]].abilityRef);
-                numFoddersNeeded--;
-            }
-        }
-
-        // Add any extra junk ability to ensure every fodder meets the 
-        // target number of slots (otherwise the gear cannot be affixed)
-        for (var i = 0; i < page.size(); i++) {
-            let fodder = page.fodders[i];
-            if (fodder.size() >= 0 || i <= numSpecialAbilityFactor) {
-                let junks = [];
-                for (var j = 0; j < this.junkCodes.length; j++) {
-                    let junk = this.affixDB[this.junkCodes[j]].abilityRef;
-                    if (fodder.affixes.includes(junk)) continue;
-                    if (fodder.size() + junks.length < targetNumSlots) junks.push(junk);
-                    else break;
-                }
-                if (junks.length > 0) fodder.addAffixes(junks);
-            }
-        }
-
-        // Check if swapping any two affixes would increase the overall success
-        // for every fodderA
-        for (var i = 0; i < page.size(); i++) {
-            let fodderA = page.fodders[i];
-            if (!(fodderA instanceof Fodder)) continue;
-            // for every fodderB
-            for (var k = 0; k != i && k < page.size(); k++) {
-                let fodderB = page.fodders[k];
-                if (!(fodderB instanceof Fodder)) continue;
-                // for every affixA
-                for (var j = 0; j < fodderA.size(); j++) {
-                    let affixA = fodderA.affixes[j];
-                    // Skip checking non-transferables
-                    if (this.affixDB[affixA.code].choices.length == 0) continue;
-                    // for every affixB
-                    for (var m = 0; m < fodderB.size(); m++) {
-                        let affixB = fodderB.affixes[m];
-                        // Skip checking non-transferables
-                        if (this.affixDB[affixB.code].choices.length == 0) continue;
-                        let arr;
-                        // get placementA1 of affixA on fodderA
-                        arr = fodderA.affixes.slice(0);
-                        arr.splice(j, 1);
-                        let placementA1 = this.getPlacement(affixA,
-                            (new Fodder()).addAffixes(arr), -1, targetNumSlots);
-                        if (!placementA1) continue; // Had conflict
-                        // get placementB2 of affixB on fodderA
-                        let placementB2 = this.getPlacement(affixB,
-                            (new Fodder()).addAffixes(arr), -1, targetNumSlots);
-                        if (!placementB2) continue; // Had conflict
-                        arr = fodderB.affixes.slice(0);
-                        arr.splice(m, 1);
-                        // get placementB1 of affixB on fodderB
-                        let placementB1 = this.getPlacement(affixB,
-                            (new Fodder()).addAffixes(arr), -1, targetNumSlots);
-                        if (!placementB1) continue; // Had conflict
-                        // get placementA2 of affixA on fodderB
-                        let placementA2 = this.getPlacement(affixA,
-                            (new Fodder()).addAffixes(arr), -1, targetNumSlots);
-                        if (!placementA2) continue; // Had conflict
-                        // get totalNumOverlaps1 of placements 1
-                        let totalNumOverlaps1 = 0;
-                        if (placementA1.overlap) totalNumOverlaps1 += placementA1.data.overlaps - placementA1.data.numOverlapsInvolvingReceptor;
-                        if (placementB1.overlap) totalNumOverlaps1 += placementB1.data.overlaps - placementB1.data.numOverlapsInvolvingReceptor;
-                        // get totalNumOverlaps2 of placements 2
-                        let totalNumOverlaps2 = 0;
-                        if (placementA2.overlap) totalNumOverlaps2 += placementA2.data.overlaps - placementA2.data.numOverlapsInvolvingReceptor;
-                        if (placementB2.overlap) totalNumOverlaps2 += placementB2.data.overlaps - placementB2.data.numOverlapsInvolvingReceptor;
-                        // get compoundRate1 of placements 1
-                        let compoundRate1 = placementA1.data.compoundRate * placementB1.data.compoundRate;
-                        // get compoundRate2 of placements 2
-                        let compoundRate2 = placementA2.data.compoundRate * placementB2.data.compoundRate;
-                        // if totalNumOverlaps2 > totalNumOverlaps1 && compoundRate2 > compoundRate1
-                        if (totalNumOverlaps2 > totalNumOverlaps1) {
-                            // swap affixA with affixB
-                            fodderA.affixes.splice(j, 1);
-                            fodderB.affixes.splice(m, 1);
-                            fodderA.affixes.push(affixB);
-                            fodderB.affixes.push(affixA);
-                        }
-                    }
-                }
-            }
-        }
-
-        // Add any Special Ability Factor
-        let choicesWithFactor = [];
-        for (var i = 0; i < choices.length; i++) {
-            let choice = choices[i];
-            if (choice.isAbilityFactor && choice.abilityRef) {
-                choicesWithFactor.unshift(choice);
-            }
-        }
-        for (var i = 0; i < page.size(); i++) {
-            if (choicesWithFactor.length <= 0) break;
-            let fodder = page.fodders[i];
-            let transferablesData = this.getTransferablesAndNonTransferables(fodder.affixes);
-            let hasNonTransferable = transferablesData.hasNonTransferable;
-            if (!hasNonTransferable) {
-                fodder.setSpecialAbilityFactor(
-                    choicesWithFactor.pop().abilityRef
-                );
-            }
-        }
-        // Sort fodders to display the optimal Main Fodder
-        page.fodders.sort((a, b) => {
-            // Leave fodders with nontransferables for last
-            if (a.affixes.filter(a => this.affixDB[a.code].choices.length == 0).length > 0) return 1;
-            if (b.affixes.filter(a => this.affixDB[a.code].choices.length == 0).length > 0) return -1;
-            // Sort fodders by lowest slots
-            if (a.affixes.filter(a => !a.code.startsWith('Z')).length
-                > b.affixes.filter(a => !a.code.startsWith('Z')).length)
-                // Prioritize b, unless a has trainer
-                return a.affixes.includes(this.affixDB[this.trainerCode].abilityRef) ? -1 : 1;
-            // Else prioritize a, unless b has trainer
-            else return b.affixes.includes(this.affixDB[this.trainerCode].abilityRef) ? 1 : -1;
-        });
-
-        return page;
-    }
-
-    produceFromChoices({ fodder, affixChoices, shouldSpread = false, targetNumSlot }) {
-        if (!(fodder instanceof Fodder) || !affixChoices
-            || !Array.isArray(affixChoices) || (typeof shouldSpread !== 'boolean')
-            || (typeof targetNumSlot !== 'number') || targetNumSlot <= 0) return false;
-
-        let producedPage = buildPageForChoices(affixChoices, shouldSpread, targetNumSlot);
-        if (!producedPage) return false;
-
-        fodder.connectTo(producedPage);
-        return true;
-    }
-
-    buildPageInPyramid(affixes, targetNumSlots, shouldUseTrainer) {
         let page = new Page();
-        let fodders = []
+        let fodders = [];
         for (var i = 0; i < page.CAPACITY; i++) { // One list of affixes per fodder
             fodders.push(new Fodder());
         }
         page.addFodders(fodders);
         let pageStartIdx = 0;
 
+        if (shouldUseTrainer // If using Guidance Trainer but not transfering it
+            && !affixes.includes(this.affixDB[this.trainerCode].abilityRef)) {
+            // Add one instance of Guidance Trainer just to increase success rate
+            affixes.push(this.affixDB[this.trainerCode].abilityRef);
+        }
+        // Sort the affixes by success rate
+        this.sortAffixesBySuccessRate(affixes);
+
         // separate affixes into nontransferables and affixes
         let transferablesData = this.getTransferablesAndNonTransferables(affixes);
         let nontransferables = transferablesData.nontransferables;
         let transferables = transferablesData.transferables;
+
         // FOR NONTRANSFERABLES
         for (var i = 0; i < nontransferables.length; i++) {
             if (pageStartIdx >= page.fodders.length) {
@@ -409,140 +264,442 @@ class Assistant {
             page.fodders[pageStartIdx].addAffixes([nontransferables[i]]);
             pageStartIdx++; // Essentially locks the currrent fodder from edits
         }
+
         // FOR TRANSFERABLES
-        if (shouldUseTrainer && page.size() > pageStartIdx // If using Guidance Trainer
-            && !transferables.includes(this.affixDB[this.trainerCode].abilityRef)) { // But not transfering it
-            // Add one instance of Guidance Trainer just to increase success rate
-            page.fodders[pageStartIdx].addAffixes(this.affixDB[this.trainerCode].abilityRef);
-        }
-        // sort affixes by max transfer rate
-        var that = this;
-        transferables.sort(function (affixA, affixB) {
-            // Leave junk as lowest priority
-            if (that.junkCodes.includes(affixA.code)) return 1;
-            if (that.junkCodes.includes(affixB.code)) return -1;
-            // Sort non-junk abilities
-            if (that.affixDB[affixA.code] && that.affixDB[affixA.code].choices[0]
-                && that.affixDB[affixB.code] && that.affixDB[affixB.code].choices[0]) {
-                let maxRateA = that.affixDB[affixA.code].choices[0].transferRate;
-                let maxRateB = that.affixDB[affixB.code].choices[0].transferRate;
-                return maxRateB - maxRateA;
+        // Generate overlap map
+        let affLists = transferables.map(a => [a]);
+        let conflictValuesUsed = new Set();
+        let currLvl = 1;
+        while (page.CAPACITY - pageStartIdx > 0) {
+            // If spreading, stop when able to fit the affix lists within a page
+            if (shouldSpread && affLists.length <= page.CAPACITY - pageStartIdx)
+                break;
+            // Check if checking level exceeded the permitted number os slots
+            if (currLvl > targetNumSlots) break;
+
+            let bestPairsData = this.getBestPairsData(affLists, targetNumSlots,
+                currLvl, page.CAPACITY - pageStartIdx, conflictValuesUsed);
+            if (bestPairsData == null) break;
+            let bestPairs = bestPairsData.bestPairs;
+            let maxConflicts = bestPairsData.maxConflicts;
+
+            // Check if multiple pairs are the best
+            let pairIdxsToBeMerged = [];
+            let pairIdxsUsed = new Set();
+            // Check if any two pairs reference each other
+            for (var i = 0; i < bestPairs.length; i++) {
+                let pairA = bestPairs[i];
+                for (var j = i + 1; j < bestPairs.length; j++) {
+                    let pairB = bestPairs[j];
+                    if (pairA.forRowIdx == pairB.best.idx
+                        && pairB.forRowIdx == pairA.best.idx) {
+                        // Merge the two pairs
+                        pairIdxsToBeMerged.push(i);
+                        pairIdxsUsed.add(i);
+                        pairIdxsUsed.add(j);
+                        break;
+                    }
+                }
             }
-            else {
-                return -1;
+            // Check if any other pairing can be done
+            // without conflicting with other chosen pairs
+            for (var i = 0; i < bestPairs.length
+                && !pairIdxsUsed.has(i); i++) {
+                let pairA = bestPairs[i];
+                let hasConflict = false;
+                if (pairIdxsUsed.has(pairA.forRowIdx)
+                    || pairIdxsUsed.has(pairA.best.idx))
+                    hasConflict = true;
+                if (!hasConflict) {
+                    pairIdxsToBeMerged.push(i);
+                    pairIdxsUsed.add(pairA.forRowIdx);
+                    pairIdxsUsed.add(pairA.best.idx);
+                }
+            }
+            // If nothing can be done
+            if (pairIdxsToBeMerged.length == 0) {
+                // Try raising the checking level
+                if (conflictValuesUsed.has(maxConflicts)) {
+                    currLvl++;
+                    conflictValuesUsed = new Set();
+                }
+                else conflictValuesUsed.add(maxConflicts);
+            }
+
+            let listsToBeRemoved = [];
+            // Merge all the best independent pairs
+            for (var i = 0; i < pairIdxsToBeMerged.length; i++) {
+                let pairIdxToBeMerged = pairIdxsToBeMerged[i];
+                let pair = bestPairs[pairIdxToBeMerged];
+                let listIdxA = pair.forRowIdx;
+                let listIdxB = pair.best.idx;
+                affLists[listIdxA] = affLists[listIdxA]
+                    .concat(affLists[listIdxB]);
+                listsToBeRemoved.push(affLists[listIdxB]);
+            }
+
+            // Cleanup the comsumed lists of the pairs
+            for (var i = 0; i < listsToBeRemoved.length; i++) {
+                let listToBeRemoved = listsToBeRemoved[i];
+                affLists.splice(affLists.indexOf(listToBeRemoved), 1);
+            }
+        }
+
+        // Check if could not fit the abilities within
+        // the number of fodders available
+        if (affLists.length > page.CAPACITY - pageStartIdx)
+            return 'Error: Page size exceeded limit by ' + (affLists.length
+                - page.CAPACITY + pageStartIdx);
+        // Check if some mistake happened that caused
+        // needed abilities to disappear
+        if (affLists.reduce((a, b) => a + b.length, 0) != transferables.length)
+            return 'Error: Affixes ended up being removed by mistake';
+
+        // Add the optimized selection of abilities for each fodder to 
+        // the fodders in the new page
+        affLists.forEach((list, listIdx) => {
+            if (!page.fodders[pageStartIdx + listIdx]) return;
+            page.fodders[pageStartIdx + listIdx].addAffixes(list);
+        });
+
+        // Sort fodders to display the optimal Main Fodder
+        this.sortPageFodders(page);
+
+        // Add any extra junk ability to ensure every fodder meets the 
+        // target number of slots (otherwise the gear cannot be affixed)
+        this.fillPageWithJunk(page, targetNumSlots);
+
+        // Add any Special Ability Factor
+        let choicesWithFactor = [];
+        for (var i = 0; i < choices.length; i++) {
+            let choice = choices[i];
+            if (choice.isAbilityFactor && choice.abilityRef) {
+                choicesWithFactor.unshift(choice);
+            }
+        }
+        for (var i = 0; i < page.size(); i++) {
+            if (choicesWithFactor.length <= 0) break;
+            let fodder = page.fodders[i];
+            let transferablesData = this.getTransferablesAndNonTransferables(fodder.affixes);
+            let hasNonTransferable = transferablesData.hasNonTransferable;
+            if (!hasNonTransferable) {
+                fodder.setSpecialAbilityFactor(
+                    choicesWithFactor.pop().abilityRef
+                );
+            }
+        }
+
+        return page;
+    }
+
+    /**
+     * Gets the best pairs of lists of abilities within affLists
+     * to be merged such that success rate and overlap count are
+     * maximized while respecting constraints on target slot count
+     * and the number of fodders available to place abilities on.
+     *
+     * @param affLists The list of lists of abilities to find the pair on
+     * @param targetNumSlots The target number of slots for the outcome
+     * @param currLvl The current level of checking (checks lists of
+     * abilities with up to N abilities)
+     * @param numFoddersLeft The number of fodders available
+     * @param conflictValuesUsed History of maximum conflict values
+     * that have already been checked and are done with
+     * @returns {
+     *     bestPairs: The best pairs found among lists
+     *     maxConflicts: The maximum number of conflicts among lists
+     * }, or null if there nothing more that can be done
+     */
+    getBestPairsData(affLists, targetNumSlots, currLvl, numFoddersLeft, conflictValuesUsed) {
+        let maxConflicts = -1;
+        let maxRate = 0;
+        let rowIdxsWithMostConflict = [];
+        let placement = this.getPlacementMappingFor(affLists, targetNumSlots);
+        placement.successMap.forEach((a, idx) => {
+            let conflictCount = a.filter(b => b <= 0).length;
+            // Ignore list of abilities that exceeds the current checking level
+            if (affLists[idx].length > currLvl) return;
+            // Ignore rows with conflict count already done with
+            if (conflictValuesUsed.has(conflictCount)) return;
+            // Go for the rows with the highest number of conflicts first
+            if (conflictCount > maxConflicts) {
+                maxConflicts = conflictCount;
+                rowIdxsWithMostConflict = [idx];
+                maxRate = Math.max(...placement.successMap[idx]);
+            }
+            // Select all rows with the maximum conflict count
+            else if (conflictCount == maxConflicts) {
+                let currMax = Math.max(...placement.successMap[idx]);
+                if (currMax > maxRate) {
+                    maxRate = currMax;
+                    rowIdxsWithMostConflict = [idx];
+                }
+                else if (currMax == maxRate) {
+                    rowIdxsWithMostConflict.push(idx);
+                }
             }
         });
-        for (var i = 0; i < transferables.length; i++) {
-            let affix = transferables[i];
-            // for fodders without nontransferables
-            // separate fodders into overlaps and no-overlaps
-            let placements = this.getPossiblePlacements(affix, page, pageStartIdx);
-            let overlaps = placements.overlaps;
-            let nooverlaps = placements.nooverlaps;
+        // If no row with highest uncheck conflict count, nothing more can be done
+        if (rowIdxsWithMostConflict.length == 0
+            && placement.successMap[0].length <= numFoddersLeft) return null;
 
-            // Try placing on best overlap
-            let hasAdded = false;
-            if (overlaps.length > 0) {
-                // sort overlaps by rate
-                overlaps.sort((a, b) => b.compoundRate - a.compoundRate);
-                for (var j = 0; j < overlaps.length; j++) {
-                    if (page.fodders[overlaps[j].index] && page.fodders[overlaps[j].index].affixes.length < targetNumSlots) {
-                        page.fodders[overlaps[j].index].addAffixes([affix]);
-                        hasAdded = true;
-                        break;
-                    }
-                }
-            }
-            if (!hasAdded && nooverlaps.length > 0) { // Or try placing on best non-overlap
-                // sort overlaps by rate
-                nooverlaps.sort((a, b) => b.compoundRate - a.compoundRate);
-                for (var j = 0; j < nooverlaps.length; j++) {
-                    if (page.fodders[nooverlaps[j].index] && page.fodders[nooverlaps[j].index].affixes.length < targetNumSlots) {
-                        page.fodders[nooverlaps[j].index].addAffixes([affix]);
-                        hasAdded = true;
-                        break;
-                    }
-                }
-            }
-            // Check if ability can be placed in any available spot or swapped with an already placed ability
-            // (This is an excetional scenario that may produce fodders that are harder to make)
-            if (!hasAdded) {
-                let foddersFull = [];
-                let foddersNotFull = [];
-                for (var j = 0; j < page.size(); j++) {
-                    let fodder = page.fodders[j];
-                    // Check fodders with space available
-                    if (fodder.size() < targetNumSlots) {
-                        foddersNotFull.push(fodder);
-                    }
-                    else {
-                        foddersFull.push(fodder);
-                    }
-                }
-                // Try checking for a possible available spot
-                for (var j = 0; j < foddersNotFull.length; j++) {
-                    let placement = this.getPlacement(affix, foddersNotFull[j], -1, targetNumSlots);
-                    if (placement) {
-                        foddersNotFull[j].addAffixes(affix);
-                        hasAdded = true;
-                        break;
-                    }
-                }
-                // If still did not work, try moving an ability in a full fodder to another fodder
-                // and placing this ability in it instead.
-                if (!hasAdded) {
-                    // Find a good candidate
-                    let candidates = [];
-                    // For every full fodder
-                    for (var j = 0; j < foddersFull.length; j++) {
-                        // For every ability in the full fodder
-                        for (var k = 0; k < foddersFull[j].size(); k++) {
-                            let checkFodder = foddersFull[j].clone();
-                            // Remove just one ability of the cloned fodder
-                            checkFodder.affixes.splice(k, 1);
-                            // Check if the new ability can be placed in its place
-                            let checkPlacement = this.getPlacement(affix, checkFodder, -1, targetNumSlots);
-                            // If it can, save this possibility and the coumpound rate it had
-                            if (checkPlacement) {
-                                candidates.push({
-                                    fodder: foddersFull[j],
-                                    idxRemoved: k,
-                                    compoundRate: checkPlacement.compoundRate
-                                });
-                            }
-                        }
-                    }
-                    // Sort all swap possibilities by compount rate (from high to low)
-                    candidates.sort((a, b) => a.compoundRate - b.compoundRate);
-                    // From best candidates to worst candidates
-                    for (var j = 0; j < candidates.length; j++) {
-                        let candidate = candidates[j]
-                        let abilityThatMaySwap = candidate.fodder.affixes[candidate.idxRemoved];
-                        // For every non-full fodder
-                        for (var k = 0; k < foddersNotFull.length; k++) {
-                            // Move ability that may be swapped into first non-full fodder that it can be placed into
-                            let placement = this.getPlacement(abilityThatMaySwap, foddersNotFull[k], -1, targetNumSlots);
-                            if (placement) {
-                                candidate.fodder.affixes.splice(candidate.idxRemoved, 1); // Remove from old fodder
-                                foddersNotFull[k].addAffixes(abilityThatMaySwap); // Into new fodder
-                                // Add new ability into the now available space
-                                candidate.fodder.addAffixes(affix);
-                                hasAdded = true;
-                                break;
-                            }
-                        }
-                        if (hasAdded) break;
-                    }
-                }
+        let bestPairs = [];
+        let bestRate = -100;
+        let bestOv = -100;
+        for (var i = 0; i < placement.successMap.length; i++) {
+            // Skip rows with conflict count that are done with
+            if (!rowIdxsWithMostConflict.includes(i)) continue;
+            let rateRow = placement.successMap[i].slice(0);
+            let ovRow = placement.overlapMap[i].slice(0);
+            // Get highest success rate in row
+            let bestInRateRow = Math.max(...rateRow);
+            if (bestInRateRow <= 0) continue;
+            let bestRateIdxs = [];
+            rateRow.forEach((a, idx) => a == bestInRateRow ? bestRateIdxs.push(idx) : null);
+            // Get highest number of overlaps in row
+            let selectedInOvRows = ovRow.filter((a, idx) => bestRateIdxs.includes(idx));
+            let bestInOvRow = Math.max(...selectedInOvRows);
+            let bestOvIdxs = [];
+            selectedInOvRows.forEach((a, idx) => a == bestInOvRow ? bestOvIdxs.push(idx) : null);
 
+            let bestOvIdx = bestOvIdxs[0];
+            let bestRateIdx = bestRateIdxs[bestOvIdx];
+
+            if (bestRateIdx === undefined || bestOvIdx === undefined)
+                continue;
+
+            let newPair = {
+                forRowIdx: i,
+                best: {
+                    idx: bestRateIdx,
+                    rate: rateRow[bestRateIdx],
+                    ov: ovRow[bestRateIdx]
+                }
+            };
+            // Get the best pair overall
+            if (rateRow[bestRateIdx] > bestRate) { // Prioritize success rate
+                bestRate = rateRow[bestRateIdx];
+                bestOv = ovRow[bestRateIdx];
+                bestPairs = [newPair];
             }
-            // If all attempts to add all abilities fail...
-            if (!hasAdded) {
-                // Something went wrong and affix cannot be placed anywhere
-                return null;
+            else if (rateRow[bestRateIdx] == bestRate) { // Then overlap count
+                if (ovRow[bestRateIdx] > bestOv) {
+                    bestRate = rateRow[bestRateIdx];
+                    bestOv = ovRow[bestRateIdx];
+                    bestPairs = [newPair];
+                }
+                else {
+                    bestPairs.push(newPair);
+                }
             }
         }
-        return page;
+        return {
+            bestPairs: bestPairs,
+            maxConflicts: maxConflicts
+        };
+    }
+
+    /**
+     * Fills a page with junk abilities up to a desired
+     * slot count. Existing abilities in the page fodders
+     * are kept.
+     *
+     * @param page The page to fill with junk abilities
+     * @param targetNumSlots The target slot count to fill
+     */
+    fillPageWithJunk(page, targetNumSlots) {
+        if (!(page instanceof Page)) return;
+        for (var i = 0; i < page.size(); i++) {
+            let fodder = page.fodders[i];
+            let junks = [];
+            for (var j = 0; j < this.junkCodes.length; j++) {
+                let junk = this.affixDB[this.junkCodes[j]].abilityRef;
+                if (fodder.affixes.includes(junk)) continue;
+                if (fodder.size() + junks.length < targetNumSlots)
+                    junks.push(junk);
+                else break;
+            }
+            if (junks.length > 0) fodder.addAffixes(junks);
+        }
+    }
+
+    /**
+     * Sorts the fodders of a page by number of useful abilities
+     * in each (lowwer to higher count). Junk abilities are
+     * ignored. Fodders with only junk abilities are pushed to
+     * last in the list of fodders.
+     *
+     * @param page The Page containing the fodders to sort
+     */
+    sortPageFodders(page) {
+        if (!(page instanceof Page)) return;
+        page.fodders.sort((a, b) => {
+            // Leave fodders with nontransferables for last
+            let numJunkInA = a.affixes.filter(a =>
+                this.affixDB[a.code].choices.length == 0).length;
+            let numJunkInB = b.affixes.filter(a =>
+                this.affixDB[a.code].choices.length == 0).length
+            if (numJunkInA > 0 || numJunkInA == a.affixes.length) return 1;
+            if (numJunkInB > 0 || numJunkInB == b.affixes.length) return -1;
+            // Sort fodders by lowest slots
+            if (a.affixes.filter(a => !a.code.startsWith('Z')).length
+                > b.affixes.filter(a => !a.code.startsWith('Z')).length)
+                // Prioritize b, unless a has trainer
+                return a.affixes.includes(
+                    this.affixDB[this.trainerCode].abilityRef) ? -1 : 1;
+            // Else prioritize a, unless b has trainer
+            else return b.affixes.includes(
+                this.affixDB[this.trainerCode].abilityRef) ? 1 : -1;
+        });
+    }
+
+    /**
+     * Sort a list of abilities by success rate given the implicit
+     * constraints in the sorting algorithm. The sorting happens
+     * on the list given, not on a clone of the list.
+     *
+     * @param affixes The abilities to sort
+     * @returns A back reference to the given sorted list
+     */
+    sortAffixesBySuccessRate(affixes) {
+        affixes.sort((affixA, affixB) => {
+            // Lowest priority: Unsortable abilities
+            if (!this.affixDB[affixA.code]) return 1;
+            if (!this.affixDB[affixB.code]) return -1;
+            // Second lowest priority: Junk abilities
+            if (this.junkCodes.includes(affixA.code)) return 1;
+            if (this.junkCodes.includes(affixB.code)) return -1;
+            // Third lowest priority: Non-transferable abilities
+            let affixAChoices = this.affixDB[affixA.code].choices;
+            let affixBChoices = this.affixDB[affixB.code].choices;
+            if (!affixAChoices[0]) return 1;
+            if (!affixBChoices[0]) return -1;
+            // Third highest priority: Abilities only transferable via SAF
+            // or Add Ability Item
+            let idealChoiceA = this.getBestChoiceFor(affixAChoices, true);
+            let idealChoiceB = this.getBestChoiceFor(affixBChoices, true);
+            if (!idealChoiceA || idealChoiceA.transferRate === undefined)
+                return 1;
+            if (!idealChoiceB || idealChoiceB.transferRate === undefined)
+                return -1;
+            // Second highest priority: Abilities made with non-transferables
+            // Those with best choice containing a SAF, or add ability item
+            idealChoiceA = this.getBestChoiceFor(affixAChoices, true, true);
+            idealChoiceB = this.getBestChoiceFor(affixBChoices, true, true);
+            if (!idealChoiceA || idealChoiceA.transferRate === undefined)
+                return 1;
+            if (!idealChoiceB || idealChoiceB.transferRate === undefined)
+                return -1;
+            // Highest priority: Transferable abilities with highest success
+            // rate, yet lowest number of materials to make it
+            let maxRateA = idealChoiceA.transferRate;
+            let maxRateB = idealChoiceB.transferRate;
+            let numMatA = idealChoiceA.materials.length;
+            let numMatB = idealChoiceB.materials.length;
+            if (maxRateA == maxRateB) return numMatA - numMatB;
+            return maxRateB - maxRateA;
+        });
+        return affixes;
+    }
+
+    /**
+     * Gets the choice among the given choices such that success rate
+     * is maximized while also following the optional flag constraints
+     * (should those be given).
+     *
+     * @param choices A list of choices sorted by highest success rate
+     * @param noSAForAdd Flag to ignore choices via SAF or Add Ability
+     * @param noMaterialWithSAForAddItem Flag to ignore choices
+     * containing materials made only by SAF or Add Ability Item
+     * @returns The choice with highest success rate such that the
+     * optional constrainsts are followed. Null if not found.
+     */
+    getBestChoiceFor(choices, noSAForAdd, noMaterialWithSAForAddItem) {
+        let idealChoice = null;
+        for (var i = 0; i < choices.length; i++) {
+            if (!choices[i]) continue;
+            if (noSAForAdd) {
+                 // Ignore choices through SAF and Add Ability Item
+                if (choices[i].isAbilityFactor
+                    || choices[i].isAddAbilityItem)
+                    continue;
+            }
+            if (noMaterialWithSAForAddItem) {
+                // Check for materials only made via SAF or Add Ability
+                let badMaterials =
+                    choices[i].materials.filter(a => {
+                        // Check choices for making the material
+                        // that do not involve SAF or Add Ability Item
+                        let subChoices = this.affixDB[a.code].choices;
+                        let subPossibilities = subChoices.filter(b =>
+                            !b.isAbilityFactor && !b.isAddAbilityItem);
+                        return subPossibilities.length == 0;
+                    });
+                if (badMaterials.length > 0) continue;
+            }
+            idealChoice = choices[i];
+            break;
+        }
+        return idealChoice;
+    }
+
+    /**
+     * Obtains data on how good or bad of a match each
+     * entry of the input list is to one another.
+     * This data comes in matrix form, divided by two categories: overlap (int)
+     * and compound success rate (percentage). Overlap stands for the number
+     * of ways to reuse a ability in the formula (i.e.: Vol Soul + Power III
+     * overlap because it's possible to reuse the Vol Soul to produce Power III).
+     * And compound success rate stands for the optimized success rate in making
+     * a fodder by joining two lists of abilities given the best choices that
+     * maximize ability transfer rate overlapping. Should there be any conflict
+     * among abilities within the matrices, the respective values are default to -1.
+     * 
+     * @param affixLists A list of size N containing lists of abilities
+     * @param optionalNumSlots (optional) The desired target number of slots.
+     * @returns {
+     *     forEntries: Back reference to the input param
+     *     overlapMap: N x N matrix containing data on affixing overlap
+     *     successMap: N x N matrix containing data on the compound success rate
+     * }
+     */
+    getPlacementMappingFor(affixLists, optionalNumSlots) {
+        let overlapMap = [];
+        let successMap = [];
+        affixLists.forEach((affixListA, i) => {
+            let ovEntry = [];
+            let successEntry = [];
+            let testFodder = new Fodder();
+            testFodder.addAffixes(affixListA);
+            affixLists.forEach((affixListB, j) => {
+                // Since the matrix is reflected across its diagonal,
+                // reuse the already computing values for the reflection
+                if (i > j) {
+                    ovEntry.push(overlapMap[j][i]);
+                    successEntry.push(successMap[j][i]);
+                }
+                // Placement on itself is impossible by default
+                else if (i == j) {
+                    ovEntry.push(-2);
+                    successEntry.push(-2);
+                }
+                // Get the placement of every pair of abilities
+                else {
+                    let placement = this.getPlacement(affixListB, testFodder,
+                        optionalNumSlots !== undefined ? optionalNumSlots
+                            : testFodder.size() + affixListB.length);
+                    ovEntry.push(placement.totalOverlaps);
+                    successEntry.push(placement.compoundRate);
+                }
+            });
+            overlapMap.push(ovEntry);
+            successMap.push(successEntry);
+        });
+        return {
+            forEntries: affixLists,
+            overlapMap: overlapMap,
+            successMap: successMap
+        }
     }
 
     enforceSlotNumOnAll(page, targetNumSlots) {
@@ -561,264 +718,373 @@ class Assistant {
         if (numAbilities > (numFodders * (new Fodder()).CAPACITY)) return;
     }
 
-    spreadFodders(page, targetNumSlots, targetNumFodders) {
-        if (!(page instanceof Page) || typeof targetNumSlots !== 'number') return null;
-        if (targetNumSlots <= 0) targetNumSlots = 1;
-        if (targetNumSlots > (new Fodder()).CAPACITY) targetNumSlots = (new Fodder()).CAPACITY;
-        targetNumFodders = (typeof targetNumFodders === 'number') ? targetNumFodders : page.size();
-        if (targetNumFodders <= 1) return null;
-        if (targetNumFodders > page.size()) targetNumFodders = page.size();
-        // sort fodders based on slot count
-        page.fodders.sort((fodderA, fodderB) => fodderB.size() > fodderA.size());
-        // check if fodders that are not being accounted for still have abilities
-        for (var i = targetNumFodders; i < (new Page()).CAPACITY; i++) {
-            // Prevents spreading abilities within N fodders when more than N fodders are used
-            if (page.fodders[i] && (page.fodders[i] instanceof Fodder)
-                && page.fodders[i].size() > 0) return null;
-        }
-        // while highest slot fodder (first) and lowest slot fodder (last) have count difference of at least 2
-        while (Math.abs(page.fodders[0].size() - page.fodders[page.size() - 1].size()) > 1) {
-            // pick fodder with highest slot (first)
-            let fodder = page.fodders[0];
-            // get boundary index for fodders with at least 2 slots less than highest slot fodder
-            let boundaryIdx = -1;
-            for (var i = 1; i < targetNumFodders; i++) {
-                if (Math.abs(fodder.size() - page.fodders[i].size()) > 1) {
-                    boundaryIdx = i;
-                    break;
-                }
-            }
-            if (boundaryIdx < 0) break; // No boundary = DONE !
-            // sort highest slot fodder based on number of overlaps
-            fodder.affixes.sort((affixA, affixB) => {
-                let fakeFodder = (new Fodder()).addAffixes(
-                    [fodder.affixes.slice(fodder.affixes.indexOf(affixA), 1)]
-                );
-                let placementA = this.getPlacement(affixA, fakeFodder, 0, targetNumSlots);
-                fakeFodder = (new Fodder()).addAffixes(
-                    [fodder.affixes.slice(fodder.affixes.indexOf(affixB), 1)]
-                );
-                let placementB = this.getPlacement(affixB, fakeFodder, 0, targetNumSlots);
-                if (placementA && placementB) return placementA.numOverlaps - placementB.numOverlaps;
-                else if (!placementA) return -1;
-                else return 1;
-            });
-            // from affix with lowest to highest overlap count
-            let toPageIdx = -1;
-            let fromAffixIdx = -1;
-            let maxOverlapCount = 0;
-            for (var i = 0; i < fodder.size(); i++) {
-                let affix = fodder.affixes[i];
-                // for fodders at boundary index until end
-                for (var j = boundaryIdx; j < targetNumFodders; j++) {
-                    // get placement of affix on fodder
-                    let placement = this.getPlacement(affix, page.fodders[j], 0, targetNumSlots);
-                    // track affix and fodder with highest overlap count
-                    if (placement && (placement.data.overlaps - placement.data.numOverlapsInvolvingReceptor) >= maxOverlapCount) {
-                        maxOverlapCount = (placement.data.overlaps - placement.data.numOverlapsInvolvingReceptor);
-                        toPageIdx = j;
-                        fromAffixIdx = i;
-                    }
-                }
-            }
-            // move affix found to fodder found
-            if (toPageIdx >= 0 && fromAffixIdx >= 0) {
-                let affixToMove = fodder.affixes.splice(fromAffixIdx, 1)[0];
-                page.fodders[toPageIdx].addAffixes([affixToMove]);
-            }
-            else {
-                // Something went wrong, no affix found
-                break;
-            }
-            // sort fodders based on slot count
-            page.fodders.sort((fodderA, fodderB) => fodderB.size() > fodderA.size());
-        }
-        let minNumAffixes = 0;
-        while (page.fodders[0].affixes.length != minNumAffixes) {
-            for (var j = targetNumFodders - 1; j >= 0; j--) {
-                let fodder = page.fodders[j];
-                if (fodder.affixes.length == minNumAffixes) {
-                    for (var k = 0; k < j; k++) {
-                        if (Math.abs(page.fodders[j].affixes.length - page.fodders[k].affixes.length) <= 1) {
-                            break;
-                        }
-                        else if (k + 1 < j && page.fodders[k].affixes.length > page.fodders[k + 1].affixes.length
-                            && this.getPlacement(page.fodders[k].affixes[page.fodders[k].affixes.length - 1], page.fodders[j], j, targetNumSlots)) {
-                            fodder.addAffixes([page.fodders[k].affixes.pop()]);
-                            break;
-                        }
-                    }
-                }
-                else {
-                    minNumAffixes++;
-                    break;
-                }
-            }
-        }
+    /**
+     * Gets the data on how well the affixes given fit in the fodder given.
+     * This is measured by the number of overlaps between the affixes and the
+     * fodder affixes as well as the optimized compound success rate of attempting
+     * to make these affixes together. Overlap stands for the number
+     * of ways to reuse a ability in the formula (i.e.: Vol Soul + Power III
+     * overlap because it's possible to reuse the Vol Soul to produce Power III).
+     * And compound success rate stands for the optimized success rate in making
+     * a fodder by joining two lists of abilities given the best choices that
+     * maximize ability transfer rate overlapping. Should there be any conflict
+     * among abilities within the matrices, the respective values are default to -1.
+     *
+     * @param affixes The abilities to test against the fodder affixes
+     * @param fodder The fodder containing abilities to test against the affixes
+     * @param targetNumSlots The desired number of slots for the outcome fodder
+     * @param testExceptionPairing (optional) Flag to perform aditional exception pairing
+     * @returns {
+     *     totalOverlaps: Number of overlaps between affixes and fodder abilities
+     *     compoundRate: Maximized success rate for making fodder after adding the given affixes
+     * }
+     */
+    getPlacement(affixes, fodder, targetNumSlots, testExceptionPairing = false) {
+        if (affixes.length === undefined) affixes = [affixes];
 
-        return page;
-    }
-
-    getPlacement(affix, fodder, pageIdx, targetNumSlots, testExceptionPairing = false) {
+        let newItem = {
+            // Num of fodder abilities that overlap with the given affix
+            totalOverlaps: 0,
+            // Ideal success rate with the addition on the given affix
+            compoundRate: 1
+        }
         // if fodder is at capacity (either at same slot as result or at max 8)
-        if (!(fodder instanceof Fodder) || (targetNumSlots && fodder.affixes.length >= targetNumSlots)) {
+        if (!(fodder instanceof Fodder)
+            || !affixes || !this.affixDB
+            || (targetNumSlots && affixes.length + fodder.affixes.length > targetNumSlots)
+            || affixes.filter(a => !this.affixDB[a.code] || !this.affixDB[a.code].choices).length > 0) {
             // continue to next fodder
-            return false;
+            newItem.compoundRate = -1;
+            newItem.totalOverlaps = -1;
+            return newItem;
         }
-        let affixCodePreffix = affix.code.slice(0, 2);
-        if (this.affixDB[affix.code]) {
-            if (this.affixDB[affix.code].choices) {
+
+        for (var i = 0; i < affixes.length; i++) {
+            let affix = affixes[i];
+            let affixCodePreffix = affix.code.slice(0, 2);
+            let affixChoices = this.affixDB[affix.code].choices;
+            // if affix choices overlap with choices of any affix in fodder
+            let numBadReceptorOverlaps = 0;
+
+            // Check for conflicts with fodder
+            for (var j = 0; j < fodder.size(); j++) {
+                let fodderAffix = fodder.affixes[j];
+                // if fodder contains affix code preffix or exclude pattern
+                if (fodderAffix.code.startsWith(affixCodePreffix) // If of same type
+                    || this.testExcludePattern(affix, fodderAffix, testExceptionPairing)) {
+                    newItem.compoundRate = -1;
+                    newItem.totalOverlaps = -1;
+                    return newItem;
+                }
+                if (affixChoices[0] && affixChoices[0].isAddAbilityItem
+                    && this.affixDB[fodderAffix.code].choices.length == 1
+                    && this.affixDB[fodderAffix.code].choices[0].materials.includes(affix)) {
+                    newItem.compoundRate = -1;
+                    newItem.totalOverlaps = -1;
+                    return newItem;
+                }
+                if (this.affixDB[fodderAffix.code].choices[0]
+                    && this.affixDB[fodderAffix.code].choices[0].isAddAbilityItem
+                    && affixChoices.length == 1
+                    && affixChoices[0].materials.includes(fodderAffix)) {
+                    newItem.compoundRate = -1;
+                    newItem.totalOverlaps = -1;
+                    return newItem;
+                }
+            }
+        }
+
+        let affixOptionsList = [];
+        let fodderAffixOptionsList = [];
+        fodder.affixes.forEach(affix => {
+            fodderAffixOptionsList.push([]);
+        });
+
+        affixes.forEach(affix => {
+            let goodOptions = [];
+            let betterOptions = [];
+            for (var i = 0; i < fodder.affixes.length; i++) {
+                var fodderAffix = fodder.affixes[i];
+                // Skip unknown and non-transferable abilities
+                if (!this.affixDB[fodderAffix.code]
+                    || !this.affixDB[fodderAffix.code].choices)
+                    continue;
+
                 let affixChoices = this.affixDB[affix.code].choices;
-                // if affix choices overlap with choices of any affix in fodder
-                let numOverlaps = 0;
-                let numOverlapsInvolvingReceptor = 0;
-                let hasConflict = false;
-                let receptorRateFactor = 1;
-                let compoundRate = 1;
-                // For affixes in each fodder
-                for (var k = 0; k < fodder.affixes.length; k++) {
-                    var fodderAffix = fodder.affixes[k];
-                    // if fodder contains affix code preffix or exclude pattern
-                    if (fodderAffix.code.startsWith(affixCodePreffix) // If of same type
-                        || this.testExcludePattern(affix, fodderAffix, testExceptionPairing)) {
-                        hasConflict = true;
-                        break;
-                    }
-                    if (affixChoices[0] && affixChoices[0].isAddAbilityItem
-                        && this.affixDB[fodderAffix.code].choices.length == 1
-                        && this.affixDB[fodderAffix.code].choices[0].materials.includes(affix)) {
-                        hasConflict = true;
-                        break;
-                    }
-                    if (this.affixDB[fodderAffix.code].choices[0]
-                        && this.affixDB[fodderAffix.code].choices[0].isAddAbilityItem
-                        && affixChoices.length == 1
-                        && affixChoices[0].materials.includes(fodderAffix)) {
-                        hasConflict = true;
-                        break;
-                    }
-                    if (this.affixDB[fodderAffix.code] && this.affixDB[fodderAffix.code].choices) {
-                        let fodderAffixChoices = this.affixDB[fodderAffix.code].choices;
-                        let isOverlap = false;
-                        let hasReceptor = false;
-                        // Get top choice that overlaps (which might involve a receptor)
-                        let affixChoices = this.affixDB[affix.code].choices;
-                        let rateMultiplier = 1;
-                        // Check for overlap with the affix itself
-                        for (var m = 0; m < fodderAffixChoices.length; m++) {
-                            var fodderAffixChoice = fodderAffixChoices[m];
-                            for (var n = 0; n < fodderAffixChoice.materials.length; n++) {
-                                let choiceAffix = fodderAffixChoice.materials[n];
-                                if (RECEPTOR_REGEX.test(choiceAffix.code)) hasReceptor = true;
-                                if (affix == choiceAffix) {
-                                    isOverlap = true;
-                                    compoundRate *= fodderAffixChoice.transferRate / 100;
-                                    if (hasReceptor) receptorRateFactor *= fodderAffixChoice.transferRate / 100;
-                                }
-                            }
-                        }
-                        for (var m = 0; m < affixChoices.length; m++) {
-                            var affixChoice = affixChoices[m];
-                            for (var n = 0; n < affixChoice.materials.length; n++) {
-                                let choiceAffix = affixChoice.materials[n];
-                                if (RECEPTOR_REGEX.test(choiceAffix.code)) hasReceptor = true;
-                                if (affix == choiceAffix) {
-                                    isOverlap = true;
-                                    compoundRate *= affixChoice.transferRate / 100;
-                                    if (hasReceptor) receptorRateFactor *= affixChoice.transferRate / 100;
-                                }
-                            }
-                        }
-                        // If no overlap with it, check for overlap with choices for making the affix
-                        if (!isOverlap) {
-                            let m = 0;
-                            let n = 0;
-                            while (m < fodderAffixChoices.length && n < affixChoices.length) {
-                                let fodderAffixChoice = fodderAffixChoices[m];
-                                let choice = affixChoices[n];
+                let fodderAffixChoices = this.affixDB[fodderAffix.code].choices;
 
-                                let combined = this.getAffixInstancesInvolvedIn([choice, fodderAffixChoice]);
-                                if (combined.length < choice.length + fodderAffixChoice) {
-                                    isOverlap = true;
-                                    rateMultiplier *= (fodderAffixChoice.transferRate / 100);
-                                    if (combined.materials.filter((mat) => mat.code.match(RECEPTOR_REGEX))) {
-                                        hasReceptor = true;
-                                    }
-                                    break;
-                                }
-
-                                // goes through 0:0, 0:1, 1:0, 1:1, 1:2, 2:1, 2:2 ... m:n
-                                // ensures it checks lowest array indices for both arrays first
-                                if (m >= fodderAffixChoices.length - 1) n++;
-                                else if (n >= affixChoices.length - 1) m++;
-                                else {
-                                    if ((n == m) || (m - n == 1)) n++;
-                                    else if (n - m == 1) { m++; n--; }
-                                }
+                let goodOption = {
+                    successRate: 0,
+                    type: null
+                };
+                // Get top choice that overlaps (which might involve a receptor)
+                // Check for overlap with the affix itself
+                let isOverlap = false;
+                for (var j = 0; !isOverlap && j < fodderAffixChoices.length; j++) {
+                    var fodderAffixChoice = fodderAffixChoices[j];
+                    for (var k = 0; !isOverlap && k < fodderAffixChoice.materials.length; k++) {
+                        let choiceAffix = fodderAffixChoice.materials[k];
+                        // If ability matches any material from any choice 
+                        // for making any of the fodder's abilities
+                        if (affix == choiceAffix) {
+                            let receptorMatches = fodderAffixChoice.materials.filter(
+                                a => RECEPTOR_REGEX.test(a.code)).length;
+                            // Ignore choices that involve receptors
+                            // and are not guaranteed to transfer the ability
+                            if (fodderAffixChoice.materials.filter(a => a.rel == AFFIX_REL_SOUL).length == 0
+                                || receptorMatches == 0
+                                || fodderAffixChoice.transferRate == 100) {
+                                isOverlap = true;
+                                goodOption.successRate = fodderAffixChoice.transferRate;
+                                goodOption.type = 'affixMatchesFodderChoice';
+                                break;
                             }
-                        }
-                        if (isOverlap) {
-                            numOverlaps++;
-                            compoundRate *= rateMultiplier;
-                            if (hasReceptor) {
-                                numOverlapsInvolvingReceptor++;
-                                receptorRateFactor *= rateMultiplier;
-                            }
-                        }
-                        else {
-                            // for no-overlap, multiply the best transfer rate of every ability in fodder
-                            if (fodderAffixChoices[0])
-                                compoundRate *= fodderAffixChoices[0].transferRate / 100;
                         }
                     }
                 }
-                if (hasConflict) return false;
-                let newItem = {
-                    index: pageIdx,
-                    overlaps: numOverlaps,
-                    numOverlapsInvolvingReceptor: numOverlapsInvolvingReceptor,
-                    compoundRate: compoundRate
+                if (goodOption.type == null) {
+                    // Get highest success rate for the fodder ability (avoid SAF if possible)
+                    let bestChoiceFound = this.getBestChoiceFor(fodderAffixChoices, true);
+                    goodOption.successRate = bestChoiceFound ? bestChoiceFound.transferRate : 0;
+                    goodOption.type = 'noOverlap';
                 }
-                if (numOverlaps > 0) {
-                    // if affix is soul and any overlap involves receptor
-                    if (affix.rel == AFFIX_REL_SOUL && numOverlapsInvolvingReceptor > 0) {
-                        // if overlap is 100% transfer
-                        if (receptorRateFactor == 1) {
-                            // add fodder index and compound rate of overlap choices and max rate of other affixes in fodder to overlaps list
-                            return {
-                                overlap: true,
-                                data: newItem
-                            }
-                        }
-                        else {
-                            // add fodder index ands max rate of this affix and other affixes in fodder to no-overlaps list
-                            return {
-                                overlap: false,
-                                data: newItem
+
+                let betterOption = {
+                    successRate: 0,
+                    affixSuccessRate: 0,
+                    type: null
+                };
+
+                // Check for overlaps between any fodder ability and the
+                // choices for making the abilities given
+                isOverlap = false;
+                for (var j = 0; !isOverlap && j < affixChoices.length; j++) {
+                    var affixChoice = affixChoices[j];
+                    for (var k = 0; !isOverlap && k < affixChoice.materials.length; k++) {
+                        let choiceAffix = affixChoice.materials[k];
+                        if (choiceAffix == fodderAffix) {
+                            let receptorMatches = affixChoice.materials.filter(
+                                a => RECEPTOR_REGEX.test(a.code)).length;
+                            // Ignore choices that involve receptors
+                            // and are not guaranteed to transfer the ability
+                            if (affixChoice.materials.filter(a => a.rel == AFFIX_REL_SOUL).length == 0
+                                || receptorMatches == 0
+                                || affixChoice.transferRate == 100) {
+                                isOverlap = true;
+                                betterOption.successRate = affixChoice.transferRate;
+                                betterOption.type = 'fodderAffixMatchesAffixChoice';
+                                break;
                             }
                         }
                     }
+                }
+
+                // Check for overlaps between the choices for making each of the fodder's abilities
+                // and the choices for making each of the given abilities
+                let m = 0;
+                let n = 0;
+                while (m < fodderAffixChoices.length && n < affixChoices.length) {
+                    let fodderAffixChoice = fodderAffixChoices[m];
+                    let choice = affixChoices[n];
+
+                    let combined = this.getAffixInstancesInvolvedIn([choice, fodderAffixChoice]);
+                    if (combined.length < choice.length + fodderAffixChoice) {
+                        let receptorMatches = combined.materials.filter(
+                            (mat) => mat.code.match(RECEPTOR_REGEX)).length;
+                        let maxRate = Math.max(
+                            choice.transferRate,
+                            fodderAffixChoice.transferRate);
+                        // Ignore choices that involve receptors
+                        // and are not guaranteed to transfer the ability
+                        if (combined.materials.filter(a => a.rel == AFFIX_REL_SOUL).length == 0
+                            || receptorMatches == 0
+                            || maxRate == 100) {
+                            if (fodderAffixChoice.transferRate > betterOption.successRate) {
+                                betterOption.successRate = fodderAffixChoice.transferRate;
+                                betterOption.affixSuccessRate = choice.transferRate;
+                                betterOption.type = 'fodderChoiceMatchesAffixChoice';
+                                break;
+                            }
+                        }
+                    }
+
+                    // goes through 0:0, 0:1, 1:0, 1:1, 1:2, 2:1, 2:2 ... m:n
+                    // ensures it checks lowest array indices for both arrays first
+                    if (m >= fodderAffixChoices.length - 1) n++;
+                    else if (n >= affixChoices.length - 1) m++;
                     else {
-                        // add fodder index and compound rate of overlap choices and max rate of other affixes in fodder to overlaps list
-                        return {
-                            overlap: true,
-                            data: newItem
-                        }
+                        if ((n == m) || (m - n == 1)) n++;
+                        else if (n - m == 1) { m++; n--; }
                     }
                 }
-                else {
-                    // add fodder index ands max rate of this affix and other affixes in fodder to no-overlaps list
-                    return {
-                        overlap: false,
-                        data: newItem
-                    }
+                if (betterOption.type == null && affixChoices.length > 0) {
+                    // Get highest success rate for the fodder ability (avoid SAF if possible)
+                    let bestChoiceFound = this.getBestChoiceFor(fodderAffixChoices, true);
+                    betterOption.successRate = bestChoiceFound ? bestChoiceFound.transferRate : 0;
+                    betterOption.type = 'noOverlap';
                 }
+
+                goodOptions.push(goodOption);
+                betterOptions.push(betterOption);
             }
-            else {
-                // Something went wrong, affix is non-transferable
-                return false;
+
+            affixOptionsList.push(betterOptions);
+
+            goodOptions.forEach((goodOption, optionIdx) => {
+                fodderAffixOptionsList[optionIdx].push(goodOption);
+            });
+        });
+
+        // Search for a best choice among the better choices first
+        // (choices involving overlap between abilities)
+        let listIdxDone = [];
+        let optionsIdxDone = [];
+        while (affixOptionsList.length > listIdxDone.length) {
+            let bestListIdx = -1;
+            let bestOptionIdx = -1;
+            let maxRate = 0;
+            let bestOption = null;
+            let bestLastResortListIdx = -1;
+            let bestLastResort = null;
+            affixOptionsList.forEach((affixOptions, listIdx) => {
+                if (listIdxDone.includes(listIdx)) return;
+                affixOptions.forEach((affixOption, optionIdx) => {
+                    if (optionsIdxDone.includes(optionIdx)) return;
+                    switch (affixOption.type) {
+                        // If best option is from fodder ability and choice for ability given,
+                        // set success to the success of the choice since it needs to be that
+                        // choice in order to make use of the benefits that come with it
+                        case 'fodderAffixMatchesAffixChoice':
+                            if (!bestOption || affixOption.successRate > maxRate) {
+                                bestListIdx = listIdx;
+                                bestOptionIdx = bestOption;
+                                maxRate = affixOption.successRate;
+                                bestOption = affixOption;
+                            }
+                            break;
+                        // If best option is from fodder choice and choice for ability given,
+                        // set success to compound success of the choices since both need
+                        // to be selected in order to gain th benefit
+                        case 'fodderChoiceMatchesAffixChoice':
+                            if (!bestOption || (affixOption.successRate
+                                * affixOption.affixSuccessRate > maxRate)) {
+                                bestListIdx = listIdx;
+                                bestOptionIdx = bestOption;
+                                maxRate = affixOption.successRate * affixOption.affixSuccessRate;
+                                bestOption = affixOption;
+                            }
+                            break;
+                        // If no benefit can be gained, setup a last resort option just in case
+                        // Such option is the best non-SAF, non-Add Ability choice for the ability
+                        case 'noOverlap':
+                            if (!bestLastResort || affixOption.successRate > bestLastResort.successRate) {
+                                bestLastResortListIdx = optionIdx;
+                                bestLastResort = affixOption;
+                            }
+                            break;
+                    }
+                });
+            });
+
+            // After picking the best choice possible, calculate the overall success
+            // and overlap count in adding the abilities given to the fodder
+            if (bestOption) {
+                switch (bestOption.type) {
+                    case 'fodderAffixMatchesAffixChoice':
+                        newItem.totalOverlaps++;
+                        // Only one multiplication since only one choice picked
+                        newItem.compoundRate *= bestOption.successRate;
+                        newItem.compoundRate /= 100;
+                        break;
+                    case 'fodderChoiceMatchesAffixChoice':
+                        newItem.totalOverlaps++;
+                        // Two multipl. since two choices picked
+                        newItem.compoundRate *= bestOption.successRate;
+                        newItem.compoundRate *= bestOption.affixSuccessRate;
+                        newItem.compoundRate /= 10000;
+                        optionsIdxDone.push(bestOptionIdx);
+                        break;
+                }
+                listIdxDone.push(bestListIdx);
             }
+            // If no best choice could be found, go with the last resort
+            else if (bestLastResort) {
+                // Only one multiplication since only one choice picked
+                newItem.compoundRate *= bestLastResort.successRate;
+                newItem.compoundRate /= 100;
+                listIdxDone.push(bestLastResortListIdx);
+            }
+            else break;
         }
+
+        // Then search for the best among the good choices
+        while (fodderAffixOptionsList.length > optionsIdxDone.length) {
+            let bestListIdx = -1;
+            let bestOptionIdx = -1;
+            let maxRate = 0;
+            let bestOption = null;
+            let bestLastResortOptionIdx = -1;
+            let bestLastResort = null;
+            fodderAffixOptionsList.forEach((fodderAffixOptions, optionsIdx) => {
+                if (optionsIdxDone.includes(optionsIdx)) return;
+                fodderAffixOptions.forEach((affixOption, optionIdx) => {
+                    switch (affixOption.type) {
+                        case 'affixMatchesFodderChoice':
+                            if (!bestOption || affixOption.successRate > bestOption.successRate) {
+                                bestOptionIdx = optionIdx;
+                                bestOption = affixOption;
+                            }
+                            break;
+                        case 'noOverlap':
+                            if (!bestLastResort || affixOption.successRate > bestLastResort.successRate) {
+                                bestLastResortOptionIdx = optionIdx;
+                                bestLastResort = affixOption;
+                            }
+                            break;
+                    }
+                });
+            });
+            // After picking the best choice possible, calculate the overall success
+            // and overlap count in adding the abilities given to the fodder
+            if (bestOption) {
+                newItem.totalOverlaps++;
+                // Only one multiplication since only one choice picked
+                newItem.compoundRate *= bestOption.successRate;
+                newItem.compoundRate /= 100;
+                optionsIdxDone.push(bestOptionIdx);
+            }
+            // If no best choice could be found, go with the last resort
+            else if (bestLastResort) {
+                // Only one multiplication since only one choice picked
+                newItem.compoundRate *= bestLastResort.successRate;
+                newItem.compoundRate /= 100;
+                optionsIdxDone.push(bestLastResortOptionIdx);
+            }
+            else break;
+        }
+
+        // Make sure that an optimal success rate and overlap was chosen for every ability
+        fodderAffixOptionsList.forEach((fodderAffixOptions, optionsIdx) => {
+            if (optionsIdxDone.includes(optionsIdx)) return;
+            let bestOptionIdx = -1;
+            let bestOption = null;
+            fodderAffixOptions.forEach((affixOption, optionIdx) => {
+                if (affixOption.type != 'noOverlap') return;
+                if (!bestOption || affixOption.successRate > bestOption.successRate) {
+                    bestOptionIdx = optionIdx;
+                    bestOption = affixOption;
+                }
+            });
+            if (bestOption) {
+                if (bestOption.type == 'affixMatchesFodderChoice')
+                    newItem.totalOverlaps++;
+                newItem.compoundRate *= bestOption.successRate;
+                newItem.compoundRate /= 100;
+                optionsIdxDone.push(bestOptionIdx);
+            }
+        });
+
+        return newItem;
     }
 
     getPossiblePlacements(affix, page, pageStartIdx, targetNumSlots) {
@@ -828,7 +1094,7 @@ class Assistant {
             compoundRates: []
         }
         for (var j = pageStartIdx; j < page.fodders.length; j++) {
-            let placement = this.getPlacement(affix, page.fodders[j], j, targetNumSlots);
+            let placement = this.getPlacement(affix, page.fodders[j], targetNumSlots);
             if (placement) {
                 if (placement.overlap) placements.overlaps.push(placement.data);
                 else placements.nooverlaps.push(placement.data);
@@ -915,9 +1181,30 @@ class Assistant {
             || (affixA.code.startsWith('Z') && affixB.code.startsWith('Z'))) return false;
         let cloneA = fodderA.clone((a) => a != affixA && !a.code.startsWith('Z'));
         let cloneB = fodderB.clone((b) => b != affixB && !b.code.startsWith('Z'));
-        let testA = this.getPlacement(affixA, cloneB, -1, fodderB.size(), true /*pairing exception enabled*/);
-        let testB = this.getPlacement(affixB, cloneA, -1, fodderA.size(), true /*pairing exception enabled*/);
+        let testA = this.getPlacement(affixA, cloneB, fodderB.size(), true /*pairing exception enabled*/);
+        let testB = this.getPlacement(affixB, cloneA, fodderA.size(), true /*pairing exception enabled*/);
         return testA && testB;
+    }
+
+    getSwap(fodderA, affixAIdx, fodderB, affixBIdx) {
+        if (affixAIdx < 0 || !(fodderA instanceof Fodder) || affixAIdx >= fodderA.size()
+            || affixBIdx < 0 || !(fodderB instanceof Fodder) || affixBIdx >= fodderB.size())
+            return false;
+        let affixA = fodderA.affixes[affixAIdx];
+        let affixB = fodderB.affixes[affixBIdx];
+        // Ignore meaningless swaps
+        if (affixA.code == affixB.code
+            || fodderA == fodderB
+            || (affixA.code.startsWith('Z') && affixB.code.startsWith('Z'))) return false;
+        let cloneA = fodderA.clone((a) => a != affixA && !a.code.startsWith('Z'));
+        let cloneB = fodderB.clone((b) => b != affixB && !b.code.startsWith('Z'));
+        let testA = this.getPlacement(affixA, cloneB, fodderB.size(), true /*pairing exception enabled*/);
+        let testB = this.getPlacement(affixB, cloneA, fodderA.size(), true /*pairing exception enabled*/);
+        return {
+            result: testA && testB,
+            dataA: testA,
+            dataB: testB
+        }
     }
 
     isExceptionPair(affixA, affixB, isLenient = false) {
