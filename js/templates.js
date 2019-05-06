@@ -532,3 +532,24 @@ const RATE_IT_STARS_TEMPLATE = ({ langCode }) =>
             <input type="radio" id="star1" name="rating" value="1"><label class="full" for="star1" data-rate="1" title="${lang.app.rateStars1AltText[langCode]}"></label>
         </fieldset>
     </div>`;
+
+const REPORT_ISSUE_TEMPLATE = ({ issuesLink, langCode }) =>
+    `<div class="report-issue-container hidden" onclick="$(this).remove();">
+        <div onclick="event.stopPropagation();">
+            <div class="main-grid">
+                <div class="message-container bold">
+                    <div class="icon-container">
+                        <div>
+                            <i class="fa fa-bug"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>${lang.app.reportIssueTitle[langCode]}</h2>
+                        <h4>${lang.app.reportIssueDescription[langCode]}</h4>
+                    </div>
+                </div>
+                <div class="redirect-button"><a href="${issuesLink}" target="_blank">${lang.app.reportIssueButtonLabel[langCode]}</a></div>
+                <div class="confirm-button">${lang.app.closeButton[langCode]}</div>
+            </div>
+        </div>
+    </div>`;

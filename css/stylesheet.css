@@ -378,6 +378,7 @@ div.choice-selection-container,
 div.review-tweak-container,
 div.formula-sheet-container,
 div.link-container,
+div.report-issue-container,
 div.wish-list-container {
     position: fixed;
     width: 100%;
@@ -391,6 +392,7 @@ div.choice-selection-container.hidden,
 div.review-tweak-container.hidden,
 div.formula-sheet-container.hidden,
 div.link-container.hidden,
+div.report-issue-container.hidden,
 div.wish-list-container.hidden {
     opacity: 0;
 }
@@ -400,6 +402,7 @@ div.choice-selection-container > div,
 div.review-tweak-container > div,
 div.formula-sheet-container > div,
 div.link-container > div,
+div.report-issue-container > div,
 div.wish-list-container > div {
     width: 75%;
     margin: 0 auto;
@@ -505,6 +508,7 @@ div.choice-selection-container .confirm-button,
 div.review-tweak-container .confirm-button,
 div.formula-sheet-container .confirm-button,
 div.link-container .confirm-button,
+div.report-issue-container .confirm-button,
 div.wish-list-container .confirm-button {
     background-color: var(--alter-paint);
     border-radius: 0em 0.25em 0.25em 0em;
@@ -527,6 +531,7 @@ div.choice-selection-container .confirm-button:hover,
 div.review-tweak-container .confirm-button:hover,
 div.formula-sheet-container .confirm-button:hover,
 div.link-container .confirm-button:hover,
+div.report-issue-container .confirm-button:hover,
 div.wish-list-container .confirm-button:hover {
     background-color: var(--alter-paint-light);
 }
@@ -574,6 +579,7 @@ div.choice-selection-container div.content::-webkit-scrollbar,
 div.review-tweak-container div.content::-webkit-scrollbar,
 div.formula-sheet-container div.content::-webkit-scrollbar,
 div.link-container div.content::-webkit-scrollbar,
+div.report-issue-container div.content::-webkit-scrollbar,
 div.wish-list-container div.content::-webkit-scrollbar {
     height: 4px;
     width: 4px;
@@ -585,6 +591,7 @@ div.choice-selection-container div.content::-webkit-scrollbar-thumb,
 div.review-tweak-container div.content::-webkit-scrollbar-thumb,
 div.formula-sheet-container div.content::-webkit-scrollbar-thumb,
 div.link-container div.content::-webkit-scrollbar-thumb,
+div.report-issue-container div.content::-webkit-scrollbar-thumb,
 div.wish-list-container div.content::-webkit-scrollbar-thumb {
     height: 4px;
     width: 4px;
@@ -596,6 +603,7 @@ div.choice-selection-container div.content::-webkit-scrollbar-corner,
 div.review-tweak-container div.content::-webkit-scrollbar-corner,
 div.formula-sheet-container div.content::-webkit-scrollbar-corner,
 div.link-container div.content::-webkit-scrollbar-corner,
+div.report-issue-container div.content::-webkit-scrollbar-corner,
 div.wish-list-container div.content::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
@@ -605,6 +613,7 @@ div.choice-selection-container div.content > div::-webkit-scrollbar,
 div.review-tweak-container div.content > div::-webkit-scrollbar,
 div.formula-sheet-container div.content > div::-webkit-scrollbar,
 div.link-container div.content > div::-webkit-scrollbar,
+div.report-issue-container div.content > div::-webkit-scrollbar,
 div.wish-list-container div.content > div::-webkit-scrollbar {
     height: 4px;
     width: 4px;
@@ -616,6 +625,7 @@ div.choice-selection-container div.content > div::-webkit-scrollbar-thumb,
 div.review-tweak-container div.content > div::-webkit-scrollbar-thumb,
 div.formula-sheet-container div.content > div::-webkit-scrollbar-thumb,
 div.link-container div.content > div::-webkit-scrollbar-thumb,
+div.report-issue-container div.content > div::-webkit-scrollbar-thumb,
 div.wish-list-container div.content > div::-webkit-scrollbar-thumb {
     height: 4px;
     width: 4px;
@@ -627,6 +637,7 @@ div.choice-selection-container div.content > div::-webkit-scrollbar-corner,
 div.review-tweak-container div.content > div::-webkit-scrollbar-corner,
 div.formula-sheet-container div.content > div::-webkit-scrollbar-corner,
 div.link-container div.content > div::-webkit-scrollbar-corner,
+div.report-issue-container div.content > div::-webkit-scrollbar-corner,
 div.wish-list-container div.content > div::-webkit-scrollbar-corner {
     background-color: var(--paint-dark);
 }
@@ -857,23 +868,27 @@ div.formula-sheet-container div.content > div:last-child > div.filtersearchconta
 
 div.formula-sheet-container .confirm-button,
 div.link-container .confirm-button,
+div.report-issue-container .confirm-button,
 div.wish-list-container .confirm-button {
     width: 100%;
     border-radius: 0.25em;
 }
 
-div.link-container > div {
+div.link-container > div,
+div.report-issue-container > div {
     height: auto;
 }
 
-div.link-container div.main-grid {
+div.link-container div.main-grid,
+div.report-issue-container div.main-grid {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-div.link-container .copy-button {
+div.link-container .copy-button,
+div.report-issue-container .redirect-button {
     background-color: var(--paint-dark);
     border-radius: 0.25em;
     border: 1.5px solid var(--border-color);
@@ -888,7 +903,8 @@ div.link-container .copy-button {
     user-select: none;
 }
 
-div.link-container .copy-button a {
+div.link-container .copy-button a,
+div.report-issue-container .redirect-button a {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -898,7 +914,8 @@ div.link-container .copy-button a {
     outline: 0;
 }
 
-div.link-container .copy-button:hover {
+div.link-container .copy-button:hover,
+div.report-issue-container .redirect-button:hover {
     background-color: var(--paint-light);
 }
 
@@ -926,6 +943,30 @@ div.link-container input::selection {
 
 div.wish-list-container div.content > div {
     width: 100%;
+}
+
+div.report-issue-container > div {
+    max-width: 480px;
+}
+
+div.report-issue-container .message-container {
+    display: flex;
+    flex-direction: row;
+    font-size: var(--app-font-size-bigger);
+}
+
+div.report-issue-container .icon-container {
+    position: relative;
+    width: 25%;
+    margin-right: 1em;
+    font-size: 52px;
+}
+
+div.report-issue-container .icon-container > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .rateit-container {
@@ -1004,7 +1045,8 @@ div.wish-list-container div.content > div {
         padding: 5%;
     }
 
-    div.link-container > div {
+    div.link-container > div,
+    div.report-issue-container > div {
         width: 90%;
     }
 
@@ -1122,7 +1164,8 @@ div.wish-list-container div.content > div {
         padding: 5%;
     }
 
-    div.link-container > div {
+    div.link-container > div,
+    div.report-issue-container > div {
         width: 90%;
         padding: 5%;
     }

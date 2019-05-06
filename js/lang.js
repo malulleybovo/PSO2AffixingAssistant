@@ -153,6 +153,18 @@ const lang = Object.freeze({
             en: "And press confirm when ready",
             jp: "準備ができたら確定を押してください"
         },
+        reportIssueTitle: {
+            en: "Uh oh...",
+            jp: "ええとああ。。。"
+        },
+        reportIssueDescription: {
+            en: "Something went wrong while building this affixing formula. Would you like to report this problem?",
+            jp: "この式を作成中に何かがうまくいかなかった。この問題を報告しますか？"
+        },
+        reportIssueButtonLabel: {
+            en: "Open GitHub Issues Page",
+            jp: "GitHubの問題ページを開く"
+        },
         formulaSheetTitle: {
             en: "Affixing Formula Sheet",
             jp: "合成フォーミュラシート"

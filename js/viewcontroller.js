@@ -733,6 +733,21 @@ class ViewController {
         });
     }
 
+    openReportIssueScreen() {
+        $('div.report-issue-container').remove();
+        $('body').append(
+            REPORT_ISSUE_TEMPLATE({
+                issuesLink: "https://github.com/malulleybovo/PSO2AffixingAssistant/issues",
+                langCode: this.langCode
+            }));
+        $('div.report-issue-container').animate({}, 10, function () {
+            $('div.report-issue-container').removeClass('hidden');
+        });
+        $('div.report-issue-container div.confirm-button').click(() => {
+            $('div.report-issue-container').remove();
+        });
+    }
+
     getShortURLThenOpenLinkView() {
         if (this.requestSafetyFlag) return;
         this.requestSafetyFlag = true;
@@ -1211,6 +1226,7 @@ class ViewController {
             - ((vc.shouldUpslot && vc.affixesSelected.length > 1) ? 1 : 0);
         let newPage = vc.assistant.buildPageWith(choices, targetNumSlots, vc.shouldSpread, vc.shouldUseTrainer);
         if (typeof newPage === 'string') {
+            vc.openReportIssueScreen();
             console.warn(
                 'Attempted to produce a new page with choices %o, but produced page was %o',
                 choices, newPage);

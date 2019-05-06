@@ -200,7 +200,8 @@ class Assistant {
      * count are maximized
      * @param shouldUseTrainer If true, ensures that the outcome contains a
      * Guidance Trainer instance to give additional boost
-     * @returns The page that produces the goal given by the choices
+     * @returns The page that produces the goal given by the choices. If it
+     * fails, returns a String describing the error.
      */
     buildPageWith(choices, targetNumSlots, shouldSpread, shouldUseTrainer) {
         let affixes = this.getAffixInstancesInvolvedIn(choices);
