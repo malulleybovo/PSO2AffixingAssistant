@@ -233,12 +233,18 @@ class FormulaEncoder {
      * the useful data in the entire tree.
      *
      * @param {PageTreeNode} pageTreeRoot the root of the tree to encode
+     * @param {number} bwIdx index of the boost week option
      * @returns {String} the encoded data from the tree
      */
-    static encode(pageTreeRoot) {
+    static encode(pageTreeRoot, bwIdx) {
         if (!(pageTreeRoot instanceof PageTreeNode))
             return "";
         let codes16bit = getPageNodeCodes(pageTreeRoot);
+        codes16bit.push(
+            FormulaEncoder.setCtrlBits(FormulaEncoder.ctrls.cfgItem)
+            | FormulaEncoder.setCfgTypeBits(FormulaEncoder.configs.boostWeek)
+            | FormulaEncoder.setCfgDataBits(bwIdx)
+        );
         let codes = toCodes6bit(codes16bit);
         let url = "";
         let code0 = FormulaEncoder.codes.zero;

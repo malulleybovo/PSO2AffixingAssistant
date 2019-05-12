@@ -1520,7 +1520,7 @@ class Assistant {
             return this.encodeURLParams(`${(this.boostWeekIdx > 0) ? `/bw=${this.boostWeekIdx}` : ``}` + this.pageTreeRoot.toURL());
         }
         else {
-            return ver + "/" + FormulaEncoder.encode(this.pageTreeRoot, this);
+            return ver + "/" + FormulaEncoder.encode(this.pageTreeRoot, this.boostWeekIdx);
         }
     }
 
