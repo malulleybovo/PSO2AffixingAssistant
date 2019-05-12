@@ -1,28 +1,118 @@
 /**
- * Affixing Assistant
- * 
+ * Helper for producing affixing formulas
+ *
  * @author malulleybovo (2018)
  * @license GNU General Public License v3.0
  */
 
-const MAX_NUM_AFFIX = 8;
-const MAX_NUM_FODDERS = 6;
-const RECEPTOR_REGEX = /(X[A-F][0-9]{2})/;
-const AFFIX_REL_SOUL = "soul";
-
 class Assistant {
+
+    /**
+     * Link to the ARKs Layer Affixing Simulator website.
+     */
+    static get SIMULATOR_WEBSITE() {
+        return "https://arks-layer.com/abilitysim/"
+    }
+
+    /**
+     * RegEx for testing receptor-type ability codes.
+     */
+    static get RECEPTOR_REGEX() {
+        return /(X[A-F][0-9]{2})/;
+    }
+
+    /**
+     * The rel field value for soul abilities.
+     */
+    static get AFFIX_REL_SOUL() {
+        return "soul";
+    }
+
+    /**
+     * Raw data the Assistant relies on.
+     */
+    static get data() {
+        return this._data;
+    }
+
+    /**
+     * Ability database the Assistant governs over.
+     *
+     * @typedef { {code0: Object, code1: Object, codeN: Object} } codeMap
+     * @type {codeMap}
+     */
+    static get affixDB() {
+        if (!this._affixDB && Assistant.data)
+            this._affixDB = (new AffixDataParser()).parse(Assistant.data);
+        return this._affixDB;
+    }
+
+    /**
+     * Relative codes for mapping ref fields (unique ability ID)
+     * to their respective code fields.
+     *
+     * @typedef { {0: String, 1: String, refN: String} } RefMap
+     * @type {RefMap}
+     */
+    static get relCodes() {
+        if (!this._relCodes && Assistant.data)
+            this._relCodes = Assistant.data.abilityList.reduce((obj, el) => {
+                obj[el.ref] = el.code;
+                return obj;
+            });
+        return this._relCodes;
+    }
+
+    /**
+     * Code for Guidance Trainer ability.
+     */
+    static get trainerCode() {
+        return "VO01";
+    }
+
+    /**
+     * List of Junk ability codes.
+     */
+    static get junkCodes() {
+        return ["ZA01", "ZB01", "ZC01", "ZD01",
+            "ZE01", "ZF01", "ZG01", "ZH01", "ZI01"];
+    }
+
+    /**
+     * The item options for success rate boost.
+     *
+     * @type {Array}
+     */
+    static get rateBoostOptions() {
+        if (!this._rateBoostOptions && Assistant.data)
+            this._rateBoostOptions =
+                Assistant.data.optionList.support.filter(a => !!a.id);
+        return this._rateBoostOptions;
+    }
+
+    /**
+     * The item options for potential boost.
+     *
+     * @type {Array}
+     */
+    static get potentialOptions() {
+        if (!this._potentialOptions && Assistant.data)
+            this._potentialOptions =
+                Assistant.data.optionList.potential.filter(a => !!a.id);
+        return this._potentialOptions;
+    }
+
+    /**
+     * The values for the boost week bonus.
+     */
+    static get boostWeekVals() {
+        return [0, 5, 10];
+    }
+
     constructor(data) {
         // Immutable variables (properties can still change)
         this.IDEAL_MIN_PAGE_SIZE = 3;
-        this.affixDB = (new AffixDataParser()).parse(data);
-        this.data = data;
-        this.rateBoostOptions = [];
-        this.potentialOptions = [];
-        this.boostWeekIdx = 0; // Boost idx from boost week
-        this.boostWeekVals = [0, 5, 10]; // Boost values from boost week
-        this.trainerCode = "VO01";
-        this.junkCodes = ["ZA01", "ZB01", "ZC01", "ZD01", "ZE01", "ZF01", "ZG01", "ZH01", "ZI01"];
-        this.SIMULATOR_WEBSITE = "https://arks-layer.com/abilitysim/";
+        Assistant._data = data;
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(Assistant.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -37,6 +127,7 @@ class Assistant {
             }
         }
         // Mutable variables
+        this.boostWeekIdx = 0; // Boost idx from boost week
         this.pageTreeRoot = null;
         this.activePageTreeNode = null;
         this.activeFodder = null;
@@ -55,8 +146,7 @@ class Assistant {
                     affixes
                 ).setGoal(true)
             )
-        ).addRateBoostOptions(this.getRateBoostOptions())
-            .addPotentialOptions(this.getPotentialOptions());
+        );
         this.setActivePageTreeNode(this.pageTreeRoot);
         this.setActiveFodder(this.pageTreeRoot.page.fodders[0]);
     }
@@ -83,36 +173,12 @@ class Assistant {
         return this.pageTreeRoot && this.pageTreeRoot.find(this.activePageTreeNode).length > 0;
     }
 
-    getRateBoostOptions() {
-        if (!this.data || !this.data.optionList || !this.data.optionList.support
-            || !Array.isArray(this.data.optionList.support)) return null;
-        if (this.rateBoostOptions.length > 0) return this.rateBoostOptions;
-        let options = this.data.optionList.support;
-        for (var i = 0; i < options.length; i++) {
-            if (!options[i] || !options[i].id) continue;
-            this.rateBoostOptions.push(options[i]);
-        }
-        return this.rateBoostOptions;
-    }
-
-    getPotentialOptions() {
-        if (!this.data || !this.data.optionList || !this.data.optionList.potential
-            || !Array.isArray(this.data.optionList.potential)) return null;
-        if (this.potentialOptions.length > 0) return this.potentialOptions;
-        let options = this.data.optionList.potential;
-        for (var i = 0; i < options.length; i++) {
-            if (!options[i] || !options[i].id) continue;
-            this.potentialOptions.push(options[i]);
-        }
-        return this.potentialOptions;
-    }
-
     validateAffixes(affixes) {
-        if (!this.affixDB) return false;
+        if (!Assistant.affixDB) return false;
         if (affixes) {
             for (var i = 0; i < affixes.length; i++) {
                 let affix = affixes[i];
-                if (!affix.code || !this.affixDB[affix.code]) {
+                if (!affix.code || !Assistant.affixDB[affix.code]) {
                     return false;
                 }
             }
@@ -129,8 +195,8 @@ class Assistant {
         let choices = {};
         for (var i = 0; i < affixes.length; i++) {
             let affix = affixes[i];
-            if (affix && affix.code && this.affixDB[affix.code]) {
-                choices[affix.code] = this.affixDB[affix.code].choices.slice();
+            if (affix && affix.code && Assistant.affixDB[affix.code]) {
+                choices[affix.code] = Assistant.affixDB[affix.code].choices.slice();
             }
             else {
                 console.warn(
@@ -151,7 +217,7 @@ class Assistant {
     // to then sort them in order of cost.
     getUniqueAffixesForCostCheck(choicesArray) {
         if (!choicesArray || !Array.isArray(choicesArray) || choicesArray.length <= 0
-            || choicesArray.length > MAX_NUM_AFFIX || !this.affixDB) return null;
+            || choicesArray.length > Fodder.CAPACITY || !Assistant.affixDB) return null;
 
         let affixes = [];
         for (var i = 0; i < choicesArray.length; i++) {
@@ -170,10 +236,10 @@ class Assistant {
     // *Assumes choices are for distinct affixes
     getAffixInstancesInvolvedIn(choicesArray) {
         if (!choicesArray || !Array.isArray(choicesArray)
-            || choicesArray.length <= 0 || !this.affixDB) return null;
+            || choicesArray.length <= 0 || !Assistant.affixDB) return null;
         let numAbilityFactorChoices = choicesArray.filter((a) => a != null && a.isAbilityFactor).length;
         let numNormalChoices = choicesArray.length - numAbilityFactorChoices;
-        if (numNormalChoices > MAX_NUM_AFFIX) return null;
+        if (numNormalChoices > Fodder.CAPACITY) return null;
 
         let lists = [];
         for (var i = 0; i < choicesArray.length; i++) {
@@ -192,20 +258,20 @@ class Assistant {
      * by the choices given, so this algorithm optimizes each of the fodders
      * that go into this page to further facilitate affixing
      *
-     * @param choices The choices to make each ability needed in the goal
-     * @param targetNumSlots The desired number of slots on the outcome
-     * @param shouldSpread If true, will try to fit the choices in all
+     * @param {Array} choices The choices to make each ability needed in the goal
+     * @param {number} targetNumSlots The desired number of slots on the outcome
+     * @param {Boolean} shouldSpread If true, will try to fit the choices in all
      * available fodders. Otherwise, will try to condense the choices in the
      * minimum number of fodders possible such that success rate and overlap
      * count are maximized
      * @param shouldUseTrainer If true, ensures that the outcome contains a
      * Guidance Trainer instance to give additional boost
-     * @returns The page that produces the goal given by the choices. If it
+     * @returns {Page} The page that produces the goal given by the choices. If it
      * fails, returns a String describing the error.
      */
     buildPageWith(choices, targetNumSlots, shouldSpread, shouldUseTrainer) {
         let affixes = this.getAffixInstancesInvolvedIn(choices);
-        if (!affixes || !Array.isArray(affixes) || !this.affixDB) return null;
+        if (!affixes || !Array.isArray(affixes) || !Assistant.affixDB) return null;
         let numSpecialAbilityFactor = 0;
         let numAddAbility = 0;
         for (var i = 0; i < choices.length; i++) {
@@ -222,16 +288,16 @@ class Assistant {
         // Generate new page
         let page = new Page();
         let fodders = [];
-        for (var i = 0; i < page.CAPACITY; i++) { // One list of affixes per fodder
+        for (var i = 0; i < Page.CAPACITY; i++) { // One list of affixes per fodder
             fodders.push(new Fodder());
         }
         page.addFodders(fodders);
         let pageStartIdx = 0;
 
         if (shouldUseTrainer // If using Guidance Trainer but not transfering it
-            && !affixes.includes(this.affixDB[this.trainerCode].abilityRef)) {
+            && !affixes.includes(Assistant.affixDB[Assistant.trainerCode].abilityRef)) {
             // Add one instance of Guidance Trainer just to increase success rate
-            affixes.push(this.affixDB[this.trainerCode].abilityRef);
+            affixes.push(Assistant.affixDB[Assistant.trainerCode].abilityRef);
         }
         // Sort the affixes by success rate
         this.sortAffixesBySuccessRate(affixes);
@@ -271,15 +337,15 @@ class Assistant {
         let affLists = transferables.map(a => [a]);
         let conflictValuesUsed = new Set();
         let currLvl = 1;
-        while (page.CAPACITY - pageStartIdx > 0) {
+        while (Page.CAPACITY - pageStartIdx > 0) {
             // If spreading, stop when able to fit the affix lists within a page
-            if (shouldSpread && affLists.length <= page.CAPACITY - pageStartIdx)
+            if (shouldSpread && affLists.length <= Page.CAPACITY - pageStartIdx)
                 break;
             // Check if checking level exceeded the permitted number os slots
             if (currLvl > targetNumSlots) break;
 
             let bestPairsData = this.getBestPairsData(affLists, targetNumSlots,
-                currLvl, page.CAPACITY - pageStartIdx, conflictValuesUsed);
+                currLvl, Page.CAPACITY - pageStartIdx, conflictValuesUsed);
             if (bestPairsData == null) break;
             let bestPairs = bestPairsData.bestPairs;
             let maxConflicts = bestPairsData.maxConflicts;
@@ -348,9 +414,9 @@ class Assistant {
 
         // Check if could not fit the abilities within
         // the number of fodders available
-        if (affLists.length > page.CAPACITY - pageStartIdx)
+        if (affLists.length > Page.CAPACITY - pageStartIdx)
             return 'Error: Page size exceeded limit by ' + (affLists.length
-                - page.CAPACITY + pageStartIdx);
+                - Page.CAPACITY + pageStartIdx);
         // Check if some mistake happened that caused
         // needed abilities to disappear
         if (affLists.reduce((a, b) => a + b.length, 0) != transferables.length)
@@ -399,17 +465,18 @@ class Assistant {
      * maximized while respecting constraints on target slot count
      * and the number of fodders available to place abilities on.
      *
-     * @param affLists The list of lists of abilities to find the pair on
-     * @param targetNumSlots The target number of slots for the outcome
-     * @param currLvl The current level of checking (checks lists of
+     * @param {Array} affLists The list of lists of abilities to find the pair on
+     * @param {number} targetNumSlots The target number of slots for the outcome
+     * @param {number} currLvl The current level of checking (checks lists of
      * abilities with up to N abilities)
-     * @param numFoddersLeft The number of fodders available
-     * @param conflictValuesUsed History of maximum conflict values
+     * @param {number} numFoddersLeft The number of fodders available
+     * @param {number} conflictValuesUsed History of maximum conflict values
      * that have already been checked and are done with
-     * @returns {
-     *     bestPairs: The best pairs found among lists
-     *     maxConflicts: The maximum number of conflicts among lists
-     * }, or null if there nothing more that can be done
+     * @typedef {Object} BestPairsData
+     * @property {Array} bestPairs The best pairs found among lists
+     * @property {number} maxConflicts The maximum number of conflicts among lists
+     * @returns {BestPairsData} the best pairs data,
+     * or null if there nothing more that can be done
      */
     getBestPairsData(affLists, targetNumSlots, currLvl, numFoddersLeft, conflictValuesUsed) {
         let maxConflicts = -1;
@@ -505,16 +572,16 @@ class Assistant {
      * slot count. Existing abilities in the page fodders
      * are kept.
      *
-     * @param page The page to fill with junk abilities
-     * @param targetNumSlots The target slot count to fill
+     * @param {Page} page The page to fill with junk abilities
+     * @param {number} targetNumSlots The target slot count to fill
      */
     fillPageWithJunk(page, targetNumSlots) {
         if (!(page instanceof Page)) return;
         for (var i = 0; i < page.size(); i++) {
             let fodder = page.fodders[i];
             let junks = [];
-            for (var j = 0; j < this.junkCodes.length; j++) {
-                let junk = this.affixDB[this.junkCodes[j]].abilityRef;
+            for (var j = 0; j < Assistant.junkCodes.length; j++) {
+                let junk = Assistant.affixDB[Assistant.junkCodes[j]].abilityRef;
                 if (fodder.affixes.includes(junk)) continue;
                 if (fodder.size() + junks.length < targetNumSlots)
                     junks.push(junk);
@@ -530,16 +597,16 @@ class Assistant {
      * ignored. Fodders with only junk abilities are pushed to
      * last in the list of fodders.
      *
-     * @param page The Page containing the fodders to sort
+     * @param {Page} page The Page containing the fodders to sort
      */
     sortPageFodders(page) {
         if (!(page instanceof Page)) return;
         page.fodders.sort((a, b) => {
             // Leave fodders with nontransferables for last
             let numJunkInA = a.affixes.filter(a =>
-                this.affixDB[a.code].choices.length == 0).length;
+                Assistant.affixDB[a.code].choices.length == 0).length;
             let numJunkInB = b.affixes.filter(a =>
-                this.affixDB[a.code].choices.length == 0).length
+                Assistant.affixDB[a.code].choices.length == 0).length
             if (numJunkInA > 0 || numJunkInA == a.affixes.length) return 1;
             if (numJunkInB > 0 || numJunkInB == b.affixes.length) return -1;
             // Sort fodders by lowest slots
@@ -547,10 +614,10 @@ class Assistant {
                 > b.affixes.filter(a => !a.code.startsWith('Z')).length)
                 // Prioritize b, unless a has trainer
                 return a.affixes.includes(
-                    this.affixDB[this.trainerCode].abilityRef) ? -1 : 1;
+                    Assistant.affixDB[Assistant.trainerCode].abilityRef) ? -1 : 1;
             // Else prioritize a, unless b has trainer
             else return b.affixes.includes(
-                this.affixDB[this.trainerCode].abilityRef) ? 1 : -1;
+                Assistant.affixDB[Assistant.trainerCode].abilityRef) ? 1 : -1;
         });
     }
 
@@ -559,20 +626,20 @@ class Assistant {
      * constraints in the sorting algorithm. The sorting happens
      * on the list given, not on a clone of the list.
      *
-     * @param affixes The abilities to sort
-     * @returns A back reference to the given sorted list
+     * @param {Array} affixes The abilities to sort
+     * @returns {Array} A back reference to the given sorted list
      */
     sortAffixesBySuccessRate(affixes) {
         affixes.sort((affixA, affixB) => {
             // Lowest priority: Unsortable abilities
-            if (!this.affixDB[affixA.code]) return 1;
-            if (!this.affixDB[affixB.code]) return -1;
+            if (!Assistant.affixDB[affixA.code]) return 1;
+            if (!Assistant.affixDB[affixB.code]) return -1;
             // Second lowest priority: Junk abilities
-            if (this.junkCodes.includes(affixA.code)) return 1;
-            if (this.junkCodes.includes(affixB.code)) return -1;
+            if (Assistant.junkCodes.includes(affixA.code)) return 1;
+            if (Assistant.junkCodes.includes(affixB.code)) return -1;
             // Third lowest priority: Non-transferable abilities
-            let affixAChoices = this.affixDB[affixA.code].choices;
-            let affixBChoices = this.affixDB[affixB.code].choices;
+            let affixAChoices = Assistant.affixDB[affixA.code].choices;
+            let affixBChoices = Assistant.affixDB[affixB.code].choices;
             if (!affixAChoices[0]) return 1;
             if (!affixBChoices[0]) return -1;
             // Third highest priority: Abilities only transferable via SAF
@@ -608,9 +675,9 @@ class Assistant {
      * is maximized while also following the optional flag constraints
      * (should those be given).
      *
-     * @param choices A list of choices sorted by highest success rate
-     * @param noSAForAdd Flag to ignore choices via SAF or Add Ability
-     * @param noMaterialWithSAForAddItem Flag to ignore choices
+     * @param {Array} choices A list of choices sorted by highest success rate
+     * @param {Boolean} noSAForAdd Flag to ignore choices via SAF or Add Ability
+     * @param {Boolean} noMaterialWithSAForAddItem Flag to ignore choices
      * containing materials made only by SAF or Add Ability Item
      * @returns The choice with highest success rate such that the
      * optional constrainsts are followed. Null if not found.
@@ -631,7 +698,7 @@ class Assistant {
                     choices[i].materials.filter(a => {
                         // Check choices for making the material
                         // that do not involve SAF or Add Ability Item
-                        let subChoices = this.affixDB[a.code].choices;
+                        let subChoices = Assistant.affixDB[a.code].choices;
                         let subPossibilities = subChoices.filter(b =>
                             !b.isAbilityFactor && !b.isAddAbilityItem);
                         return subPossibilities.length == 0;
@@ -656,13 +723,13 @@ class Assistant {
      * maximize ability transfer rate overlapping. Should there be any conflict
      * among abilities within the matrices, the respective values are default to -1.
      * 
-     * @param affixLists A list of size N containing lists of abilities
-     * @param optionalNumSlots (optional) The desired target number of slots.
-     * @returns {
-     *     forEntries: Back reference to the input param
-     *     overlapMap: N x N matrix containing data on affixing overlap
-     *     successMap: N x N matrix containing data on the compound success rate
-     * }
+     * @param {Array} affixLists A list of size N containing lists of abilities
+     * @param {number} optionalNumSlots (optional) The desired target number of slots.
+     * @typedef {Object} PlacementMap
+     * @property {Array} forEntries Back reference to the input param
+     * @property {Array.<Array.<number>>} overlapMap N x N matrix containing data on affixing overlap
+     * @property {Array.<Array.<number>>} successMap N x N matrix containing data on the compound success rate
+     * @returns {PlacementMap} Placement map for the ability list given
      */
     getPlacementMappingFor(affixLists, optionalNumSlots) {
         let overlapMap = [];
@@ -716,7 +783,7 @@ class Assistant {
         // Check if the problem is already solved
         if (!hasFodderThatExceedsSlots) return;
         // check if page has way too many abilities
-        if (numAbilities > (numFodders * (new Fodder()).CAPACITY)) return;
+        if (numAbilities > (numFodders * Fodder.CAPACITY)) return;
     }
 
     /**
@@ -731,14 +798,14 @@ class Assistant {
      * maximize ability transfer rate overlapping. Should there be any conflict
      * among abilities within the matrices, the respective values are default to -1.
      *
-     * @param affixes The abilities to test against the fodder affixes
-     * @param fodder The fodder containing abilities to test against the affixes
-     * @param targetNumSlots The desired number of slots for the outcome fodder
-     * @param testExceptionPairing (optional) Flag to perform aditional exception pairing
-     * @returns {
-     *     totalOverlaps: Number of overlaps between affixes and fodder abilities
-     *     compoundRate: Maximized success rate for making fodder after adding the given affixes
-     * }
+     * @param {Array} affixes The abilities to test against the fodder affixes
+     * @param {Fodder} fodder The fodder containing abilities to test against the affixes
+     * @param {number} targetNumSlots The desired number of slots for the outcome fodder
+     * @param {Boolean} testExceptionPairing (optional) Flag to perform aditional exception pairing
+     * @typedef {Object} Placement
+     * @property {number} totalOverlaps Number of overlaps between affixes and fodder abilities
+     * @property {number} compoundRate Maximized success rate for making fodder after adding the given affixes
+     * @returns {Placement}
      */
     getPlacement(affixes, fodder, targetNumSlots, testExceptionPairing = false) {
         if (affixes.length === undefined) affixes = [affixes];
@@ -751,9 +818,9 @@ class Assistant {
         }
         // if fodder is at capacity (either at same slot as result or at max 8)
         if (!(fodder instanceof Fodder)
-            || !affixes || !this.affixDB
+            || !affixes || !Assistant.affixDB
             || (targetNumSlots && affixes.length + fodder.affixes.length > targetNumSlots)
-            || affixes.filter(a => !this.affixDB[a.code] || !this.affixDB[a.code].choices).length > 0) {
+            || affixes.filter(a => !Assistant.affixDB[a.code] || !Assistant.affixDB[a.code].choices).length > 0) {
             // continue to next fodder
             newItem.compoundRate = -1;
             newItem.totalOverlaps = -1;
@@ -763,7 +830,7 @@ class Assistant {
         for (var i = 0; i < affixes.length; i++) {
             let affix = affixes[i];
             let affixCodePreffix = affix.code.slice(0, 2);
-            let affixChoices = this.affixDB[affix.code].choices;
+            let affixChoices = Assistant.affixDB[affix.code].choices;
             // if affix choices overlap with choices of any affix in fodder
             let numBadReceptorOverlaps = 0;
 
@@ -778,14 +845,14 @@ class Assistant {
                     return newItem;
                 }
                 if (affixChoices[0] && affixChoices[0].isAddAbilityItem
-                    && this.affixDB[fodderAffix.code].choices.length == 1
-                    && this.affixDB[fodderAffix.code].choices[0].materials.includes(affix)) {
+                    && Assistant.affixDB[fodderAffix.code].choices.length == 1
+                    && Assistant.affixDB[fodderAffix.code].choices[0].materials.includes(affix)) {
                     newItem.compoundRate = -1;
                     newItem.totalOverlaps = -1;
                     return newItem;
                 }
-                if (this.affixDB[fodderAffix.code].choices[0]
-                    && this.affixDB[fodderAffix.code].choices[0].isAddAbilityItem
+                if (Assistant.affixDB[fodderAffix.code].choices[0]
+                    && Assistant.affixDB[fodderAffix.code].choices[0].isAddAbilityItem
                     && affixChoices.length == 1
                     && affixChoices[0].materials.includes(fodderAffix)) {
                     newItem.compoundRate = -1;
@@ -807,12 +874,12 @@ class Assistant {
             for (var i = 0; i < fodder.affixes.length; i++) {
                 var fodderAffix = fodder.affixes[i];
                 // Skip unknown and non-transferable abilities
-                if (!this.affixDB[fodderAffix.code]
-                    || !this.affixDB[fodderAffix.code].choices)
+                if (!Assistant.affixDB[fodderAffix.code]
+                    || !Assistant.affixDB[fodderAffix.code].choices)
                     continue;
 
-                let affixChoices = this.affixDB[affix.code].choices;
-                let fodderAffixChoices = this.affixDB[fodderAffix.code].choices;
+                let affixChoices = Assistant.affixDB[affix.code].choices;
+                let fodderAffixChoices = Assistant.affixDB[fodderAffix.code].choices;
 
                 let goodOption = {
                     successRate: 0,
@@ -829,10 +896,10 @@ class Assistant {
                         // for making any of the fodder's abilities
                         if (affix == choiceAffix) {
                             let receptorMatches = fodderAffixChoice.materials.filter(
-                                a => RECEPTOR_REGEX.test(a.code)).length;
+                                a => Assistant.RECEPTOR_REGEX.test(a.code)).length;
                             // Ignore choices that involve receptors
                             // and are not guaranteed to transfer the ability
-                            if (fodderAffixChoice.materials.filter(a => a.rel == AFFIX_REL_SOUL).length == 0
+                            if (fodderAffixChoice.materials.filter(a => a.rel == Assistant.AFFIX_REL_SOUL).length == 0
                                 || receptorMatches == 0
                                 || fodderAffixChoice.transferRate == 100) {
                                 isOverlap = true;
@@ -865,10 +932,10 @@ class Assistant {
                         let choiceAffix = affixChoice.materials[k];
                         if (choiceAffix == fodderAffix) {
                             let receptorMatches = affixChoice.materials.filter(
-                                a => RECEPTOR_REGEX.test(a.code)).length;
+                                a => Assistant.RECEPTOR_REGEX.test(a.code)).length;
                             // Ignore choices that involve receptors
                             // and are not guaranteed to transfer the ability
-                            if (affixChoice.materials.filter(a => a.rel == AFFIX_REL_SOUL).length == 0
+                            if (affixChoice.materials.filter(a => a.rel == Assistant.AFFIX_REL_SOUL).length == 0
                                 || receptorMatches == 0
                                 || affixChoice.transferRate == 100) {
                                 isOverlap = true;
@@ -891,13 +958,13 @@ class Assistant {
                     let combined = this.getAffixInstancesInvolvedIn([choice, fodderAffixChoice]);
                     if (combined.length < choice.length + fodderAffixChoice) {
                         let receptorMatches = combined.materials.filter(
-                            (mat) => mat.code.match(RECEPTOR_REGEX)).length;
+                            (mat) => mat.code.match(Assistant.RECEPTOR_REGEX)).length;
                         let maxRate = Math.max(
                             choice.transferRate,
                             fodderAffixChoice.transferRate);
                         // Ignore choices that involve receptors
                         // and are not guaranteed to transfer the ability
-                        if (combined.materials.filter(a => a.rel == AFFIX_REL_SOUL).length == 0
+                        if (combined.materials.filter(a => a.rel == Assistant.AFFIX_REL_SOUL).length == 0
                             || receptorMatches == 0
                             || maxRate == 100) {
                             if (fodderAffixChoice.transferRate > betterOption.successRate) {
@@ -1127,26 +1194,26 @@ class Assistant {
     }
 
     testExcludePattern(affixA, affixB, testExceptionPairing) {
-        if (!this.data || !this.data.excludePattern || !affixA
+        if (!Assistant.data || !Assistant.data.excludePattern || !affixA
             || !affixB || !affixA.code || !affixB.code
-            || !this.data.excludePattern.select) return true;
+            || !Assistant.data.excludePattern.select) return true;
 
         // If not an exception pair
         if (!this.isExceptionPair(affixA, affixB, testExceptionPairing)) {
             // Check for conflict when one or both abilities are receptors
-            if (RECEPTOR_REGEX.test(affixA.code)
-                || RECEPTOR_REGEX.test(affixB.code)) return true;
+            if (Assistant.RECEPTOR_REGEX.test(affixA.code)
+                || Assistant.RECEPTOR_REGEX.test(affixB.code)) return true;
             // Check for conflict when one or both are non-transferable but not receptor
             // such as Temptation and Another History
-            if (this.affixDB[affixA.code].choices.length == 0
-                && !RECEPTOR_REGEX.test(affixB.code)) return true;
-            if (this.affixDB[affixB.code].choices.length == 0
-                && !RECEPTOR_REGEX.test(affixA.code)) return true;
+            if (Assistant.affixDB[affixA.code].choices.length == 0
+                && !Assistant.RECEPTOR_REGEX.test(affixB.code)) return true;
+            if (Assistant.affixDB[affixB.code].choices.length == 0
+                && !Assistant.RECEPTOR_REGEX.test(affixA.code)) return true;
         }
 
         let codeA = affixA.code;
         let codeB = affixB.code;
-        let patterns = this.data.excludePattern.select;
+        let patterns = Assistant.data.excludePattern.select;
         for (var i = 0; i < patterns.length; i++) {
             if (!Array.isArray(patterns[i])) patterns[i] = [patterns[i]];
             let checkA = false;
@@ -1177,11 +1244,11 @@ class Assistant {
      * after swapping and other scenarios that cause the Fodder
      * success rate to top at 0% (impossible to make).
      *
-     * @param fodderA One of the fodders to test the ability swap on
-     * @param affixAIdx The index of the ability in fodderA to swap
-     * @param fodderB The other fodder to test the ability swap on
-     * @param affixBIdx The index of the ability in fodderB to swap
-     * @returns True if the abilities can be swapped. False otherwise.
+     * @param {Fodder} fodderA One of the fodders to test the ability swap on
+     * @param {number} affixAIdx The index of the ability in fodderA to swap
+     * @param {Fodder} fodderB The other fodder to test the ability swap on
+     * @param {number} affixBIdx The index of the ability in fodderB to swap
+     * @returns {Boolean} True if the abilities can be swapped. False otherwise.
      */
     testSwap(fodderA, affixAIdx, fodderB, affixBIdx) {
         if (affixAIdx < 0 || !(fodderA instanceof Fodder) || affixAIdx >= fodderA.size()
@@ -1201,12 +1268,12 @@ class Assistant {
     }
 
     isExceptionPair(affixA, affixB, isLenient = false) {
-        if (!affixA || !affixB || !affixA.code || !affixB.code || !this.affixDB
-            || !this.affixDB[affixA.code] || !this.affixDB[affixB.code]) return false;
+        if (!affixA || !affixB || !affixA.code || !affixB.code || !Assistant.affixDB
+            || !Assistant.affixDB[affixA.code] || !Assistant.affixDB[affixB.code]) return false;
 
         let isExcPair = false;
-        let testCases = this.data.pairingExceptions.strict.slice(0);
-        if (isLenient) testCases.push(...this.data.pairingExceptions.lenient.slice(0));
+        let testCases = Assistant.data.pairingExceptions.strict.slice(0);
+        if (isLenient) testCases.push(...Assistant.data.pairingExceptions.lenient.slice(0));
         for (var i = 0; i < testCases.length; i++) {
             let excPair = testCases[i];
             if (excPair.length < 2) continue;
@@ -1230,14 +1297,14 @@ class Assistant {
         let initialSize = fodder.size();
         while (i < fodder.size()) {
             let affix = fodder.affixes[i];
-            if (affix && affix.code && this.junkCodes.includes(affix.code)) {
+            if (affix && affix.code && Assistant.junkCodes.includes(affix.code)) {
                 fodder.affixes.splice(i, 1);
             }
             else i++;
         }
         let junkIdx = 0;
-        while (fodder.size() < initialSize && junkIdx < this.junkCodes.length) {
-            fodder.affixes.push(this.affixDB[this.junkCodes[junkIdx]].abilityRef);
+        while (fodder.size() < initialSize && junkIdx < Assistant.junkCodes.length) {
+            fodder.affixes.push(Assistant.affixDB[Assistant.junkCodes[junkIdx]].abilityRef);
             junkIdx++;
         }
     }
@@ -1247,19 +1314,19 @@ class Assistant {
         let junkIdxNeeded = {};
         if (page.connectedTo && page.connectedTo instanceof Fodder) {
             for (var i = 0; i < page.connectedTo.size(); i++) {
-                let idx = this.junkCodes.indexOf(page.connectedTo.affixes[i].code);
+                let idx = Assistant.junkCodes.indexOf(page.connectedTo.affixes[i].code);
                 if (idx >= 0) (junkIdxNeeded[idx]) ? junkIdxNeeded[idx]++ : junkIdxNeeded[idx] = 1;
             }
         }
         let clonedFoddersArr = page.fodders.slice(0).sort((a, b) => {
             let numJunkInA = 0;
             for (var i = 0; i < a.size(); i++) {
-                let idx = this.junkCodes.indexOf(a.affixes[i].code);
+                let idx = Assistant.junkCodes.indexOf(a.affixes[i].code);
                 if (idx < 0) numJunkInA++;
             }
             let numJunkInB = 0;
             for (var i = 0; i < b.size(); i++) {
-                let idx = this.junkCodes.indexOf(b.affixes[i].code);
+                let idx = Assistant.junkCodes.indexOf(b.affixes[i].code);
                 if (idx < 0) numJunkInB++;
             }
             return numJunkInB - numJunkInA;
@@ -1271,7 +1338,7 @@ class Assistant {
             let hasOnlyJunk = fodder.specialAbilityFactor == null;
             for (var j = 0; j < fodder.size(); j++) {
                 let affix = fodder.affixes[j];
-                let idx = this.junkCodes.indexOf(affix.code);
+                let idx = Assistant.junkCodes.indexOf(affix.code);
                 if (idx < 0) {
                     hasOnlyJunk = false;
                 }
@@ -1283,8 +1350,8 @@ class Assistant {
                     else {
                         for (var key in junkIdxNeeded) {
                             if (junkIdxNeeded[key] > 0 && !fodder.affixes.includes(
-                                this.affixDB[this.junkCodes[key]].abilityRef)) {
-                                fodder.affixes[j] = this.affixDB[this.junkCodes[key]].abilityRef;
+                                Assistant.affixDB[Assistant.junkCodes[key]].abilityRef)) {
+                                fodder.affixes[j] = Assistant.affixDB[Assistant.junkCodes[key]].abilityRef;
                                 junkIdxNeeded[key]--;
                                 if (junkIdxNeeded[key] <= 0) delete junkIdxNeeded[key];
                                 break;
@@ -1302,7 +1369,7 @@ class Assistant {
         }
     }
 
-    doAffixesHavePossiblePlacement({ choices, targetNumSlots = (new Fodder()).CAPACITY, targetNumFodders = (new Page()).CAPACITY, isUsingTrainer = false }) {
+    doAffixesHavePossiblePlacement({ choices, targetNumSlots = Fodder.CAPACITY, targetNumFodders = Page.CAPACITY, isUsingTrainer = false }) {
         if (targetNumSlots <= 0 || targetNumFodders <= 0) return false;
         let numSpecialAbilityFactor = 0;
         let numAddAbilityItems = 0;
@@ -1324,7 +1391,7 @@ class Assistant {
         let numNontransferables = transferablesData.numNontransferables;
         let numTransferables = affixes.length - numNontransferables;
         // Disregard isUsingTrainer flag if already transfering Guidance Trainer
-        if (affixes.includes(this.affixDB[this.trainerCode].abilityRef)) isUsingTrainer = false;
+        if (affixes.includes(Assistant.affixDB[Assistant.trainerCode].abilityRef)) isUsingTrainer = false;
         // Account for exception pairing when checking limits
         for (var i = 0; i < transferablesData.nontransferables.length; i++) {
             let nonTransfA = transferablesData.nontransferables[i];
@@ -1388,11 +1455,11 @@ class Assistant {
             let affix = affixes[i];
             if (!affix.code) continue;
             // Count duplicates per affix
-            if (this.affixDB[affix.code] && this.affixDB[affix.code].choices // Has choices
+            if (Assistant.affixDB[affix.code] && Assistant.affixDB[affix.code].choices // Has choices
                 && !this.isSpecialAbility(affix) // Is not an Add Ability
-                && (this.affixDB[affix.code].choices.length <= 0 // Cannot be transferred
-                    || (this.affixDB[affix.code].choices.length == 1 // Or can only be transferred as a Special Ability Factor
-                        && this.affixDB[affix.code].choices[0].isAbilityFactor))) {
+                && (Assistant.affixDB[affix.code].choices.length <= 0 // Cannot be transferred
+                    || (Assistant.affixDB[affix.code].choices.length == 1 // Or can only be transferred as a Special Ability Factor
+                        && Assistant.affixDB[affix.code].choices[0].isAbilityFactor))) {
                 nontransferables.push(affix);
             }
             else {
@@ -1411,11 +1478,11 @@ class Assistant {
     }
 
     isSpecialAbility(affix) {
-        if (!this.data || !this.data.optionList || !this.data.optionList.additional
+        if (!Assistant.data || !Assistant.data.optionList || !Assistant.data.optionList.additional
             || !affix || !affix.name) return false;
 
-        for (var key in this.data.optionList.additional) {
-            let entry = this.data.optionList.additional[key];
+        for (var key in Assistant.data.optionList.additional) {
+            let entry = Assistant.data.optionList.additional[key];
             if (entry.name && entry.name == affix.name) return true;
         }
         return false;
@@ -1429,20 +1496,31 @@ class Assistant {
         return num;
     }
 
-    toURL(isForSimulator) {
+    /**
+     * Gets the URL params that describe what
+     * the Assistant is currently displaying.
+     *
+     * @param {number} ver encoding version of the URL params
+     * @param {Boolean} isForSimulator if URL is for ARKs Affixing Simulator
+     * @returns {String} the URL params for this affixing formula
+     */
+    toURL(ver, isForSimulator) {
         if (!this.pageTreeRoot) {
             if (isForSimulator) {
-                return this.SIMULATOR_WEBSITE;
+                return Assistant.SIMULATOR_WEBSITE;
             }
             else {
                 return '';
             }
         }
         if (isForSimulator && this.pageTreeRoot.size() > 0) { // Do not include goal in link
-            return this.SIMULATOR_WEBSITE + '#!' + this.pageTreeRoot.children[0].toURL(isForSimulator);
+            return Assistant.SIMULATOR_WEBSITE + '#!' + this.pageTreeRoot.children[0].toURL(isForSimulator);
+        }
+        else if (!ver || ver <= 1) {
+            return this.encodeURLParams(`${(this.boostWeekIdx > 0) ? `/bw=${this.boostWeekIdx}` : ``}` + this.pageTreeRoot.toURL());
         }
         else {
-            return this.encodeURLParams(`${(this.boostWeekIdx > 0) ? `/bw=${this.boostWeekIdx}` : ``}` + this.pageTreeRoot.toURL());
+            return ver + "/" + FormulaEncoder.encode(this.pageTreeRoot, this);
         }
     }
 
@@ -1495,8 +1573,8 @@ class Assistant {
 
     calcSuccessRatesStartingAt(page) {
         if (!page || !(page instanceof Page)) return;
-        let maxRate = (new Fodder()).MAX_RATE;
-        let minRate = (new Fodder()).MIN_RATE;
+        let maxRate = Fodder.MAX_RATE;
+        let minRate = Fodder.MIN_RATE;
         // for every fodderA in this page
         for (var i = 0; i < page.size(); i++) {
             let fodder = page.fodders[i];
@@ -1506,7 +1584,7 @@ class Assistant {
             let pageConn = fodder.connectedTo;
             // get all affixes in that page
             let abilities = [];
-            let minNumSlots = (new Fodder()).CAPACITY;
+            let minNumSlots = Fodder.CAPACITY;
             for (var j = 0; j < pageConn.size(); j++) {
                 abilities = abilities.concat(pageConn.fodders[j].affixes);
                 if (pageConn.fodders[j].size() < minNumSlots)
@@ -1520,8 +1598,8 @@ class Assistant {
             for (var k = 0; k < fodder.size(); k++) {
                 let affix = fodder.affixes[k];
                 // for every choice for making affixA
-                for (var m = 0; m < this.affixDB[affix.code].choices.length; m++) {
-                    let choice = this.affixDB[affix.code].choices[m];
+                for (var m = 0; m < Assistant.affixDB[affix.code].choices.length; m++) {
+                    let choice = Assistant.affixDB[affix.code].choices[m];
                     // set flag true
                     let isMatch = true;
                     // Check if Add Ability
@@ -1569,27 +1647,27 @@ class Assistant {
                         abilitySuccessRates[k] = Math.min(Math.max(Math.round(choice.transferRate), minRate), maxRate);
                         if (fodder.size() > minNumSlots) { // If needs upslotting
                             let upslottingFactor = (fodder.size() > 0) ?
-                                this.data.extraSlot[fodder.size() - 1][pageConn.size() > 2]
+                                Assistant.data.extraSlot[fodder.size() - 1][pageConn.size() > 2]
                                 : 100; // range 0~100
                             upslottingFactor = (upslottingFactor - minRate) / (maxRate - minRate); // range 0~1
                             abilitySuccessRates[k] = Math.min(Math.max(Math.floor(abilitySuccessRates[k] * upslottingFactor), minRate), maxRate);
                         }
                         if (fodder.isSameGear) {
-                            let sameGearFactor = this.data.sameBonusBoost[(pageConn.size() > 2) ? 2 : 1];
+                            let sameGearFactor = Assistant.data.sameBonusBoost[(pageConn.size() > 2) ? 2 : 1];
                             abilitySuccessRates[k] = Math.min(Math.max(Math.round(abilitySuccessRates[k] * sameGearFactor), minRate), maxRate);
                         }
-                        if (fodder.rateBoostIdx >= 0 && fodder.rateBoostIdx < fodder.rateBoostOptions.length) {
-                            abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.support[fodder.rateBoostIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
+                        if (fodder.rateBoostIdx >= 0 && fodder.rateBoostIdx < Assistant.rateBoostOptions.length) {
+                            abilitySuccessRates[k] = Math.min(Math.max(Assistant.data.optionList.support[fodder.rateBoostIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
                         }
-                        if (fodder.potentialIdx >= 0 && fodder.potentialIdx < fodder.potentialOptions.length) {
-                            abilitySuccessRates[k] = Math.min(Math.max(this.data.optionList.potential[fodder.potentialIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
+                        if (fodder.potentialIdx >= 0 && fodder.potentialIdx < Assistant.potentialOptions.length) {
+                            abilitySuccessRates[k] = Math.min(Math.max(Assistant.data.optionList.potential[fodder.potentialIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
                         }
                         // Success rate up if main fodder (fodder0) has Guidance Trainer ability
-                        if (pageConn.size() > 0 && pageConn.fodders[0].affixes.includes(this.affixDB[this.trainerCode].abilityRef)) {
+                        if (pageConn.size() > 0 && pageConn.fodders[0].affixes.includes(Assistant.affixDB[Assistant.trainerCode].abilityRef)) {
                             abilitySuccessRates[k] = Math.min(Math.max(abilitySuccessRates[k] + 5, minRate), maxRate);
                         }
                         if (this.boostWeekIdx > 0) {
-                            abilitySuccessRates[k] += this.boostWeekVals[this.boostWeekIdx];
+                            abilitySuccessRates[k] += Assistant.boostWeekVals[this.boostWeekIdx];
                             abilitySuccessRates[k] = Math.min(Math.max(abilitySuccessRates[k], minRate), maxRate);
                         }
                         abilitySuccessRates.length++;
@@ -1640,8 +1718,39 @@ class Assistant {
         return this;
     }
 
+    /**
+     * Loads a formula into the Assistant
+     * from a String of encoded data.
+     *
+     * @param {String} params encoded formula data
+     * @returns {Boolean} true if loaded formula successfully
+     */
     loadFromURLParams(params) {
-        if (!this.affixDB) return false;
+        if (!Assistant.affixDB || !params) return false;
+        if (/^\/?[0-9]+\//.test(params)) {
+            let encodedData = params.split('/');
+            encodedData = encodedData[encodedData.length - 1];
+            let decodedData = FormulaEncoder.decode(encodedData);
+            this.pageTreeRoot = decodedData.root;
+            this.setActivePageTreeNode(decodedData.root);
+            this.setActiveFodder(decodedData.root.page.fodders[0]);
+            this.setBoostWeekIdx(decodedData.bwIdx);
+        }
+        else this.loadFromLegacyURLParams(params);
+        return true;
+    }
+
+    /**
+     * (LEGACY) Loads a formula into the Assistant
+     * from a String of encoded data.
+     *
+     * @deprecated
+     * @param {String} params encoded formula data
+     * @returns {Boolean} true if loaded formula successfully
+     */
+    loadFromLegacyURLParams(params) {
+        if (!Assistant.affixDB || !params) return false;
+        params = this.decodeURLParams(params);
         let pagesData = params.split('/');
         let pages = [];
         for (var i = 0; i < pagesData.length; i++) {
@@ -1694,14 +1803,14 @@ class Assistant {
                     if (pageFodderAffixes[k].startsWith('*')) {
                         if (pageFodderAffixes.specialAbilityFactor) continue;
                         let newCode = pageFodderAffixes[k].slice(1, pageFodderAffixes[k].length);
-                        if (this.affixDB[newCode]) {
-                            newPageFodderAffixes.specialAbilityFactor = this.affixDB[newCode].abilityRef;
+                        if (Assistant.affixDB[newCode]) {
+                            newPageFodderAffixes.specialAbilityFactor = Assistant.affixDB[newCode].abilityRef;
                         }
                     }
                     else {
                         let theCode = handleLegacyAffixCodes(pageFodderAffixes[k]);
-                        if (this.affixDB[theCode]) {
-                            newPageFodderAffixes.push(this.affixDB[theCode].abilityRef);
+                        if (Assistant.affixDB[theCode]) {
+                            newPageFodderAffixes.push(Assistant.affixDB[theCode].abilityRef);
                         }
                     }
                 }
@@ -1713,8 +1822,8 @@ class Assistant {
                     targetAffixes[j] = targetAffixes[j].slice(1, targetAffixes[j].length);
                 }
                 let theCode = handleLegacyAffixCodes(targetAffixes[j]);
-                if (this.affixDB[theCode]) {
-                    targetAffixes[j] = this.affixDB[theCode].abilityRef;
+                if (Assistant.affixDB[theCode]) {
+                    targetAffixes[j] = Assistant.affixDB[theCode].abilityRef;
                 }
             }
             let affixIndicesFromFactor = [];
@@ -1783,11 +1892,11 @@ class Assistant {
         this.setGoal(goalPage.target);
         this.pageTreeRoot.page.fodders[0].affixIndicesFromFactor = goalPage.affixIndicesFromFactor;
         this.pageTreeRoot.page.fodders[0].connectTo(newPageTreeRoot.page);
-        if (this.data && this.data.optionList && this.data.optionList.support) {
+        if (Assistant.data && Assistant.data.optionList && Assistant.data.optionList.support) {
             for (var j = 0; j < goalPage.boosts.length; j++) {
                 let boost = goalPage.boosts[j];
-                for (var k = 0; k < this.data.optionList.support.length; k++) {
-                    let supportItem = this.data.optionList.support[k];
+                for (var k = 0; k < Assistant.data.optionList.support.length; k++) {
+                    let supportItem = Assistant.data.optionList.support[k];
                     if (supportItem.value == boost) {
                         this.pageTreeRoot.page.fodders[0].rateBoostIdx = k;
                         break;
@@ -1795,11 +1904,11 @@ class Assistant {
                 }
             }
         }
-        if (this.data && this.data.optionList && this.data.optionList.additional) {
+        if (Assistant.data && Assistant.data.optionList && Assistant.data.optionList.additional) {
             for (var j = 0; j < goalPage.boosts.length; j++) {
                 let boost = goalPage.boosts[j];
-                for (var k = 0; k < this.data.optionList.additional.length; k++) {
-                    let addAbilityItem = this.data.optionList.additional[k];
+                for (var k = 0; k < Assistant.data.optionList.additional.length; k++) {
+                    let addAbilityItem = Assistant.data.optionList.additional[k];
                     if (addAbilityItem.value == boost) {
                         this.pageTreeRoot.page.fodders[0].addAbilityItemInUse = {
                             transferRate: addAbilityItem.extend,
@@ -1808,8 +1917,8 @@ class Assistant {
                             name: addAbilityItem.id,
                             value: addAbilityItem.value
                         }
-                        for (var m = this.data.abilityList.length - 1; m >= 0; m--) {
-                            let ability = this.data.abilityList[m];
+                        for (var m = Assistant.data.abilityList.length - 1; m >= 0; m--) {
+                            let ability = Assistant.data.abilityList[m];
                             if (ability.name == addAbilityItem.name) {
                                 this.pageTreeRoot.page.fodders[0].addAffixes(ability);
                                 break;
@@ -1820,11 +1929,11 @@ class Assistant {
                 }
             }
         }
-        if (this.data && this.data.optionList && this.data.optionList.potential) {
+        if (Assistant.data && Assistant.data.optionList && Assistant.data.optionList.potential) {
             for (var j = 0; j < goalPage.boosts.length; j++) {
                 let boost = goalPage.boosts[j];
-                for (var k = 0; k < this.data.optionList.potential.length; k++) {
-                    let potential = this.data.optionList.potential[k];
+                for (var k = 0; k < Assistant.data.optionList.potential.length; k++) {
+                    let potential = Assistant.data.optionList.potential[k];
                     if (potential.value == boost) {
                         this.pageTreeRoot.page.fodders[0].potentialIdx = k;
                         break;
@@ -1845,8 +1954,8 @@ class Assistant {
             let fodders = [];
             for (var i = 0; i < pageData.fodders.length; i++) {
                 let newFodder = (new Fodder()).addAffixes(
-                        pageData.fodders[i]
-                    );
+                    pageData.fodders[i]
+                );
                 if (pageData.fodders[i].specialAbilityFactor) {
                     newFodder.setSpecialAbilityFactor(pageData.fodders[i].specialAbilityFactor);
                 }
@@ -1934,7 +2043,7 @@ class Assistant {
                 page
             ).addPageTreeNodes(
                 children
-            )
+                )
             // return root
             return pageTreeNode;
         }
@@ -2183,10 +2292,10 @@ class Assistant {
     }
 
     getUsesFor(affix) {
-        if (!affix || !affix.code || !this.affixDB) return [];
+        if (!affix || !affix.code || !Assistant.affixDB) return [];
         let uses = [];
-        for (var code in this.affixDB) {
-            let test = this.affixDB[code];
+        for (var code in Assistant.affixDB) {
+            let test = Assistant.affixDB[code];
             for (var i = 0; i < test.choices.length; i++) {
                 let choice = test.choices[i];
                 if (choice.materials.includes(affix)) {
@@ -2201,19 +2310,21 @@ class Assistant {
     }
 
     setBoostWeekIdx(idx) {
-        if (idx >= 0 && idx < this.boostWeekVals.length) {
+        if (idx >= 0 && idx < Assistant.boostWeekVals.length) {
             this.boostWeekIdx = idx;
         }
     }
 }
 
+/**
+ * Tree structure describing how every step of
+ * the formula is related to the other parts.
+ */
 class PageTreeNode {
     constructor(isGoal) {
         // Immutable variables (properties can still change)
         this.children = [];
         this.isGoal = (typeof isGoal === 'boolean') ? isGoal : false;
-        this.rateBoostOptions = [];
-        this.potentialOptions = [];
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(PageTreeNode.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -2317,8 +2428,6 @@ class PageTreeNode {
                     && !pageTreeNode.isGoal // Cannot have goal as a child
                     && test.length <= 0 // Deny cycles and duplicates
                     && pageTreeNode.page.connectedTo instanceof Fodder) {
-                    pageTreeNode.addRateBoostOptions(this.rateBoostOptions)
-                        .addPotentialOptions(this.potentialOptions);
                     this.children.push(pageTreeNode);
                     let newEvenChildren = [];
                     for (var k = 0; k < this.page.size(); k += 2) {
@@ -2397,8 +2506,6 @@ class PageTreeNode {
     setPage(page) {
         if (page && page instanceof Page && this.find(page).length <= 0) {
             this.page = page;
-            this.page.addRateBoostOptions(this.rateBoostOptions);
-            this.page.addPotentialOptions(this.potentialOptions);
         }
         return this;
     }
@@ -2453,42 +2560,6 @@ class PageTreeNode {
         return false;
     }
 
-    addRateBoostOptions(options) {
-        if (options) {
-            if (!Array.isArray(options)) options = [options];
-            for (var i = 0; i < options.length; i++) {
-                let rateBoostOption = options[i];
-                if (rateBoostOption && rateBoostOption.id && typeof rateBoostOption.id === 'string'
-                    && !this.rateBoostOptions.includes(rateBoostOption)) {
-                    this.rateBoostOptions.push(rateBoostOption);
-                }
-            }
-            this.page.addRateBoostOptions(options);
-            for (var i = 0; i < this.size(); i++) {
-                this.children[i].addRateBoostOptions(options);
-            }
-        }
-        return this;
-    }
-
-    addPotentialOptions(options) {
-        if (options) {
-            if (!Array.isArray(options)) options = [options];
-            for (var i = 0; i < options.length; i++) {
-                let potentialOption = options[i];
-                if (potentialOption && potentialOption.id && typeof potentialOption.id === 'string'
-                    && !this.potentialOptions.includes(potentialOption)) {
-                    this.potentialOptions.push(potentialOption);
-                }
-            }
-            this.page.addPotentialOptions(options);
-            for (var i = 0; i < this.size(); i++) {
-                this.children[i].addPotentialOptions(options);
-            }
-        }
-        return this;
-    }
-
     connectFodderAtToPageAt(fodderIdx, pageIdx) {
         if (typeof fodderIdx === 'number' && typeof pageIdx === 'number'
             && this.page && fodderIdx >= 0 && fodderIdx < this.page.fodders.length
@@ -2499,15 +2570,27 @@ class PageTreeNode {
     }
 }
 
+/**
+ * Describes a list of fodders needed to produce
+ * a result (goal or another fodder).
+ */
 class Page {
+
+    static get CAPACITY() {
+        return 6;
+    }
+
+    static get MIN_RATE() {
+        return 0;
+    }
+
+    static get MAX_RATE() {
+        return 100;
+    }
+
     constructor() {
         // Immutable variables (properties can still change)
-        this.CAPACITY = 6;
-        this.MIN_RATE = 0;
-        this.MAX_RATE = 100;
         this.fodders = [];
-        this.rateBoostOptions = [];
-        this.potentialOptions = [];
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(Page.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -2537,9 +2620,9 @@ class Page {
         }
         url += '&o=';
         let hasAddedRate = false;
-        if (this.connectedTo && this.connectedTo.rateBoostOptions && this.connectedTo.rateBoostOptions[this.connectedTo.rateBoostIdx]
-            && this.connectedTo.rateBoostOptions[this.connectedTo.rateBoostIdx].value) {
-            url += this.connectedTo.rateBoostOptions[this.connectedTo.rateBoostIdx].value;
+        if (this.connectedTo && Assistant.rateBoostOptions && Assistant.rateBoostOptions[this.connectedTo.rateBoostIdx]
+            && Assistant.rateBoostOptions[this.connectedTo.rateBoostIdx].value) {
+            url += Assistant.rateBoostOptions[this.connectedTo.rateBoostIdx].value;
             hasAddedRate = true;
         }
         // Special Ability like elegant and grace
@@ -2549,9 +2632,9 @@ class Page {
             hasAddedSpecial = true;
         }
         let hasAddedPotential = false;
-        if (this.connectedTo && this.connectedTo.potentialOptions && this.connectedTo.potentialOptions[this.connectedTo.potentialIdx]
-            && this.connectedTo.potentialOptions[this.connectedTo.potentialIdx].value) {
-            url += ((hasAddedRate || hasAddedSpecial) ? '.' : '') + this.connectedTo.potentialOptions[this.connectedTo.potentialIdx].value;
+        if (this.connectedTo && Assistant.potentialOptions && Assistant.potentialOptions[this.connectedTo.potentialIdx]
+            && Assistant.potentialOptions[this.connectedTo.potentialIdx].value) {
+            url += ((hasAddedRate || hasAddedSpecial) ? '.' : '') + Assistant.potentialOptions[this.connectedTo.potentialIdx].value;
             hasAddedPotential = true;
         }
         if (this.connectedTo && this.connectedTo.isSameGear) {
@@ -2594,9 +2677,7 @@ class Page {
             for (var i = 0; i < fodders.length; i++) {
                 let fodder = fodders[i];
                 if (fodder && fodder instanceof Fodder) {
-                    if (this.size() < this.CAPACITY) {
-                        fodder.addRateBoostOptions(this.rateBoostOptions);
-                        fodder.addPotentialOptions(this.potentialOptions);
+                    if (this.size() < Page.CAPACITY) {
                         this.fodders.push(fodder);
                     }
                     else {
@@ -2613,8 +2694,8 @@ class Page {
     }
 
     setSuccessRate(rate) {
-        if (typeof rate === 'number' && rate >= this.MIN_RATE
-            && rate <= this.MAX_RATE) {
+        if (typeof rate === 'number' && rate >= Page.MIN_RATE
+            && rate <= Page.MAX_RATE) {
             this.successRate = rate;
         }
         else {
@@ -2662,53 +2743,31 @@ class Page {
         }
         return this;
     }
-
-    addRateBoostOptions(options) {
-        if (options) {
-            if (!Array.isArray(options)) options = [options];
-            for (var i = 0; i < options.length; i++) {
-                let rateBoostOption = options[i];
-                if (rateBoostOption && rateBoostOption.id && typeof rateBoostOption.id === 'string'
-                    && !this.rateBoostOptions.includes(rateBoostOption)) {
-                    this.rateBoostOptions.push(rateBoostOption);
-                }
-            }
-            for (var i = 0; i < this.size(); i++) {
-                this.fodders[i].addRateBoostOptions(options);
-            }
-        }
-        return this;
-    }
-
-    addPotentialOptions(options) {
-        if (options) {
-            if (!Array.isArray(options)) options = [options];
-            for (var i = 0; i < options.length; i++) {
-                let potentialOption = options[i];
-                if (potentialOption && potentialOption.id && typeof potentialOption.id === 'string'
-                    && !this.potentialOptions.includes(potentialOption)) {
-                    this.potentialOptions.push(potentialOption);
-                }
-            }
-            for (var i = 0; i < this.size(); i++) {
-                this.fodders[i].addPotentialOptions(options);
-            }
-        }
-        return this;
-    }
 }
 
+/**
+ * Contains the abilities, SAF, and configurations
+ * used when making this Fodder.
+ */
 class Fodder {
+
+    static get CAPACITY() {
+        return 8;
+    }
+
+    static get MIN_RATE() {
+        return 0;
+    }
+
+    static get MAX_RATE() {
+        return 100;
+    }
+
     constructor() {
         // Immutable variables (properties can still change)
-        this.CAPACITY = 8;
-        this.MIN_RATE = 0;
-        this.MAX_RATE = 100;
         this.affixes = [];
         this.affixIndicesFromFactor = [];
         this.affixSuccessRates = [];
-        this.rateBoostOptions = [];
-        this.potentialOptions = [];
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(Fodder.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -2801,7 +2860,7 @@ class Fodder {
             for (var i = 0; i < affixes.length; i++) {
                 let affix = affixes[i];
                 if (affix && affix.code && !this.affixes.includes(affix)) {
-                    if (this.size() < this.CAPACITY) {
+                    if (this.size() < Fodder.CAPACITY) {
                         this.affixes.push(affix);
                     }
                     else {
@@ -2907,37 +2966,9 @@ class Fodder {
         return this;
     }
 
-    addRateBoostOptions(options) {
-        if (options) {
-            if (!Array.isArray(options)) options = [options];
-            for (var i = 0; i < options.length; i++) {
-                let rateBoostOption = options[i];
-                if (rateBoostOption && rateBoostOption.id && typeof rateBoostOption.id === 'string'
-                    && !this.rateBoostOptions.includes(rateBoostOption)) {
-                    this.rateBoostOptions.push(rateBoostOption);
-                }
-            }
-        }
-        return this;
-    }
-
-    addPotentialOptions(options) {
-        if (options) {
-            if (!Array.isArray(options)) options = [options];
-            for (var i = 0; i < options.length; i++) {
-                let potentialOption = options[i];
-                if (potentialOption && potentialOption.id && typeof potentialOption.id === 'string'
-                    && !this.potentialOptions.includes(potentialOption)) {
-                    this.potentialOptions.push(potentialOption);
-                }
-            }
-        }
-        return this;
-    }
-
     hasNonTransferableAffixes() {
         for (var i = 0; i < this.affixes.length; i++) {
-            if (ASSISTANT.affixDB[this.affixes[i].code].choices.length <= 0) return true;
+            if (Assistant.affixDB[this.affixes[i].code].choices.length <= 0) return true;
         }
         return false;
     }

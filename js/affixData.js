@@ -3,6 +3,7 @@
     optionList: {
         support: [
             {
+                ref: 0,
                 id: "Nothing",
                 name: "None",
                 value: "A01",
@@ -11,6 +12,7 @@
                 }
             },
             {
+                ref: 1,
                 id: "Ability Success Rate +5%",
                 name: "+5%",
                 value: "A02",
@@ -19,6 +21,7 @@
                 }
             },
             {
+                ref: 2,
                 id: "Ability Success Rate +10%",
                 name: "+10%",
                 value: "A03",
@@ -27,6 +30,7 @@
                 }
             },
             {
+                ref: 3,
                 id: "Ability Success Rate +20%",
                 name: "+20%",
                 value: "A04",
@@ -35,6 +39,7 @@
                 }
             },
             {
+                ref: 4,
                 id: "Ability Success Rate +30%",
                 name: "+30%",
                 value: "A05",
@@ -43,6 +48,7 @@
                 }
             },
             {
+                ref: 5,
                 id: "Ability Success Rate +40%",
                 name: "+40%",
                 value: "A06",
@@ -51,6 +57,7 @@
                 }
             },
             {
+                ref: 6,
                 id: "Ability Success Rate +45%",
                 name: "+45%",
                 value: "A07",
@@ -59,6 +66,7 @@
                 }
             },
             {
+                ref: 7,
                 id: "Ability Success Rate +50%",
                 name: "+50%",
                 value: "A08",
@@ -70,10 +78,12 @@
         ],
         additional: [
             {
+                ref: 0,
                 id: "Nothing",
                 value: "B01"
             },
             {
+                ref: 1,
                 id: "Add Ability (HP)",
                 name: "Stamina Boost",
                 value: "B02",
@@ -81,6 +91,7 @@
                 effect: "HP(+45)"
             },
             {
+                ref: 2,
                 id: "Add Ability (PP)",
                 name: " Spirita Boost",
                 value: "B03",
@@ -88,6 +99,7 @@
                 effect: "PP(+5)"
             },
             {
+                ref: 3,
                 id: "Add Ability (S-ATK)",
                 name: "Power Boost",
                 value: "B04",
@@ -95,6 +107,7 @@
                 effect: "S-ATK(+25)"
             },
             {
+                ref: 4,
                 id: "Add Ability (R-ATK)",
                 name: "Shoot Boost",
                 value: "B05",
@@ -102,6 +115,7 @@
                 effect: "R-ATK(+25)"
             },
             {
+                ref: 5,
                 id: "Add Ability (T-ATK)",
                 name: "Technique Boost",
                 value: "B06",
@@ -109,6 +123,7 @@
                 effect: "T-ATK(+25)"
             },
             {
+                ref: 6,
                 id: "Add Ability (Tenora)",
                 name: "Tenora Boost",
                 value: "B0a",
@@ -116,6 +131,7 @@
                 effect: "S-ATK(+35)"
             },
             {
+                ref: 7,
                 id: "Add Ability (GRM)",
                 name: "GRM Boost",
                 value: "B0b",
@@ -123,6 +139,7 @@
                 effect: "R-ATK(+35)"
             },
             {
+                ref: 8,
                 id: "Add Ability (Yohmei)",
                 name: "Yohmei Boost",
                 value: "B0c",
@@ -130,6 +147,7 @@
                 effect: "T-ATK(+35)"
             },
             {
+                ref: 9,
                 id: "Add Ability (HP&PP)",
                 name: "Noble Stamina",
                 value: "B10",
@@ -137,6 +155,7 @@
                 effect: "HP(+50),PP(+3)"
             },
             {
+                ref: 10,
                 id: "Add Ability (HP&PP/2)",
                 name: "Elegant Stamina",
                 value: "B14",
@@ -144,6 +163,7 @@
                 effect: "HP(+70),PP(+4)"
             },
             {
+                ref: 11,
                 id: "Add Ability (HP&PP/3)",
                 name: "Grace Stamina",
                 value: "B18",
@@ -151,6 +171,7 @@
                 effect: "HP(+80),PP(+5)"
             },
             {
+                ref: 12,
                 id: "Add Ability (S-ATK&PP)",
                 name: "Noble Power",
                 value: "B07",
@@ -158,6 +179,7 @@
                 effect: "S-ATK(+30),PP(+3)"
             },
             {
+                ref: 13,
                 id: "Add Ability (S-ATK&PP/2)",
                 name: "Elegant Power",
                 value: "B11",
@@ -165,6 +187,7 @@
                 effect: "S-ATK(+40),PP(+4)"
             },
             {
+                ref: 14,
                 id: "Add Ability (S-ATK&PP/3)",
                 name: "Grace Power",
                 value: "B15",
@@ -172,6 +195,7 @@
                 effect: "S-ATK(+50),PP(+5)"
             },
             {
+                ref: 15,
                 id: "Add Ability (R-ATK&PP)",
                 name: "Noble Shoot",
                 value: "B08",
@@ -179,6 +203,7 @@
                 effect: "R-ATK(+30),PP(+3)"
             },
             {
+                ref: 16,
                 id: "Add Ability (R-ATK&PP/2)",
                 name: "Elegant Shoot",
                 value: "B12",
@@ -186,6 +211,7 @@
                 effect: "R-ATK(+40),PP(+4)"
             },
             {
+                ref: 17,
                 id: "Add Ability (R-ATK&PP/3)",
                 name: "Grace Shoot",
                 value: "B16",
@@ -193,6 +219,7 @@
                 effect: "R-ATK(+50),PP(+5)"
             },
             {
+                ref: 18,
                 id: "Add Ability (T-ATK&PP)",
                 name: "Noble Technique",
                 value: "B09",
@@ -200,6 +227,7 @@
                 effect: "T-ATK(+30),PP(+3)"
             },
             {
+                ref: 19,
                 id: "Add Ability (T-ATK&PP/2)",
                 name: "Elegant Technique",
                 value: "B13",
@@ -207,6 +235,7 @@
                 effect: "T-ATK(+40),PP(+4)"
             },
             {
+                ref: 20,
                 id: "Add Ability (T-ATK&PP/3)",
                 name: "Grace Technique",
                 value: "B17",
@@ -214,6 +243,7 @@
                 effect: "T-ATK(+50),PP(+5)"
             },
             {
+                ref: 21,
                 id: "Add Ability (Offense Focus)",
                 name: "Offense Boost",
                 value: "B20",
@@ -221,6 +251,7 @@
                 effect: "S-ATK(+15),R-ATK(+15),T-ATK(+15),DEX(+25),PP(+1)"
             },
             {
+                ref: 22,
                 id: "Add Ability (Defense Focus)",
                 name: "Defense Boost",
                 value: "B21",
@@ -228,6 +259,7 @@
                 effect: "S-DEF(+25),R-DEF(+25),T-DEF(+25),HP(+55),PP(+1)"
             },
             {
+                ref: 23,
                 id: "Add Ability (Attack Inherit)",
                 name: "Attack Receptor",
                 value: "B30",
@@ -235,6 +267,7 @@
                 effect: "ALL(+5)"
             },
             {
+                ref: 24,
                 id: "Add Ability (Defense Inherit)",
                 name: "Guard Receptor",
                 value: "B31",
@@ -242,6 +275,7 @@
                 effect: "ALL(+5)"
             },
             {
+                ref: 25,
                 id: "Add Ability (Photon Inherit)",
                 name: "Photon Receptor",
                 value: "B32",
@@ -249,6 +283,7 @@
                 effect: "ALL(+5)"
             },
             {
+                ref: 26,
                 id: "Add Ability (Mark Receptor)",
                 name: "Mark Receptor",
                 value: "XG01",
@@ -256,6 +291,7 @@
                 effect: "ALL(+10)"
             },
             {
+                ref: 27,
                 id: "S1 Add: Photon Reduction 2",
                 name: "S1:Photon Reduction 2",
                 value: "",
@@ -263,6 +299,7 @@
                 effect: ""
             },
             {
+                ref: 28,
                 id: "S1 Add: Brilliant Ruin 2",
                 name: "S1:Brilliant Ruin 2",
                 value: "",
@@ -270,6 +307,7 @@
                 effect: ""
             },
             {
+                ref: 29,
                 id: "S1 Add: Flowing Intent",
                 name: "S1:Flowing Intent",
                 value: "",
@@ -277,6 +315,7 @@
                 effect: ""
             },
             {
+                ref: 30,
                 id: "S1 Add: Lethal Intent",
                 name: "S1:Lethal Intent",
                 value: "",
@@ -284,6 +323,7 @@
                 effect: ""
             },
             {
+                ref: 31,
                 id: "S1 Add: Reckless Strike",
                 name: "S1:Reckless Strike",
                 value: "",
@@ -291,6 +331,7 @@
                 effect: ""
             },
             {
+                ref: 32,
                 id: "S1 Add: Eclipsing Decay",
                 name: "S1:Eclipsing Decay",
                 value: "",
@@ -298,6 +339,7 @@
                 effect: ""
             },
             {
+                ref: 33,
                 id: "S1 Add: Augment Intent",
                 name: "S1:Augment Intent",
                 value: "",
@@ -305,6 +347,7 @@
                 effect: ""
             },
             {
+                ref: 34,
                 id: "S2 Add: Umbrageous Melody",
                 name: "S2:Umbrageous Melody",
                 value: "",
@@ -312,6 +355,7 @@
                 effect: ""
             },
             {
+                ref: 35,
                 id: "S2 Add: Nature's Reduction 2",
                 name: "S2:Nature's Reduction 2",
                 value: "",
@@ -319,6 +363,7 @@
                 effect: ""
             },
             {
+                ref: 36,
                 id: "S2 Add: Umbrageous Radiance 2",
                 name: "S2:Umbrageous Radiance 2",
                 value: "",
@@ -326,6 +371,7 @@
                 effect: ""
             },
             {
+                ref: 37,
                 id: "S2 Add: Wise Skill 2",
                 name: "S2:Wise Skill 2",
                 value: "",
@@ -333,6 +379,7 @@
                 effect: ""
             },
             {
+                ref: 38,
                 id: "S2 Add: Skilled Strike 2",
                 name: "S2:Skilled Strike 2",
                 value: "",
@@ -340,6 +387,7 @@
                 effect: ""
             },
             {
+                ref: 39,
                 id: "S2 Add: Radiant Strike 2",
                 name: "S2:Radiant Strike 2",
                 value: "",
@@ -347,6 +395,7 @@
                 effect: ""
             },
             {
+                ref: 40,
                 id: "S2 Add: Runner's High",
                 name: "S2:Runner's High",
                 value: "",
@@ -354,6 +403,7 @@
                 effect: ""
             },
             {
+                ref: 41,
                 id: "S2 Add: Skill Reduction",
                 name: "S2:Skill Reduction",
                 value: "",
@@ -361,6 +411,7 @@
                 effect: ""
             },
             {
+                ref: 42,
                 id: "S3 Add: Nature's Melody",
                 name: "S3:Nature's Melody",
                 value: "",
@@ -368,6 +419,7 @@
                 effect: ""
             },
             {
+                ref: 43,
                 id: "S3 Add: Nature's Gleam 2",
                 name: "S3:Nature's Gleam 2",
                 value: "",
@@ -375,6 +427,7 @@
                 effect: ""
             },
             {
+                ref: 44,
                 id: "S3 Add: Flowing Grace",
                 name: "S3:Flowing Grace",
                 value: "",
@@ -382,6 +435,7 @@
                 effect: ""
             },
             {
+                ref: 45,
                 id: "S3 Add: Flowing Exhilaration 2",
                 name: "S3:Flowing Exhilaration 2",
                 value: "",
@@ -389,6 +443,7 @@
                 effect: ""
             },
             {
+                ref: 46,
                 id: "S3 Add: Radiating Grace 2",
                 name: "S3:Radiating Grace 2",
                 value: "",
@@ -396,6 +451,7 @@
                 effect: ""
             },
             {
+                ref: 47,
                 id: "S3 Add: Calming Exhilaration",
                 name: "S3:Calming Exhilaration",
                 value: "",
@@ -403,6 +459,7 @@
                 effect: ""
             },
             {
+                ref: 48,
                 id: "S3 Add: Fortifying Strike",
                 name: "S3:Fortifying Strike",
                 value: "",
@@ -410,6 +467,7 @@
                 effect: ""
             },
             {
+                ref: 49,
                 id: "S3 Add: Curtailed Strike",
                 name: "S3:Curtailed Strike",
                 value: "",
@@ -417,6 +475,7 @@
                 effect: ""
             },
             {
+                ref: 50,
                 id: "S3 Add: Wise Strike",
                 name: "S3:Wise Strike",
                 value: "",
@@ -424,6 +483,7 @@
                 effect: ""
             },
             {
+                ref: 51,
                 id: "S4 Add: Heavenly Protection",
                 name: "S4:Heavenly Protection",
                 value: "",
@@ -431,6 +491,7 @@
                 effect: ""
             },
             {
+                ref: 52,
                 id: "S4 Add: Calming Intent",
                 name: "S4: Calming Intent",
                 value: "",
@@ -438,6 +499,7 @@
                 effect: ""
             },
             {
+                ref: 53,
                 id: "S4 Add: Mysterious Strike",
                 name: "S4:Mysterious Strike",
                 value: "",
@@ -445,6 +507,7 @@
                 effect: ""
             },
             {
+                ref: 54,
                 id: "S4 Add: Saint Shield",
                 name: "S4:Saint Shield",
                 value: "",
@@ -452,6 +515,7 @@
                 effect: ""
             },
             {
+                ref: 54,
                 id: "S4 Add: Colored Spectrum",
                 name: "S4:Colored Spectrum",
                 value: "",
@@ -461,6 +525,7 @@
         ],
         potential: [
             {
+                ref: 0,
                 id: "Nothing",
                 name: "Nothing",
                 value: "C01",
@@ -469,6 +534,7 @@
                 }
             },
             {
+                ref: 1,
                 id: "Guidance of Life Lv1 (+2%)",
                 name: "+2%",
                 value: "C11",
@@ -478,6 +544,7 @@
                 }
             },
             {
+                ref: 2,
                 id: "Guidance of Life Lv2 (+5%)",
                 name: "+5%",
                 value: "C12",
@@ -487,6 +554,7 @@
                 }
             },
             {
+                ref: 3,
                 id: "Guidance of Life Lv3 (+10%)",
                 name: "+10%",
                 value: "C13",
@@ -1745,6 +1813,7 @@
     },
     abilityList: [
         {
+            ref: 0,
             code: "AA01",
             gid: "AA",
             name: "Power I",
@@ -1760,6 +1829,7 @@
 
         },
         {
+            ref: 1,
             code: "AA02",
             gid: "AA",
             name: "Power II",
@@ -1777,6 +1847,7 @@
             effect: "S-ATK(+20)"
         },
         {
+            ref: 2,
             code: "AA03",
             gid: "AA",
             name: "Power III",
@@ -1794,6 +1865,7 @@
             effect: "S-ATK(+30)"
         },
         {
+            ref: 3,
             code: "AA04",
             gid: "AA",
             name: "Power IV",
@@ -1811,6 +1883,7 @@
             effect: "S-ATK(+35)"
         },
         {
+            ref: 4,
             code: "AA05",
             gid: "AA",
             name: "Power V",
@@ -1827,6 +1900,7 @@
             effect: "S-ATK(+40)"
         },
         {
+            ref: 5,
             code: "AA06",
             gid: "CB",
             name: "Power VI",
@@ -1834,6 +1908,7 @@
             effect: "S-ATK(+45)"
         },
         {
+            ref: 6,
             code: "AB01",
             gid: "AA",
             name: "Shoot I",
@@ -1847,6 +1922,7 @@
             effect: "R-ATK(+10)"
         },
         {
+            ref: 7,
             code: "AB02",
             gid: "AA",
             name: "Shoot II",
@@ -1864,6 +1940,7 @@
             effect: "R-ATK(+20)"
         },
         {
+            ref: 8,
             code: "AB03",
             gid: "AA",
             name: "Shoot III",
@@ -1881,6 +1958,7 @@
             effect: "R-ATK(+30)"
         },
         {
+            ref: 9,
             code: "AB04",
             gid: "AA",
             name: "Shoot IV",
@@ -1898,6 +1976,7 @@
             effect: "R-ATK(+35)"
         },
         {
+            ref: 10,
             code: "AB05",
             gid: "AA",
             name: "Shoot V",
@@ -1914,6 +1993,7 @@
             effect: "R-ATK(+40)"
         },
         {
+            ref: 11,
             code: "AB06",
             gid: "CB",
             name: "Shoot VI",
@@ -1921,6 +2001,7 @@
             effect: "R-ATK(+45)"
         },
         {
+            ref: 12,
             code: "AC01",
             gid: "AA",
             name: "Technique I",
@@ -1934,6 +2015,7 @@
             effect: "T-ATK(+10)"
         },
         {
+            ref: 13,
             code: "AC02",
             gid: "AA",
             name: "Technique II",
@@ -1951,6 +2033,7 @@
             effect: "T-ATK(+20)"
         },
         {
+            ref: 14,
             code: "AC03",
             gid: "AA",
             name: "Technique III",
@@ -1968,6 +2051,7 @@
             effect: "T-ATK(+30)"
         },
         {
+            ref: 15,
             code: "AC04",
             gid: "AA",
             name: "Technique IV",
@@ -1985,6 +2069,7 @@
             effect: "T-ATK(+35)"
         },
         {
+            ref: 16,
             code: "AC05",
             gid: "AA",
             name: "Technique V",
@@ -2001,6 +2086,7 @@
             effect: "T-ATK(+40)"
         },
         {
+            ref: 17,
             code: "AC06",
             gid: "CB",
             name: "Technique VI",
@@ -2008,6 +2094,7 @@
             effect: "T-ATK(+45)"
         },
         {
+            ref: 18,
             code: "AD01",
             gid: "AA",
             name: "Arm I",
@@ -2021,6 +2108,7 @@
             effect: "DEX(+10)"
         },
         {
+            ref: 19,
             code: "AD02",
             gid: "AA",
             name: "Arm II",
@@ -2038,6 +2126,7 @@
             effect: "DEX(+20)"
         },
         {
+            ref: 20,
             code: "AD03",
             gid: "AA",
             name: "Arm III",
@@ -2055,6 +2144,7 @@
             effect: "DEX(+30)"
         },
         {
+            ref: 21,
             code: "AD04",
             gid: "AA",
             name: "Arm IV",
@@ -2072,6 +2162,7 @@
             effect: "DEX(+35)"
         },
         {
+            ref: 22,
             code: "AD05",
             gid: "AA",
             name: "Arm V",
@@ -2088,6 +2179,7 @@
             effect: "DEX(+40)"
         },
         {
+            ref: 23,
             code: "BA01",
             gid: "AA",
             name: "Body I",
@@ -2101,6 +2193,7 @@
             effect: "S-DEF(+10)"
         },
         {
+            ref: 24,
             code: "BA02",
             gid: "AA",
             name: "Body II",
@@ -2118,6 +2211,7 @@
             effect: "S-DEF(+20)"
         },
         {
+            ref: 25,
             code: "BA03",
             gid: "AA",
             name: "Body III",
@@ -2135,6 +2229,7 @@
             effect: "S-DEF(+30)"
         },
         {
+            ref: 26,
             code: "BA04",
             gid: "AA",
             name: "Body IV",
@@ -2152,6 +2247,7 @@
             effect: "S-DEF(+35)"
         },
         {
+            ref: 27,
             code: "BA05",
             gid: "AA",
             name: "Body V",
@@ -2168,6 +2264,7 @@
             effect: "S-DEF(+40)"
         },
         {
+            ref: 28,
             code: "BB01",
             gid: "AA",
             name: "React I",
@@ -2181,6 +2278,7 @@
             effect: "R-DEF(+10)"
         },
         {
+            ref: 29,
             code: "BB02",
             gid: "AA",
             name: "React II",
@@ -2198,6 +2296,7 @@
             effect: "R-DEF(+20)"
         },
         {
+            ref: 30,
             code: "BB03",
             gid: "AA",
             name: "React III",
@@ -2215,6 +2314,7 @@
             effect: "R-DEF(+30)"
         },
         {
+            ref: 31,
             code: "BB04",
             gid: "AA",
             name: "React IV",
@@ -2232,6 +2332,7 @@
             effect: "R-DEF(+35)"
         },
         {
+            ref: 32,
             code: "BB05",
             gid: "AA",
             name: "React V",
@@ -2248,6 +2349,7 @@
             effect: "R-DEF(+40)"
         },
         {
+            ref: 33,
             code: "BC01",
             gid: "AA",
             name: "Mind I",
@@ -2261,6 +2363,7 @@
             effect: "T-DEF(+10)"
         },
         {
+            ref: 34,
             code: "BC02",
             gid: "AA",
             name: "Mind II",
@@ -2278,6 +2381,7 @@
             effect: "T-DEF(+20)"
         },
         {
+            ref: 35,
             code: "BC03",
             gid: "AA",
             name: "Mind III",
@@ -2295,6 +2399,7 @@
             effect: "T-DEF(+30)"
         },
         {
+            ref: 36,
             code: "BC04",
             gid: "AA",
             name: "Mind IV",
@@ -2312,6 +2417,7 @@
             effect: "T-DEF(+35)"
         },
         {
+            ref: 37,
             code: "BC05",
             gid: "AA",
             name: "Mind V",
@@ -2328,6 +2434,7 @@
             effect: "T-DEF(+40)"
         },
         {
+            ref: 38,
             code: "EA01",
             gid: "AA",
             name: "Stamina I",
@@ -2341,6 +2448,7 @@
             effect: "HP(+20)"
         },
         {
+            ref: 39,
             code: "EA02",
             gid: "AA",
             name: "Stamina II",
@@ -2358,6 +2466,7 @@
             effect: "HP(+40)"
         },
         {
+            ref: 40,
             code: "EA03",
             gid: "AA",
             name: "Stamina III",
@@ -2375,6 +2484,7 @@
             effect: "HP(+50)"
         },
         {
+            ref: 41,
             code: "EA04",
             gid: "AA",
             name: "Stamina IV",
@@ -2392,6 +2502,7 @@
             effect: "HP(+60)"
         },
         {
+            ref: 42,
             code: "EA05",
             gid: "AA",
             name: "Stamina V",
@@ -2408,6 +2519,7 @@
             effect: "HP(+70)"
         },
         {
+            ref: 43,
             code: "EB01",
             gid: "AA",
             name: "Spirita I",
@@ -2421,6 +2533,7 @@
             effect: "PP(+2)"
         },
         {
+            ref: 44,
             code: "EB02",
             gid: "AA",
             name: "Spirita II",
@@ -2438,6 +2551,7 @@
             effect: "PP(+3)"
         },
         {
+            ref: 45,
             code: "EB03",
             gid: "AA",
             name: "Spirita III",
@@ -2455,6 +2569,7 @@
             effect: "PP(+4)"
         },
         {
+            ref: 46,
             code: "EB04",
             gid: "AA",
             name: "Spirita IV",
@@ -2472,6 +2587,7 @@
             effect: "PP(+5)"
         },
         {
+            ref: 47,
             code: "EB05",
             gid: "AA",
             name: "Spirita V",
@@ -2488,6 +2604,7 @@
             effect: "PP(+6)"
         },
         {
+            ref: 48,
             code: "EB06",
             gid: "CB",
             name: "Spirita VI",
@@ -2495,6 +2612,7 @@
             effect: "PP(+7)"
         },
         {
+            ref: 49,
             code: "FA01",
             gid: "AC",
             name: "Ability I",
@@ -2507,6 +2625,7 @@
             effect: "ALL(+5)"
         },
         {
+            ref: 50,
             code: "FA02",
             gid: "AC",
             name: "Ability II",
@@ -2519,6 +2638,7 @@
             effect: "ALL(+10)"
         },
         {
+            ref: 51,
             code: "FA03",
             gid: "AC",
             name: "Ability III",
@@ -2531,12 +2651,14 @@
             effect: "ALL(+15)"
         },
         {
+            ref: 52,
             code: "FA04",
             gid: "CB",
             name: "Ability IV",
             effect: "ALL(+20)"
         },
         {
+            ref: 53,
             code: "HA01",
             gid: "DA",
             name: "Blow Resist I",
@@ -2550,6 +2672,7 @@
             effect: "Strike Resist(+3)"
         },
         {
+            ref: 54,
             code: "HA02",
             gid: "DA",
             name: "Blow Resist II",
@@ -2567,6 +2690,7 @@
             effect: "Strike Resist(+4)"
         },
         {
+            ref: 55,
             code: "HA03",
             gid: "DA",
             name: "Blow Resist III",
@@ -2584,6 +2708,7 @@
             effect: "Strike Resist(+5)"
         },
         {
+            ref: 56,
             code: "HA04",
             gid: "DA",
             name: "Blow Resist IV",
@@ -2601,6 +2726,7 @@
             effect: "Strike Resist(+6)"
         },
         {
+            ref: 57,
             code: "HA05",
             gid: "DA",
             name: "Blow Resist V",
@@ -2617,6 +2743,7 @@
             effect: "Strike Resist(+7)"
         },
         {
+            ref: 58,
             code: "HB01",
             gid: "DA",
             name: "Shoot Resist I",
@@ -2630,6 +2757,7 @@
             effect: "Range Resist(+3)"
         },
         {
+            ref: 59,
             code: "HB02",
             gid: "DA",
             name: "Shoot Resist II",
@@ -2647,6 +2775,7 @@
             effect: "Range Resist(+4)"
         },
         {
+            ref: 60,
             code: "HB03",
             gid: "DA",
             name: "Shoot Resist III",
@@ -2664,6 +2793,7 @@
             effect: "Range Resist(+5)"
         },
         {
+            ref: 61,
             code: "HB04",
             gid: "DA",
             name: "Shoot Resist IV",
@@ -2681,6 +2811,7 @@
             effect: "Range Resist(+6)"
         },
         {
+            ref: 62,
             code: "HB05",
             gid: "DA",
             name: "Shoot Resist V",
@@ -2697,6 +2828,7 @@
             effect: "Range Resist(+7)"
         },
         {
+            ref: 63,
             code: "HC01",
             gid: "DA",
             name: "Mind Resist I",
@@ -2710,6 +2842,7 @@
             effect: "Tech Resist(+3)"
         },
         {
+            ref: 64,
             code: "HC02",
             gid: "DA",
             name: "Mind Resist II",
@@ -2727,6 +2860,7 @@
             effect: "Tech Resist(+4)"
         },
         {
+            ref: 65,
             code: "HC03",
             gid: "DA",
             name: "Mind Resist III",
@@ -2744,6 +2878,7 @@
             effect: "Tech Resist(+5)"
         },
         {
+            ref: 66,
             code: "HC04",
             gid: "DA",
             name: "Mind Resist IV",
@@ -2761,6 +2896,7 @@
             effect: "Tech Resist(+6)"
         },
         {
+            ref: 67,
             code: "HC05",
             gid: "DA",
             name: "Mind Resist V",
@@ -2777,6 +2913,7 @@
             effect: "Tech Resist(+7)"
         },
         {
+            ref: 68,
             code: "HI01",
             gid: "DA",
             name: "Fire Resist I",
@@ -2790,6 +2927,7 @@
             effect: "Flame Resist(+3)"
         },
         {
+            ref: 69,
             code: "HI02",
             gid: "DA",
             name: "Fire Resist II",
@@ -2807,6 +2945,7 @@
             effect: "Flame Resist(+4)"
         },
         {
+            ref: 70,
             code: "HI03",
             gid: "DA",
             name: "Fire Resist III",
@@ -2824,6 +2963,7 @@
             effect: "Flame Resist(+5)"
         },
         {
+            ref: 71,
             code: "HI04",
             gid: "DA",
             name: "Fire Resist IV",
@@ -2841,6 +2981,7 @@
             effect: "Flame Resist(+6)"
         },
         {
+            ref: 72,
             code: "HI05",
             gid: "DA",
             name: "Fire Resist V",
@@ -2857,6 +2998,7 @@
             effect: "Flame Resist(+7)"
         },
         {
+            ref: 73,
             code: "HJ01",
             gid: "DA",
             name: "Ice Resist I",
@@ -2870,6 +3012,7 @@
             effect: "Ice Resist(+3)"
         },
         {
+            ref: 74,
             code: "HJ02",
             gid: "DA",
             name: "Ice Resist II",
@@ -2887,6 +3030,7 @@
             effect: "Ice Resist(+4)"
         },
         {
+            ref: 75,
             code: "HJ03",
             gid: "DA",
             name: "Ice Resist III",
@@ -2904,6 +3048,7 @@
             effect: "Ice Resist(+5)"
         },
         {
+            ref: 76,
             code: "HJ04",
             gid: "DA",
             name: "Ice Resist IV",
@@ -2921,6 +3066,7 @@
             effect: "Ice Resist(+6)"
         },
         {
+            ref: 77,
             code: "HJ05",
             gid: "DA",
             name: "Ice Resist V",
@@ -2937,6 +3083,7 @@
             effect: "Ice Resist(+7)"
         },
         {
+            ref: 78,
             code: "HK01",
             gid: "DA",
             name: "Shock Resist I",
@@ -2950,6 +3097,7 @@
             effect: "Lightning Resist(+3)"
         },
         {
+            ref: 79,
             code: "HK02",
             gid: "DA",
             name: "Shock Resist II",
@@ -2967,6 +3115,7 @@
             effect: "Lightning Resist(+4)"
         },
         {
+            ref: 80,
             code: "HK03",
             gid: "DA",
             name: "Shock Resist III",
@@ -2984,6 +3133,7 @@
             effect: "Lightning Resist(+5)"
         },
         {
+            ref: 81,
             code: "HK04",
             gid: "DA",
             name: "Shock Resist IV",
@@ -3001,6 +3151,7 @@
             effect: "Lightning Resist(+6)"
         },
         {
+            ref: 82,
             code: "HK05",
             gid: "DA",
             name: "Shock Resist V",
@@ -3017,6 +3168,7 @@
             effect: "Lightning Resist(+7)"
         },
         {
+            ref: 83,
             code: "HL01",
             gid: "DA",
             name: "Wind Resist I",
@@ -3030,6 +3182,7 @@
             effect: "Wind Resist(+3)"
         },
         {
+            ref: 84,
             code: "HL02",
             gid: "DA",
             name: "Wind Resist II",
@@ -3047,6 +3200,7 @@
             effect: "Wind Resist(+4)"
         },
         {
+            ref: 85,
             code: "HL03",
             gid: "DA",
             name: "Wind Resist III",
@@ -3064,6 +3218,7 @@
             effect: "Wind Resist(+5)"
         },
         {
+            ref: 86,
             code: "HL04",
             gid: "DA",
             name: "Wind Resist IV",
@@ -3081,6 +3236,7 @@
             effect: "Wind Resist(+6)"
         },
         {
+            ref: 87,
             code: "HL05",
             gid: "DA",
             name: "Wind Resist V",
@@ -3097,6 +3253,7 @@
             effect: "Wind Resist(+7)"
         },
         {
+            ref: 88,
             code: "HM01",
             gid: "DA",
             name: "Light Resist I",
@@ -3110,6 +3267,7 @@
             effect: "Light Resist(+3)"
         },
         {
+            ref: 89,
             code: "HM02",
             gid: "DA",
             name: "Light Resist II",
@@ -3127,6 +3285,7 @@
             effect: "Light Resist(+4)"
         },
         {
+            ref: 90,
             code: "HM03",
             gid: "DA",
             name: "Light Resist III",
@@ -3144,6 +3303,7 @@
             effect: "Light Resist(+5)"
         },
         {
+            ref: 91,
             code: "HM04",
             gid: "DA",
             name: "Light Resist IV",
@@ -3161,6 +3321,7 @@
             effect: "Light Resist(+6)"
         },
         {
+            ref: 92,
             code: "HM05",
             gid: "DA",
             name: "Light Resist V",
@@ -3177,6 +3338,7 @@
             effect: "Light Resist(+7)"
         },
         {
+            ref: 93,
             code: "HN01",
             gid: "DA",
             name: "Gloom Resist I",
@@ -3190,6 +3352,7 @@
             effect: "Dark Resist(+3)"
         },
         {
+            ref: 94,
             code: "HN02",
             gid: "DA",
             name: "Gloom Resist II",
@@ -3207,6 +3370,7 @@
             effect: "Dark Resist(+4)"
         },
         {
+            ref: 95,
             code: "HN03",
             gid: "DA",
             name: "Gloom Resist III",
@@ -3224,6 +3388,7 @@
             effect: "Dark Resist(+5)"
         },
         {
+            ref: 96,
             code: "HN04",
             gid: "DA",
             name: "Gloom Resist IV",
@@ -3241,6 +3406,7 @@
             effect: "Dark Resist(+6)"
         },
         {
+            ref: 97,
             code: "HN05",
             gid: "DA",
             name: "Gloom Resist V",
@@ -3257,6 +3423,7 @@
             effect: "Dark Resist(+7)"
         },
         {
+            ref: 98,
             code: "HZ01",
             gid: "DA",
             name: "All Resist I",
@@ -3269,6 +3436,7 @@
             effect: "All Resist(+1)"
         },
         {
+            ref: 99,
             code: "HZ02",
             gid: "DA",
             name: "All Resist II",
@@ -3281,6 +3449,7 @@
             effect: "All Resist(+2)"
         },
         {
+            ref: 100,
             code: "HZ03",
             gid: "DA",
             name: "All Resist III",
@@ -3293,6 +3462,7 @@
             effect: "All Resist(+3)"
         },
         {
+            ref: 101,
             code: "HZ04",
             gid: "DA",
             name: "All Resist IV",
@@ -3300,6 +3470,7 @@
             effect: "All Resist(+4)"
         },
         {
+            ref: 102,
             code: "HZ05",
             gid: "DA",
             name: "All Resist V",
@@ -3307,6 +3478,7 @@
             effect: "All Resist(+5)"
         },
         {
+            ref: 103,
             code: "JA01",
             gid: "DB",
             name: "Burn I",
@@ -3320,6 +3492,7 @@
             effect: "Grants Burn Lv1"
         },
         {
+            ref: 104,
             code: "JA02",
             gid: "DB",
             name: "Burn II",
@@ -3337,6 +3510,7 @@
             effect: "Grants Burn Lv2"
         },
         {
+            ref: 105,
             code: "JA03",
             gid: "DB",
             name: "Burn III",
@@ -3354,6 +3528,7 @@
             effect: "Grants Burn Lv3"
         },
         {
+            ref: 106,
             code: "JA04",
             gid: "DB",
             name: "Burn IV",
@@ -3371,6 +3546,7 @@
             effect: "Grants Burn Lv4"
         },
         {
+            ref: 107,
             code: "JA05",
             gid: "DB",
             name: "Burn V",
@@ -3387,6 +3563,7 @@
             effect: "Grants Burn Lv5"
         },
         {
+            ref: 108,
             code: "JB01",
             gid: "DB",
             name: "Freeze I",
@@ -3400,6 +3577,7 @@
             effect: "Grants Freeze Lv1"
         },
         {
+            ref: 109,
             code: "JB02",
             gid: "DB",
             name: "Freeze II",
@@ -3417,6 +3595,7 @@
             effect: "Grants Freeze Lv2"
         },
         {
+            ref: 110,
             code: "JB03",
             gid: "DB",
             name: "Freeze III",
@@ -3434,6 +3613,7 @@
             effect: "Grants Freeze Lv3"
         },
         {
+            ref: 111,
             code: "JB04",
             gid: "DB",
             name: "Freeze IV",
@@ -3451,6 +3631,7 @@
             effect: "Grants Freeze Lv4"
         },
         {
+            ref: 112,
             code: "JB05",
             gid: "DB",
             name: "Freeze V",
@@ -3467,6 +3648,7 @@
             effect: "Grants Freeze Lv5"
         },
         {
+            ref: 113,
             code: "JC01",
             gid: "DB",
             name: "Shock I",
@@ -3480,6 +3662,7 @@
             effect: "Grants Shock Lv1"
         },
         {
+            ref: 114,
             code: "JC02",
             gid: "DB",
             name: "Shock II",
@@ -3497,6 +3680,7 @@
             effect: "Grants Shock Lv2"
         },
         {
+            ref: 115,
             code: "JC03",
             gid: "DB",
             name: "Shock III",
@@ -3514,6 +3698,7 @@
             effect: "Grants Shock Lv3"
         },
         {
+            ref: 116,
             code: "JC04",
             gid: "DB",
             name: "Shock IV",
@@ -3531,6 +3716,7 @@
             effect: "Grants Shock Lv4"
         },
         {
+            ref: 117,
             code: "JC05",
             gid: "DB",
             name: "Shock V",
@@ -3547,6 +3733,7 @@
             effect: "Grants Shock Lv5"
         },
         {
+            ref: 118,
             code: "JD01",
             gid: "DB",
             name: "Mirage I",
@@ -3560,6 +3747,7 @@
             effect: "Grants Mirage Lv1"
         },
         {
+            ref: 119,
             code: "JD02",
             gid: "DB",
             name: "Mirage II",
@@ -3577,6 +3765,7 @@
             effect: "Grants Mirage Lv2"
         },
         {
+            ref: 120,
             code: "JD03",
             gid: "DB",
             name: "Mirage III",
@@ -3594,6 +3783,7 @@
             effect: "Grants Mirage Lv3"
         },
         {
+            ref: 121,
             code: "JD04",
             gid: "DB",
             name: "Mirage IV",
@@ -3611,6 +3801,7 @@
             effect: "Grants Mirage Lv4"
         },
         {
+            ref: 122,
             code: "JD05",
             gid: "DB",
             name: "Mirage V",
@@ -3627,6 +3818,7 @@
             effect: "Grants Mirage Lv5"
         },
         {
+            ref: 123,
             code: "JE01",
             gid: "DB",
             name: "Panic I",
@@ -3640,6 +3832,7 @@
             effect: "Grants Panic Lv1"
         },
         {
+            ref: 124,
             code: "JE02",
             gid: "DB",
             name: "Panic II",
@@ -3657,6 +3850,7 @@
             effect: "Grants Panic Lv2"
         },
         {
+            ref: 125,
             code: "JE03",
             gid: "DB",
             name: "Panic III",
@@ -3674,6 +3868,7 @@
             effect: "Grants Panic Lv3"
         },
         {
+            ref: 126,
             code: "JE04",
             gid: "DB",
             name: "Panic IV",
@@ -3691,6 +3886,7 @@
             effect: "Grants Panic Lv4"
         },
         {
+            ref: 127,
             code: "JE05",
             gid: "DB",
             name: "Panic V",
@@ -3707,6 +3903,7 @@
             effect: "Grants Panic Lv5"
         },
         {
+            ref: 128,
             code: "JF01",
             gid: "DB",
             name: "Poison I",
@@ -3720,6 +3917,7 @@
             effect: "Grants Poison Lv1"
         },
         {
+            ref: 129,
             code: "JF02",
             gid: "DB",
             name: "Poison II",
@@ -3737,6 +3935,7 @@
             effect: "Grants Poison Lv2"
         },
         {
+            ref: 130,
             code: "JF03",
             gid: "DB",
             name: "Poison III",
@@ -3754,6 +3953,7 @@
             effect: "Grants Poison Lv3"
         },
         {
+            ref: 131,
             code: "JF04",
             gid: "DB",
             name: "Poison IV",
@@ -3771,6 +3971,7 @@
             effect: "Grants Poison Lv4"
         },
         {
+            ref: 132,
             code: "JF05",
             gid: "DB",
             name: "Poison V",
@@ -3787,6 +3988,7 @@
             effect: "Grants Poison Lv5"
         },
         {
+            ref: 133,
             code: "LA01",
             gid: "L1",
             name: "S1:Offensive Intent",
@@ -3799,6 +4001,7 @@
             noEx: true
         },
         {
+            ref: 134,
             code: "LA02",
             gid: "L1",
             name: "S1:Photon Reduction",
@@ -3811,6 +4014,7 @@
             noEx: true
         },
         {
+            ref: 135,
             code: "LA03",
             gid: "L1",
             name: "S1:Wise Skill",
@@ -3823,6 +4027,7 @@
             noEx: true
         },
         {
+            ref: 136,
             code: "LA04",
             gid: "L1",
             name: "S1:Skilled Brilliance",
@@ -3835,6 +4040,7 @@
             noEx: true
         },
         {
+            ref: 137,
             code: "LA05",
             gid: "L1",
             name: "S1:Double-Edged Sword",
@@ -3847,6 +4053,7 @@
             noEx: true
         },
         {
+            ref: 138,
             code: "LA06",
             gid: "L1",
             name: "S1:Radiating Grace",
@@ -3859,6 +4066,7 @@
             noEx: true
         },
         {
+            ref: 139,
             code: "LA11",
             gid: "L1",
             name: "S1:Immediate Intent",
@@ -3871,6 +4079,7 @@
             noEx: true
         },
         {
+            ref: 140,
             code: "LA12",
             gid: "L1",
             name: "S1:Red Petal Flash",
@@ -3883,6 +4092,7 @@
             noEx: true
         },
         {
+            ref: 141,
             code: "LA13",
             gid: "L1",
             name: "S1:Blue Ocean Flash",
@@ -3895,6 +4105,7 @@
             noEx: true
         },
         {
+            ref: 142,
             code: "LA14",
             gid: "L1",
             name: "S1:White Snow Flash",
@@ -3907,6 +4118,7 @@
             noEx: true
         },
         {
+            ref: 143,
             code: "LA15",
             gid: "L1",
             name: "S1:Yellow Moon Flash",
@@ -3919,6 +4131,7 @@
             noEx: true
         },
         {
+            ref: 144,
             code: "LA16",
             gid: "L1",
             name: "S1:Green Leaf Flash",
@@ -3931,6 +4144,7 @@
             noEx: true
         },
         {
+            ref: 145,
             code: "LA17",
             gid: "L1",
             name: "S1:Black Shadow Flash",
@@ -3943,6 +4157,7 @@
             noEx: true
         },
         {
+            ref: 146,
             code: "LA18",
             gid: "L1",
             name: "S1:Brilliant Ruin",
@@ -3955,6 +4170,7 @@
             noEx: true
         },
         {
+            ref: 147,
             code: "LA21",
             gid: "L1",
             name: "S1:Skilled Strike",
@@ -3967,6 +4183,7 @@
             noEx: true
         },
         {
+            ref: 148,
             code: "LA22",
             gid: "L1",
             name: "S1:Radiant Strike",
@@ -3979,6 +4196,7 @@
             noEx: true
         },
         {
+            ref: 149,
             code: "LA23",
             gid: "L1",
             name: "S1:Flowing Exhilaration",
@@ -3991,6 +4209,7 @@
             noEx: true
         },
         {
+            ref: 150,
             code: "LA24",
             gid: "L1",
             name: "S1:Guardian Armor",
@@ -4003,6 +4222,7 @@
             noEx: true
         },
         {
+            ref: 151,
             code: "LA25",
             gid: "L1",
             name: "S1:Vigor Enhancement",
@@ -4015,6 +4235,7 @@
             noEx: true
         },
         {
+            ref: 152,
             code: "LA78",
             simCode: "LA2C",
             gid: "L1",
@@ -4028,6 +4249,7 @@
             noEx: true
         },
         {
+            ref: 153,
             code: "LA79",
             simCode: "LA2D",
             gid: "L1",
@@ -4041,6 +4263,7 @@
             noEx: true
         },
         {
+            ref: 154,
             code: "LA80",
             simCode: "LA27",
             gid: "L1",
@@ -4054,6 +4277,7 @@
             noEx: true
         },
         {
+            ref: 155,
             code: "LA81",
             simCode: "LA29",
             gid: "L1",
@@ -4067,6 +4291,7 @@
             noEx: true
         },
         {
+            ref: 156,
             code: "LA82",
             simCode: "LA26",
             gid: "L1",
@@ -4080,6 +4305,7 @@
             noEx: true
         },
         {
+            ref: 157,
             code: "LA83",
             simCode: "LA28",
             gid: "L1",
@@ -4093,6 +4319,7 @@
             noEx: true
         },
         {
+            ref: 158,
             code: "LA84",
             simCode: "LA2B",
             gid: "L1",
@@ -4106,6 +4333,7 @@
             noEx: true
         },
         {
+            ref: 159,
             code: "LA85",
             simCode: "LA2A",
             gid: "L1",
@@ -4119,6 +4347,7 @@
             noEx: true
         },
         {
+            ref: 160,
             code: "LA86",
             simCode: "LA2E",
             gid: "L1",
@@ -4132,6 +4361,7 @@
             noEx: true
         },
         {
+            ref: 161,
             code: "LA87",
             simCode: "LA2G",
             gid: "L1",
@@ -4145,6 +4375,7 @@
             noEx: true
         },
         {
+            ref: 162,
             code: "LA88",
             simCode: "LA2I",
             gid: "L1",
@@ -4158,6 +4389,7 @@
             noEx: true
         },
         {
+            ref: 163,
             code: "LA89",
             simCode: "LA2H",
             gid: "L1",
@@ -4171,6 +4403,7 @@
             noEx: true
         },
         {
+            ref: 164,
             code: "LA90",
             simCode: "LA2N",
             gid: "L1",
@@ -4184,6 +4417,7 @@
             noEx: true
         },
         {
+            ref: 165,
             code: "LA91",
             simCode: "LA2J",
             gid: "L1",
@@ -4197,6 +4431,7 @@
             noEx: true
         },
         {
+            ref: 166,
             code: "LA92",
             simCode: "LA2K",
             gid: "L1",
@@ -4210,6 +4445,7 @@
             noEx: true
         },
         {
+            ref: 167,
             code: "LA93",
             simCode: "LA2L",
             gid: "L1",
@@ -4223,6 +4459,7 @@
             noEx: true
         },
         {
+            ref: 168,
             code: "LA94",
             simCode: "LA2M",
             gid: "L1",
@@ -4236,6 +4473,7 @@
             noEx: true
         },
         {
+            ref: 169,
             code: "LA95",
             simCode: "LA2O",
             gid: "L1",
@@ -4249,6 +4487,7 @@
             noEx: true
         },
         {
+            ref: 170,
             code: "LB01",
             gid: "L2",
             name: "S2:Sturdy Recovery",
@@ -4261,6 +4500,7 @@
             noEx: true
         },
         {
+            ref: 171,
             code: "LB02",
             gid: "L2",
             name: "S2:Photon Reduction",
@@ -4273,6 +4513,7 @@
             noEx: true
         },
         {
+            ref: 172,
             code: "LB03",
             gid: "L2",
             name: "S2:Wise Skill",
@@ -4285,6 +4526,7 @@
             noEx: true
         },
         {
+            ref: 173,
             code: "LB04",
             gid: "L2",
             name: "S2:Radiant Strike",
@@ -4297,6 +4539,7 @@
             noEx: true
         },
         {
+            ref: 174,
             code: "LB05",
             gid: "L2",
             name: "S2:Cursed Radiance",
@@ -4309,6 +4552,7 @@
             noEx: true
         },
         {
+            ref: 175,
             code: "LB06",
             gid: "L2",
             name: "S2:Guardian Armor",
@@ -4321,6 +4565,7 @@
             noEx: true
         },
         {
+            ref: 176,
             code: "LB07",
             gid: "L2",
             name: "S2:Flowing Exhilaration",
@@ -4333,6 +4578,7 @@
             noEx: true
         },
         {
+            ref: 177,
             code: "LB08",
             gid: "L2",
             name: "S2:Immediate Profusion",
@@ -4345,6 +4591,7 @@
             noEx: true
         },
         {
+            ref: 178,
             code: "LB09",
             gid: "L2",
             name: "S2:Spirited Response",
@@ -4357,6 +4604,7 @@
             noEx: true
         },
         {
+            ref: 179,
             code: "LB0A",
             gid: "L2",
             name: "S2:Flowing Grace",
@@ -4369,6 +4617,7 @@
             noEx: true
         },
         {
+            ref: 180,
             code: "LB11",
             gid: "L2",
             name: "S2:Nature's Skill",
@@ -4381,6 +4630,7 @@
             noEx: true
         },
         {
+            ref: 181,
             code: "LB12",
             gid: "L2",
             name: "S2:Nature's Intent",
@@ -4393,6 +4643,7 @@
             noEx: true
         },
         {
+            ref: 182,
             code: "LB13",
             gid: "L2",
             name: "S2:Nature's Exhilaration",
@@ -4405,6 +4656,7 @@
             noEx: true
         },
         {
+            ref: 183,
             code: "LB14",
             gid: "L2",
             name: "S2:Nature's Reduction",
@@ -4417,6 +4669,7 @@
             noEx: true
         },
         {
+            ref: 184,
             code: "LB15",
             gid: "L2",
             name: "S2:Umbrageous Gleam",
@@ -4429,6 +4682,7 @@
             noEx: true
         },
         {
+            ref: 185,
             code: "LB16",
             gid: "L2",
             name: "S2:Umbrageous Guardian",
@@ -4441,6 +4695,7 @@
             noEx: true
         },
         {
+            ref: 186,
             code: "LB17",
             gid: "L2",
             name: "S2:Brilliant Ruin",
@@ -4453,6 +4708,7 @@
             noEx: true
         },
         {
+            ref: 187,
             code: "LB18",
             gid: "L2",
             name: "S2:Radiating Grace",
@@ -4465,6 +4721,7 @@
             noEx: true
         },
         {
+            ref: 188,
             code: "LB19",
             gid: "L2",
             name: "S2:Offensive Intent",
@@ -4477,6 +4734,7 @@
             noEx: true
         },
         {
+            ref: 189,
             code: "LB1A",
             gid: "L2",
             name: "S2:Skilled Strike",
@@ -4489,6 +4747,7 @@
             noEx: true
         },
         {
+            ref: 190,
             code: "LB1B",
             gid: "L2",
             name: "S2:Rupturing Intent",
@@ -4501,6 +4760,7 @@
             noEx: true
         },
         {
+            ref: 191,
             code: "LB1C",
             gid: "L2",
             name: "S2:Rupturing Excess",
@@ -4513,6 +4773,7 @@
             noEx: true
         },
         {
+            ref: 192,
             code: "LB1D",
             gid: "L2",
             name: "S2:Double-Edged Sword",
@@ -4525,6 +4786,7 @@
             noEx: true
         },
         {
+            ref: 193,
             code: "LB1E",
             gid: "L2",
             name: "S2:Powering Intent",
@@ -4537,6 +4799,7 @@
             noEx: true
         },
         {
+            ref: 194,
             code: "LB1F",
             gid: "L2",
             name: "S2:Phantasmal Radiance",
@@ -4549,6 +4812,7 @@
             noEx: true
         },
         {
+            ref: 195,
             code: "LB1G",
             gid: "L2",
             name: "S2:Phantasmal Gleam",
@@ -4561,6 +4825,7 @@
             noEx: true
         },
         {
+            ref: 196,
             code: "LB1H",
             gid: "L2",
             name: "S2:Phantasmal Guardian",
@@ -4573,6 +4838,7 @@
             noEx: true
         },
         {
+            ref: 197,
             code: "LB1I",
             gid: "L2",
             name: "S2:Phanatical Advantage",
@@ -4585,6 +4851,7 @@
             noEx: true
         },
         {
+            ref: 198,
             code: "LB1J",
             gid: "L2",
             name: "S2:Violent Invigoration",
@@ -4597,6 +4864,7 @@
             noEx: true
         },
         {
+            ref: 199,
             code: "LB1K",
             gid: "L2",
             name: "S2:Umbrageous Melody",
@@ -4609,6 +4877,7 @@
             noEx: true
         },
         {
+            ref: 200,
             code: "LB1L",
             gid: "L2",
             name: "S2:Nature's Reduction 2",
@@ -4621,6 +4890,7 @@
             noEx: true
         },
         {
+            ref: 201,
             code: "LB1M",
             gid: "L2",
             name: "S2:Umbrageous Radiance 2",
@@ -4633,6 +4903,7 @@
             noEx: true
         },
         {
+            ref: 202,
             code: "LB1N",
             gid: "L2",
             name: "S2:Wise Skill 2",
@@ -4645,6 +4916,7 @@
             noEx: true
         },
         {
+            ref: 203,
             code: "LB1O",
             gid: "L2",
             name: "S2:Skilled Strike 2",
@@ -4657,6 +4929,7 @@
             noEx: true
         },
         {
+            ref: 204,
             code: "LB1P",
             gid: "L2",
             name: "S2:Radiant Strike 2",
@@ -4669,6 +4942,7 @@
             noEx: true
         },
         {
+            ref: 205,
             code: "LB1Q",
             gid: "L2",
             name: "S2:Medicinal Wisdom",
@@ -4681,6 +4955,7 @@
             noEx: true
         },
         {
+            ref: 206,
             code: "LB89",
             simCode: "LB1S",
             gid: "L2",
@@ -4694,6 +4969,7 @@
             noEx: true
         },
         {
+            ref: 207,
             code: "LB90",
             simCode: "LB1V",
             gid: "L2",
@@ -4707,6 +4983,7 @@
             noEx: true
         },
         {
+            ref: 208,
             code: "LB91",
             // simCode: "LB1V", // Currently the same as S2:Flaming Guard. This was wrong on the PSO2 Simulator site when this was updated here.
             gid: "L2",
@@ -4720,6 +4997,7 @@
             noEx: true
         },
         {
+            ref: 209,
             code: "LB92",
             simCode: "LB1U",
             gid: "L2",
@@ -4733,6 +5011,7 @@
             noEx: true
         },
         {
+            ref: 210,
             code: "LB93",
             simCode: "LB1W",
             gid: "L2",
@@ -4746,6 +5025,7 @@
             noEx: true
         },
         {
+            ref: 211,
             code: "LC01",
             gid: "L3",
             name: "S3:Offensive Intent",
@@ -4758,6 +5038,7 @@
             noEx: true
         },
         {
+            ref: 212,
             code: "LC02",
             gid: "L3",
             name: "S3:Vital Intent",
@@ -4770,6 +5051,7 @@
             noEx: true
         },
         {
+            ref: 213,
             code: "LC03",
             gid: "L3",
             name: "S3:Radiant Strike",
@@ -4782,6 +5064,7 @@
             noEx: true
         },
         {
+            ref: 214,
             code: "LC04",
             gid: "L3",
             name: "S3:Skilled Strike",
@@ -4794,6 +5077,7 @@
             noEx: true
         },
         {
+            ref: 215,
             code: "LC05",
             gid: "L3",
             name: "S3:Radiating Grace",
@@ -4806,6 +5090,7 @@
             noEx: true
         },
         {
+            ref: 216,
             code: "LC06",
             gid: "L3",
             name: "S3:Flowing Exhilaration",
@@ -4818,6 +5103,7 @@
             noEx: true
         },
         {
+            ref: 217,
             code: "LC11",
             gid: "L3",
             name: "S3:Umbrageous Intent",
@@ -4830,6 +5116,7 @@
             noEx: true
         },
         {
+            ref: 218,
             code: "LC12",
             gid: "L3",
             name: "S3:Umbrageous Reduction",
@@ -4842,6 +5129,7 @@
             noEx: true
         },
         {
+            ref: 219,
             code: "LC13",
             gid: "L3",
             name: "S3:Umbrageous Exhilaration",
@@ -4854,6 +5142,7 @@
             noEx: true
         },
         {
+            ref: 220,
             code: "LC14",
             gid: "L3",
             name: "S3:Nature's Radiance",
@@ -4866,6 +5155,7 @@
             noEx: true
         },
         {
+            ref: 221,
             code: "LC15",
             gid: "L3",
             name: "S3:Wise Skill",
@@ -4878,6 +5168,7 @@
             noEx: true
         },
         {
+            ref: 222,
             code: "LC16",
             gid: "L3",
             name: "S3:Photon Reduction",
@@ -4890,6 +5181,7 @@
             noEx: true
         },
         {
+            ref: 223,
             code: "LC17",
             gid: "L3",
             name: "S3:Guardian Armor",
@@ -4902,6 +5194,7 @@
             noEx: true
         },
         {
+            ref: 224,
             code: "LC18",
             gid: "L3",
             name: "S3:Nature's Guardian",
@@ -4914,6 +5207,7 @@
             noEx: true
         },
         {
+            ref: 225,
             code: "LC19",
             gid: "L3",
             name: "S3:Umbrageous Skill",
@@ -4926,6 +5220,7 @@
             noEx: true
         },
         {
+            ref: 226,
             code: "LC1A",
             gid: "L3",
             name: "S3:Brilliant Ruin",
@@ -4938,6 +5233,7 @@
             noEx: true
         },
         {
+            ref: 227,
             code: "LC1B",
             gid: "L3",
             name: "S3:Cursed Radiance",
@@ -4950,6 +5246,7 @@
             noEx: true
         },
         {
+            ref: 228,
             code: "LC1C",
             gid: "L3",
             name: "S3:Violent Invigoration",
@@ -4962,6 +5259,7 @@
             noEx: true
         },
         {
+            ref: 229,
             code: "LC1D",
             gid: "L3",
             name: "S3:Phantasmal Reduction",
@@ -4974,6 +5272,7 @@
             noEx: true
         },
         {
+            ref: 230,
             code: "LC1E",
             gid: "L3",
             name: "S3:Phanatical Advantage",
@@ -4986,6 +5285,7 @@
             noEx: true
         },
         {
+            ref: 231,
             code: "LC1F",
             gid: "L3",
             name: "S3:Immediate Profusion",
@@ -4998,6 +5298,7 @@
             noEx: true
         },
         {
+            ref: 232,
             code: "LC1G",
             gid: "L3",
             name: "S3:Nature's Melody",
@@ -5010,6 +5311,7 @@
             noEx: true
         },
         {
+            ref: 233,
             code: "LC1H",
             gid: "L3",
             name: "S3:Nature's Gleam 2",
@@ -5022,6 +5324,7 @@
             noEx: true
         },
         {
+            ref: 234,
             code: "LC1I",
             gid: "L3",
             name: "S3:Flowing Grace",
@@ -5034,6 +5337,7 @@
             noEx: true
         },
         {
+            ref: 235,
             code: "LC1J",
             gid: "L3",
             name: "S3:Flowing Exhilaration 2",
@@ -5046,6 +5350,7 @@
             noEx: true
         },
         {
+            ref: 236,
             code: "LC1K",
             gid: "L3",
             name: "S3:Radiating Grace 2",
@@ -5058,6 +5363,7 @@
             noEx: true
         },
         {
+            ref: 237,
             code: "LC88",
             // simCode: "LC1I", // Currently the same as S2:Flaming Guard. This was wrong on the PSO2 Simulator site when this was updated here.
             gid: "L3",
@@ -5071,6 +5377,7 @@
             noEx: true
         },
         {
+            ref: 238,
             code: "LC89",
             // simCode: "LC1H", // Currently the same as S2:Flaming Guard. This was wrong on the PSO2 Simulator site when this was updated here.
             gid: "L3",
@@ -5084,6 +5391,7 @@
             noEx: true
         },
         {
+            ref: 239,
             code: "LC90",
             // simCode: "LC1J", // Currently the same as S2:Flaming Guard. This was wrong on the PSO2 Simulator site when this was updated here.
             gid: "L3",
@@ -5097,6 +5405,7 @@
             noEx: true
         },
         {
+            ref: 240,
             code: "LC91",
             // simCode: "LC1K", // Currently the same as S2:Flaming Guard. This was wrong on the PSO2 Simulator site when this was updated here.
             gid: "L3",
@@ -5110,6 +5419,7 @@
             noEx: true
         },
         {
+            ref: 241,
             code: "LC92",
             simCode: "LC1L",
             gid: "L3",
@@ -5123,6 +5433,7 @@
             noEx: true
         },
         {
+            ref: 242,
             code: "LC93",
             simCode: "LC1M",
             gid: "L3",
@@ -5136,6 +5447,7 @@
             noEx: true
         },
         {
+            ref: 243,
             code: "LD07",
             gid: "L4",
             name: "S4:Marvelous Aegis",
@@ -5148,6 +5460,7 @@
             noEx: true
         },
         {
+            ref: 244,
             code: "LD08",
             gid: "L4",
             name: "S4:Steel Resolve",
@@ -5160,6 +5473,7 @@
             noEx: true
         },
         {
+            ref: 245,
             code: "LD09",
             gid: "L4",
             name: "S4:Radiant Response",
@@ -5172,6 +5486,7 @@
             noEx: true
         },
         {
+            ref: 246,
             code: "LD0A",
             gid: "L4",
             name: "S4:Opposing Skill",
@@ -5184,6 +5499,7 @@
             noEx: true
         },
         {
+            ref: 247,
             code: "LD0B",
             gid: "L4",
             name: "S4:Scything Wind",
@@ -5196,6 +5512,7 @@
             noEx: true
         },
         {
+            ref: 248,
             code: "LD0C",
             gid: "L4",
             name: "S4:Cunning Strike",
@@ -5208,6 +5525,7 @@
             noEx: true
         },
         {
+            ref: 249,
             code: "LD0D",
             gid: "L4",
             name: "S4:Vampiric Strike",
@@ -5220,6 +5538,7 @@
             noEx: true
         },
         {
+            ref: 250,
             code: "LD0E",
             gid: "L4",
             name: "S4:Steadfast Courage",
@@ -5232,6 +5551,7 @@
             noEx: true
         },
         {
+            ref: 251,
             code: "LD0F",
             gid: "L4",
             name: "S4:Lustrous Trap",
@@ -5244,6 +5564,7 @@
             noEx: true
         },
         {
+            ref: 252,
             code: "LD0G",
             gid: "L4",
             name: "S4:Dynamic Chain",
@@ -5256,6 +5577,7 @@
             noEx: true
         },
         {
+            ref: 253,
             code: "LD0H",
             gid: "L4",
             name: "S4:Refined Providence",
@@ -5268,6 +5590,7 @@
             noEx: true
         },
         {
+            ref: 254,
             code: "LD0I",
             gid: "L4",
             name: "S4:Circuit Rotation",
@@ -5280,6 +5603,7 @@
             noEx: true
         },
         {
+            ref: 255,
             code: "LD0J",
             gid: "L4",
             name: "S4:Swift Strike",
@@ -5292,6 +5616,7 @@
             noEx: true
         },
         {
+            ref: 256,
             code: "LD0K",
             gid: "L4",
             name: "S4:Gear Reduction",
@@ -5304,6 +5629,7 @@
             noEx: true
         },
         {
+            ref: 257,
             code: "LD0L",
             gid: "L4",
             name: "S4:Rapid-fire Arrow",
@@ -5316,6 +5642,7 @@
             noEx: true
         },
         {
+            ref: 258,
             code: "LD0M",
             gid: "L4",
             name: "S4:Support Extension",
@@ -5328,6 +5655,7 @@
             noEx: true
         },
         {
+            ref: 259,
             code: "LD0N",
             gid: "L4",
             name: "S4:Genesis Ring",
@@ -5340,6 +5668,7 @@
             noEx: true
         },
         {
+            ref: 260,
             code: "LD0O",
             gid: "L4",
             name: "S4:Heavenly Protection",
@@ -5352,6 +5681,7 @@
             noEx: true
         },
         {
+            ref: 261,
             code: "LD0P",
             gid: "L4",
             name: "S4:Calming Intent",
@@ -5364,6 +5694,7 @@
             noEx: true
         },
         {
+            ref: 262,
             code: "LD0Q",
             gid: "L4",
             name: "S4:Mysterious Strike",
@@ -5376,6 +5707,7 @@
             noEx: true
         },
         {
+            ref: 263,
             code: "LD0R",
             gid: "L4",
             name: "S4:Saint Shield",
@@ -5388,6 +5720,7 @@
             noEx: true
         },
         {
+            ref: 264,
             code: "LD0S",
             gid: "L4",
             name: "S4:Colored Spectrum",
@@ -5400,6 +5733,7 @@
             noEx: true
         },
         {
+            ref: 265,
             code: "OA01",
             gid: "AC",
             name: "Mutation I",
@@ -5412,6 +5746,7 @@
             effect: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+10)"
         },
         {
+            ref: 266,
             code: "OA02",
             gid: "AC",
             name: "Mutation II",
@@ -5429,6 +5764,7 @@
             effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>HP(+15)"
         },
         {
+            ref: 267,
             code: "RA11",
             gid: "EA",
             name: "Gunne Soul",
@@ -5447,6 +5783,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 268,
             code: "RA15",
             gid: "EA",
             name: "Zigmor Soul",
@@ -5466,6 +5803,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 269,
             code: "RA21",
             gid: "EA",
             name: "Vol Soul",
@@ -5485,6 +5823,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 270,
             code: "RA22",
             gid: "EA",
             name: "Gwana Soul",
@@ -5502,6 +5841,7 @@
             effect: "S-ATK(+30),<br>HP(+10),<br>PP(+2)"
         },
         {
+            ref: 271,
             code: "RA23",
             gid: "EA",
             name: "Quartz Soul",
@@ -5521,6 +5861,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 272,
             code: "RA31",
             gid: "EA",
             name: "Deadleon Soul",
@@ -5536,6 +5877,7 @@
             effect: "S-ATK(+35),<br>DEX(+5),<br>HP(+30)"
         },
         {
+            ref: 273,
             code: "RA32",
             gid: "EA",
             name: "Leone Soul",
@@ -5551,6 +5893,7 @@
             effect: "S-ATK(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)"
         },
         {
+            ref: 274,
             code: "RA33",
             gid: "EA",
             name: "Bayari Soul",
@@ -5566,6 +5909,7 @@
             effect: "S-ATK(+35),<br>DEX(+5),<br>PP(+3)"
         },
         {
+            ref: 275,
             code: "RB11",
             gid: "EA",
             name: "Idetta Soul",
@@ -5584,6 +5928,7 @@
             effect: "R-ATK(+15),<br>HP(+45)"
         },
         {
+            ref: 276,
             code: "RB15",
             gid: "EA",
             name: "Madu Soul",
@@ -5600,6 +5945,7 @@
             effect: "R-ATK(+15),<br>PP(+4)"
         },
         {
+            ref: 277,
             code: "RB21",
             gid: "EA",
             name: "Ra\'nsa Soul",
@@ -5618,6 +5964,7 @@
             effect: "R-ATK(+30),<br>HP(+20)"
         },
         {
+            ref: 278,
             code: "RB22",
             gid: "EA",
             name: "Fang Soul",
@@ -5636,6 +5983,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 279,
             code: "RB23",
             gid: "EA",
             name: "Mizer Soul",
@@ -5654,6 +6002,7 @@
             effect: "R-ATK(+30),<br>PP(+3)"
         },
         {
+            ref: 280,
             code: "RB31",
             gid: "EA",
             name: "Leopard Soul",
@@ -5669,6 +6018,7 @@
             effect: "R-ATK(+35),<br>DEX(+5),<br>HP(+30)"
         },
         {
+            ref: 281,
             code: "RB32",
             gid: "EA",
             name: "Siorg Soul",
@@ -5684,6 +6034,7 @@
             effect: "R-ATK(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)"
         },
         {
+            ref: 282,
             code: "RB33",
             gid: "EA",
             name: "Greuzoras Soul",
@@ -5699,6 +6050,7 @@
             effect: "R-ATK(+35),<br>DEX(+5),<br>PP(+3)"
         },
         {
+            ref: 283,
             code: "RC11",
             gid: "EA",
             name: "Jhadu Soul",
@@ -5716,6 +6068,7 @@
             effect: "T-ATK(+15),<br>HP(+45)"
         },
         {
+            ref: 284,
             code: "RC13",
             gid: "EA",
             name: "Nepto Soul",
@@ -5734,6 +6087,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 285,
             code: "RC21",
             gid: "EA",
             name: "Ragne Soul",
@@ -5752,6 +6106,7 @@
             effect: "T-ATK(+30),<br>HP(+20)"
         },
         {
+            ref: 286,
             code: "RC22",
             gid: "EA",
             name: "Wolga Soul",
@@ -5769,6 +6124,7 @@
             effect: "T-ATK(+30),<br>HP(+10),<br>PP(+2)"
         },
         {
+            ref: 287,
             code: "RC23",
             gid: "EA",
             name: "Elder Soul",
@@ -5787,6 +6143,7 @@
             tooltip: "Used for: Soul Catalyst"
         },
         {
+            ref: 288,
             code: "RC31",
             gid: "EA",
             name: "Diabo Soul",
@@ -5802,6 +6159,7 @@
             effect: "T-ATK(+35),<br>DEX(+5),<br>HP(+30)"
         },
         {
+            ref: 289,
             code: "RC32",
             gid: "EA",
             name: "Duvals Soul",
@@ -5817,6 +6175,7 @@
             effect: "T-ATK(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)"
         },
         {
+            ref: 290,
             code: "RC33",
             gid: "EA",
             name: "Guranz Soul",
@@ -5832,6 +6191,7 @@
             effect: "T-ATK(+35),<br>DEX(+5),<br>PP(+3)"
         },
         {
+            ref: 291,
             code: "RE13",
             gid: "EA",
             name: "Nyau Soul",
@@ -5849,6 +6209,7 @@
             effect: "DEX(+15),<br>PP(+4)"
         },
         {
+            ref: 292,
             code: "RE21",
             gid: "EA",
             name: "Signo Soul",
@@ -5866,6 +6227,7 @@
             effect: "DEX(+30),<br>HP(+20),<br>PP(+1)"
         },
         {
+            ref: 293,
             code: "RE22",
             gid: "EA",
             name: "Chrome Soul",
@@ -5884,6 +6246,7 @@
             effect: "DEX(+30),<br>HP(+10),<br>PP(+3)"
         },
         {
+            ref: 294,
             code: "RE23",
             gid: "EA",
             name: "Rappy Soul",
@@ -5901,6 +6264,7 @@
             effect: "DEX(+30),<br>PP(+4)"
         },
         {
+            ref: 295,
             code: "RE51",
             gid: "EA",
             name: "Sinow Soul",
@@ -5918,6 +6282,7 @@
             effect: "S-ATK(+5),<br>DEX(+30),<br>HP(+25)<br>PP(+2)"
         },
         {
+            ref: 296,
             code: "RH21",
             gid: "EA",
             name: "Snow Soul",
@@ -5937,6 +6302,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 297,
             code: "RH22",
             gid: "EA",
             name: "Rockbear Soul",
@@ -5954,6 +6320,7 @@
             effect: "S-DEF(+30),<br>HP(+10),<br>PP(+3)"
         },
         {
+            ref: 298,
             code: "RH23",
             gid: "EA",
             name: "Ex Soul",
@@ -5973,6 +6340,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 299,
             code: "RI21",
             gid: "EA",
             name: "Malmo Soul",
@@ -5991,6 +6359,7 @@
             effect: "R-DEF(+30),<br>HP(+20),<br>PP(+1)"
         },
         {
+            ref: 300,
             code: "RI22",
             gid: "EA",
             name: "Persona Soul",
@@ -6009,6 +6378,7 @@
             tooltip: "Used for: Soul Catalyst"
         },
         {
+            ref: 301,
             code: "RI23",
             gid: "EA",
             name: "Vardha Soul",
@@ -6028,6 +6398,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 302,
             code: "RJ21",
             gid: "EA",
             name: "Cater Soul",
@@ -6047,6 +6418,7 @@
             effect: "T-DEF(+30),<br>HP(+20),<br>PP(+1)"
         },
         {
+            ref: 303,
             code: "RJ22",
             gid: "EA",
             name: "Shrayda Soul",
@@ -6066,6 +6438,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 304,
             code: "RJ23",
             gid: "EA",
             name: "Goron Soul",
@@ -6085,6 +6458,7 @@
             effect: "T-DEF(+30),<br>PP(+4)"
         },
         {
+            ref: 305,
             code: "ROA1",
             gid: "EA",
             name: "Org Soul",
@@ -6102,6 +6476,7 @@
             effect: "S-ATK(+20),<br>R-ATK(+20),<br>HP(+10)"
         },
         {
+            ref: 306,
             code: "ROA2",
             gid: "EA",
             name: "Meduna Soul",
@@ -6120,6 +6495,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 307,
             code: "ROA3",
             gid: "EA",
             name: "Soma Soul",
@@ -6138,6 +6514,7 @@
             effect: "S-ATK(+20),<br>R-ATK(+20),<br>PP(+2)"
         },
         {
+            ref: 308,
             code: "ROC1",
             gid: "EA",
             name: "Ringa Soul",
@@ -6157,6 +6534,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 309,
             code: "ROC2",
             gid: "EA",
             name: "Loser Soul",
@@ -6174,6 +6552,7 @@
             tooltip: "Used for: Soul Catalyst"
         },
         {
+            ref: 310,
             code: "ROC3",
             gid: "EA",
             name: "Malluda Soul",
@@ -6192,6 +6571,7 @@
             effect: "S-ATK(+20),<br>T-ATK(+20),<br>PP(+2)"
         },
         {
+            ref: 311,
             code: "ROE1",
             gid: "EA",
             name: "Bal Soul",
@@ -6211,6 +6591,7 @@
             cls: "zi-soul"
         },
         {
+            ref: 312,
             code: "ROE2",
             gid: "EA",
             name: "Vibrace Soul",
@@ -6228,6 +6609,7 @@
             effect: "R-ATK(+20),<br>T-ATK(+20),<br>HP(+5),<br>PP(+1)"
         },
         {
+            ref: 313,
             code: "ROE3",
             gid: "EA",
             name: "Tagami Kazuchi Soul",
@@ -6246,6 +6628,7 @@
             effect: "R-ATK(+20),<br>T-ATK(+20),<br>PP(+2)"
         },
         {
+            ref: 314,
             code: "ROG5",
             gid: "EA",
             name: "Lili Soul",
@@ -6264,6 +6647,7 @@
             effect: "S-ATK(+20),<br>S-DEF(+20),<br>HP(+20)"
         },
         {
+            ref: 315,
             code: "RP05",
             gid: "EA",
             name: "Cougar Soul",
@@ -6279,6 +6663,7 @@
             effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>DEX(+15),<br>HP(+10),<br>PP(+2)"
         },
         {
+            ref: 316,
             code: "RP10",
             gid: "EA",
             name: "Gryphon Soul",
@@ -6297,6 +6682,7 @@
             effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>DEX(+15),<br>HP(+5),<br>PP(+3)"
         },
         {
+            ref: 317,
             code: "RP15",
             gid: "EA",
             name: "Knight Gear Soul",
@@ -6312,6 +6698,7 @@
             effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>DEX(+15),<br>PP(+4)"
         },
         {
+            ref: 318,
             code: "RP22",
             gid: "EA",
             name: "Izane Kazuchi Soul",
@@ -6324,6 +6711,7 @@
             effect: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(+2)"
         },
         {
+            ref: 319,
             code: "RP25",
             gid: "EA",
             name: "Anga Soul",
@@ -6339,6 +6727,7 @@
             effect: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(+4)"
         },
         {
+            ref: 320,
             code: "RP55",
             gid: "EA",
             name: "Apprentice Soul",
@@ -6355,6 +6744,7 @@
             tooltip: "Used for: Soul Catalyst"
         },
         {
+            ref: 321,
             code: "RPA5",
             gid: "EA",
             name: "Magatsu Soul",
@@ -6371,6 +6761,7 @@
             effect: "S-DEF(+15),<br>R-DEF(+15),<br>T-DEF(+15),<br>HP(+30),<br>PP(+3)"
         },
         {
+            ref: 322,
             code: "RQ01",
             gid: "EA",
             name: "Double Soul",
@@ -6393,6 +6784,7 @@
             tooltip: "Used for: Soul Catalyst"
         },
         {
+            ref: 323,
             code: "RZ01",
             gid: "EA",
             name: "Darkness Soul",
@@ -6409,6 +6801,7 @@
             tooltip: "Used for: Astral Soul"
         },
         {
+            ref: 324,
             code: "SA01",
             gid: "EA",
             name: "Astral Soul",
@@ -6416,6 +6809,7 @@
             tooltip: "Made by: 4x Soul Catalyst + Darkness Soul"
         },
         {
+            ref: 325,
             code: "SA11",
             gid: "EA",
             name: "Ether Soul",
@@ -6428,6 +6822,7 @@
             tooltip: "Made by: 2 of the following: Escarde Soul, Toh\'oh Soul, Full Vegas Soul<br>Used for: Ether Factor"
         },
         {
+            ref: 326,
             code: "SB01",
             gid: "EA",
             name: "Toh\'oh Soul",
@@ -6445,6 +6840,7 @@
             tooltip: "Used for: ___ The Soul, Ether Soul"
         },
         {
+            ref: 327,
             code: "SB02",
             gid: "EA",
             name: "Full Vegas Soul",
@@ -6462,6 +6858,7 @@
             tooltip: "Used for: ___ The Soul, Ether Soul"
         },
         {
+            ref: 328,
             code: "SB03",
             gid: "EA",
             name: "Escarde Soul",
@@ -6479,6 +6876,7 @@
             tooltip: "Used for: ___ The Soul, Ether Soul"
         },
         {
+            ref: 329,
             code: "SB04",
             gid: "EA",
             name: "Fabula Soul",
@@ -6496,6 +6894,7 @@
             tooltip: "Used for: ___ The Soul, Omega Memoria"
         },
         {
+            ref: 330,
             code: "SB05",
             gid: "EA",
             name: "Historia Soul",
@@ -6513,6 +6912,7 @@
             tooltip: "Used for: ___ The Soul, Omega Memoria"
         },
         {
+            ref: 331,
             code: "SH10",
             gid: "EA",
             name: "Act The Soul",
@@ -6525,6 +6925,7 @@
             tooltip: "Made by: Earth/Omega Soul + Free Field Boss Soul"
         },
         {
+            ref: 332,
             code: "SH20",
             gid: "EA",
             name: "Till The Soul",
@@ -6537,6 +6938,7 @@
             tooltip: "Made by: Earth/Omega Soul + Free Field Boss Soul"
         },
         {
+            ref: 333,
             code: "SH30",
             gid: "EA",
             name: "Magi The Soul",
@@ -6549,6 +6951,7 @@
             tooltip: "Made by: Earth/Omega Soul + Free Field Boss Soul"
         },
         {
+            ref: 334,
             code: "SH40",
             gid: "EA",
             name: "Ares The Soul",
@@ -6561,6 +6964,7 @@
             tooltip: "Made by: Earth/Omega Soul + Free Field Boss Soul"
         },
         {
+            ref: 335,
             code: "TA01",
             gid: "AC",
             name: "Stigma",
@@ -6573,6 +6977,7 @@
             effect: "DEX(+20),<br>PP(+5)"
         },
         {
+            ref: 336,
             code: "TB01",
             gid: "AC",
             name: "Vinculum",
@@ -6585,6 +6990,7 @@
             effect: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+20)"
         },
         {
+            ref: 337,
             code: "TC01",
             gid: "AC",
             name: "Modulator",
@@ -6597,6 +7003,7 @@
             effect: "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30)"
         },
         {
+            ref: 338,
             code: "TL01",
             gid: "AC",
             name: "ARKS Max",
@@ -6609,6 +7016,7 @@
             tooltip: "Made by: 2/3x ARKS Fever"
         },
         {
+            ref: 339,
             code: "TG02",
             gid: "AC",
             name: "Yamato Factor",
@@ -6622,6 +7030,7 @@
             tooltip: "Used for: Factor Catalyst"
         },
         {
+            ref: 340,
             code: "TG03",
             gid: "AC",
             name: "Mother Factor",
@@ -6635,6 +7044,7 @@
             tooltip: "Used for: Factor Catalyst"
         },
         {
+            ref: 341,
             code: "TG04",
             gid: "AC",
             name: "Deus Factor",
@@ -6648,6 +7058,7 @@
             tooltip: "Used for: Factor Catalyst"
         },
         {
+            ref: 342,
             code: "TG31",
             gid: "AC",
             name: "Ether Factor",
@@ -6655,6 +7066,7 @@
             tooltip: "Made by: 4x Factor Catalyst + Ether Soul"
         },
         {
+            ref: 343,
             code: "TK01",
             gid: "AC",
             name: "Omega Reverie",
@@ -6668,6 +7080,7 @@
             tooltip: "Used for: Omega Memoria"
         },
         {
+            ref: 344,
             code: "TK02",
             gid: "AC",
             name: "Elder Reverie",
@@ -6680,6 +7093,7 @@
             effect: "S-ATK(+40),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(-2)"
         },
         {
+            ref: 345,
             code: "TK03",
             gid: "AC",
             name: "Loser Reverie",
@@ -6692,6 +7106,7 @@
             effect: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+40),<br>HP(-20)"
         },
         {
+            ref: 346,
             code: "TK04",
             gid: "AC",
             name: "Apprezina Reverie",
@@ -6704,6 +7119,7 @@
             effect: "S-ATK(+20),<br>R-ATK(+40),<br>T-ATK(+20),<br>HP(-10),<br>PP(-1)"
         },
         {
+            ref: 347,
             code: "TK05",
             gid: "AC",
             name: "Double Reverie",
@@ -6716,6 +7132,7 @@
             effect: "S-ATK(-20),<br>R-ATK(-20),<br>T-ATK(-20),<br>HP(+50),<br>PP(+5)"
         },
         {
+            ref: 348,
             code: "TK06",
             gid: "AC",
             name: "Persona Reverie",
@@ -6729,6 +7146,7 @@
             tooltip: "Used for: Reverie Catalyst"
         },
         {
+            ref: 349,
             code: "TK10",
             gid: "AC",
             name: "Mana Reverie",
@@ -6737,6 +7155,7 @@
             tooltip: "Made by: Omega Memoria + 4x Reverie Catalyst"
         },
         {
+            ref: 350,
             code: "TJ01",
             gid: "AC",
             name: "Omega Memoria",
@@ -6749,6 +7168,7 @@
             tooltip: "Made by: Fabula Soul, Historia Soul, Omega Reverie"
         },
         {
+            ref: 351,
             code: "TE01",
             gid: "AC",
             name: "Returner I",
@@ -6762,6 +7182,7 @@
             effect: "ALL(+3),<br>HP(+3),<br>PP(+1)"
         },
         {
+            ref: 352,
             code: "TE02",
             gid: "AC",
             name: "Returner II",
@@ -6779,6 +7200,7 @@
             effect: "ALL(+5),<br>HP(+5),<br>PP(+2)"
         },
         {
+            ref: 353,
             code: "TE03",
             gid: "AC",
             name: "Returner III",
@@ -6796,6 +7218,7 @@
             effect: "ALL(+10),<br>HP(+10),<br>PP(+3)"
         },
         {
+            ref: 354,
             code: "TE04",
             gid: "AC",
             name: "Returner IV",
@@ -6813,6 +7236,7 @@
             effect: "ALL(+15),<br>HP(+15),<br>PP(+4)"
         },
         {
+            ref: 355,
             code: "TE05",
             gid: "AC",
             name: "Returner V",
@@ -6829,6 +7253,7 @@
             effect: "ALL(+30),<br>HP(+30),<br>PP(+5)"
         },
         {
+            ref: 356,
             code: "TF01",
             gid: "AC",
             name: "Spirita Alpha",
@@ -6842,6 +7267,7 @@
             effect: "DEX(+30),<br>PP(+3)"
         },
         {
+            ref: 357,
             code: "TI01",
             gid: "AC",
             name: "Necky Smile",
@@ -6853,6 +7279,7 @@
             effect: "S-ATK(+5),<br>R-ATK(+5),<br>T-ATK(+5),<br>PP(+2)"
         },
         {
+            ref: 358,
             code: "TH01",
             gid: "AC",
             name: "Doom Break",
@@ -6868,6 +7295,7 @@
             effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>PP(+2)"
         },
         {
+            ref: 359,
             code: "TH02",
             gid: "AC",
             name: "Doom Break 2",
@@ -6884,6 +7312,7 @@
             tooltip: "Made by: 3-5x Doom Break"
         },
         {
+            ref: 360,
             code: "LP01",
             gid: "AB",
             name: "Lesser Power I",
@@ -6897,6 +7326,7 @@
             effect: "S-ATK(+5)"
         },
         {
+            ref: 361,
             code: "LP02",
             gid: "AB",
             name: "Lesser Power II",
@@ -6914,6 +7344,7 @@
             effect: "S-ATK(+15)"
         },
         {
+            ref: 362,
             code: "LP03",
             gid: "AB",
             name: "Lesser Power III",
@@ -6931,6 +7362,7 @@
             effect: "S-ATK(+25)"
         },
         {
+            ref: 363,
             code: "LP04",
             gid: "AB",
             name: "Lesser Power IV",
@@ -6948,6 +7380,7 @@
             effect: "S-ATK(+30)"
         },
         {
+            ref: 364,
             code: "LP05",
             gid: "AB",
             name: "Lesser Power V",
@@ -6964,6 +7397,7 @@
             effect: "S-ATK(+35)"
         },
         {
+            ref: 365,
             code: "LS01",
             gid: "AB",
             name: "Lesser Shoot I",
@@ -6977,6 +7411,7 @@
             effect: "R-ATK(+5)"
         },
         {
+            ref: 366,
             code: "LS02",
             gid: "AB",
             name: "Lesser Shoot II",
@@ -6994,6 +7429,7 @@
             effect: "R-ATK(+15)"
         },
         {
+            ref: 367,
             code: "LS03",
             gid: "AB",
             name: "Lesser Shoot III",
@@ -7011,6 +7447,7 @@
             effect: "R-ATK(+25)"
         },
         {
+            ref: 368,
             code: "LS04",
             gid: "AB",
             name: "Lesser Shoot IV",
@@ -7028,6 +7465,7 @@
             effect: "R-ATK(+30)"
         },
         {
+            ref: 369,
             code: "LS05",
             gid: "AB",
             name: "Lesser Shoot V",
@@ -7044,6 +7482,7 @@
             effect: "R-ATK(+35)"
         },
         {
+            ref: 370,
             code: "LT01",
             gid: "AB",
             name: "Lesser Technique I",
@@ -7057,6 +7496,7 @@
             effect: "T-ATK(+5)"
         },
         {
+            ref: 371,
             code: "LT02",
             gid: "AB",
             name: "Lesser Technique II",
@@ -7074,6 +7514,7 @@
             effect: "T-ATK(+15)"
         },
         {
+            ref: 372,
             code: "LT03",
             gid: "AB",
             name: "Lesser Technique III",
@@ -7091,6 +7532,7 @@
             effect: "T-ATK(+25)"
         },
         {
+            ref: 373,
             code: "LT04",
             gid: "AB",
             name: "Lesser Technique IV",
@@ -7108,6 +7550,7 @@
             effect: "T-ATK(+30)"
         },
         {
+            ref: 374,
             code: "LT05",
             gid: "AB",
             name: "Lesser Technique V",
@@ -7124,6 +7567,7 @@
             effect: "T-ATK(+35)"
         },
         {
+            ref: 375,
             code: "LM01",
             gid: "AB",
             name: "Lesser Stamina I",
@@ -7137,6 +7581,7 @@
             effect: "HP(+15)"
         },
         {
+            ref: 376,
             code: "LM02",
             gid: "AB",
             name: "Lesser Stamina II",
@@ -7154,6 +7599,7 @@
             effect: "HP(+35)"
         },
         {
+            ref: 377,
             code: "LM03",
             gid: "AB",
             name: "Lesser Stamina III",
@@ -7171,6 +7617,7 @@
             effect: "HP(+45)"
         },
         {
+            ref: 378,
             code: "LM04",
             gid: "AB",
             name: "Lesser Stamina IV",
@@ -7188,6 +7635,7 @@
             effect: "HP(+55)"
         },
         {
+            ref: 379,
             code: "LM05",
             gid: "AB",
             name: "Lesser Stamina V",
@@ -7204,6 +7652,7 @@
             effect: "HP(+65)"
         },
         {
+            ref: 380,
             code: "LR01",
             gid: "AB",
             name: "Lesser Spirita I",
@@ -7217,6 +7666,7 @@
             effect: "PP(+1)"
         },
         {
+            ref: 381,
             code: "LR02",
             gid: "AB",
             name: "Lesser Spirita II",
@@ -7234,6 +7684,7 @@
             effect: "PP(+2)"
         },
         {
+            ref: 382,
             code: "LR03",
             gid: "AB",
             name: "Lesser Spirita III",
@@ -7251,6 +7702,7 @@
             effect: "PP(+3)"
         },
         {
+            ref: 383,
             code: "LR04",
             gid: "AB",
             name: "Lesser Spirita IV",
@@ -7268,6 +7720,7 @@
             effect: "PP(+4)"
         },
         {
+            ref: 384,
             code: "LR05",
             gid: "AB",
             name: "Lesser Spirita V",
@@ -7284,42 +7737,49 @@
             effect: "PP(+5)"
         },
         {
+            ref: 385,
             code: "LP06",
             gid: "AB",
             name: "EV Power HP",
             effect: "S-ATK(+35),<br>HP(+60)"
         },
         {
+            ref: 386,
             code: "LP07",
             gid: "AB",
             name: "EV Power PP",
             effect: "S-ATK(+35),<br>PP(+4)"
         },
         {
+            ref: 387,
             code: "LS06",
             gid: "AB",
             name: "EV Shoot HP",
             effect: "R-ATK(+35),<br>HP(+60)"
         },
         {
+            ref: 388,
             code: "LS07",
             gid: "AB",
             name: "EV Shoot PP",
             effect: "R-ATK(+35),<br>PP(+4)"
         },
         {
+            ref: 389,
             code: "LT06",
             gid: "AB",
             name: "EV Technique HP",
             effect: "T-ATK(+35),<br>HP(+60)"
         },
         {
+            ref: 390,
             code: "LT07",
             gid: "AB",
             name: "EV Technique PP",
             effect: "T-ATK(+35),<br>PP(+4)"
         },
         {
+            ref: 391,
             code: "TD01",
             gid: "EB",
             name: "Lovey Fever",
@@ -7331,6 +7791,7 @@
             effect: "S-ATK(+10),<br>DEX(+5),<br>HP(+10)"
         },
         {
+            ref: 392,
             code: "TD02",
             gid: "EB",
             name: "Egg Fever",
@@ -7342,6 +7803,7 @@
             effect: "R-ATK(+10),<br>DEX(+5),<br>HP(+10)"
         },
         {
+            ref: 393,
             code: "TD03",
             gid: "EB",
             name: "Frog Fever",
@@ -7353,6 +7815,7 @@
             effect: "T-ATK(+10),<br>DEX(+5),<br>HP(+10)"
         },
         {
+            ref: 394,
             code: "TD04",
             gid: "EB",
             name: "Love Fever",
@@ -7364,6 +7827,7 @@
             effect: "S-ATK(+10),<br>DEX(+5),<br>PP(+2)"
         },
         {
+            ref: 395,
             code: "TD05",
             gid: "EB",
             name: "St. Fever",
@@ -7375,6 +7839,7 @@
             effect: "R-ATK(+10),<br>DEX(+5),<br>PP(+2)"
         },
         {
+            ref: 396,
             code: "TD06",
             gid: "EB",
             name: "Latan Fever",
@@ -7386,6 +7851,7 @@
             effect: "T-ATK(+10),<br>DEX(+5),<br>PP(+2)"
         },
         {
+            ref: 397,
             code: "TD07",
             gid: "EB",
             name: "Summer Fever",
@@ -7397,6 +7863,7 @@
             effect: "T-ATK(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)"
         },
         {
+            ref: 398,
             code: "TD08",
             gid: "EB",
             name: "Ceremo Fever",
@@ -7408,6 +7875,7 @@
             effect: "S-ATK(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)"
         },
         {
+            ref: 399,
             code: "TD09",
             gid: "EB",
             name: "Noiya Fever",
@@ -7419,6 +7887,7 @@
             effect: "R-ATK(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)"
         },
         {
+            ref: 400,
             code: "TD0A",
             gid: "EB",
             name: "Torokuro Fever",
@@ -7430,6 +7899,7 @@
             effect: "DEX(+15),<br>HP(+5),<br>PP(+1)"
         },
         {
+            ref: 401,
             code: "TD0B",
             gid: "EB",
             name: "Sakura Fever",
@@ -7441,6 +7911,7 @@
             effect: "S-DEF(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)"
         },
         {
+            ref: 402,
             code: "TD0C",
             gid: "EB",
             name: "Sonic Fever",
@@ -7452,6 +7923,7 @@
             effect: "S-ATK(+10),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)"
         },
         {
+            ref: 403,
             code: "TD0D",
             gid: "EB",
             name: "Sansan Fever",
@@ -7463,6 +7935,7 @@
             effect: "S-ATK(+5),<br>R-ATK(+5),<br>T-ATK(+5),<br>HP(+5),<br>PP(+1)"
         },
         {
+            ref: 404,
             code: "TD0E",
             gid: "EB",
             name: "Luna Fever",
@@ -7474,6 +7947,7 @@
             effect: "T-ATK(+10),<br>HP(+10),<br>PP(+1)"
         },
         {
+            ref: 405,
             code: "TD0F",
             gid: "EB",
             name: "ARKS Fever",
@@ -7486,6 +7960,7 @@
             tooltip: "Used for: ARKS Max"
         },
         {
+            ref: 406,
             code: "UA01",
             gid: "AC",
             name: "Flict Arma",
@@ -7497,6 +7972,7 @@
             effect: "S-ATK(+20),<br>PP(+3)"
         },
         {
+            ref: 407,
             code: "UA11",
             gid: "AC",
             name: "Flict Tiro",
@@ -7508,6 +7984,7 @@
             effect: "R-ATK(+20),<br>PP(+3)"
         },
         {
+            ref: 408,
             code: "UA21",
             gid: "AC",
             name: "Flict Magia",
@@ -7519,6 +7996,7 @@
             effect: "T-ATK(+20),<br>PP(+3)"
         },
         {
+            ref: 409,
             code: "UB01",
             gid: "AC",
             name: "Alter Arma",
@@ -7530,6 +8008,7 @@
             effect: "S-ATK(+20),<br>HP(+30)"
         },
         {
+            ref: 410,
             code: "UB11",
             gid: "AC",
             name: "Alter Tiro",
@@ -7541,6 +8020,7 @@
             effect: "R-ATK(+20),<br>HP(+30)"
         },
         {
+            ref: 411,
             code: "UB21",
             gid: "AC",
             name: "Alter Magia",
@@ -7552,108 +8032,126 @@
             effect: "T-ATK(+20),<br>HP(+30)"
         },
         {
+            ref: 412,
             code: "UC01",
             gid: "AC",
             name: "Mark Joyo",
             effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+5)"
         },
         {
+            ref: 413,
             code: "UC11",
             gid: "AC",
             name: "Mark Couragena",
             effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>PP(+5)"
         },
         {
+            ref: 414,
             code: "UC21",
             gid: "AC",
             name: "Mark Angar",
             effect: "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>DEX(+40)"
         },
         {
+            ref: 415,
             code: "UC31",
             gid: "AC",
             name: "Mark Grif",
             effect: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
         },
         {
+            ref: 416,
             code: "YA01",
             gid: "AC",
             name: "Sentence Power",
             effect: "S-ATK(+20),<br>PP(+4)"
         },
         {
+            ref: 417,
             code: "YA05",
             gid: "CB",
             name: "Sentence Arma",
             effect: "S-ATK(+20),<br>HP(+20),<br>PP(+3)"
         },
         {
+            ref: 418,
             code: "YA11",
             gid: "AC",
             name: "Sentence Shoot",
             effect: "R-ATK(+20),<br>PP(+4)"
         },
         {
+            ref: 419,
             code: "YA15",
             gid: "CB",
             name: "Sentence Tiro",
             effect: "R-ATK(+20),<br>HP(+20),<br>PP(+3)"
         },
         {
+            ref: 420,
             code: "YA21",
             gid: "AC",
             name: "Sentence Tech",
             effect: "T-ATK(+20),<br>PP(+4)"
         },
         {
+            ref: 421,
             code: "YA25",
             gid: "CB",
             name: "Sentence Magia",
             effect: "T-ATK(+20),<br>HP(+20),<br>PP(+3)"
         },
         {
+            ref: 422,
             code: "YA31",
             gid: "CB",
             name: "Sentence Triple",
             effect: "S-ATK(+30),R-ATK(+30),T-ATK(+30)"
         },
         {
+            ref: 423,
             code: "YB41",
             gid: "CB",
             name: "Phrase Reduce",
             effect: "PP consumption decreases by 4%."
         },
         {
+            ref: 424,
             code: "YB51",
             gid: "CB",
             name: "Phrase Decay",
             effect: "Boosts damage inflicted to enemies<br>affected by Jellen by 5%."
         },
         {
+            ref: 425,
             code: "YB01",
             gid: "CB",
             name: "Phrase Recovery",
             effect: "+5% PP Recovery Rate"
         },
         {
+            ref: 426,
             code: "YB11",
             gid: "CB",
             name: "Phrase Weak",
             effect: "+2% Elemental Weakness damage"
         },
         {
+            ref: 427,
             code: "YB21",
             gid: "CB",
             name: "Phrase Response",
             effect: "+5% ATK PP Recovery"
         },
         {
+            ref: 428,
             code: "YB31",
             gid: "CB",
             name: "Phrase Chase",
             effect: "+5% damage against enemies<BR>with Status Effects"
         },
         {
+            ref: 429,
             code: "VA01",
             gid: "YA",
             name: "Lucky Rise I",
@@ -7667,6 +8165,7 @@
             effect: "Item Drop Rate +5%"
         },
         {
+            ref: 430,
             code: "VA02",
             gid: "YA",
             name: "Lucky Rise II",
@@ -7684,6 +8183,7 @@
             effect: "Item Drop Rate +7%"
         },
         {
+            ref: 431,
             code: "VA03",
             gid: "YA",
             name: "Lucky Rise III",
@@ -7700,6 +8200,7 @@
             effect: "Item Drop Rate +10%"
         },
         {
+            ref: 432,
             code: "VB01",
             gid: "YA",
             name: "Meseta Fever I",
@@ -7713,6 +8214,7 @@
             effect: "Meseta Drop Amount +5%"
         },
         {
+            ref: 433,
             code: "VZ02",
             gid: "YA",
             name: "Meseta Fever II",
@@ -7730,6 +8232,7 @@
             effect: "Meseta Drop Amount +10%"
         },
         {
+            ref: 434,
             code: "VB03",
             gid: "YA",
             name: "Meseta Fever III",
@@ -7746,6 +8249,7 @@
             effect: "Meseta Drop Amount +15%"
         },
         {
+            ref: 435,
             code: "VC01",
             gid: "YA",
             name: "EXP Boost I",
@@ -7759,6 +8263,7 @@
             effect: "Experience Gain +5%"
         },
         {
+            ref: 436,
             code: "VC02",
             gid: "YA",
             name: "EXP Boost II",
@@ -7776,6 +8281,7 @@
             effect: "Experience Gain +7%"
         },
         {
+            ref: 437,
             code: "VC03",
             gid: "YA",
             name: "EXP Boost III",
@@ -7792,24 +8298,28 @@
             effect: "Experience Gain +10%"
         },
         {
+            ref: 438,
             code: "VD01",
             gid: "YA",
             name: "Temptation",
             effect: "Item Drop Rate +10%"
         },
         {
+            ref: 439,
             code: "VE01",
             gid: "YA",
             name: "Another History",
             effect: "Experience Gain +10%"
         },
         {
+            ref: 440,
             code: "VF01",
             gid: "YA",
             name: "Fresh Sign",
             effect: "Boost EXP by 30% until Lv.30"
         },
         {
+            ref: 441,
             code: "VH01",
             gid: "YA",
             name: "Ultimate Buster",
@@ -7823,12 +8333,14 @@
             effect: "Boost damage in Ultimate +10%"
         },
         {
+            ref: 442,
             code: "VH11",
             gid: "CB",
             name: "Omega Buster",
             effect: "Boosts damage against Demons by 3%."
         },
         {
+            ref: 443,
             code: "VJ01",
             gid: "YA",
             name: "Soul Catalyst",
@@ -7841,6 +8353,7 @@
             tooltip: "Made by: Elder Soul, Loser Soul, Apprentice Soul,<br>Double Soul, Persona Soul<br>Used for: Astral Soul"
         },
         {
+            ref: 444,
             code: "VJ02",
             gid: "YA",
             name: "Factor Catalyst",
@@ -7853,6 +8366,7 @@
             tooltip: "Made by: Deus Factor, Mother Factor, Yamato Factor<br>Used for: Ether Factor"
         },
         {
+            ref: 445,
             code: "VJ03",
             gid: "YA",
             name: "Reverie Catalyst",
@@ -7865,6 +8379,7 @@
             tooltip: "Made by: Elder Reverie, Loser Reverie, Apprezina Reverie, Double Reverie, Persona Reverie<br>Used for: Mana Reverie"
         },
         {
+            ref: 446,
             code: "VK03",
             simCode: "VL01",
             gid: "YA",
@@ -7877,6 +8392,7 @@
             effect: "Adds 25 EXP to NT weapon grinds."
         },
         {
+            ref: 447,
             code: "VK04",
             simCode: "VM01",
             gid: "YA",
@@ -7889,6 +8405,7 @@
             effect: "Adds 25 EXP to NT weapon grinds."
         },
         {
+            ref: 448,
             code: "VK01",
             simCode: "VN01",
             gid: "YA",
@@ -7901,6 +8418,7 @@
             effect: "Adds 90 EXP to NT weapon grinds."
         },
         {
+            ref: 449,
             code: "VO01",
             gid: "YA",
             name: "Guidance Trainer",
@@ -7912,6 +8430,7 @@
             effect: "Boosts Special Ability<br>transfer success rate onto this item by 5%."
         },
         {
+            ref: 450,
             code: "VK05",
             simCode: "VP01",
             gid: "YA",
@@ -7924,18 +8443,21 @@
             effect: "Adds 800 EXP to NT weapon grinds."
         },
         {
+            ref: 451,
             code: "WA01",
             gid: "GB",
             name: "Photon Collect",
             effect: "Boosts status effect affix rate"
         },
         {
+            ref: 452,
             code: "XA01",
             gid: "GB",
             name: "Soul Receptor",
             effect: "Greatly increases Soul affix rate"
         },
         {
+            ref: 453,
             code: "XB01",
             gid: "GB",
             name: "Extreme Receptor",
@@ -7953,186 +8475,217 @@
             effect: "Greatly increases Flict, Alter affix rate<br>ALL(+10)"
         },
         {
+            ref: 454,
             code: "XC01",
             gid: "GB",
             name: "Gift Receptor",
             effect: "Allows transfer of Gift affixes"
         },
         {
+            ref: 455,
             code: "XD01",
             gid: "GB",
             name: "Sentence Receptor",
             effect: "Boosts transfer of Sentence affixes<br>ALL(+10)"
         },
         {
+            ref: 456,
             code: "XE01",
             gid: "GB",
             name: "Phrase Receptor",
             effect: "Boosts transfer of Phrase affixes<br>ALL(+10)"
         },
         {
+            ref: 457,
             code: "XF01",
             gid: "GB",
             name: "Factor Receptor",
             effect: "Boosts Factor-type ability transfer rates.<br>ALL(+10)"
         },
         {
+            ref: 458,
             code: "XG01",
             gid: "GB",
             name: "Mark Receptor",
             effect: "Allows transfer Mark-type ability.<br>ALL(+10)"
         },
         {
+            ref: 459,
             code: "XI30",
             gid: "GB",
             name: "Attack Receptor",
             effect: "Greatly increases affix rate of <br>Power, Shoot, Technique, Arm<br>ALL(+5)"
         },
         {
+            ref: 460,
             code: "XI31",
             gid: "GB",
             name: "Guard Receptor",
             effect: "Greatly increases affix rate of <br>Mind, Body, React<br>ALL(+5)"
         },
         {
+            ref: 461,
             code: "XI32",
             gid: "GB",
             name: "Photon Receptor",
             effect: "Greatly increases affix rate of <br>Stamina, Spirita<br>ALL(+5)"
         },
         {
+            ref: 462,
             code: "XI02",
             gid: "E",
             name: "Stamina Boost",
             effect: "HP(+45)"
         },
         {
+            ref: 463,
             code: "XI03",
             gid: "E",
             name: "Spirita Boost",
             effect: "PP(+5)"
         },
         {
+            ref: 464,
             code: "XI04",
             gid: "E",
             name: "Power Boost",
             effect: "S-ATK(+25)"
         },
         {
+            ref: 465,
             code: "XI05",
             gid: "E",
             name: "Shoot Boost",
             effect: "R-ATK(+25)"
         },
         {
+            ref: 466,
             code: "XI06",
             gid: "E",
             name: "Technique Boost",
             effect: "T-ATK(+25)"
         },
         {
+            ref: 467,
             code: "XI0a",
             gid: "E",
             name: "Tenora Boost",
             effect: "S-ATK(+35)"
         },
         {
+            ref: 468,
             code: "XI0b",
             gid: "E",
             name: "GRM Boost",
             effect: "R-ATK(+35)"
         },
         {
+            ref: 469,
             code: "XI0c",
             gid: "E",
             name: "Yohmei Boost",
             effect: "T-ATK(+35)"
         },
         {
+            ref: 470,
             code: "XI10",
             gid: "E",
             name: "Noble Stamina",
             effect: "HP(+50),PP(+3)"
         },
         {
+            ref: 471,
             code: "XI14",
             gid: "E",
             name: "Elegant Stamina",
             effect: "HP(+70),PP(+4)"
         },
         {
+            ref: 472,
             code: "XI51",
             gid: "E",
             name: "Grace Stamina",
             effect: "HP(+80),PP(+5)"
         },
         {
+            ref: 473,
             code: "XI07",
             gid: "E",
             name: "Noble Power",
             effect: "S-ATK(+30),PP(+3)"
         },
         {
+            ref: 474,
             code: "XI11",
             gid: "E",
             name: "Elegant Power",
             effect: "S-ATK(+40),PP(+4)"
         },
         {
+            ref: 475,
             code: "XI52",
             gid: "E",
             name: "Grace Power",
             effect: "S-ATK(+50),PP(+5)"
         },
         {
+            ref: 476,
             code: "XI08",
             gid: "E",
             name: "Noble Shoot",
             effect: "R-ATK(+30),PP(+3)"
         },
         {
+            ref: 477,
             code: "XI12",
             gid: "E",
             name: "Elegant Shoot",
             effect: "R-ATK(+40),PP(+4)"
         },
         {
+            ref: 478,
             code: "XI53",
             gid: "E",
             name: "Grace Shoot",
             effect: "R-ATK(+50),PP(+5)"
         },
         {
+            ref: 479,
             code: "XI09",
             gid: "E",
             name: "Noble Technique",
             effect: "T-ATK(+30),PP(+3)"
         },
         {
+            ref: 480,
             code: "XI13",
             gid: "E",
             name: "Elegant Technique",
             effect: "T-ATK(+40),PP(+4)"
         },
         {
+            ref: 481,
             code: "XI54",
             gid: "E",
             name: "Grace Technique",
             effect: "T-ATK(+50),PP(+5)"
         },
         {
+            ref: 482,
             code: "XI20",
             gid: "E",
             name: "Offense Boost",
             effect: "S-ATK(+15)<br>R-ATK(+15)<br>T-ATK(+15)<br>DEX(+25)<br>PP(+1)"
         },
         {
+            ref: 483,
             code: "XI21",
             gid: "E",
             name: "Defense Boost",
             effect: "S-DEF(+25)<br>R-DEF(+25)<br>T-DEF(+25)<br>HP(+55)<br>PP(+1)"
         },
         {
+            ref: 484,
             code: "ZA01",
             gid: "ZZ",
             name: "Junk A",
@@ -8144,6 +8697,7 @@
             effect: "100% affix junk"
         },
         {
+            ref: 485,
             code: "ZB01",
             gid: "ZZ",
             name: "Junk B",
@@ -8155,6 +8709,7 @@
             effect: "100% affix junk"
         },
         {
+            ref: 486,
             code: "ZC01",
             gid: "ZZ",
             name: "Junk C",
@@ -8166,6 +8721,7 @@
             effect: "100% affix junk"
         },
         {
+            ref: 487,
             code: "ZD01",
             gid: "ZZ",
             name: "Junk D",
@@ -8177,6 +8733,7 @@
             effect: "100% affix junk"
         },
         {
+            ref: 488,
             code: "ZE01",
             gid: "ZZ",
             name: "Junk E",
@@ -8188,6 +8745,7 @@
             effect: "100% affix junk"
         },
         {
+            ref: 489,
             code: "ZF01",
             gid: "ZZ",
             name: "Junk F",
@@ -8199,6 +8757,7 @@
             effect: "100% affix junk"
         },
         {
+            ref: 490,
             code: "ZG01",
             gid: "ZZ",
             name: "Junk G",
@@ -8210,6 +8769,7 @@
             effect: "100% affix junk"
         },
         {
+            ref: 491,
             code: "ZH01",
             gid: "ZZ",
             name: "Junk H",
@@ -8221,6 +8781,7 @@
             effect: "100% affix junk"
         },
         {
+            ref: 492,
             code: "ZI01",
             gid: "ZZ",
             name: "Junk I",

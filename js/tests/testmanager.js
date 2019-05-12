@@ -16,10 +16,16 @@ class TestManager {
         ];
     }
 
+    /**
+     * Forces a stop on the exhaustive tests
+     */
     static get forceStop() {
         return this._hasStopped;
     }
 
+    /**
+     * Forces a stop on the exhaustive tests
+     */
     static set forceStop(val) {
         this._hasStopped = val == true;
     }
@@ -73,8 +79,25 @@ class TestManager {
             + '+======================================+');
     }
 
+    /**
+     * Performs an exhaustive test on all Test Suites available.
+     */
     static exhaust() {
-        TestManager.execute((test) => test.startsWith('exhaust'));
+        console.warn('To force stop the exhaustive test in case'
+            + ' it takes too long, pause executiong of Javascript,'
+            + ' run "TestManager.forceStop = true;" on console, then'
+            + ' resume execution of JavaScript. The test will then break.');
+        console.log('The exhaustive test will start in:');
+        console.log('3...');
+        setTimeout(() => {
+            console.log('2...');
+            setTimeout(() => {
+                console.log('1...');
+                setTimeout(() => {
+                    TestManager.execute((test) => test.startsWith('exhaust'));
+                }, 1000);
+            }, 1000);
+        }, 1000);
     }
 
 }

@@ -22,6 +22,7 @@ class ViewController {
         // Immutable variables (properties can still change)
         this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 3000;
         this.COLOR_PALETTE_SIZE = 25;
+        this.URL_VER = 2;
         this.languages = ['en', 'jp'];
         this.affixesSelected = [];
         this.choicesSelected = [];
@@ -288,8 +289,8 @@ class ViewController {
                     AFFIX_SELECTION_VIEW_TEMPLATE({
                         affixesSelected: this.affixesSelected,
                         categories: this.filters,
-                        abilityList: this.assistant.data.abilityList.filter( // List of all transferable affixes
-                            a => this.assistant.affixDB[a.code].choices.length > 0),
+                        abilityList: Assistant.data.abilityList.filter( // List of all transferable affixes
+                            a => Assistant.affixDB[a.code].choices.length > 0),
                         langCode: this.langCode
                     }));
                 if (shouldAnimate) {
@@ -416,7 +417,7 @@ class ViewController {
                 let factor = vc.assistant.activeFodder.specialAbilityFactor;
                 vc.affixesSelected.push(factor);
                 vc.isIncludingFoddersIntrinsicFactor = true;
-                let factorChoices = vc.assistant.affixDB[factor.code].choices;
+                let factorChoices = Assistant.affixDB[factor.code].choices;
                 for (var i = 0; i < factorChoices.length; i++) {
                     if (factorChoices[i].isAbilityFactor) {
                         choices[factor.code] = [factorChoices[i]];
@@ -604,7 +605,7 @@ class ViewController {
         $('body').append(
             FORMULA_SHEET_VIEW_TEMPLATE({
                 categories: [],
-                abilityList: ASSISTANT.data.abilityList, // List of all affixes
+                abilityList: Assistant.data.abilityList, // List of all affixes
                 langCode: VIEW_CONTROLLER.langCode
             }));
         if (shouldAnimate) {
@@ -661,7 +662,7 @@ class ViewController {
 		$('body').append(
 			LINK_TEMPLATE({
 				link: decodeURI(window.location.href),
-				linkToSim: vc.assistant.toURL(true),
+                linkToSim: vc.assistant.toURL(this.URL_VER, true),
 				smallLink: shortLink,
 				langCode: vc.langCode
 		}));
@@ -790,17 +791,17 @@ class ViewController {
         urlParams = urlParams.substring(1, urlParams.length);
         urlParams = decodeURIComponent(urlParams);
         // Check language choice within params
-        if (urlParams.match(/^\/l=..\//)) {
+        if (/^(\/l=)?[a-z]{2}/.test(urlParams)) {
             // Extract '/l=..' of the start of the params and get language '..'
-            let loadedLang = urlParams.slice(0, 5).slice(3, 5);
+            let extraLen = urlParams.startsWith("/l=") ? 3 : 0;
+            let loadedLang = urlParams.slice(extraLen, 2 + extraLen);
             // Remove language data from string for parsing
-            urlParams = urlParams.slice(5);
+            urlParams = urlParams.slice(2 + extraLen);
             if (this.languages.includes(loadedLang)) {
                 this.langCode = loadedLang;
             }
         }
-        urlParams = VIEW_CONTROLLER.assistant.decodeURLParams(urlParams);
-        if (!this.assistant || !(this.assistant instanceof Assistant)) return;
+        else this.langCode = this.languages[0];
         let hasSuceeded = this.assistant.loadFromURLParams(urlParams);
         if (hasSuceeded) {
             let $container = $('#mastercontainer');
@@ -829,7 +830,7 @@ class ViewController {
         vc.assistant.calcSuccessRates();
         $('#mastercontainer').empty().append(PAGE_TREE_NODE_TEMPLATE({
             pageTreeNode: vc.assistant.pageTreeRoot,
-            boostWeekOptions: vc.assistant.boostWeekVals,
+            boostWeekOptions: Assistant.boostWeekVals,
             boostWeekIdx: vc.assistant.boostWeekIdx,
             langCode: vc.langCode
         }));
@@ -947,7 +948,7 @@ class ViewController {
     updateURLParams() {
         if (!this.assistant || !(this.assistant instanceof Assistant)) return;
         let oldURL = '?' + decodeURIComponent(window.location.search.substring(1, window.location.search.length));
-        let newURL = `?${this.langCode != 'en' ? '/l=' + this.langCode : ''}` + this.assistant.toURL();
+        let newURL = `?${this.langCode != 'en' ? this.langCode : ''}` + this.assistant.toURL(this.URL_VER);
         if (newURL == oldURL) return;
         window.history.pushState("test", "Title", newURL);
     }
@@ -1008,7 +1009,7 @@ class ViewController {
             if ($(this).parent().hasClass('affix')) that = $(this).parent()[0];
             vc.affixesSelected.splice(
                 vc.affixesSelected.indexOf(
-                    vc.assistant.affixDB[$(that).attr('data-code')].abilityRef
+                    Assistant.affixDB[$(that).attr('data-code')].abilityRef
                 ), 1
             );
             if (!$(this).parent().hasClass('affix')) {
@@ -1035,7 +1036,7 @@ class ViewController {
             }
         }
         else {
-            let selAffix = vc.assistant.affixDB[$(this).attr('data-code')].abilityRef;
+            let selAffix = Assistant.affixDB[$(this).attr('data-code')].abilityRef;
             let hadConflict = false;
             for (var i = 0; i < vc.affixesSelected.length; i++) {
                 if (vc.assistant.hasConflict(vc.affixesSelected[i], selAffix)) {
@@ -1045,7 +1046,7 @@ class ViewController {
                 }
             }
             if (!hadConflict && vc.affixesSelected.length < 8) {
-                vc.affixesSelected.push(vc.assistant.affixDB[$(this).attr('data-code')].abilityRef);
+                vc.affixesSelected.push(Assistant.affixDB[$(this).attr('data-code')].abilityRef);
                 try {
                     gaRequests.send('affix', 'select', {
                         'View Type': 'Choose Affix View',
@@ -1069,7 +1070,7 @@ class ViewController {
             let $divDataCode = $(this).parents('div[data-code]');
             if ($divDataCode.length > 0) {
                 let code = $divDataCode.data('code');
-                let affix = vc.assistant.affixDB[code];
+                let affix = Assistant.affixDB[code];
                 if (affix && affix.abilityRef) {
                     let arrIdx = vc.affixesSelected.indexOf(affix.abilityRef);
                     if (arrIdx >= 0 && arrIdx < vc.affixesSelected.length
@@ -1092,7 +1093,7 @@ class ViewController {
             let $divDataCode = $(this).parents('div[data-code]');
             if ($divDataCode.length > 0) {
                 let code = $divDataCode.data('code');
-                let affix = vc.assistant.affixDB[code];
+                let affix = Assistant.affixDB[code];
                 if (affix && affix.choices && Array.isArray(affix.choices)) {
                     let choices = affix.choices;
                     let choiceIdx = $(this).parent().index();
@@ -1319,7 +1320,7 @@ class ViewController {
         $(`div.choice-selection-container li > div`).removeClass('selected');
         $(`div.choice-selection-container div.affix`).removeClass('selected');
         for (var i = 0; i < this.affixesSelected.length; i++) {
-            let choices = this.assistant.affixDB[this.affixesSelected[i].code].choices;
+            let choices = Assistant.affixDB[this.affixesSelected[i].code].choices;
             let choiceIdx = choices.indexOf(this.choicesSelected[i]);
             let optionsList = $(`div.choice-selection-container div[data-code=${this.affixesSelected[i].code}] li > div`);
             if (choiceIdx >= 0 && choiceIdx < optionsList.length) {
@@ -1329,7 +1330,7 @@ class ViewController {
             let searchResults = $(`div.choice-selection-container div.filtersearchcontainer`)[i];
             if (searchResults) {
                 let upslottingFactor = (this.affixesSelected.length > 0) ?
-                    this.assistant.data.extraSlot[this.affixesSelected.length - 1].true / 100
+                    Assistant.data.extraSlot[this.affixesSelected.length - 1].true / 100
                     : 1; // range 0~1
                 for (var j = 0; j < choices.length; j++) {
                     let $option = $($(searchResults).find('li > div')[j]);
@@ -1380,10 +1381,10 @@ class ViewController {
         let vc = (this instanceof ViewController) ? this : (e && e.data) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         let choices = vc.assistant.getChoicesForAffixes(
-            vc.assistant.affixDB[$(this).attr('data-code')].abilityRef
+            Assistant.affixDB[$(this).attr('data-code')].abilityRef
         );
         let uses = vc.assistant.getUsesFor(
-            vc.assistant.affixDB[$(this).attr('data-code')].abilityRef);
+            Assistant.affixDB[$(this).attr('data-code')].abilityRef);
         if (!choices || !uses || !choices[$(this).attr('data-code')]) return;
         $(`div.formula-sheet-container li > div`).removeClass('selected');
         $(this).addClass('selected');

@@ -22,9 +22,9 @@ class AssistantTestSuite {
         let ret = assistant.buildPageWith(
             choices, 1, true, false);
         // Test outcome
-        let check1 = ret.size() == ret.CAPACITY;
+        let check1 = ret.size() == Page.CAPACITY;
         console.assert(check1, 'Expected Page with size of '
-            + ret.CAPACITY);
+            + Page.CAPACITY);
         let check2 = ret.fodders && ret.fodders[0]
             && ret.fodders[0].size() == 1;
         console.assert(check2, 'Expected Fodder with only 1 ability');
@@ -207,7 +207,7 @@ class AssistantTestSuite {
     static exhaustBuildPageWith() {
         // Initialize test case
         let assistant = new Assistant(data);
-        let affixes = Object.values(assistant.affixDB);
+        let affixes = Object.values(Assistant.affixDB);
         for (var numSlot = 8; numSlot <= 8; numSlot++) {
             if (TestManager.forceStop) break;
             let hasPassed = testAllFormulas(affixes, numSlot);
@@ -219,7 +219,7 @@ class AssistantTestSuite {
         function testAllFormulas(allAffixes, slotNum, affixes = [], currSlotNum = 0) {
             for (var i = allAffixes.length - 10; i >= 0; i--) {
                 if (TestManager.forceStop) break;
-                if (assistant.getPlacementV2(allAffixes[i].abilityRef,
+                if (assistant.getPlacement(allAffixes[i].abilityRef,
                     (new Fodder()).addAffixes(affixes.map(a => a.abilityRef)),
                     slotNum).compoundRate <= 0) {
                     continue;

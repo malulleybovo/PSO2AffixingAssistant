@@ -29,7 +29,7 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset, boostWeekOptions
     // Get index of connected
     // Since the list of pages may be unordered,
     // the data-conn offset of each fodder may not be ordered
-    let capacity = (new Page).CAPACITY;
+    let capacity = Page.CAPACITY;
     for (var i = 0; i < pageTreeNode.size(); i++) {
         let childPage = pageTreeNode.children[i].page;
         connectionOrder.push(-1);
@@ -46,15 +46,15 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset, boostWeekOptions
     }
     if (pageTreeNode.page && (pageTreeNode.page instanceof Page)) {
         let rateOpts = [];
-        for (var i = 0; i < pageTreeNode.rateBoostOptions.length; i++) {
-            let opt = pageTreeNode.rateBoostOptions[i];
+        for (var i = 0; i < Assistant.rateBoostOptions.length; i++) {
+            let opt = Assistant.rateBoostOptions[i];
             if (opt) opt = lang['support'][opt.id];
             if (opt) opt = opt[langCode];
             if (opt) rateOpts.push(opt);
         }
         let potOpts = [];
-        for (var i = 0; i < pageTreeNode.potentialOptions.length; i++) {
-            let opt = pageTreeNode.potentialOptions[i];
+        for (var i = 0; i < Assistant.potentialOptions.length; i++) {
+            let opt = Assistant.potentialOptions[i];
             if (opt) opt = lang['potential'][opt.id];
             if (opt) opt = opt[langCode];
             if (opt) potOpts.push(opt);
@@ -90,7 +90,7 @@ const PAGE_TREE_NODE_TEMPLATE = ({ pageTreeNode, level, offset, boostWeekOptions
 };
 
 const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, boostWeekOptions, boostWeekIdx, level, offset, fodderOffsets, langCode }) => {
-    let capacity = (new Page).CAPACITY;
+    let capacity = Page.CAPACITY;
     let dataConn;
     // data-conn is a mapping of the page-fodder connections within a tree structure with a set max number of children per node
     // base = ((capacity^(level)) - 1) / (capacity - 1)
@@ -374,7 +374,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
         layoutTemplate += `<div><div>
                         <div class="title bold">${lang.app.affixingSelectionTitle[langCode]}</div>
                         <div class="selection-container">`;
-        for (var i = 0; i < (new Fodder).CAPACITY; i++) {
+        for (var i = 0; i < Fodder.CAPACITY; i++) {
             layoutTemplate += `<div class="affix${(affixesSelected[i]) ? `` : ` empty`}"${(affixesSelected[i]) ? ` title="${lang[affixesSelected[i].code]['effect_' + langCode]}"` : ``}${(affixesSelected[i]) ? ` data-code="${affixesSelected[i].code}"` : ``}>
                                 <i class="fa fa-trash"></i>
                                 <span>${(affixesSelected[i] && affixesSelected[i].code && lang[affixesSelected[i].code] && lang[affixesSelected[i].code]['name_' + langCode]) ? `${lang[affixesSelected[i].code]['name_' + langCode]}` : `&nbsp;`}</span>
