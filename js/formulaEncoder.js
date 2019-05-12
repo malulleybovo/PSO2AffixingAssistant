@@ -594,11 +594,12 @@ class FormulaEncoder {
                     let addOption = Assistant.data.optionList.additional
                         .filter(a => a.ref == abilityId)[0];
                     if (addOption) {
+                        let choices = Assistant.affixDB[
+                            Assistant.relCodes[abilityId]].choices;
                         boostsPerPage.push({
                             forPage: currPage,
                             type: 'add',
-                            boost: Assistant.data.optionList.additional
-                                .indexOf(addOption)
+                            val: choices
                         });
                     }
                 }
@@ -670,7 +671,7 @@ class FormulaEncoder {
             let fodder = boostsPerPage[i].forPage.connectedTo;
             switch (boostsPerPage[i].type) {
                 case 'add':
-                    fodder.addAbilityItemInUse = boostsPerPage[i].val;
+                    fodder.setAddAbilityInUse(boostsPerPage[i].val);
                     break;
                 case 'rate':
                     fodder.rateBoostIdx = boostsPerPage[i].val;

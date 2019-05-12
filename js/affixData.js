@@ -78,12 +78,11 @@
         ],
         additional: [
             {
-                ref: 0,
                 id: "Nothing",
                 value: "B01"
             },
             {
-                ref: 1,
+                ref: 462,
                 id: "Add Ability (HP)",
                 name: "Stamina Boost",
                 value: "B02",
@@ -91,15 +90,15 @@
                 effect: "HP(+45)"
             },
             {
-                ref: 2,
+                ref: 463,
                 id: "Add Ability (PP)",
-                name: " Spirita Boost",
+                name: "Spirita Boost",
                 value: "B03",
                 extend: 100,
                 effect: "PP(+5)"
             },
             {
-                ref: 3,
+                ref: 464,
                 id: "Add Ability (S-ATK)",
                 name: "Power Boost",
                 value: "B04",
@@ -107,7 +106,7 @@
                 effect: "S-ATK(+25)"
             },
             {
-                ref: 4,
+                ref: 465,
                 id: "Add Ability (R-ATK)",
                 name: "Shoot Boost",
                 value: "B05",
@@ -115,7 +114,7 @@
                 effect: "R-ATK(+25)"
             },
             {
-                ref: 5,
+                ref: 466,
                 id: "Add Ability (T-ATK)",
                 name: "Technique Boost",
                 value: "B06",
@@ -123,7 +122,7 @@
                 effect: "T-ATK(+25)"
             },
             {
-                ref: 6,
+                ref: 467,
                 id: "Add Ability (Tenora)",
                 name: "Tenora Boost",
                 value: "B0a",
@@ -131,7 +130,7 @@
                 effect: "S-ATK(+35)"
             },
             {
-                ref: 7,
+                ref: 468,
                 id: "Add Ability (GRM)",
                 name: "GRM Boost",
                 value: "B0b",
@@ -139,7 +138,7 @@
                 effect: "R-ATK(+35)"
             },
             {
-                ref: 8,
+                ref: 469,
                 id: "Add Ability (Yohmei)",
                 name: "Yohmei Boost",
                 value: "B0c",
@@ -147,7 +146,7 @@
                 effect: "T-ATK(+35)"
             },
             {
-                ref: 9,
+                ref: 470,
                 id: "Add Ability (HP&PP)",
                 name: "Noble Stamina",
                 value: "B10",
@@ -155,7 +154,7 @@
                 effect: "HP(+50),PP(+3)"
             },
             {
-                ref: 10,
+                ref: 471,
                 id: "Add Ability (HP&PP/2)",
                 name: "Elegant Stamina",
                 value: "B14",
@@ -163,7 +162,7 @@
                 effect: "HP(+70),PP(+4)"
             },
             {
-                ref: 11,
+                ref: 472,
                 id: "Add Ability (HP&PP/3)",
                 name: "Grace Stamina",
                 value: "B18",
@@ -171,7 +170,7 @@
                 effect: "HP(+80),PP(+5)"
             },
             {
-                ref: 12,
+                ref: 473,
                 id: "Add Ability (S-ATK&PP)",
                 name: "Noble Power",
                 value: "B07",
@@ -179,7 +178,7 @@
                 effect: "S-ATK(+30),PP(+3)"
             },
             {
-                ref: 13,
+                ref: 474,
                 id: "Add Ability (S-ATK&PP/2)",
                 name: "Elegant Power",
                 value: "B11",
@@ -187,7 +186,7 @@
                 effect: "S-ATK(+40),PP(+4)"
             },
             {
-                ref: 14,
+                ref: 475,
                 id: "Add Ability (S-ATK&PP/3)",
                 name: "Grace Power",
                 value: "B15",
@@ -195,7 +194,7 @@
                 effect: "S-ATK(+50),PP(+5)"
             },
             {
-                ref: 15,
+                ref: 476,
                 id: "Add Ability (R-ATK&PP)",
                 name: "Noble Shoot",
                 value: "B08",
@@ -203,7 +202,7 @@
                 effect: "R-ATK(+30),PP(+3)"
             },
             {
-                ref: 16,
+                ref: 477,
                 id: "Add Ability (R-ATK&PP/2)",
                 name: "Elegant Shoot",
                 value: "B12",
@@ -211,7 +210,7 @@
                 effect: "R-ATK(+40),PP(+4)"
             },
             {
-                ref: 17,
+                ref: 478,
                 id: "Add Ability (R-ATK&PP/3)",
                 name: "Grace Shoot",
                 value: "B16",
@@ -219,7 +218,7 @@
                 effect: "R-ATK(+50),PP(+5)"
             },
             {
-                ref: 18,
+                ref: 479,
                 id: "Add Ability (T-ATK&PP)",
                 name: "Noble Technique",
                 value: "B09",
@@ -227,7 +226,7 @@
                 effect: "T-ATK(+30),PP(+3)"
             },
             {
-                ref: 19,
+                ref: 480,
                 id: "Add Ability (T-ATK&PP/2)",
                 name: "Elegant Technique",
                 value: "B13",
@@ -235,7 +234,7 @@
                 effect: "T-ATK(+40),PP(+4)"
             },
             {
-                ref: 20,
+                ref: 481,
                 id: "Add Ability (T-ATK&PP/3)",
                 name: "Grace Technique",
                 value: "B17",
@@ -243,7 +242,7 @@
                 effect: "T-ATK(+50),PP(+5)"
             },
             {
-                ref: 21,
+                ref: 482,
                 id: "Add Ability (Offense Focus)",
                 name: "Offense Boost",
                 value: "B20",
@@ -251,7 +250,7 @@
                 effect: "S-ATK(+15),R-ATK(+15),T-ATK(+15),DEX(+25),PP(+1)"
             },
             {
-                ref: 22,
+                ref: 483,
                 id: "Add Ability (Defense Focus)",
                 name: "Defense Boost",
                 value: "B21",
@@ -259,7 +258,7 @@
                 effect: "S-DEF(+25),R-DEF(+25),T-DEF(+25),HP(+55),PP(+1)"
             },
             {
-                ref: 23,
+                ref: 459,
                 id: "Add Ability (Attack Inherit)",
                 name: "Attack Receptor",
                 value: "B30",
@@ -267,7 +266,7 @@
                 effect: "ALL(+5)"
             },
             {
-                ref: 24,
+                ref: 460,
                 id: "Add Ability (Defense Inherit)",
                 name: "Guard Receptor",
                 value: "B31",
@@ -275,7 +274,7 @@
                 effect: "ALL(+5)"
             },
             {
-                ref: 25,
+                ref: 461,
                 id: "Add Ability (Photon Inherit)",
                 name: "Photon Receptor",
                 value: "B32",
@@ -283,7 +282,7 @@
                 effect: "ALL(+5)"
             },
             {
-                ref: 26,
+                ref: 458,
                 id: "Add Ability (Mark Receptor)",
                 name: "Mark Receptor",
                 value: "XG01",
@@ -291,7 +290,7 @@
                 effect: "ALL(+10)"
             },
             {
-                ref: 27,
+                ref: 160,
                 id: "S1 Add: Photon Reduction 2",
                 name: "S1:Photon Reduction 2",
                 value: "",
@@ -299,7 +298,7 @@
                 effect: ""
             },
             {
-                ref: 28,
+                ref: 161,
                 id: "S1 Add: Brilliant Ruin 2",
                 name: "S1:Brilliant Ruin 2",
                 value: "",
@@ -307,7 +306,7 @@
                 effect: ""
             },
             {
-                ref: 29,
+                ref: 162,
                 id: "S1 Add: Flowing Intent",
                 name: "S1:Flowing Intent",
                 value: "",
@@ -315,7 +314,7 @@
                 effect: ""
             },
             {
-                ref: 30,
+                ref: 163,
                 id: "S1 Add: Lethal Intent",
                 name: "S1:Lethal Intent",
                 value: "",
@@ -323,7 +322,7 @@
                 effect: ""
             },
             {
-                ref: 31,
+                ref: 168,
                 id: "S1 Add: Reckless Strike",
                 name: "S1:Reckless Strike",
                 value: "",
@@ -331,7 +330,7 @@
                 effect: ""
             },
             {
-                ref: 32,
+                ref: 169,
                 id: "S1 Add: Eclipsing Decay",
                 name: "S1:Eclipsing Decay",
                 value: "",
@@ -339,7 +338,7 @@
                 effect: ""
             },
             {
-                ref: 33,
+                ref: 164,
                 id: "S1 Add: Augment Intent",
                 name: "S1:Augment Intent",
                 value: "",
@@ -347,7 +346,7 @@
                 effect: ""
             },
             {
-                ref: 34,
+                ref: 199,
                 id: "S2 Add: Umbrageous Melody",
                 name: "S2:Umbrageous Melody",
                 value: "",
@@ -355,7 +354,7 @@
                 effect: ""
             },
             {
-                ref: 35,
+                ref: 200,
                 id: "S2 Add: Nature's Reduction 2",
                 name: "S2:Nature's Reduction 2",
                 value: "",
@@ -363,7 +362,7 @@
                 effect: ""
             },
             {
-                ref: 36,
+                ref: 201,
                 id: "S2 Add: Umbrageous Radiance 2",
                 name: "S2:Umbrageous Radiance 2",
                 value: "",
@@ -371,7 +370,7 @@
                 effect: ""
             },
             {
-                ref: 37,
+                ref: 202,
                 id: "S2 Add: Wise Skill 2",
                 name: "S2:Wise Skill 2",
                 value: "",
@@ -379,7 +378,7 @@
                 effect: ""
             },
             {
-                ref: 38,
+                ref: 203,
                 id: "S2 Add: Skilled Strike 2",
                 name: "S2:Skilled Strike 2",
                 value: "",
@@ -387,7 +386,7 @@
                 effect: ""
             },
             {
-                ref: 39,
+                ref: 204,
                 id: "S2 Add: Radiant Strike 2",
                 name: "S2:Radiant Strike 2",
                 value: "",
@@ -395,7 +394,7 @@
                 effect: ""
             },
             {
-                ref: 40,
+                ref: 209,
                 id: "S2 Add: Runner's High",
                 name: "S2:Runner's High",
                 value: "",
@@ -403,7 +402,7 @@
                 effect: ""
             },
             {
-                ref: 41,
+                ref: 210,
                 id: "S2 Add: Skill Reduction",
                 name: "S2:Skill Reduction",
                 value: "",
@@ -411,7 +410,7 @@
                 effect: ""
             },
             {
-                ref: 42,
+                ref: 232,
                 id: "S3 Add: Nature's Melody",
                 name: "S3:Nature's Melody",
                 value: "",
@@ -419,7 +418,7 @@
                 effect: ""
             },
             {
-                ref: 43,
+                ref: 233,
                 id: "S3 Add: Nature's Gleam 2",
                 name: "S3:Nature's Gleam 2",
                 value: "",
@@ -427,7 +426,7 @@
                 effect: ""
             },
             {
-                ref: 44,
+                ref: 234,
                 id: "S3 Add: Flowing Grace",
                 name: "S3:Flowing Grace",
                 value: "",
@@ -435,7 +434,7 @@
                 effect: ""
             },
             {
-                ref: 45,
+                ref: 235,
                 id: "S3 Add: Flowing Exhilaration 2",
                 name: "S3:Flowing Exhilaration 2",
                 value: "",
@@ -443,7 +442,7 @@
                 effect: ""
             },
             {
-                ref: 46,
+                ref: 236,
                 id: "S3 Add: Radiating Grace 2",
                 name: "S3:Radiating Grace 2",
                 value: "",
@@ -451,7 +450,7 @@
                 effect: ""
             },
             {
-                ref: 47,
+                ref: 239,
                 id: "S3 Add: Calming Exhilaration",
                 name: "S3:Calming Exhilaration",
                 value: "",
@@ -459,7 +458,7 @@
                 effect: ""
             },
             {
-                ref: 48,
+                ref: 240,
                 id: "S3 Add: Fortifying Strike",
                 name: "S3:Fortifying Strike",
                 value: "",
@@ -467,7 +466,7 @@
                 effect: ""
             },
             {
-                ref: 49,
+                ref: 241,
                 id: "S3 Add: Curtailed Strike",
                 name: "S3:Curtailed Strike",
                 value: "",
@@ -475,7 +474,7 @@
                 effect: ""
             },
             {
-                ref: 50,
+                ref: 242,
                 id: "S3 Add: Wise Strike",
                 name: "S3:Wise Strike",
                 value: "",
@@ -483,7 +482,7 @@
                 effect: ""
             },
             {
-                ref: 51,
+                ref: 260,
                 id: "S4 Add: Heavenly Protection",
                 name: "S4:Heavenly Protection",
                 value: "",
@@ -491,15 +490,15 @@
                 effect: ""
             },
             {
-                ref: 52,
+                ref: 261,
                 id: "S4 Add: Calming Intent",
-                name: "S4: Calming Intent",
+                name: "S4:Calming Intent",
                 value: "",
                 extend: 100,
                 effect: ""
             },
             {
-                ref: 53,
+                ref: 262,
                 id: "S4 Add: Mysterious Strike",
                 name: "S4:Mysterious Strike",
                 value: "",
@@ -507,7 +506,7 @@
                 effect: ""
             },
             {
-                ref: 54,
+                ref: 263,
                 id: "S4 Add: Saint Shield",
                 name: "S4:Saint Shield",
                 value: "",
@@ -515,7 +514,7 @@
                 effect: ""
             },
             {
-                ref: 54,
+                ref: 264,
                 id: "S4 Add: Colored Spectrum",
                 name: "S4:Colored Spectrum",
                 value: "",

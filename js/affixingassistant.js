@@ -56,8 +56,8 @@ class Assistant {
      */
     static get relCodes() {
         if (!this._relCodes && Assistant.data)
-            this._relCodes = Assistant.data.abilityList.reduce((obj, el) => {
-                obj[el.ref] = el.code;
+            this._relCodes = [{}].concat(Assistant.data.abilityList).reduce((obj, el) => {
+                if (el.code) obj[el.ref] = el.code;
                 return obj;
             });
         return this._relCodes;

@@ -296,7 +296,8 @@ class AffixDataParser {
                                 materials: [],
                                 isAddAbilityItem: true,
                                 name: additionalChoice.id,
-                                value: additionalChoice.value
+                                value: additionalChoice.value,
+                                ref: additionalChoice.ref
                             });
                         }
                         break;
