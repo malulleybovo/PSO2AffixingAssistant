@@ -769,6 +769,9 @@ class ViewController {
                 });
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(JSON.stringify(XMLHttpRequest));
+                alert(JSON.stringify(textStatus));
+                alert(JSON.stringify(errorThrown));
                 vc.requestSafetyFlag = false;
                 vc.openGetLinkView({
                     shouldAnimate: true,
