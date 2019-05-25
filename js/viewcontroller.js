@@ -771,10 +771,15 @@ class ViewController {
                     shortLink: shortlink
                 });
             })
-            // Request Fail
+            // Request Fail (Open view without shortlink)
             .catch(error => {
                 this.requestSafetyFlag = false;
                 console.log(error);
+                this.openGetLinkView({
+                    shouldAnimate: true,
+                    shortLink: null
+                });
+                alert(error.message);
             });
     }
 
