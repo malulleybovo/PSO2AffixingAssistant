@@ -752,37 +752,42 @@ class ViewController {
     getShortURLThenOpenLinkView() {
         if (this.requestSafetyFlag) return;
         this.requestSafetyFlag = true;
-        var mFetch = fetch || window.fetch || null;
-        alert(1)
-        alert(mFetch);
-        if (!mFetch) {
-            openWithoutSmallLink();
-            return;
-        }
-        mFetch(
-            'https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
-            + encodeURIComponent(window.location.href))
-            // Request Short URL
-            .then(response => {
-                this.requestSafetyFlag = false;
-                if (response.ok) {
-                    return response.json();
-                }
-            })
-            // Retrieve URL
-            .then(data => data.data.url)
-            // Display View
-            .then(shortlink => {
-                this.openGetLinkView({
-                    shouldAnimate: true,
-                    shortLink: shortlink
-                });
-            })
-            // Request Fail (Open view without shortlink)
-            .catch(error => {
-                console.log(error);
+        try {
+            var fetch = fetch || window.fetch || null;
+            alert(1)
+            alert(fetch);
+            if (!fetch) {
                 openWithoutSmallLink();
-            });
+                return;
+            }
+            fetch(
+                'https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
+                + encodeURIComponent(window.location.href))
+                // Request Short URL
+                .then(response => {
+                    this.requestSafetyFlag = false;
+                    if (response.ok) {
+                        return response.json();
+                    }
+                })
+                // Retrieve URL
+                .then(data => data.data.url)
+                // Display View
+                .then(shortlink => {
+                    this.openGetLinkView({
+                        shouldAnimate: true,
+                        shortLink: shortlink
+                    });
+                })
+                // Request Fail (Open view without shortlink)
+                .catch(error => {
+                    console.log(error);
+                    openWithoutSmallLink();
+                });
+        }
+        finally {
+            openWithoutSmallLink();
+        }
         function openWithoutSmallLink() {
             this.requestSafetyFlag = false;
             this.openGetLinkView({
