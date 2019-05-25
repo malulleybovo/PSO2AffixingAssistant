@@ -754,12 +754,12 @@ class ViewController {
         this.requestSafetyFlag = true;
         try {
             var fetch = fetch || window.fetch || null;
-            alert(1)
-            alert(fetch);
             if (!fetch) {
+                alert(1);
                 openWithoutSmallLink();
                 return;
             }
+            alert(3);
             fetch(
                 'https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
                 + encodeURIComponent(window.location.href))
@@ -790,10 +790,12 @@ class ViewController {
         }
         function openWithoutSmallLink() {
             this.requestSafetyFlag = false;
+            alert(2);
             this.openGetLinkView({
                 shouldAnimate: true,
                 shortLink: null
             });
+            alert(3);
         }
     }
 
