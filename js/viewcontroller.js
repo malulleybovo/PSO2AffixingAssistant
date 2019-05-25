@@ -752,8 +752,7 @@ class ViewController {
     getShortURLThenOpenLinkView() {
         if (this.requestSafetyFlag) return;
         this.requestSafetyFlag = true;
-        let mFetch = fetch;
-        if (fetch) mFetch = window.fetch;
+        var mFetch = fetch || window.fetch || null;
         if (!mFetch) {
             openWithoutSmallLink();
             return;
