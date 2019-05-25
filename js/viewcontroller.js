@@ -752,44 +752,29 @@ class ViewController {
     getShortURLThenOpenLinkView() {
         if (this.requestSafetyFlag) return;
         this.requestSafetyFlag = true;
-        var fetch = fetch || window.fetch || null;
-        if (!fetch) {
-            this.requestSafetyFlag = false;
-            alert(this.openGetLinkView);
-            this.openGetLinkView({
-                shouldAnimate: true,
-                shortLink: null
-            });
-            return;
-        }
-        fetch(
-            'https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
-            + encodeURIComponent(window.location.href))
-            // Request Short URL
-            .then(response => {
-                this.requestSafetyFlag = false;
-                if (response.ok) {
-                    return response.json();
-                }
-            })
-            // Retrieve URL
-            .then(data => data.data.url)
-            // Display View
-            .then(shortlink => {
-                this.openGetLinkView({
+        let bitlyUrl = 'https://api-ssl.bitly.com/v3/shorten?'
+            + 'access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
+            + encodeURIComponent(window.location.href)
+        let vc = this;
+        $.ajax({
+            type: "GET",
+            url: bitlyUrl,
+            success: function (data) {
+                vc.requestSafetyFlag = false;
+                let shortlink = data.url ? data.url : null;
+                vc.openGetLinkView({
                     shouldAnimate: true,
                     shortLink: shortlink
                 });
-            })
-            // Request Fail (Open view without shortlink)
-            .catch(error => {
-                this.requestSafetyFlag = false;
-                console.log(error);
-                this.openGetLinkView({
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                vc.requestSafetyFlag = false;
+                vc.openGetLinkView({
                     shouldAnimate: true,
                     shortLink: null
                 });
-            });
+            }
+        });
     }
 
     updateFromURL() {
