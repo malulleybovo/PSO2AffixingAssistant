@@ -752,20 +752,24 @@ class ViewController {
     getShortURLThenOpenLinkView() {
         if (this.requestSafetyFlag) return;
         this.requestSafetyFlag = true;
+        alert(window.location.href);
         fetch(
             'https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
             + encodeURIComponent(window.location.href))
             // Request Short URL
             .then(response => {
+                alert('1');
                 this.requestSafetyFlag = false;
                 if (response.ok) {
                     return response.json();
                 }
+                alert('2');
             })
             // Retrieve URL
             .then(data => data.data.url)
             // Display View
             .then(shortlink => {
+                alert('3');
                 this.openGetLinkView({
                     shouldAnimate: true,
                     shortLink: shortlink
