@@ -752,51 +752,44 @@ class ViewController {
     getShortURLThenOpenLinkView() {
         if (this.requestSafetyFlag) return;
         this.requestSafetyFlag = true;
-        try {
-            var fetch = fetch || window.fetch || null;
-            alert(openWithoutSmallLink);
-            if (!fetch) {
-                alert(1);
-                openWithoutSmallLink();
-                return;
-            }
-            alert(3);
-            fetch(
-                'https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
-                + encodeURIComponent(window.location.href))
-                // Request Short URL
-                .then(response => {
-                    this.requestSafetyFlag = false;
-                    if (response.ok) {
-                        return response.json();
-                    }
-                })
-                // Retrieve URL
-                .then(data => data.data.url)
-                // Display View
-                .then(shortlink => {
-                    this.openGetLinkView({
-                        shouldAnimate: true,
-                        shortLink: shortlink
-                    });
-                })
-                // Request Fail (Open view without shortlink)
-                .catch(error => {
-                    console.log(error);
-                    openWithoutSmallLink();
-                });
-        }
-        finally {
+        var fetch = fetch || window.fetch || null;
+        if (!fetch) {
             this.requestSafetyFlag = false;
-        }
-        function openWithoutSmallLink() {
-            alert(2);
+            alert(this.openGetLinkView);
             this.openGetLinkView({
                 shouldAnimate: true,
                 shortLink: null
             });
-            alert(3);
+            return;
         }
+        fetch(
+            'https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
+            + encodeURIComponent(window.location.href))
+            // Request Short URL
+            .then(response => {
+                this.requestSafetyFlag = false;
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            // Retrieve URL
+            .then(data => data.data.url)
+            // Display View
+            .then(shortlink => {
+                this.openGetLinkView({
+                    shouldAnimate: true,
+                    shortLink: shortlink
+                });
+            })
+            // Request Fail (Open view without shortlink)
+            .catch(error => {
+                this.requestSafetyFlag = false;
+                console.log(error);
+                this.openGetLinkView({
+                    shouldAnimate: true,
+                    shortLink: null
+                });
+            });
     }
 
     updateFromURL() {
