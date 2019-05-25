@@ -753,6 +753,8 @@ class ViewController {
         if (this.requestSafetyFlag) return;
         this.requestSafetyFlag = true;
         var mFetch = fetch || window.fetch || null;
+        alert(1)
+        alert(mFetch);
         if (!mFetch) {
             openWithoutSmallLink();
             return;
