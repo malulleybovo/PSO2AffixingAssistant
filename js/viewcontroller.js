@@ -760,6 +760,7 @@ class ViewController {
             type: "GET",
             url: bitlyUrl,
             success: function (data) {
+                alert(JSON.stringify(data));
                 vc.requestSafetyFlag = false;
                 let shortlink = data.url ? data.url : null;
                 vc.openGetLinkView({
