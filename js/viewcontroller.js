@@ -752,7 +752,7 @@ class ViewController {
     getShortURLThenOpenLinkView() {
         if (this.requestSafetyFlag) return;
         this.requestSafetyFlag = true;
-        alert(fetch);
+        alert(window.fetch);
         fetch(
             'https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
             + encodeURIComponent(window.location.href))
