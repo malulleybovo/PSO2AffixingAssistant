@@ -754,6 +754,7 @@ class ViewController {
         this.requestSafetyFlag = true;
         try {
             var fetch = fetch || window.fetch || null;
+            alert(openWithoutSmallLink);
             if (!fetch) {
                 alert(1);
                 openWithoutSmallLink();
@@ -786,10 +787,9 @@ class ViewController {
                 });
         }
         finally {
-            openWithoutSmallLink();
+            this.requestSafetyFlag = false;
         }
         function openWithoutSmallLink() {
-            this.requestSafetyFlag = false;
             alert(2);
             this.openGetLinkView({
                 shouldAnimate: true,
