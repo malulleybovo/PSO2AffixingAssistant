@@ -752,24 +752,26 @@ class ViewController {
     getShortURLThenOpenLinkView() {
         if (this.requestSafetyFlag) return;
         this.requestSafetyFlag = true;
-        alert(window.fetch);
-        fetch(
+        let mFetch = fetch;
+        if (fetch) mFetch = window.fetch;
+        if (!mFetch) {
+            openWithoutSmallLink();
+            return;
+        }
+        mFetch(
             'https://api-ssl.bitly.com/v3/shorten?access_token=85f88da122ee5904f211eea3714d900570b7cb1f&longUrl='
             + encodeURIComponent(window.location.href))
             // Request Short URL
             .then(response => {
-                alert('1');
                 this.requestSafetyFlag = false;
                 if (response.ok) {
                     return response.json();
                 }
-                alert('2');
             })
             // Retrieve URL
             .then(data => data.data.url)
             // Display View
             .then(shortlink => {
-                alert('3');
                 this.openGetLinkView({
                     shouldAnimate: true,
                     shortLink: shortlink
@@ -777,14 +779,16 @@ class ViewController {
             })
             // Request Fail (Open view without shortlink)
             .catch(error => {
-                this.requestSafetyFlag = false;
-                alert(error.message);
                 console.log(error);
-                this.openGetLinkView({
-                    shouldAnimate: true,
-                    shortLink: null
-                });
+                openWithoutSmallLink();
             });
+        function openWithoutSmallLink() {
+            this.requestSafetyFlag = false;
+            this.openGetLinkView({
+                shouldAnimate: true,
+                shortLink: null
+            });
+        }
     }
 
     updateFromURL() {
