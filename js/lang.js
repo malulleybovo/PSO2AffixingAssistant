@@ -473,6 +473,10 @@ const lang = Object.freeze({
             en: "S1 Add: Augment Intent",
             jp: "S1追加:錬成の志"
         },
+        "S1 Add: Photon Balance": {
+            en: "S1 Add: Photon Balance",
+            jp: "S1追加:光子の秤"
+        },
         "S2 Add: Umbrageous Melody": {
             en: "S2 Add: Umbrageous Melody",
             jp: "S2追加:月葉影の歌"
@@ -505,6 +509,14 @@ const lang = Object.freeze({
             en: "S2 Add: Skill Reduction",
             jp: "S2追加:技巧縮減"
         },
+        "S2 Add: Heavenly Keeper": {
+            en: "S2 Add: Heavenly Keeper",
+            jp: "S2追加:保天輝地"
+        },
+        "S2 Add: Flowing Armor": {
+            en: "S2 Add: Flowing Armor",
+            jp: "S2追加:時流の護"
+        },
         "S3 Add: Nature's Melody": {
             en: "S3 Add: Nature's Melody",
             jp: "S3追加:花海雪の歌"
@@ -515,7 +527,7 @@ const lang = Object.freeze({
         },
         "S3 Add: Flowing Grace": {
             en: "S3 Add: Flowing Grace",
-            jp: "追加:時流の恵"
+            jp: "S3追加:時流の恵"
         },
         "S3 Add: Flowing Exhilaration 2": {
             en: "S3 Add: Flowing Exhilaration 2",
@@ -535,7 +547,11 @@ const lang = Object.freeze({
         },
         "S3 Add: Wise Strike": {
             en: "S3 Add: Wise Strike",
-            jp: "追加:撃流の巧"
+            jp: "S3追加:撃流の巧"
+        },
+        "S3 Add: Flowing Courage": {
+            en: "S3 Add: Flowing Courage",
+            jp: "S3追加:時流の勇"
         },
         "S4 Add: Heavenly Protection": {
             en: "S4 Add: Heavenly Protection",
@@ -1602,6 +1618,12 @@ const lang = Object.freeze({
         effect_en: "Grant a 25% chance to inflict the Jellen status when attacking an enemy.",
         effect_jp: "命中時に25％の確率でジェルンを付与。"
     },
+    "LA2P": {
+        name_en: "S1:Photon Balance",
+        name_jp: "S1:光子の秤",
+        effect_en: "Increases PP consumption by 8%, but boosts PA and Tech damage by 4%.",
+        effect_jp: "PP消費量が8％増加する代わりにPAとテクニックの威力が4％上昇する。"
+    },
     "LB01": {
         name_en: "S2:Sturdy Recovery",
         name_jp: "S2:剛乱活与",
@@ -1848,6 +1870,36 @@ const lang = Object.freeze({
         effect_en: "Reduce PP consumption for 30 seconds upon hitting with a PA/Technique. Has a low chance to grant amplified effects. Triggers Recast upon activation.",
         effect_jp: "フォトンアーツまたはテクニック命中後30秒間、PPの消費量を軽減。また、まれに大きく軽減することがある。効果発動後にリキャストが発生。"
     },
+    "LB1W": {
+        name_en: "S2:Lightning Guard",
+        name_jp: "S2:轟雷の備志",
+        effect_en: "Increases your Lightning attribute and Shock resistance. Boosts power against enemies that are weak to Lightning.",
+        effect_jp: "雷耐性、ショック耐性が上昇。敵の弱点属性が雷属性の時、威力上昇。"
+    },
+    "LB1Y": {
+        name_en: "S2:Storm Guard",
+        name_jp: "S2:暴風の備志",
+        effect_en: "Increases your Wind attribute and Shock resistance. Boosts power against enemies that are weak to Wind.",
+        effect_jp: "風耐性、ショック耐性が上昇。敵の弱点属性が雷属性の時、威力上昇。"
+    },
+    "LB1Z": {
+        name_en: "S2:Aegis Gift",
+        name_jp: "S2:護輝与賜物",
+        effect_en: "When you Just Guard at less than 25% HP, recovers HP by 50% and PP by 30%.",
+        effect_jp: "HPを25％未満にすると、HPが50％、PPが30％回復します。"
+    },
+    "LB2A": {
+        name_en: "S2:Heavenly Keeper",
+        name_jp: "S2:保天輝地",
+        effect_en: "In the air, reduces PP consumption by 8%. On the ground, boosts PP regeneration and attack PP recovery by 20%.",
+        effect_jp: "空中時では、PP消費量が8％軽減。地上時では自然PP回復量が20％かつ地上での攻撃時ではPP回復量が20％上昇。"
+    },
+    "LB2C": {
+        name_en: "S2:Flowing Armor",
+        name_jp: "S2:時流の護",
+        effect_en: "Automatically casts Deband at regular intervals.",
+        effect_jp: "一定間隔で自身にデバンドを発動する。"
+    },
     "LC01": {
         name_en: "S3:Offensive Intent",
         name_jp: "S3:剛撃の志",
@@ -2039,6 +2091,12 @@ const lang = Object.freeze({
         name_jp: "S3:撃流の巧",
         effect_en: "Increase Critical Hit Rate by 2% for every 300, 000 damage dealt. Maxes at 30%.",
         effect_jp: "与ダメージ300000ごとにクリティカル率が2%上昇。（最大30%まで）"
+    },
+    "LC2B": {
+        name_en: "S3:Flowing Courage",
+        name_jp: "S3:時流の勇",
+        effect_en: "Automatically casts Shifta at regular intervals.",
+        effect_jp: "一定間隔で自身にシフタを発動する。"
     },
     "LD07": {
         name_en: "S4:Marvelous Aegis",
@@ -2592,6 +2650,30 @@ const lang = Object.freeze({
         effect_en: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>HP(+35),<br>PP(+3)",
         effect_jp: "打撃力(+25),<br>射撃力(+25),<br>法撃力(+25),<br>HP(+35),<br>PP(+3)"
     },
+    "SI01": {
+        name_en: "Ex Act Soul",
+        name_jp: "イクスアクト・ソール",
+        effect_en: "S-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_jp: "打撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
+    },
+    "SI02": {
+        name_en: "Ex Till Soul",
+        name_jp: "イクスティル・ソール",
+        effect_en: "R-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_jp: "射撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
+    },
+    "SI03": {
+        name_en: "Ex Magi Soul",
+        name_jp: "イクスマギー・ソール",
+        effect_en: "T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_jp: "法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
+    },
+    "SI04": {
+        name_en: "Ex Ares Soul",
+        name_jp: "イクスアレス・ソール",
+        effect_en: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+50), PP(+2)",
+        effect_jp: "打撃力(+20),射撃力(+20),法撃力(+20),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+50),PP(+2)"
+    },
     "TA01": {
         name_en: "Stigma",
         name_jp: "スティグマ",
@@ -2717,6 +2799,54 @@ const lang = Object.freeze({
         name_jp: "リターナーⅤ",
         effect_en: "ALL(+30),<br>HP(+30),<br>PP(+5)",
         effect_jp: "ALL(+30),<br>HP(+30),<br>PP(+5)"
+    },
+    "TM01": {
+        name_en: "Crack I",
+        name_jp: "クラックI",
+        effect_en: "S-ATK(+3), R-ATK(+3), T-ATK(+3), S-DEF(+5), R-DEF(+5), T-DEF(+5), HP(+5), PP(+1)",
+        effect_jp: "打撃力(+3),射撃力(+3),法撃力(+3),打撃防御(+5),射撃防御(+5),法撃防御(+5),HP(+5),PP(+1)"
+    },
+    "TM02": {
+        name_en: "Crack II",
+        name_jp: "クラックII",
+        effect_en: "S-ATK(+5), R-ATK(+5), T-ATK(+5), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+10), PP(+1)",
+        effect_jp: "打撃力(+5),射撃力(+5),法撃力(+5),打撃防御(+10),射撃防御(+10),法撃防御(+10),HP(+10),PP(+1)"
+    },
+    "TM03": {
+        name_en: "Crack III",
+        name_jp: "クラックIII",
+        effect_en: "S-ATK(+10), R-ATK(+10), T-ATK(+10), S-DEF(+15), R-DEF(+15), T-DEF(+15), HP(+15), PP(+1)",
+        effect_jp: "打撃力(+10),射撃力(+10),法撃力(+10),打撃防御(+15),射撃防御(+15),法撃防御(+15),HP(+15),PP(+1)"
+    },
+    "TM04": {
+        name_en: "Crack IV",
+        name_jp: "クラックIV",
+        effect_en: "S-ATK(+15), R-ATK(+15), T-ATK(+15), S-DEF(+30), R-DEF(+30), T-DEF(+30), HP(+30), PP(+2)",
+        effect_jp: "打撃力(+15),射撃力(+15),法撃力(+15),打撃防御(+30),射撃防御(+30),法撃防御(+30),HP(+30),PP(+2)"
+    },
+    "TM05": {
+        name_en: "Crack V",
+        name_jp: "クラックV",
+        effect_en: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+50), R-DEF(+50), T-DEF(+50), HP(+50), PP(+2)",
+        effect_jp: "打撃力(+30),射撃力(+30),法撃力(+30),打撃防御(+50),射撃防御(+50),法撃防御(+50),HP(+50),PP(+2)"
+    },
+    "TN01": {
+        name_en: "Ange Glare",
+        name_jp: "アンジュール・グレア",
+        effect_en: "S-ATK(+30), S-DEF(+40), R-DEF(+20), T-DEF(+20)",
+        effect_jp: "打撃力(+30),打撃防御(+40),射撃防御(+20),法撃防御(+20)"
+    },
+    "TN02": {
+        name_en: "Veluge Glare",
+        name_jp: "べルージュ・グレア",
+        effect_en: "R-ATK(+30), S-DEF(+20), R-DEF(+40), T-DEF(+20)",
+        effect_jp: "射撃力(+30),打撃防御(+20),射撃防御(+40),法撃防御(+20)"
+    },
+    "TN03": {
+        name_en: "Dominus Glare",
+        name_jp: "ドゥミヌス・グレア",
+        effect_en: "T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+40)",
+        effect_jp: "法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+40)"
     },
     "TF01": {
         name_en: "Spirita Alpha",
@@ -3064,7 +3194,7 @@ const lang = Object.freeze({
         name_en: "Mark Couragena",
         name_jp: "マーク・カレジナ",
         effect_en: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>PP(+5)",
-        effect_jp: "打撃力(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>PP(+5)"
+        effect_jp: "打撃力(+40),<br>射撃力(+40),<br>法撃力(+40),<br>PP(+5)"
     },
     "UC21": {
         name_en: "Mark Angar",
@@ -3077,6 +3207,24 @@ const lang = Object.freeze({
         name_jp: "マーク・グリフ",
         effect_en: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)",
         effect_jp: "打撃防御(+50),<br>射撃防御(+50),<br>法撃防御(+50),<br>HP(+80)"
+    },
+    "ID01": {
+        name_en: "Divine Will",
+        name_jp: "ディバインウィル",
+        effect_en: "S-ATK(+20), R-ATK(+20), T-ATK(+20), PP(+5)",
+        effect_jp: "打撃力(+20),射撃力(+20),法撃力(+20),PP(+5)"
+    },
+    "ID02": {
+        name_en: "Divine Order",
+        name_jp: "ディバイン・オーダー",
+        effect_en: "S-ATK(+50), R-ATK(+50), T-ATK(+50), HP(+20), PP(+10)",
+        effect_jp: "打撃力(+50),射撃力(+50),法撃力(+50),HP(+20),PP(+10)"
+    },
+    "IE01": {
+        name_en: "Exceed Energy",
+        name_jp: "イクシード・エナジー",
+        effect_en: "S-ATK(+50), R-ATK(+50), T-ATK(+50), DEX(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+5)",
+        effect_jp: "打撃力(+50),射撃力(+50),法撃力(+50),技量(+20),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+5)"
     },
     "YA01": {
         name_en: "Sentence Power",
@@ -3239,6 +3387,30 @@ const lang = Object.freeze({
         name_jp: "オメガバスター",
         effect_en: "Boosts damage against Demons by 3%.",
         effect_jp: "魔物へのダメージは10％増加する。"
+    },
+    "VI01": {
+        name_en: "Ripper/Ltn. Weak",
+        name_jp: "リーパー／雷弱点",
+        effect_en: "Boost damage against enemies weak to Lightning. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "雷弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
+    "VI02": {
+        name_en: "Ripper/Fire Weak",
+        name_jp: "リーパー／火弱点",
+        effect_en: "Boost damage against enemies weak to Fire. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "火弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
+    "VQ01": {
+        name_en: "Slayer/Armor Type",
+        name_jp: "スレイヤー／機甲種",
+        effect_en: "Boost damage against Lillipa Mechs. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "機甲種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
+    "VQ02": {
+        name_en: "Slayer/Beast Type",
+        name_jp: "スレイヤー／野獣種",
+        effect_en: "Boost damage against Naberius Natives. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "野獣種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
     },
     "VJ01": {
         name_en: "Soul Catalyst",

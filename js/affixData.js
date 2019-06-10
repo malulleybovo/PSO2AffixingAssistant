@@ -346,6 +346,14 @@
                 effect: ""
             },
             {
+                ref: 493,
+                id: "S1 Add: Photon Balance",
+                name: "S1:Photon Balance",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 199,
                 id: "S2 Add: Umbrageous Melody",
                 name: "S2:Umbrageous Melody",
@@ -405,6 +413,22 @@
                 ref: 210,
                 id: "S2 Add: Skill Reduction",
                 name: "S2:Skill Reduction",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 497,
+                id: "S2 Add: Heavenly Keeper",
+                name: "S2:Heavenly Keeper",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 499,
+                id: "S2 Add: Flowing Armor",
+                name: "S2:Flowing Armor",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -477,6 +501,14 @@
                 ref: 242,
                 id: "S3 Add: Wise Strike",
                 name: "S3:Wise Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 498,
+                id: "S3 Add: Flowing Courage",
+                name: "S3:Flowing Courage",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1171,6 +1203,526 @@
         },
         {
             base: [
+                "SI01",
+                "RA11"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "RA15"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "RA21"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "RA23"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "RB22"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "RC13"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "RH21"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "RH23"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "RI23"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "RJ22"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "ROA2"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "ROC1"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI01",
+                "ROE1"
+            ],
+            ref: [
+                "SH10"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "RA11"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "RA15"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "RA21"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "RA23"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "RB22"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "RC13"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "RH21"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "RH23"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "RI23"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "RJ22"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "ROA2"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "ROC1"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI02",
+                "ROE1"
+            ],
+            ref: [
+                "SH20"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "RA11"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "RA15"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "RA21"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "RA23"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "RB22"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "RC13"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "RH21"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "RH23"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "RI23"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "RJ22"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "ROA2"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "ROC1"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI03",
+                "ROE1"
+            ],
+            ref: [
+                "SH30"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "RA11"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "RA15"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "RA21"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "RA23"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "RB22"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "RC13"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "RH21"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "RH23"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "RI23"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "RJ22"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "ROA2"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "ROC1"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
+                "SI04",
+                "ROE1"
+            ],
+            ref: [
+                "SH40"
+            ],
+            success: 90
+        },
+        {
+            base: [
                 "LP05",
                 "LM05"
             ],
@@ -1541,6 +2093,20 @@
                         max: 60,
                         boost: 20
                     }
+                ]
+            }
+        },
+        divinewill: {
+            extend: {
+                "1": [
+                    20
+                ]
+            }
+        },
+        divineorder: {
+            extend: {
+                "1": [
+                    30
                 ]
             }
         }
@@ -4486,6 +5052,19 @@
             noEx: true
         },
         {
+            ref: 493,
+            code: "LA2P",
+            gid: "L1",
+            name: "S1:Photon Balance",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increases PP consumption by 8%, but boosts PA and Tech damage by 4%.",
+            noEx: true
+        },
+        {
             ref: 170,
             code: "LB01",
             gid: "L2",
@@ -4709,6 +5288,7 @@
         {
             ref: 187,
             code: "LB18",
+            simCode: "LB1T",
             gid: "L2",
             name: "S2:Radiating Grace",
             extend: [
@@ -5012,7 +5592,7 @@
         {
             ref: 210,
             code: "LB93",
-            simCode: "LB1W",
+            simCode: "LB1X",
             gid: "L2",
             name: "S2:Skill Reduction",
             extend: [
@@ -5021,6 +5601,71 @@
                 100
             ],
             effect: "Reduce PP consumption for 30 seconds upon hitting with a PA/Technique. Has a low chance to grant amplified effects. Triggers Recast upon activation.",
+            noEx: true
+        },
+        {
+            ref: 494,
+            code: "LB1W",
+            gid: "L2",
+            name: "S2:Lightning Guard",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increases your Lightning attribute and Shock resistance. Boosts power against enemies that are weak to Lightning.",
+            noEx: true
+        },
+        {
+            ref: 495,
+            code: "LB1Y",
+            gid: "L2",
+            name: "S2:Storm Guard",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increases your Wind attribute and Shock resistance. Boosts power against enemies that are weak to Wind.",
+            noEx: true
+        },
+        {
+            ref: 496,
+            code: "LB1Z",
+            gid: "L2",
+            name: "S2:Aegis Gift",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "When you Just Guard at less than 25% HP, recovers HP by 50% and PP by 30%.",
+            noEx: true
+        },
+        {
+            ref: 497,
+            code: "LB2A",
+            gid: "L2",
+            name: "S2:Heavenly Keeper",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "In the air, reduces PP consumption by 8%. On the ground, boosts PP regeneration and attack PP recovery by 20%.",
+            noEx: true
+        },
+        {
+            ref: 499,
+            code: "LB2C",
+            gid: "L2",
+            name: "S2:Flowing Armor",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Automatically casts Deband at regular intervals.",
             noEx: true
         },
         {
@@ -5443,6 +6088,20 @@
                 100
             ],
             effect: "Increase Critical Hit Rate by 2% for every 300, 000 damage dealt. Maxes at 30%.",
+            noEx: true
+        },
+        {
+            ref: 498,
+            code: "LC2B",
+            simCode: "LB2B",
+            gid: "L3",
+            name: "S3:Flowing Courage",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Automatically casts Shifta at regular intervals.",
             noEx: true
         },
         {
@@ -6963,6 +7622,58 @@
             tooltip: "Made by: Earth/Omega Soul + Free Field Boss Soul"
         },
         {
+            ref: 500,
+            code: "SI01",
+            gid: "EA",
+            name: "Ex Act Soul",
+            extend: [
+                0,
+                50,
+                80
+            ],
+            effect: "S-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+            tooltip: "Used for: Act The Soul"
+        },
+        {
+            ref: 501,
+            code: "SI02",
+            gid: "EA",
+            name: "Ex Till Soul",
+            extend: [
+                0,
+                50,
+                80
+            ],
+            effect: "R-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+            tooltip: "Used for: Till The Soul"
+        },
+        {
+            ref: 502,
+            code: "SI03",
+            gid: "EA",
+            name: "Ex Magi Soul",
+            extend: [
+                0,
+                50,
+                80
+            ],
+            effect: "T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+            tooltip: "Used for: Magi The Soul"
+        },
+        {
+            ref: 503,
+            code: "SI04",
+            gid: "EA",
+            name: "Ex Ares Soul",
+            extend: [
+                0,
+                50,
+                80
+            ],
+            effect: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+50), PP(+2)",
+            tooltip: "Used for: Ares The Soul"
+        },
+        {
             ref: 335,
             code: "TA01",
             gid: "AC",
@@ -7250,6 +7961,130 @@
             ],
             status: 4,
             effect: "ALL(+30),<br>HP(+30),<br>PP(+5)"
+        },
+        {
+            ref: 504,
+            code: "TM01",
+            gid: "AC",
+            name: "Crack I",
+            lvup: "TM02",
+            extend: [
+                0,
+                30,
+                100
+            ],
+            status: 4,
+            effect: "S-ATK(+3), R-ATK(+3), T-ATK(+3), S-DEF(+5), R-DEF(+5), T-DEF(+5), HP(+5), PP(+1)"
+        },
+        {
+            ref: 505,
+            code: "TM02",
+            gid: "AC",
+            name: "Crack II",
+            lvup: "TM03",
+            extend: [
+                0,
+                30,
+                100
+            ],
+            generate: [
+                70,
+                70
+            ],
+            status: 4,
+            effect: "S-ATK(+5), R-ATK(+5), T-ATK(+5), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+10), PP(+1)"
+        },
+        {
+            ref: 506,
+            code: "TM03",
+            gid: "AC",
+            name: "Crack III",
+            lvup: "TM04",
+            extend: [
+                0,
+                30,
+                100
+            ],
+            generate: [
+                50,
+                50
+            ],
+            status: 4,
+            effect: "S-ATK(+10), R-ATK(+10), T-ATK(+10), S-DEF(+15), R-DEF(+15), T-DEF(+15), HP(+15), PP(+1)"
+        },
+        {
+            ref: 507,
+            code: "TM04",
+            gid: "AC",
+            name: "Crack IV",
+            lvup: "TM05",
+            extend: [
+                0,
+                30,
+                100
+            ],
+            generate: [
+                0,
+                30
+            ],
+            status: 4,
+            effect: "S-ATK(+15), R-ATK(+15), T-ATK(+15), S-DEF(+30), R-DEF(+30), T-DEF(+30), HP(+30), PP(+2)"
+        },
+        {
+            ref: 508,
+            code: "TM05",
+            gid: "AC",
+            name: "Crack V",
+            extend: [
+                0,
+                30,
+                100
+            ],
+            generate: [
+                0,
+                20
+            ],
+            status: 4,
+            effect: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+50), R-DEF(+50), T-DEF(+50), HP(+50), PP(+2)"
+        },
+        {
+            ref: 509,
+            code: "TN01",
+            gid: "AC",
+            name: "Ange Glare",
+            extend: [
+                30,
+                50,
+                50
+            ],
+            status: 1,
+            effect: "S-ATK(+30), S-DEF(+40), R-DEF(+20), T-DEF(+20)"
+        },
+        {
+            ref: 510,
+            code: "TN02",
+            gid: "AC",
+            name: "Veluge Glare",
+            extend: [
+                30,
+                50,
+                50
+            ],
+            status: 1,
+            effect: "R-ATK(+30), S-DEF(+20), R-DEF(+40), T-DEF(+20)"
+        },
+        {
+            ref: 511,
+            code: "TN03",
+            gid: "AC",
+            name: "Dominus Glare",
+            extend: [
+                30,
+                50,
+                50
+            ],
+            status: 1,
+            effect: "T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+40)"
         },
         {
             ref: 356,
@@ -8059,6 +8894,35 @@
             effect: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
         },
         {
+            ref: 512,
+            code: "ID01",
+            gid: "AC",
+            name: "Divine Will",
+            extup: [
+                "TN0"
+            ],
+            rel: "divinewill",
+            effect: "S-ATK(+20), R-ATK(+20), T-ATK(+20), PP(+5)"
+        },
+        {
+            ref: 513,
+            code: "ID02",
+            gid: "AC",
+            name: "Divine Order",
+            extup: [
+                "TN0"
+            ],
+            rel: "divineorder",
+            effect: "S-ATK(+50), R-ATK(+50), T-ATK(+50), HP(+20), PP(+10)"
+        },
+        {
+            ref: 514,
+            code: "IE01",
+            gid: "AC",
+            name: "Exceed Energy",
+            effect: "S-ATK(+50), R-ATK(+50), T-ATK(+50), DEX(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+5)"
+        },
+        {
             ref: 416,
             code: "YA01",
             gid: "AC",
@@ -8334,9 +9198,58 @@
         {
             ref: 442,
             code: "VH11",
+            simCode: "VH02",
             gid: "CB",
             name: "Omega Buster",
             effect: "Boosts damage against Demons by 3%."
+        },
+        {
+            ref: 515,
+            code: "VI01",
+            gid: "YA",
+            name: "Ripper/Ltn. Weak",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against enemies weak to Lightning. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 516,
+            code: "VI02",
+            gid: "YA",
+            name: "Ripper/Fire Weak",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against enemies weak to Fire. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 517,
+            code: "VQ01",
+            gid: "YA",
+            name: "Slayer/Armor Type",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against Lillipa Mechs. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 518,
+            code: "VQ02",
+            gid: "YA",
+            name: "Slayer/Beast Type",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against Naberius Natives. Effect is reduced as the Weapon Rarity increases."
         },
         {
             ref: 443,

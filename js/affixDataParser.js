@@ -218,7 +218,7 @@ class AffixDataParser {
                 }
             }
         }
-        // BONUS FROM SOUL, DOOM, AND EXTREME RECEPTOR
+        // BONUS FROM SOUL, DOOM, EXTREME RECEPTOR, DIVINE WILL/ORDER
         if (data.abilityList) {
             for (var i = 0; i < data.abilityList.length; i++) {
                 let thisAbility = data.abilityList[i];
