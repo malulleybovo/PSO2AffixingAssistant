@@ -1222,20 +1222,23 @@ class ViewController {
             (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
         if (vc.choicesSelected.includes(null)) return;
-        let choices = vc.choicesSelected;
-        let targetNumSlots = vc.affixesSelected.length - (vc.isIncludingFoddersIntrinsicFactor ? 1 : 0)
-            - ((vc.shouldUpslot && vc.affixesSelected.length > 1) ? 1 : 0);
-        let newPage = vc.assistant.buildPageWith(choices, targetNumSlots, vc.shouldSpread, vc.shouldUseTrainer);
-        if (typeof newPage === 'string') {
+        try {
+            let choices = vc.choicesSelected;
+            let targetNumSlots = vc.affixesSelected.length - (vc.isIncludingFoddersIntrinsicFactor ? 1 : 0)
+                - ((vc.shouldUpslot && vc.affixesSelected.length > 1) ? 1 : 0);
+            let newPage = vc.assistant.buildPageWith(choices, targetNumSlots, vc.shouldSpread, vc.shouldUseTrainer);
+            if (typeof newPage === 'string') {
+                console.warn(
+                    'Attempted to produce a new page with choices %o, but produced page was %o',
+                    choices, newPage);
+                throw false;
+            }
+            $('div.choice-selection-container').remove();
+            vc.pageInReview = newPage;
+            vc.openReviewAndTweakScreen();
+        } catch (e) {
             vc.openReportIssueScreen();
-            console.warn(
-                'Attempted to produce a new page with choices %o, but produced page was %o',
-                choices, newPage);
-            return;
         }
-        $('div.choice-selection-container').remove();
-        vc.pageInReview = newPage;
-        vc.openReviewAndTweakScreen();
         try {
             gaRequests.send('method', 'confirm', {
                 'View Type': 'Choose Method of Making View',

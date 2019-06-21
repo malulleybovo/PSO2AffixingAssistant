@@ -956,7 +956,7 @@ class Assistant {
                     let choice = affixChoices[n];
 
                     let combined = this.getAffixInstancesInvolvedIn([choice, fodderAffixChoice]);
-                    if (combined.length < choice.length + fodderAffixChoice) {
+                    if (combined != null && combined.length < choice.length + fodderAffixChoice) {
                         let receptorMatches = combined.materials.filter(
                             (mat) => mat.code.match(Assistant.RECEPTOR_REGEX)).length;
                         let maxRate = Math.max(
