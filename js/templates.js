@@ -271,7 +271,8 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode
                 filtersearch += `<li data-idx="${i}"><div title="${lang[datalist[i].code]['effect_' + langCode].replace(/<br>/g, ' ')}" data-code="${datalist[i].code}">${lang[datalist[i].code]['name_' + langCode]}</div></li>`;
             }
             else if (datalist[i].isAddAbilityItem && lang['additional'][datalist[i].name]) {
-                let choice = `<span class="rate">${datalist[i].transferRate}</span>% : ${lang['additional'][datalist[i].name][langCode]}`;
+                let choice = `<span${(!datalist[i].isSSA) ?
+                    ` class="rate"` : ``}>${datalist[i].transferRate}</span>% : ${lang['additional'][datalist[i].name][langCode]}`;
                 filtersearch += `<li data-idx="${i}"><div>${choice}</div></li>`;
             }
             else if (datalist[i].isAbilityFactor) {

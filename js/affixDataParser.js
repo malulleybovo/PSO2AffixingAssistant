@@ -295,6 +295,7 @@ class AffixDataParser {
                                 transferRate: additionalChoice.extend,
                                 materials: [],
                                 isAddAbilityItem: true,
+                                isSSA: data.abilityList[j].noEx ? true : false,
                                 name: additionalChoice.id,
                                 value: additionalChoice.value,
                                 ref: additionalChoice.ref
