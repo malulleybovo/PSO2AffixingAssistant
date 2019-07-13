@@ -867,6 +867,14 @@
         {
             base: [
                 "XA01",
+                "SI*"
+            ],
+            ref: "$$",
+            success: 100
+        },
+        {
+            base: [
+                "XA01",
                 "SH*"
             ],
             ref: "$$",
@@ -9703,6 +9711,58 @@
                 100
             ],
             effect: "100% affix junk"
+        },
+        {
+            ref: 519,
+            code: "LA99",
+            gid: "L1",
+            name: "S1:Junk",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Generic S1 junk.",
+            noEx: true
+        },
+        {
+            ref: 520,
+            code: "LB99",
+            gid: "L2",
+            name: "S2:Junk",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Generic S2 junk.",
+            noEx: true
+        },
+        {
+            ref: 521,
+            code: "LC99",
+            gid: "L3",
+            name: "S3:Junk",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Generic S3 junk.",
+            noEx: true
+        },
+        {
+            ref: 519,
+            code: "LD99",
+            gid: "L4",
+            name: "S4:Junk",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Generic S4 junk.",
+            noEx: true
         }
     ],
     abilityFactor: [
@@ -9744,6 +9804,7 @@
         { name: `Flict Tiro`, jpName: `フリクト・ティロ` },
         { name: `Flict Magia`, jpName: `フリクト・マギア` },
         { name: `Doom Break`, jpName: `ドゥームブレイク` },
+        { name: `Doom Break 2`, jpName: `ドゥームブレイクII` },
         { name: `Spirita Alpha`, jpName: `スピリタ・アルファ` },
         { name: `Sentence Power`, jpName: `センテンス・パワー` },
         { name: `Sentence Shoot`, jpName: `センテンス・シュート` },

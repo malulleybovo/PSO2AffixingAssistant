@@ -377,7 +377,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                         <div class="selection-container">`;
         for (var i = 0; i < Fodder.CAPACITY; i++) {
             layoutTemplate += `<div class="affix${(affixesSelected[i]) ? `` : ` empty`}"${(affixesSelected[i]) ? ` title="${lang[affixesSelected[i].code]['effect_' + langCode]}"` : ``}${(affixesSelected[i]) ? ` data-code="${affixesSelected[i].code}"` : ``}>
-                                <i class="fa fa-trash"></i>
+                                <i class="fa fa-trash">${hasFaFailedLoading ? 'remove' : ''}</i>
                                 <span>${(affixesSelected[i] && affixesSelected[i].code && lang[affixesSelected[i].code] && lang[affixesSelected[i].code]['name_' + langCode]) ? `${lang[affixesSelected[i].code]['name_' + langCode]}` : `&nbsp;`}</span>
                             </div>`;
         }

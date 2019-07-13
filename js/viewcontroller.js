@@ -16,6 +16,7 @@ const timeData = {
 const stringData = {
     affixingSrc: ''
 }
+var hasFaFailedLoading = false;
 
 class ViewController {
     constructor(assistant) {
@@ -142,6 +143,55 @@ class ViewController {
             }
             catch (e) { }
         });
+        hasFaFailedLoading = false;
+        try {
+            if (!$('i.fa-plus').css('font-family')
+                .includes('Font Awesome')) {
+                hasFaFailedLoading = true;
+                let iconRefs = [
+                    {
+                        icon: 'fa-plus',
+                        text: 'add'
+                    },
+                    {
+                        icon: 'fa-shopping-bag',
+                        text: 'bag'
+                    },
+                    {
+                        icon: 'fa-book',
+                        text: 'book'
+                    },
+                    {
+                        icon: 'fa-external-link-alt',
+                        text: 'link'
+                    },
+                    {
+                        icon: 'fa-cog',
+                        text: 'cfg'
+                    },
+                    {
+                        icon: 'fa-language',
+                        text: 'lang'
+                    },
+                    {
+                        icon: 'fa-window-restore',
+                        text: 'theme'
+                    },
+                    {
+                        icon: 'fa-bug',
+                        text: 'bug'
+                    },
+                    {
+                        icon: 'fa-dot-circle',
+                        text: 'focus'
+                    }
+                ];
+                for (var i = 0; i < iconRefs.length; i++) {
+                    $('i.' + iconRefs[i].icon).removeClass().append('<span>' + iconRefs[i].text + '</span>');
+                }
+            }
+        }
+        catch {}
         this.updateMenuBarDescriptions();
     }
 
@@ -780,14 +830,6 @@ class ViewController {
 
     updateFromURL() {
         let urlParams = window.location.search;
-        if (urlParams == '') {
-            this.displayWelcomeScreen(true);
-            this.assistant.pageTreeRoot = null;
-            return;
-        }
-        else {
-            this.displayWelcomeScreen(false);
-        }
         urlParams = urlParams.substring(1, urlParams.length);
         urlParams = decodeURIComponent(urlParams);
         // Check language choice within params
@@ -802,6 +844,14 @@ class ViewController {
             }
         }
         else this.langCode = this.languages[0];
+        if (urlParams == '') {
+            this.displayWelcomeScreen(true);
+            this.assistant.pageTreeRoot = null;
+            return;
+        }
+        else {
+            this.displayWelcomeScreen(false);
+        }
         let hasSuceeded = this.assistant.loadFromURLParams(urlParams);
         if (hasSuceeded) {
             let $container = $('#mastercontainer');

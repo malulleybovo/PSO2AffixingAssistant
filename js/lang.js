@@ -3711,5 +3711,29 @@ const lang = Object.freeze({
         name_jp: "ジャンクI",
         effect_en: "100% affix junk",
         effect_jp: "100％合成成功率のジャンク。"
+    },
+    "LA99": {
+        name_en: "S1:Junk",
+        name_jp: "S1:ジャンク",
+        effect_en: "Represents any S1 ability.",
+        effect_jp: "任意のS1能力を表します。"
+    },
+    "LB99": {
+        name_en: "S2:Junk",
+        name_jp: "S2:ジャンク",
+        effect_en: "Represents any S2 ability.",
+        effect_jp: "任意のS2能力を表します。"
+    },
+    "LC99": {
+        name_en: "S3:Junk",
+        name_jp: "S3:ジャンク",
+        effect_en: "Represents any S3 ability.",
+        effect_jp: "任意のS3能力を表します。"
+    },
+    "LD99": {
+        name_en: "S4:Junk",
+        name_jp: "S4:ジャンク",
+        effect_en: "Represents any S4 ability.",
+        effect_jp: "任意のS4能力を表します。"
     }
 });
