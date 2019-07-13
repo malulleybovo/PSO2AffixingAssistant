@@ -191,7 +191,7 @@ class ViewController {
                 }
             }
         }
-        catch {}
+        catch (e) {}
         this.updateMenuBarDescriptions();
     }
 
