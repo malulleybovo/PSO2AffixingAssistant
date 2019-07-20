@@ -289,8 +289,12 @@ const lang = Object.freeze({
         }
     },
     "filters": {
-        en: ["All", "S-ATK", "R-ATK", "T-ATK", "PP", "HP"],
-        jp: ["全", "打撃力", "射撃力", "法撃力", "PP", "HP"]
+        en: ["All", "S-ATK", "R-ATK", "T-ATK", "PP", "HP", "DEX"],
+        jp: ["全", "打撃力", "射撃力", "法撃力", "PP", "HP", "技量"]
+    },
+    "statsDisplayOrder": {
+        en: ["S-ATK", "R-ATK", "T-ATK", "PP", "HP", "DEX", "S-DEF", "R-DEF", "T-DEF"], // Others follow after
+        jp: ["打撃力", "射撃力", "法撃力", "PP", "HP", "技量", "打撃防御", "射撃防御", "法撃防御"] // Others follow after
     },
     "synonyms": {
         en: {

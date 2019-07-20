@@ -1309,13 +1309,14 @@ class ViewController {
                     lang[this.affixesSelected[i].code]['name_' + this.langCode] : lang[this.affixesSelected[i].code]['name_en'];
                 let effect = (lang[this.affixesSelected[i].code] && lang[this.affixesSelected[i].code]['effect_' + this.langCode]) ?
                     lang[this.affixesSelected[i].code]['effect_' + this.langCode] : lang[this.affixesSelected[i].code]['effect_en'];
-                $(slots[i]).attr('title', effect.replace(/<br>/g, ' '))
+                let rawStats = effect.replace(/(,<br>)|(, )/g, ', ');
+                $(slots[i]).attr('title', rawStats)
                     .attr('data-code', this.affixesSelected[i].code)
                     .removeClass('empty')
                     .find('span').text(name);
                 $(`div.affix-selection-container li > div[data-code="${this.affixesSelected[i].code}"]`)
                     .addClass('selected');
-                let stats = effect.split('<br>');
+                let stats = rawStats.split(', ');
                 if (stats.length == 1) stats = stats[0].split(',');
                 for (var j = 0; j < stats.length; j++) {
                     let stat = stats[j];
@@ -1342,6 +1343,7 @@ class ViewController {
                     .find('span').html('&nbsp;');
             }
         }
+        // Translate package type stats into their synonyms, like ALL-type stats
         for (var key in lang.synonyms[this.langCode]) {
             if (allStats[key]) {
                 let val = lang.synonyms[this.langCode][key];
@@ -1352,12 +1354,25 @@ class ViewController {
                 delete allStats[key];
             }
         }
+        allStats = Object.keys(allStats).map((key, idx) => {
+            return { key: key, value: allStats[key] }
+        });
+        // Order stats by a determined sequence
+        allStats.sort((a, b) => {
+            let idxA = lang.statsDisplayOrder[this.langCode].indexOf(a.key);
+            if (idxA < 0) return 1;
+            let idxB = lang.statsDisplayOrder[this.langCode].indexOf(b.key);
+            if (idxB < 0) return -1;
+            return idxA - idxB;
+        });
         let statsViewer = $(`div.affix-selection-container div.stats-viewer`);
         if (statsViewer.length > 0) {
             statsViewer.empty();
-            for (var key in allStats) {
-                let value = allStats[key];
-                if (value != '') value = ' (' + ((value >= 0) ? '+' : '') + value + ')';
+            for (var i = 0; i < allStats.length; i++) {
+                let key = allStats[i].key;
+                let value = allStats[i].value;
+                if (value === undefined || value == null || value === 0) continue;
+                if (value != "") value = ' (' + ((value >= 0) ? '+' : '') + value + ')';
                 statsViewer.append(`<div class="stat">${key + value}</div>`);
             }
         }
