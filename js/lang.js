@@ -481,6 +481,10 @@ const lang = Object.freeze({
             en: "S1 Add: Photon Balance",
             jp: "S1追加:光子の秤"
         },
+        "S1 Add: Collaborator Liberator": {
+            en: "S1 Add: Collaborator Liberator",
+            jp: "S1追加:戦友の加護"
+        },
         "S2 Add: Umbrageous Melody": {
             en: "S2 Add: Umbrageous Melody",
             jp: "S2追加:月葉影の歌"
@@ -575,6 +579,10 @@ const lang = Object.freeze({
         },
         "S4 Add: Colored Spectrum": {
             en: "S4 Add: Colored Spectrum",
+            jp: "S4追加:六色の輝秤"
+        },
+        "S4 Add: Raising Pursuit": {
+            en: "S4 Add: Raising Pursuit",
             jp: "S4追加:六色の輝秤"
         }
     },
@@ -1628,6 +1636,12 @@ const lang = Object.freeze({
         effect_en: "Increases PP consumption by 8%, but boosts PA and Tech damage by 4%.",
         effect_jp: "PP消費量が8％増加する代わりにPAとテクニックの威力が4％上昇する。"
     },
+    "LA2Q": {
+        name_en: "S1:Collaborator Liberator",
+        name_jp: "S1:戦友の加護",
+        effect_en: "Reduces PP consumption, boosts critical rate and boosts power based on the number of people in your party (min. 2).",
+        effect_jp: "パーティ人数が2人以上の場合、人数に応じて、PP消費軽減、クリティカル率上昇、威力上昇効果が発動。"
+    },
     "LB01": {
         name_en: "S2:Sturdy Recovery",
         name_jp: "S2:剛乱活与",
@@ -1903,6 +1917,12 @@ const lang = Object.freeze({
         name_jp: "S2:時流の護",
         effect_en: "Automatically casts Deband at regular intervals.",
         effect_jp: "一定間隔で自身にデバンドを発動する。"
+    },
+    "LB2D": {
+        name_en: "S2:Shining Guard",
+        name_jp: "S2:光明の備志",
+        effect_en: "Increase Light Attribute and Panic Resistance. Increase damage against enemies weak to Light.",
+        effect_jp: "光耐性、パニック耐性が上昇。敵の弱点属性が光属性の時、威力上昇。"
     },
     "LC01": {
         name_en: "S3:Offensive Intent",
@@ -2233,6 +2253,12 @@ const lang = Object.freeze({
         name_jp: "S4:六色の輝秤",
         effect_en: "Decrease Natural PP Recovery but decrease PP consumption when S1:Red Petal / Blue Ocean / White Snow / Yellow Moon / Green Leaf / Black Shadow Flash are active.",
         effect_jp: "花・海・葉・月・雪・影のいずれかが発動中、PP自然回復は減少するがPP消費量は低下する。"
+    },
+    "LD0T": {
+        name_en: "S4:Raising Pursuit",
+        name_jp: "S4:累加追撃",
+        effect_en: "When you hit with a PA/Tech, boosts damage of the next PA/Tech based on the damage you deal in the next 4 seconds.",
+        effect_jp: "PA・テクニックの命中後4秒間の与ダメージ量に応じて、次に命中したPA・テクニックに追加ダメージが発生。(上限25万、リキャスト10秒)"
     },
     "OA01": {
         name_en: "Mutation I",
@@ -3404,6 +3430,30 @@ const lang = Object.freeze({
         effect_en: "Boost damage against enemies weak to Fire. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "火弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
     },
+    "PC03": {
+        name_en: "Ripper/Ice Weak",
+        name_jp: "リーパー／氷弱点",
+        effect_en: "Boost damage against enemies weak to Ice. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "氷弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
+    "PD04": {
+        name_en: "Ripper/Wind Weak",
+        name_jp: "リーパー／風弱点",
+        effect_en: "Boost damage against enemies weak to Wind. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "風弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
+    "PE05": {
+        name_en: "Ripper/Light Weak",
+        name_jp: "リーパー／光弱点",
+        effect_en: "Boost damage against enemies weak to Light. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "光弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
+    "PF06": {
+        name_en: "Ripper/Dark Weak",
+        name_jp: "リーパー／闇弱点",
+        effect_en: "Boost damage against enemies weak to Dark. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "闇弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
     "VQ01": {
         name_en: "Slayer/Armor Type",
         name_jp: "スレイヤー／機甲種",
@@ -3415,6 +3465,12 @@ const lang = Object.freeze({
         name_jp: "スレイヤー／野獣種",
         effect_en: "Boost damage against Naberius Natives. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "野獣種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
+    "PJ13": {
+        name_en: "Slayer/Ocean Type",
+        name_jp: "スレイヤー／海王種",
+        effect_en: "Boost damage against Oceanids. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "海王種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
     },
     "VJ01": {
         name_en: "Soul Catalyst",

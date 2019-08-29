@@ -355,6 +355,14 @@
                 effect: ""
             },
             {
+                ref: 522,
+                id: "S1 Add: Collaborator Liberator",
+                name: "S1:Collaborator Liberator",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 199,
                 id: "S2 Add: Umbrageous Melody",
                 name: "S2:Umbrageous Melody",
@@ -550,6 +558,14 @@
                 ref: 264,
                 id: "S4 Add: Colored Spectrum",
                 name: "S4:Colored Spectrum",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 524,
+                id: "S4 Add: Raising Pursuit",
+                name: "S4:Raising Pursuit",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -5098,6 +5114,17 @@
             noEx: true
         },
         {
+            ref: 522,
+            code: "LA2Q",
+            gid: "L1",
+            name: "S1:Collaborator Liberator",
+            extend: [
+                100
+            ],
+            effect: "Reduces PP consumption, boosts critical rate and boosts power based on the number of people in your party (min. 2).",
+            noEx: true
+        },
+        {
             ref: 170,
             code: "LB01",
             gid: "L2",
@@ -5702,6 +5729,17 @@
             noEx: true
         },
         {
+            ref: 523,
+            code: "LB2D",
+            gid: "L2",
+            name: "S2:Shining Guard",
+            extend: [
+                100
+            ],
+            effect: "Increase Light Attribute and Panic Resistance. Increase damage against enemies weak to Light.",
+            noEx: true
+        },
+        {
             ref: 211,
             code: "LC01",
             gid: "L3",
@@ -6126,7 +6164,7 @@
         {
             ref: 498,
             code: "LC2B",
-            simCode: "LB2B",
+            simCode: "LB1N",
             gid: "L3",
             name: "S3:Flowing Courage",
             extend: [
@@ -6421,6 +6459,17 @@
                 100
             ],
             effect: "Decrease Natural PP Recovery but decrease PP consumption when S1:Red Petal / Blue Ocean / White Snow / Yellow Moon / Green Leaf / Black Shadow Flash are active.",
+            noEx: true
+        },
+        {
+            ref: 524,
+            code: "LD0T",
+            gid: "L4",
+            name: "S4:Raising Pursuit",
+            extend: [
+                100
+            ],
+            effect: "When you hit with a PA/Tech, boosts damage of the next PA/Tech based on the damage you deal in the next 4 seconds.",
             noEx: true
         },
         {
@@ -9239,6 +9288,7 @@
         {
             ref: 515,
             code: "VI01",
+            simCode: "PA01",
             gid: "YA",
             name: "Ripper/Ltn. Weak",
             extend: [
@@ -9251,6 +9301,7 @@
         {
             ref: 516,
             code: "VI02",
+            simCode: "PB02",
             gid: "YA",
             name: "Ripper/Fire Weak",
             extend: [
@@ -9261,8 +9312,57 @@
             effect: "Boost damage against enemies weak to Fire. Effect is reduced as the Weapon Rarity increases."
         },
         {
+            ref: 525,
+            code: "PC03",
+            gid: "YA",
+            name: "Ripper/Ice Weak",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against enemies weak to Ice. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 526,
+            code: "PD04",
+            gid: "YA",
+            name: "Ripper/Wind Weak",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against enemies weak to Wind. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 527,
+            code: "PE05",
+            gid: "YA",
+            name: "Ripper/Light Weak",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against enemies weak to Light. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 528,
+            code: "PF06",
+            gid: "YA",
+            name: "Ripper/Dark Weak",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against enemies weak to Dark. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
             ref: 517,
             code: "VQ01",
+            simCode: "PH11",
             gid: "YA",
             name: "Slayer/Armor Type",
             extend: [
@@ -9275,6 +9375,7 @@
         {
             ref: 518,
             code: "VQ02",
+            simCode: "PI12",
             gid: "YA",
             name: "Slayer/Beast Type",
             extend: [
@@ -9283,6 +9384,18 @@
                 20
             ],
             effect: "Boost damage against Naberius Natives. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 529,
+            code: "PJ13",
+            gid: "YA",
+            name: "Slayer/Ocean Type",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against Wopal Oceanids. Effect is reduced as the Weapon Rarity increases."
         },
         {
             ref: 443,
