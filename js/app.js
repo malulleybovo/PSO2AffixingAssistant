@@ -8,7 +8,7 @@
 const sessionType = (window.location.search == '') ?
     'New Session' : 'Returning Session';
 const sessionStartTime = (new Date()).getTime();
-const ASSISTANT = new Assistant(data);
+const ASSISTANT = new Assistant();
 const VIEW_CONTROLLER = (new ViewController(ASSISTANT));
 
 // Remove the 'JavaScript Disabled' warning since it is running

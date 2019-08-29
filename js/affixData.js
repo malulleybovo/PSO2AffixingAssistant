@@ -1,6 +1,6 @@
 ﻿let data = {
-    lastModified: "2018-06-07 2:50:18(JST)",
     optionList: {
+        // List of items that increase success rate
         support: [
             {
                 ref: 0,
@@ -76,6 +76,7 @@
                 }
             }
         ],
+        // List of Add Abilities
         additional: [
             {
                 id: "Nothing",
@@ -554,6 +555,7 @@
                 effect: ""
             }
         ],
+        // List of weapon potentials
         potential: [
             {
                 ref: 0,
@@ -594,8 +596,11 @@
                         100)
                 }
             }
-        ]
+        ],
+        // List of boost week additional success rate (in %)
+        boostWeek: [0, 5, 10, 15]
     },
+    // Sets of abilities that cannot be put together in a fodder
     excludePattern: {
         addition: [
             "J",
@@ -665,6 +670,7 @@
             ]
         ]
     },
+    // Sets of abilities that together can produce another ability
     extendAbility: [
         {
             base: [
@@ -1859,6 +1865,7 @@
             success: 10
         }
     ],
+    // Overall success rate multiplier per slot count (from 1 to maximum)
     extraSlot: [
         {
             "false": 100,
@@ -1897,6 +1904,9 @@
             "true": 25
         }
     ],
+    // Special abilities that increase success rate of certain abilities
+    // Increase in success rate depends on the type specified below.
+    // Complex logic in affixDataParser
     boostPoint: {
         photon: {
             create: {
@@ -2119,11 +2129,13 @@
             }
         }
     },
+    // Overall multiplier for when using the same equip as fodder during affixing
     sameBonusBoost: [
-        1,
-        1.1,
-        1.15
+        1, // Using only main fodder (impossible)
+        1.1, // Using 1 fodder + main fodder
+        1.15 // Using 2+ fodders + main fodder
     ],
+    // Currently unused: List of abilities boosted by the boostday system
     boostdaySystem: {
         blow: [
             "Gunne Soul",
@@ -2354,6 +2366,7 @@
             "Arkuma Smile"
         ]
     },
+    // Sets of abilities that are exceptions to the excludePattern rules described above
     pairingExceptions: {
         strict: [ // Always checked
             [ // Extreme Receptor + Any Soul
@@ -2384,6 +2397,18 @@
             ]
         ]
     },
+    // List of all available abilities
+    // Requirements:
+    // - ref: unique ID, new abilities MUST have a ref different from all others
+    // - code: code for compatibility with PSO2 Affixing Simulator
+    // Specific to certain abilities:
+    // - lvup: code of the upgrade of this ability
+    // - extend: success rates to transfer the ability based on the number of abilities used
+    // - generate: success rates to upgrade to this ability based on the number of abilities used
+    // - noEx: used for SSAs, sets success rate to always 100%
+    // - status: used for calculating specific bonus from boostPoint described above (such as mutation)
+    // - rel: used for calculating specific bonus from boostPoint described above (such as soul)
+    // - extup: ability codes that can benefit from bonus of boostPoint described above (such as soul)
     abilityList: [
         {
             ref: 0,
@@ -9765,6 +9790,7 @@
             noEx: true
         }
     ],
+    // List of available Special Ability Factors (SAFs)
     abilityFactor: [
         { name: `Power III`, jpName: `パワーⅢ` },
         { name: `Power IV`, jpName: `パワーⅣ` },
@@ -9837,6 +9863,7 @@
         { name: `Act The Soul`, jpName: `アクト・ジ・ソール` },
         { name: `Till The Soul`, jpName: `ティル・ジ・ソール` },
         { name: `Magi The Soul`, jpName: `マギー・ジ・ソール` },
+        { name: `Persona Reverie`, jpName: `ペルソナ・レヴリー` },
         { name: `Reverie Catalyst`, jpName: `レヴリー・カタリスト` },
         { name: `S1:Photon Reduction`, jpName: `S1:光子縮減` },
         { name: `S1:Offensive Intent`, jpName: `S1:剛撃の志` },

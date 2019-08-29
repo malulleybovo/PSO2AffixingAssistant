@@ -32,7 +32,7 @@ class Assistant {
      * Raw data the Assistant relies on.
      */
     static get data() {
-        return this._data;
+        return data; // Reference to affixData.js
     }
 
     /**
@@ -106,13 +106,15 @@ class Assistant {
      * The values for the boost week bonus.
      */
     static get boostWeekVals() {
-        return [0, 5, 10];
+        return Assistant.data
+            && Assistant.data.optionList
+            && Assistant.data.optionList.boostWeek
+            ? Assistant.data.optionList.boostWeek : [];
     }
 
-    constructor(data) {
+    constructor() {
         // Immutable variables (properties can still change)
         this.IDEAL_MIN_PAGE_SIZE = 3;
-        Assistant._data = data;
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(Assistant.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -237,7 +239,13 @@ class Assistant {
     getAffixInstancesInvolvedIn(choicesArray) {
         if (!choicesArray || !Array.isArray(choicesArray)
             || choicesArray.length <= 0 || !Assistant.affixDB) return null;
+
         let numAbilityFactorChoices = choicesArray.filter((a) => a != null && a.isAbilityFactor).length;
+        if (numAbilityFactorChoices > Fodder.CAPACITY) return null;
+
+        let numAddAbilityChoices = choicesArray.filter((a) => a != null && a.isAddAbilityItem).length;
+        if (numAddAbilityChoices > 1) return null;
+
         let numNormalChoices = choicesArray.length - numAbilityFactorChoices;
         if (numNormalChoices > Fodder.CAPACITY) return null;
 
