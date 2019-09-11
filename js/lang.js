@@ -3418,13 +3418,13 @@ const lang = Object.freeze({
         effect_en: "Boosts damage against Demons by 3%.",
         effect_jp: "魔物へのダメージは10％増加する。"
     },
-    "VI01": {
+    "PA01": {
         name_en: "Ripper/Ltn. Weak",
         name_jp: "リーパー／雷弱点",
         effect_en: "Boost damage against enemies weak to Lightning. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "雷弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
     },
-    "VI02": {
+    "PB02": {
         name_en: "Ripper/Fire Weak",
         name_jp: "リーパー／火弱点",
         effect_en: "Boost damage against enemies weak to Fire. Effect is reduced as the Weapon Rarity increases.",

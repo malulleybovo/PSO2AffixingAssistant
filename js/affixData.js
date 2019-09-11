@@ -9287,8 +9287,7 @@
         },
         {
             ref: 515,
-            code: "VI01",
-            simCode: "PA01",
+            code: "PA01",
             gid: "YA",
             name: "Ripper/Ltn. Weak",
             extend: [
@@ -9300,8 +9299,7 @@
         },
         {
             ref: 516,
-            code: "VI02",
-            simCode: "PB02",
+            code: "PB02",
             gid: "YA",
             name: "Ripper/Fire Weak",
             extend: [

@@ -2067,6 +2067,8 @@ class Assistant {
                 case "TK31": return "TK04"; // Legacy Apprezina Reverie Code
                 case "TK41": return "TK05"; // Legacy Double Reverie Code
                 case "VJ11": return "VJ02"; // Legacy Double Reverie Code
+                case "VI01": return "PA01"; // Legacy Ripper Ltn Weak
+                case "VI02": return "PB02"; // Legacy Ripper Fire Weak
                 default: return legacyCode; // If not legacy, keep the actual code
             }
         }
