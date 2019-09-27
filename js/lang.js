@@ -130,7 +130,7 @@ const lang = Object.freeze({
             jp: "閉じる"
         },
         filterSearchPlaceholder: {
-            en: "Search for affixes..",
+            en: "Search affixes..",
             jp: "能力を検索する。。"
         },
         filterSearchTitle: {

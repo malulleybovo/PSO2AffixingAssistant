@@ -49,6 +49,7 @@ div.filtersearchcontainer div.exclude-search-btn {
     right: 0;
     top: 0;
     padding: 7px 11px;
+    background-color: var(--paint-dark);
 }
 
 div.filtersearchcontainer div.exclude-search-btn:hover i {
@@ -142,11 +143,19 @@ div.filtersearchcontainer li a:hover:not(.header) {
     div.filtersearchcontainer input.searchbar {
         padding: 12px;
     }
+
+    div.filtersearchcontainer div.exclude-search-btn {
+        padding: 13px;
+    }
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
     div.filtersearchcontainer input.searchbar {
         padding: 6px;
+    }
+
+    div.filtersearchcontainer div.exclude-search-btn {
+        padding: 7px;
     }
 }
 
@@ -154,10 +163,18 @@ div.filtersearchcontainer li a:hover:not(.header) {
     div.filtersearchcontainer input.searchbar {
         padding: 20px;
     }
+
+    div.filtersearchcontainer div.exclude-search-btn {
+        padding: 21px;
+    }
 }
 
 @media only screen and (max-device-width: 767px) and (orientation: landscape) {
     div.filtersearchcontainer input.searchbar {
         padding: 12px;
+    }
+
+    div.filtersearchcontainer div.exclude-search-btn {
+        padding: 13px;
     }
 }
