@@ -32,6 +32,10 @@ div.filtersearchcontainer input.searchbar {
     font-size: var(--app-font-size);
 }
 
+div.filtersearchcontainer input.searchbar:first-child {
+    padding-right: 30px;
+}
+
 div.filtersearchcontainer input.searchbar.exclude-search {
     background: var(--paint-alert);
     border-color: var(--paint-alert-dark);
@@ -48,8 +52,8 @@ div.filtersearchcontainer div.exclude-search-btn {
     position: absolute;
     right: 0;
     top: 0;
-    padding: 7px 11px;
-    background-color: var(--paint-dark);
+    padding: 6px 10px;
+    margin: 1px;
 }
 
 div.filtersearchcontainer div.exclude-search-btn:hover i {
@@ -140,41 +144,45 @@ div.filtersearchcontainer li a:hover:not(.header) {
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-    div.filtersearchcontainer input.searchbar {
+    div.filtersearchcontainer input.searchbar,
+    div.filtersearchcontainer div.exclude-search-btn {
         padding: 12px;
     }
 
-    div.filtersearchcontainer div.exclude-search-btn {
-        padding: 13px;
+    div.filtersearchcontainer input.searchbar:first-child {
+        padding-right: 40px;
     }
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
-    div.filtersearchcontainer input.searchbar {
+    div.filtersearchcontainer input.searchbar,
+    div.filtersearchcontainer div.exclude-search-btn {
         padding: 6px;
     }
 
-    div.filtersearchcontainer div.exclude-search-btn {
-        padding: 7px;
+    div.filtersearchcontainer input.searchbar:first-child {
+        padding-right: 30px;
     }
 }
 
 @media only screen and (max-device-width: 767px) {
-    div.filtersearchcontainer input.searchbar {
+    div.filtersearchcontainer input.searchbar,
+    div.filtersearchcontainer div.exclude-search-btn {
         padding: 20px;
     }
 
-    div.filtersearchcontainer div.exclude-search-btn {
-        padding: 21px;
+    div.filtersearchcontainer input.searchbar:first-child {
+        padding-right: 80px;
     }
 }
 
 @media only screen and (max-device-width: 767px) and (orientation: landscape) {
-    div.filtersearchcontainer input.searchbar {
+    div.filtersearchcontainer input.searchbar,
+    div.filtersearchcontainer div.exclude-search-btn {
         padding: 12px;
     }
 
-    div.filtersearchcontainer div.exclude-search-btn {
-        padding: 13px;
+    div.filtersearchcontainer input.searchbar:first-child {
+        padding-right: 40px;
     }
 }
