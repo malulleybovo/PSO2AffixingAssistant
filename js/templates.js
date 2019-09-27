@@ -239,12 +239,45 @@ const CHECKBOX_TEMPLATE = ({ label, description, isChecked }) =>
 const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode }) => {
     let filtersearch = `<div class="filtersearchcontainer">
         <script>
-            filterSearch = function (input) {
+            toggleExcludeSearchbar = function(btn) {
+                var $excludeSearchbar = ${(isGlobalSearch) ? `$('.filtersearchcontainer .exclude-search-container')` : `$(btn).siblings('.filtersearchcontainer .exclude-search-container')`};
+                if (!$excludeSearchbar && !$excludeSearchbar[0]) return;
+                if ($excludeSearchbar.css('height') == '0px') $excludeSearchbar.css('height', '100%');
+                else {
+                    $excludeSearchbar.css('height', '0');
+                    $excludeSearchbar.find('.searchbar').val("");
+                    excludeSearch($excludeSearchbar.find('.searchbar')[0]);
+                }
+            };
+            filterSearch = function(input) {
                 let filter = input.value.toUpperCase();
-                let li = ${(isGlobalSearch) ? `$(".filtersearchcontainer li")` : `$(input).parent().find('li')`};
+                let $searchContainer = ${(isGlobalSearch) ? `$(".filtersearchcontainer")` : `$(input).closest('.filtersearchcontainer')`};
+                if (!$searchContainer || !$searchContainer[0]) return;
+                $searchContainer[0].searchTerm = filter;
+                updateSearch($searchContainer);
+            };
+            excludeSearch = function(input) {
+                let filter = input.value.toUpperCase();
+                let $searchContainer = ${(isGlobalSearch) ? `$(".filtersearchcontainer")` : `$(input).closest('.filtersearchcontainer')`};
+                if (filter == undefined || filter == null || !$searchContainer || !$searchContainer[0]) return;
+                var terms = filter.split(",");
+                if (!terms) return;
+                var regEx = terms.map(s => s.trim()).filter(s => s && s.length > 0).join("|");
+                if (!regEx || regEx.length <= 0) $searchContainer[0].excludeTerm = undefined;
+                else $searchContainer[0].excludeTerm = new RegExp(".*" + regEx + ".*");
+                updateSearch($searchContainer);
+            };
+            updateSearch = function($searchContainer) {
+                let li = $searchContainer.find('li');
+                if (!li) return;
+                var searchTerm = $searchContainer[0].searchTerm;
+                var excludeTerm = $searchContainer[0].excludeTerm;
                 for (var i = 0; i < li.length; i++) {
                     let div = li[i].getElementsByTagName("div")[0];
-                    if (div.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    var text = div.innerHTML.toUpperCase().replace(${/<\/?SPAN( CLASS=".*")?>/g}, "");
+                    var searchCheck = !(searchTerm && searchTerm.length > 0 && text.indexOf(searchTerm) < 0);
+                    var excludeCheck = !(excludeTerm && excludeTerm.test(text));
+                    if (searchCheck && excludeCheck) {
                         li[i].style.display = "";
                     } else {
                         li[i].style.display = "none";
@@ -263,7 +296,15 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode
     }
     filtersearch +=
         `</div>
-        <input type="text" class="searchbar" onkeyup="filterSearch(this)" onfocus="this.setSelectionRange(0, this.value.length)" placeholder="${lang.app.filterSearchPlaceholder[langCode]}" title="Type in an affix name" maxlength="32">
+        <div class="searchbar-wrapper">
+            <input type="text" class="searchbar" onkeyup="filterSearch(this)" onfocus="this.setSelectionRange(0, this.value.length)" placeholder="${lang.app.filterSearchPlaceholder[langCode]}" title="${lang.app.filterSearchTitle[langCode]}" maxlength="32">
+            <div class="exclude-search-container">
+                <input type="text" class="searchbar exclude-search" onkeyup="excludeSearch(this)" onfocus="this.setSelectionRange(0, this.value.length)" placeholder="${lang.app.excludeSearchPlaceholder[langCode]}" title="${lang.app.excludeSearchTitle[langCode]}" maxlength="32">
+            </div>
+            <div class="exclude-search-btn" onclick="toggleExcludeSearchbar(this)">
+                <i class="fa fa-filter" title="${lang.app.excludeSearchBtn[langCode]}"></i>
+            </div>
+        </div>
         <ul>`;
     if (Array.isArray(datalist)) {
         for (var i = 0; i < datalist.length; i++) {

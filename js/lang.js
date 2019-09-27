@@ -133,6 +133,22 @@ const lang = Object.freeze({
             en: "Search for affixes..",
             jp: "能力を検索する。。"
         },
+        filterSearchTitle: {
+            en: "Type in an ability name",
+            jp: "能力名を入力して"
+        },
+        excludeSearchPlaceholder: {
+            en: "Exclude affixes (,)",
+            jp: "能力を除外（、）"
+        },
+        excludeSearchTitle: {
+            en: "Type in ability names to exclude separated by comma",
+            jp: "除外する能力名をコンマで区切って入力します"
+        },
+        excludeSearchBtn: {
+            en: "Toggle to exclude results",
+            jp: "結果を除外するトグル"
+        },
         chooseAffixTitle: {
             en: "Choose Abilities",
             jp: "能力を選ぶ"

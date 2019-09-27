@@ -10,6 +10,8 @@
     --paint-dark-fade: rgba(105, 105, 105, 0.25);
     --paint-darker-fade: rgba(40, 40, 40, 0.75);
     --paint-prime: #CFB53B;
+    --paint-alert: #cc4033;
+    --paint-alert-dark: #4a2826;
     --conn-color: #d62;
     --alter-paint: #d62;
     --alter-paint-light: #FF7C29;
@@ -31,6 +33,8 @@
     --paint-dark-fade: rgba(224, 229, 238, 0.25);
     --paint-darker-fade: rgba(62, 63, 65, 0.25);
     --paint-prime: #ffb935;
+    --paint-alert: #fa6161;
+    --paint-alert-dark: #793e3e;
     --conn-color: #F48024;
     --alter-paint: #ffb935;
     --alter-paint-light: #FFC05C;

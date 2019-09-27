@@ -14,6 +14,11 @@ div.filtersearchcontainer > div {
     padding-left: 0.5em;
 }
 
+div.filtersearchcontainer div.searchbar-wrapper {
+    padding: 0;
+    position: relative;
+}
+
 div.filtersearchcontainer input.searchbar {
     background-position: 10px 12px;
     background-repeat: no-repeat;
@@ -25,6 +30,29 @@ div.filtersearchcontainer input.searchbar {
     margin-bottom: 0.5em;
     font-family: Verdana;
     font-size: var(--app-font-size);
+}
+
+div.filtersearchcontainer input.searchbar.exclude-search {
+    background: var(--paint-alert);
+    border-color: var(--paint-alert-dark);
+}
+
+div.filtersearchcontainer div.exclude-search-container {
+    transition: 0.25s;
+    overflow: hidden;
+    height: 0;
+}
+
+div.filtersearchcontainer div.exclude-search-btn {
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 7px 11px;
+}
+
+div.filtersearchcontainer div.exclude-search-btn:hover i {
+    color: var(--paint-alert);
 }
 
 div.filtersearchcontainer input::placeholder {
