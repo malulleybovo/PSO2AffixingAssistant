@@ -1,4 +1,31 @@
-﻿let data = {
+/**
+ *
+ * @licstart  The following is the entire license notice for the 
+ *  JavaScript code in this page.
+ *
+ * Copyright (C) 2018  Arthur Malulley B. de O.
+ *
+ *
+ * The JavaScript code in this page is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in this page.
+ *
+ */
+
+let data = {
     optionList: {
         // List of items that increase success rate
         support: [
@@ -71,8 +98,7 @@
                 name: "+50%",
                 value: "A08",
                 fn: function (a) {
-                    return Math.min(a + 50,
-                        100)
+                    return Math.min(a + 50, 100)
                 }
             }
         ],
@@ -97,6 +123,14 @@
                 value: "B03",
                 extend: 100,
                 effect: "PP(+5)"
+            },
+            {
+                ref: 531,
+                id: "Add Ability (Grand PP)",
+                name: "Grace Spirita",
+                value: "B10d",
+                extend: 100,
+                effect: "PP(+15)"
             },
             {
                 ref: 464,
@@ -126,7 +160,7 @@
                 ref: 467,
                 id: "Add Ability (Tenora)",
                 name: "Tenora Boost",
-                value: "B0a",
+                value: "B8a",
                 extend: 100,
                 effect: "S-ATK(+35)"
             },
@@ -134,7 +168,7 @@
                 ref: 468,
                 id: "Add Ability (GRM)",
                 name: "GRM Boost",
-                value: "B0b",
+                value: "B8b",
                 extend: 100,
                 effect: "R-ATK(+35)"
             },
@@ -142,7 +176,7 @@
                 ref: 469,
                 id: "Add Ability (Yohmei)",
                 name: "Yohmei Boost",
-                value: "B0c",
+                value: "B8c",
                 extend: 100,
                 effect: "T-ATK(+35)"
             },
@@ -150,7 +184,7 @@
                 ref: 470,
                 id: "Add Ability (HP&PP)",
                 name: "Noble Stamina",
-                value: "B10",
+                value: "B9a",
                 extend: 100,
                 effect: "HP(+50),PP(+3)"
             },
@@ -158,7 +192,7 @@
                 ref: 471,
                 id: "Add Ability (HP&PP/2)",
                 name: "Elegant Stamina",
-                value: "B14",
+                value: "B9b",
                 extend: 100,
                 effect: "HP(+70),PP(+4)"
             },
@@ -166,15 +200,23 @@
                 ref: 472,
                 id: "Add Ability (HP&PP/3)",
                 name: "Grace Stamina",
-                value: "B18",
+                value: "B9c",
                 extend: 100,
                 effect: "HP(+80),PP(+5)"
+            },
+            {
+                ref: 530,
+                id: "Add Ability (Grand HP)",
+                name: "Grand Stamina",
+                value: "B9d",
+                extend: 100,
+                effect: "HP(+100),PP(+6)"
             },
             {
                 ref: 473,
                 id: "Add Ability (S-ATK&PP)",
                 name: "Noble Power",
-                value: "B07",
+                value: "B11a",
                 extend: 100,
                 effect: "S-ATK(+30),PP(+3)"
             },
@@ -182,7 +224,7 @@
                 ref: 474,
                 id: "Add Ability (S-ATK&PP/2)",
                 name: "Elegant Power",
-                value: "B11",
+                value: "B11b",
                 extend: 100,
                 effect: "S-ATK(+40),PP(+4)"
             },
@@ -190,15 +232,23 @@
                 ref: 475,
                 id: "Add Ability (S-ATK&PP/3)",
                 name: "Grace Power",
-                value: "B15",
+                value: "B11c",
                 extend: 100,
                 effect: "S-ATK(+50),PP(+5)"
             },
             {
+                ref: 532,
+                id: "Add Ability (Grand P)",
+                name: "Grand Power",
+                value: "B11d",
+                extend: 100,
+                effect: "S-ATK(+60),HP(+20),PP(+5)"
+             },
+            {
                 ref: 476,
                 id: "Add Ability (R-ATK&PP)",
                 name: "Noble Shoot",
-                value: "B08",
+                value: "B12a",
                 extend: 100,
                 effect: "R-ATK(+30),PP(+3)"
             },
@@ -206,7 +256,7 @@
                 ref: 477,
                 id: "Add Ability (R-ATK&PP/2)",
                 name: "Elegant Shoot",
-                value: "B12",
+                value: "B12b",
                 extend: 100,
                 effect: "R-ATK(+40),PP(+4)"
             },
@@ -214,15 +264,23 @@
                 ref: 478,
                 id: "Add Ability (R-ATK&PP/3)",
                 name: "Grace Shoot",
-                value: "B16",
+                value: "B12c",
                 extend: 100,
                 effect: "R-ATK(+50),PP(+5)"
+            },
+            {
+                ref: 533,
+                id: "Add Ability (Grand S)",
+                name: "Grand Shoot",
+                value: "B12d",
+                extend: 100,
+                effect: "R-ATK(+60),HP(+20),PP(+5)"
             },
             {
                 ref: 479,
                 id: "Add Ability (T-ATK&PP)",
                 name: "Noble Technique",
-                value: "B09",
+                value: "B13a",
                 extend: 100,
                 effect: "T-ATK(+30),PP(+3)"
             },
@@ -230,7 +288,7 @@
                 ref: 480,
                 id: "Add Ability (T-ATK&PP/2)",
                 name: "Elegant Technique",
-                value: "B13",
+                value: "B13b",
                 extend: 100,
                 effect: "T-ATK(+40),PP(+4)"
             },
@@ -238,9 +296,41 @@
                 ref: 481,
                 id: "Add Ability (T-ATK&PP/3)",
                 name: "Grace Technique",
-                value: "B17",
+                value: "B13c",
                 extend: 100,
                 effect: "T-ATK(+50),PP(+5)"
+            },
+            {
+                ref: 534,
+                id: "Add Ability (Grand T)",
+                name: "Grand Technique",
+                value: "B13d",
+                extend: 100,
+                effect: "T-ATK(+60),HP(+20),PP(+5)"
+            },
+            {
+                ref: 416,
+                id: "Add Ability (Sentence P)",
+                name: "Sentence Power",
+                value: "B40",
+                extend: 100,
+                effect: "S-ATK(+20),PP(+4)"
+            },
+            {
+                ref: 418,
+                id: "Add Ability (Sentence S)",
+                name: "Sentence Shoot",
+                value: "B41",
+                extend: 100,
+                effect: "R-ATK(+20),PP(+4)"
+            },
+            {
+                ref: 420,
+                id: "Add Ability (Sentence T)",
+                name: "Sentence Tech",
+                value: "B42",
+                extend: 100,
+                effect: "T-ATK(+20),PP(+4)"
             },
             {
                 ref: 482,
@@ -251,12 +341,28 @@
                 effect: "S-ATK(+15),R-ATK(+15),T-ATK(+15),DEX(+25),PP(+1)"
             },
             {
+                ref: 535,
+                id: "Add Ability (Offense Focus/2)",
+                name: "Attack Boost",
+                value: "B14b",
+                extend: 100,
+                effect: "S-ATK(+25),R-ATK(+25),T-ATK(+25),DEX(+40),PP(+3)"
+            },
+            {
                 ref: 483,
                 id: "Add Ability (Defense Focus)",
                 name: "Defense Boost",
-                value: "B21",
+                value: "B15a",
                 extend: 100,
                 effect: "S-DEF(+25),R-DEF(+25),T-DEF(+25),HP(+55),PP(+1)"
+            },
+            {
+                ref: 536,
+                id: "Add Ability (Defense Focus/2)",
+                name: "Guard Boost",
+                value: "B15b",
+                extend: 100,
+                effect: "S-DEF(+35),R-DEF(+35),T-DEF(+35),HP(+75),PP(+3)"
             },
             {
                 ref: 459,
@@ -363,6 +469,126 @@
                 effect: ""
             },
             {
+                ref: 135,
+                id: "S1 Add: Wise Skill",
+                name: "S1:Wise Skill",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 138,
+                id: "S1 Add: Radiating Grace",
+                name: "S1:Radiating Grace",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 136,
+                id: "S1 Add: Skilled Brilliance",
+                name: "S1:Skilled Brilliance",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 140,
+                id: "S1 Add: Red Petal Flash",
+                name: "S1:Red Petal Flash",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 141,
+                id: "S1 Add: Blue Ocean Flash",
+                name: "S1:Blue Ocean Flash",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 142,
+                id: "S1 Add: White Snow Flash",
+                name: "S1:White Snow Flash",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 143,
+                id: "S1 Add: Yellow Moon Flash",
+                name: "S1:Yellow Moon Flash",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 144,
+                id: "S1 Add: Green Leaf Flash",
+                name: "S1:Green Leaf Flash",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 145,
+                id: "S1 Add: Black Shadow Flash",
+                name: "S1:Black Shadow Flash",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 147,
+                id: "S1 Add: Skilled Strike",
+                name: "S1:Skilled Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 149,
+                id: "S1 Add: Flowing Exhilaration",
+                name: "S1:Flowing Exhilaration",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 150,
+                id: "S1 Add: Guardian Armor",
+                name: "S1:Guardian Armor",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 155,
+                id: "S1 Add: Rupturing Excess",
+                name: "S1:Rupturing Excess",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 156,
+                id: "S1 Add: Spirited Response",
+                name: "S1:Spirited Response",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 157,
+                id: "S1 Add: Rupturing Intent",
+                name: "S1:Rupturing Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 199,
                 id: "S2 Add: Umbrageous Melody",
                 name: "S2:Umbrageous Melody",
@@ -438,6 +664,62 @@
                 ref: 499,
                 id: "S2 Add: Flowing Armor",
                 name: "S2:Flowing Armor",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 176,
+                id: "S2 Add: Flowing Exhilaration",
+                name: "S2:Flowing Exhilaration",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 171,
+                id: "S2 Add: Photon Reduction",
+                name: "S2:Photon Reduction",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 170,
+                id: "S2 Add: Sturdy Recovery",
+                name: "S2:Sturdy Recovery",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 174,
+                id: "S2 Add: Cursed Radiance",
+                name: "S2:Cursed Radiance",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 179,
+                id: "S2 Add: Flowing Grace",
+                name: "S2:Flowing Grace",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 191,
+                id: "S2 Add: Rupturing Excess",
+                name: "S2:Rupturing Excess",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 192,
+                id: "S2 Add: Double-Edged Sword",
+                name: "S2:Double-Edged Sword",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -523,6 +805,70 @@
                 effect: ""
             },
             {
+                ref: 213,
+                id: "S3 Add: Radiant Strike",
+                name: "S3:Radiant Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 214,
+                id: "S3 Add: Skilled Strike",
+                name: "S3:Skilled Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 211,
+                id: "S3 Add: Offensive Intent",
+                name: "S3:Offensive Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 212,
+                id: "S3 Add: Vital Intent",
+                name: "S3:Vital Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 221,
+                id: "S3 Add: Wise Skill",
+                name: "S3:Wise Skill",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 237,
+                id: "S3 Add: Rupturing Intent",
+                name: "S3:Rupturing Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 226,
+                id: "S3 Add: Brilliant Ruin",
+                name: "S3:Brilliant Ruin",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 227,
+                id: "S3 Add: Cursed Radiance",
+                name: "S3:Cursed Radiance",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 260,
                 id: "S4 Add: Heavenly Protection",
                 name: "S4:Heavenly Protection",
@@ -566,6 +912,190 @@
                 ref: 524,
                 id: "S4 Add: Raising Pursuit",
                 name: "S4:Raising Pursuit",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 538,
+                id: "S4 Add: Skilled Crippler",
+                name: "S4:Skilled Crippler",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 539,
+                id: "S4 Add: Cursed Rainbow",
+                name: "S4:Cursed Rainbow",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 604,
+                id: "S4 Add: Colossal Radiance",
+                name: "S4:Colossal Radiance",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 605,
+                id: "S4 Add: Evasion Training",
+                name: "S4:Evasion Training",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 606,
+                id: "S4 Add: Radiant Eclipse",
+                name: "S4:Radiant Eclipse",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 599,
+                id: "S5 Add: Anthesis Cultivation",
+                name: "S5:Anthesis Cultivation",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 560,
+                id: "S6 Add: Ironclad Illness",
+                name: "S6:Ironclad Illness",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 562,
+                id: "S6 Add: Guardian Armor",
+                name: "S6:Guardian Armor",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 557,
+                id: "S6 Add: Heroic Howl",
+                name: "S6:Heroic Howl",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 558,
+                id: "S6 Add: Soaring Ballet",
+                name: "S6:Soaring Ballet",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 559,
+                id: "S6 Add: Guardian's Essence",
+                name: "S6:Guardian's Essence",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 571,
+                id: "S6 Add: Evasion Whistle",
+                name: "S6:Evasion Whistle",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 607,
+                id: "S6 Add: Long Night Star",
+                name: "S6:Long Night Star",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 574,
+                id: "S7 Add: S-ATK Up",
+                name: "S7:S-ATK Up",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 575,
+                id: "S7 Add: R-ATK Up",
+                name: "S7:R-ATK Up",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 576,
+                id: "S7 Add: T-ATK Up",
+                name: "S7:T-ATK Up",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 584,
+                id: "S7 Add: Blinding Strike",
+                name: "S7:Blinding Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 600,
+                id: "S7 Add: Increased Efficiency",
+                name: "S7:Increased Efficiency",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 601,
+                id: "S7 Add: Mind Merge",
+                name: "S7:Mind Merge",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 590,
+                id: "S8 Add: HP Up",
+                name: "S8:HP Up",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 591,
+                id: "S8 Add: PP Up",
+                name: "S8:PP Up",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 586,
+                id: "S8 Add: Untouchable Gulper",
+                name: "S8:Untouchable Gulper",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 602,
+                id: "S8 Add: High-Minded",
+                name: "S8:High-Minded",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -688,6 +1218,294 @@
     },
     // Sets of abilities that together can produce another ability
     extendAbility: [
+        {
+            base: [
+                "XI30",
+                "AA01"
+            ],
+            ref: "AA01",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AA02"
+            ],
+            ref: "AA02",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AA03"
+            ],
+            ref: "AA03",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AA04"
+            ],
+            ref: "AA04",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AB01"
+            ],
+            ref: "AB01",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AB02"
+            ],
+            ref: "AB02",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AB03"
+            ],
+            ref: "AB03",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AB04"
+            ],
+            ref: "AB04",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AC01"
+            ],
+            ref: "AC01",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AC02"
+            ],
+            ref: "AC02",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AC03"
+            ],
+            ref: "AC03",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AC04"
+            ],
+            ref: "AC04",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AD01"
+            ],
+            ref: "AD01",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AD02"
+            ],
+            ref: "AD02",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AD03"
+            ],
+            ref: "AD03",
+            success: 100
+        },
+        {
+            base: [
+                "XI30",
+                "AD04"
+            ],
+            ref: "AD04",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BA01"
+            ],
+            ref: "BA01",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BA02"
+            ],
+            ref: "BA02",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BA03"
+            ],
+            ref: "BA03",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BA04"
+            ],
+            ref: "BA04",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BB01"
+            ],
+            ref: "BB01",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BB02"
+            ],
+            ref: "BB02",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BB03"
+            ],
+            ref: "BB03",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BB04"
+            ],
+            ref: "BB04",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BC01"
+            ],
+            ref: "BC01",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BC02"
+            ],
+            ref: "BC02",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BC03"
+            ],
+            ref: "BC03",
+            success: 100
+        },
+        {
+            base: [
+                "XI31",
+                "BC04"
+            ],
+            ref: "BC04",
+            success: 100
+        },
+        {
+            base: [
+                "XI32",
+                "EA01"
+            ],
+            ref: "EA01",
+            success: 100
+        },
+        {
+            base: [
+                "XI32",
+                "EA02"
+            ],
+            ref: "EA02",
+            success: 100
+        },
+        {
+            base: [
+                "XI32",
+                "EA03"
+            ],
+            ref: "EA03",
+            success: 100
+        },
+        {
+            base: [
+                "XI32",
+                "EA04"
+            ],
+            ref: "EA04",
+            success: 100
+        },
+        {
+            base: [
+                "XI32",
+                "EB01"
+            ],
+            ref: "EB01",
+            success: 100
+        },
+        {
+            base: [
+                "XI32",
+                "EB02"
+            ],
+            ref: "EB02",
+            success: 100
+        },
+        {
+            base: [
+                "XI32",
+                "EB03"
+            ],
+            ref: "EB03",
+            success: 100
+        },
+        {
+            base: [
+                "XI32",
+                "EB04"
+            ],
+            ref: "EB04",
+            success: 100
+        },
         {
             base: [
                 "AA01",
@@ -839,36 +1657,6 @@
             ],
             ref: "TL01",
             success: 60
-        },
-        {
-            base: [
-                "TH01",
-                "TH01",
-                "TH01"
-            ],
-            ref: "TH02",
-            success: 10
-        },
-        {
-            base: [
-                "TH01",
-                "TH01",
-                "TH01",
-                "TH01"
-            ],
-            ref: "TH02",
-            success: 30
-        },
-        {
-            base: [
-                "TH01",
-                "TH01",
-                "TH01",
-                "TH01",
-                "TH01"
-            ],
-            ref: "TH02",
-            success: 50
         },
         {
             base: [
@@ -3272,6 +4060,13 @@
             effect: "ALL(+20)"
         },
         {
+            ref: 603,
+            code: "FA05",
+            gid: "CB",
+            name: "Ability V",
+            effect: "ALL(+25)"
+        },
+        {
             ref: 53,
             code: "HA01",
             gid: "DA",
@@ -4841,8 +5636,6 @@
             gid: "L1",
             name: "S1:Vigor Enhancement",
             extend: [
-                100,
-                100,
                 100
             ],
             effect: "Boost self HP recovery by 40%.",
@@ -5740,6 +6533,17 @@
             noEx: true
         },
         {
+            ref: 537,
+            code: "LB2E",
+            gid: "L2",
+            name: "S2:Darkness Guard",
+            extend: [
+              100
+            ],
+            effect: "Increases your Dark attribute and Poison resistance. Boosts power against enemies that are weak to Dark.",
+            noEx: true
+        },
+        {
             ref: 211,
             code: "LC01",
             gid: "L3",
@@ -6061,7 +6865,7 @@
                 100,
                 100
             ],
-            effect: "Recover 60% of your maximum HP<br>at regular intervals.",
+            effect: "Recover 60% of your maximum HP at regular intervals.",
             noEx: true
         },
         {
@@ -6164,7 +6968,7 @@
         {
             ref: 498,
             code: "LC2B",
-            simCode: "LB1N",
+            simCode: "LC1N",
             gid: "L3",
             name: "S3:Flowing Courage",
             extend: [
@@ -6224,7 +7028,7 @@
                 100,
                 100
             ],
-            effect: "During Brave Stance, frontal critical<br>rate is raised by 30%.",
+            effect: "During Brave Stance, frontal critical rate is raised by 30%.",
             noEx: true
         },
         {
@@ -6263,7 +7067,7 @@
                 100,
                 100
             ],
-            effect: "Restores HP equal to 1% of damage dealt.<br>(Max: 30)",
+            effect: "Restores HP equal to 1% of damage dealt. (Max: 30)",
             noEx: true
         },
         {
@@ -6276,7 +7080,7 @@
                 100,
                 100
             ],
-            effect: "Become immune to knockback by standing still<br>for a certain time.",
+            effect: "Become immune to knockback by standing still for a certain time.",
             noEx: true
         },
         {
@@ -6289,7 +7093,7 @@
                 100,
                 100
             ],
-            effect: "Increases PP recovery from Tactics Trap by<br>20%.",
+            effect: "Increases PP recovery from Tactics Trap by 20%.",
             noEx: true
         },
         {
@@ -6302,7 +7106,7 @@
                 100,
                 100
             ],
-            effect: "Become invincible for 5 seconds when activating<br>Chain Trigger.",
+            effect: "Become invincible for 5 seconds when activating Chain Trigger.",
             noEx: true
         },
         {
@@ -6354,7 +7158,7 @@
                 100,
                 100
             ],
-            effect: "Decreases rate that Gear gauge empties while<br>Katana Gear is active.",
+            effect: "Decreases rate that Gear gauge empties while Katana Gear is active.",
             noEx: true
         },
         {
@@ -6367,7 +7171,7 @@
                 100,
                 100
             ],
-            effect: "Bullet Bow damage is boosted by 3% during<br>Rapid Shoot.",
+            effect: "Bullet Bow damage is boosted by 3% during Rapid Shoot.",
             noEx: true
         },
         {
@@ -6380,7 +7184,7 @@
                 100,
                 100
             ],
-            effect: "Extends the effect of Shifta and Deband to<br>last 120 seconds.",
+            effect: "Extends the effect of Shifta and Deband to last 120 seconds.",
             noEx: true
         },
         {
@@ -6393,7 +7197,7 @@
                 100,
                 100
             ],
-            effect: "Changes the weapon's element to match an equipped<br>Guard ring.",
+            effect: "Changes the weapon's element to match an equipped Guard ring.",
             noEx: true
         },
         {
@@ -6406,7 +7210,7 @@
                 100,
                 100
             ],
-            effect: "Bestow Natural PP Recovery and<br>increase PP recovery rate while Guarding.",
+            effect: "Bestow Natural PP Recovery and increase PP recovery rate while Guarding.",
             noEx: true
         },
         {
@@ -6419,7 +7223,7 @@
                 100,
                 100
             ],
-            effect: "Increase the power of<br>Normal Attacks by 13%.",
+            effect: "Increase the power of Normal Attacks by 13%.",
             noEx: true
         },
         {
@@ -6432,7 +7236,7 @@
                 100,
                 100
             ],
-            effect: "Reduce Critical Hit Rate by 50% and<br>increase the power of Critical Hits by 6%.",
+            effect: "Reduce Critical Hit Rate by 50% and increase the power of Critical Hits by 6%.",
             noEx: true
         },
         {
@@ -6445,7 +7249,7 @@
                 100,
                 100
             ],
-            effect: "Generates a barrier (-50% Damage Taken,<br>Negate Knockback) at regular intervals",
+            effect: "Generates a barrier (-50% Damage Taken, Negate Knockback) at regular intervals",
             noEx: true
         },
         {
@@ -6470,6 +7274,710 @@
                 100
             ],
             effect: "When you hit with a PA/Tech, boosts damage of the next PA/Tech based on the damage you deal in the next 4 seconds.",
+            noEx: true
+        },
+        {
+            ref: 538,
+            code: "LD0U",
+            gid: "L4",
+            name: "S4:Skilled Crippler",
+            extend: [
+              100
+            ],
+            effect: "Boosts critical hit rate by 50% against enemies affected by Jellen, Weak Bullet or a status effect.",
+            noEx: true
+        },
+        {
+            ref: 539,
+            code: "LD0V",
+            gid: "L4",
+            name: "S4:Cursed Rainbow",
+            extend: [
+              100
+            ],
+            effect: "While Petal, Ocean, Leaf, Moon, Snow or Shadow Flash is active: Recovers 500 HP each time you take 500 or more damage at once.",
+            noEx: true
+        },
+        {
+            ref: 604,
+            code: "LD0W",
+            gid: "L4",
+            name: "S4:Colossal Radiance",
+            extend: [
+                100
+            ],
+            effect: "Recovers 40 PP every 10 seconds when there is a boss nearby.",
+            noEx: true
+        },
+        {
+            ref: 605,
+            code: "LD0X",
+            gid: "L4",
+            name: "S4:Evasion Training",
+            extend: [
+                100
+            ],
+            effect: "Perform an evasive maneuver when the two circles overlap to gain \"Successful Dodge (Counter)\" status.If you do not evade, recover 5% HP.",
+            noEx: true
+        },
+        {
+            ref: 606,
+            code: "LD0Y",
+            gid: "L4",
+            name: "S4:Radiant Eclipse",
+            extend: [
+                100
+            ],
+            effect: "Increases active PP recovery by 60% when attacking an enemy affectedw by a Status Effect, Jellen, or Weak Bullet.",
+            noEx: true
+        },
+        {
+            ref: 540,
+            code: "LE01",
+            gid: "L5",
+            name: "S5:Release Parry",
+            extend: [
+              100
+            ],
+            effect: "Performance changes when Just Guarding with a Weapon Action. Sword only.",
+            noEx: true
+        },
+        {
+            ref: 541,
+            code: "LE02",
+            gid: "L5",
+            name: "S5:Unrivaled Parry",
+            extend: [
+              100
+            ],
+            effect: "Consume no Gear for 15s after performing a Just Guard. Increase Power by 2%. Wired Lance only.",
+            noEx: true
+        },
+        {
+            ref: 542,
+            code: "LE03",
+            gid: "L5",
+            name: "S5:Rushing Bolt",
+            extend: [
+              100
+            ],
+            effect: "Inflict damage while running. Unleash a shockwave attack when you stop running. Increase Power by 2%. Partizan only.",
+            noEx: true
+        },
+        {
+            ref: 543,
+            code: "LE04",
+            gid: "L5",
+            name: "S5:Shining Cyclone",
+            extend: [
+              100
+            ],
+            effect: "PP recovery and consumption changes when your maximum PP falls below 50%. Twin Daggers only.",
+            noEx: true
+        },
+        {
+            ref: 544,
+            code: "LE05",
+            gid: "L5",
+            name: "S5:Evasive Barrage",
+            extend: [
+              100
+            ],
+            effect: "Boost Gear Gauge and unleash a counterattack upon successfully blocking an attack with DS Wind Parrying.Increase Power by 2%. Double Saber only.",
+            noEx: true
+        },
+        {
+            ref: 545,
+            code: "LE06",
+            gid: "L5",
+            name: "S5:Evasive Meteor",
+            extend: [
+              100
+            ],
+            effect: "Successfully evade an attack with Sway to summon a giant fist. Increase Power by 2%. Knuckles only.",
+            noEx: true
+        },
+        {
+            ref: 546,
+            code: "LE07",
+            gid: "L5",
+            name: "S5:Hangeki Edge",
+            extend: [
+              100
+            ],
+            effect: "Increase the damage of Counter by 15%. Restore Braver Gear Gauge to its maximum value when you successfully perform Katana Counter.Increase Power by 2%. Katana only.",
+            noEx: true
+        },
+        {
+            ref: 547,
+            code: "LE08",
+            gid: "L5",
+            name: "S5:Thundering Pursuit",
+            extend: [
+              100
+            ],
+            effect: "When using a PA, lightning-charged Photon Blades are generated. (Power: ?%). Dual Blades only.",
+            noEx: true
+        },
+        {
+            ref: 548,
+            code: "LE09",
+            gid: "L5",
+            name: "S5:Fiery End",
+            extend: [
+              100
+            ],
+            effect: "Enhance the performance of End Attract with a one minute Recast. Recast resets upon successfully evading an attack with Dive Roll. Increase Power by 2%. Assault Rifle only.",
+            noEx: true
+        },
+        {
+            ref: 549,
+            code: "LE0A",
+            gid: "L5",
+            name: "S5:Fiery Zero",
+            extend: [
+              100
+            ],
+            effect: "Enhance the performance of Zero Distance with a one minute Recast. Recast resets upon successfully evading an attack with Dive Roll. Increase Power by 2%. Launcher only.",
+            noEx: true
+        },
+        {
+            ref: 550,
+            code: "LE0B",
+            gid: "L5",
+            name: "S5:Bright Escape",
+            extend: [
+              100
+            ],
+            effect: "Successfully evade an attack with Hero Step or Stylish Roll to restore PP. Effect is negated if damage is taken.Twin Machineguns only.",
+            noEx: true
+        },
+        {
+            ref: 551,
+            code: "LE0C",
+            gid: "L5",
+            name: "S5:Auxilary Arrow",
+            extend: [
+              100
+            ],
+            effect: "Produces a Chase Arrow when a PA (except Banish Arrow) hits an enemy. Boosts the power of this ability's Chase Arrow for 15 seconds after successfully dodging an attack with Step.Bullet Bow only.",
+            noEx: true
+        },
+        {
+            ref: 552,
+            code: "LE0D",
+            gid: "L5",
+            name: "S5:Calming Bullet",
+            extend: [
+              100
+            ],
+            effect: "Enhance the performance of Normal Attacks and increase the damage of Rod Shoot by 100%. Rod only.",
+            noEx: true
+        },
+        {
+            ref: 553,
+            code: "LE0E",
+            gid: "L5",
+            name: "S5:Speedy Support",
+            extend: [
+              100
+            ],
+            effect: "Shorten the charge time of Support Techniques. The power of Zondeel is reduced. Talis only.",
+            noEx: true
+        },
+        {
+            ref: 554,
+            code: "LE0F",
+            gid: "L5",
+            name: "S5:Calming Shockwave",
+            extend: [
+              100
+            ],
+            effect: "Generates a wave attack on the third Normal Attack. Increase Power by 2%. Wand only.",
+            noEx: true
+        },
+        {
+            ref: 555,
+            code: "LE0G",
+            gid: "L5",
+            name: "S5:Rhythmic Pursuer",
+            extend: [
+              100
+            ],
+            effect: "Boost the potency of Elemental Burst by 30% and automatically activate Elemental Burst when using a Photon Art.Jet Boots only.",
+            noEx: true
+        },
+        {
+            ref: 556,
+            code: "LE0H",
+            gid: "L5",
+            name: "S5:Mysterious Intent",
+            extend: [
+              100
+            ],
+            effect: "Increase Critical Hit Rate by 20%. On a Critical Hit, deal an additional 2% damage and recover 1% of damage dealt as HP (30 MAX).",
+            noEx: true
+        },
+        {
+            ref: 599,
+            code: "LE0I",
+            gid: "L5",
+            name: "S5:Anthesis Cultivation",
+            extend: [
+                100
+            ],
+            effect: "Doubles the effects of Special Abilities.",
+            noEx: true
+        },
+        {
+            ref: 557,
+            code: "LF0A",
+            gid: "L6",
+            name: "S6:Heroic Howl",
+            extend: [
+              100
+            ],
+            effect: "Enhances Hero Boost. Increases the rate that Hero Boosts's damage boost increases. No effect if using weapon with \"Heroic Victory\".",
+            noEx: true
+        },
+        {
+            ref: 558,
+            code: "LF0B",
+            gid: "L6",
+            name: "S6:Soaring Ballet",
+            extend: [
+              100
+            ],
+            effect: "Bouncer weapon Gear fills while standing still. No effect if using weapon with \"Angelic Guidance\".",
+            noEx: true
+        },
+        {
+            ref: 559,
+            code: "LF0C",
+            gid: "L6",
+            name: "S6:Guardian's Essence",
+            extend: [
+              100
+            ],
+            effect: "Hunter weapon and Katana Gear fills while Guarding. No effect if using weapon with \"Zephyr's Edge\".",
+            noEx: true
+        },
+        {
+            ref: 560,
+            code: "LF0D",
+            gid: "L6",
+            name: "S6:Ironclad Illness",
+            extend: [
+              100
+            ],
+            effect: "Become massive for 60 seconds after becoming affected by a status effect.",
+            noEx: true
+        },
+        {
+            ref: 561,
+            code: "LF0E",
+            gid: "L6",
+            name: "S6:Wise Skill",
+            extend: [
+              100
+            ],
+            effect: "Increases your critical hit rate by 15%.",
+            noEx: true
+        },
+        {
+            ref: 562,
+            code: "LF0F",
+            gid: "L6",
+            name: "S6:Guardian Armor",
+            extend: [
+              100
+            ],
+            effect: "Reduces damage taken by 7%.",
+            noEx: true
+        },
+        {
+            ref: 563,
+            code: "LF0G",
+            gid: "L6",
+            name: "S6:S-ATK Up",
+            extend: [
+              100
+            ],
+            effect: "S-ATK(+30)",
+            noEx: true
+        },
+        {
+            ref: 564,
+            code: "LF0H",
+            gid: "L6",
+            name: "S6:R-ATK Up",
+            extend: [
+              100
+            ],
+            effect: "R-ATK(+30)",
+            noEx: true
+        },
+        {
+            ref: 565,
+            code: "LF0I",
+            gid: "L6",
+            name: "S6:T-ATK Up",
+            extend: [
+              100
+            ],
+            effect: "T-ATK(+30)",
+            noEx: true
+        },
+        {
+            ref: 566,
+            code: "LF0J",
+            gid: "L6",
+            name: "S6:HP Up",
+            extend: [
+              100
+            ],
+            effect: "HP(+40)",
+            noEx: true
+        },
+        {
+            ref: 567,
+            code: "LF0K",
+            gid: "L6",
+            name: "S6:PP Up",
+            extend: [
+              100
+            ],
+            effect: "PP(+4)",
+            noEx: true
+        },
+        {
+            ref: 568,
+            code: "LF0L",
+            gid: "L6",
+            name: "S6:Brilliant Ruin",
+            extend: [
+              100
+            ],
+            effect: "Recover 5 PP when an enemy near you is defeated.",
+            noEx: true
+        },
+        {
+            ref: 569,
+            code: "LF0M",
+            gid: "L6",
+            name: "S6:Readying Guard",
+            extend: [
+              100
+            ],
+            effect: "Gain a 10% chance to reduce damage by 70%.",
+            noEx: true
+        },
+        {
+            ref: 570,
+            code: "LF0N",
+            gid: "L6",
+            name: "S6:Angelic Wings",
+            extend: [
+              100
+            ],
+            effect: "Increases Jump Power.",
+            noEx: true
+        },
+        {
+            ref: 571,
+            code: "LF0P",
+            gid: "L6",
+            name: "S6:Evasion Whistle",
+            extend: [
+              100
+            ],
+            effect: "Dodging will cause your pet to return back to you.",
+            noEx: true
+        },
+        {
+            ref: 572,
+            code: "LF0Q",
+            gid: "L6",
+            name: "S6:Battle Readiness",
+            extend: [
+              100
+            ],
+            effect: "When your HP is at 50% or lower, damage is reduced by 40%. Resets after a brief cooldown.",
+            noEx: true
+        },
+        {
+            ref: 607,
+            code: "LF0O",
+            gid: "L6",
+            name: "S6:Long Night Star",
+            extend: [
+                100
+            ],
+            effect: "Reduce Etoile Boost's decay per second by 50%.",
+            noEx: true
+        },
+        {
+            ref: 573,
+            code: "LG0A",
+            gid: "L7",
+            name: "S7:Glowing Grace",
+            extend: [
+              100
+            ],
+            effect: "Recovers 4 PP per second when standing still for longer than 1 second.",
+            noEx: true
+        },
+        {
+            ref: 574,
+            code: "LG0B",
+            gid: "L7",
+            name: "S7:S-ATK Up",
+            extend: [
+              100
+            ],
+            effect: "S-ATK(+30)",
+            noEx: true
+        },
+        {
+            ref: 575,
+            code: "LG0C",
+            gid: "L7",
+            name: "S7:R-ATK Up",
+            extend: [
+              100
+            ],
+            effect: "R-ATK(+30)",
+            noEx: true
+        },
+        {
+            ref: 576,
+            code: "LG0D",
+            gid: "L7",
+            name: "S7:T-ATK Up",
+            extend: [
+              100
+            ],
+            effect: "T-ATK(+30)",
+            noEx: true
+        },
+        {
+            ref: 577,
+            code: "LG0E",
+            gid: "L7",
+            name: "S7:HP Up",
+            extend: [
+              100
+            ],
+            effect: "HP(+40)",
+            noEx: true
+        },
+        {
+            ref: 578,
+            code: "LG0F",
+            gid: "L7",
+            name: "S7:PP Up",
+            extend: [
+              100
+            ],
+            effect: "PP(+4)",
+            noEx: true
+        },
+        {
+            ref: 579,
+            code: "LG0G",
+            gid: "L7",
+            name: "S7:S-Atk Up 2",
+            extend: [
+              100
+            ],
+            effect: "S-ATK(+50)",
+            noEx: true
+        },
+        {
+            ref: 580,
+            code: "LG0H",
+            gid: "L7",
+            name: "S7:R-ATK Up 2",
+            extend: [
+              100
+            ],
+            effect: "R-ATK(+50)",
+            noEx: true
+        },
+        {
+            ref: 581,
+            code: "LG0I",
+            gid: "L7",
+            name: "S7:T-ATK Up 2",
+            extend: [
+              100
+            ],
+            effect: "T-ATK(+50)",
+            noEx: true
+        },
+        {
+            ref: 582,
+            code: "LG0J",
+            gid: "L7",
+            name: "S7:Attack Up",
+            extend: [
+              100
+            ],
+            effect: "S-ATK(+25),R-ATK(+25),T-ATK(+25)",
+            noEx: true
+        },
+        {
+            ref: 583,
+            code: "LG0K",
+            gid: "L7",
+            name: "S7:Attack Up 2",
+            extend: [
+              100
+            ],
+            effect: "S-ATK(+45),R-ATK(+45),T-ATK(+45)",
+            noEx: true
+        },
+        {
+            ref: 584,
+            code: "LG0L",
+            gid: "L7",
+            name: "S7:Blinding Strike",
+            extend: [
+              100
+            ],
+            effect: "Gain a 10% chance to stun the enemy with a Just Attack.",
+            noEx: true
+        },
+        {
+            ref: 600,
+            code: "LG0M",
+            gid: "L7",
+            name: "S7:Increased Efficiency",
+            extend: [
+                100
+            ],
+            effect: "Boost the effect of recovery items by 30%.",
+            noEx: true
+        },
+        {
+            ref: 601,
+            code: "LG0N",
+            gid: "L7",
+            name: "S7:Mind Merge",
+            extend: [
+                100
+            ],
+            effect: "Automatically answers Sympathy requests during Alter Ego. No effect if using weapon with \"Glance of Darkness\".",
+            noEx: true
+        },
+        {
+            ref: 585,
+            code: "LH0A",
+            gid: "L8",
+            name: "S8:Saltating Support",
+            extend: [
+              100
+            ],
+            effect: "Activates Shifta and Deband every 10 seconds when you stay in the air for longer than 2 seconds.",
+            noEx: true
+        },
+        {
+            ref: 586,
+            code: "LH0B",
+            gid: "L8",
+            name: "S8:Untouchable Gulper",
+            extend: [
+              100
+            ],
+            effect: "Makes you temporarily invincible after drinking a -mate item.",
+            noEx: true
+        },
+        {
+            ref: 587,
+            code: "LH0C",
+            gid: "L8",
+            name: "S8:S-ATK Up",
+            extend: [
+              100
+            ],
+            effect: "S-ATK(+30)",
+            noEx: true
+        },
+        {
+            ref: 588,
+            code: "LH0D",
+            gid: "L8",
+            name: "S8:R-ATK Up",
+            extend: [
+              100
+            ],
+            effect: "R-ATK(+30)",
+            noEx: true
+        },
+        {
+            ref: 589,
+            code: "LH0E",
+            gid: "L8",
+            name: "S8:T-ATK Up",
+            extend: [
+              100
+            ],
+            effect: "T-ATK(+30)",
+            noEx: true
+        },
+        {
+            ref: 590,
+            code: "LH0F",
+            gid: "L8",
+            name: "S8:HP Up",
+            extend: [
+              100
+            ],
+            effect: "HP(+40)",
+            noEx: true
+        },
+        {
+            ref: 591,
+            code: "LH0G",
+            gid: "L8",
+            name: "S8:PP Up",
+            extend: [
+              100
+            ],
+            effect: "PP(+4)",
+            noEx: true
+        },
+        {
+            ref: 592,
+            code: "LH0H",
+            gid: "L8",
+            name: "S8:HP Up 2",
+            extend: [
+              100
+            ],
+            effect: "HP(+60)",
+            noEx: true
+        },
+        {
+            ref: 593,
+            code: "LH0I",
+            gid: "L8",
+            name: "S8:PP Up 2",
+            extend: [
+              100
+            ],
+            effect: "PP(+6)",
+            noEx: true
+        },
+        {
+            ref: 602,
+            code: "LH0J",
+            gid: "L8",
+            name: "S8:High-Minded",
+            extend: [
+                100
+            ],
+            effect: "Reduce falling speed while charging a Technique in mid-air.",
             noEx: true
         },
         {
@@ -8169,6 +9677,18 @@
             effect: "T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+40)"
         },
         {
+            ref: 595,
+            code: "TN04",
+            gid: "AC",
+            name: "Fordruss Glare",
+            extend: [
+                30,
+                50
+            ],
+            status: 1,
+            effect: "S-DEF(+35), R-DEF(+35), T-DEF(+35), HP(+40), PP(+4)"
+        },
+        {
             ref: 356,
             code: "TF01",
             gid: "AC",
@@ -8199,6 +9719,7 @@
             code: "TH01",
             gid: "AC",
             name: "Doom Break",
+            lvup: "TH02",
             extend: [
                 0,
                 50,
@@ -8219,6 +9740,12 @@
                 0,
                 50,
                 80
+            ],
+            generate: [
+                0,
+                10,
+                30,
+                50
             ],
             extup: [
                 "FA03"
@@ -9288,7 +10815,7 @@
         {
             ref: 515,
             code: "PA01",
-            gid: "YA",
+            gid: "EC",
             name: "Ripper/Ltn. Weak",
             extend: [
                 0,
@@ -9300,7 +10827,7 @@
         {
             ref: 516,
             code: "PB02",
-            gid: "YA",
+            gid: "EC",
             name: "Ripper/Fire Weak",
             extend: [
                 0,
@@ -9312,7 +10839,7 @@
         {
             ref: 525,
             code: "PC03",
-            gid: "YA",
+            gid: "EC",
             name: "Ripper/Ice Weak",
             extend: [
                 0,
@@ -9324,7 +10851,7 @@
         {
             ref: 526,
             code: "PD04",
-            gid: "YA",
+            gid: "EC",
             name: "Ripper/Wind Weak",
             extend: [
                 0,
@@ -9348,7 +10875,7 @@
         {
             ref: 528,
             code: "PF06",
-            gid: "YA",
+            gid: "EC",
             name: "Ripper/Dark Weak",
             extend: [
                 0,
@@ -9361,7 +10888,7 @@
             ref: 517,
             code: "VQ01",
             simCode: "PH11",
-            gid: "YA",
+            gid: "EC",
             name: "Slayer/Armor Type",
             extend: [
                 0,
@@ -9374,7 +10901,7 @@
             ref: 518,
             code: "VQ02",
             simCode: "PI12",
-            gid: "YA",
+            gid: "EC",
             name: "Slayer/Beast Type",
             extend: [
                 0,
@@ -9386,7 +10913,7 @@
         {
             ref: 529,
             code: "PJ13",
-            gid: "YA",
+            gid: "EC",
             name: "Slayer/Ocean Type",
             extend: [
                 0,
@@ -9394,6 +10921,42 @@
                 20
             ],
             effect: "Boost damage against Wopal Oceanids. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 596,
+            code: "PK14",
+            gid: "EC",
+            name: "Slayer/Kuronite Type",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against Kuronites. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 597,
+            code: "PL15",
+            gid: "EC",
+            name: "Slayer/Phantoms Type",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against Phantoms. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 598,
+            code: "PM16",
+            gid: "EC",
+            name: "Slayer/Darkers",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against Darkers. Effect is reduced as the Weapon Rarity increases."
         },
         {
             ref: 443,
@@ -9516,7 +11079,7 @@
             ref: 453,
             code: "XB01",
             gid: "GB",
-            name: "Extreme Receptor",
+            name: "Extreceptor",
             extup: [
                 "AA",
                 "AB",
@@ -9664,6 +11227,13 @@
             effect: "HP(+80),PP(+5)"
         },
         {
+            ref: 530,
+            code: "XI61",
+            gid: "E",
+            name: "Grand Stamina",
+            effect: "HP(+100),PP(+6)"
+        },
+        {
             ref: 473,
             code: "XI07",
             gid: "E",
@@ -9683,6 +11253,13 @@
             gid: "E",
             name: "Grace Power",
             effect: "S-ATK(+50),PP(+5)"
+        },
+        {
+            ref: 532,
+            code: "XI62",
+            gid: "E",
+            name: "Grand Power",
+            effect: "S-ATK(+60),HP(+20),PP(+5)"
         },
         {
             ref: 476,
@@ -9706,6 +11283,13 @@
             effect: "R-ATK(+50),PP(+5)"
         },
         {
+            ref: 533,
+            code: "XI63",
+            gid: "E",
+            name: "Grand Shoot",
+            effect: "R-ATK(+60),HP(+20),PP(+5)"
+        },
+        {
             ref: 479,
             code: "XI09",
             gid: "E",
@@ -9727,6 +11311,20 @@
             effect: "T-ATK(+50),PP(+5)"
         },
         {
+            ref: 534,
+            code: "XI64",
+            gid: "E",
+            name: "Grand Technique",
+            effect: "T-ATK(+60),HP(+20),PP(+5)"
+        },
+        {
+            ref: 531,
+            code: "XI60",
+            gid: "E",
+            name: "Grace Spirita",
+            effect: "PP(+15)"
+        },
+        {
             ref: 482,
             code: "XI20",
             gid: "E",
@@ -9734,11 +11332,25 @@
             effect: "S-ATK(+15)<br>R-ATK(+15)<br>T-ATK(+15)<br>DEX(+25)<br>PP(+1)"
         },
         {
+            ref: 535,
+            code: "XI22",
+            gid: "E",
+            name: "Attack Boost",
+            effect: "S-ATK(+25),R-ATK(+25),T-ATK(+25),DEX(+40),PP(+3)"
+        },
+        {
             ref: 483,
             code: "XI21",
             gid: "E",
             name: "Defense Boost",
             effect: "S-DEF(+25)<br>R-DEF(+25)<br>T-DEF(+25)<br>HP(+55)<br>PP(+1)"
+        },
+        {
+            ref: 536,
+            code: "XI23",
+            gid: "E",
+            name: "Guard Boost",
+            effect: "S-DEF(+35),R-DEF(+35),T-DEF(+35),HP(+75),PP(+3)"
         },
         {
             ref: 484,
@@ -9888,7 +11500,7 @@
             noEx: true
         },
         {
-            ref: 519,
+            ref: 594,
             code: "LD99",
             gid: "L4",
             name: "S4:Junk",
@@ -9898,6 +11510,58 @@
                 100
             ],
             effect: "Generic S4 junk.",
+            noEx: true
+        },
+        {
+            ref: 608,
+            code: "LE99",
+            gid: "L4",
+            name: "S5:Junk",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Generic S5 junk.",
+            noEx: true
+        },
+        {
+            ref: 609,
+            code: "LF99",
+            gid: "L4",
+            name: "S6:Junk",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Generic S6 junk.",
+            noEx: true
+        },
+        {
+            ref: 610,
+            code: "LG99",
+            gid: "L4",
+            name: "S7:Junk",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Generic S7 junk.",
+            noEx: true
+        },
+        {
+            ref: 611,
+            code: "LH99",
+            gid: "L4",
+            name: "S8:Junk",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Generic S8 junk.",
             noEx: true
         }
     ],
@@ -9951,7 +11615,7 @@
         { name: `Sentence Tiro`, jpName: `センテンス・ティロ` },
         { name: `Sentence Magia`, jpName: `センテンス・マギア` },
         { name: `Blow Resist III`, jpName: `ブロウレジストⅢ` },
-        { name: `Shot Resist III`, jpName: `ショットレジストⅢ` },
+        { name: `Shoot Resist III`, jpName: `ショットレジストⅢ` },
         { name: `Mind Resist III`, jpName: `マインドレジストⅢ` },
         { name: `All Resist III`, jpName: `オルレジストⅢ` },
         { name: `Burn III`, jpName: `バーンⅢ` },
@@ -9984,6 +11648,10 @@
         { name: `S1:Strike Boost`, jpName: `S1:打撃増幅` },
         { name: `S1:Shoot Boost`, jpName: `S1:射撃増幅` },
         { name: `S1:Tech Boost`, jpName: `S1:法撃増幅` },
+        { name: `S1:Immediate Intent`, jpName: `S1:瞬連の志` },
+        { name: "S1:Red Petal Flash", jpName: "S1:花ノ赤閃" },
+        { name: "S1:Yellow Moon Flash", jpName: "S1:月ノ黄閃" },
+        { name: "S1:Collaborator Liberator", jpName: "S1:戦友の加護" },
         { name: `S2:Wise Skill`, jpName: `S2:妙技の巧` },
         { name: `S2:Radiant Strike`, jpName: `S2:輝剰の撃` },
         { name: `S2:Guardian Armor`, jpName: `S2:守護の備` },
@@ -9995,11 +11663,22 @@
         { name: `S2:Phantasmal Radiance`, jpName: `S2:幻精輝剰` },
         { name: `S2:Phantasmal Gleam`, jpName: `S2:幻精輝勢` },
         { name: `S2:Phantasmal Guardian`, jpName: `S2:幻精の備` },
+        { name: `S2:Aegis Gift`, jpName: `S2:瞬護の与` },
+        { name: "S2:Cursed Radiance", jpName: "S2:災転輝与" },
+        { name: "S2:Skill Reduction", jpName: "S2:技巧縮減" },
+        { name: "S2:Lightning Guard", jpName: "S2:轟雷の備志" },
+        { name: "S2:Storm Guard", jpName: "S2:暴風の備志" },
+        { name: "S2:Shining Guard", jpName: "S2:光明の備志" },
+        { name: "S2:Darkness Guard", jpName: "S2:暗闇の備志" },
         { name: `S3:Flowing Exhilaration`, jpName: `S3:時流活与` },
         { name: `S3:Radiating Grace`, jpName: `S3:輝勢の恵` },
         { name: `S3:Guardian Armor`, jpName: `S3:守護の備` },
         { name: `S3:Violent Invigoration`, jpName: `S3:猛威の奮激` },
         { name: `S3:Phantasmal Reduction`, jpName: `S3:幻精縮減` },
+        { name: `S3:Vital Intent`, jpName: `S3:活実の志` },
+        { name: `S3:Brilliant Ruin`, jpName: `S3:滅域輝与` },
+        { name: `S3:Calming Exhilaration`, jpName: `S3:静心活与` },
+        { name: `S3:Fortifying Strike`, jpName: `S3:撃流の備` },
         { name: `S3:Immediate Profusion`, jpName: `S3:瞬撃繚乱` },
         { name: `S4:Marvelous Aegis`, jpName: `S4:瞬護輝与` },
         { name: `S4:Steel Resolve`, jpName: `S4:鋼の決意` },
@@ -10018,6 +11697,23 @@
         { name: `S4:Circuit Rotation`, jpName: `S4:回路輪転` },
         { name: `S4:Swift Strike`, jpName: `S4:短杖強打` },
         { name: `S4:Support Extension`, jpName: `S4:支援限長` },
+        { name: "S5:Release Parry", jpName: "S5:瞬護開放" },
+        { name: "S5:Unrivaled Parry", jpName: "S5:瞬護無双" },
+        { name: "S5:Rushing Bolt", jpName: "S5:瞬駆突貫" },
+        { name: "S5:Shining Cyclone", jpName: "S5:輝堺の旋" },
+        { name: "S5:Evasive Barrage", jpName: "S5:巧避連撃" },
+        { name: "S5:Evasive Meteor", jpName: "S5:巧避巨拳" },
+        { name: "S5:Mysterious Intent", jpName: "S5:妙の巧志" },
+        { name: "S5:Hangeki Edge", jpName: "S5:反撃鋭刃" },
+        { name: "S5:Thundering Pursuit", jpName: "S5:雷光追撃" },
+        { name: "S5:Fiery End", jpName: "S5:烈終焉弾" },
+        { name: "S5:Fiery Zero", jpName: "S5:烈零射砲" },
+        { name: "S5:Bright Escape", jpName: "S5:巧避輝与" },
+        { name: "S5:Auxilary Arrow", jpName: "S5:追射剛矢" },
+        { name: "S5:Calming Bullet", jpName: "S5:静心杖弾" },
+        { name: "S5:Speedy Support", jpName: "S5:急速補助" },
+        { name: "S5:Calming Shockwave", jpName: "S5:静心衝杖" },
+        { name: "S5:Rhythmic Pursuer", jpName: "S5:追災律動" },
         { name: `Omega Buster`, jpName: `オメガバスター` },
         { name: `Soul Receptor`, jpName: `ソールレセプター` },
         { name: `Extreceptor`, jpName: `エクストレセプター` },
@@ -10030,4 +11726,9 @@
         { name: `Phrase Reduce`, jpName: `フレイズ・リデュース` },
         { name: `Phrase Decay`, jpName: `フレイズ・ディケイ` }
     ]
+}
+
+var module = module || undefined
+if (module && module.exports) {
+    module.exports.data = data
 }

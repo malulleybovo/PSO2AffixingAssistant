@@ -1,3 +1,30 @@
+/**
+ * Themes
+ *
+ * @licstart  The following is the entire license notice for the 
+ *  JavaScript code in this page.
+ *
+ * Copyright (C) 2018  Arthur Malulley B. de O.
+ *
+ *
+ * The JavaScript code in this page is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in this page.
+ *
+ */
 .theme--default {
     --background-color: #111;
     --overlay-color: rgba(0, 0, 0, 0.5);
@@ -22,23 +49,23 @@
 }
 
 .theme--bright {
-    --background-color: #ffffff;
+    --background-color: #ededed;
     --overlay-color: rgba(0, 0, 0, 0.5);
-    --paint-lightest: #242729;
-    --paint-lighter2: #eff0f1;
+    --paint-lightest: #a2abc3;
+    --paint-lighter2: #e0e3eb;
     --paint-lighter: #E4E6E7;
-    --paint-light: #fafafb;
+    --paint-light: #f2f2f8;
     --paint-light-fade: rgba(242, 244, 247, 0.25);
-    --paint-dark: #eff0f1;
+    --paint-dark: #fbfbfe;
     --paint-dark-fade: rgba(224, 229, 238, 0.25);
     --paint-darker-fade: rgba(62, 63, 65, 0.25);
-    --paint-prime: #ffb935;
-    --paint-alert: #fa6161;
+    --paint-prime: #b8c8e5;
+    --paint-alert: #a5badf;
     --paint-alert-dark: #793e3e;
-    --conn-color: #F48024;
-    --alter-paint: #ffb935;
-    --alter-paint-light: #FFC05C;
-    --alter-paint-lighter: #FFC05C;
+    --conn-color: #b6c7e5;
+    --alter-paint: #b6c7e5;
+    --alter-paint-light: #cddbee;
+    --alter-paint-lighter: #dbe5f5;
     --alter-paint2: #547FE8;
     --border-color: #939A9F;
     --text-color: #242729;

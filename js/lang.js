@@ -1,4 +1,30 @@
-﻿
+/**
+ *
+ * @licstart  The following is the entire license notice for the 
+ *  JavaScript code in this page.
+ *
+ * Copyright (C) 2018  Arthur Malulley B. de O.
+ *
+ *
+ * The JavaScript code in this page is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in this page.
+ *
+ */
+
 const lang = Object.freeze({
     "app": {
         appTitle: {
@@ -302,6 +328,10 @@ const lang = Object.freeze({
         menuBugDescription: {
             en: "Report a problem",
             jp: "問題を報告"
+        },
+        malulleybovo: {
+            en: "by malulleybovo",
+            jp: "malulleybovoから"
         }
     },
     "filters": {
@@ -405,6 +435,10 @@ const lang = Object.freeze({
             en: "Add Ability (HP&PP/3)",
             jp: "特殊能力(HP&PP/3)"
         },
+        "Add Ability (Grand HP)": {
+            en: "Add Ability (Grand HP)",
+            jp: "特殊能力(グランドHP)"
+        },
         "Add Ability (S-ATK&PP)": {
             en: "Add Ability (S-ATK&PP)",
             jp: "特殊能力追加(打撃&PP)"
@@ -416,6 +450,10 @@ const lang = Object.freeze({
         "Add Ability (S-ATK&PP/3)": {
             en: "Add Ability (S-ATK&PP/3)",
             jp: "特殊能力(打撃&PP/3)"
+        },
+        "Add Ability (Grand P)": {
+            en: "Add Ability (Grand P)",
+            jp: "特殊能力(グランドP)"
         },
         "Add Ability (R-ATK&PP)": {
             en: "Add Ability (R-ATK&PP)",
@@ -429,6 +467,10 @@ const lang = Object.freeze({
             en: "Add Ability (R-ATK&PP/3)",
             jp: "特殊能力(射撃&PP/3)"
         },
+        "Add Ability (Grand S)": {
+            en: "Add Ability (Grand S)",
+            jp: "特殊能力(グランドS)"
+        },
         "Add Ability (T-ATK&PP)": {
             en: "Add Ability (T-ATK&PP)",
             jp: "特殊能力追加(法撃&PP)"
@@ -441,13 +483,29 @@ const lang = Object.freeze({
             en: "Add Ability (T-ATK&PP/3)",
             jp: "特殊能力(法撃&PP/3)"
         },
+        "Add Ability (Grand T)": {
+            en: "Add Ability (Grand T)",
+            jp: "特殊能力(グランドT)"
+        },
+        "Add Ability (Grand PP)": {
+            en: "Add Ability (Grand PP)",
+            jp: "特殊能力(グランドPP)"
+        },
         "Add Ability (Offense Focus)": {
             en: "Add Ability (Offense Focus)",
             jp: "特殊能力追加(攻撃総合)"
         },
+        "Add Ability (Offense Focus/2)": {
+            en: "Add Ability (Offense Focus/2)",
+            jp: "特殊能力追加(攻撃総合/2)"
+        },
         "Add Ability (Defense Focus)": {
             en: "Add Ability (Defense Focus)",
             jp: "特殊能力追加(防御総合)"
+        },
+        "Add Ability (Defense Focus/2)": {
+            en: "Add Ability (Defense Focus/2)",
+            jp: "特殊能力追加(防御総合/2)"
         },
         "Add Ability (Attack Inherit)": {
             en: "Add Ability (Attack Inherit)",
@@ -464,6 +522,18 @@ const lang = Object.freeze({
         "Add Ability (Mark Receptor)": {
             en: "Add Ability (Mark Receptor)",
             jp: "特殊能力追加(マークレセプター)"
+        },
+        "Add Ability (Sentence P)": {
+            en: "Add Ability (Sentence P)",
+            jp: "特殊能力(センテンスP)"
+        },
+        "Add Ability (Sentence S)": {
+            en: "Add Ability (Sentence S)",
+            jp: "特殊能力(センテンスS)"
+        },
+        "Add Ability (Sentence T)": {
+            en: "Add Ability (Sentence T)",
+            jp: "特殊能力(センテンスT)"
         },
         "S1 Add: Photon Reduction 2": {
             en: "S1 Add: Photon Reduction 2",
@@ -500,6 +570,66 @@ const lang = Object.freeze({
         "S1 Add: Collaborator Liberator": {
             en: "S1 Add: Collaborator Liberator",
             jp: "S1追加:戦友の加護"
+        },
+        "S1 Add: Wise Skill": {
+            en: "S1 Add: Wise Skill",
+            jp: "S1追加:妙技の巧"
+        },
+        "S1 Add: Radiating Grace": {
+            en: "S1 Add: Radiating Grace",
+            jp: "S1追加:輝勢の恵"
+        },
+        "S1 Add: Skilled Brilliance": {
+            en: "S1 Add: Skilled Brilliance",
+            jp: "S1追加:輝充の志"
+        },
+        "S1 Add: Red Petal Flash": {
+            en: "S1 Add: Red Petal Flash",
+            jp: "S1追加:花ノ赤閃"
+        },
+        "S1 Add: Blue Ocean Flash": {
+            en: "S1 Add: Blue Ocean Flash",
+            jp: "S1追加:海ノ青閃"
+        },
+        "S1 Add: White Snow Flash": {
+            en: "S1 Add: White Snow Flash",
+            jp: "S1追加:雪ノ白閃"
+        },
+        "S1 Add: Yellow Moon Flash": {
+            en: "S1 Add: Yellow Moon Flash",
+            jp: "S1追加:月ノ黄閃"
+        },
+        "S1 Add: Green Leaf Flash": {
+            en: "S1 Add: Green Leaf Flash",
+            jp: "S1追加:葉ノ緑閃"
+        },
+        "S1 Add: Black Shadow Flash": {
+            en: "S1 Add: Black Shadow Flash",
+            jp: "S1追加:影ノ黒閃"
+        },
+        "S1 Add: Skilled Strike": {
+            en: "S1 Add: Skilled Strike",
+            jp: "S1追加:妙撃の志"
+        },
+        "S1 Add: Flowing Exhilaration": {
+            en: "S1 Add: Flowing Exhilaration",
+            jp: "S1追加:時流活与"
+        },
+        "S1 Add: Guardian Armor": {
+            en: "S1 Add: Guardian Armor",
+            jp: "S1追加:守護の備"
+        },
+        "S1 Add: Rupturing Excess": {
+            en: "S1 Add: Rupturing Excess",
+            jp: "S1追加:裂砕の剰"
+        },
+        "S1 Add: Spirited Response": {
+            en: "S1 Add: Spirited Response",
+            jp: "S1追加:気輝応変"
+        },
+        "S1 Add: Rupturing Intent": {
+            en: "S1 Add: Rupturing Intent",
+            jp: "S1追加:裂砕の志"
         },
         "S2 Add: Umbrageous Melody": {
             en: "S2 Add: Umbrageous Melody",
@@ -541,6 +671,34 @@ const lang = Object.freeze({
             en: "S2 Add: Flowing Armor",
             jp: "S2追加:時流の護"
         },
+        "S2 Add: Flowing Exhilaration": {
+            en: "S2 Add: Flowing Exhilaration",
+            jp: "S2追加:時流活与"
+        },
+        "S2 Add: Photon Reduction": {
+            en: "S2 Add: Photon Reduction",
+            jp: "S2追加:光子縮減"
+        },
+        "S2 Add: Sturdy Recovery": {
+            en: "S2 Add: Sturdy Recovery",
+            jp: "S2追加:剛乱活与"
+        },
+        "S2 Add: Cursed Radiance": {
+            en: "S2 Add: Cursed Radiance",
+            jp: "S2追加:災転輝与"
+        },
+        "S2 Add: Flowing Grace": {
+            en: "S2 Add: Flowing Grace",
+            jp: "S2追加:時流の恵"
+        },
+        "S2 Add: Rupturing Excess": {
+            en: "S2 Add: Rupturing Excess",
+            jp: "S2追加:裂砕の剰"
+        },
+        "S2 Add: Double-Edged Sword": {
+            en: "S2 Add: Double-Edged Sword",
+            jp: "S2追加:諸刃の撃"
+        },
         "S3 Add: Nature's Melody": {
             en: "S3 Add: Nature's Melody",
             jp: "S3追加:花海雪の歌"
@@ -577,6 +735,46 @@ const lang = Object.freeze({
             en: "S3 Add: Flowing Courage",
             jp: "S3追加:時流の勇"
         },
+        "S3 Add: Fortifying Strike": {
+            en: "S3 Add: Fortifying Strike",
+            jp: "S3追加:撃流の備"
+        },
+        "S3 Add: Radiant Strike": {
+            en: "S3 Add: Radiant Strike",
+            jp: "S3追加:輝剰の撃"
+        },
+        "S3 Add: Skilled Strike": {
+            en: "S3 Add: Skilled Strike",
+            jp: "S3追加:妙撃の志"
+        },
+        "S3 Add: Offensive Intent": {
+            en: "S3 Add: Offensive Intent",
+            jp: "S3追加:剛撃の志"
+        },
+        "S3 Add: Vital Intent": {
+            en: "S3 Add: Vital Intent",
+            jp: "S3追加:活実の志"
+        },
+        "S3 Add: Wise Skill": {
+            en: "S3 Add: Wise Skill",
+            jp: "S3追加:妙技の巧"
+        },
+        "S3 Add: Rupturing Intent": {
+            en: "S3 Add: Rupturing Intent",
+            jp: "S3追加:裂砕の志"
+        },
+        "S3 Add: Brilliant Ruin": {
+            en: "S3 Add: Brilliant Ruin",
+            jp: "S3追加:滅域輝与"
+        },
+        "S3 Add: Cursed Radiance": {
+            en: "S3 Add: Cursed Radiance",
+            jp: "S3追加:災転輝与"
+        },
+        "S3 Add: Calming Exhilaration": {
+            en: "S3 Add: Calming Exhilaration",
+            jp: "S3追加:静心活与"
+        },
         "S4 Add: Heavenly Protection": {
             en: "S4 Add: Heavenly Protection",
             jp: "S4追加:天輝の守護"
@@ -600,6 +798,102 @@ const lang = Object.freeze({
         "S4 Add: Raising Pursuit": {
             en: "S4 Add: Raising Pursuit",
             jp: "S4追加:六色の輝秤"
+        },
+        "S4 Add: Raising Pursuit": {
+            en: "S4 Add: Raising Pursuit",
+            jp: "S4追加:累加追撃"
+        },
+        "S4 Add: Skilled Crippler": {
+            en: "S4 Add: Skilled Crippler",
+            jp: "S4追加:追蝕の巧"
+        },
+        "S4 Add: Cursed Rainbow": {
+            en: "S4 Add: Cursed Rainbow",
+            jp: "S4追加:六色の災転"
+        },
+        "S4 Add: Colossal Radiance": {
+            en: "S4 Add: Colossal Radiance",
+            jp: "S4追加:強闘輝与"
+        },
+        "S4 Add: Evasion Training": {
+            en: "S4 Add: Evasion Training",
+            jp: "S4追加:回避訓練"
+        },
+        "S4 Add: Radiant Eclipse": {
+            en: "S4 Add: Radiant Eclipse",
+            jp: "S4追加:追蝕輝剰"
+        },
+        "S5 Add: Anthesis Cultivation": {
+            en: "S5 Add: Anthesis Cultivation",
+            jp: "S5追加:錬成萌花"
+        },
+        "S6 Add: Ironclad Illness": {
+            en: "S6 Add: Ironclad Illness",
+            jp: "S6追加:癒蝕頑強"
+        },
+        "S6 Add: Guardian Armor": {
+            en: "S6 Add: Guardian Armor",
+            jp: "S6追加:守護の備"
+        },
+        "S6 Add: Heroic Howl": {
+            en: "S6 Add: Heroic Howl",
+            jp: "S6追加:英雄咆哮"
+        },
+        "S6 Add: Soaring Ballet": {
+            en: "S6 Add: Soaring Ballet",
+            jp: "S6追加:翔機天舞"
+        },
+        "S6 Add: Guardian's Essence": {
+            en: "S6 Add: Guardian's Essence",
+            jp: "S6追加:機魂の守護"
+        },
+        "S6 Add: Evasion Whistle": {
+            en: "S6 Add: Evasion Whistle",
+            jp: "S6追加:回避の口笛"
+        },
+        "S6 Add: Long Night Star": {
+            en: "S6 Add: Long Night Star",
+            jp: "S6追加:長夜の明星"
+        },
+        "S7 Add: S-ATK Up": {
+            en: "S7 Add: S-ATK Up",
+            jp: "S7追加:打撃上昇"
+        },
+        "S7 Add: R-ATK Up": {
+            en: "S7 Add: R-ATK Up",
+            jp: "S7追加:射撃上昇"
+        },
+        "S7 Add: T-ATK Up": {
+            en: "S7 Add: T-ATK Up",
+            jp: "S7追加:法撃上昇"
+        },
+        "S7 Add: Blinding Strike": {
+            en: "S7 Add: Blinding Strike",
+            jp: "S7追加:瞬撃の極"
+        },
+        "S7 Add: Increased Efficiency": {
+            en: "S7 Add: Increased Efficiency",
+            jp: "S7追加:薬効増大"
+        },
+        "S7 Add: Mind Merge": {
+            en: "S7 Add: Mind Merge",
+            jp: "S7追加:以心伝心"
+        },
+        "S8 Add: HP Up": {
+            en: "S8 Add: HP Up",
+            jp: "S8追加:活器上昇"
+        },
+        "S8 Add: PP Up": {
+            en: "S8 Add: PP Up",
+            jp: "S8追加:輝器上昇"
+        },
+        "S8 Add: Untouchable Gulper": {
+            en: "S8 Add: Untouchable Gulper",
+            jp: "S8追加:服薬強身"
+        },
+        "S8 Add: High-Minded": {
+            en: "S8 Add: High-Minded",
+            jp: "S8追加:一念滞空"
         }
     },
     "potential": {
@@ -1918,7 +2212,7 @@ const lang = Object.freeze({
     },
     "LB1Z": {
         name_en: "S2:Aegis Gift",
-        name_jp: "S2:護輝与賜物",
+        name_jp: "S2:瞬護の与",
         effect_en: "When you Just Guard at less than 25% HP, recovers HP by 50% and PP by 30%.",
         effect_jp: "HPを25％未満にすると、HPが50％、PPが30％回復します。"
     },
@@ -1939,6 +2233,12 @@ const lang = Object.freeze({
         name_jp: "S2:光明の備志",
         effect_en: "Increase Light Attribute and Panic Resistance. Increase damage against enemies weak to Light.",
         effect_jp: "光耐性、パニック耐性が上昇。敵の弱点属性が光属性の時、威力上昇。"
+    },
+    "LB2E": {
+        name_en: "S2:Darkness Guard",
+        name_jp: "S2:暗闇の備志",
+        effect_en: "Increases your Dark attribute and Poison resistance. Boosts power against enemies that are weak to Dark.",
+        effect_jp: "闇耐性、ポイズン耐性が上昇。敵の弱点属性が闇属性の時、威力上昇。"
     },
     "LC01": {
         name_en: "S3:Offensive Intent",
@@ -2275,6 +2575,390 @@ const lang = Object.freeze({
         name_jp: "S4:累加追撃",
         effect_en: "When you hit with a PA/Tech, boosts damage of the next PA/Tech based on the damage you deal in the next 4 seconds.",
         effect_jp: "PA・テクニックの命中後4秒間の与ダメージ量に応じて、次に命中したPA・テクニックに追加ダメージが発生。(上限25万、リキャスト10秒)"
+    },
+    "LD0U": {
+        name_en: "S4:Skilled Crippler",
+        name_jp: "S4:追蝕の巧",
+        effect_en: "Boosts critical hit rate by 50% against enemies affected by Jellen, Weak Bullet or a status effect.",
+        effect_jp: "状態異常、ジェルン、ウィークバレットが発動中のエネミーへのクリティカル率が50％上昇する。"
+    },
+    "LD0V": {
+        name_en: "S4:Cursed Rainbow",
+        name_jp: "S4:六色の災転",
+        effect_en: "While Petal, Ocean, Leaf, Moon, Snow or Shadow Flash is active: Recovers 500 HP each time you take 500 or more damage at once.",
+        effect_jp: "花・海・葉・月・雪・影のいずれかが発動中一度に500以上のダメージを受けるとHPが500回復する。"
+    },
+    "LD0W": {
+        name_en: "S4:Colossal Radiance",
+        name_jp: "S4:強闘輝与",
+        effect_en: "Recovers 40 PP every 10 seconds when there is a boss nearby.",
+        effect_jp: "一定の範囲内に強敵が居る場合10秒ごとにPPが40回復。"
+    },
+    "LD0X": {
+        name_en: "S4:Evasion Training",
+        name_jp: "S4:回避訓練",
+        effect_en: "Perform an evasive maneuver when the two circles overlap to gain \"Successful Dodge (Counter)\" status.If you do not evade, recover 5% HP.",
+        effect_jp: "二つの円が重なる際に回避すると「回避成功」状態となる。回避しなかった場合はHPを５％回復する。"
+    },
+    "LD0Y": {
+        name_en: "S4:Radiant Eclipse",
+        name_jp: "S4:追蝕輝剰",
+        effect_en: "Increases active PP recovery by 60% when attacking an enemy affectedw by a Status Effect, Jellen, or Weak Bullet.",
+        effect_jp: "状態異常、ジェルン、ウィークバレット効果が発生中のエネミー攻撃時、PP回復量が60%上昇。"
+    },
+    "LE01": {
+        name_en: "S5:Release Parry",
+        name_jp: "S5:瞬護開放",
+        effect_en: "Performance changes when Just Guarding with a Weapon Action. Sword only.",
+        effect_jp: "武器アクションによるジャストガードで性能が変化する。大剣のみ有効。"
+    },
+    "LE02": {
+        name_en: "S5:Unrivaled Parry",
+        name_jp: "S5:瞬護無双",
+        effect_en: "Consume no Gear for 15s after performing a Just Guard. Increase Power by 2%. Wired Lance only.",
+        effect_jp: "ジャストガード成功時15秒間ギア消費なし。威力2%上昇。自在槍限定。"
+    },
+    "LE03": {
+        name_en: "S5:Rushing Bolt",
+        name_jp: "S5:瞬駆突貫",
+        effect_en: "Inflict damage while running. Unleash a shockwave attack when you stop running. Increase Power by 2%. Partizan only.",
+        effect_jp: "ダッシュ状態時接触した敵にダメージ。ダッシュの停止時衝撃波が発生。威力2%上昇。長槍限定。"
+    },
+    "LE04": {
+        name_en: "S5:Shining Cyclone",
+        name_jp: "S5:輝堺の旋",
+        effect_en: "PP recovery and consumption changes when your maximum PP falls below 50%. Twin Daggers only.",
+        effect_jp: "PP50%を境にPPの消費量と回復速度が変化。双小剣限定。"
+    },
+    "LE05": {
+        name_en: "S5:Evasive Barrage",
+        name_jp: "S5:巧避連撃",
+        effect_en: "Boost Gear Gauge and unleash a counterattack upon successfully blocking an attack with DS Wind Parrying.Increase Power by 2%. Double Saber only.",
+        effect_jp: "DSウィンドパリング成功時、ギアが上昇し強力な連撃で切り刻む。威力上昇2%。両剣限定。"
+    },
+    "LE06": {
+        name_en: "S5:Evasive Meteor",
+        name_jp: "S5:巧避巨拳",
+        effect_en: "Successfully evade an attack with Sway to summon a giant fist. Increase Power by 2%. Knuckles only.",
+        effect_jp: "スウェーで回避成功時特大の拳を落とす。威力2%上昇。鋼拳限定。"
+    },
+    "LE07": {
+        name_en: "S5:Hangeki Edge",
+        name_jp: "S5:反撃鋭刃",
+        effect_en: "Increase the damage of Counter by 15%. Restore Braver Gear Gauge to its maximum value when you successfully perform Katana Counter.Increase Power by 2%. Katana only.",
+        effect_jp: "カウンター威力が上昇。ブレイバーでのカウンター成功時ギアが最大まで上昇。威力2%上昇。抜剣限定。"
+    },
+    "LE08": {
+        name_en: "S5:Thundering Pursuit",
+        name_jp: "S5:雷光追撃",
+        effect_en: "When using a PA, lightning-charged Photon Blades are generated. (Power: ?%). Dual Blades only.",
+        effect_jp: "PAを使用すると雷光を纏ったフォトンの追撃が発生。飛翔剣限定。"
+    },
+    "LE09": {
+        name_en: "S5:Fiery End",
+        name_jp: "S5:烈終焉弾",
+        effect_en: "Enhance the performance of End Attract with a one minute Recast. Recast resets upon successfully evading an attack with Dive Roll. Increase Power by 2%. Assault Rifle only.",
+        effect_jp: "エンドアトラクト強化と同時にリキャスト発生。ダイブロール回避成功時リキャスト時間短縮。威力2%上昇。長銃限定。"
+    },
+    "LE0A": {
+        name_en: "S5:Fiery Zero",
+        name_jp: "S5:烈零射砲",
+        effect_en: "Enhance the performance of Zero Distance with a one minute Recast. Recast resets upon successfully evading an attack with Dive Roll. Increase Power by 2%. Launcher only.",
+        effect_jp: "ゼロディスタンス強化と同時にリキャスト発生。ダイブロール回避成功時リキャスト時間短縮。威力2%上昇。大砲限定。"
+    },
+    "LE0B": {
+        name_en: "S5:Bright Escape",
+        name_jp: "S5:巧避輝与",
+        effect_en: "Successfully evade an attack with Hero Step or Stylish Roll to restore PP. Effect is negated if damage is taken.Twin Machineguns only.",
+        effect_jp: "SロールかHrステップで回避成功時PP回復効果。被ダメージで効果消失。双機銃限定。"
+    },
+    "LE0C": {
+        name_en: "S5:Auxilary Arrow",
+        name_jp: "S5:追射剛矢",
+        effect_en: "Produces a Chase Arrow when a PA (except Banish Arrow) hits an enemy. Boosts the power of this ability's Chase Arrow for 15 seconds after successfully dodging an attack with Step.Bullet Bow only.",
+        effect_jp: "バニッシュアロウ以外のPA命中時、追撃が発生。ステップ回避成功後にPA命中後15秒間追撃が強化。強弓限定。"
+    },
+    "LE0D": {
+        name_en: "S5:Calming Bullet",
+        name_jp: "S5:静心杖弾",
+        effect_en: "Enhance the performance of Normal Attacks and increase the damage of Rod Shoot by 100%. Rod only.",
+        effect_jp: "通常攻撃性能が強化されロッドシュートの威力が100%上昇する。長杖限定。"
+    },
+    "LE0E": {
+        name_en: "S5:Speedy Support",
+        name_jp: "S5:急速補助",
+        effect_en: "Shorten the charge time of Support Techniques. The power of Zondeel is reduced. Talis only.",
+        effect_jp: "補助テクニックのチャージ時間を短縮。ゾンディールの威力減少。導具限定。"
+    },
+    "LE0F": {
+        name_en: "S5:Calming Shockwave",
+        name_jp: "S5:静心衝杖",
+        effect_en: "Generates a wave attack on the third Normal Attack. Increase Power by 2%. Wand only.",
+        effect_jp: "通常攻撃の3段目に衝撃波が発生。威力が2%上昇。短杖限定。"
+    },
+    "LE0G": {
+        name_en: "S5:Rhythmic Pursuer",
+        name_jp: "S5:追災律動",
+        effect_en: "Boost the potency of Elemental Burst by 30% and automatically activate Elemental Burst when using a Photon Art.Jet Boots only.",
+        effect_jp: "エレメンタルバーストの威力が30%上昇しPA派生攻撃時自動的に発動する。魔装脚限定。"
+    },
+    "LE0H": {
+        name_en: "S5:Mysterious Intent",
+        name_jp: "S5:妙の巧志",
+        effect_en: "Increase Critical Hit Rate by 20%. On a Critical Hit, deal an additional 2% damage and recover 1% of damage dealt as HP (30 MAX).",
+        effect_jp: "クリティカル率が20%上昇。発生時に威力2%上昇、与ダメージの1%をHP回復(上限30)"
+    },
+    "LE0I": {
+        name_en: "S5:Anthesis Cultivation",
+        name_jp: "S5:錬成萌花",
+        effect_en: "Doubles the effects of Special Abilities.",
+        effect_jp: "特殊能力のステータス変化を2倍にする。"
+    },
+    "LF0A": {
+        name_en: "S6:Heroic Howl",
+        name_jp: "S6:英雄咆哮",
+        effect_en: "Enhances Hero Boost. Increases the rate that Hero Boosts's damage boost increases. No effect if using weapon with \"Heroic Victory\".",
+        effect_jp: "ヒーローブースト強化。威力増加速度が上昇。「英雄の凱歌」が優先され併用不可。"
+    },
+    "LF0B": {
+        name_en: "S6:Soaring Ballet",
+        name_jp: "S6:翔機天舞",
+        effect_en: "Bouncer weapon Gear fills while standing still. No effect if using weapon with \"Angelic Guidance\".",
+        effect_jp: "バウンサー武器のギアが滞空状態時に上昇。「聖鳥の導き」が優先され併用不可。"
+    },
+    "LF0C": {
+        name_en: "S6:Guardian's Essence",
+        name_jp: "S6:機魂の守護",
+        effect_en: "Hunter weapon and Katana Gear fills while Guarding. No effect if using weapon with \"Zephyr's Edge\".",
+        effect_jp: "ハンター武器・カタナのギアがガード中に上昇。「風視の太刀」が優先され併用不可。"
+    },
+    "LF0D": {
+        name_en: "S6:Ironclad Illness",
+        name_jp: "S6:癒蝕頑強",
+        effect_en: "Become massive for 60 seconds after becoming affected by a status.",
+        effect_jp: "状態異常になってから60秒間、頑強になる。"
+    },
+    "LF0E": {
+        name_en: "S6:Wise Skill",
+        name_jp: "S6:妙技の巧",
+        effect_en: "Increases your critical hit rate by 15%.",
+        effect_jp: "クリティカル率が15％上昇する。"
+    },
+    "LF0F": {
+        name_en: "S6:Guardian Armor",
+        name_jp: "S6:守護の備",
+        effect_en: "Reduces damage taken by 7%.",
+        effect_jp: "被ダメージを7%軽減。"
+    },
+    "LF0G": {
+        name_en: "S6:S-ATK Up",
+        name_jp: "S6:打撃上昇",
+        effect_en: "S-ATK(+30)",
+        effect_jp: "打撃力(+30)"
+    },
+    "LF0H": {
+        name_en: "S6:R-ATK Up",
+        name_jp: "S6:射撃上昇",
+        effect_en: "R-ATK(+30)",
+        effect_jp: "射撃力(+30)"
+    },
+    "LF0I": {
+        name_en: "S6:T-ATK Up",
+        name_jp: "S6:法撃上昇",
+        effect_en: "T-ATK(+30)",
+        effect_jp: "法撃力(+30)"
+    },
+    "LF0J": {
+        name_en: "S6:HP Up",
+        name_jp: "S6:活器上昇",
+        effect_en: "HP(+40)",
+        effect_jp: "HP(+40)"
+    },
+    "LF0K": {
+        name_en: "S6:PP Up",
+        name_jp: "S6:輝器上昇",
+        effect_en: "PP(+4)",
+        effect_jp: "PP(+4)"
+    },
+    "LF0L": {
+        name_en: "S6:Brilliant Ruin",
+        name_jp: "S6:滅域輝与",
+        effect_en: "Recover 5 PP when an enemy near you is defeated.",
+        effect_jp: "一定の範囲内でエネミーが死亡した時、PPが回復する。"
+    },
+    "LF0M": {
+        name_en: "S6:Readying Guard",
+        name_jp: "S6:守護乱備",
+        effect_en: "Gain a 10% chance to reduce damage by 70%.",
+        effect_jp: "10％の確率で被ダメージを70％軽減。"
+    },
+    "LF0N": {
+        name_en: "S6:Angelic Wings",
+        name_jp: "S6:翔天の翼",
+        effect_en: "Increases Jump Power.",
+        effect_jp: "ジャンプ力が上昇する。"
+    },
+    "LF0O": {
+        name_en: "S6:Long Night Star",
+        name_jp: "S6:長夜の明星",
+        effect_en: "Reduce Etoile Boost's decay per second by 50%.",
+        effect_jp: "エトワールブーストの秒間軽減減少率を50％緩和する。"
+    },
+    "LF0P": {
+        name_en: "S6:Evasion Whistle",
+        name_jp: "S6:回避の口笛",
+        effect_en: "Dodging will cause your pet to return back to you.",
+        effect_jp: "回避行動に合わせてペットが戻ってくる。"
+    },
+    "LF0Q": {
+        name_en: "S6:Battle Readiness",
+        name_jp: "S6:修羅の備",
+        effect_en: "When your HP is at 50% or lower, damage is reduced by 40%. Resets after a brief cooldown.",
+        effect_jp: "HPが50％以下の時3秒間、被ダメージを40％軽減する。発動後リキャスト発生。"
+    },
+    "LG0A": {
+        name_en: "S7:Glowing Grace",
+        name_jp: "S7:輝静の恵",
+        effect_en: "Recovers 4 PP per second when standing still for longer than 1 second.",
+        effect_jp: "1秒間静止状態が続いた時、ppが1秒ごとに4回復。"
+    },
+    "LG0B": {
+        name_en: "S7:S-ATK Up",
+        name_jp: "S7:打撃上昇",
+        effect_en: "S-ATK(+30)",
+        effect_jp: "打撃力(+30)"
+    },
+    "LG0C": {
+        name_en: "S7:R-ATK Up",
+        name_jp: "S7:射撃上昇",
+        effect_en: "R-ATK(+30)",
+        effect_jp: "射撃力(+30)"
+    },
+    "LG0D": {
+        name_en: "S7:T-ATK Up",
+        name_jp: "S7:法撃上昇",
+        effect_en: "T-ATK(+30)",
+        effect_jp: "法撃力(+30)"
+    },
+    "LG0E": {
+        name_en: "S7:HP Up",
+        name_jp: "S7:活器上昇",
+        effect_en: "HP(+40)",
+        effect_jp: "HP(+40)"
+    },
+    "LG0F": {
+        name_en: "S7:PP Up",
+        name_jp: "S7:輝器上昇",
+        effect_en: "PP(+4)",
+        effect_jp: "PP(+4)"
+    },
+    "LG0G": {
+        name_en: "S7:S-Atk Up 2",
+        name_jp: "S7:打撃上昇2",
+        effect_en: "S-ATK(+50)",
+        effect_jp: "打撃力(+50)"
+    },
+    "LG0H": {
+        name_en: "S7:R-ATK Up 2",
+        name_jp: "S7:射撃上昇2",
+        effect_en: "R-ATK(+50)",
+        effect_jp: "射撃力(+50)"
+    },
+    "LG0I": {
+        name_en: "S7:T-ATK Up 2",
+        name_jp: "S7:法撃上昇2",
+        effect_en: "T-ATK(+50)",
+        effect_jp: "法撃力(+50)"
+    },
+    "LG0J": {
+        name_en: "S7:Attack Up",
+        name_jp: "S7:攻撃上昇",
+        effect_en: "S-ATK(+25),R-ATK(+25),T-ATK(+25)",
+        effect_jp: "打撃力(+25),射撃力(+25),法撃力(+25)"
+    },
+    "LG0K": {
+        name_en: "S7:Attack Up 2",
+        name_jp: "S7:攻撃上昇2",
+        effect_en: "S-ATK(+45),R-ATK(+45),T-ATK(+45)",
+        effect_jp: "打撃力(+45),射撃力(+45),法撃力(+45)"
+    },
+    "LG0L": {
+        name_en: "S7:Blinding Strike",
+        name_jp: "S7:瞬撃の極",
+        effect_en: "Gain a 10% chance to stun the enemy with a Just Attack.",
+        effect_jp: "ジャストアタック時に10%の確率で対象をスタンさせる。"
+    },
+    "LG0M": {
+        name_en: "S7:Increased Efficiency",
+        name_jp: "S7:薬効増大",
+        effect_en: "Boost the effect of recovery items by 30%.",
+        effect_jp: "回復アイテムの効果を30％上昇させる。"
+    },
+    "LG0N": {
+        name_en: "S7:Mind Merge",
+        name_jp: "S7:以心伝心",
+        effect_en: "Automatically answers Sympathy requests during Alter Ego. No effect if using weapon with \"Glance of Darkness\".",
+        effect_jp: "アルターエゴ発動中ペットシンパシーの要求に自動支援を行う。「闇の一瞥」が優先され併用不可。"
+    },
+    "LH0A": {
+        name_en: "S8:Saltating Support",
+        name_jp: "S8:舞空の援",
+        effect_en: "Activates Shifta and Deband every 10 seconds when you stay in the air for longer than 2 seconds.",
+        effect_jp: "2秒間、滞空状態が続くと、10秒間ごとにシフタ、デバンド発動。"
+    },
+    "LH0B": {
+        name_en: "S8:Untouchable Gulper",
+        name_jp: "S8:服薬強身",
+        effect_en: "Makes you temporarily invincible after drinking a -mate item.",
+        effect_jp: "自身でメイト系アイテム使用時、一定時間無敵。"
+    },
+    "LH0C": {
+        name_en: "S8:S-ATK Up",
+        name_jp: "S8:打撃上昇",
+        effect_en: "S-ATK(+30)",
+        effect_jp: "打撃力(+30)"
+    },
+    "LH0D": {
+        name_en: "S8:R-ATK Up",
+        name_jp: "S8:射撃上昇",
+        effect_en: "R-ATK(+30)",
+        effect_jp: "射撃力(+30)"
+    },
+    "LH0E": {
+        name_en: "S8:T-ATK Up",
+        name_jp: "S8:法撃上昇",
+        effect_en: "T-ATK(+30)",
+        effect_jp: "法撃力(+30)"
+    },
+    "LH0F": {
+        name_en: "S8:HP Up",
+        name_jp: "S8:活器上昇",
+        effect_en: "HP(+40)",
+        effect_jp: "HP(+40)"
+    },
+    "LH0G": {
+        name_en: "S8:PP Up",
+        name_jp: "S8:輝器上昇",
+        effect_en: "PP(+4)",
+        effect_jp: "PP(+4)"
+    },
+    "LH0H": {
+        name_en: "S8:HP Up 2",
+        name_jp: "S8:活器上昇2",
+        effect_en: "HP(+60)",
+        effect_jp: "HP(+60)"
+    },
+    "LH0I": {
+        name_en: "S8:PP Up 2",
+        name_jp: "S8:輝器上昇2",
+        effect_en: "PP(+6)",
+        effect_jp: "PP(+6)"
+    },
+    "LH0J": {
+        name_en: "S8:High-Minded",
+        name_jp: "S8:一念滞空",
+        effect_en: "Reduce falling speed while charging a Technique in mid-air.",
+        effect_jp: "空中でテクニックをチャージ中に落下速度が遅くなる。"
     },
     "OA01": {
         name_en: "Mutation I",
@@ -2894,6 +3578,12 @@ const lang = Object.freeze({
         effect_en: "T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+40)",
         effect_jp: "法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+40)"
     },
+    "TN04": {
+        name_en: "Fordruss Glare",
+        name_jp: "フォードルス・グレア",
+        effect_en: "S-DEF(+35), R-DEF(+35), T-DEF(+35), HP(+40), PP(+4)",
+        effect_jp: "S-DEF(+35), R-DEF(+35), T-DEF(+35), HP(+40), PP(+4)"
+    },
     "TF01": {
         name_en: "Spirita Alpha",
         name_jp: "スピリタ・アルファ",
@@ -3488,6 +4178,24 @@ const lang = Object.freeze({
         effect_en: "Boost damage against Oceanids. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "海王種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
     },
+    "PK14": {
+        name_en: "Slayer/Kuronite Type",
+        name_jp: "スレイヤー／黒の民",
+        effect_en: "Boost damage against Kuronites. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "黒の民のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
+    "PL15": {
+        name_en: "Slayer/Phantoms Type",
+        name_jp: "スレイヤー／幻創種",
+        effect_en: "Boost damage against Phantoms. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "幻創種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
+    "PM16": {
+        name_en: "Slayer/Darkers",
+        name_jp: "スレイヤー／ダーカー",
+        effect_en: "Boost damage against Darkers. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "ダーカー種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
     "VJ01": {
         name_en: "Soul Catalyst",
         name_jp: "ソール・カタリスト",
@@ -3668,6 +4376,12 @@ const lang = Object.freeze({
         effect_en: "HP(+80),PP(+5)",
         effect_jp: "HP(+80),PP(+5)"
     },
+    "XI61": {
+        name_en: "Grand Stamina",
+        name_jp: "グランド・スタミナ",
+        effect_en: "HP(+100),PP(+6)",
+        effect_jp: "HP(+100),PP(+6)"
+    },
     "XI07": {
         name_en: "Noble Power",
         name_jp: "ノーブル・パワー",
@@ -3685,6 +4399,12 @@ const lang = Object.freeze({
         name_jp: "グレース・パワー",
         effect_en: "S-ATK(+50),PP(+5)",
         effect_jp: "打撃力(+50),PP(+5)"
+    },
+    "XI62": {
+        name_en: "Grand Power",
+        name_jp: "グランド・パワー",
+        effect_en: "S-ATK(+60),HP(+20),PP(+5)",
+        effect_jp: "打撃力(+60),HP(+20),PP(+5)"
     },
     "XI08": {
         name_en: "Noble Shoot",
@@ -3704,6 +4424,12 @@ const lang = Object.freeze({
         effect_en: "R-ATK(+50),PP(+5)",
         effect_jp: "射撃力(+50),PP(+5)"
     },
+    "XI63": {
+        name_en: "Grand Shoot",
+        name_jp: "グランド・シュート",
+        effect_en: "R-ATK(+60),HP(+20),PP(+5)",
+        effect_jp: "射撃力(+60),HP(+20),PP(+5)"
+    },
     "XI09": {
         name_en: "Noble Technique",
         name_jp: "ノーブル・テクニック",
@@ -3722,17 +4448,41 @@ const lang = Object.freeze({
         effect_en: "T-ATK(+50),PP(+5)",
         effect_jp: "法撃力(+50),PP(+5)"
     },
+    "XI64": {
+        name_en: "Grand Technique",
+        name_jp: "グランド・テクニック",
+        effect_en: "T-ATK(+60),HP(+20),PP(+5)",
+        effect_jp: "法撃力(+50),HP(+20),PP(+5)"
+    },
+    "XI60": {
+        name_en: "Grace Spirita",
+        name_jp: "グランド・スピリタ",
+        effect_en: "PP(+15)",
+        effect_jp: "PP(+15)"
+    },
     "XI20": {
         name_en: "Offense Boost",
         name_jp: "オフェンス・ブースト",
         effect_en: "S-ATK(+15),R-ATK(+15),T-ATK(+15),DEX(+25),PP(+1)",
         effect_jp: "打撃力(+15),射撃力(+15),法撃力(+15),技量(+25),PP(+1)"
     },
+    "XI22": {
+        name_en: "Attack Boost",
+        name_jp: "アタックブースト",
+        effect_en: "S-ATK(+25),R-ATK(+25),T-ATK(+25),DEX(+40),PP(+3)",
+        effect_jp: "打撃力(+25),射撃力(+25),法撃力(+25),技量(+40),PP(+3)"
+    },
     "XI21": {
         name_en: "Defense Boost",
         name_jp: "ディフェンス・ブースト",
         effect_en: "S-DEF(+25),R-DEF(+25),T-DEF(+25),HP(+55),PP(+1)",
         effect_jp: "打撃防御(+25),射撃防御(+25),法撃防御(+25),HP(+55),PP(+1)"
+    },
+    "XI23": {
+        name_en: "Guard Boost",
+        name_jp: "ガードブースト",
+        effect_en: "S-DEF(+35),R-DEF(+35),T-DEF(+35),HP(+75),PP(+3)",
+        effect_jp: "打撃防御(+35),射撃防御(+35),法撃防御(+35),HP(+75),PP(+3)"
     },
     "ZA01": {
         name_en: "Junk A",
@@ -3811,5 +4561,34 @@ const lang = Object.freeze({
         name_jp: "S4:ジャンク",
         effect_en: "Represents any S4 ability.",
         effect_jp: "任意のS4能力を表します。"
+    },
+    "LE99": {
+        name_en: "S5:Junk",
+        name_jp: "S5:ジャンク",
+        effect_en: "Represents any S5 ability.",
+        effect_jp: "任意のS5能力を表します。"
+    },
+    "LF99": {
+        name_en: "S6:Junk",
+        name_jp: "S6:ジャンク",
+        effect_en: "Represents any S6 ability.",
+        effect_jp: "任意のS6能力を表します。"
+    },
+    "LG99": {
+        name_en: "S7:Junk",
+        name_jp: "S7:ジャンク",
+        effect_en: "Represents any S7 ability.",
+        effect_jp: "任意のS7能力を表します。"
+    },
+    "LH99": {
+        name_en: "S8:Junk",
+        name_jp: "S8:ジャンク",
+        effect_en: "Represents any S8 ability.",
+        effect_jp: "任意のS8能力を表します。"
     }
 });
+
+var module = module || undefined
+if (module && module.exports) {
+    module.exports.lang = lang
+}
