@@ -1172,6 +1172,12 @@ const lang = Object.freeze({
         effect_en: "HP(+70)",
         effect_jp: "HP(+70)"
     },
+    "EA06": {
+        name_en: "Stamina VI",
+        name_jp: "スタミナⅤI",
+        effect_en: "HP(+70)",
+        effect_jp: "HP(+70)"
+    },
     "EB01": {
         name_en: "Spirita I",
         name_jp: "スピリタⅠ",
@@ -1736,6 +1742,12 @@ const lang = Object.freeze({
         effect_en: "Increases critical rate by 15%.",
         effect_jp: "クリティカル率が15%上昇する。"
     },
+    "LA2S": {
+        name_en: "S1:Wise Skill 2",
+        name_jp: "S1:妙技の巧2",
+        effect_en: "Increases critical rate by 18%.",
+        effect_jp: "クリティカル率が18%上昇する。"
+    },
     "LA04": {
         name_en: "S1:Skilled Brilliance",
         name_jp: "S1:輝充の志",
@@ -1753,6 +1765,12 @@ const lang = Object.freeze({
         name_jp: "S1:輝勢の恵",
         effect_en: "PP regeneration increases by 20%.",
         effect_jp: "PPの自然回復速度が20%上昇する。"
+    },
+    "LA2R": {
+        name_en: "S1:Radiating Grace 2",
+        name_jp: "S1:輝勢の恵2",
+        effect_en: "PP regeneration increases by 23%.",
+        effect_jp: "PPの自然回復速度が23%上昇する。"
     },
     "LA11": {
         name_en: "S1:Immediate Intent",
@@ -1964,6 +1982,12 @@ const lang = Object.freeze({
         effect_en: "PP consumption is reduced by 10%.",
         effect_jp: "PP消費量を10%軽減。"
     },
+    "LB2F": {
+        name_en: "S2:Photon Reduction 2",
+        name_jp: "S2:光子縮減2",
+        effect_en: "PP consumption is reduced by 13%.",
+        effect_jp: "PP消費量を13%軽減。"
+    },
     "LB03": {
         name_en: "S2:Wise Skill",
         name_jp: "S2:妙技の巧",
@@ -1993,6 +2017,12 @@ const lang = Object.freeze({
         name_jp: "S2:時流活与",
         effect_en: "Recover HP by 60% at<br>regular intervals.",
         effect_jp: "一定時間ごとにHPを60%回復する。"
+    },
+    "LB2G": {
+        name_en: "S2:Flowing Exhilaration 2",
+        name_jp: "S2:時流活与2",
+        effect_en: "Recover 75% of your maximum HP at regular intervals.",
+        effect_jp: "一定時間ごとにHPを75%回復する。"
     },
     "LB08": {
         name_en: "S2:Immediate Profusion",
@@ -2138,6 +2168,12 @@ const lang = Object.freeze({
         effect_en: "Reduce PP consumption by 14%<br>when S1:Red Petal Flash,<br>S1:Blue Ocean Flash,<br>or S1:White Snow Flash are active.",
         effect_jp: "花ノ赤閃・海ノ青閃・雪ノ白閃が発動中、PP消費量を14%軽減。"
     },
+    "LB1R": {
+        name_en: "S2:Umbrageous Radiance",
+        name_jp: "S2:月葉影の輝剰",
+        effect_en: "Increase Active PP Recovery by 25% when S1:Yellow Moon Flash, S1:Green Leaf Flash, or S1:Black Shadow Flash are active.",
+        effect_jp: "月ノ黄閃・葉ノ緑閃・影ノ黒閃が発動中、攻撃時PP回復量が25%上昇。"
+    },
     "LB1M": {
         name_en: "S2:Umbrageous Radiance 2",
         name_jp: "S2:月葉影の輝剰2",
@@ -2258,11 +2294,23 @@ const lang = Object.freeze({
         effect_en: "Increase Attack PP Recovery by 20%.",
         effect_jp: "攻撃時のPP回復量が20%上昇する。"
     },
+    "LC1P": {
+        name_en: "S3:Radiant Strike 2",
+        name_jp: "S3:輝剰の撃2",
+        effect_en: "Increase Attack PP Recovery by 23%.",
+        effect_jp: "攻撃時のPP回復量が23%上昇する。"
+    },
     "LC04": {
         name_en: "S3:Skilled Strike",
         name_jp: "S3:妙撃の志",
         effect_en: "Increase Critical Hit Damage by 4%.",
         effect_jp: "クリティカル時の与ダメージが4%上昇。"
+    },
+    "LC1O": {
+        name_en: "S3:Skilled Strike 2",
+        name_jp: "S3:妙撃の志2",
+        effect_en: "Increase Critical Hit Damage by 5%.",
+        effect_jp: "クリティカル時の与ダメージが5%上昇。"
     },
     "LC05": {
         name_en: "S3:Radiating Grace",
@@ -3607,6 +3655,12 @@ const lang = Object.freeze({
         name_jp: "ドゥームブレイクⅡ",
         effect_en: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
         effect_jp: "打撃力(+25),<br>射撃力(+25),<br>法撃力(+25),<br>PP(+3)"
+    },
+    "TH03": {
+        name_en: "Doom Break 3",
+        name_jp: "ドゥームブレイクⅢ",
+        effect_en: "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
+        effect_jp: "打撃力(+30),<br>射撃力(+30),<br>法撃力(+30),<br>PP(+4)"
     },
     "LP01": {
         name_en: "Lesser Power I",

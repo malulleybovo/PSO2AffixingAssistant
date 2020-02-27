@@ -3921,6 +3921,14 @@ let data = {
             effect: "HP(+70)"
         },
         {
+            ref: 612,
+            code: "EA06",
+            gid: "CB",
+            name: "Stamina VI",
+            status: 1,
+            effect: "HP(+80)"
+        },
+        {
             ref: 43,
             code: "EB01",
             gid: "AA",
@@ -5436,6 +5444,17 @@ let data = {
             noEx: true
         },
         {
+            ref: 613,
+            code: "LA2S",
+            gid: "L1",
+            name: "S1:Wise Skill 2",
+            extend: [
+                100
+            ],
+            effect: "Increase Critical Hit Rate by 18%.",
+            noEx: true
+        },
+        {
             ref: 136,
             code: "LA04",
             gid: "L1",
@@ -5472,6 +5491,17 @@ let data = {
                 100
             ],
             effect: "PP regeneration increases by 20%.",
+            noEx: true
+        },
+        {
+            ref: 614,
+            code: "LA2R",
+            gid: "L1",
+            name: "S1:Radiating Grace 2",
+            extend: [
+                100
+            ],
+            effect: "Increases Automatic PP Recovery by 23%.",
             noEx: true
         },
         {
@@ -5944,6 +5974,17 @@ let data = {
             noEx: true
         },
         {
+            ref: 615,
+            code: "LB2F",
+            gid: "L2",
+            name: "S2:Photon Reduction 2",
+            extend: [
+                100
+            ],
+            effect: "Reduces PP consumption by 13%.",
+            noEx: true
+        },
+        {
             ref: 172,
             code: "LB03",
             gid: "L2",
@@ -6006,6 +6047,17 @@ let data = {
                 100
             ],
             effect: "Recover HP by 60% at<br>regular intervals.",
+            noEx: true
+        },
+        {
+            ref: 616,
+            code: "LB2G",
+            gid: "L2",
+            name: "S2:Flowing Exhilaration 2",
+            extend: [
+                100
+            ],
+            effect: "Recover 75% of your maximum HP at regular intervals.",
             noEx: true
         },
         {
@@ -6322,6 +6374,17 @@ let data = {
             noEx: true
         },
         {
+            ref: 617,
+            code: "LB1R",
+            gid: "L2",
+            name: "S2:Umbrageous Radiance",
+            extend: [
+                100
+            ],
+            effect: "Increase Active PP Recovery by 25% when S1:Yellow Moon Flash, S1:Green Leaf Flash, or S1:Black Shadow Flash are active.",
+            noEx: true
+        },
+        {
             ref: 201,
             code: "LB1M",
             gid: "L2",
@@ -6583,6 +6646,17 @@ let data = {
             noEx: true
         },
         {
+            ref: 618,
+            code: "LC1P",
+            gid: "L3",
+            name: "S3:Radiant Strike 2",
+            extend: [
+                100
+            ],
+            effect: "Increase Attack PP Recovery by 23%.",
+            noEx: true
+        },
+        {
             ref: 214,
             code: "LC04",
             gid: "L3",
@@ -6593,6 +6667,17 @@ let data = {
                 100
             ],
             effect: "Increase Critical Hit Damage by 4%.",
+            noEx: true
+        },
+        {
+            ref: 619,
+            code: "LC1O",
+            gid: "L3",
+            name: "S3:Skilled Strike 2",
+            extend: [
+                100
+            ],
+            effect: "Increase Critical Hit Damage by 5%.",
             noEx: true
         },
         {
@@ -9753,6 +9838,29 @@ let data = {
             rel: "doom2",
             effect: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
             tooltip: "Made by: 3-5x Doom Break"
+        },
+        {
+            ref: 620,
+            code: "TH03",
+            gid: "AD",
+            name: "Doom Break 3",
+            extend: [
+                0,
+                50,
+                80
+            ],
+            generate: [
+                0,
+                10,
+                30,
+                50
+            ],
+            extup: [
+                "FA03"
+            ],
+            rel: "doom2",
+            effect: "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
+            tooltip: "Made from: 3-5x Doom Break 3"
         },
         {
             ref: 360,

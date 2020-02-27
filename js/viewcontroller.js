@@ -82,7 +82,7 @@ class ViewController {
 
     setup() {
         $("#malulleybovo").text(lang.app.malulleybovo[this.langCode])
-        $("#ver").text("v1.0.0")
+        $("#ver").text("v1.0.1")
         $("#editor").children().first().panzoom({
             which: 1,
             minScale: 0.1,
@@ -1013,11 +1013,15 @@ class ViewController {
 
     displayWelcomeScreen(shouldOpen) {
         if (shouldOpen) {
+            $("#malulleybovo").css('z-index', 1);
+            $("#ver").css('z-index', 1);
             if ($('div.welcome').length > 0) return;
             if ($('#editor').length > 0) $(WELCOME_VIEW(this.langCode)).insertAfter($('#editor'));
             else $('body').prepend($(WELCOME_VIEW(this.langCode)));
         }
         else {
+            $("#malulleybovo").css('z-index', 0);
+            $("#ver").css('z-index', 0);
             $('div.welcome').remove();
         }
     }
