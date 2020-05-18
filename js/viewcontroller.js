@@ -72,7 +72,9 @@ class ViewController {
         this.shouldUpslot = true;
         this.shouldSpread = true;
         this.shouldUseTrainer = false;
+        this.fodderInReview = null;
         this.pageInReview = null;
+        this.transplantAddAbility = null;
         this.newlyProducedTimeout = null;
         this.affixTweakSelection = null;
         this.isIncludingFoddersIntrinsicFactor = false;
@@ -82,7 +84,7 @@ class ViewController {
 
     setup() {
         $("#malulleybovo").text(lang.app.malulleybovo[this.langCode])
-        $("#ver").text("v1.0.1")
+        $("#ver").text("v1.1.0")
         $("#editor").children().first().panzoom({
             which: 1,
             minScale: 0.1,
@@ -343,21 +345,7 @@ class ViewController {
 
     setAffixSelectionView(bool, shouldAnimate) {
         if (typeof bool !== 'boolean') return;
-        if ($('div.choice-selection-container').length != 0) {
-            $('div.choice-selection-container').remove();
-        }
-        if ($('div.review-tweak-container').length != 0) {
-            $('div.review-tweak-container').remove();
-        }
-        if ($('div.formula-sheet-container').length != 0) {
-            $('div.formula-sheet-container').remove();
-        }
-        if ($('div.link-container').length != 0) {
-            $('div.link-container').remove();
-        }
-        if ($('div.wish-list-container').length != 0) {
-            $('div.wish-list-container').remove();
-        }
+        this.closeAll({});
         let isVisible = $('div.affix-selection-container').length != 0;
         if (bool) {
             if (!isVisible) {
@@ -431,12 +419,24 @@ class ViewController {
                     }
                     catch (e) { }
                 });
-                $('div.affix-selection-container div.confirm-button').click({ viewcontroller: this }, function ({ data }) {
-                    if ($('div.affix-selection-container div.confirm-button.disabled').length > 0) return;
+                $('div.affix-selection-container div.confirm-button.transplant-confirm-button').click({ viewcontroller: this }, function ({ data }) {
+                    if ($('div.affix-selection-container div.confirm-button.transplant-confirm-button.disabled').length > 0) return;
                     try {
                         gaRequests.send('affix', 'confirm', {
                             'View Type': 'Choose Affix View',
-                            'Transaction Type': 'Confirm',
+                            'Transaction Type': 'Confirm Transplant',
+                            'Time Spent In View': ((new Date()).getTime() - timeData.chooseAffixStartTime) / 1000
+                        });
+                    }
+                    catch (e) { }
+                    data.viewcontroller.openTransplantScreen(undefined, data.viewcontroller.affixesSelected, false, true);
+                });
+                $('div.affix-selection-container div.confirm-button.affix-confirm-button').click({ viewcontroller: this }, function ({ data }) {
+                    if ($('div.affix-selection-container div.confirm-button.affix-confirm-button.disabled').length > 0) return;
+                    try {
+                        gaRequests.send('affix', 'confirm', {
+                            'View Type': 'Choose Affix View',
+                            'Transaction Type': 'Confirm Affix',
                             'Time Spent In View': ((new Date()).getTime() - timeData.chooseAffixStartTime) / 1000
                         });
                     }
@@ -460,24 +460,7 @@ class ViewController {
         if (!(vc instanceof ViewController)) return;
         if (vc.affixesSelected.length <= 0) return;
         vc.isIncludingFoddersIntrinsicFactor = false;
-        if ($('div.affix-selection-container').length != 0) {
-            $('div.affix-selection-container').remove();
-        }
-        if ($('div.choice-selection-container').length != 0) {
-            $('div.choice-selection-container').remove();
-        }
-        if ($('div.review-tweak-container').length != 0) {
-            $('div.review-tweak-container').remove();
-        }
-        if ($('div.formula-sheet-container').length != 0) {
-            $('div.formula-sheet-container').remove();
-        }
-        if ($('div.link-container').length != 0) {
-            $('div.link-container').remove();
-        }
-        if ($('div.wish-list-container').length != 0) {
-            $('div.wish-list-container').remove();
-        }
+        this.closeAll({});
         let choices = vc.assistant.getChoicesForAffixes(vc.affixesSelected);
         if (!shouldRetainChoices) {
             vc.shouldUseTrainer = false;
@@ -562,24 +545,7 @@ class ViewController {
     }
 
     openReviewAndTweakScreen(shouldAnimate) {
-        if ($('div.affix-selection-container').length != 0) {
-            $('div.affix-selection-container').remove();
-        }
-        if ($('div.choice-selection-container').length != 0) {
-            $('div.choice-selection-container').remove();
-        }
-        if ($('div.review-tweak-container').length != 0) {
-            $('div.review-tweak-container').remove();
-        }
-        if ($('div.formula-sheet-container').length != 0) {
-            $('div.formula-sheet-container').remove();
-        }
-        if ($('div.link-container').length != 0) {
-            $('div.link-container').remove();
-        }
-        if ($('div.wish-list-container').length != 0) {
-            $('div.wish-list-container').remove();
-        }
+        this.closeAll({});
         this.affixTweakSelection = null;
         $('body').append(
             REVIEW_TWEAK_VIEW_TEMPLATE({
@@ -656,28 +622,55 @@ class ViewController {
             });
     }
 
+    /**
+     * Opens the screen for Special Ability Transplant.
+     * @param {any} targetFodderDOM A reference to the Fodder DOM which will be the goal of the transplant.
+     * @param {Array} affixesSelected The goal fodder abilities in case the DOM is not specified.
+     * @param {Boolean} shouldAnimate Whether the view should animate when shown.
+     */
+    openTransplantScreen(targetFodderDOM, affixesSelected, shouldAnimate, popsToAffixSelection) {
+        let target = undefined;
+        if (affixesSelected !== undefined && affixesSelected !== null) {
+            let fodder = (new Fodder()).addAffixes(affixesSelected).setGoal(true);
+            target = {
+                fodder: fodder,
+                pageTreeNode: (new PageTreeNode(true)).setPage(
+                    (new Page()).addFodders(fodder)
+                )
+            };
+        } else {
+            target = this.findFodderAndNodeByDOM(targetFodderDOM);
+        }
+        if (!target || !target.fodder || !target.pageTreeNode) return;
+        let targetFodder = target.fodder;
+        let targetNode = target.pageTreeNode;
+        let page = this.assistant.buildTransplantPage(targetFodder, 0);
+        if (!page) return;
+        this.fodderInReview = targetFodder;
+        this.pageInReview = page;
+        this.transplantAddAbility = null;
+        this.closeAll({});
+        $('body').append(
+            TRANSPLANT_VIEW_TEMPLATE({
+                fodders: page.fodders,
+                addAbilityChosen: this.transplantAddAbility,
+                langCode: this.langCode
+            }));
+        if (shouldAnimate) {
+            $('div.transplant-container').animate({}, 10, function () {
+                timeData.reviewTweakStartTime = (new Date()).getTime();
+                $('div.transplant-container').removeClass('hidden');
+            });
+        }
+        else $('div.transplant-container').removeClass('hidden');
+        this.updateTransplantPanel(0, popsToAffixSelection);
+    }
+
     openFormulaSheet(shouldAnimate, e) {
         let vc = (this instanceof ViewController) ? this :
             (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
-        if ($('div.affix-selection-container').length != 0) {
-            $('div.affix-selection-container').remove();
-        }
-        if ($('div.choice-selection-container').length != 0) {
-            $('div.choice-selection-container').remove();
-        }
-        if ($('div.review-tweak-container').length != 0) {
-            $('div.review-tweak-container').remove();
-        }
-        if ($('div.formula-sheet-container').length != 0) {
-            $('div.formula-sheet-container').remove();
-        }
-        if ($('div.link-container').length != 0) {
-            $('div.link-container').remove();
-        }
-        if ($('div.wish-list-container').length != 0) {
-            $('div.wish-list-container').remove();
-        }
+        this.closeAll({});
         $('body').append(
             FORMULA_SHEET_VIEW_TEMPLATE({
                 categories: [],
@@ -717,24 +710,7 @@ class ViewController {
         let vc = (this instanceof ViewController) ? this :
             (e.data && e.data.viewcontroller) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
-        if ($('div.affix-selection-container').length != 0) {
-            $('div.affix-selection-container').remove();
-        }
-        if ($('div.choice-selection-container').length != 0) {
-            $('div.choice-selection-container').remove();
-        }
-        if ($('div.review-tweak-container').length != 0) {
-            $('div.review-tweak-container').remove();
-        }
-        if ($('div.formula-sheet-container').length != 0) {
-            $('div.formula-sheet-container').remove();
-        }
-        if ($('div.link-container').length != 0) {
-            $('div.link-container').remove();
-        }
-        if ($('div.wish-list-container').length != 0) {
-            $('div.wish-list-container').remove();
-        }
+        this.closeAll({});
 		$('body').append(
 			LINK_TEMPLATE({
 				link: decodeURI(window.location.href),
@@ -825,6 +801,28 @@ class ViewController {
         });
     }
 
+    /**
+     * Closes all screens opened but the screen with a specific CSS class (if any).
+     * @param {any} param0
+     * @param {String} butScreenWithClass CSS class which by having it, the screen will not be closed.
+     */
+    closeAll({ butScreenWithClass }) {
+        let className = butScreenWithClass;
+        let classNames = [
+            'affix-selection-container',
+            'choice-selection-container',
+            'review-tweak-container',
+            'formula-sheet-container',
+            'link-container',
+            'wish-list-container'
+        ]
+        for (var i = 0; i < classNames.length; i++) {
+            if (className != classNames[i] && $('div.' + classNames[i]).length != 0) {
+                $('div.' + classNames[i]).remove();
+            }
+        }
+    }
+
     getShortURLThenOpenLinkView() {
         if (this.requestSafetyFlag) return;
         this.requestSafetyFlag = true;
@@ -905,6 +903,7 @@ class ViewController {
         if (!(vc instanceof ViewController)) return;
         if (!vc.assistant || !vc.assistant.pageTreeRoot || !(vc.assistant.pageTreeRoot instanceof PageTreeNode)) return;
         vc.assistant.calcSuccessRates();
+        vc.assistant.calcTransplantCost({});
         $('#mastercontainer').empty().append(PAGE_TREE_NODE_TEMPLATE({
             pageTreeNode: vc.assistant.pageTreeRoot,
             boostWeekOptions: Assistant.boostWeekVals,
@@ -915,6 +914,12 @@ class ViewController {
         $('div.fodder').hover(spotlightIn, spotlightOut);
         $('div.produce-button:not(.disabled)').click({ viewcontroller: this }, this.setActiveFodder)
             .on('mousedown touchstart', function (e) {
+            // Allow clickable elements within panzoom on mobile
+            e.stopImmediatePropagation();
+        });
+        $('div.transplant-button:not(.disabled)').click({ viewcontroller: this }, function (e) {
+            e.data.viewcontroller.openTransplantScreen(this, undefined, true);
+        }).on('mousedown touchstart', function (e) {
             // Allow clickable elements within panzoom on mobile
             e.stopImmediatePropagation();
         });
@@ -1476,6 +1481,166 @@ class ViewController {
         $('div.review-tweak-container div.swappable').click({ vc: this }, this.handleTweak);
     }
 
+    /**
+     * Updates the Special Ability Transplant screen.
+     * @param {any} slotOffset Number of ability slots to increment/decrement
+     * on the material fodder from the current state.
+     * @param {any} popsToAffixSelection Whether it should return to affix
+     * selection screen when user cancels.
+     */
+    updateTransplantPanel(slotOffset, popsToAffixSelection) {
+        if (this.pageInReview === undefined || this.pageInReview == null || !(this.pageInReview instanceof Page)) {
+            return;
+        }
+        if (this.fodderInReview === undefined || this.fodderInReview == null || !(this.fodderInReview instanceof Fodder)) {
+            return;
+        }
+        let minSlot = undefined;
+        for (var i in this.pageInReview.fodders) {
+            if (minSlot === undefined || this.pageInReview.fodders[i].size() < minSlot) {
+                minSlot = this.pageInReview.fodders[i].size();
+            }
+        }
+        if (minSlot === undefined) {
+            return;
+        }
+        let addAbilityIdx = this.fodderInReview.affixes.indexOf(this.addAbilityChosen);
+        minSlot = minSlot + (typeof slotOffset === 'number' ? slotOffset : 0);
+        let page = this.assistant.buildTransplantPage(this.fodderInReview, minSlot, addAbilityIdx);
+        if (page === null) {
+            return;
+        }
+        this.pageInReview = page;
+        $(`div.transplant-container div.content`).empty().append(TRANSPLANT_PANEL({
+            fodders: this.pageInReview.fodders,
+            addAbilityChosen: this.addAbilityChosen,
+            langCode: this.langCode
+        }));
+        let transplantChoices = this.assistant.getTransplantChoicesFor(this.fodderInReview, addAbilityIdx);
+        if (transplantChoices !== null) {
+            if (minSlot <= transplantChoices.materialAbilities.required.length) {
+                $('div.transplant-container div.button-decrease').addClass('disabled');
+            } else {
+                $('div.transplant-container div.button-decrease').removeClass('disabled');
+            }
+            if (minSlot >= this.fodderInReview.size()) {
+                $('div.transplant-container div.button-increase').addClass('disabled');
+            } else {
+                $('div.transplant-container div.button-increase').removeClass('disabled');
+            }
+        }
+        $('div.transplant-container').click(
+            (e) => {
+                $('div.transplant-container').remove();
+                this.fodderInReview = null;
+                this.pageInReview = null;
+                this.addAbilityChosen = null;
+            });
+        $('div.transplant-container div.cancel-button').click({ popsToAffixSelection: popsToAffixSelection },
+            (e) => {
+                $('div.transplant-container').remove();
+                this.fodderInReview = null;
+                this.pageInReview = null;
+                this.addAbilityChosen = null;
+                if (popsToAffixSelection) {
+                    this.setAffixSelectionView(true, false);
+                }
+                try {
+                    gaRequests.send('transplant', 'cancel', {
+                        'View Type': 'Ability Transplant',
+                        'Transaction Type': 'Cancel',
+                        'Time Spent In View': ((new Date()).getTime() - timeData.reviewTweakStartTime) / 1000
+                    });
+                }
+                catch (e) { }
+            });
+        $('div.transplant-container div.confirm-button').click(
+            () => {
+                $('div.transplant-container').remove();
+                // If null, treat it as the root. Otherwise, treat it as a branch node
+                if (!this.assistant.hasActivePageTreeNode()) {
+                    if (this.assistant.validateAffixes(this.fodderInReview.affixes)) {
+                        this.assistant.setGoal(this.fodderInReview.affixes);
+                        this.fodderInReview = this.assistant.activeFodder;
+                    }
+                }
+                // Add new page to the tree data structure
+                // And connect the produced fodder to the new page
+                this.assistant.updateConnection({
+                    fodder: this.fodderInReview,
+                    page: this.pageInReview
+                });
+                // Update the UI to reflect the data changed
+                this.updateURLParams();
+                this.updateView();
+                let $page = this.findDOMByPage(this.assistant.activePageTreeNode.page)
+                this.centerViewAtNode($page);
+                $page = this.findDOMByPage(this.pageInReview);
+                spotlightIn($page);
+                if (this.newlyProducedTimeout) clearTimeout(this.newlyProducedTimeout);
+                this.newlyProducedTimeout = setTimeout(function () {
+                    if (spotlight === $page) spotlightOut($page);
+                }, this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI);
+                this.fodderInReview = null;
+                this.pageInReview = null;
+                this.addAbilityChosen = null;
+                // Briefly ask if user would like to rate the new formula made
+                setTimeout(() => { this.peekRateItView() }, 1000);
+
+                try {
+                    gaRequests.send('transplant', 'confirm', {
+                        'View Type': 'Ability Transplant',
+                        'Transaction Type': 'Confirm',
+                        'Time Spent In View': ((new Date()).getTime() - timeData.reviewTweakStartTime) / 1000,
+                        'Number Of Affix Requests': 1
+                    });
+                }
+                catch (e) { }
+            });
+        $('div.transplant-container div.button-decrease:not(.disabled)').click(() => {
+            this.updateTransplantPanel(-1);
+        });
+        $('div.transplant-container div.button-increase:not(.disabled)').click(() => {
+            this.updateTransplantPanel(1);
+        });
+        $('div.transplant-container div.transplant-add-ability-button').click(() => {
+            // Select Button
+            if ($('div.transplant-container div.transplant-add-ability-button').hasClass('select')) {
+                // Move to Reset State
+                if ($('div.transplant-container div.transplant-add-ability-button').hasClass('selecting')) {
+                    $('div.transplant-container div.transplant-add-ability-button').removeClass('selecting');
+                    $('div.transplant-container div.add-ability-choice.potential-target').removeClass('potential-target');
+                    $('div.transplant-container div.affix:not(.transplant-add-ability):not(.add-ability-choice)').removeClass('not-a-target');
+                    $('div.transplant-container div.transplant-add-ability-button').text(lang.app.selectButton[this.langCode]);
+                } else { // Move to Selecting State
+                    $('div.transplant-container div.transplant-add-ability-button').addClass('selecting');
+                    $('div.transplant-container div.add-ability-choice:not(.potential-target)').addClass('potential-target');
+                    $('div.transplant-container div.affix:not(.transplant-add-ability):not(.add-ability-choice)').addClass('not-a-target');
+                    $('div.transplant-container div.transplant-add-ability-button').text(lang.app.cancelButton[this.langCode]);
+                }
+            } else { // Reset Button
+                this.addAbilityChosen = null;
+                this.updateTransplantPanel();
+            }
+        });
+        $('div.transplant-container div.affix.add-ability-choice').click({ vc: this }, function (e) {
+            if (!$(this).hasClass('potential-target') || !(e.data.vc instanceof ViewController)) {
+                return;
+            }
+            let code = $(this).attr('data-code');
+            if (code === undefined || code === null || typeof code !== 'string') {
+                return;
+            }
+            if (Assistant.affixDB[code] === undefined || Assistant.affixDB[code] === null
+                || Assistant.affixDB[code].abilityRef === undefined || Assistant.affixDB[code] === null) {
+                return;
+            }
+            let ability = Assistant.affixDB[code].abilityRef;
+            e.data.vc.addAbilityChosen = ability;
+            e.data.vc.updateTransplantPanel();
+        });
+    }
+
     updateFormulaSheetSearchResults(e) {
         let vc = (this instanceof ViewController) ? this : (e && e.data) ? e.data.viewcontroller : undefined;
         if (!(vc instanceof ViewController)) return;
@@ -1604,6 +1769,7 @@ class ViewController {
         $('body').append(
             WISH_LIST_VIEW_TEMPLATE({
                 fodderList: this.assistant.getToBuyList(),
+                transplantCost: this.assistant.getTotalTransplantCost(),
                 langCode: this.langCode
             }));
         if (shouldAnimate) {

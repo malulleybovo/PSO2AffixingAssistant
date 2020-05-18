@@ -44,7 +44,14 @@
     --alter-paint-light: #FF7C29;
     --alter-paint-lighter: #ff9f80;
     --alter-paint2: #547FE8;
+    --trans-paint-light: #6f9db3;
+    --trans-paint-light2: #83abbe;
+    --trans-paint-lighter: #bdd1db;
+    --trans-paint-lightest: #e0eaee;
+    --trans-paint-dark: #48768c;
+    --trans-paint-light-fade: #6f9db340;
     --border-color: #404040;
+    --trans-border-color: #39525e;
     --text-color: #fff;
 }
 
@@ -65,8 +72,15 @@
     --conn-color: #b6c7e5;
     --alter-paint: #b6c7e5;
     --alter-paint-light: #cddbee;
+    --trans-paint-light2: #e3e7ed;
     --alter-paint-lighter: #dbe5f5;
     --alter-paint2: #547FE8;
+    --trans-paint-light: #ddd;
+    --trans-paint-lighter: #ececec;
+    --trans-paint-lightest: #fff;
+    --trans-paint-dark: #ececec;
+    --trans-paint-light-fade: #dddddd40;
     --border-color: #939A9F;
+    --trans-border-color: #515151;
     --text-color: #242729;
 }

@@ -47,6 +47,10 @@ const lang = Object.freeze({
             en: "Fodder",
             jp: "装備"
         },
+        materialTitle: {
+            en: "Material Fodder",
+            jp: "材料装備"
+        },
         affixLabel: {
             en: "AFFIX IT",
             jp: "合成"
@@ -59,6 +63,18 @@ const lang = Object.freeze({
             en: "CANNOT AFFIX",
             jp: "塞がり"
         },
+        transplantLabel: {
+            en: "TRANSPLANT IT",
+            jp: "移植"
+        },
+        reTransplantLabel: {
+            en: "RE-TRANSPLANT IT",
+            jp: "再移植"
+        },
+        cannotTransplantLabel: {
+            en: "CANNOT TRANSPLANT",
+            jp: "移植不可能"
+        },
         stageSuccessLabel: {
             en: "Stage Success",
             jp: "ステージの成功"
@@ -66,6 +82,14 @@ const lang = Object.freeze({
         abilitySuccessSpanTitle: {
             en: (rate) => `${rate}% chance of transfering this ability`,
             jp: (rate) => `この能力を${rate}％の確率で譲渡する`
+        },
+        stageTransplantCostLabel: {
+            en: "Stage Transplant Cost",
+            jp: "ステージ移植費用"
+        },
+        fodderTransplantCostLabel: {
+            en: "Transplant Cost",
+            jp: "移植費用"
         },
         factorLabel: {
             en: "Special Ability Factor",
@@ -195,6 +219,42 @@ const lang = Object.freeze({
             en: "And press confirm when ready",
             jp: "準備ができたら確定を押してください"
         },
+        transplantTitle: {
+            en: "Special Ability Transplant",
+            jp: "特殊能力移植"
+        },
+        transplantTooltip: {
+            en: "<strong>WARNING</strong>: The formula below will cause the Material Fodder to lose some ability slots.",
+            jp: "<strong>警告</strong>: 以下の式では、マテリアルフォダーが一部の能力スロットを失います。"
+        },
+        transplantOptionsLabel: {
+            en: "Transplant Options:",
+            jp: "移植オプション"
+        },
+        transplantMaterialSlotLabel: {
+            en: "Material Slot",
+            jp: "材料のスロット数"
+        },
+        transplantAddAbilityItemLabel: {
+            en: "Add Ability Item",
+            jp: "特殊能力追加"
+        },
+        selectButton: {
+            en: "Select",
+            jp: "選択する"
+        },
+        cancelButton: {
+            en: "Cancel",
+            jp: "キャンセル"
+        },
+        resetButton: {
+            en: "Reset",
+            jp: "リセット"
+        },
+        affixingTitle: {
+            en: "Affixing",
+            jp: "合成"
+        },
         reportIssueTitle: {
             en: "Uh oh...",
             jp: "ええとああ。。。"
@@ -216,8 +276,8 @@ const lang = Object.freeze({
             jp: (successRate, affixName, choicesString) => `${successRate}%と一緒に${affixName}を作る: ${choicesString}`
         },
         wishListTitle: {
-            en: "Fodders To Buy",
-            jp: "購入する装備"
+            en: "Materials Needed",
+            jp: "必要な材料"
         },
         wishListItemDivider: {
             en: ', ',
@@ -228,14 +288,18 @@ const lang = Object.freeze({
             jp: (name) => `（特殊能力因子：${name}）`
         },
         wishListAbilityItem: {
-            en: (fodder) => `${fodder.size()}s Fodder: ${fodder.affixes.filter(a => !a.code.startsWith('Z'))
+            en: (fodder) => `${fodder.size()}s Fodder: ${fodder.affixes.filter(a => !a.code.startsWith('Z')).length == 0 ? `Any Junk` : fodder.affixes.filter(a => !a.code.startsWith('Z'))
                 .map(a => lang[a.code].name_en).sort().join(lang.app.wishListItemDivider.en)}`,
-            jp: (fodder) => `${fodder.size()}スロット装備：${fodder.affixes.filter(a => !a.code.startsWith('Z'))
+            jp: (fodder) => `${fodder.size()}スロット装備：${fodder.affixes.filter(a => !a.code.startsWith('Z')).length == 0 ? `ジャンク` : fodder.affixes.filter(a => !a.code.startsWith('Z'))
                 .map(a => lang[a.code].name_jp).sort().join(lang.app.wishListItemDivider.jp)}`
         },
         wishListAbilityDescription: {
             en: (amount, description) => `${(amount > 1) ? `(${amount}x) ` : ``}${description}`,
             jp: (amount, description) => `${(amount > 1) ? `（${amount}倍）` : ``}${description}`
+        },
+        wishListTransplantCostDescr: {
+            en: (count) => `${count} Special Ability Transplant Pass${count > 1 ? `es` : ``}`,
+            jp: (count) => `${count}特殊能力移植パス`
         },
         upslottingLabel: {
             en: "Affix By Upslotting",
@@ -293,9 +357,17 @@ const lang = Object.freeze({
             en: "Cancel",
             jp: "取消"
         },
+        transplantButton: {
+            en: "Transplant",
+            jp: "移植"
+        },
+        affixButton: {
+            en: "Affix",
+            jp: "合成"
+        },
         confirmButton: {
             en: "Confirm",
-            jp: "確定"
+            jp: "確認"
         },
         menuStartNewDescription: {
             en: "Check or change the affixing goal",

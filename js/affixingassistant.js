@@ -103,6 +103,13 @@ class Assistant {
     }
 
     /**
+     * List of Special Ability Transplant cost per number of slots.
+     */
+    static get transplantCosts() {
+        return [5, 5, 5, 5, 15, 25, 50, 100];
+    }
+
+    /**
      * The item options for success rate boost.
      *
      * @type {Array}
@@ -236,6 +243,129 @@ class Assistant {
             }
         }
         return choices;
+    }
+
+    /**
+     * Gets the base fodder and material fodder necessary to make the fodder given.
+     * @param {Fodder} fodder The target fodder.
+     * @param {Number} addAbilityIndex The index of the ability in fodder that
+     * is produced from an Add Ability Item.
+     * @returns {Object} Requirements and choices for transplanting into fodder.
+     * Follows the format:
+     * {
+     *     baseAbilities: {
+     *         required: [], // Abilities that must be in the main fodder.
+     *         optional: [] // Abilities that may or may not be in the main fodder.
+     *     },
+     *     materialAbilities: {
+     *         required: [], // Abilities that must be in the material fodder.
+     *         optional: [] // Abilities that may or may not be in the material fodder.
+     *     },
+     *     addAbilityChoices: {
+     *         inUse: any, // Ability from fodder that is made from an Add Ability Item.
+     *         others: [] // Other abilities which could have been made from Add Ability Item.
+     *     }
+     * }
+     */
+    getTransplantChoicesFor(fodder, addAbilityIndex) {
+        if (fodder === undefined || fodder === null || !(fodder instanceof Fodder)) return null;
+        let abilities = fodder.affixes;
+        if (abilities === undefined || abilities === null || abilities.length === undefined) return null;
+        let baseAbilities = {
+            required: [],
+            optional: []
+        };
+        let materialAbilities = {
+            required: [],
+            optional: []
+        };
+        let addAbilityChoices = {
+            inUse: null,
+            others: []
+        };
+        for (var i = 0; i < abilities.length; i++) {
+            let ability = abilities[i];
+            let isAddAbilityInUse = false;
+            if (ability.code && Assistant.affixDB[ability.code] && Assistant.affixDB[ability.code].choices
+                && Assistant.affixDB[ability.code].choices.filter(a => a.isAddAbilityItem === true).length > 0) {
+                if (addAbilityIndex >= 0 && addAbilityIndex < fodder.size()
+                    && fodder.affixes[addAbilityIndex].code !== undefined
+                    && fodder.affixes[addAbilityIndex].code !== null
+                    && fodder.affixes[addAbilityIndex].code === ability.code) {
+                    isAddAbilityInUse = true;
+                    addAbilityChoices.inUse = ability;
+                } else {
+                    addAbilityChoices.others.push(ability);
+                }
+            }
+            if (!isAddAbilityInUse) {
+                if (ability.noEx === true && ability !== addAbilityChoices.inUse) {
+                    baseAbilities.required.push(ability);
+                } else {
+                    materialAbilities.required.push(ability);
+                }
+            }
+        }
+        let optionalAddAbilitySlot = 1;
+        for (var j = 0; j < Assistant.junkCodes.length; j++) {
+            let junk = Assistant.affixDB[Assistant.junkCodes[j]].abilityRef;
+            if (baseAbilities.required.includes(junk)) continue;
+            if (baseAbilities.required.length < abilities.length + optionalAddAbilitySlot) {
+                if (baseAbilities.required.length < abilities.length) baseAbilities.required.push(junk);
+                else baseAbilities.optional.push(junk);
+            }
+            else break;
+        }
+        for (var j = 0; j < Assistant.junkCodes.length; j++) {
+            let junk = Assistant.affixDB[Assistant.junkCodes[j]].abilityRef;
+            if (materialAbilities.required.includes(junk)) continue;
+            if (materialAbilities.required.length + materialAbilities.optional.length < abilities.length + optionalAddAbilitySlot)
+                materialAbilities.optional.push(junk);
+            else break;
+        }
+        return {
+            baseAbilities: baseAbilities,
+            materialAbilities: materialAbilities,
+            addAbilityChoices: addAbilityChoices
+        };
+    }
+
+    /**
+     * Makes a Page that produces the targetFodder through Special Ability Transplant.
+     * @param {Fodder} targetFodder The Fodder trying to be made.
+     * @param {Number} desiredSlotCount The desired slot count for the material fodder.
+     * @param {Number} addAbilityIndex The index of the ability in targetFodder that is
+     * made from an Add Ability Item.
+     */
+    buildTransplantPage(targetFodder, desiredSlotCount, addAbilityIndex) {
+        let fodder = targetFodder;
+        if (fodder === undefined || fodder === null || !(fodder instanceof Fodder)) return null;
+        let choices = this.getTransplantChoicesFor(fodder, addAbilityIndex);
+        let pageNumSlots = desiredSlotCount > fodder.size() ? fodder.size() :
+            (desiredSlotCount < choices.materialAbilities.required.length ? choices.materialAbilities.required.length : desiredSlotCount);
+        if (choices === null || pageNumSlots > choices.materialAbilities.required.length + choices.materialAbilities.optional.length)
+            return null;
+        let materialAbilities = choices.materialAbilities.required;
+        for (var i = 0; i < choices.materialAbilities.optional.length; i++) {
+            if (materialAbilities.length >= pageNumSlots) break;
+            let extraAbility = choices.materialAbilities.optional[i];
+            materialAbilities.push(extraAbility)
+        }
+        let page = new Page(/* transplantable */ true);
+        let baseFodder = new Fodder();
+        baseFodder.addAffixes(choices.baseAbilities.required);
+        baseFodder.setSpecialAbilityFactor(fodder.specialAbilityFactor);
+        let materialFodder = new Fodder();
+        materialFodder.addAffixes(materialAbilities);
+        page.addFodders([baseFodder, materialFodder]);
+        if (choices.addAbilityChoices.inUse) {
+            let ability = choices.addAbilityChoices.inUse;
+            let addAbiChoice = Assistant.affixDB[ability.code].choices.filter(a => a.isAddAbilityItem === true);
+            targetFodder.setAddAbilityInUse(addAbiChoice);
+        } else {
+            targetFodder.addAbilityInUse = null;
+        }
+        return page;
     }
 
     // STEP 3: After users select the choice they want for making each affix,
@@ -1614,6 +1744,18 @@ class Assistant {
             if (!fodder.hasConnection()) continue;
             // go to the page it is connected to
             let pageConn = fodder.connectedTo;
+            // Default to max rate if fodder is made through a transplant
+            if (pageConn.transplantable === true) {
+                pageConn.setSuccessRate(maxRate);
+                let abilitySuccessRates = [];
+                for (var j = 0; j < fodder.size(); j++) {
+                    abilitySuccessRates.push(maxRate);
+                }
+                fodder.setSuccessRate(maxRate, abilitySuccessRates);
+                // calculate success rates in that page
+                this.calcSuccessRatesStartingAt(pageConn);
+                continue;
+            }
             // get all affixes in that page
             let abilities = [];
             let minNumSlots = Fodder.CAPACITY;
@@ -1733,6 +1875,37 @@ class Assistant {
                 }
             }
             return occurrences;
+        }
+    }
+
+    /**
+     * Evaluates the cost of Special Ability Transplant at each page
+     * starting at the given page. If no start page is given,
+     * the root page is used.
+     * @param {Object} param0 
+     * @param {Page} param0.startingAtPage The Page from which to
+     * start the recursive calculation.
+     */
+    calcTransplantCost({ startingAtPage }) {
+        let page = startingAtPage || this.pageTreeRoot.page;
+        if (page === undefined || page === null || !(page instanceof Page)) return;
+        // Evaluate cost based on number of slots of page's target fodder
+        let targetFodder = page.connectedTo;
+        if (page.transplantable && targetFodder !== undefined && targetFodder !== null
+            && targetFodder instanceof Fodder
+            && targetFodder.size() <= Assistant.transplantCosts.length) {
+            page.transplantCost = Assistant.transplantCosts[targetFodder.size() - 1];
+        }
+        else {
+            page.transplantCost = -1
+        }
+        // Evaluate cost for the internal connections
+        for (var i = 0; i < page.size(); i++) {
+            let fodder = page.fodders[i];
+            if (fodder === undefined || fodder === null || !(fodder instanceof Fodder)) continue;
+            if (fodder.connectedTo) {
+                this.calcTransplantCost({ startingAtPage: fodder.connectedTo });
+            }
         }
     }
 
@@ -2325,6 +2498,20 @@ class Assistant {
         });
     }
 
+    /**
+     * Gets the total transplant cost to complete the affixing formula.
+     * @returns {Number} The cost.
+     */
+    getTotalTransplantCost() {
+        let transpPages = ASSISTANT.query({
+            dataClass: Page,
+            properties: {
+                transplantable: true
+            }
+        });
+        return transpPages.map(a => a.transplantCost).reduce((tot, a) => a > 0 ? tot + a : tot);
+    }
+
     getUsesFor(affix) {
         if (!affix || !affix.code || !Assistant.affixDB) return [];
         let uses = [];
@@ -2622,9 +2809,15 @@ class Page {
         return 100;
     }
 
-    constructor() {
+    constructor(transplantable) {
         // Immutable variables (properties can still change)
         this.fodders = [];
+        this.transplantable = transplantable || false; // Special Ability Transplant
+        Object.defineProperty(this, "isTransferable", {
+            enumerable: true,
+            value: this.isTransferable,
+            writable: false
+        });
         // Make functions immutable
         let funcs = Object.getOwnPropertyNames(Page.prototype);
         for (var i = 0; i < funcs.length; i++) {
@@ -2640,6 +2833,7 @@ class Page {
         }
         // Mutable variables
         this.successRate = -1;
+        this.transplantCost = -1;
         this.connectedTo = null;
     }
 

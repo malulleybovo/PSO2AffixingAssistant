@@ -123,7 +123,7 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, boost
     if (typeof level === 'number') dataConn =
         ((Math.pow(capacity, level) - 1) / (capacity - 1)) + offset;
     else dataConn = 0;
-    let pageTempate = `<div ${(isGoal) ? `id="goal" ` : ``}class="page" ${(dataConn >= 0) ? `data-conn="` + dataConn + `"` : ``}><div>`;
+    let pageTempate = `<div ${(isGoal) ? `id="goal" ` : ``}class="page ${page.transplantable === true ? ` transplant` : ``}" ${(dataConn >= 0) ? `data-conn="` + dataConn + `"` : ``}><div>`;
     if (page && page instanceof Page) {
         let fodders = page.fodders;
         // Since fodders within the page may connect to pages one level further down the tree,
@@ -136,8 +136,9 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, boost
             pageTempate += FODDER_TEMPLATE({
                 fodder: fodders[i],
                 isGoal: isGoal,
-                titleLabel: (isGoal) ? lang.app.goalFodderTitle[langCode] : i == 0 ? lang.app.mainFodderTitle[langCode] : (lang.app.fodderTitle[langCode] + ' ' + i),
-                produceLabel: (isGoal) ? lang.app.reAffixLabel[langCode] : null,
+                titleLabel: (isGoal) ? lang.app.goalFodderTitle[langCode] : i == 0 ? lang.app.mainFodderTitle[langCode] :
+                    page.transplantable === true ? lang.app.materialTitle[langCode] : (lang.app.fodderTitle[langCode] + ' ' + i),
+                produceLabel: null,
                 dataConn: (fodderOffsets[i] >= 0) ? fodderDataConnBase + fodderOffsets[i] : -1,
                 isSameGear: page.fodders[i].isSameGear,
                 rateBoostOptions: rateBoostOptions,
@@ -152,8 +153,9 @@ const PAGE_TEMPLATE = ({ page, isGoal, rateBoostOptions, potentialOptions, boost
         pageTempate += `</div>`;
         if (!isGoal) {
             pageTempate += `<div class="success-indicator">
-                <span>${lang.app.stageSuccessLabel[langCode]}: </span>
-                <span>${(page.successRate >= 0) ? page.successRate + `%` : `?`}</span>
+                <span>${page.transplantable === true ? lang.app.stageTransplantCostLabel[langCode] : lang.app.stageSuccessLabel[langCode]}: </span>
+                <span>${page.transplantable === true ? (page.transplantCost >= 0 ? page.transplantCost : `?`) : (page.successRate >= 0) ? page.successRate + `%` : `?`
+        }</span >
             </div>`;
         }
     }
@@ -176,11 +178,15 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
             </div>
             <div class="divider"></div>
             ${((fodder && fodder.specialAbilityFactor) ? `<div class="affix special-ability-factor">${lang.app.factorLabel[langCode]}<br>(${lang[fodder.specialAbilityFactor.code]['name_' + langCode]})</div><div class="divider"></div>` : ``)}
-            <div class="produce-button${((fodder.hasNonTransferableAffixes()) ? ` disabled">${lang.app.cannotAffixLabel[langCode]}` : `">${(produceLabel) ? produceLabel : ((dataConn >= 0) ? lang.app.reAffixLabel[langCode] : lang.app.affixLabel[langCode])}`)}</div>
-            ${(fodder.overallSuccessRate >= 0) ? `<div class="success-indicator" title="${lang.app.fodderSuccessDivTitle[langCode]}">
-                <span>${(isGoal) ? lang.app.goalLabel[langCode] : lang.app.fodderLabel[langCode]} ${lang.app.fodderSuccessLabel[langCode]}: </span>
-            <span>${fodder.overallSuccessRate + `%`}</span></div>` : ``}
-            ${(fodder.affixSuccessRates.length > 0) ?
+            <div class="produce-button${((fodder.hasNonTransferableAffixes()) ? ` disabled">${lang.app.cannotAffixLabel[langCode]}` : `">${(produceLabel) ? produceLabel : ((dataConn >= 0 && fodder.connectedTo && fodder.connectedTo.transplantable !== true) ? lang.app.reAffixLabel[langCode] : lang.app.affixLabel[langCode])}`)}</div>
+            <div class="transplant-button${(fodder.affixes.filter(a => a.noEx !== true) === 0 ? ` disabled` : ``)}">${(fodder.affixes.filter(a => a.noEx !== true) === 0 ? lang.app.cannotTransplantLabel[langCode] : (dataConn >= 0 && fodder.connectedTo && fodder.connectedTo.transplantable === true) ? lang.app.reTransplantLabel[langCode] : lang.app.transplantLabel[langCode])}</div>
+            ${(fodder.overallSuccessRate >= 0 || (fodder.connectedTo && fodder.connectedTo.transplantable === true && fodder.connectedTo.transplantCost >= 0)) ? `<div class="success-indicator" title="${lang.app.fodderSuccessDivTitle[langCode]}">
+                <div>${
+                (fodder.connectedTo && fodder.connectedTo.transplantable === true) ? lang.app.transplantTitle[langCode] : lang.app.affixingTitle[langCode]
+                }</div>
+                <span>${(fodder.connectedTo && fodder.connectedTo.transplantable === true) ? lang.app.fodderTransplantCostLabel[langCode] : ((isGoal) ? lang.app.goalLabel[langCode] : lang.app.fodderLabel[langCode]) + ' ' + lang.app.fodderSuccessLabel[langCode]}: </span>
+            <span>${(fodder.connectedTo && fodder.connectedTo.transplantable === true) ? (fodder.connectedTo.transplantCost >= 0 ? fodder.connectedTo.transplantCost : '?') : (fodder.overallSuccessRate + `%`)}</span></div>` : ``}
+            ${(fodder.affixSuccessRates.length > 0 && fodder.connectedTo && fodder.connectedTo.transplantable !== true) ?
             `<div class="boost-container individual" >
                 ${CHECKBOX_TEMPLATE({
                     label: lang.app.sameEquipLabel[langCode],
@@ -412,24 +418,93 @@ const REVIEWING_PANEL = ({ fodders, langCode }) => {
     return panel;
 };
 
-const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, isGlobalSearch, shouldUpslot, shouldSpread, shouldUseTrainer, langCode }) => {
+const TRANSPLANT_PANEL = ({ fodders, addAbilityChosen, langCode }) => {
+    panel = `<div><div>${lang.app.transplantTooltip[langCode]}</div></div>`;
+    let hasFactor = false;
+    for (var i = 0; i < fodders.length; i++) {
+        if (fodders[i].specialAbilityFactor && fodders[i].specialAbilityFactor.code) {
+            hasFactor = true;
+            break;
+        }
+    }
+    let numSsas = 0;
+    let addAbilityChoices = [];
+    for (var i = 0; i < fodders.length; i++) {
+        let fodderInReview = fodders[i];
+        if (i === 0) {
+            numSsas = fodderInReview.affixes.filter(a => a.noEx === true).length;
+        }
+        panel += `<div data-fodderidx="${i}"><div class="title bold">${i == 0 ? lang.app.mainFodderTitle[langCode] : (lang.app.materialTitle[langCode])}</div><div>`;
+        for (var j = 0; j < fodderInReview.size(); j++) {
+            let affix = fodderInReview.affixes[j];
+            if (!affix.code) continue;
+            let isAddAbilityChoice = false;
+            if (affix.code && Assistant.affixDB[affix.code] && Assistant.affixDB[affix.code].choices
+                && Assistant.affixDB[affix.code].choices.filter(a => a.isAddAbilityItem === true).length > 0) {
+                isAddAbilityChoice = true;
+                addAbilityChoices.push(affix);
+            }
+            panel += `<div class="affix${isAddAbilityChoice ? ' add-ability-choice' : ''}"${(affix) ? ` title="${lang[affix.code]['effect_' + langCode]}"` : ``}${(affix) ? ` data-code="${affix.code}"` : ``}>
+                                <span>${(affix && affix.code && lang[affix.code] && lang[affix.code]['name_' + langCode]) ? `${lang[affix.code]['name_' + langCode]}` : `&nbsp;`}</span>
+                            </div>`;
+        }
+        panel += `</div>`;
+        if (hasFactor) panel += `<div class="divider"></div><div data-fodderidx="${i}" class="affix swappable${((fodderInReview && fodderInReview.specialAbilityFactor) ? ` special-ability-factor">${lang.app.factorLabel[langCode]}<br>(${lang[fodderInReview.specialAbilityFactor.code]['name_' + langCode]})` : ` blank-special-ability-factor">&nbsp;<br>&nbsp;`)}</div>`;
+        panel += `</div>`;
+    }
+    if (numSsas > 0 || addAbilityChosen || addAbilityChoices.length > 0) {
+        panel += `<div style="display: block;"><div>${lang.app.transplantOptionsLabel[langCode]}</div></div>`;
+    }
+    if (numSsas > 0) {
+        panel += `<div class="transplant-slot-regulator">
+                <div class="button-decrease"><i class="fa fa-minus"></i></div>
+                <div>${lang.app.transplantMaterialSlotLabel[langCode]}</div>
+                <div class="button-increase"><i class="fa fa-plus"></i></div>
+            </div>`;
+    }
+    if (addAbilityChosen || addAbilityChoices.length > 0) {
+        if (addAbilityChosen !== undefined && addAbilityChosen !== null
+            && addAbilityChosen.ref !== undefined && addAbilityChosen.ref !== null
+            && addAbilityChosen.code !== undefined && addAbilityChosen.code !== null
+            && Assistant.data.optionList.additional.filter(a => a.ref === addAbilityChosen.ref).length > 0) {
+            panel += `<div>
+                <div>${lang.app.transplantAddAbilityItemLabel}</div>
+                <div class="affix transplant-add-ability">
+                    <span>${lang.additional[Assistant.data.optionList.additional.filter(a => a.ref === addAbilityChosen.ref)[0].id][langCode]}</span>
+                </div>
+                <div class="transplant-add-ability-button">${lang.app.resetButton[langCode]}</div>
+            </div>`;
+        } else {
+            panel += `<div>
+                <div>${lang.app.transplantAddAbilityItemLabel[langCode]}</div>
+                <div class="transplant-add-ability-button select">${lang.app.selectButton[langCode]}</div>
+            </div>`;
+        }
+    }
+    return panel;
+};
+
+const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, addAbilityChosen, transplantCost, isGlobalSearch, shouldUpslot, shouldSpread, shouldUseTrainer, langCode }) => {
     let isAffixSelection = type == 'affixSelection';
     let isChoiceSelection = type == 'choiceSelection';
     let isReviewTweak = type == 'reviewTweak';
+    let isTransplantPanel = type == 'transplant';
     let isFormulaSheet = type == 'formulaSheet';
     let isWishList = type == 'wishList';
     let layoutTemplate = `<div class="${(isAffixSelection) ? `affix-selection-container` :
-                                            (isChoiceSelection) ? `choice-selection-container` :
-                                                (isReviewTweak) ? `review-tweak-container` :
-                                                    (isFormulaSheet) ? `formula-sheet-container` :
-                                                        (isWishList) ? `wish-list-container` : ``} hidden" onclick="$(this).remove();">
+                                        (isChoiceSelection) ? `choice-selection-container` :
+                                        (isReviewTweak) ? `review-tweak-container` :
+                                        (isTransplantPanel) ? `transplant-container` :
+                                        (isFormulaSheet) ? `formula-sheet-container` :
+                                        (isWishList) ? `wish-list-container` : ``} hidden" onclick="${isTransplantPanel ? '' : '$(this).remove();'}">
         <div onclick="event.stopPropagation();">
             <div class="main-grid">
                 <div class="title bold">${(isAffixSelection) ? lang.app.chooseAffixTitle[langCode] :
-                                            (isChoiceSelection) ? lang.app.chooseMethodTitle[langCode] :
-                                                (isReviewTweak) ? lang.app.reviewTweakTitle[langCode] :
-                                                    (isFormulaSheet) ? lang.app.formulaSheetTitle[langCode] :
-                                                        (isWishList) ? lang.app.wishListTitle[langCode] : ``}</div>${(isChoiceSelection) ?
+                                          (isChoiceSelection) ? lang.app.chooseMethodTitle[langCode] :
+                                          (isReviewTweak) ? lang.app.reviewTweakTitle[langCode] :
+                                          (isTransplantPanel) ? lang.app.transplantTitle[langCode] :
+                                          (isFormulaSheet) ? lang.app.formulaSheetTitle[langCode] :
+                                          (isWishList) ? lang.app.wishListTitle[langCode] : ``}</div>${(isChoiceSelection) ?
                 `<div class="options">${(affixesSelected.length > 1) ? `
                     ${CHECKBOX_TEMPLATE({ label: lang.app.upslottingLabel[langCode], description: lang.app.upslottingDescription[langCode], isChecked: shouldUpslot })}` : ``}
                     ${CHECKBOX_TEMPLATE({ label: lang.app.spreadLabel[langCode], description: lang.app.spreadDescription[langCode], isChecked: shouldSpread })}
@@ -477,6 +552,9 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     else if (isReviewTweak) {
         layoutTemplate += REVIEWING_PANEL({ fodders: datalist, langCode: langCode });
     }
+    else if (isTransplantPanel) {
+        layoutTemplate += TRANSPLANT_PANEL({ fodders: datalist, addAbilityChosen: addAbilityChosen, langCode: langCode });
+    }
     else if (isFormulaSheet) {
         layoutTemplate += `<div>
                         <div class="title bold">${lang.app.abilityListTitle[langCode]}</div>
@@ -492,16 +570,21 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     else if (isWishList) {
         layoutTemplate += WISH_LIST_TEMPLATE({
             fodderList: datalist,
+            transplantCost: transplantCost,
             langCode: langCode
         });
     }
     layoutTemplate += `</div>
                 <div>
-                    ${(isAffixSelection || isChoiceSelection || isReviewTweak) ?
+                    ${(isAffixSelection || isChoiceSelection || isReviewTweak || isTransplantPanel) ?
                     `<div class="cancel-button">${lang.app.cancelButton[langCode]}</div>` : ``}
-                    <div class="confirm-button${(isAffixSelection || isChoiceSelection) ? ` disabled">${lang.app.confirmButton[langCode]}` :
-                                                    (isReviewTweak) ? `">${lang.app.confirmButton[langCode]}` :
-                                                        `">${lang.app.closeButton[langCode]}`}</div>
+                    ${(isAffixSelection) ? `<div class="confirm-button transplant-confirm-button">${lang.app.transplantButton[langCode]}</div>` : ``}
+                    <div class="confirm-button${(isAffixSelection) ? ` affix-confirm-button` : ``}${
+                        (isAffixSelection) ? ` disabled">${lang.app.affixButton[langCode]}` :
+                        (isChoiceSelection) ? ` disabled">${lang.app.confirmButton[langCode]}` :
+                        (isReviewTweak) ? `">${lang.app.confirmButton[langCode]}` :
+                        (isTransplantPanel) ? ` transplant-confirm-button">${lang.app.confirmButton[langCode]}` :
+                        `">${lang.app.closeButton[langCode]}`}</div>
                 </div>
             </div>
         </div>
@@ -541,6 +624,15 @@ const REVIEW_TWEAK_VIEW_TEMPLATE = ({ fodders, langCode }) => {
     });
 };
 
+const TRANSPLANT_VIEW_TEMPLATE = ({ fodders, addAbilityChosen, langCode }) => {
+    return SELECTION_MENU_TEMPLATE({
+        type: 'transplant',
+        datalist: fodders,
+        addAbilityChosen: addAbilityChosen,
+        langCode: langCode
+    });
+};
+
 const FORMULA_SHEET_VIEW_TEMPLATE = ({ categories, abilityList, isGlobalSearch, langCode }) => {
     return SELECTION_MENU_TEMPLATE({
         type: 'formulaSheet',
@@ -551,18 +643,22 @@ const FORMULA_SHEET_VIEW_TEMPLATE = ({ categories, abilityList, isGlobalSearch, 
     });
 };
 
-const WISH_LIST_VIEW_TEMPLATE = ({ fodderList, langCode }) => {
+const WISH_LIST_VIEW_TEMPLATE = ({ fodderList, transplantCost, langCode }) => {
     return SELECTION_MENU_TEMPLATE({
         type: 'wishList',
         datalist: fodderList,
+        transplantCost: transplantCost,
         langCode: langCode
     });
 };
 
-const WISH_LIST_TEMPLATE = ({ fodderList, langCode }) => {
+const WISH_LIST_TEMPLATE = ({ fodderList, transplantCost, langCode }) => {
     if (!fodderList || !Array.isArray(fodderList)) return '';
     let affixLists = [];
     let counts = [];
+    if (transplantCost > 0) {
+        affixLists.push(lang.app.wishListTransplantCostDescr[langCode](transplantCost));
+    }
     for (var i = 0; i < fodderList.length; i++) {
         if (!fodderList[i] || !(fodderList[i] instanceof Fodder)
             || fodderList[i].size() <= 0) continue;

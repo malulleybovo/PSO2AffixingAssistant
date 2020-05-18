@@ -217,6 +217,55 @@ div.page {
     border: 1px solid var(--border-color);
 }
 
+div.page.transplant {
+    background-color: var(--trans-paint-light);
+    border-color: var(--trans-border-color);
+}
+
+div.page.transplant div {
+    border-color: var(--trans-border-color);
+}
+
+div.page.transplant .affix {
+    background-color: var(--trans-paint-dark);
+}
+
+div.page.transplant .produce-button {
+    background-color: var(--trans-paint-dark);
+}
+
+div.page.transplant div.produce-button:not(.disabled):hover {
+    background-color: var(--trans-paint-light);
+}
+
+div.page.transplant .transplant-button {
+    background-color: var(--trans-paint-dark);
+}
+
+div.page.transplant div.transplant-button:not(.disabled):hover {
+    background-color: var(--trans-paint-light);
+}
+
+div.page.transplant .dropdown-container {
+    background-color: var(--trans-paint-dark);
+}
+
+div.page.transplant .dropdown-container select option {
+    background-color: var(--trans-paint-dark);
+}
+
+div.page.transplant .checkmark {
+    background-color: var(--trans-paint-lightest);
+}
+
+div.page.transplant .checkmark-holder:hover input ~ .checkmark {
+    background-color: var(--trans-paint-lighter);
+}
+
+div.page.transplant .checkmark-holder input:checked ~ .checkmark {
+    background-color: var(--trans-paint-dark);
+}
+
 #goal {
     background-color: var(--paint-prime);
 }
@@ -265,6 +314,10 @@ div.affix:last-child {
 
 div.page.despotlight {
     background-color: var(--paint-light-fade);
+}
+
+div.page.transplant.despotlight {
+    background-color: var(--trans-paint-light-fade);
 }
 
 connection.despotlight,
@@ -320,6 +373,30 @@ div.produce-button:not(.disabled):hover {
 }
 
 div.produce-button.disabled {
+    opacity: 0.5;
+}
+
+div.transplant-button {
+    margin-top: 0.3em;
+    padding: 0.15em 0.5em;
+    background-color: var(--paint-dark);
+    border: solid 1.5px var(--border-color);
+    border-radius: 0.25em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+div.transplant-button:not(.disabled) {
+    cursor: pointer;
+}
+
+div.transplant-button:not(.disabled):hover {
+    background-color: var(--paint-light);
+}
+
+div.transplant-button.disabled {
     opacity: 0.5;
 }
 
@@ -416,6 +493,7 @@ div.title.bold {
 div.affix-selection-container,
 div.choice-selection-container,
 div.review-tweak-container,
+div.transplant-container,
 div.formula-sheet-container,
 div.link-container,
 div.report-issue-container,
@@ -430,6 +508,7 @@ div.wish-list-container {
 div.affix-selection-container.hidden,
 div.choice-selection-container.hidden,
 div.review-tweak-container.hidden,
+div.transplant-container.hidden,
 div.formula-sheet-container.hidden,
 div.link-container.hidden,
 div.report-issue-container.hidden,
@@ -440,6 +519,7 @@ div.wish-list-container.hidden {
 div.affix-selection-container > div,
 div.choice-selection-container > div,
 div.review-tweak-container > div,
+div.transplant-container > div,
 div.formula-sheet-container > div,
 div.link-container > div,
 div.report-issue-container > div,
@@ -460,6 +540,7 @@ div.wish-list-container > div {
 div.affix-selection-container div.main-grid,
 div.choice-selection-container div.main-grid,
 div.review-tweak-container div.main-grid,
+div.transplant-container div.main-grid,
 div.formula-sheet-container div.main-grid,
 div.wish-list-container div.main-grid {
     width: 100%;
@@ -471,6 +552,7 @@ div.wish-list-container div.main-grid {
 div.affix-selection-container div.content,
 div.choice-selection-container div.content,
 div.review-tweak-container div.content,
+div.transplant-container div.content,
 div.formula-sheet-container div.content,
 div.wish-list-container div.content {
     width: 100%;
@@ -509,7 +591,8 @@ div.affix-selection-container div.content > div > div:last-child {
 
 div.affix-selection-container div.main-grid > div:last-child,
 div.choice-selection-container div.main-grid > div:last-child,
-div.review-tweak-container div.main-grid > div:last-child {
+div.review-tweak-container div.main-grid > div:last-child,
+div.transplant-container div.main-grid > div:last-child {
     display: flex;
     width: 100%;
 }
@@ -520,7 +603,8 @@ div.affix-selection-container div.selection-container {
 
 div.affix-selection-container .cancel-button,
 div.choice-selection-container .cancel-button,
-div.review-tweak-container .cancel-button {
+div.review-tweak-container .cancel-button,
+div.transplant-container .cancel-button {
     background-color: var(--paint-dark);
     border-radius: 0.25em 0em 0em 0.25em;
     border: 1.5px solid var(--border-color);
@@ -539,13 +623,15 @@ div.review-tweak-container .cancel-button {
 
 div.affix-selection-container .cancel-button:hover,
 div.choice-selection-container .cancel-button:hover,
-div.review-tweak-container .cancel-button:hover {
+div.review-tweak-container .cancel-button:hover,
+div.transplant-container .cancel-button:hover {
     background-color: var(--paint-light);
 }
 
 div.affix-selection-container .confirm-button,
 div.choice-selection-container .confirm-button,
 div.review-tweak-container .confirm-button,
+div.transplant-container .confirm-button,
 div.formula-sheet-container .confirm-button,
 div.link-container .confirm-button,
 div.report-issue-container .confirm-button,
@@ -566,14 +652,33 @@ div.wish-list-container .confirm-button {
     min-height: 19px;
 }
 
+div.affix-selection-container .cancel-button {
+    width: 30%;
+}
+
+div.affix-selection-container .confirm-button {
+    width: 35%;
+}
+
+div.affix-selection-container .confirm-button.transplant-confirm-button {
+    border-radius: 0em;
+    background-color: var(--trans-paint-light);
+}
+
 div.affix-selection-container .confirm-button:hover,
 div.choice-selection-container .confirm-button:hover,
 div.review-tweak-container .confirm-button:hover,
+div.transplant-container .confirm-button:hover,
 div.formula-sheet-container .confirm-button:hover,
 div.link-container .confirm-button:hover,
 div.report-issue-container .confirm-button:hover,
 div.wish-list-container .confirm-button:hover {
     background-color: var(--alter-paint-light);
+}
+
+div.affix-selection-container .confirm-button.transplant-confirm-button:hover,
+div.transplant-container .confirm-button.transplant-confirm-button:hover {
+    background-color: var(--trans-paint-light2);
 }
 
 div.affix-selection-container .confirm-button.disabled,
@@ -617,6 +722,7 @@ div.affix-selection-container div.stats-viewer {
 div.affix-selection-container div.content::-webkit-scrollbar,
 div.choice-selection-container div.content::-webkit-scrollbar,
 div.review-tweak-container div.content::-webkit-scrollbar,
+div.transplant-container div.content::-webkit-scrollbar,
 div.formula-sheet-container div.content::-webkit-scrollbar,
 div.link-container div.content::-webkit-scrollbar,
 div.report-issue-container div.content::-webkit-scrollbar,
@@ -629,6 +735,7 @@ div.wish-list-container div.content::-webkit-scrollbar {
 div.affix-selection-container div.content::-webkit-scrollbar-thumb,
 div.choice-selection-container div.content::-webkit-scrollbar-thumb,
 div.review-tweak-container div.content::-webkit-scrollbar-thumb,
+div.transplant-container div.content::-webkit-scrollbar-thumb,
 div.formula-sheet-container div.content::-webkit-scrollbar-thumb,
 div.link-container div.content::-webkit-scrollbar-thumb,
 div.report-issue-container div.content::-webkit-scrollbar-thumb,
@@ -641,6 +748,7 @@ div.wish-list-container div.content::-webkit-scrollbar-thumb {
 div.affix-selection-container div.content::-webkit-scrollbar-corner,
 div.choice-selection-container div.content::-webkit-scrollbar-corner,
 div.review-tweak-container div.content::-webkit-scrollbar-corner,
+div.transplant-container div.content::-webkit-scrollbar-corner,
 div.formula-sheet-container div.content::-webkit-scrollbar-corner,
 div.link-container div.content::-webkit-scrollbar-corner,
 div.report-issue-container div.content::-webkit-scrollbar-corner,
@@ -651,6 +759,7 @@ div.wish-list-container div.content::-webkit-scrollbar-corner {
 div.affix-selection-container div.content > div::-webkit-scrollbar,
 div.choice-selection-container div.content > div::-webkit-scrollbar,
 div.review-tweak-container div.content > div::-webkit-scrollbar,
+div.transplant-container div.content > div::-webkit-scrollbar,
 div.formula-sheet-container div.content > div::-webkit-scrollbar,
 div.link-container div.content > div::-webkit-scrollbar,
 div.report-issue-container div.content > div::-webkit-scrollbar,
@@ -663,6 +772,7 @@ div.wish-list-container div.content > div::-webkit-scrollbar {
 div.affix-selection-container div.content > div::-webkit-scrollbar-thumb,
 div.choice-selection-container div.content > div::-webkit-scrollbar-thumb,
 div.review-tweak-container div.content > div::-webkit-scrollbar-thumb,
+div.transplant-container div.content > div::-webkit-scrollbar-thumb,
 div.formula-sheet-container div.content > div::-webkit-scrollbar-thumb,
 div.link-container div.content > div::-webkit-scrollbar-thumb,
 div.report-issue-container div.content > div::-webkit-scrollbar-thumb,
@@ -675,6 +785,7 @@ div.wish-list-container div.content > div::-webkit-scrollbar-thumb {
 div.affix-selection-container div.content > div::-webkit-scrollbar-corner,
 div.choice-selection-container div.content > div::-webkit-scrollbar-corner,
 div.review-tweak-container div.content > div::-webkit-scrollbar-corner,
+div.transplant-container div.content > div::-webkit-scrollbar-corner,
 div.formula-sheet-container div.content > div::-webkit-scrollbar-corner,
 div.link-container div.content > div::-webkit-scrollbar-corner,
 div.report-issue-container div.content > div::-webkit-scrollbar-corner,
@@ -828,7 +939,8 @@ div.review-tweak-container div.affix.selected {
     border: 1.5px solid var(--border-color)
 }
 
-div.review-tweak-container div.affix:not(.not-a-target):hover {
+div.review-tweak-container div.affix:not(.not-a-target):hover,
+div.transplant-container div.affix.potential-target:hover {
     background-color: var(--paint-light);
 }
 
@@ -836,16 +948,19 @@ div.review-tweak-container div.affix.selected:hover {
     background-color: var(--alter-paint-light);
 }
 
-div.review-tweak-container div.content {
+div.review-tweak-container div.content,
+div.transplant-container div.content {
     text-align: center;
 }
 
-div.review-tweak-container div.content > div:not(:first-child) {
+div.review-tweak-container div.content > div:not(:first-child),
+div.transplant-container div.content > div:not(:first-child) {
     display: inline-block;
     margin: 0.75em;
 }
 
-div.review-tweak-container div.potential-target {
+div.review-tweak-container div.potential-target,
+div.transplant-container div.potential-target {
     border-top: none;
     border-bottom: 1.5px solid var(--alter-paint);
     border-left: 1.5px solid var(--alter-paint);
@@ -858,17 +973,77 @@ div.review-tweak-container div.potential-target.blank-special-ability-factor {
     border-top: 1.5px solid var(--alter-paint);
 }
 
-div.review-tweak-container div.not-a-target + div.potential-target {
+div.review-tweak-container div.not-a-target + div.potential-target,
+div.transplant-container div.not-a-target + div.potential-target {
     border-top: 1.5px solid var(--alter-paint);
 }
 
 div.review-tweak-container div.potential-target + div.not-a-target,
-div.review-tweak-container div.swappable.selected + div.not-a-target {
+div.review-tweak-container div.swappable.selected + div.not-a-target,
+div.transplant-container div.potential-target + div.not-a-target {
     border-top: none;
 }
 
-div.review-tweak-container div.not-a-target {
+div.review-tweak-container div.not-a-target,
+div.transplant-container div.not-a-target {
     opacity: 0.4;
+}
+
+div.transplant-container .confirm-button.transplant-confirm-button {
+    background-color: var(--trans-paint-light);
+}
+
+div.transplant-container div.transplant-slot-regulator {
+    display: block !important;
+}
+
+div.transplant-container div.transplant-slot-regulator > div {
+    display: inline-block;
+}
+
+div.transplant-container div.transplant-slot-regulator > div.button-decrease {
+    padding-top: 0.65em;
+    background: var(--paint-dark);
+    border-radius: 50%;
+    width: 2.5em;
+    height: 1.85em;
+    margin-right: 0.75em;
+}
+
+div.transplant-container div.transplant-slot-regulator > div.button-increase {
+    padding-top: 0.65em;
+    background: var(--paint-dark);
+    border-radius: 50%;
+    width: 2.5em;
+    height: 1.85em;
+    margin-left: 0.75em;
+}
+
+div.transplant-container div.transplant-slot-regulator > div.button-decrease.disabled,
+div.transplant-container div.transplant-slot-regulator > div.button-increase.disabled {
+    opacity: 0.5;
+}
+
+div.transplant-container div.transplant-slot-regulator > div.button-decrease:not(.disabled):hover,
+div.transplant-container div.transplant-slot-regulator > div.button-increase:not(.disabled):hover {
+    opacity: 0.7;
+}
+
+div.transplant-container div.transplant-add-ability {
+    border-radius: 0.25em;
+    border-bottom: solid 1.5px var(--border-color);
+    margin-top: 0.5em;
+}
+
+div.transplant-container div.transplant-add-ability-button {
+    margin-top: 0.5em;
+    padding: 0.5em;
+    background: var(--paint-dark);
+    border-radius: 0.25em;
+}
+
+div.transplant-container div.transplant-add-ability-button:hover {
+    opacity: 0.7;
 }
 
 div.formula-sheet-container div.content,
@@ -1079,6 +1254,7 @@ div.report-issue-container .icon-container > div {
     div.affix-selection-container > div,
     div.choice-selection-container > div,
     div.review-tweak-container > div,
+    div.transplant-container > div,
     div.formula-sheet-container > div,
     div.wish-list-container > div {
         width: 90%;
@@ -1111,13 +1287,15 @@ div.report-issue-container .icon-container > div {
 
     div.affix-selection-container .cancel-button,
     div.choice-selection-container .cancel-button,
-    div.review-tweak-container .cancel-button {
+    div.review-tweak-container .cancel-button,
+    div.transplant-container .cancel-button {
         height: 100%;
     }
 
     div.affix-selection-container .confirm-button,
     div.choice-selection-container .confirm-button,
     div.review-tweak-container .confirm-button,
+    div.transplant-container .confirm-button,
     div.formula-sheet-container .confirm-button,
     div.wish-list-container .confirm-button {
         height: 100%;
@@ -1134,9 +1312,11 @@ div.report-issue-container .icon-container > div {
     div.affix-selection-container .cancel-button,
     div.choice-selection-container .cancel-button,
     div.review-tweak-container .cancel-button,
+    div.transplant-container .cancel-button,
     div.affix-selection-container .confirm-button,
     div.choice-selection-container .confirm-button,
-    div.review-tweak-container .confirm-button {
+    div.review-tweak-container .confirm-button,
+    div.transplant-container .confirm-button {
         width: 50%;
     }
 
@@ -1198,6 +1378,7 @@ div.report-issue-container .icon-container > div {
     div.affix-selection-container > div,
     div.choice-selection-container > div,
     div.review-tweak-container > div,
+    div.transplant-container > div,
     div.formula-sheet-container > div,
     div.wish-list-container > div {
         width: 90%;
@@ -1231,13 +1412,15 @@ div.report-issue-container .icon-container > div {
 
     div.affix-selection-container .cancel-button,
     div.choice-selection-container .cancel-button,
-    div.review-tweak-container .cancel-button {
+    div.review-tweak-container .cancel-button,
+    div.transplant-container .cancel-button {
         height: 100%;
     }
 
     div.affix-selection-container .confirm-button,
     div.choice-selection-container .confirm-button,
     div.review-tweak-container .confirm-button,
+    div.transplant-container .confirm-button,
     div.formula-sheet-container .confirm-button,
     div.wish-list-container .confirm-button {
         height: 100%;
@@ -1254,9 +1437,11 @@ div.report-issue-container .icon-container > div {
     div.affix-selection-container .cancel-button,
     div.choice-selection-container .cancel-button,
     div.review-tweak-container .cancel-button,
+    div.transplant-container .cancel-button,
     div.affix-selection-container .confirm-button,
     div.choice-selection-container .confirm-button,
-    div.review-tweak-container .confirm-button {
+    div.review-tweak-container .confirm-button,
+    div.transplant-container .confirm-button {
         width: 50%;
     }
 
@@ -1265,7 +1450,8 @@ div.report-issue-container .icon-container > div {
     }
 
     div.choice-selection-container div.content,
-    div.review-tweak-container div.content {
+    div.review-tweak-container div.content,
+    div.transplant-container div.content {
         height: 72%;
     }
 

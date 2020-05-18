@@ -114,6 +114,7 @@ class FormulaEncoder {
     static get ctrls() {
         return {
             cfgItem: 0b0000,
+            newTranspPage: 0b0111,
             newPage: 0b1000,
             newFodder: 0b1001,
             currFodder: 0b1010,
@@ -407,11 +408,12 @@ class FormulaEncoder {
             // Get commands for every fodder in page
             for (var i = 0; i < page.size(); i++) {
                 let fodderCodes = getFodderCodes(page.fodders[i]);
-                // Set first command in page as a newPage command
+                // Set first command in page as a newPage or newTranspPage command
+                let command = page.transplantable === true ? FormulaEncoder.ctrls.newTranspPage : FormulaEncoder.ctrls.newPage;
                 if (i == 0 && fodderCodes.length > 0) {
                     fodderCodes[0] = fodderCodes[0] & ~FormulaEncoder.masks.ctrl;
                     fodderCodes[0] = fodderCodes[0]
-                        | FormulaEncoder.setCtrlBits(FormulaEncoder.ctrls.newPage);
+                        | FormulaEncoder.setCtrlBits(command);
                 }
                 codes16bit = codes16bit.concat(fodderCodes);
             }
@@ -549,6 +551,7 @@ class FormulaEncoder {
             }
 
             let isNewPage = ctrlBits == FormulaEncoder.ctrls.newPage;
+            let isNewTranspPage = ctrlBits == FormulaEncoder.ctrls.newTranspPage;
             let isNewFodder = ctrlBits == FormulaEncoder.ctrls.newFodder;
             let isCurrFodder = ctrlBits == FormulaEncoder.ctrls.currFodder;
             let isBoostItem = ctrlBits == FormulaEncoder.ctrls.boostItem;
@@ -560,9 +563,9 @@ class FormulaEncoder {
             let isAddAbility = flag == FormulaEncoder.flags.addAbility;
             let abilityId = FormulaEncoder.getAbilityBits(code);
             // Parse new pages
-            if (isNewPage && Assistant.affixDB[
+            if ((isNewPage || isNewTranspPage) && Assistant.affixDB[
                 Assistant.relCodes[abilityId]]) {
-                currPage = new Page();
+                currPage = new Page(/* transplantable */ isNewTranspPage);
                 currPageNode = (new PageTreeNode(pageNodes.length == 0))
                     .setPage(currPage);
                 currFodder = (new Fodder()).setGoal(pageNodes.length == 0);
