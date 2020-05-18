@@ -682,7 +682,8 @@ div.transplant-container .confirm-button.transplant-confirm-button:hover {
 }
 
 div.affix-selection-container .confirm-button.disabled,
-div.choice-selection-container .confirm-button.disabled {
+div.choice-selection-container .confirm-button.disabled,
+div.affix-selection-container .confirm-button.transplant-confirm-button.disabled {
     background-color: var(--paint-dark);
 }
 
