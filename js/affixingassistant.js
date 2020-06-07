@@ -2839,6 +2839,10 @@ class Page {
 
     toURL(connDist, connFodderIdx, isForSimulator) {
         let url = '';
+        // Ignore Ability Transplants since PSO2 Affix SImulator has no support for that.
+        if (isForSimulator && this.transplantable === true) {
+            return url;
+        }
         for (var i = 0; i < this.size(); i++) {
             url += ((i == 0) ? '/s=' : (i + '=')) + this.fodders[i].toURL(isForSimulator, false) + '&';
         }
