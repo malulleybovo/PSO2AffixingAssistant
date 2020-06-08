@@ -595,6 +595,14 @@ const lang = Object.freeze({
             en: "Add Ability (Mark Receptor)",
             jp: "特殊能力追加(マークレセプター)"
         },
+        "Add Ability (Divine Receptor)": {
+            en: "Add Ability (Divine Receptor)",
+            jp: "特殊能力追加(ディバインレセプター)"
+        },
+        "Add Ability (Catalyst Receptor)": {
+            en: "Add Ability (Catalyst Receptor)",
+            jp: "特殊能力追加(カタリストレセプター)"
+        },
         "Add Ability (Sentence P)": {
             en: "Add Ability (Sentence P)",
             jp: "特殊能力(センテンスP)"
@@ -606,6 +614,38 @@ const lang = Object.freeze({
         "Add Ability (Sentence T)": {
             en: "Add Ability (Sentence T)",
             jp: "特殊能力(センテンスT)"
+        },
+        "Add Ability (Power VI)": {
+            en: "Add Ability (Power VI)",
+            jp: "特殊能力(パワーⅥ)"
+        },
+        "Add Ability (Shoot VI)": {
+            en: "Add Ability (Shoot VI)",
+            jp: "特殊能力(シュートⅥ)"
+        },
+        "Add Ability (Technique VI)": {
+            en: "Add Ability (Technique VI)",
+            jp: "特殊能力(テクニックⅥ)"
+        },
+        "Add Ability (Ability IV)": {
+            en: "Add Ability (Ability IV)",
+            jp: "特殊能力(アビリティⅣ)"
+        },
+        "Add Ability (Mark Joyo)": {
+            en: "Add Ability (Mark Joyo)",
+            jp: "特殊能力(マーク・ジョイオ)"
+        },
+        "Add Ability (Mark Couragena)": {
+            en: "Add Ability (Mark Couragena)",
+            jp: "特殊能力(マーク・カレジナ)"
+        },
+        "Add Ability (Mark Angar)": {
+            en: "Add Ability (Mark Angar)",
+            jp: "特殊能力(マーク・アンガル)"
+        },
+        "Add Ability (Mark Grif)": {
+            en: "Add Ability (Mark Grif)",
+            jp: "特殊能力(マーク・グリフ)"
         },
         "S1 Add: Photon Reduction 2": {
             en: "S1 Add: Photon Reduction 2",
@@ -703,6 +743,14 @@ const lang = Object.freeze({
             en: "S1 Add: Rupturing Intent",
             jp: "S1追加:裂砕の志"
         },
+        "S1 Add: Double-Edged Sword": {
+            en: "S1 Add: Double-Edged Sword",
+            jp: "S1追加:諸刃の撃"
+        },
+        "S1 Add: Radiant Strike": {
+            en: "S1 Add: Radiant Strike",
+            jp: "S1追加:輝剰の撃"
+        },
         "S2 Add: Umbrageous Melody": {
             en: "S2 Add: Umbrageous Melody",
             jp: "S2追加:月葉影の歌"
@@ -770,6 +818,18 @@ const lang = Object.freeze({
         "S2 Add: Double-Edged Sword": {
             en: "S2 Add: Double-Edged Sword",
             jp: "S2追加:諸刃の撃"
+        },
+        "S2 Add: Rainbow's Intent": {
+            en: "S2 Add: Rainbow's Intent",
+            jp: "S2追加:六色の志"
+        },
+        "S2 Add: Rainbow's Exhilaration": {
+            en: "S2 Add: Rainbow's Exhilaration",
+            jp: "S2追加:六色の活与"
+        },
+        "S2 Add: Skilled Brilliance": {
+            en: "S2 Add: Skilled Brilliance",
+            jp: "S2追加:輝充の志"
         },
         "S3 Add: Nature's Melody": {
             en: "S3 Add: Nature's Melody",
@@ -847,6 +907,26 @@ const lang = Object.freeze({
             en: "S3 Add: Calming Exhilaration",
             jp: "S3追加:静心活与"
         },
+        "S3 Add: Powering Intent": {
+            en: "S3 Add: Powering Intent",
+            jp: "S3追加:強闘の志"
+        },
+        "S3 Add: Rainbow's Reduction": {
+            en: "S3 Add: Rainbow's Reduction",
+            jp: "S3追加:六色の縮減"
+        },
+        "S3 Add: Rainbow's Radiance": {
+            en: "S3 Add: Rainbow's Radiance",
+            jp: "S3追加:六色の輝剰"
+        },
+        "S3 Add: Rainbow's Gleam": {
+            en: "S3 Add: Rainbow's Gleam",
+            jp: "S3追加:六色の輝勢"
+        },
+        "S3 Add: Nature's Melody 2": {
+            en: "S3 Add: Nature's Melody 2",
+            jp: "S3追加:花海雪の歌2"
+        },
         "S4 Add: Heavenly Protection": {
             en: "S4 Add: Heavenly Protection",
             jp: "S4追加:天輝の守護"
@@ -863,20 +943,16 @@ const lang = Object.freeze({
             en: "S4 Add: Saint Shield",
             jp: "S4追加:聖者の盾"
         },
-        "S4 Add: Colored Spectrum": {
-            en: "S4 Add: Colored Spectrum",
-            jp: "S4追加:六色の輝秤"
-        },
-        "S4 Add: Raising Pursuit": {
-            en: "S4 Add: Raising Pursuit",
+        "S4 Add: Harmonized Rainbow": {
+            en: "S4 Add: Harmonized Rainbow",
             jp: "S4追加:六色の輝秤"
         },
         "S4 Add: Raising Pursuit": {
             en: "S4 Add: Raising Pursuit",
             jp: "S4追加:累加追撃"
         },
-        "S4 Add: Skilled Crippler": {
-            en: "S4 Add: Skilled Crippler",
+        "S4 Add: Pursuing Eclipse": {
+            en: "S4 Add: Pursuing Eclipse",
             jp: "S4追加:追蝕の巧"
         },
         "S4 Add: Cursed Rainbow": {
@@ -895,9 +971,25 @@ const lang = Object.freeze({
             en: "S4 Add: Radiant Eclipse",
             jp: "S4追加:追蝕輝剰"
         },
+        "S4 Add: Shared Ruin": {
+            en: "S4 Add: Shared Ruin",
+            jp: "S4追加:滅域分与"
+        },
         "S5 Add: Anthesis Cultivation": {
             en: "S5 Add: Anthesis Cultivation",
             jp: "S5追加:錬成萌花"
+        },
+        "S5 Add: Instant Invocation": {
+            en: "S5 Add: Instant Invocation",
+            jp: "S5追加:瞬術略唱"
+        },
+        "S5 Add: Tethered Eclipse": {
+            en: "S5 Add: Tethered Eclipse",
+            jp: "S5追加:追蝕の縛"
+        },
+        "S5 Add: Vigorous Response": {
+            en: "S5 Add: Vigorous Response",
+            jp: "S5追加:活器応変"
         },
         "S6 Add: Ironclad Illness": {
             en: "S6 Add: Ironclad Illness",
@@ -927,6 +1019,10 @@ const lang = Object.freeze({
             en: "S6 Add: Long Night Star",
             jp: "S6追加:長夜の明星"
         },
+        "S6 Add: Overlimit": {
+            en: "S6 Add: Overlimit",
+            jp: "S6追加:超限活器"
+        },
         "S7 Add: S-ATK Up": {
             en: "S7 Add: S-ATK Up",
             jp: "S7追加:打撃上昇"
@@ -939,8 +1035,8 @@ const lang = Object.freeze({
             en: "S7 Add: T-ATK Up",
             jp: "S7追加:法撃上昇"
         },
-        "S7 Add: Blinding Strike": {
-            en: "S7 Add: Blinding Strike",
+        "S7 Add: Zenith Impact": {
+            en: "S7 Add: Zenith Impact",
             jp: "S7追加:瞬撃の極"
         },
         "S7 Add: Increased Efficiency": {
@@ -951,6 +1047,14 @@ const lang = Object.freeze({
             en: "S7 Add: Mind Merge",
             jp: "S7追加:以心伝心"
         },
+        "S7 Add: Sentinel's Gift": {
+            en: "S7 Add: Sentinel's Gift",
+            jp: "S7追加:法護の与"
+        },
+        "S7 Add: Glowing Grace": {
+            en: "S7 Add: Glowing Grace",
+            jp: "S7追加:輝静の恵"
+        },
         "S8 Add: HP Up": {
             en: "S8 Add: HP Up",
             jp: "S8追加:活器上昇"
@@ -959,13 +1063,21 @@ const lang = Object.freeze({
             en: "S8 Add: PP Up",
             jp: "S8追加:輝器上昇"
         },
-        "S8 Add: Untouchable Gulper": {
-            en: "S8 Add: Untouchable Gulper",
+        "S8 Add: Strong Potency": {
+            en: "S8 Add: Strong Potency",
             jp: "S8追加:服薬強身"
         },
         "S8 Add: High-Minded": {
             en: "S8 Add: High-Minded",
             jp: "S8追加:一念滞空"
+        },
+        "S8 Add: HP Up 2": {
+            en: "S8 Add: HP Up 2",
+            jp: "S8追加:活器上昇2"
+        },
+        "S8 Add: Sky Dance's Boon": {
+            en: "S8 Add: Sky Dance's Boon",
+            jp: "S8追加:舞空の援"
         }
     },
     "potential": {
@@ -2348,6 +2460,24 @@ const lang = Object.freeze({
         effect_en: "Increases your Dark attribute and Poison resistance. Boosts power against enemies that are weak to Dark.",
         effect_jp: "闇耐性、ポイズン耐性が上昇。敵の弱点属性が闇属性の時、威力上昇。"
     },
+    "LB2I": {
+        name_en: "S2:Rainbow's Intent",
+        name_jp: "S2:六色の志",
+        effect_en: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Boosts damage by 5%.",
+        effect_jp: "花・海・葉・月・雪・影のいずれかが発動中与ダメージが5%上昇。"
+    },
+    "LB2J": {
+        name_en: "S2:Rainbow's Exhilaration",
+        name_jp: "S2:六色の活与",
+        effect_en: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Recovers 3% of your<br>HP every second.",
+        effect_jp: "花・海・葉・月・雪・影のいずれかが発動中毎秒HPが3%回復。"
+    },
+    "LB98": {
+        name_en: "S2:Skilled Brilliance",
+        name_jp: "S2:輝充の志",
+        effect_en: "Boosts damage by 3% while PP at is 40% or above.",
+        effect_jp: "PPが40%以上の時、与ダメージが3%上昇。"
+    },
     "LC01": {
         name_en: "S3:Offensive Intent",
         name_jp: "S3:剛撃の志",
@@ -2558,6 +2688,42 @@ const lang = Object.freeze({
         effect_en: "Automatically casts Shifta at regular intervals.",
         effect_jp: "一定間隔で自身にシフタを発動する。"
     },
+    "LC1S": {
+        name_en: "S3:Furious Inspiration",
+        name_jp: "S3:猛威の奮激",
+        effect_en: "Boosts power and<br>critical hit rate.<br>Improves PP efficiency.<br>This effect disappears<br>on taking damage, then<br>is restored after a set<br>time.",
+        effect_jp: "威力とクリティカル率が上昇。PP効率が向上。被ダメージで消失。一定時間で効果が復活。"
+    },
+    "LC1U": {
+        name_en: "S3:Nature's Melody 2",
+        name_jp: "S3:花海雪の歌2",
+        effect_en: "While Red Petal Flash,<br>Blue Ocean Flash or<br>White Snow Flash is<br>active:<br>Boosts damage by up<br>to 7% over time.",
+        effect_jp: "花ノ赤閃・海ノ青閃・雪ノ白閃が発動中、毎秒威力が上昇。最大で7%。"
+    },
+    "LC98": {
+        name_en: "S3:Powering Intent",
+        name_jp: "S3:強闘の志",
+        effect_en: "Increase damage dealt to bosses by 4%.",
+        effect_jp: "強敵への与ダメージが3%上昇する。"
+    },
+    "LC1V": {
+        name_en: "S3:Rainbow's Reduction",
+        name_jp: "S3:六色の縮減",
+        effect_en: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Reduces your PP<br>consumption by 20%.",
+        effect_jp: "花・海・葉・月・雪・影のいずれかが発動中PP消費量を20%軽減。"
+    },
+    "LC1W": {
+        name_en: "S3:Rainbow's Radiance",
+        name_jp: "S3:六色の輝剰",
+        effect_en: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Boosts attack PP<br>recovery by 45%.",
+        effect_jp: "花・海・葉・月・雪・影のいずれかが発動中攻撃時PP回復量が45%上昇。"
+    },
+    "LC1X": {
+        name_en: "S3:Rainbow's Gleam",
+        name_jp: "S3:六色の輝勢",
+        effect_en: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Boosts PP regeneration<br>by 40%.",
+        effect_jp: "花・海・葉・月・雪・影のいずれかが発動中PP自然回復量40%上昇。"
+    },
     "LD07": {
         name_en: "S4:Marvelous Aegis",
         name_jp: "S4:瞬護輝与",
@@ -2631,7 +2797,7 @@ const lang = Object.freeze({
         effect_jp: "フォトンフレアのリキャスト時間を20%軽減する。"
     },
     "LD0J": {
-        name_en: "S4:Swift Strike",
+        name_en: "S4:Wand Clobber",
         name_jp: "S4:短杖強打",
         effect_en: "Enhances Wand's normal attacks.",
         effect_jp: "ウォンドの通常攻撃性能が強化される。"
@@ -2685,7 +2851,7 @@ const lang = Object.freeze({
         effect_jp: "一定間隔で被ダメージを軽減するバリアを展開。"
     },
     "LD0S": {
-        name_en: "S4:Colored Spectrum",
+        name_en: "S4:Harmonized Rainbow",
         name_jp: "S4:六色の輝秤",
         effect_en: "Decrease Natural PP Recovery but decrease PP consumption when S1:Red Petal / Blue Ocean / White Snow / Yellow Moon / Green Leaf / Black Shadow Flash are active.",
         effect_jp: "花・海・葉・月・雪・影のいずれかが発動中、PP自然回復は減少するがPP消費量は低下する。"
@@ -2697,7 +2863,7 @@ const lang = Object.freeze({
         effect_jp: "PA・テクニックの命中後4秒間の与ダメージ量に応じて、次に命中したPA・テクニックに追加ダメージが発生。(上限25万、リキャスト10秒)"
     },
     "LD0U": {
-        name_en: "S4:Skilled Crippler",
+        name_en: "S4:Pursuing Eclipse",
         name_jp: "S4:追蝕の巧",
         effect_en: "Boosts critical hit rate by 50% against enemies affected by Jellen, Weak Bullet or a status effect.",
         effect_jp: "状態異常、ジェルン、ウィークバレットが発動中のエネミーへのクリティカル率が50％上昇する。"
@@ -2726,9 +2892,15 @@ const lang = Object.freeze({
         effect_en: "Increases active PP recovery by 60% when attacking an enemy affectedw by a Status Effect, Jellen, or Weak Bullet.",
         effect_jp: "状態異常、ジェルン、ウィークバレット効果が発生中のエネミー攻撃時、PP回復量が60%上昇。"
     },
+    "LD0Z": {
+        name_en: "S4:Shared Ruin",
+        name_jp: "S4:滅域分与",
+        effect_en: "You and your party<br>recover HP and PP<br>when an enemy dies<br>within range.",
+        effect_jp: "一定の範囲内でエネミーが死亡した時PTメンバーと自身のHPとPPを回復。"
+    },
     "LE01": {
         name_en: "S5:Release Parry",
-        name_jp: "S5:瞬護開放",
+        name_jp: "S5:瞬護解放",
         effect_en: "Performance changes when Just Guarding with a Weapon Action. Sword only.",
         effect_jp: "武器アクションによるジャストガードで性能が変化する。大剣のみ有効。"
     },
@@ -2746,7 +2918,7 @@ const lang = Object.freeze({
     },
     "LE04": {
         name_en: "S5:Shining Cyclone",
-        name_jp: "S5:輝堺の旋",
+        name_jp: "S5:輝境の旋",
         effect_en: "PP recovery and consumption changes when your maximum PP falls below 50%. Twin Daggers only.",
         effect_jp: "PP50%を境にPPの消費量と回復速度が変化。双小剣限定。"
     },
@@ -2793,7 +2965,7 @@ const lang = Object.freeze({
         effect_jp: "SロールかHrステップで回避成功時PP回復効果。被ダメージで効果消失。双機銃限定。"
     },
     "LE0C": {
-        name_en: "S5:Auxilary Arrow",
+        name_en: "S5:Auxiliary Arrow",
         name_jp: "S5:追射剛矢",
         effect_en: "Produces a Chase Arrow when a PA (except Banish Arrow) hits an enemy. Boosts the power of this ability's Chase Arrow for 15 seconds after successfully dodging an attack with Step.Bullet Bow only.",
         effect_jp: "バニッシュアロウ以外のPA命中時、追撃が発生。ステップ回避成功後にPA命中後15秒間追撃が強化。強弓限定。"
@@ -2833,6 +3005,24 @@ const lang = Object.freeze({
         name_jp: "S5:錬成萌花",
         effect_en: "Doubles the effects of Special Abilities.",
         effect_jp: "特殊能力のステータス変化を2倍にする。"
+    },
+    "LE98": {
+        name_en: "S5:Instant Invocation",
+        name_jp: "S5:錬成萌花",
+        effect_en: "Technique damage is<br>decreased by 40%, but<br>using the same<br>Technique with a JA<br>substantially<br>decreases charge<br>time.",
+        effect_jp: "テクニックの与ダメージが常時40%減少するがテクニック使用後に同属性テクニックJAでチャージ時間大幅短縮。"
+    },
+    "LE0J": {
+        name_en: "S5:Vigorous Response",
+        name_jp: "S5:錬成萌花",
+        effect_en: "Grants a bonus when<br>your max HP is at<br>1000. Gain additional<br>bonuses per 500 max<br>HP over. Maximum<br>bonuses are reached<br>when max HP is at<br>3000.",
+        effect_jp: "最大HP1000から追加効果が発動しHPが500増加ごとに追加効果が発生する。追加効果最大値3000"
+    },
+    "LE0K": {
+        name_en: "S5:Tethered Eclipse",
+        name_jp: "S5:錬成萌花",
+        effect_en: "Boosts damage by 3%<br>against enemies<br>inflicted with a<br>status effect. Also<br>gives a chance to<br>inflict Bind by 40%.",
+        effect_jp: "状態異常中のエネミーに対して威力が3%上昇し40%の確率でバインド状態にする。"
     },
     "LF0A": {
         name_en: "S6:Heroic Howl",
@@ -2936,6 +3126,12 @@ const lang = Object.freeze({
         effect_en: "When your HP is at 50% or lower, damage is reduced by 40%. Resets after a brief cooldown.",
         effect_jp: "HPが50％以下の時3秒間、被ダメージを40％軽減する。発動後リキャスト発生。"
     },
+    "LF0S": {
+        name_en: "S6:Overlimit",
+        name_jp: "S6:超限活器",
+        effect_en: "Boosts maximum HP by<br>50% while Limit Break<br>is active.",
+        effect_jp: "リミットブレイク発動中最大HPが50%上昇する。"
+    },
     "LG0A": {
         name_en: "S7:Glowing Grace",
         name_jp: "S7:輝静の恵",
@@ -3003,7 +3199,7 @@ const lang = Object.freeze({
         effect_jp: "打撃力(+45),射撃力(+45),法撃力(+45)"
     },
     "LG0L": {
-        name_en: "S7:Blinding Strike",
+        name_en: "S7:Zenith Impact",
         name_jp: "S7:瞬撃の極",
         effect_en: "Gain a 10% chance to stun the enemy with a Just Attack.",
         effect_jp: "ジャストアタック時に10%の確率で対象をスタンさせる。"
@@ -3020,14 +3216,20 @@ const lang = Object.freeze({
         effect_en: "Automatically answers Sympathy requests during Alter Ego. No effect if using weapon with \"Glance of Darkness\".",
         effect_jp: "アルターエゴ発動中ペットシンパシーの要求に自動支援を行う。「闇の一瞥」が優先され併用不可。"
     },
+    "LG0O": {
+        name_en: "S7:Sentinel's Gift",
+        name_jp: "S7:法護の与",
+        effect_en: "Upon a successful<br>Tech Charge Parry,<br>recover 5% HP and 10 PP.",
+        effect_jp: "テックCパリング成功時HPを5%回復しPPを10回復。"
+    },
     "LH0A": {
-        name_en: "S8:Saltating Support",
+        name_en: "S8:Sky Dance's Boon",
         name_jp: "S8:舞空の援",
         effect_en: "Activates Shifta and Deband every 10 seconds when you stay in the air for longer than 2 seconds.",
         effect_jp: "2秒間、滞空状態が続くと、10秒間ごとにシフタ、デバンド発動。"
     },
     "LH0B": {
-        name_en: "S8:Untouchable Gulper",
+        name_en: "S8:Strong Potency",
         name_jp: "S8:服薬強身",
         effect_en: "Makes you temporarily invincible after drinking a -mate item.",
         effect_jp: "自身でメイト系アイテム使用時、一定時間無敵。"
@@ -3702,7 +3904,25 @@ const lang = Object.freeze({
         name_en: "Fordruss Glare",
         name_jp: "フォードルス・グレア",
         effect_en: "S-DEF(+35), R-DEF(+35), T-DEF(+35), HP(+40), PP(+4)",
-        effect_jp: "S-DEF(+35), R-DEF(+35), T-DEF(+35), HP(+40), PP(+4)"
+        effect_jp: "打撃防御(+35),射撃防御(+35),法撃防御(+35),HP(+40),PP(+4)"
+    },
+    "TN05": {
+        name_en: "Execour Glare",
+        name_jp: "エクゼクル・グレア",
+        effect_en: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+50), R-DEF(+50), T-DEF(+50)",
+        effect_jp: "打撃力(+20),射撃力(+20),法撃力(+20),打撃防御(+50),射撃防御(+50),法撃防御(+50)"
+    },
+    "TN06": {
+        name_en: "Mitra Glare",
+        name_jp: "ミトラ・グレア",
+        effect_en: "S-ATK(+30), R-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_jp: "打撃力(+30),射撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
+    },
+    "TN07": {
+        name_en: "Varuna Glare",
+        name_jp: "ヴァルナ・グレア",
+        effect_en: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_jp: "打撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
     "TF01": {
         name_en: "Spirita Alpha",
@@ -4322,6 +4542,18 @@ const lang = Object.freeze({
         effect_en: "Boost damage against Darkers. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "ダーカー種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
     },
+    "PN17": {
+        name_en: "Slayer/Dragonkin",
+        name_jp: "スレイヤー／龍族種",
+        effect_en: "Boost damage against Dragonkin. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "龍族種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
+    "PO18": {
+        name_en: "Slayer/Luminmech",
+        name_jp: "スレイヤー／閃機種",
+        effect_en: "Boost damage against Luminmech. Effect is reduced as the Weapon Rarity increases.",
+        effect_jp: "閃機種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。"
+    },
     "VJ01": {
         name_en: "Soul Catalyst",
         name_jp: "ソール・カタリスト",
@@ -4417,6 +4649,18 @@ const lang = Object.freeze({
         name_jp: "マークレセプター",
         effect_en: "Allows transfer Mark-type ability.<br>ALL(+10)",
         effect_jp: "マーク系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)"
+    },
+    "XJ01": {
+        name_en: "Divine Receptor",
+        name_jp: "ディバインレセプター",
+        effect_en: "Greatly increases affix rate of Divine-type ability.<br>ALL(+10)",
+        effect_jp: "ディバイン系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)"
+    },
+    "XH01": {
+        name_en: "Catalyst Receptor",
+        name_jp: "カタリストレセプター",
+        effect_en: "Greatly increases affix rate of Catalyst-type ability.<br>ALL(+10)",
+        effect_jp: "カタリスト系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)"
     },
     "XI30": {
         name_en: "Attack Receptor",

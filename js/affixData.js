@@ -397,6 +397,86 @@ let data = {
                 effect: "ALL(+10)"
             },
             {
+                ref: 635,
+                id: "Add Ability (Divine Receptor)",
+                name: "Divine Receptor",
+                value: "XJ01",
+                extend: 100,
+                effect: "ALL(+10)"
+            },
+            {
+                ref: 636,
+                id: "Add Ability (Catalyst Receptor)",
+                name: "Catalyst Receptor",
+                value: "XH01",
+                extend: 100,
+                effect: "ALL(+10)"
+            },
+            {
+                ref: 5,
+                id: "Add Ability (Power VI)",
+                name: "Power VI",
+                value: "AA06",
+                extend: 100,
+                effect: "S-ATK(+45)"
+            },
+            {
+                ref: 11,
+                id: "Add Ability (Shoot VI)",
+                name: "Shoot VI",
+                value: "AB06",
+                extend: 100,
+                effect: "R-ATK(+45)"
+            },
+            {
+                ref: 17,
+                id: "Add Ability (Technique VI)",
+                name: "Technique VI",
+                value: "AC06",
+                extend: 100,
+                effect: "T-ATK(+45)"
+            },
+            {
+                ref: 52,
+                id: "Add Ability (Ability IV)",
+                name: "Ability IV",
+                value: "FA04",
+                extend: 100,
+                effect: "ALL(+20)"
+            },
+            {
+                ref: 412,
+                id: "Add Ability (Mark Joyo)",
+                name: "Mark Joyo",
+                value: "UC01",
+                extend: 100,
+                effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+50)"
+            },
+            {
+                ref: 413,
+                id: "Add Ability (Mark Couragena)",
+                name: "Mark Couragena",
+                value: "UC11",
+                extend: 100,
+                effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>PP(+5)"
+            },
+            {
+                ref: 414,
+                id: "Add Ability (Mark Angar)",
+                name: "Mark Angar",
+                value: "UC21",
+                extend: 100,
+                effect: "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>DEX(+40)"
+            },
+            {
+                ref: 415,
+                id: "Add Ability (Mark Grif)",
+                name: "Mark Grif",
+                value: "UC31",
+                extend: 100,
+                effect: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
+            },
+            {
                 ref: 160,
                 id: "S1 Add: Photon Reduction 2",
                 name: "S1:Photon Reduction 2",
@@ -589,6 +669,22 @@ let data = {
                 effect: ""
             },
             {
+                ref: 137,
+                id: "S1 Add: Double-Edged Sword",
+                name: "S1:Double-Edged Sword",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 148,
+                id: "S1 Add: Radiant Strike",
+                name: "S1:Radiant Strike",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 199,
                 id: "S2 Add: Umbrageous Melody",
                 name: "S2:Umbrageous Melody",
@@ -720,6 +816,30 @@ let data = {
                 ref: 192,
                 id: "S2 Add: Double-Edged Sword",
                 name: "S2:Double-Edged Sword",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 621,
+                id: "S2 Add: Rainbow's Intent",
+                name: "S2:Rainbow's Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 622,
+                id: "S2 Add: Rainbow's Exhilaration",
+                name: "S2:Rainbow's Exhilaration",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 642,
+                id: "S2 Add: Skilled Brilliance",
+                name: "S2:Skilled Brilliance",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -869,6 +989,46 @@ let data = {
                 effect: ""
             },
             {
+                ref: 625,
+                id: "S3 Add: Powering Intent",
+                name: "S3:Powering Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 626,
+                id: "S3 Add: Rainbow's Reduction",
+                name: "S3:Rainbow's Reduction",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 627,
+                id: "S3 Add: Rainbow's Radiance",
+                name: "S3:Rainbow's Radiance",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 628,
+                id: "S3 Add: Rainbow's Gleam",
+                name: "S3:Rainbow's Gleam",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 624,
+                id: "S3 Add: Nature's Melody 2",
+                name: "S3:Nature's Melody 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 260,
                 id: "S4 Add: Heavenly Protection",
                 name: "S4:Heavenly Protection",
@@ -902,8 +1062,8 @@ let data = {
             },
             {
                 ref: 264,
-                id: "S4 Add: Colored Spectrum",
-                name: "S4:Colored Spectrum",
+                id: "S4 Add: Harmonized Rainbow",
+                name: "S4:Harmonized Rainbow",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -918,8 +1078,8 @@ let data = {
             },
             {
                 ref: 538,
-                id: "S4 Add: Skilled Crippler",
-                name: "S4:Skilled Crippler",
+                id: "S4 Add: Pursuing Eclipse",
+                name: "S4:Pursuing Eclipse",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -957,9 +1117,41 @@ let data = {
                 effect: ""
             },
             {
+                ref: 629,
+                id: "S4 Add: Shared Ruin",
+                name: "S4:Shared Ruin",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 599,
                 id: "S5 Add: Anthesis Cultivation",
                 name: "S5:Anthesis Cultivation",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 630,
+                id: "S5 Add: Instant Invocation",
+                name: "S5:Instant Invocation",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 632,
+                id: "S5 Add: Tethered Eclipse",
+                name: "S5:Tethered Eclipse",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 631,
+                id: "S5 Add: Vigorous Response",
+                name: "S5:Vigorous Response",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1021,6 +1213,14 @@ let data = {
                 effect: ""
             },
             {
+                ref: 633,
+                id: "S6 Add: Overlimit",
+                name: "S6:Overlimit",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 574,
                 id: "S7 Add: S-ATK Up",
                 name: "S7:S-ATK Up",
@@ -1046,8 +1246,8 @@ let data = {
             },
             {
                 ref: 584,
-                id: "S7 Add: Blinding Strike",
-                name: "S7:Blinding Strike",
+                id: "S7 Add: Zenith Impact",
+                name: "S7:Zenith Impact",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1064,6 +1264,22 @@ let data = {
                 ref: 601,
                 id: "S7 Add: Mind Merge",
                 name: "S7:Mind Merge",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 634,
+                id: "S7 Add: Sentinel's Gift",
+                name: "S7:Sentinel's Gift",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 573,
+                id: "S7 Add: Glowing Grace",
+                name: "S7:Glowing Grace",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1086,8 +1302,8 @@ let data = {
             },
             {
                 ref: 586,
-                id: "S8 Add: Untouchable Gulper",
-                name: "S8:Untouchable Gulper",
+                id: "S8 Add: Strong Potency",
+                name: "S8:Strong Potency",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1096,6 +1312,22 @@ let data = {
                 ref: 602,
                 id: "S8 Add: High-Minded",
                 name: "S8:High-Minded",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 592,
+                id: "S8 Add: HP Up 2",
+                name: "S8:HP Up 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 585,
+                id: "S8 Add: Sky Dance's Boon",
+                name: "S8:Sky Dance's Boon",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1178,6 +1410,8 @@ let data = {
             ],
             [
                 "XG", // Mark Receptor
+                "XJ", // Divine Receptor
+                "XH", // Catalyst Receptor
                 "XI" // With other Add Abilities
             ]
         ],
@@ -1212,6 +1446,8 @@ let data = {
             ],
             [
                 "XG", // Mark Receptor
+                "XJ", // Divine Receptor
+                "XH", // Catalyst Receptor
                 "XI" // With other Add Abilities
             ]
         ]
@@ -1750,6 +1986,22 @@ let data = {
             base: [
                 "XG01",
                 "UC*"
+            ],
+            ref: "$$",
+            success: 100
+        },
+        {
+            base: [
+                "XJ01",
+                "ID*"
+            ],
+            ref: "$$",
+            success: 100
+        },
+        {
+            base: [
+                "XH01",
+                "VJ*"
             ],
             ref: "$$",
             success: 100
@@ -6607,6 +6859,41 @@ let data = {
             noEx: true
         },
         {
+            ref: 621,
+            code: "LB2I",
+            gid: "L2",
+            name: "S2:Rainbow's Intent",
+            extend: [
+                100
+            ],
+            effect: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Boosts damage by 5%.",
+            noEx: true
+        },
+        {
+            ref: 622,
+            code: "LB2J",
+            gid: "L2",
+            name: "S2:Rainbow's Exhilaration",
+            extend: [
+                100
+            ],
+            effect: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Recovers 3% of your<br>HP every second.",
+            noEx: true
+        },
+        {
+            ref: 642,
+            code: "LB98",
+            gid: "L2",
+            name: "S2:Skilled Brilliance",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Boosts damage by 3% while PP at is 40% or above.",
+            noEx: true
+        },
+        {
             ref: 211,
             code: "LC01",
             gid: "L3",
@@ -7065,6 +7352,72 @@ let data = {
             noEx: true
         },
         {
+            ref: 623,
+            code: "LC1S",
+            gid: "L3",
+            name: "S3:Furious Inspiration",
+            extend: [
+                100
+            ],
+            effect: "Boosts power and<br>critical hit rate.<br>Improves PP efficiency.<br>This effect disappears<br>on taking damage, then<br>is restored after a set<br>time.",
+            noEx: true
+        },
+        {
+            ref: 624,
+            code: "LC1U",
+            gid: "L3",
+            name: "S3:Nature's Melody 2",
+            extend: [
+                100
+            ],
+            effect: "While Red Petal Flash,<br>Blue Ocean Flash or<br>White Snow Flash is<br>active:<br>Boosts damage by up<br>to 7% over time.",
+            noEx: true
+        },
+        {
+            ref: 625,
+            code: "LC98",
+            gid: "L3",
+            name: "S3:Powering Intent",
+            extend: [
+                100
+            ],
+            effect: "Increase damage dealt to bosses by 4%.",
+            noEx: true
+        },
+        {
+            ref: 626,
+            code: "LC1V",
+            gid: "L3",
+            name: "S3:Rainbow's Reduction",
+            extend: [
+                100
+            ],
+            effect: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Reduces your PP<br>consumption by 20%.",
+            noEx: true
+        },
+        {
+            ref: 627,
+            code: "LC1W",
+            gid: "L3",
+            name: "S3:Rainbow's Radiance",
+            extend: [
+                100
+            ],
+            effect: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Boosts attack PP<br>recovery by 45%.",
+            noEx: true
+        },
+        {
+            ref: 628,
+            code: "LC1X",
+            gid: "L3",
+            name: "S3:Rainbow's Gleam",
+            extend: [
+                100
+            ],
+            effect: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Boosts PP regeneration<br>by 40%.",
+            noEx: true
+        },
+        {
             ref: 243,
             code: "LD07",
             gid: "L4",
@@ -7224,7 +7577,7 @@ let data = {
             ref: 255,
             code: "LD0J",
             gid: "L4",
-            name: "S4:Swift Strike",
+            name: "S4:Wand Clobber",
             extend: [
                 100,
                 100,
@@ -7341,7 +7694,7 @@ let data = {
             ref: 264,
             code: "LD0S",
             gid: "L4",
-            name: "S4:Colored Spectrum",
+            name: "S4:Harmonized Rainbow",
             extend: [
                 100,
                 100,
@@ -7365,7 +7718,7 @@ let data = {
             ref: 538,
             code: "LD0U",
             gid: "L4",
-            name: "S4:Skilled Crippler",
+            name: "S4:Pursuing Eclipse",
             extend: [
               100
             ],
@@ -7386,6 +7739,7 @@ let data = {
         {
             ref: 604,
             code: "LD0W",
+            simCode: "LD0X",
             gid: "L4",
             name: "S4:Colossal Radiance",
             extend: [
@@ -7397,6 +7751,7 @@ let data = {
         {
             ref: 605,
             code: "LD0X",
+            simCode: "LD0W",
             gid: "L4",
             name: "S4:Evasion Training",
             extend: [
@@ -7414,6 +7769,17 @@ let data = {
                 100
             ],
             effect: "Increases active PP recovery by 60% when attacking an enemy affectedw by a Status Effect, Jellen, or Weak Bullet.",
+            noEx: true
+        },
+        {
+            ref: 629,
+            code: "LD0Z",
+            gid: "L4",
+            name: "S4:Shared Ruin",
+            extend: [
+                100
+            ],
+            effect: "You and your party<br>recover HP and PP<br>when an enemy dies<br>within range.",
             noEx: true
         },
         {
@@ -7541,7 +7907,7 @@ let data = {
             ref: 551,
             code: "LE0C",
             gid: "L5",
-            name: "S5:Auxilary Arrow",
+            name: "S5:Auxiliary Arrow",
             extend: [
               100
             ],
@@ -7606,12 +7972,47 @@ let data = {
         {
             ref: 599,
             code: "LE0I",
+            simCode: "LE0L",
             gid: "L5",
             name: "S5:Anthesis Cultivation",
             extend: [
                 100
             ],
             effect: "Doubles the effects of Special Abilities.",
+            noEx: true
+        },
+        {
+            ref: 630,
+            code: "LE98",
+            simCode: "LE0I",
+            gid: "L5",
+            name: "S5:Instant Invocation",
+            extend: [
+                100
+            ],
+            effect: "Technique damage is<br>decreased by 40%, but<br>using the same<br>Technique with a JA<br>substantially<br>decreases charge<br>time.",
+            noEx: true
+        },
+        {
+            ref: 631,
+            code: "LE0J",
+            gid: "L5",
+            name: "S5:Vigorous Response",
+            extend: [
+                100
+            ],
+            effect: "Grants a bonus when<br>your max HP is at<br>1000. Gain additional<br>bonuses per 500 max<br>HP over. Maximum<br>bonuses are reached<br>when max HP is at<br>3000.",
+            noEx: true
+        },
+        {
+            ref: 632,
+            code: "LE0K",
+            gid: "L5",
+            name: "S5:Tethered Eclipse",
+            extend: [
+                100
+            ],
+            effect: "Boosts damage by 3%<br>against enemies<br>inflicted with a<br>status effect. Also<br>gives a chance to<br>inflict Bind by 40%.",
             noEx: true
         },
         {
@@ -7793,12 +8194,24 @@ let data = {
         {
             ref: 607,
             code: "LF0O",
+            simCode: "LF0R",
             gid: "L6",
             name: "S6:Long Night Star",
             extend: [
                 100
             ],
             effect: "Reduce Etoile Boost's decay per second by 50%.",
+            noEx: true
+        },
+        {
+            ref: 633,
+            code: "LF0S",
+            gid: "L6",
+            name: "S6:Overlimit",
+            extend: [
+                100
+            ],
+            effect: "Boosts maximum HP by<br>50% while Limit Break<br>is active.",
             noEx: true
         },
         {
@@ -7926,7 +8339,7 @@ let data = {
             ref: 584,
             code: "LG0L",
             gid: "L7",
-            name: "S7:Blinding Strike",
+            name: "S7:Zenith Impact",
             extend: [
               100
             ],
@@ -7956,10 +8369,21 @@ let data = {
             noEx: true
         },
         {
+            ref: 634,
+            code: "LG0O",
+            gid: "L7",
+            name: "S7:Sentinel's Gift",
+            extend: [
+                100
+            ],
+            effect: "Upon a successful<br>Tech Charge Parry,<br>recover 5% HP & 10 PP.",
+            noEx: true
+        },
+        {
             ref: 585,
             code: "LH0A",
             gid: "L8",
-            name: "S8:Saltating Support",
+            name: "S8:Sky Dance's Boon",
             extend: [
               100
             ],
@@ -7970,7 +8394,7 @@ let data = {
             ref: 586,
             code: "LH0B",
             gid: "L8",
-            name: "S8:Untouchable Gulper",
+            name: "S8:Strong Potency",
             extend: [
               100
             ],
@@ -9774,6 +10198,42 @@ let data = {
             effect: "S-DEF(+35), R-DEF(+35), T-DEF(+35), HP(+40), PP(+4)"
         },
         {
+            ref: 637,
+            code: "TN05",
+            gid: "AC",
+            name: "Execour Glare",
+            extend: [
+                30,
+                50
+            ],
+            status: 1,
+            effect: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+50), R-DEF(+50), T-DEF(+50)"
+        },
+        {
+            ref: 638,
+            code: "TN06",
+            gid: "AC",
+            name: "Mitra Glare",
+            extend: [
+                30,
+                50
+            ],
+            status: 1,
+            effect: "S-ATK(+30), R-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
+        },
+        {
+            ref: 639,
+            code: "TN07",
+            gid: "AC",
+            name: "Varuna Glare",
+            extend: [
+                30,
+                50
+            ],
+            status: 1,
+            effect: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
+        },
+        {
             ref: 356,
             code: "TF01",
             gid: "AC",
@@ -11067,6 +11527,30 @@ let data = {
             effect: "Boost damage against Darkers. Effect is reduced as the Weapon Rarity increases."
         },
         {
+            ref: 640,
+            code: "PN17",
+            gid: "EC",
+            name: "Slayer/Dragonkin",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against Dragonkin. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
+            ref: 641,
+            code: "PO18",
+            gid: "EC",
+            name: "Slayer/Luminmech",
+            extend: [
+                0,
+                10,
+                20
+            ],
+            effect: "Boost damage against Luminmech. Effect is reduced as the Weapon Rarity increases."
+        },
+        {
             ref: 443,
             code: "VJ01",
             gid: "YA",
@@ -11235,6 +11719,20 @@ let data = {
             gid: "GB",
             name: "Mark Receptor",
             effect: "Allows transfer Mark-type ability.<br>ALL(+10)"
+        },
+        {
+            ref: 635,
+            code: "XJ01",
+            gid: "GB",
+            name: "Divine Receptor",
+            effect: "Greatly increases affix rate of Divine-type ability.<br>ALL(+10)"
+        },
+        {
+            ref: 636,
+            code: "XH01",
+            gid: "GB",
+            name: "Catalyst Receptor",
+            effect: "Boosts Catalyst-type ability.<br>ALL(+10)"
         },
         {
             ref: 459,
@@ -11760,6 +12258,7 @@ let data = {
         { name: "S1:Red Petal Flash", jpName: "S1:花ノ赤閃" },
         { name: "S1:Yellow Moon Flash", jpName: "S1:月ノ黄閃" },
         { name: "S1:Collaborator Liberator", jpName: "S1:戦友の加護" },
+        { name: "S1:Green Leaf Flash", jpName: "S1:葉ノ緑閃" },
         { name: `S2:Wise Skill`, jpName: `S2:妙技の巧` },
         { name: `S2:Radiant Strike`, jpName: `S2:輝剰の撃` },
         { name: `S2:Guardian Armor`, jpName: `S2:守護の備` },
@@ -11788,6 +12287,7 @@ let data = {
         { name: `S3:Calming Exhilaration`, jpName: `S3:静心活与` },
         { name: `S3:Fortifying Strike`, jpName: `S3:撃流の備` },
         { name: `S3:Immediate Profusion`, jpName: `S3:瞬撃繚乱` },
+        { name: `S3:Furious Inspiration`, jpName: `S3:猛威の奮激` },
         { name: `S4:Marvelous Aegis`, jpName: `S4:瞬護輝与` },
         { name: `S4:Steel Resolve`, jpName: `S4:鋼の決意` },
         { name: `S4:Radiant Response`, jpName: `S4:輝器応変` },
@@ -11803,12 +12303,12 @@ let data = {
         { name: `S4:Rapid-fire Arrow`, jpName: `S4:迅弓の撃` },
         { name: `S4:Refined Providence`, jpName: `S4:摂理洗練` },
         { name: `S4:Circuit Rotation`, jpName: `S4:回路輪転` },
-        { name: `S4:Swift Strike`, jpName: `S4:短杖強打` },
+        { name: `S4:Wand Clobber`, jpName: `S4:短杖強打` },
         { name: `S4:Support Extension`, jpName: `S4:支援限長` },
-        { name: "S5:Release Parry", jpName: "S5:瞬護開放" },
+        { name: "S5:Release Parry", jpName: "S5:瞬護解放" },
         { name: "S5:Unrivaled Parry", jpName: "S5:瞬護無双" },
         { name: "S5:Rushing Bolt", jpName: "S5:瞬駆突貫" },
-        { name: "S5:Shining Cyclone", jpName: "S5:輝堺の旋" },
+        { name: "S5:Shining Cyclone", jpName: "S5:輝境の旋" },
         { name: "S5:Evasive Barrage", jpName: "S5:巧避連撃" },
         { name: "S5:Evasive Meteor", jpName: "S5:巧避巨拳" },
         { name: "S5:Mysterious Intent", jpName: "S5:妙の巧志" },
@@ -11817,7 +12317,7 @@ let data = {
         { name: "S5:Fiery End", jpName: "S5:烈終焉弾" },
         { name: "S5:Fiery Zero", jpName: "S5:烈零射砲" },
         { name: "S5:Bright Escape", jpName: "S5:巧避輝与" },
-        { name: "S5:Auxilary Arrow", jpName: "S5:追射剛矢" },
+        { name: "S5:Auxiliary Arrow", jpName: "S5:追射剛矢" },
         { name: "S5:Calming Bullet", jpName: "S5:静心杖弾" },
         { name: "S5:Speedy Support", jpName: "S5:急速補助" },
         { name: "S5:Calming Shockwave", jpName: "S5:静心衝杖" },
