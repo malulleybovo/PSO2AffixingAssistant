@@ -84,7 +84,7 @@ class ViewController {
 
     setup() {
         $("#malulleybovo").text(lang.app.malulleybovo[this.langCode])
-        $("#ver").text("v1.1.0")
+        $("#ver").text("v1.1.1")
         $("#editor").children().first().panzoom({
             which: 1,
             minScale: 0.1,
@@ -649,6 +649,7 @@ class ViewController {
         this.fodderInReview = targetFodder;
         this.pageInReview = page;
         this.transplantAddAbility = null;
+        this.assistant.setActivePageTreeNode(targetNode);
         this.closeAll({});
         $('body').append(
             TRANSPLANT_VIEW_TEMPLATE({
@@ -1535,6 +1536,14 @@ class ViewController {
                 this.fodderInReview = null;
                 this.pageInReview = null;
                 this.addAbilityChosen = null;
+                try {
+                    gaRequests.send('transplant', 'cancel', {
+                        'View Type': 'Ability Transplant',
+                        'Transaction Type': 'Cancel',
+                        'Time Spent In View': ((new Date()).getTime() - timeData.reviewTweakStartTime) / 1000
+                    });
+                }
+                catch (e) { }
             });
         $('div.transplant-container div.cancel-button').click({ popsToAffixSelection: popsToAffixSelection },
             (e) => {
