@@ -995,6 +995,10 @@ const lang = Object.freeze({
             en: "S5 Add: Vigorous Response",
             jp: "S5追加:活器応変"
         },
+        "S5 Add: Angelic Respite": {
+            en: "S5 Add: Angelic Respite",
+            jp: "S5追加:槍機天悠"
+        },
         "S6 Add: Ironclad Illness": {
             en: "S6 Add: Ironclad Illness",
             jp: "S6追加:癒蝕頑強"
@@ -3027,6 +3031,12 @@ const lang = Object.freeze({
         name_jp: "S5:錬成萌花",
         effect_en: "Boosts damage by 3%<br>against enemies<br>inflicted with a<br>status effect. Also<br>gives a chance to<br>inflict Bind by 40%.",
         effect_jp: "状態異常中のエネミーに対して威力が3%上昇し40%の確率でバインド状態にする。"
+    },
+    "LE97": {
+        name_en: "S5:Angelic Respite",
+        name_jp: "S5:槍機天悠",
+        effect_en: "At maximum gear, no gear is consumed while airborne. Increase Power by 2%. Partizan only.",
+        effect_jp: "ギア最大時、空中ではギアを消費しなくなる。威力2%上昇。長槍限定。"
     },
     "LF0A": {
         name_en: "S6:Heroic Howl",

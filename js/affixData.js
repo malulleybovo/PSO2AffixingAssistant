@@ -1157,6 +1157,14 @@ let data = {
                 effect: ""
             },
             {
+                ref: 643,
+                id: "S5 Add: Angelic Respite",
+                name: "S5:Angelic Respite",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 560,
                 id: "S6 Add: Ironclad Illness",
                 name: "S6:Ironclad Illness",
@@ -8013,6 +8021,17 @@ let data = {
                 100
             ],
             effect: "Boosts damage by 3%<br>against enemies<br>inflicted with a<br>status effect. Also<br>gives a chance to<br>inflict Bind by 40%.",
+            noEx: true
+        },
+        {
+            ref: 643,
+            code: "LE97",
+            gid: "L5",
+            name: "S5:Angelic Respite",
+            extend: [
+                100
+            ],
+            effect: "At maximum gear, no gear is consumed while airborne. Increase Power by 2%. Partizan only.",
             noEx: true
         },
         {
