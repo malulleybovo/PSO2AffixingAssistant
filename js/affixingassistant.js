@@ -1350,6 +1350,15 @@ class Assistant {
         return union;
     }
 
+    /**
+     * Checks if an ability is only transferable via Special Ability Transplant.
+     * @param {any} ability The ability to check.
+     */
+    isTransferableOnlyViaTransplant(ability) {
+        return Assistant.affixDB[ability.code]
+            && Assistant.affixDB[ability.code].choices.length === 0;
+    }
+
     hasConflict(affixA, affixB) {
         return affixB.code.startsWith(affixA.code.slice(0, 2))
             || this.testExcludePattern(affixA, affixB);

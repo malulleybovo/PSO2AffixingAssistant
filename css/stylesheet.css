@@ -601,6 +601,12 @@ div.affix-selection-container div.selection-container {
     margin-bottom: 1em;
 }
 
+div.affix-selection-container div.warning-msg {
+    margin-bottom: 8px;
+    text-align: center;
+    margin-top: -4px;
+}
+
 div.affix-selection-container .cancel-button,
 div.choice-selection-container .cancel-button,
 div.review-tweak-container .cancel-button,

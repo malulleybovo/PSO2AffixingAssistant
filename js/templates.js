@@ -574,7 +574,8 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
             langCode: langCode
         });
     }
-    layoutTemplate += `</div>
+    layoutTemplate += `</div>${isAffixSelection ?
+                `<div class="warning-msg"></div>` : ``}
                 <div>
                     ${(isAffixSelection || isChoiceSelection || isReviewTweak || isTransplantPanel) ?
                     `<div class="cancel-button">${lang.app.cancelButton[langCode]}</div>` : ``}

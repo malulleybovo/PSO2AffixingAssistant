@@ -353,8 +353,7 @@ class ViewController {
                     AFFIX_SELECTION_VIEW_TEMPLATE({
                         affixesSelected: this.affixesSelected,
                         categories: this.filters,
-                        abilityList: Assistant.data.abilityList.filter( // List of all transferable affixes
-                            a => Assistant.affixDB[a.code].choices.length > 0),
+                        abilityList: Assistant.data.abilityList, // List of all transferable affixes
                         langCode: this.langCode
                     }));
                 if (shouldAnimate) {
@@ -1126,6 +1125,8 @@ class ViewController {
             let selAffix = Assistant.affixDB[$(this).attr('data-code')].abilityRef;
             let hadConflict = false;
             for (var i = 0; i < vc.affixesSelected.length; i++) {
+                if (vc.assistant.isTransferableOnlyViaTransplant(vc.affixesSelected[i])) continue;
+                if (vc.assistant.isTransferableOnlyViaTransplant(selAffix)) continue;
                 if (vc.assistant.hasConflict(vc.affixesSelected[i], selAffix)) {
                     vc.affixesSelected[i] = selAffix;
                     hadConflict = true;
@@ -1380,6 +1381,16 @@ class ViewController {
                     .find('span').html('&nbsp;');
             }
         }
+        //
+        var transpOnlyAbilities = this.affixesSelected.filter(a => Assistant.affixDB[a.code] !== undefined
+            && Assistant.affixDB[a.code].choices.length === 0)
+        var warningMsg = ''
+        if (transpOnlyAbilities.length > 0) {
+            warningMsg = lang.app.warningMsg[this.langCode](transpOnlyAbilities
+                .map(a => (lang[a.code] && lang[a.code]['name_' + this.langCode]) ?
+                    lang[a.code]['name_' + this.langCode] : lang[a.code]['name_en']));
+        }
+        $('div.affix-selection-container .warning-msg').text(warningMsg);
         // Translate package type stats into their synonyms, like ALL-type stats
         for (var key in lang.synonyms[this.langCode]) {
             if (allStats[key]) {
@@ -1418,6 +1429,9 @@ class ViewController {
         }
         else {
             $(`div.affix-selection-container .confirm-button`).removeClass('disabled');
+            if (transpOnlyAbilities.length > 0) {
+                $(`div.affix-selection-container .affix-confirm-button`).addClass('disabled');
+            }
         }
     }
 
@@ -1665,7 +1679,7 @@ class ViewController {
         $ref.nextUntil('div.title').remove();
         $(FILTER_SEARCH_TEMPLATE({
             categories: [],
-            datalist: choices[$(this).attr('data-code')],
+            datalist: [lang.app.transplantTitle[vc.langCode], ...choices[$(this).attr('data-code')]],
             langCode: VIEW_CONTROLLER.langCode
         })).insertAfter($ref[0]);
         $(FILTER_SEARCH_TEMPLATE({

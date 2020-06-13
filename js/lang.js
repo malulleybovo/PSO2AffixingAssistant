@@ -353,6 +353,10 @@ const lang = Object.freeze({
             en: "Used To Make",
             jp: "合成に使用"
         },
+        warningMsg: {
+            en: abilities => `WARNING! The following abilities can only be transferred via Special Ability Transplant: ${abilities.reduce((a, b, c) => a + (c === 0 ? '' : ', ') + b )}`,
+            jp: abilities => `警告！以下の能力は、特殊能力移植でのみ譲渡できます:${abilities.reduce((a, b, c) => a + (c === 0 ? '' : '、') + b)}`
+        },
         cancelButton: {
             en: "Cancel",
             jp: "取消"
