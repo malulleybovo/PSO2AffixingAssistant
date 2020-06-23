@@ -1361,7 +1361,7 @@ class Assistant {
 
     hasConflict(affixA, affixB) {
         return affixB.code.startsWith(affixA.code.slice(0, 2))
-            || this.testExcludePattern(affixA, affixB);
+            || this.testExcludePattern(affixA, affixB, true);
     }
 
     testExcludePattern(affixA, affixB, testExceptionPairing) {
