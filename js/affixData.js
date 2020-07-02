@@ -118,7 +118,7 @@ let data = {
                 fn: function (a) {
                     return Math.min(a + 60, 100)
                 }
-            },
+            }
         ],
         // List of Add Abilities
         additional: [
