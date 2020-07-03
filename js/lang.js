@@ -29,73 +29,59 @@ const lang = Object.freeze({
     "app": {
         appTitle: {
             en: "PSO2 Affixing Assistant",
-            jp: "PSO2合成アシスタント",
-            ko: "PSO2 합성 어시스트"
+            jp: "PSO2合成アシスタント"
         },
         subHeader: {
             en: "How it works:",
-            jp: "使い方：",
-            ko: "사용법"
+            jp: "使い方："
         },
         goalFodderTitle: {
             en: "GOAL",
-            jp: "ゴール",
-            ko: "사용법"
+            jp: "ゴール"
         },
         mainFodderTitle: {
             en: "Main Fodder",
-            jp: "主装備",
-            ko: "주 장비"
+            jp: "主装備"
         },
         fodderTitle: {
             en: "Fodder",
-            jp: "装備",
-            ko: "장비"
+            jp: "装備"
         },
         materialTitle: {
             en: "Material Fodder",
-            jp: "材料装備",
-            ko: "소재 장비"
+            jp: "材料装備"
         },
         affixLabel: {
             en: "AFFIX IT",
-            jp: "合成",
-            ko: "합성"
+            jp: "合成"
         },
         reAffixLabel: {
             en: "RE-AFFIX IT",
-            jp: "再合成",
-            ko: "재합성"
+            jp: "再合成"
         },
         cannotAffixLabel: {
             en: "CANNOT AFFIX",
-            jp: "塞がり",
-            ko: "불가능"
+            jp: "塞がり"
         },
         transplantLabel: {
             en: "TRANSPLANT IT",
-            jp: "移植",
-            ko: "이식"
+            jp: "移植"
         },
         reTransplantLabel: {
             en: "RE-TRANSPLANT IT",
-            jp: "再移植",
-            ko: "다시 이식"
+            jp: "再移植"
         },
         cannotTransplantLabel: {
             en: "CANNOT TRANSPLANT",
-            jp: "移植不可能",
-            ko: "이식 불가능"
+            jp: "移植不可能"
         },
         stageSuccessLabel: {
             en: "Stage Success",
-            jp: "ステージの成功",
-            ko: "스테이지 성공"
+            jp: "ステージの成功"
         },
         abilitySuccessSpanTitle: {
             en: (rate) => `${rate}% chance of transfering this ability`,
-            jp: (rate) => `この能力を${rate}％の確率で譲渡する`,
-            ko: (rate) => `이 능력을 ${rate}％ 확률로 양도한다`
+            jp: (rate) => `この能力を${rate}％の確率で譲渡する`
         },
         stageTransplantCostLabel: {
             en: "Stage Transplant Cost",
