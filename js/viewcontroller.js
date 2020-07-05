@@ -1584,6 +1584,7 @@ class ViewController {
                 if (!this.assistant.hasActivePageTreeNode()) {
                     if (this.assistant.validateAffixes(this.fodderInReview.affixes)) {
                         this.assistant.setGoal(this.fodderInReview.affixes);
+                        this.assistant.activeFodder.setAddAbilityInUse(this.fodderInReview.addAbilityItemInUse);
                         this.fodderInReview = this.assistant.activeFodder;
                     }
                 }

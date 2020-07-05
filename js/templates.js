@@ -468,7 +468,7 @@ const TRANSPLANT_PANEL = ({ fodders, addAbilityChosen, langCode }) => {
             && addAbilityChosen.code !== undefined && addAbilityChosen.code !== null
             && Assistant.data.optionList.additional.filter(a => a.ref === addAbilityChosen.ref).length > 0) {
             panel += `<div>
-                <div>${lang.app.transplantAddAbilityItemLabel}</div>
+                <div>${lang.app.transplantAddAbilityItemLabel[langCode]}</div>
                 <div class="affix transplant-add-ability">
                     <span>${lang.additional[Assistant.data.optionList.additional.filter(a => a.ref === addAbilityChosen.ref)[0].id][langCode]}</span>
                 </div>
