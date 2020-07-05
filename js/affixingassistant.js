@@ -363,7 +363,7 @@ class Assistant {
             let addAbiChoice = Assistant.affixDB[ability.code].choices.filter(a => a.isAddAbilityItem === true);
             targetFodder.setAddAbilityInUse(addAbiChoice);
         } else {
-            targetFodder.addAbilityInUse = null;
+            targetFodder.addAbilityItemInUse = null;
         }
         return page;
     }
