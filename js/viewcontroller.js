@@ -84,7 +84,7 @@ class ViewController {
 
     setup() {
         $("#malulleybovo").text(lang.app.malulleybovo[this.langCode])
-        $("#ver").text("v1.1.3")
+        $("#ver").text("v1.1.5")
         $("#editor").children().first().panzoom({
             which: 1,
             minScale: 0.1,
@@ -1584,6 +1584,7 @@ class ViewController {
                 if (!this.assistant.hasActivePageTreeNode()) {
                     if (this.assistant.validateAffixes(this.fodderInReview.affixes)) {
                         this.assistant.setGoal(this.fodderInReview.affixes);
+                        this.assistant.activeFodder.setAddAbilityInUse(this.fodderInReview.addAbilityItemInUse);
                         this.fodderInReview = this.assistant.activeFodder;
                     }
                 }

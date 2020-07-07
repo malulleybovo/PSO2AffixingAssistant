@@ -363,7 +363,7 @@ class Assistant {
             let addAbiChoice = Assistant.affixDB[ability.code].choices.filter(a => a.isAddAbilityItem === true);
             targetFodder.setAddAbilityInUse(addAbiChoice);
         } else {
-            targetFodder.addAbilityInUse = null;
+            targetFodder.addAbilityItemInUse = null;
         }
         return page;
     }
@@ -1075,6 +1075,9 @@ class Assistant {
                 if (goodOption.type == null) {
                     // Get highest success rate for the fodder ability (avoid SAF if possible)
                     let bestChoiceFound = this.getBestChoiceFor(fodderAffixChoices, true);
+                    if (!bestChoiceFound) {
+                        bestChoiceFound = this.getBestChoiceFor(fodderAffixChoices, false);
+                    }
                     goodOption.successRate = bestChoiceFound ? bestChoiceFound.transferRate : 0;
                     goodOption.type = 'noOverlap';
                 }
@@ -1150,6 +1153,9 @@ class Assistant {
                 if (betterOption.type == null && affixChoices.length > 0) {
                     // Get highest success rate for the fodder ability (avoid SAF if possible)
                     let bestChoiceFound = this.getBestChoiceFor(fodderAffixChoices, true);
+                    if (!bestChoiceFound) {
+                        bestChoiceFound = this.getBestChoiceFor(fodderAffixChoices, false);
+                    }
                     betterOption.successRate = bestChoiceFound ? bestChoiceFound.transferRate : 0;
                     betterOption.type = 'noOverlap';
                 }

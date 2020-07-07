@@ -5,7 +5,7 @@
 
   ## [Use the Assistant Here](https://malulleybovo.github.io/PSO2AffixingAssistant/)
   #### [Like it? Check out my Symbol Art Editor Online here too!](https://www.github.com/malulleybovo/SymbolArtEditorOnline/)
-  #### Version 1.1.3
+  #### Version 1.1.5
   #### Compliant with version 1.93 of [Arks Layer's Affix Simulator](https://arks-layer.com/abilitysim/)
 
   ### NO HASSLE Affixing Formulas at the tip of your fingers
