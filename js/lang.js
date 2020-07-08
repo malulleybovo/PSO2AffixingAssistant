@@ -460,6 +460,14 @@ const lang = Object.freeze({
         "Ability Success Rate +50%": {
             en: "Ability Success Rate +50%",
             jp: "能力追加成功率+50%"
+        },
+		"Ability Success Rate +55%": {
+            en: "Ability Success Rate +55%",
+            jp: "能力追加成功率+55%"
+        },
+		"Ability Success Rate +60%": {
+            en: "Ability Success Rate +60%",
+            jp: "能力追加成功率+60%"
         }
     },
     "additional": {
@@ -4283,8 +4291,8 @@ const lang = Object.freeze({
     "UC01": {
         name_en: "Mark Joyo",
         name_jp: "マーク・ジョイオ",
-        effect_en: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+5)",
-        effect_jp: "打撃力(+40),<br>射撃力(+40),<br>法撃力(+40),<br>HP(+5)"
+        effect_en: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+50)",
+        effect_jp: "打撃力(+40),<br>射撃力(+40),<br>法撃力(+40),<br>HP(+50)"
     },
     "UC11": {
         name_en: "Mark Couragena",

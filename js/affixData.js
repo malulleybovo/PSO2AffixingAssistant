@@ -100,6 +100,24 @@ let data = {
                 fn: function (a) {
                     return Math.min(a + 50, 100)
                 }
+            },
+            {
+                ref: 8,
+                id: "Ability Success Rate +55%",
+                name: "+55%",
+                value: "A09",
+                fn: function (a) {
+                    return Math.min(a + 55, 100)
+                }
+            },
+            {
+                ref: 9,
+                id: "Ability Success Rate +60%",
+                name: "+60%",
+                value: "A10",
+                fn: function (a) {
+                    return Math.min(a + 60, 100)
+                }
             }
         ],
         // List of Add Abilities
@@ -11066,7 +11084,7 @@ let data = {
             code: "UC01",
             gid: "AC",
             name: "Mark Joyo",
-            effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+5)"
+            effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+50)"
         },
         {
             ref: 413,
