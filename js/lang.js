@@ -24,6 +24,8 @@
  * for the JavaScript code in this page.
  *
  */
+ 
+ //tester
 
 const lang = Object.freeze({
     "app": {
@@ -64,15 +66,15 @@ const lang = Object.freeze({
             jp: "塞がり"
         },
         transplantLabel: {
-            en: "TRANSPLANT IT",
+            en: "TRANSFER IT",
             jp: "移植"
         },
         reTransplantLabel: {
-            en: "RE-TRANSPLANT IT",
+            en: "RE-TRANSFER IT",
             jp: "再移植"
         },
         cannotTransplantLabel: {
-            en: "CANNOT TRANSPLANT",
+            en: "CANNOT TRANSFER",
             jp: "移植不可能"
         },
         stageSuccessLabel: {
@@ -84,15 +86,15 @@ const lang = Object.freeze({
             jp: (rate) => `この能力を${rate}％の確率で譲渡する`
         },
         stageTransplantCostLabel: {
-            en: "Stage Transplant Cost",
+            en: "Stage Transfer Cost",
             jp: "ステージ移植費用"
         },
         fodderTransplantCostLabel: {
-            en: "Transplant Cost",
+            en: "Transfer Cost",
             jp: "移植費用"
         },
         factorLabel: {
-            en: "Special Ability Factor",
+            en: "Augment Factor",
             jp: "特殊能力因子"
         },
         fodderSuccessDivTitle: {
@@ -184,7 +186,7 @@ const lang = Object.freeze({
             jp: "能力を検索する。。"
         },
         filterSearchTitle: {
-            en: "Type in an ability name",
+            en: "Type in an augment name",
             jp: "能力名を入力して"
         },
         excludeSearchPlaceholder: {
@@ -192,7 +194,7 @@ const lang = Object.freeze({
             jp: "能力を除外（、）"
         },
         excludeSearchTitle: {
-            en: "Type in ability names to exclude separated by comma",
+            en: "Type in augment names to exclude separated by comma",
             jp: "除外する能力名をコンマで区切って入力します"
         },
         excludeSearchBtn: {
@@ -200,7 +202,7 @@ const lang = Object.freeze({
             jp: "結果を除外するトグル"
         },
         chooseAffixTitle: {
-            en: "Choose Abilities",
+            en: "Choose Augments",
             jp: "能力を選ぶ"
         },
         chooseMethodTitle: {
@@ -212,7 +214,7 @@ const lang = Object.freeze({
             jp: "レビューと微調整"
         },
         reviewTweakTooltip1: {
-            en: "Select abilities to change places",
+            en: "Select augments to change places",
             jp: "場所を変更する能力を選択する"
         },
         reviewTweakTooltip2: {
@@ -220,15 +222,15 @@ const lang = Object.freeze({
             jp: "準備ができたら確定を押してください"
         },
         transplantTitle: {
-            en: "Special Ability Transplant",
+            en: "Augment Transfer Pass",
             jp: "特殊能力移植"
         },
         transplantTooltip: {
-            en: "<strong>WARNING</strong>: The formula below will cause the Material Fodder to lose some ability slots.",
+            en: "<strong>WARNING</strong>: The formula below will cause the Material Fodder to lose some augment slots.",
             jp: "<strong>警告</strong>: 以下の式では、マテリアルフォダーが一部の能力スロットを失います。"
         },
         transplantOptionsLabel: {
-            en: "Transplant Options:",
+            en: "Transfer Options:",
             jp: "移植オプション"
         },
         transplantMaterialSlotLabel: {
@@ -236,7 +238,7 @@ const lang = Object.freeze({
             jp: "材料のスロット数"
         },
         transplantAddAbilityItemLabel: {
-            en: "Add Ability Item",
+            en: "Add Augment Item",
             jp: "特殊能力追加"
         },
         selectButton: {
@@ -284,7 +286,7 @@ const lang = Object.freeze({
             jp: '、'
         },
         wishListFactorDescription: {
-            en: (name) => ` (Special Ability Factor: ${name})`,
+            en: (name) => ` (Augment Factor: ${name})`,
             jp: (name) => `（特殊能力因子：${name}）`
         },
         wishListAbilityItem: {
@@ -298,7 +300,7 @@ const lang = Object.freeze({
             jp: (amount, description) => `${(amount > 1) ? `（${amount}倍）` : ``}${description}`
         },
         wishListTransplantCostDescr: {
-            en: (count) => `${count} Special Ability Transplant Pass${count > 1 ? `es` : ``}`,
+            en: (count) => `${count} Augmentation Transfer Pass${count > 1 ? `es` : ``}`,
             jp: (count) => `${count}特殊能力移植パス`
         },
         upslottingLabel: {
@@ -342,7 +344,7 @@ const lang = Object.freeze({
             jp: "合成"
         },
         abilityListTitle: {
-            en: "Ability",
+            en: "Augment",
             jp: "能力"
         },
         abilityFormulasTitle: {
@@ -354,7 +356,7 @@ const lang = Object.freeze({
             jp: "合成に使用"
         },
         warningMsg: {
-            en: abilities => `WARNING! The following abilities can only be transferred via Special Ability Transplant: ${abilities.reduce((a, b, c) => a + (c === 0 ? '' : ', ') + b )}`,
+            en: abilities => `WARNING! The following augments can only be transferred via Augmentation Transfer: ${abilities.reduce((a, b, c) => a + (c === 0 ? '' : ', ') + b )}`,
             jp: abilities => `警告！以下の能力は、特殊能力移植でのみ譲渡できます:${abilities.reduce((a, b, c) => a + (c === 0 ? '' : '、') + b)}`
         },
         cancelButton: {
@@ -362,7 +364,7 @@ const lang = Object.freeze({
             jp: "取消"
         },
         transplantButton: {
-            en: "Transplant",
+            en: "Transfer",
             jp: "移植"
         },
         affixButton: {
@@ -411,17 +413,17 @@ const lang = Object.freeze({
         }
     },
     "filters": {
-        en: ["All", "S-ATK", "R-ATK", "T-ATK", "PP", "HP", "DEX"],
+        en: ["All", "MEL Pwr", "RNG Pwr", "TEC Pwr", "PP", "HP", "DEX"],
         jp: ["全", "打撃力", "射撃力", "法撃力", "PP", "HP", "技量"]
     },
     "statsDisplayOrder": {
-        en: ["S-ATK", "R-ATK", "T-ATK", "PP", "HP", "DEX", "S-DEF", "R-DEF", "T-DEF"], // Others follow after
+        en: ["MEL Pwr", "RNG Pwr", "TEC Pwr", "PP", "HP", "DEX", "MEL Def", "RNG Def", "TEC Def"], // Others follow after
         jp: ["打撃力", "射撃力", "法撃力", "PP", "HP", "技量", "打撃防御", "射撃防御", "法撃防御"] // Others follow after
     },
     "synonyms": {
         en: {
-            "ALL": ["S-ATK", "R-ATK", "T-ATK", "DEX", "S-DEF", "R-DEF", "T-DEF"],
-            "All Resist": ["Flame Resist", "Ice Resist", "Lightning Resist", "Wind Resist", "Light Resist", "Dark Resist"]
+            "ALL": ["MEL Pwr", "RNG Pwr", "TEC Pwr", "MEL Def", "RNG Def", "TEC Def"],
+            "All Resist": ["Fire Resist", "Ice Resist", "Lightning Resist", "Wind Resist", "Light Resist", "Dark Resist"]
         },
         jp: {
             "ALL": ["打撃力", "射撃力", "法撃力", "技量", "打撃防御", "射撃防御", "法撃防御"],
@@ -433,40 +435,40 @@ const lang = Object.freeze({
             en: "Nothing",
             jp: "無し"
         },
-        "Ability Success Rate +5%": {
-            en: "Ability Success Rate +5%",
+        "Augmentation Aid +5%": {
+            en: "Augmentation Aid +5%",
             jp: "能力追加成功率+5%"
         },
-        "Ability Success Rate +10%": {
-            en: "Ability Success Rate +10%",
+        "Augmentation Aid +10%": {
+            en: "Augmentation Aid +10%",
             jp: "能力追加成功率+10%"
         },
-        "Ability Success Rate +20%": {
-            en: "Ability Success Rate +20%",
+        "Augmentation Aid +20%": {
+            en: "Augmentation Aid +20%",
             jp: "能力追加成功率+20%"
         },
-        "Ability Success Rate +30%": {
-            en: "Ability Success Rate +30%",
+        "Augmentation Aid +30%": {
+            en: "Augmentation Aid +30%",
             jp: "能力追加成功率+30%"
         },
-        "Ability Success Rate +40%": {
-            en: "Ability Success Rate +40%",
+        "Augmentation Aid +40%": {
+            en: "Augmentation Aid +40%",
             jp: "能力追加成功率+40%"
         },
-        "Ability Success Rate +45%": {
-            en: "Ability Success Rate +45%",
+        "Augmentation Aid +45%": {
+            en: "Augmentation Aid +45%",
             jp: "能力追加成功率+45%"
         },
-        "Ability Success Rate +50%": {
-            en: "Ability Success Rate +50%",
+        "Augmentation Aid +50%": {
+            en: "Augmentation Aid +50%",
             jp: "能力追加成功率+50%"
         },
-		"Ability Success Rate +55%": {
-            en: "Ability Success Rate +55%",
+		"Augmentation Aid +55%": {
+            en: "Augmentation Aid +55%",
             jp: "能力追加成功率+55%"
         },
-		"Ability Success Rate +60%": {
-            en: "Ability Success Rate +60%",
+		"Augmentation Aid +60%": {
+            en: "Augmentation Aid +60%",
             jp: "能力追加成功率+60%"
         }
     },
@@ -483,16 +485,16 @@ const lang = Object.freeze({
             en: "Add Ability (PP)",
             jp: "特殊能力追加(PP)"
         },
-        "Add Ability (S-ATK)": {
-            en: "Add Ability (S-ATK)",
+        "Add Ability (MEL Pwr)": {
+            en: "Add Ability (MEL Pwr)",
             jp: "特殊能力追加(打撃)"
         },
-        "Add Ability (R-ATK)": {
-            en: "Add Ability (R-ATK)",
+        "Add Ability (RNG Pwr)": {
+            en: "Add Ability (RNG Pwr)",
             jp: "特殊能力追加(射撃)"
         },
-        "Add Ability (T-ATK)": {
-            en: "Add Ability (T-ATK)",
+        "Add Ability (TEC Pwr)": {
+            en: "Add Ability (TEC Pwr)",
             jp: "特殊能力追加(法撃)"
         },
         "Add Ability (Tenora)": {
@@ -523,48 +525,48 @@ const lang = Object.freeze({
             en: "Add Ability (Grand HP)",
             jp: "特殊能力(グランドHP)"
         },
-        "Add Ability (S-ATK&PP)": {
-            en: "Add Ability (S-ATK&PP)",
+        "Add Ability (MEL PwrK&PP)": {
+            en: "Add Ability (MEL Pwr&PP)",
             jp: "特殊能力追加(打撃&PP)"
         },
-        "Add Ability (S-ATK&PP/2)": {
-            en: "Add Ability (S-ATK&PP/2)",
+        "Add Ability (MEL Pwr&PP/2)": {
+            en: "Add Ability (MEL Pwr&PP/2)",
             jp: "特殊能力(打撃&PP/2)"
         },
-        "Add Ability (S-ATK&PP/3)": {
-            en: "Add Ability (S-ATK&PP/3)",
+        "Add Ability (MEL Pwr&PP/3)": {
+            en: "Add Ability (MEL Pwr&PP/3)",
             jp: "特殊能力(打撃&PP/3)"
         },
         "Add Ability (Grand P)": {
             en: "Add Ability (Grand P)",
             jp: "特殊能力(グランドP)"
         },
-        "Add Ability (R-ATK&PP)": {
-            en: "Add Ability (R-ATK&PP)",
+        "Add Ability (RNG Pwr&PP)": {
+            en: "Add Ability (RNG Pwr&PP)",
             jp: "特殊能力追加(射撃&PP)"
         },
-        "Add Ability (R-ATK&PP/2)": {
-            en: "Add Ability (R-ATK&PP/2)",
+        "Add Ability (RNG Pwr&PP/2)": {
+            en: "Add Ability (RNG Pwr&PP/2)",
             jp: "特殊能力(射撃&PP/2)"
         },
-        "Add Ability (R-ATK&PP/3)": {
-            en: "Add Ability (R-ATK&PP/3)",
+        "Add Ability (RNG Pwr&PP/3)": {
+            en: "Add Ability (RNG Pwr&PP/3)",
             jp: "特殊能力(射撃&PP/3)"
         },
         "Add Ability (Grand S)": {
             en: "Add Ability (Grand S)",
             jp: "特殊能力(グランドS)"
         },
-        "Add Ability (T-ATK&PP)": {
-            en: "Add Ability (T-ATK&PP)",
+        "Add Ability (TEC Pwr&PP)": {
+            en: "Add Ability (TEC Pwr&PP)",
             jp: "特殊能力追加(法撃&PP)"
         },
-        "Add Ability (T-ATK&PP/2)": {
-            en: "Add Ability (T-ATK&PP/2)",
+        "Add Ability (TEC Pwr&PP/2)": {
+            en: "Add Ability (TEC Pwr&PP/2)",
             jp: "特殊能力(法撃&PP/2)"
         },
-        "Add Ability (T-ATK&PP/3)": {
-            en: "Add Ability (T-ATK&PP/3)",
+        "Add Ability (TEC Pwr&PP/3)": {
+            en: "Add Ability (TEC Pwr&PP/3)",
             jp: "特殊能力(法撃&PP/3)"
         },
         "Add Ability (Grand T)": {
@@ -627,36 +629,36 @@ const lang = Object.freeze({
             en: "Add Ability (Sentence T)",
             jp: "特殊能力(センテンスT)"
         },
-        "Add Ability (Power VI)": {
-            en: "Add Ability (Power VI)",
+        "Add Ability (Might VI)": {
+            en: "Add Ability (Might VI)",
             jp: "特殊能力(パワーⅥ)"
         },
-        "Add Ability (Shoot VI)": {
-            en: "Add Ability (Shoot VI)",
+        "Add Ability (Precision VI)": {
+            en: "Add Ability (Precision VI)",
             jp: "特殊能力(シュートⅥ)"
         },
-        "Add Ability (Technique VI)": {
-            en: "Add Ability (Technique VI)",
+        "Add Ability (Casting VI)": {
+            en: "Add Ability (Casting VI)",
             jp: "特殊能力(テクニックⅥ)"
         },
-        "Add Ability (Ability IV)": {
+        "Add Ability (Mastery IV)": {
             en: "Add Ability (Ability IV)",
             jp: "特殊能力(アビリティⅣ)"
         },
-        "Add Ability (Mark Joyo)": {
-            en: "Add Ability (Mark Joyo)",
+        "Add Ability (Mark Joy)": {
+            en: "Add Ability (Mark Joy)",
             jp: "特殊能力(マーク・ジョイオ)"
         },
-        "Add Ability (Mark Couragena)": {
-            en: "Add Ability (Mark Couragena)",
+        "Add Ability (Mark Courage)": {
+            en: "Add Ability (Mark Courage)",
             jp: "特殊能力(マーク・カレジナ)"
         },
-        "Add Ability (Mark Angar)": {
-            en: "Add Ability (Mark Angar)",
+        "Add Ability (Mark Anger)": {
+            en: "Add Ability (Mark Anger)",
             jp: "特殊能力(マーク・アンガル)"
         },
-        "Add Ability (Mark Grif)": {
-            en: "Add Ability (Mark Grif)",
+        "Add Ability (Mark Grief)": {
+            en: "Add Ability (Mark Grief)",
             jp: "特殊能力(マーク・グリフ)"
         },
         "S1 Add: Photon Reduction 2": {
@@ -1039,16 +1041,16 @@ const lang = Object.freeze({
             en: "S6 Add: Overlimit",
             jp: "S6追加:超限活器"
         },
-        "S7 Add: S-ATK Up": {
-            en: "S7 Add: S-ATK Up",
+        "S7 Add: MEL Pwr Up": {
+            en: "S7 Add: MEL Pwr Up",
             jp: "S7追加:打撃上昇"
         },
-        "S7 Add: R-ATK Up": {
-            en: "S7 Add: R-ATK Up",
+        "S7 Add: RNG Pwr Up": {
+            en: "S7 Add: RNG Pwr Up",
             jp: "S7追加:射撃上昇"
         },
-        "S7 Add: T-ATK Up": {
-            en: "S7 Add: T-ATK Up",
+        "S7 Add: TEC Pwr Up": {
+            en: "S7 Add: TEC Pwr Up",
             jp: "S7追加:法撃上昇"
         },
         "S7 Add: Zenith Impact": {
@@ -1059,8 +1061,8 @@ const lang = Object.freeze({
             en: "S7 Add: Increased Efficiency",
             jp: "S7追加:薬効増大"
         },
-        "S7 Add: Mind Merge": {
-            en: "S7 Add: Mind Merge",
+        "S7 Add: Genius Merge": {
+            en: "S7 Add: Genius Merge",
             jp: "S7追加:以心伝心"
         },
         "S7 Add: Sentinel's Gift": {
@@ -1115,231 +1117,231 @@ const lang = Object.freeze({
         }
     },
     "AA01": {
-        name_en: "Power I",
+        name_en: "Might I",
         name_jp: "パワーⅠ",
-        effect_en: "S-ATK(+10)",
+        effect_en: "MEL Pwr(+10)",
         effect_jp: "打撃力(+10)"
     },
     "AA02": {
-        name_en: "Power II",
+        name_en: "Might II",
         name_jp: "パワーⅡ",
-        effect_en: "S-ATK(+20)",
+        effect_en: "MEL Pwr(+20)",
         effect_jp: "打撃力(+20)"
     },
     "AA03": {
-        name_en: "Power III",
+        name_en: "Might III",
         name_jp: "パワーⅢ",
-        effect_en: "S-ATK(+30)",
+        effect_en: "MEL Pwr(+30)",
         effect_jp: "打撃力(+30)"
     },
     "AA04": {
-        name_en: "Power IV",
+        name_en: "Might IV",
         name_jp: "パワーⅣ",
-        effect_en: "S-ATK(+35)",
+        effect_en: "MEL Pwr(+35)",
         effect_jp: "打撃力(+35)"
     },
     "AA05": {
-        name_en: "Power V",
+        name_en: "Might V",
         name_jp: "パワーⅤ",
-        effect_en: "S-ATK(+40)",
+        effect_en: "MEL Pwr(+40)",
         effect_jp: "打撃力(+40)"
     },
     "AA06": {
-        name_en: "Power VI",
+        name_en: "Might VI",
         name_jp: "パワーⅥ",
-        effect_en: "S-ATK(+45)",
+        effect_en: "MEL Pwr(+45)",
         effect_jp: "打撃力(+45)"
     },
     "AB01": {
-        name_en: "Shoot I",
+        name_en: "Precision I",
         name_jp: "シュートⅠ",
-        effect_en: "R-ATK(+10)",
+        effect_en: "RNG Pwr(+10)",
         effect_jp: "射撃力(+10)"
     },
     "AB02": {
-        name_en: "Shoot II",
+        name_en: "Precision II",
         name_jp: "シュートⅡ",
-        effect_en: "R-ATK(+20)",
+        effect_en: "RNG Pwr(+20)",
         effect_jp: "射撃力(+20)"
     },
     "AB03": {
-        name_en: "Shoot III",
+        name_en: "Precision III",
         name_jp: "シュートⅢ",
-        effect_en: "R-ATK(+30)",
+        effect_en: "RNG Pwr(+30)",
         effect_jp: "射撃力(+30)"
     },
     "AB04": {
-        name_en: "Shoot IV",
+        name_en: "Precision IV",
         name_jp: "シュートⅣ",
-        effect_en: "R-ATK(+35)",
+        effect_en: "RNG Pwr(+35)",
         effect_jp: "射撃力(+35)"
     },
     "AB05": {
-        name_en: "Shoot V",
+        name_en: "Precision V",
         name_jp: "シュートⅤ",
-        effect_en: "R-ATK(+40)",
+        effect_en: "RNG Pwr(+40)",
         effect_jp: "射撃力(+40)"
     },
     "AB06": {
-        name_en: "Shoot VI",
+        name_en: "Precision VI",
         name_jp: "シュートⅥ",
-        effect_en: "R-ATK(+45)",
+        effect_en: "RNG Pwr(+45)",
         effect_jp: "射撃力(+45)"
     },
     "AC01": {
-        name_en: "Technique I",
+        name_en: "Casting I",
         name_jp: "テクニックⅠ",
-        effect_en: "T-ATK(+10)",
+        effect_en: "TEC Pwr(+10)",
         effect_jp: "法撃力(+10)"
     },
     "AC02": {
-        name_en: "Technique II",
+        name_en: "Casting II",
         name_jp: "テクニックⅡ",
-        effect_en: "T-ATK(+20)",
+        effect_en: "TEC Pwr(+20)",
         effect_jp: "法撃力(+20)"
     },
     "AC03": {
-        name_en: "Technique III",
+        name_en: "Casting III",
         name_jp: "テクニックⅢ",
-        effect_en: "T-ATK(+30)",
+        effect_en: "TEC Pwr(+30)",
         effect_jp: "法撃力(+30)"
     },
     "AC04": {
-        name_en: "Technique IV",
+        name_en: "Casting IV",
         name_jp: "テクニックⅣ",
-        effect_en: "T-ATK(+35)",
+        effect_en: "TEC Pwr(+35)",
         effect_jp: "法撃力(+35)"
     },
     "AC05": {
-        name_en: "Technique V",
+        name_en: "Casting V",
         name_jp: "テクニックⅤ",
-        effect_en: "T-ATK(+40)",
+        effect_en: "TEC Pwr(+40)",
         effect_jp: "法撃力(+40)"
     },
     "AC06": {
-        name_en: "Technique VI",
+        name_en: "Casting VI",
         name_jp: "テクニックⅥ",
-        effect_en: "T-ATK(+45)",
+        effect_en: "TEC Pwr(+45)",
         effect_jp: "法撃力(+45)"
     },
     "AD01": {
-        name_en: "Arm I",
+        name_en: "Deftness I",
         name_jp: "アームⅠ",
         effect_en: "DEX(+10)",
         effect_jp: "技量(+10)"
     },
     "AD02": {
-        name_en: "Arm II",
+        name_en: "Deftness II",
         name_jp: "アームⅡ",
         effect_en: "DEX(+20)",
         effect_jp: "技量(+20)"
     },
     "AD03": {
-        name_en: "Arm III",
+        name_en: "Deftness III",
         name_jp: "アームⅢ",
         effect_en: "DEX(+30)",
         effect_jp: "技量(+30)"
     },
     "AD04": {
-        name_en: "Arm IV",
+        name_en: "Deftness IV",
         name_jp: "アームⅣ",
         effect_en: "DEX(+35)",
         effect_jp: "技量(+35)"
     },
     "AD05": {
-        name_en: "Arm V",
+        name_en: "Deftness V",
         name_jp: "アームⅤ",
         effect_en: "DEX(+40)",
         effect_jp: "技量(+40)"
     },
     "BA01": {
-        name_en: "Body I",
+        name_en: "Toughness I",
         name_jp: "ボディⅠ",
-        effect_en: "S-DEF(+10)",
+        effect_en: "MEL Def(+10)",
         effect_jp: "打撃防御(+10)"
     },
     "BA02": {
-        name_en: "Body II",
+        name_en: "Toughness II",
         name_jp: "ボディⅡ",
-        effect_en: "S-DEF(+20)",
+        effect_en: "MEL Def(+20)",
         effect_jp: "打撃防御(+20)"
     },
     "BA03": {
-        name_en: "Body III",
+        name_en: "Toughness III",
         name_jp: "ボディⅢ",
-        effect_en: "S-DEF(+30)",
+        effect_en: "MEL Def(+30)",
         effect_jp: "打撃防御(+30)"
     },
     "BA04": {
-        name_en: "Body IV",
+        name_en: "Toughness IV",
         name_jp: "ボディⅣ",
-        effect_en: "S-DEF(+35)",
+        effect_en: "MEL Def(+35)",
         effect_jp: "打撃防御(+35)"
     },
     "BA05": {
-        name_en: "Body V",
+        name_en: "Toughness V",
         name_jp: "ボディⅤ",
-        effect_en: "S-DEF(+40)",
+        effect_en: "MEL Def(+40)",
         effect_jp: "打撃防御(+40)"
     },
     "BB01": {
-        name_en: "React I",
+        name_en: "Reflex I",
         name_jp: "リアクトⅠ",
-        effect_en: "R-DEF(+10)",
+        effect_en: "RNG Def(+10)",
         effect_jp: "射撃防御(+10)"
     },
     "BB02": {
-        name_en: "React II",
+        name_en: "Reflex II",
         name_jp: "リアクトⅡ",
-        effect_en: "R-DEF(+20)",
+        effect_en: "RNG Def(+20)",
         effect_jp: "射撃防御(+20)"
     },
     "BB03": {
-        name_en: "React III",
+        name_en: "Reflex III",
         name_jp: "リアクトⅢ",
-        effect_en: "R-DEF(+30)",
+        effect_en: "RNG Def(+30)",
         effect_jp: "射撃防御(+30)"
     },
     "BB04": {
-        name_en: "React IV",
+        name_en: "Reflex IV",
         name_jp: "リアクトⅣ",
-        effect_en: "R-DEF(+35)",
+        effect_en: "RNG Def(+35)",
         effect_jp: "射撃防御(+35)"
     },
     "BB05": {
-        name_en: "React V",
+        name_en: "Reflex V",
         name_jp: "リアクトⅤ",
-        effect_en: "R-DEF(+40)",
+        effect_en: "RNG Def(+40)",
         effect_jp: "射撃防御(+40)"
     },
     "BC01": {
-        name_en: "Mind I",
+        name_en: "Genius I",
         name_jp: "マインドⅠ",
-        effect_en: "T-DEF(+10)",
+        effect_en: "TEC Def(+10)",
         effect_jp: "法撃防御(+10)"
     },
     "BC02": {
-        name_en: "Mind II",
+        name_en: "Genius II",
         name_jp: "マインドⅡ",
-        effect_en: "T-DEF(+20)",
+        effect_en: "TEC Def(+20)",
         effect_jp: "法撃防御(+20)"
     },
     "BC03": {
-        name_en: "Mind III",
+        name_en: "Genius III",
         name_jp: "マインドⅢ",
-        effect_en: "T-DEF(+30)",
+        effect_en: "TEC Def(+30)",
         effect_jp: "法撃防御(+30)"
     },
     "BC04": {
-        name_en: "Mind IV",
+        name_en: "Genius IV",
         name_jp: "マインドⅣ",
-        effect_en: "T-DEF(+35)",
+        effect_en: "TEC Def(+35)",
         effect_jp: "法撃防御(+35)"
     },
     "BC05": {
-        name_en: "Mind V",
+        name_en: "Genius V",
         name_jp: "マインドⅤ",
-        effect_en: "T-DEF(+40)",
+        effect_en: "TEC Def(+40)",
         effect_jp: "法撃防御(+40)"
     },
     "EA01": {
@@ -1379,307 +1381,307 @@ const lang = Object.freeze({
         effect_jp: "HP(+70)"
     },
     "EB01": {
-        name_en: "Spirita I",
+        name_en: "Spirit I",
         name_jp: "スピリタⅠ",
         effect_en: "PP(+2)",
         effect_jp: "PP(+2)"
     },
     "EB02": {
-        name_en: "Spirita II",
+        name_en: "Spirit II",
         name_jp: "スピリタⅡ",
         effect_en: "PP(+3)",
         effect_jp: "PP(+3)"
     },
     "EB03": {
-        name_en: "Spirita III",
+        name_en: "Spirit III",
         name_jp: "スピリタⅢ",
         effect_en: "PP(+4)",
         effect_jp: "PP(+4)"
     },
     "EB04": {
-        name_en: "Spirita IV",
+        name_en: "Spirit IV",
         name_jp: "スピリタⅣ",
         effect_en: "PP(+5)",
         effect_jp: "PP(+5)"
     },
     "EB05": {
-        name_en: "Spirita V",
+        name_en: "Spirit V",
         name_jp: "スピリタⅤ",
         effect_en: "PP(+6)",
         effect_jp: "PP(+6)"
     },
     "EB06": {
-        name_en: "Spirita VI",
+        name_en: "Spirit VI",
         name_jp: "スピリタⅥ",
         effect_en: "PP(+7)",
         effect_jp: "PP(+7)"
     },
     "FA01": {
-        name_en: "Ability I",
+        name_en: "Mastery I",
         name_jp: "アビリティⅠ",
         effect_en: "ALL(+5)",
         effect_jp: "ALL(+5)"
     },
     "FA02": {
-        name_en: "Ability II",
+        name_en: "Mastery II",
         name_jp: "アビリティⅡ",
         effect_en: "ALL(+10)",
         effect_jp: "ALL(+10)"
     },
     "FA03": {
-        name_en: "Ability III",
+        name_en: "Mastery III",
         name_jp: "アビリティⅢ",
         effect_en: "ALL(+15)",
         effect_jp: "ALL(+15)"
     },
     "FA04": {
-        name_en: "Ability IV",
+        name_en: "Mastery IV",
         name_jp: "アビリティⅣ",
         effect_en: "ALL(+20)",
         effect_jp: "ALL(+20)"
     },
     "FA05": {
-        name_en: "Ability V",
+        name_en: "Mastery V",
         name_jp: "アビリティⅤ",
         effect_en: "ALL(+25)",
         effect_jp: "ALL(+25)"
     },
     "HA01": {
-        name_en: "Blow Resist I",
+        name_en: "Impact Resist I",
         name_jp: "ブロウレジストⅠ",
         effect_en: "Strike Resist(+3)",
         effect_jp: "打撃耐性(+3)"
     },
     "HA02": {
-        name_en: "Blow Resist II",
+        name_en: "Impact Resist II",
         name_jp: "ブロウレジストⅡ",
         effect_en: "Strike Resist(+4)",
         effect_jp: "打撃耐性(+4)"
     },
     "HA03": {
-        name_en: "Blow Resist III",
+        name_en: "Impact Resist III",
         name_jp: "ブロウレジストⅢ",
         effect_en: "Strike Resist(+5)",
         effect_jp: "打撃耐性(+5)"
     },
     "HA04": {
-        name_en: "Blow Resist IV",
+        name_en: "Impact Resist IV",
         name_jp: "ブロウレジストⅣ",
         effect_en: "Strike Resist(+6)",
         effect_jp: "打撃耐性(+6)"
     },
     "HA05": {
-        name_en: "Blow Resist V",
+        name_en: "Impact Resist V",
         name_jp: "ブロウレジストⅤ",
         effect_en: "Strike Resist(+7)",
         effect_jp: "打撃耐性(+7)"
     },
     "HB01": {
-        name_en: "Shoot Resist I",
+        name_en: "Projectile Ward I",
         name_jp: "ショットレジストⅠ",
         effect_en: "Range Resist(+3)",
         effect_jp: "射撃耐性(+3)"
     },
     "HB02": {
-        name_en: "Shoot Resist II",
+        name_en: "Projectile Ward II",
         name_jp: "ショットレジストⅡ",
         effect_en: "Range Resist(+4)",
         effect_jp: "射撃耐性(+4)"
     },
     "HB03": {
-        name_en: "Shoot Resist III",
+        name_en: "Projectile Ward III",
         name_jp: "ショットレジストⅢ",
         effect_en: "Range Resist(+5)",
         effect_jp: "射撃耐性(+5)"
     },
     "HB04": {
-        name_en: "Shoot Resist IV",
+        name_en: "Projectile Ward IV",
         name_jp: "ショットレジストⅣ",
         effect_en: "Range Resist(+6)",
         effect_jp: "射撃耐性(+6)"
     },
     "HB05": {
-        name_en: "Shoot Resist V",
+        name_en: "Projectile Ward V",
         name_jp: "ショットレジストⅤ",
         effect_en: "Range Resist(+7)",
         effect_jp: "射撃耐性(+7)"
     },
     "HC01": {
-        name_en: "Mind Resist I",
+        name_en: "Genius Resist I",
         name_jp: "マインドレジストⅠ",
         effect_en: "Tech Resist(+3)",
         effect_jp: "法撃耐性(+3)"
     },
     "HC02": {
-        name_en: "Mind Resist II",
+        name_en: "Genius Resist II",
         name_jp: "マインドレジストⅡ",
         effect_en: "Tech Resist(+4)",
         effect_jp: "法撃耐性(+4)"
     },
     "HC03": {
-        name_en: "Mind Resist III",
+        name_en: "Genius Resist III",
         name_jp: "マインドレジストⅢ",
         effect_en: "Tech Resist(+5)",
         effect_jp: "法撃耐性(+5)"
     },
     "HC04": {
-        name_en: "Mind Resist IV",
+        name_en: "Genius Resist IV",
         name_jp: "マインドレジストⅣ",
         effect_en: "Tech Resist(+6)",
         effect_jp: "法撃耐性(+6)"
     },
     "HC05": {
-        name_en: "Mind Resist V",
+        name_en: "Genius Resist V",
         name_jp: "マインドレジストⅤ",
         effect_en: "Tech Resist(+7)",
         effect_jp: "法撃耐性(+7)"
     },
     "HI01": {
-        name_en: "Fire Resist I",
+        name_en: "Wildfire Ward I",
         name_jp: "フレイムレジストⅠ",
-        effect_en: "Flame Resist(+3)",
+        effect_en: "Fire Resist(+3)",
         effect_jp: "炎耐性(+3)"
     },
     "HI02": {
-        name_en: "Fire Resist II",
+        name_en: "Wildfire Ward II",
         name_jp: "フレイムレジストⅡ",
-        effect_en: "Flame Resist(+4)",
+        effect_en: "Fire Resist(+4)",
         effect_jp: "炎耐性(+4)"
     },
     "HI03": {
-        name_en: "Fire Resist III",
+        name_en: "Wildfire Ward III",
         name_jp: "フレイムレジストⅢ",
-        effect_en: "Flame Resist(+5)",
+        effect_en: "Fire Resist(+5)",
         effect_jp: "炎耐性(+5)"
     },
     "HI04": {
-        name_en: "Fire Resist IV",
+        name_en: "Wildfire Ward IV",
         name_jp: "フレイムレジストⅣ",
-        effect_en: "Flame Resist(+6)",
+        effect_en: "Fire Resist(+6)",
         effect_jp: "炎耐性(+6)"
     },
     "HI05": {
-        name_en: "Fire Resist V",
+        name_en: "Wildfire Ward V",
         name_jp: "フレイムレジストⅤ",
-        effect_en: "Flame Resist(+7)",
+        effect_en: "Fire Resist(+7)",
         effect_jp: "炎耐性(+7)"
     },
     "HJ01": {
-        name_en: "Ice Resist I",
+        name_en: "Frost Ward I",
         name_jp: "アイスレジストⅠ",
         effect_en: "Ice Resist(+3)",
         effect_jp: "氷耐性(+3)"
     },
     "HJ02": {
-        name_en: "Ice Resist II",
+        name_en: "Frost Ward II",
         name_jp: "アイスレジストⅡ",
         effect_en: "Ice Resist(+4)",
         effect_jp: "氷耐性(+4)"
     },
     "HJ03": {
-        name_en: "Ice Resist III",
+        name_en: "Frost Ward III",
         name_jp: "アイスレジストⅢ",
         effect_en: "Ice Resist(+5)",
         effect_jp: "氷耐性(+5)"
     },
     "HJ04": {
-        name_en: "Ice Resist IV",
+        name_en: "Frost Ward IV",
         name_jp: "アイスレジストⅣ",
         effect_en: "Ice Resist(+6)",
         effect_jp: "氷耐性(+6)"
     },
     "HJ05": {
-        name_en: "Ice Resist V",
+        name_en: "Frost Ward V",
         name_jp: "アイスレジストⅤ",
         effect_en: "Ice Resist(+7)",
         effect_jp: "氷耐性(+7)"
     },
     "HK01": {
-        name_en: "Shock Resist I",
+        name_en: "Lightning Ward I",
         name_jp: "ショックレジストⅠ",
         effect_en: "Lightning Resist(+3)",
         effect_jp: "雷耐性(+3)"
     },
     "HK02": {
-        name_en: "Shock Resist II",
+        name_en: "Lightning Ward II",
         name_jp: "ショックレジストⅡ",
         effect_en: "Lightning Resist(+4)",
         effect_jp: "雷耐性(+4)"
     },
     "HK03": {
-        name_en: "Shock Resist III",
+        name_en: "Lightning Ward III",
         name_jp: "ショックレジストⅢ",
         effect_en: "Lightning Resist(+5)",
         effect_jp: "雷耐性(+5)"
     },
     "HK04": {
-        name_en: "Shock Resist IV",
+        name_en: "Lightning Ward IV",
         name_jp: "ショックレジストⅣ",
         effect_en: "Lightning Resist(+6)",
         effect_jp: "雷耐性(+6)"
     },
     "HK05": {
-        name_en: "Shock Resist V",
+        name_en: "Lightning Ward V",
         name_jp: "ショックレジストⅤ",
         effect_en: "Lightning Resist(+7)",
         effect_jp: "雷耐性(+7)"
     },
     "HL01": {
-        name_en: "Wind Resist I",
+        name_en: "Gale Ward I",
         name_jp: "ウィンドレジストⅠ",
         effect_en: "Wind Resist(+3)",
         effect_jp: "風耐性(+3)"
     },
     "HL02": {
-        name_en: "Wind Resist II",
+        name_en: "Gale Ward II",
         name_jp: "ウィンドレジストⅡ",
         effect_en: "Wind Resist(+4)",
         effect_jp: "風耐性(+4)"
     },
     "HL03": {
-        name_en: "Wind Resist III",
+        name_en: "Gale Ward III",
         name_jp: "ウィンドレジストⅢ",
         effect_en: "Wind Resist(+5)",
         effect_jp: "風耐性(+5)"
     },
     "HL04": {
-        name_en: "Wind Resist IV",
+        name_en: "Gale Ward IV",
         name_jp: "ウィンドレジストⅣ",
         effect_en: "Wind Resist(+6)",
         effect_jp: "風耐性(+6)"
     },
     "HL05": {
-        name_en: "Wind Resist V",
+        name_en: "Gale Ward V",
         name_jp: "ウィンドレジストⅤ",
         effect_en: "Wind Resist(+7)",
         effect_jp: "風耐性(+7)"
     },
     "HM01": {
-        name_en: "Light Resist I",
+        name_en: "Radiant Ward I",
         name_jp: "ライトレジストⅠ",
         effect_en: "Light Resist(+3)",
         effect_jp: "光耐性(+3)"
     },
     "HM02": {
-        name_en: "Light Resist II",
+        name_en: "Radiant Ward II",
         name_jp: "ライトレジストⅡ",
         effect_en: "Light Resist(+4)",
         effect_jp: "光耐性(+4)"
     },
     "HM03": {
-        name_en: "Light Resist III",
+        name_en: "Radiant Ward III",
         name_jp: "ライトレジストⅢ",
         effect_en: "Light Resist(+5)",
         effect_jp: "光耐性(+5)"
     },
     "HM04": {
-        name_en: "Light Resist IV",
+        name_en: "Radiant Ward IV",
         name_jp: "ライトレジストⅣ",
         effect_en: "Light Resist(+6)",
         effect_jp: "光耐性(+6)"
     },
     "HM05": {
-        name_en: "Light Resist V",
+        name_en: "Radiant Ward V",
         name_jp: "ライトレジストⅤ",
         effect_en: "Light Resist(+7)",
         effect_jp: "光耐性(+7)"
@@ -1691,55 +1693,55 @@ const lang = Object.freeze({
         effect_jp: "闇耐性(+3)"
     },
     "HN02": {
-        name_en: "Gloom Resist II",
+        name_en: "Umbral Ward II",
         name_jp: "グルームレジストⅡ",
         effect_en: "Dark Resist(+4)",
         effect_jp: "闇耐性(+4)"
     },
     "HN03": {
-        name_en: "Gloom Resist III",
+        name_en: "Umbral Ward III",
         name_jp: "グルームレジストⅢ",
         effect_en: "Dark Resist(+5)",
         effect_jp: "闇耐性(+5)"
     },
     "HN04": {
-        name_en: "Gloom Resist IV",
+        name_en: "Umbral Ward IV",
         name_jp: "グルームレジストⅣ",
         effect_en: "Dark Resist(+6)",
         effect_jp: "闇耐性(+6)"
     },
     "HN05": {
-        name_en: "Gloom Resist V",
+        name_en: "Umbral Ward V",
         name_jp: "グルームレジストⅤ",
         effect_en: "Dark Resist(+7)",
         effect_jp: "闇耐性(+7)"
     },
     "HZ01": {
-        name_en: "All Resist I",
+        name_en: "Sovereign Ward I",
         name_jp: "オールレジストⅠ",
         effect_en: "All Resist(+1)",
         effect_jp: "全耐性(+1)"
     },
     "HZ02": {
-        name_en: "All Resist II",
+        name_en: "Sovereign Ward II",
         name_jp: "オールレジストⅡ",
         effect_en: "All Resist(+2)",
         effect_jp: "全耐性(+2)"
     },
     "HZ03": {
-        name_en: "All Resist III",
+        name_en: "Sovereign Ward III",
         name_jp: "オールレジストⅢ",
         effect_en: "All Resist(+3)",
         effect_jp: "全耐性(+3)"
     },
     "HZ04": {
-        name_en: "All Resist IV",
+        name_en: "Sovereign Ward IV",
         name_jp: "オールレジストⅣ",
         effect_en: "All Resist(+4)",
         effect_jp: "全耐性(+4)"
     },
     "HZ05": {
-        name_en: "All Resist V",
+        name_en: "Sovereign Ward V",
         name_jp: "オールレジストⅤ",
         effect_en: "All Resist(+5)",
         effect_jp: "全耐性(+5)"
@@ -1835,33 +1837,33 @@ const lang = Object.freeze({
         effect_jp: "ショックLv5付与"
     },
     "JD01": {
-        name_en: "Mirage I",
+        name_en: "Blind I",
         name_jp: "ミラージュⅠ",
-        effect_en: "Grants Mirage Lv1",
+        effect_en: "Grants Blind Lv1",
         effect_jp: "ミラージュLv1付与"
     },
     "JD02": {
-        name_en: "Mirage II",
+        name_en: "Blind II",
         name_jp: "ミラージュⅡ",
-        effect_en: "Grants Mirage Lv2",
+        effect_en: "Grants Blind Lv2",
         effect_jp: "ミラージュLv2付与"
     },
     "JD03": {
-        name_en: "Mirage III",
+        name_en: "Blind III",
         name_jp: "ミラージュⅢ",
-        effect_en: "Grants Mirage Lv3",
+        effect_en: "Grants Blind Lv3",
         effect_jp: "ミラージュLv3付与"
     },
     "JD04": {
-        name_en: "Mirage IV",
+        name_en: "Blind IV",
         name_jp: "ミラージュⅣ",
-        effect_en: "Grants Mirage Lv4",
+        effect_en: "Grants Blind Lv4",
         effect_jp: "ミラージュLv4付与"
     },
     "JD05": {
-        name_en: "Mirage V",
+        name_en: "Blind V",
         name_jp: "ミラージュⅤ",
-        effect_en: "Grants Mirage Lv5",
+        effect_en: "Grants Blind Lv5",
         effect_jp: "ミラージュLv5付与"
     },
     "JE01": {
@@ -2119,7 +2121,7 @@ const lang = Object.freeze({
     "LA89": {
         name_en: "S1:Lethal Intent",
         name_jp: "S1:死中の志",
-        effect_en: "Reduce HP by 5% every 20 seconds and increase Power by 4%.",
+        effect_en: "Reduce HP by 5% every 20 seconds and increase Might by 4%.",
         effect_jp: "20秒毎に最大HPの5%ダメージを負う代わりに威力が4%上昇する。"
     },
     "LA90": {
@@ -2131,19 +2133,19 @@ const lang = Object.freeze({
     "LA91": {
         name_en: "S1:Strike Boost",
         name_jp: "S1:打撃増幅",
-        effect_en: "Increase Power by 1% for every 60 S-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 S-ATK is affixed to this weapon.",
+        effect_en: "Increase Power by 1% for every 60 MEL Pwr affixed to this weapon. Increase Power by an additional 2% if at least 200 MEL Pwr is affixed to this weapon.",
         effect_jp: "特殊能力の追加打撃能力60毎に、威力1%上昇し200以上でさらに2%上昇。"
     },
     "LA92": {
-        name_en: "S1:Shoot Boost",
+        name_en: "S1:Precision Boost",
         name_jp: "S1:射撃増幅",
-        effect_en: "Increase Power by 1% for every 60 R-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 R-ATK is affixed to this weapon.",
+        effect_en: "Increase Power by 1% for every 60 RNG Pwr affixed to this weapon. Increase Power by an additional 2% if at least 200 RNG Pwr is affixed to this weapon.",
         effect_jp: "特殊能力の追加射撃能力60毎に、威力1%上昇し200以上でさらに2%上昇。"
     },
     "LA93": {
         name_en: "S1:Tech Boost",
         name_jp: "S1:法撃増幅",
-        effect_en: "Increase Power by 1% for every 60 T-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 T-ATK is affixed to this weapon.",
+        effect_en: "Increase Power by 1% for every 60 TEC Pwr affixed to this weapon. Increase Power by an additional 2% if at least 200 TEC Pwr is affixed to this weapon.",
         effect_jp: "特殊能力の追加法撃能力60毎に、威力1%上昇し200以上でさらに2%上昇。"
     },
     "LA94": {
@@ -2431,7 +2433,7 @@ const lang = Object.freeze({
     "LB93": {
         name_en: "S2:Skill Reduction",
         name_jp: "S2:技巧縮減",
-        effect_en: "Reduce PP consumption for 30 seconds upon hitting with a PA/Technique. Has a low chance to grant amplified effects. Triggers Recast upon activation.",
+        effect_en: "Reduce PP consumption for 30 seconds upon hitting with a PA/Casting. Has a low chance to grant amplified effects. Triggers Recast upon activation.",
         effect_jp: "フォトンアーツまたはテクニック命中後30秒間、PPの消費量を軽減。また、まれに大きく軽減することがある。効果発動後にリキャストが発生。"
     },
     "LB1W": {
@@ -2827,7 +2829,7 @@ const lang = Object.freeze({
     "LD0L": {
         name_en: "S4:Rapid-fire Arrow",
         name_jp: "S4:迅弓の撃",
-        effect_en: "Bullet Bow damage is boosted by 3% during<br>Rapid Shoot.",
+        effect_en: "Bullet Bow damage is boosted by 3% during<br>Rapid Precision.",
         effect_jp: "ラピッドシュート中、バレットボウ装備時に与ダメージが3%上昇。"
     },
     "LD0M": {
@@ -2959,7 +2961,7 @@ const lang = Object.freeze({
     "LE08": {
         name_en: "S5:Thundering Pursuit",
         name_jp: "S5:雷光追撃",
-        effect_en: "When using a PA, lightning-charged Photon Blades are generated. (Power: ?%). Dual Blades only.",
+        effect_en: "When using a PA, lightning-charged Photon Blades are generated. (Might: ?%). Dual Blades only.",
         effect_jp: "PAを使用すると雷光を纏ったフォトンの追撃が発生。飛翔剣限定。"
     },
     "LE09": {
@@ -2989,7 +2991,7 @@ const lang = Object.freeze({
     "LE0D": {
         name_en: "S5:Calming Bullet",
         name_jp: "S5:静心杖弾",
-        effect_en: "Enhance the performance of Normal Attacks and increase the damage of Rod Shoot by 100%. Rod only.",
+        effect_en: "Enhance the performance of Normal Attacks and increase the damage of Rod Precision by 100%. Rod only.",
         effect_jp: "通常攻撃性能が強化されロッドシュートの威力が100%上昇する。長杖限定。"
     },
     "LE0E": {
@@ -3025,7 +3027,7 @@ const lang = Object.freeze({
     "LE98": {
         name_en: "S5:Instant Invocation",
         name_jp: "S5:錬成萌花",
-        effect_en: "Technique damage is<br>decreased by 40%, but<br>using the same<br>Technique with a JA<br>substantially<br>decreases charge<br>time.",
+        effect_en: "Casting damage is<br>decreased by 40%, but<br>using the same<br>Casting with a JA<br>substantially<br>decreases charge<br>time.",
         effect_jp: "テクニックの与ダメージが常時40%減少するがテクニック使用後に同属性テクニックJAでチャージ時間大幅短縮。"
     },
     "LE0J": {
@@ -3083,21 +3085,21 @@ const lang = Object.freeze({
         effect_jp: "被ダメージを7%軽減。"
     },
     "LF0G": {
-        name_en: "S6:S-ATK Up",
+        name_en: "S6:MEL Pwr Up",
         name_jp: "S6:打撃上昇",
-        effect_en: "S-ATK(+30)",
+        effect_en: "MEL Pwr(+30)",
         effect_jp: "打撃力(+30)"
     },
     "LF0H": {
-        name_en: "S6:R-ATK Up",
+        name_en: "S6:RNG Pwr Up",
         name_jp: "S6:射撃上昇",
-        effect_en: "R-ATK(+30)",
+        effect_en: "RNG Pwr(+30)",
         effect_jp: "射撃力(+30)"
     },
     "LF0I": {
-        name_en: "S6:T-ATK Up",
+        name_en: "S6:TEC Pwr Up",
         name_jp: "S6:法撃上昇",
-        effect_en: "T-ATK(+30)",
+        effect_en: "TEC Pwr(+30)",
         effect_jp: "法撃力(+30)"
     },
     "LF0J": {
@@ -3127,7 +3129,7 @@ const lang = Object.freeze({
     "LF0N": {
         name_en: "S6:Angelic Wings",
         name_jp: "S6:翔天の翼",
-        effect_en: "Increases Jump Power.",
+        effect_en: "Increases Jump Might.",
         effect_jp: "ジャンプ力が上昇する。"
     },
     "LF0O": {
@@ -3161,21 +3163,21 @@ const lang = Object.freeze({
         effect_jp: "1秒間静止状態が続いた時、ppが1秒ごとに4回復。"
     },
     "LG0B": {
-        name_en: "S7:S-ATK Up",
+        name_en: "S7:MEL Pwr Up",
         name_jp: "S7:打撃上昇",
-        effect_en: "S-ATK(+30)",
+        effect_en: "MEL Pwr(+30)",
         effect_jp: "打撃力(+30)"
     },
     "LG0C": {
-        name_en: "S7:R-ATK Up",
+        name_en: "S7:RNG Pwr Up",
         name_jp: "S7:射撃上昇",
-        effect_en: "R-ATK(+30)",
+        effect_en: "RNG Pwr(+30)",
         effect_jp: "射撃力(+30)"
     },
     "LG0D": {
-        name_en: "S7:T-ATK Up",
+        name_en: "S7:TEC Pwr Up",
         name_jp: "S7:法撃上昇",
-        effect_en: "T-ATK(+30)",
+        effect_en: "TEC Pwr(+30)",
         effect_jp: "法撃力(+30)"
     },
     "LG0E": {
@@ -3193,31 +3195,31 @@ const lang = Object.freeze({
     "LG0G": {
         name_en: "S7:S-Atk Up 2",
         name_jp: "S7:打撃上昇2",
-        effect_en: "S-ATK(+50)",
+        effect_en: "MEL Pwr(+50)",
         effect_jp: "打撃力(+50)"
     },
     "LG0H": {
-        name_en: "S7:R-ATK Up 2",
+        name_en: "S7:RNG Pwr Up 2",
         name_jp: "S7:射撃上昇2",
-        effect_en: "R-ATK(+50)",
+        effect_en: "RNG Pwr(+50)",
         effect_jp: "射撃力(+50)"
     },
     "LG0I": {
-        name_en: "S7:T-ATK Up 2",
+        name_en: "S7:TEC Pwr Up 2",
         name_jp: "S7:法撃上昇2",
-        effect_en: "T-ATK(+50)",
+        effect_en: "TEC Pwr(+50)",
         effect_jp: "法撃力(+50)"
     },
     "LG0J": {
         name_en: "S7:Attack Up",
         name_jp: "S7:攻撃上昇",
-        effect_en: "S-ATK(+25),R-ATK(+25),T-ATK(+25)",
+        effect_en: "MEL Pwr(+25),RNG Pwr(+25),TEC Pwr(+25)",
         effect_jp: "打撃力(+25),射撃力(+25),法撃力(+25)"
     },
     "LG0K": {
         name_en: "S7:Attack Up 2",
         name_jp: "S7:攻撃上昇2",
-        effect_en: "S-ATK(+45),R-ATK(+45),T-ATK(+45)",
+        effect_en: "MEL Pwr(+45),RNG Pwr(+45),TEC Pwr(+45)",
         effect_jp: "打撃力(+45),射撃力(+45),法撃力(+45)"
     },
     "LG0L": {
@@ -3233,7 +3235,7 @@ const lang = Object.freeze({
         effect_jp: "回復アイテムの効果を30％上昇させる。"
     },
     "LG0N": {
-        name_en: "S7:Mind Merge",
+        name_en: "S7:Genius Merge",
         name_jp: "S7:以心伝心",
         effect_en: "Automatically answers Sympathy requests during Alter Ego. No effect if using weapon with \"Glance of Darkness\".",
         effect_jp: "アルターエゴ発動中ペットシンパシーの要求に自動支援を行う。「闇の一瞥」が優先され併用不可。"
@@ -3257,21 +3259,21 @@ const lang = Object.freeze({
         effect_jp: "自身でメイト系アイテム使用時、一定時間無敵。"
     },
     "LH0C": {
-        name_en: "S8:S-ATK Up",
+        name_en: "S8:MEL Pwr Up",
         name_jp: "S8:打撃上昇",
-        effect_en: "S-ATK(+30)",
+        effect_en: "MEL Pwr(+30)",
         effect_jp: "打撃力(+30)"
     },
     "LH0D": {
-        name_en: "S8:R-ATK Up",
+        name_en: "S8:RNG Pwr Up",
         name_jp: "S8:射撃上昇",
-        effect_en: "R-ATK(+30)",
+        effect_en: "RNG Pwr(+30)",
         effect_jp: "射撃力(+30)"
     },
     "LH0E": {
-        name_en: "S8:T-ATK Up",
+        name_en: "S8:TEC Pwr Up",
         name_jp: "S8:法撃上昇",
-        effect_en: "T-ATK(+30)",
+        effect_en: "TEC Pwr(+30)",
         effect_jp: "法撃力(+30)"
     },
     "LH0F": {
@@ -3301,163 +3303,163 @@ const lang = Object.freeze({
     "LH0J": {
         name_en: "S8:High-Minded",
         name_jp: "S8:一念滞空",
-        effect_en: "Reduce falling speed while charging a Technique in mid-air.",
+        effect_en: "Reduce falling speed while charging a Casting in mid-air.",
         effect_jp: "空中でテクニックをチャージ中に落下速度が遅くなる。"
     },
     "OA01": {
         name_en: "Mutation I",
         name_jp: "ミューテーションⅠ",
-        effect_en: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+10)",
+        effect_en: "MEL Pwr(+10),<br>RNG Pwr(+10),<br>TEC Pwr(+10),<br>HP(+10)",
         effect_jp: "打撃力(+10),<br>射撃力(+10),<br>,法撃力(+10)<br>HP(+10)"
     },
     "OA02": {
         name_en: "Mutation II",
         name_jp: "ミューテーションⅡ",
-        effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>HP(+15)",
+        effect_en: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>HP(+15)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>,法撃力(+15)<br>HP(+15)"
     },
     "RA11": {
         name_en: "Gunne Soul",
         name_jp: "グンネ・ソール",
-        effect_en: "S-ATK(+15),<br>HP(+45)",
+        effect_en: "MEL Pwr(+15),<br>HP(+45)",
         effect_jp: "打撃力(+15),<br>HP(+45)"
     },
     "RA15": {
-        name_en: "Zigmor Soul",
+        name_en: "Jigmol Soul",
         name_jp: "ジグモル・ソール",
-        effect_en: "S-ATK(+15),<br>PP(+4)",
+        effect_en: "MEL Pwr(+15),<br>PP(+4)",
         effect_jp: "打撃力(+15),<br>PP(+4)"
     },
     "RA21": {
         name_en: "Vol Soul",
         name_jp: "ヴォル・ソール",
-        effect_en: "S-ATK(+30),<br>HP(+20)",
+        effect_en: "MEL Pwr(+30),<br>HP(+20)",
         effect_jp: "打撃力(+30),<br>HP(+20)"
     },
     "RA22": {
         name_en: "Gwana Soul",
         name_jp: "グワナ・ソール",
-        effect_en: "S-ATK(+30),<br>HP(+10),<br>PP(+2)",
+        effect_en: "MEL Pwr(+30),<br>HP(+10),<br>PP(+2)",
         effect_jp: "打撃力(+30),<br>HP(+10),<br>PP(+2)"
     },
     "RA23": {
         name_en: "Quartz Soul",
         name_jp: "クォーツ・ソール",
-        effect_en: "S-ATK(+30),<br>PP(+3)",
+        effect_en: "MEL Pwr(+30),<br>PP(+3)",
         effect_jp: "打撃力(+30),<br>PP(+3)"
     },
     "RA31": {
         name_en: "Deadleon Soul",
         name_jp: "デッドリオン・ソール",
-        effect_en: "S-ATK(+35),<br>DEX(+5),<br>HP(+30)",
+        effect_en: "MEL Pwr(+35),<br>DEX(+5),<br>HP(+30)",
         effect_jp: "打撃力(+35),<br>技量(+5),<br>HP(+30)"
     },
     "RA32": {
         name_en: "Leone Soul",
         name_jp: "レオーネ・ソール",
-        effect_en: "S-ATK(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)",
+        effect_en: "MEL Pwr(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)",
         effect_jp: "打撃力(+35),<br>技量(+5),<br>HP(+20),<br>PP(+1)"
     },
     "RA33": {
-        name_en: "Bayari Soul",
+        name_en: "Beari Soul",
         name_jp: "ベーアリ・ソール",
-        effect_en: "S-ATK(+35),<br>DEX(+5),<br>PP(+3)",
+        effect_en: "MEL Pwr(+35),<br>DEX(+5),<br>PP(+3)",
         effect_jp: "打撃力(+35),<br>技量(+5),<br>PP(+3)"
     },
     "RB11": {
-        name_en: "Idetta Soul",
+        name_en: "Idihta Soul",
         name_jp: "イーデッタ・ソール",
-        effect_en: "R-ATK(+15),<br>HP(+45)",
+        effect_en: "RNG Pwr(+15),<br>HP(+45)",
         effect_jp: "射撃力(+15),<br>HP(+45)"
     },
     "RB15": {
         name_en: "Madu Soul",
         name_jp: "マドゥ・ソール",
-        effect_en: "R-ATK(+15),<br>PP(+4)",
+        effect_en: "RNG Pwr(+15),<br>PP(+4)",
         effect_jp: "射撃力(+15),<br>PP(+4)"
     },
     "RB21": {
-        name_en: "Ra\'nsa Soul",
+        name_en: "Ransa Soul",
         name_jp: "ランサ・ソール",
-        effect_en: "R-ATK(+30),<br>HP(+20)",
+        effect_en: "RNG Pwr(+30),<br>HP(+20)",
         effect_jp: "射撃力(+30),<br>HP(+20)"
     },
     "RB22": {
         name_en: "Fang Soul",
         name_jp: "ファング・ソール",
-        effect_en: "R-ATK(+30),<br>HP(+10),<br>PP(+2)",
+        effect_en: "RNG Pwr(+30),<br>HP(+10),<br>PP(+2)",
         effect_jp: "射撃力(+30),<br>HP(+10),<br>PP(+2)"
     },
     "RB23": {
         name_en: "Mizer Soul",
         name_jp: "マイザー・ソール",
-        effect_en: "R-ATK(+30),<br>PP(+3)",
+        effect_en: "RNG Pwr(+30),<br>PP(+3)",
         effect_jp: "射撃力(+30),<br>PP(+3)"
     },
     "RB31": {
-        name_en: "Leopard Soul",
+        name_en: "Leopod Soul",
         name_jp: "レオパード・ソール",
-        effect_en: "R-ATK(+35),<br>DEX(+5),<br>HP(+30)",
+        effect_en: "RNG Pwr(+35),<br>DEX(+5),<br>HP(+30)",
         effect_jp: "射撃力(+35),<br>技量(+5),<br>HP(+30)"
     },
     "RB32": {
-        name_en: "Siorg Soul",
+        name_en: "Siogr Soul",
         name_jp: "ジオーグ・ソール",
-        effect_en: "R-ATK(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)",
+        effect_en: "RNG Pwr(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)",
         effect_jp: "射撃力(+35),<br>技量(+5),<br>HP(+20),<br>PP(+1)"
     },
     "RB33": {
         name_en: "Greuzoras Soul",
         name_jp: "グリュゾラス・ソール",
-        effect_en: "R-ATK(+35),<br>DEX(+5),<br>PP(+3)",
+        effect_en: "RNG Pwr(+35),<br>DEX(+5),<br>PP(+3)",
         effect_jp: "射撃力(+35),<br>技量(+5),<br>PP(+3)"
     },
     "RC11": {
-        name_en: "Jhadu Soul",
+        name_en: "Jadeu Soul",
         name_jp: "ジャドゥ・ソール",
-        effect_en: "T-ATK(+15),<br>HP(+45)",
+        effect_en: "TEC Pwr(+15),<br>HP(+45)",
         effect_jp: "法撃力(+15),<br>HP(+45)"
     },
     "RC13": {
-        name_en: "Nepto Soul",
+        name_en: "Nept Soul",
         name_jp: "ネプト・ソール",
-        effect_en: "T-ATK(+15),<br>PP(+4)",
+        effect_en: "TEC Pwr(+15),<br>PP(+4)",
         effect_jp: "法撃力(+15),<br>PP(+4)"
     },
     "RC21": {
         name_en: "Ragne Soul",
         name_jp: "ラグネ・ソール",
-        effect_en: "T-ATK(+30),<br>HP(+20)",
+        effect_en: "TEC Pwr(+30),<br>HP(+20)",
         effect_jp: "法撃力(+30),<br>HP(+20)"
     },
     "RC22": {
         name_en: "Wolga Soul",
         name_jp: "ウォルガ・ソール",
-        effect_en: "T-ATK(+30),<br>HP(+10),<br>PP(+2)",
+        effect_en: "TEC Pwr(+30),<br>HP(+10),<br>PP(+2)",
         effect_jp: "法撃力(+30),<br>HP(+10),<br>PP(+2)"
     },
     "RC23": {
         name_en: "Elder Soul",
         name_jp: "エルダー・ソール",
-        effect_en: "T-ATK(+30),<br>PP(+3)",
+        effect_en: "TEC Pwr(+30),<br>PP(+3)",
         effect_jp: "法撃力(+30),<br>PP(+3)"
     },
     "RC31": {
         name_en: "Diabo Soul",
         name_jp: "ディアボ・ソール",
-        effect_en: "T-ATK(+35),<br>DEX(+5),<br>HP(+30)",
+        effect_en: "TEC Pwr(+35),<br>DEX(+5),<br>HP(+30)",
         effect_jp: "法撃力(+35),<br>技量(+5),<br>HP(+30)"
     },
     "RC32": {
         name_en: "Duvals Soul",
         name_jp: "ドゥバルス・ソール",
-        effect_en: "T-ATK(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)",
+        effect_en: "TEC Pwr(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)",
         effect_jp: "法撃力(+35),<br>技量(+5),<br>HP(+20),<br>PP(+1)"
     },
     "RC33": {
-        name_en: "Guranz Soul",
+        name_en: "Granz Soul",
         name_jp: "グランゾ・ソール",
-        effect_en: "T-ATK(+35),<br>DEX(+5),<br>PP(+3)",
+        effect_en: "TEC Pwr(+35),<br>DEX(+5),<br>PP(+3)",
         effect_jp: "法撃力(+35),<br>技量(+5),<br>PP(+3)"
     },
     "RE13": {
@@ -3487,173 +3489,173 @@ const lang = Object.freeze({
     "RE51": {
         name_en: "Sinow Soul",
         name_jp: "シノワ・ソール",
-        effect_en: "S-ATK(+5),<br>DEX(+30),<br>HP(+25)<br>PP(+2)",
+        effect_en: "MEL Pwr(+5),<br>DEX(+30),<br>HP(+25)<br>PP(+2)",
         effect_jp: "打撃力(+5),<br>技量(+30),<br>HP(+25)<br>PP(+2)"
     },
     "RH21": {
         name_en: "Snow Soul",
         name_jp: "スノウ・ソール",
-        effect_en: "S-DEF(+30),<br>HP(+20),<br>PP(+1)",
+        effect_en: "MEL Def(+30),<br>HP(+20),<br>PP(+1)",
         effect_jp: "打撃防御(+30),<br>HP(+20),<br>PP(+1)"
     },
     "RH22": {
         name_en: "Rockbear Soul",
         name_jp: "ロックベア・ソール",
-        effect_en: "S-DEF(+30),<br>HP(+10),<br>PP(+3)",
+        effect_en: "MEL Def(+30),<br>HP(+10),<br>PP(+3)",
         effect_jp: "打撃防御(+30),<br>HP(+10),<br>PP(+3)"
     },
     "RH23": {
-        name_en: "Ex Soul",
+        name_en: "X Soul",
         name_jp: "エクス・ソール",
-        effect_en: "S-DEF(+30),<br>PP(+4)",
+        effect_en: "MEL Def(+30),<br>PP(+4)",
         effect_jp: "打撃防御(+30),<br>PP(+4)"
     },
     "RI21": {
-        name_en: "Malmo Soul",
+        name_en: "Marmoth Soul",
         name_jp: "マルモ・ソール",
-        effect_en: "R-DEF(+30),<br>HP(+20),<br>PP(+1)",
+        effect_en: "RNG Def(+30),<br>HP(+20),<br>PP(+1)",
         effect_jp: "射撃防御(+30),<br>HP(+20),<br>PP(+1)"
     },
     "RI22": {
         name_en: "Persona Soul",
         name_jp: "ペルソナ・ソール",
-        effect_en: "R-DEF(+30),<br>HP(+10),<br>PP(+3)",
+        effect_en: "RNG Def(+30),<br>HP(+10),<br>PP(+3)",
         effect_jp: "射撃防御(+30),<br>HP(+10),<br>PP(+3)"
     },
     "RI23": {
-        name_en: "Vardha Soul",
+        name_en: "Varder Soul",
         name_jp: "ヴァーダー・ソール",
-        effect_en: "R-DEF(+30),<br>PP(+4)",
+        effect_en: "RNG Def(+30),<br>PP(+4)",
         effect_jp: "射撃防御(+30),<br>PP(+4)"
     },
     "RJ21": {
-        name_en: "Cater Soul",
+        name_en: "Catre Soul",
         name_jp: "キャタ・ソール",
-        effect_en: "T-DEF(+30),<br>HP(+20),<br>PP(+1)",
+        effect_en: "TEC Def(+30),<br>HP(+20),<br>PP(+1)",
         effect_jp: "法撃防御(+30),<br>HP(+20),<br>PP(+1)"
     },
     "RJ22": {
-        name_en: "Shrayda Soul",
+        name_en: "Shraider Soul",
         name_jp: "シュレイダ・ソール",
-        effect_en: "T-DEF(+30),<br>HP(+10),<br>PP(+3)",
+        effect_en: "TEC Def(+30),<br>HP(+10),<br>PP(+3)",
         effect_jp: "法撃防御(+30),<br>HP(+10),<br>PP(+3)"
     },
     "RJ23": {
         name_en: "Goron Soul",
         name_jp: "ゴロン・ソール",
-        effect_en: "T-DEF(+30),<br>PP(+4)",
+        effect_en: "TEC Def(+30),<br>PP(+4)",
         effect_jp: "法撃防御(+30),<br>PP(+4)"
     },
     "ROA1": {
         name_en: "Org Soul",
         name_jp: "オルグ・ソール",
-        effect_en: "S-ATK(+20),<br>R-ATK(+20),<br>HP(+10)",
+        effect_en: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>HP(+10)",
         effect_jp: "打撃力(+20),<br>射撃力(+20),<br>HP(+10)"
     },
     "ROA2": {
         name_en: "Meduna Soul",
         name_jp: "メデューナ・ソール",
-        effect_en: "S-ATK(+20),<br>R-ATK(+20),<br>HP(+5),<br>PP(+1)",
+        effect_en: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>HP(+5),<br>PP(+1)",
         effect_jp: "打撃力(+20),<br>射撃力(+20),<br>HP(+5),<br>PP(+1)"
     },
     "ROA3": {
         name_en: "Soma Soul",
         name_jp: "ソーマ・ソール",
-        effect_en: "S-ATK(+20),<br>R-ATK(+20),<br>PP(+2)",
+        effect_en: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>PP(+2)",
         effect_jp: "打撃力(+20),<br>射撃力(+20),<br>PP(+2)"
     },
     "ROC1": {
         name_en: "Ringa Soul",
         name_jp: "リンガ・ソール",
-        effect_en: "S-ATK(+20),<br>T-ATK(+20),<br>HP(+10)",
+        effect_en: "MEL Pwr(+20),<br>TEC Pwr(+20),<br>HP(+10)",
         effect_jp: "打撃力(+20),<br>法撃力(+20),<br>HP(+10)"
     },
     "ROC2": {
-        name_en: "Loser Soul",
+        name_en: "Luther Soul",
         name_jp: "ルーサー・ソール",
-        effect_en: "S-ATK(+20),<br>T-ATK(+20),<br>HP(+5),<br>PP(+1)",
+        effect_en: "MEL Pwr(+20),<br>TEC Pwr(+20),<br>HP(+5),<br>PP(+1)",
         effect_jp: "打撃力(+20),<br>法撃力(+20),<br>HP(+5),<br>PP(+1)"
     },
     "ROC3": {
         name_en: "Malluda Soul",
         name_jp: "マリューダ・ソール",
-        effect_en: "S-ATK(+20),<br>T-ATK(+20),<br>PP(+2)",
+        effect_en: "MEL Pwr(+20),<br>TEC Pwr(+20),<br>PP(+2)",
         effect_jp: "打撃力(+20),<br>法撃力(+20),<br>PP(+2)"
     },
     "ROE1": {
-        name_en: "Bal Soul",
+        name_en: "Bar Soul",
         name_jp: "バル・ソール",
-        effect_en: "R-ATK(+20),<br>T-ATK(+20),<br>HP(+10)",
+        effect_en: "RNG Pwr(+20),<br>TEC Pwr(+20),<br>HP(+10)",
         effect_jp: "射撃力(+20),<br>法撃力(+20),<br>HP(+10)"
     },
     "ROE2": {
-        name_en: "Vibrace Soul",
+        name_en: "Vibras Soul",
         name_jp: "ビブラス・ソール",
-        effect_en: "R-ATK(+20),<br>T-ATK(+20),<br>HP(+5),<br>PP(+1)",
+        effect_en: "RNG Pwr(+20),<br>TEC Pwr(+20),<br>HP(+5),<br>PP(+1)",
         effect_jp: "射撃力(+20),<br>法撃力(+20),<br>HP(+5),<br>PP(+1)"
     },
     "ROE3": {
         name_en: "Tagami Kazuchi Soul",
         name_jp: "タガミカヅチ・ソール",
-        effect_en: "R-ATK(+20),<br>T-ATK(+20),<br>PP(+2)",
+        effect_en: "RNG Pwr(+20),<br>TEC Pwr(+20),<br>PP(+2)",
         effect_jp: "射撃力(+20),<br>法撃力(+20),<br>PP(+2)"
     },
     "ROG5": {
         name_en: "Lili Soul",
         name_jp: "リーリー・ソール",
-        effect_en: "S-ATK(+20),<br>S-DEF(+20),<br>HP(+20)",
+        effect_en: "MEL Pwr(+20),<br>MEL Def(+20),<br>HP(+20)",
         effect_jp: "打撃力(+20),<br打撃防御(+20),<br>HP(+20)"
     },
     "RP05": {
         name_en: "Cougar Soul",
         name_jp: "クーガー・ソール",
-        effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>DEX(+15),<br>HP(+10),<br>PP(+2)",
+        effect_en: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>DEX(+15),<br>HP(+10),<br>PP(+2)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15),<br>技量(+15),<br>HP(+10),<br>PP(+2)"
     },
     "RP10": {
         name_en: "Gryphon Soul",
         name_jp: "グリフォン・ソール",
-        effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>DEX(+15),<br>HP(+5),<br>PP(+3)",
+        effect_en: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>DEX(+15),<br>HP(+5),<br>PP(+3)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15),<br>技量(+15),<br>HP(+5),<br>PP(+3)"
     },
     "RP15": {
         name_en: "Knight Gear Soul",
         name_jp: "ナイトギア・ソール",
-        effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>DEX(+15),<br>PP(+4)",
+        effect_en: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>DEX(+15),<br>PP(+4)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15),<br>技量(+15),<br>PP(+4)"
     },
     "RP22": {
         name_en: "Izane Kazuchi Soul",
         name_jp: "イザネカヅチ・ソール",
-        effect_en: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(+2)",
+        effect_en: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>TEC Pwr(+20),<br>PP(+2)",
         effect_jp: "打撃力(+20),<br>射撃力(+20),<br>法撃力(+20),<br>PP(+2)"
     },
     "RP25": {
         name_en: "Anga Soul",
         name_jp: "アンガ・ソール",
-        effect_en: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(+4)",
+        effect_en: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>TEC Pwr(+20),<br>PP(+4)",
         effect_jp: "打撃力(+20),<br>射撃力(+20),<br>法撃力(+20),<br>PP(+4)"
     },
     "RP55": {
         name_en: "Apprentice Soul",
         name_jp: "アプレンティス・ソール",
-        effect_en: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40)",
+        effect_en: "MEL Pwr(+40),<br>RNG Pwr(+40),<br>TEC Pwr(+40)",
         effect_jp: "打撃力(+40),<br>射撃力(+40),<br>法撃力(+40)"
     },
     "RPA5": {
         name_en: "Magatsu Soul",
         name_jp: "マガツ・ソール",
-        effect_en: "S-DEF(+15),<br>R-DEF(+15),<br>T-DEF(+15),<br>HP(+30),<br>PP(+3)",
+        effect_en: "MEL Def(+15),<br>RNG Def(+15),<br>TEC Def(+15),<br>HP(+30),<br>PP(+3)",
         effect_jp: "打撃防御(+15),<br>射撃防御(+15),<br>法撃防御(+15),<br>HP(+30),<br>PP(+3)"
     },
     "RQ01": {
-        name_en: "Double Soul",
+        name_en: "Gemini Soul",
         name_jp: "ダブル・ソール",
         effect_en: "HP(+40),<br>PP(+3)",
         effect_jp: "HP(+40),<br>PP(+3)"
     },
     "RZ01": {
-        name_en: "Darkness Soul",
+        name_en: "Soul of Darkness",
         name_jp: "ダークネス・ソール",
         effect_en: "ALL(+15),<br>HP(+15),<br>PP(+2)",
         effect_jp: "ALL(+15),<br>HP(+15),<br>PP(+2)"
@@ -3677,75 +3679,75 @@ const lang = Object.freeze({
         effect_jp: "ALL(+10)"
     },
     "SB02": {
-        name_en: "Full Vegas Soul",
+        name_en: "FullVegas Soul",
         name_jp: "フルベガス・ソール",
-        effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15)",
+        effect_en: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15)"
     },
     "SB03": {
         name_en: "Escarde Soul",
         name_jp: "エスカード・ソール",
-        effect_en: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+10),<br>DEX(+20)",
+        effect_en: "MEL Pwr(+10),<br>RNG Pwr(+10),<br>TEC Pwr(+10),<br>DEX(+20)",
         effect_jp: "打撃力(+10),<br>射撃力(+10),<br>法撃力(+10),<br>技量(+20)"
     },
     "SB04": {
         name_en: "Fabula Soul",
         name_jp: "ファーブラ・ソール",
-        effect_en: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+20)",
+        effect_en: "MEL Pwr(+10),<br>RNG Pwr(+10),<br>TEC Pwr(+10),<br>HP(+20)",
         effect_jp: "打撃力(+10),<br>射撃力(+10),<br>法撃力(+10),<br>HP(+20)"
     },
     "SB05": {
         name_en: "Historia Soul",
         name_jp: "イストリア・ソール",
-        effect_en: "S-DEF(+25),<br>R-DEF(+25),<br>T-DEF(+25),<br>HP(+30),<br>PP(+2)",
+        effect_en: "MEL Def(+25),<br>RNG Def(+25),<br>TEC Def(+25),<br>HP(+30),<br>PP(+2)",
         effect_jp: "打撃防御(+25),<br>射撃防御(+25),<br>法撃防御(+25),<br>HP(+30),<br>PP(+2)"
     },
     "SH10": {
-        name_en: "Act The Soul",
+        name_en: "Acto Di Soul",
         name_jp: "アクト・ジ・ソール",
-        effect_en: "S-ATK(+35),<br>PP(+3)",
+        effect_en: "MEL Pwr(+35),<br>PP(+3)",
         effect_jp: "打撃力(+35),<br>PP(+3)"
     },
     "SH20": {
-        name_en: "Till The Soul",
+        name_en: "Tir Di Soul",
         name_jp: "ティル・ジ・ソール",
-        effect_en: "R-ATK(+35),<br>PP(+3)",
+        effect_en: "RNG Pwr(+35),<br>PP(+3)",
         effect_jp: "射撃力(+35),<br>PP(+3)"
     },
     "SH30": {
-        name_en: "Magi The Soul",
+        name_en: "Magia Di Soul",
         name_jp: "マギー・ジ・ソール",
-        effect_en: "T-ATK(+35),<br>PP(+3)",
+        effect_en: "TEC Pwr(+35),<br>PP(+3)",
         effect_jp: "法撃力(+35),<br>PP(+3)"
     },
     "SH40": {
         name_en: "Ares The Soul",
         name_jp: "アレス・ジ・ソール",
-        effect_en: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>HP(+35),<br>PP(+3)",
+        effect_en: "MEL Pwr(+25),<br>RNG Pwr(+25),<br>TEC Pwr(+25),<br>HP(+35),<br>PP(+3)",
         effect_jp: "打撃力(+25),<br>射撃力(+25),<br>法撃力(+25),<br>HP(+35),<br>PP(+3)"
     },
     "SI01": {
         name_en: "Ex Act Soul",
         name_jp: "イクスアクト・ソール",
-        effect_en: "S-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_en: "MEL Pwr(+30), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
     "SI02": {
         name_en: "Ex Till Soul",
         name_jp: "イクスティル・ソール",
-        effect_en: "R-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_en: "RNG Pwr(+30), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+20), PP(+2)",
         effect_jp: "射撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
     "SI03": {
         name_en: "Ex Magi Soul",
         name_jp: "イクスマギー・ソール",
-        effect_en: "T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_en: "TEC Pwr(+30), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+20), PP(+2)",
         effect_jp: "法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
     "SI04": {
         name_en: "Ex Ares Soul",
         name_jp: "イクスアレス・ソール",
-        effect_en: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+50), PP(+2)",
+        effect_en: "MEL Pwr(+20), RNG Pwr(+20), TEC Pwr(+20), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+50), PP(+2)",
         effect_jp: "打撃力(+20),射撃力(+20),法撃力(+20),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+50),PP(+2)"
     },
     "TA01": {
@@ -3757,37 +3759,37 @@ const lang = Object.freeze({
     "TB01": {
         name_en: "Vinculum",
         name_jp: "ウィンクルム",
-        effect_en: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+20)",
+        effect_en: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>TEC Pwr(+20)",
         effect_jp: "打撃力(+20),<br>射撃力(+20),<br>法撃力(+20)"
     },
     "TC01": {
         name_en: "Modulator",
         name_jp: "モデュレイター",
-        effect_en: "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30)",
+        effect_en: "MEL Pwr(+30),<br>RNG Pwr(+30),<br>TEC Pwr(+30)",
         effect_jp: "打撃力(+30),<br>射撃力(+30),<br>法撃力(+30)"
     },
     "TL01": {
         name_en: "ARKS Max",
         name_jp: "アクス・ＭＡＸ",
-        effect_en: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25)",
+        effect_en: "MEL Pwr(+25),<br>RNG Pwr(+25),<br>TEC Pwr(+25)",
         effect_jp: "打撃力(+25),<br>射撃力(+25),<br>法撃力(+25)"
     },
     "TG02": {
         name_en: "Yamato Factor",
         name_jp: "ヤマト・ファクター",
-        effect_en: "S-ATK(+10),<br>R-ATK(+20),<br>T-ATK(+10),<br>HP(+20),<br>PP(+1)",
+        effect_en: "MEL Pwr(+10),<br>RNG Pwr(+20),<br>TEC Pwr(+10),<br>HP(+20),<br>PP(+1)",
         effect_jp: "打撃力(+10),<br>射撃力(+20),<br>法撃力(+10),<br>HP(+20),<br>PP(+1)"
     },
     "TG03": {
         name_en: "Mother Factor",
         name_jp: "マザー・ファクター",
-        effect_en: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+20),<br>HP(+20),<br>PP(+1)",
+        effect_en: "MEL Pwr(+10),<br>RNG Pwr(+10),<br>TEC Pwr(+20),<br>HP(+20),<br>PP(+1)",
         effect_jp: "打撃力(+10),<br>射撃力(+10),<br>法撃力(+20),<br>HP(+20),<br>PP(+1)"
     },
     "TG04": {
         name_en: "Deus Factor",
         name_jp: "デウス・ファクター",
-        effect_en: "S-ATK(+20),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+20),<br>PP(+1)",
+        effect_en: "MEL Pwr(+20),<br>RNG Pwr(+10),<br>TEC Pwr(+10),<br>HP(+20),<br>PP(+1)",
         effect_jp: "打撃力(+20),<br>射撃力(+10),<br>法撃力(+10),<br>HP(+20),<br>PP(+1)"
     },
     "TG31": {
@@ -3799,43 +3801,43 @@ const lang = Object.freeze({
     "TK01": {
         name_en: "Omega Reverie",
         name_jp: "オメガ・レヴリー",
-        effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>HP(+20),<br>PP(+1)",
+        effect_en: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>HP(+20),<br>PP(+1)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15),<br>HP(+20),<br>PP(+1)"
     },
     "TK02": {
         name_en: "Elder Reverie",
         name_jp: "エルダー・レヴリー",
-        effect_en: "S-ATK(+40),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(-2)",
+        effect_en: "MEL Pwr(+40),<br>RNG Pwr(+20),<br>TEC Pwr(+20),<br>PP(-2)",
         effect_jp: "打撃力(+40),<br>射撃力(+20),<br>法撃力(+20),<br>PP(-2)"
     },
     "TK03": {
-        name_en: "Loser Reverie",
+        name_en: "Luther Reverie",
         name_jp: "ルーサー・レヴリー",
-        effect_en: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+40),<br>HP(-20)",
+        effect_en: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>TEC Pwr(+40),<br>HP(-20)",
         effect_jp: "打撃力(+20),<br>射撃力(+20),<br>法撃力(+40),<br>HP(-20)"
     },
     "TK04": {
-        name_en: "Apprezina Reverie",
+        name_en: "Apprentice Reverie",
         name_jp: "アプレジナ・レヴリー",
-        effect_en: "S-ATK(+20),<br>R-ATK(+40),<br>T-ATK(+20),<br>HP(-10),<br>PP(-1)",
+        effect_en: "MEL Pwr(+20),<br>RNG Pwr(+40),<br>TEC Pwr(+20),<br>HP(-10),<br>PP(-1)",
         effect_jp: "打撃力(+20),<br>射撃力(+40),<br>法撃力(+20),<br>HP(-10),<br>PP(-1)"
     },
     "TK05": {
-        name_en: "Double Reverie",
+        name_en: "Gemini Reverie",
         name_jp: "ダブル・レヴリー",
-        effect_en: "S-ATK(-20),<br>R-ATK(-20),<br>T-ATK(-20),<br>HP(+50),<br>PP(+5)",
+        effect_en: "MEL Pwr(-20),<br>RNG Pwr(-20),<br>TEC Pwr(-20),<br>HP(+50),<br>PP(+5)",
         effect_jp: "打撃力(-20),<br>射撃力(-20),<br>法撃力(-20),<br>HP(+50),<br>PP(+5)"
     },
     "TK06": {
         name_en: "Persona Reverie",
         name_jp: "ペルソナ・レヴリー",
-        effect_en: "S-ATK(+40),R-ATK(+40),T-ATK(+40),S-DEF(-20),R-DEF(-20),T-DEF(-20)",
+        effect_en: "MEL Pwr(+40),RNG Pwr(+40),TEC Pwr(+40),MEL Def(-20),RNG Def(-20),TEC Def(-20)",
         effect_jp: "打撃力(+40),射撃力(+40),法撃力(+40),打撃防御(-20),射撃防御(-20),法撃防御(-20)"
     },
     "TK10": {
         name_en: "Mana Reverie",
         name_jp: "マナ・レヴリー",
-        effect_en: "S-ATK(+50),R-ATK(+50),T-ATK(+50),HP(+20),PP(+4)",
+        effect_en: "MEL Pwr(+50),RNG Pwr(+50),TEC Pwr(+50),HP(+20),PP(+4)",
         effect_jp: "打撃力(+50),射撃力(+50),法撃力(+50),HP(+20),PP(+4)"
     },
     "TJ01": {
@@ -3877,77 +3879,77 @@ const lang = Object.freeze({
     "TM01": {
         name_en: "Crack I",
         name_jp: "クラックI",
-        effect_en: "S-ATK(+3), R-ATK(+3), T-ATK(+3), S-DEF(+5), R-DEF(+5), T-DEF(+5), HP(+5), PP(+1)",
+        effect_en: "MEL Pwr(+3), RNG Pwr(+3), TEC Pwr(+3), MEL Def(+5), RNG Def(+5), TEC Def(+5), HP(+5), PP(+1)",
         effect_jp: "打撃力(+3),射撃力(+3),法撃力(+3),打撃防御(+5),射撃防御(+5),法撃防御(+5),HP(+5),PP(+1)"
     },
     "TM02": {
         name_en: "Crack II",
         name_jp: "クラックII",
-        effect_en: "S-ATK(+5), R-ATK(+5), T-ATK(+5), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+10), PP(+1)",
+        effect_en: "MEL Pwr(+5), RNG Pwr(+5), TEC Pwr(+5), MEL Def(+10), RNG Def(+10), TEC Def(+10), HP(+10), PP(+1)",
         effect_jp: "打撃力(+5),射撃力(+5),法撃力(+5),打撃防御(+10),射撃防御(+10),法撃防御(+10),HP(+10),PP(+1)"
     },
     "TM03": {
         name_en: "Crack III",
         name_jp: "クラックIII",
-        effect_en: "S-ATK(+10), R-ATK(+10), T-ATK(+10), S-DEF(+15), R-DEF(+15), T-DEF(+15), HP(+15), PP(+1)",
+        effect_en: "MEL Pwr(+10), RNG Pwr(+10), TEC Pwr(+10), MEL Def(+15), RNG Def(+15), TEC Def(+15), HP(+15), PP(+1)",
         effect_jp: "打撃力(+10),射撃力(+10),法撃力(+10),打撃防御(+15),射撃防御(+15),法撃防御(+15),HP(+15),PP(+1)"
     },
     "TM04": {
         name_en: "Crack IV",
         name_jp: "クラックIV",
-        effect_en: "S-ATK(+15), R-ATK(+15), T-ATK(+15), S-DEF(+30), R-DEF(+30), T-DEF(+30), HP(+30), PP(+2)",
+        effect_en: "MEL Pwr(+15), RNG Pwr(+15), TEC Pwr(+15), MEL Def(+30), RNG Def(+30), TEC Def(+30), HP(+30), PP(+2)",
         effect_jp: "打撃力(+15),射撃力(+15),法撃力(+15),打撃防御(+30),射撃防御(+30),法撃防御(+30),HP(+30),PP(+2)"
     },
     "TM05": {
         name_en: "Crack V",
         name_jp: "クラックV",
-        effect_en: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+50), R-DEF(+50), T-DEF(+50), HP(+50), PP(+2)",
+        effect_en: "MEL Pwr(+30), RNG Pwr(+30), TEC Pwr(+30), MEL Def(+50), RNG Def(+50), TEC Def(+50), HP(+50), PP(+2)",
         effect_jp: "打撃力(+30),射撃力(+30),法撃力(+30),打撃防御(+50),射撃防御(+50),法撃防御(+50),HP(+50),PP(+2)"
     },
     "TN01": {
         name_en: "Ange Glare",
         name_jp: "アンジュール・グレア",
-        effect_en: "S-ATK(+30), S-DEF(+40), R-DEF(+20), T-DEF(+20)",
+        effect_en: "MEL Pwr(+30), MEL Def(+40), RNG Def(+20), TEC Def(+20)",
         effect_jp: "打撃力(+30),打撃防御(+40),射撃防御(+20),法撃防御(+20)"
     },
     "TN02": {
         name_en: "Veluge Glare",
         name_jp: "べルージュ・グレア",
-        effect_en: "R-ATK(+30), S-DEF(+20), R-DEF(+40), T-DEF(+20)",
+        effect_en: "RNG Pwr(+30), MEL Def(+20), RNG Def(+40), TEC Def(+20)",
         effect_jp: "射撃力(+30),打撃防御(+20),射撃防御(+40),法撃防御(+20)"
     },
     "TN03": {
         name_en: "Dominus Glare",
         name_jp: "ドゥミヌス・グレア",
-        effect_en: "T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+40)",
+        effect_en: "TEC Pwr(+30), MEL Def(+20), RNG Def(+20), TEC Def(+40)",
         effect_jp: "法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+40)"
     },
     "TN04": {
         name_en: "Fordruss Glare",
         name_jp: "フォードルス・グレア",
-        effect_en: "S-DEF(+35), R-DEF(+35), T-DEF(+35), HP(+40), PP(+4)",
+        effect_en: "MEL Def(+35), RNG Def(+35), TEC Def(+35), HP(+40), PP(+4)",
         effect_jp: "打撃防御(+35),射撃防御(+35),法撃防御(+35),HP(+40),PP(+4)"
     },
     "TN05": {
         name_en: "Execour Glare",
         name_jp: "エクゼクル・グレア",
-        effect_en: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+50), R-DEF(+50), T-DEF(+50)",
+        effect_en: "MEL Pwr(+20), RNG Pwr(+20), TEC Pwr(+20), MEL Def(+50), RNG Def(+50), TEC Def(+50)",
         effect_jp: "打撃力(+20),射撃力(+20),法撃力(+20),打撃防御(+50),射撃防御(+50),法撃防御(+50)"
     },
     "TN06": {
         name_en: "Mitra Glare",
         name_jp: "ミトラ・グレア",
-        effect_en: "S-ATK(+30), R-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_en: "MEL Pwr(+30), RNG Pwr(+30), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30),射撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
     "TN07": {
         name_en: "Varuna Glare",
         name_jp: "ヴァルナ・グレア",
-        effect_en: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_en: "MEL Pwr(+30), TEC Pwr(+30), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
     "TF01": {
-        name_en: "Spirita Alpha",
+        name_en: "Spirit Alpha",
         name_jp: "スピリタ・アルファ",
         effect_en: "DEX(+30),<br>PP(+3)",
         effect_jp: "技量(+30),<br>PP(+3)"
@@ -3955,115 +3957,115 @@ const lang = Object.freeze({
     "TI01": {
         name_en: "Necky Smile",
         name_jp: "ネッキー・スマイル",
-        effect_en: "S-ATK(+5),<br>R-ATK(+5),<br>T-ATK(+5),<br>PP(+2)",
+        effect_en: "MEL Pwr(+5),<br>RNG Pwr(+5),<br>TEC Pwr(+5),<br>PP(+2)",
         effect_jp: "打撃力(+5),<br>射撃力(+5),<br>法撃力(+5),<br>PP(+2)"
     },
     "TH01": {
         name_en: "Doom Break",
         name_jp: "ドゥームブレイクⅠ",
-        effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>PP(+2)",
+        effect_en: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>PP(+2)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15),<br>PP(+2)"
     },
     "TH02": {
         name_en: "Doom Break 2",
         name_jp: "ドゥームブレイクⅡ",
-        effect_en: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
+        effect_en: "MEL Pwr(+25),<br>RNG Pwr(+25),<br>TEC Pwr(+25),<br>PP(+3)",
         effect_jp: "打撃力(+25),<br>射撃力(+25),<br>法撃力(+25),<br>PP(+3)"
     },
     "TH03": {
         name_en: "Doom Break 3",
         name_jp: "ドゥームブレイクⅢ",
-        effect_en: "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
+        effect_en: "MEL Pwr(+30),<br>RNG Pwr(+30),<br>TEC Pwr(+30),<br>PP(+4)",
         effect_jp: "打撃力(+30),<br>射撃力(+30),<br>法撃力(+30),<br>PP(+4)"
     },
     "LP01": {
-        name_en: "Lesser Power I",
+        name_en: "Lesser Might I",
         name_jp: "レッサー・パワーⅠ",
-        effect_en: "S-ATK(+5)",
+        effect_en: "MEL Pwr(+5)",
         effect_jp: "打撃力(+5)"
     },
     "LP02": {
-        name_en: "Lesser Power II",
+        name_en: "Lesser Might II",
         name_jp: "レッサー・パワーⅡ",
-        effect_en: "S-ATK(+15)",
+        effect_en: "MEL Pwr(+15)",
         effect_jp: "打撃力(+15)"
     },
     "LP03": {
-        name_en: "Lesser Power III",
+        name_en: "Lesser Might III",
         name_jp: "レッサー・パワーⅢ",
-        effect_en: "S-ATK(+25)",
+        effect_en: "MEL Pwr(+25)",
         effect_jp: "打撃力(+25)"
     },
     "LP04": {
-        name_en: "Lesser Power IV",
+        name_en: "Lesser Might IV",
         name_jp: "レッサー・パワーⅣ",
-        effect_en: "S-ATK(+30)",
+        effect_en: "MEL Pwr(+30)",
         effect_jp: "打撃力(+30)"
     },
     "LP05": {
-        name_en: "Lesser Power V",
+        name_en: "Lesser Might V",
         name_jp: "レッサー・パワーⅤ",
-        effect_en: "S-ATK(+35)",
+        effect_en: "MEL Pwr(+35)",
         effect_jp: "打撃力(+35)"
     },
     "LS01": {
-        name_en: "Lesser Shoot I",
+        name_en: "Lesser Precision I",
         name_jp: "レッサー・シュートⅠ",
-        effect_en: "R-ATK(+5)",
+        effect_en: "RNG Pwr(+5)",
         effect_jp: "射撃力(+5)"
     },
     "LS02": {
-        name_en: "Lesser Shoot II",
+        name_en: "Lesser Precision II",
         name_jp: "レッサー・シュートⅡ",
-        effect_en: "R-ATK(+15)",
+        effect_en: "RNG Pwr(+15)",
         effect_jp: "射撃力(+15)"
     },
     "LS03": {
-        name_en: "Lesser Shoot III",
+        name_en: "Lesser Precision III",
         name_jp: "レッサー・シュートⅢ",
-        effect_en: "R-ATK(+25)",
+        effect_en: "RNG Pwr(+25)",
         effect_jp: "射撃力(+25)"
     },
     "LS04": {
-        name_en: "Lesser Shoot IV",
+        name_en: "Lesser Precision IV",
         name_jp: "レッサー・シュートⅣ",
-        effect_en: "R-ATK(+30)",
+        effect_en: "RNG Pwr(+30)",
         effect_jp: "射撃力(+30)"
     },
     "LS05": {
-        name_en: "Lesser Shoot V",
+        name_en: "Lesser Precision V",
         name_jp: "レッサー・シュートⅤ",
-        effect_en: "R-ATK(+35)",
+        effect_en: "RNG Pwr(+35)",
         effect_jp: "射撃力(+35)"
     },
     "LT01": {
-        name_en: "Lesser Technique I",
+        name_en: "Lesser Casting I",
         name_jp: "レッサー・テクニックⅠ",
-        effect_en: "T-ATK(+5)",
+        effect_en: "TEC Pwr(+5)",
         effect_jp: "法撃力(+5)"
     },
     "LT02": {
-        name_en: "Lesser Technique II",
+        name_en: "Lesser Casting II",
         name_jp: "レッサー・テクニックⅡ",
-        effect_en: "T-ATK(+15)",
+        effect_en: "TEC Pwr(+15)",
         effect_jp: "法撃力(+15)"
     },
     "LT03": {
-        name_en: "Lesser Technique III",
+        name_en: "Lesser Casting III",
         name_jp: "レッサー・テクニックⅢ",
-        effect_en: "T-ATK(+25)",
+        effect_en: "TEC Pwr(+25)",
         effect_jp: "法撃力(+25)"
     },
     "LT04": {
-        name_en: "Lesser Technique IV",
+        name_en: "Lesser Casting IV",
         name_jp: "レッサー・テクニックⅣ",
-        effect_en: "T-ATK(+30)",
+        effect_en: "TEC Pwr(+30)",
         effect_jp: "法撃力(+30)"
     },
     "LT05": {
-        name_en: "Lesser Technique V",
+        name_en: "Lesser Casting V",
         name_jp: "レッサー・テクニックⅤ",
-        effect_en: "T-ATK(+35)",
+        effect_en: "TEC Pwr(+35)",
         effect_jp: "法撃力(+35)"
     },
     "LM01": {
@@ -4097,123 +4099,123 @@ const lang = Object.freeze({
         effect_jp: "HP(+65)"
     },
     "LR01": {
-        name_en: "Lesser Spirita I",
+        name_en: "Lesser Spirit I",
         name_jp: "レッサー・スピリタⅠ",
         effect_en: "PP(+1)",
         effect_jp: "PP(+1)"
     },
     "LR02": {
-        name_en: "Lesser Spirita II",
+        name_en: "Lesser Spirit II",
         name_jp: "レッサー・スピリタⅡ",
         effect_en: "PP(+2)",
         effect_jp: "PP(+2)"
     },
     "LR03": {
-        name_en: "Lesser Spirita III",
+        name_en: "Lesser Spirit III",
         name_jp: "レッサー・スピリタⅢ",
         effect_en: "PP(+3)",
         effect_jp: "PP(+3)"
     },
     "LR04": {
-        name_en: "Lesser Spirita IV",
+        name_en: "Lesser Spirit IV",
         name_jp: "レッサー・スピリタⅣ",
         effect_en: "PP(+4)",
         effect_jp: "PP(+4)"
     },
     "LR05": {
-        name_en: "Lesser Spirita V",
+        name_en: "Lesser Spirit V",
         name_jp: "レッサー・スピリタⅤ",
         effect_en: "PP(+5)",
         effect_jp: "PP(+5)"
     },
     "LP06": {
-        name_en: "EV Power HP",
+        name_en: "EV Might HP",
         name_jp: "EV・パワーHP",
-        effect_en: "S-ATK(+35),<br>HP(+60)",
+        effect_en: "MEL Pwr(+35),<br>HP(+60)",
         effect_jp: "打撃力(+35),<br>HP(+60)"
     },
     "LP07": {
-        name_en: "EV Power PP",
+        name_en: "EV Might PP",
         name_jp: "EV・パワーPP",
-        effect_en: "S-ATK(+35),<br>PP(+4)",
+        effect_en: "MEL Pwr(+35),<br>PP(+4)",
         effect_jp: "打撃力(+35),<br>PP(+4)"
     },
     "LS06": {
-        name_en: "EV Shoot HP",
+        name_en: "EV Precision HP",
         name_jp: "EV・シュートHP",
-        effect_en: "R-ATK(+35),<br>HP(+60)",
+        effect_en: "RNG Pwr(+35),<br>HP(+60)",
         effect_jp: "射撃力(+35),<br>HP(+60)"
     },
     "LS07": {
-        name_en: "EV Shoot PP",
+        name_en: "EV Precision PP",
         name_jp: "EV・シュートPP",
-        effect_en: "R-ATK(+35),<br>PP(+4)",
+        effect_en: "RNG Pwr(+35),<br>PP(+4)",
         effect_jp: "射撃力(+35),<br>PP(+4)"
     },
     "LT06": {
-        name_en: "EV Technique HP",
+        name_en: "EV Casting HP",
         name_jp: "EV・テクニックHP",
-        effect_en: "T-ATK(+35),<br>HP(+60)",
+        effect_en: "TEC Pwr(+35),<br>HP(+60)",
         effect_jp: "法撃力(+35),<br>HP(+60)"
     },
     "LT07": {
-        name_en: "EV Technique PP",
+        name_en: "EV Casting PP",
         name_jp: "EV・テクニックPP",
-        effect_en: "T-ATK(+35),<br>PP(+4)",
+        effect_en: "TEC Pwr(+35),<br>PP(+4)",
         effect_jp: "法撃力(+35),<br>PP(+4)"
     },
     "TD01": {
         name_en: "Lovey Fever",
         name_jp: "ラヴィ・フィーバー",
-        effect_en: "S-ATK(+10),<br>DEX(+5),<br>HP(+10)",
+        effect_en: "MEL Pwr(+10),<br>DEX(+5),<br>HP(+10)",
         effect_jp: "打撃力(+10),<br>技量(+5),<br>HP(+10)"
     },
     "TD02": {
         name_en: "Egg Fever",
         name_jp: "エグ・フィーバー",
-        effect_en: "R-ATK(+10),<br>DEX(+5),<br>HP(+10)",
+        effect_en: "RNG Pwr(+10),<br>DEX(+5),<br>HP(+10)",
         effect_jp: "射撃力(+10),<br>技量(+5),<br>HP(+10)"
     },
     "TD03": {
-        name_en: "Frog Fever",
+        name_en: "Froggy Fever",
         name_jp: "フログ・フィーバー",
-        effect_en: "T-ATK(+10),<br>DEX(+5),<br>HP(+10)",
+        effect_en: "TEC Pwr(+10),<br>DEX(+5),<br>HP(+10)",
         effect_jp: "法撃力(+10),<br>技量(+5),<br>HP(+10)"
     },
     "TD04": {
         name_en: "Love Fever",
         name_jp: "ラブ・フィーバー",
-        effect_en: "S-ATK(+10),<br>DEX(+5),<br>PP(+2)",
+        effect_en: "MEL Pwr(+10),<br>DEX(+5),<br>PP(+2)",
         effect_jp: "打撃力(+10),<br>技量(+5),<br>PP(+2)"
     },
     "TD05": {
-        name_en: "St. Fever",
+        name_en: "Santa Fever",
         name_jp: "セント・フィーバー",
-        effect_en: "R-ATK(+10),<br>DEX(+5),<br>PP(+2)",
+        effect_en: "RNG Pwr(+10),<br>DEX(+5),<br>PP(+2)",
         effect_jp: "射撃力(+10),<br>技量(+5),<br>PP(+2)"
     },
     "TD06": {
-        name_en: "Latan Fever",
+        name_en: "Rattan Fever",
         name_jp: "ラタン・フィーバー",
-        effect_en: "T-ATK(+10),<br>DEX(+5),<br>PP(+2)",
+        effect_en: "TEC Pwr(+10),<br>DEX(+5),<br>PP(+2)",
         effect_jp: "法撃力(+10),<br>技量(+5),<br>PP(+2)"
     },
     "TD07": {
         name_en: "Summer Fever",
         name_jp: "サマー・フィーバー",
-        effect_en: "T-ATK(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)",
+        effect_en: "TEC Pwr(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)",
         effect_jp: "法撃力(+10),<br>技量(+5),<br>HP(+5),<br>PP(+1)"
     },
     "TD08": {
         name_en: "Ceremo Fever",
         name_jp: "セレモ・フィーバー",
-        effect_en: "S-ATK(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)",
+        effect_en: "MEL Pwr(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)",
         effect_jp: "打撃力(+10),<br>技量(+5),<br>HP(+5),<br>PP(+1)"
     },
     "TD09": {
         name_en: "Noiya Fever",
         name_jp: "ノイヤ・フィーバー",
-        effect_en: "R-ATK(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)",
+        effect_en: "RNG Pwr(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)",
         effect_jp: "射撃力(+10),<br>技量(+5),<br>HP(+5),<br>PP(+1"
     },
     "TD0A": {
@@ -4225,151 +4227,151 @@ const lang = Object.freeze({
     "TD0B": {
         name_en: "Sakura Fever",
         name_jp: "サクラ・フィーバー",
-        effect_en: "S-DEF(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)",
+        effect_en: "MEL Def(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)",
         effect_jp: "打撃防御(+10),<br>技量(+5),<br>HP(+5),<br>PP(+1)"
     },
     "TD0C": {
         name_en: "Sonic Fever",
         name_jp: "ソニック・フィーバー",
-        effect_en: "S-ATK(+10),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)",
+        effect_en: "MEL Pwr(+10),<br>RNG Def(+10),<br>HP(+5),<br>PP(+1)",
         effect_jp: "打撃力(+10),<br>射撃防御(+10),<br>HP(+5),<br>PP(+1)"
     },
     "TD0D": {
         name_en: "Sansan Fever",
         name_jp: "サンサン・フィーバー",
-        effect_en: "S-ATK(+5),<br>R-ATK(+5),<br>T-ATK(+5),<br>HP(+5),<br>PP(+1)",
+        effect_en: "MEL Pwr(+5),<br>RNG Pwr(+5),<br>TEC Pwr(+5),<br>HP(+5),<br>PP(+1)",
         effect_jp: "打撃力(+5),<br>射撃力(+5),<br>法撃力(+5),<br>HP(+5),<br>PP(+1)"
     },
     "TD0E": {
         name_en: "Luna Fever",
         name_jp: "ルーナ・フィーバー",
-        effect_en: "T-ATK(+10),<br>HP(+10),<br>PP(+1)",
+        effect_en: "TEC Pwr(+10),<br>HP(+10),<br>PP(+1)",
         effect_jp: "法撃力(+10),<br>HP(+10),<br>PP(+1)"
     },
     "TD0F": {
         name_en: "ARKS Fever",
         name_jp: "アクス・フィーバー",
-        effect_en: "S-ATK(+5),<br>R-ATK(+5),<br>T-ATK(+5),<br>DEX(+5),<br>PP(+5)",
+        effect_en: "MEL Pwr(+5),<br>RNG Pwr(+5),<br>TEC Pwr(+5),<br>DEX(+5),<br>PP(+5)",
         effect_jp: "打撃力(+5),<br>射撃力(+5),<br>法撃力(+5),<br>技量(+5),<br>PP(+5)"
     },
     "UA01": {
         name_en: "Flict Arma",
         name_jp: "フリクト・アルマ",
-        effect_en: "S-ATK(+20),<br>PP(+3)",
+        effect_en: "MEL Pwr(+20),<br>PP(+3)",
         effect_jp: "打撃力(+20),<br>PP(+3)"
     },
     "UA11": {
-        name_en: "Flict Tiro",
+        name_en: "Flict Tyro",
         name_jp: "フリクト・ティロ",
-        effect_en: "R-ATK(+20),<br>PP(+3)",
+        effect_en: "RNG Pwr(+20),<br>PP(+3)",
         effect_jp: "射撃力(+20),<br>PP(+3)"
     },
     "UA21": {
         name_en: "Flict Magia",
         name_jp: "フリクト・マギア",
-        effect_en: "T-ATK(+20),<br>PP(+3)",
+        effect_en: "TEC Pwr(+20),<br>PP(+3)",
         effect_jp: "法撃力(+20),<br>PP(+3)"
     },
     "UB01": {
         name_en: "Alter Arma",
         name_jp: "アルター・アルマ",
-        effect_en: "S-ATK(+20),<br>HP(+30)",
+        effect_en: "MEL Pwr(+20),<br>HP(+30)",
         effect_jp: "打撃力(+20),<br>HP(+30)"
     },
     "UB11": {
-        name_en: "Alter Tiro",
+        name_en: "Alter Tyro",
         name_jp: "アルター・ティロ",
-        effect_en: "R-ATK(+20),<br>HP(+30)",
+        effect_en: "RNG Pwr(+20),<br>HP(+30)",
         effect_jp: "射撃力(+20),<br>HP(+30)"
     },
     "UB21": {
         name_en: "Alter Magia",
         name_jp: "アルター・マギア",
-        effect_en: "T-ATK(+20),<br>HP(+30)",
+        effect_en: "TEC Pwr(+20),<br>HP(+30)",
         effect_jp: "法撃力(+20),<br>HP(+30)"
     },
     "UC01": {
-        name_en: "Mark Joyo",
+        name_en: "Mark Joy",
         name_jp: "マーク・ジョイオ",
-        effect_en: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+50)",
+        effect_en: "MEL Pwr(+40),<br>RNG Pwr(+40),<br>TEC Pwr(+40),<br>HP(+50)",
         effect_jp: "打撃力(+40),<br>射撃力(+40),<br>法撃力(+40),<br>HP(+50)"
     },
     "UC11": {
-        name_en: "Mark Couragena",
+        name_en: "Mark Couragen",
         name_jp: "マーク・カレジナ",
-        effect_en: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>PP(+5)",
+        effect_en: "MEL Pwr(+40),<br>RNG Pwr(+40),<br>TEC Pwr(+40),<br>PP(+5)",
         effect_jp: "打撃力(+40),<br>射撃力(+40),<br>法撃力(+40),<br>PP(+5)"
     },
     "UC21": {
-        name_en: "Mark Angar",
+        name_en: "Mark Anger",
         name_jp: "マーク・アンガル",
-        effect_en: "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>DEX(+40)",
+        effect_en: "MEL Pwr(+50),<br>RNG Pwr(+50),<br>TEC Pwr(+50),<br>DEX(+40)",
         effect_jp: "打撃力(+50),<br>射撃力(+50),<br>法撃力(+50),<br>技量(+40)"
     },
     "UC31": {
-        name_en: "Mark Grif",
+        name_en: "Mark Grief",
         name_jp: "マーク・グリフ",
-        effect_en: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)",
+        effect_en: "MEL Def(+50),<br>RNG Def(+50),<br>TEC Def(+50),<br>HP(+80)",
         effect_jp: "打撃防御(+50),<br>射撃防御(+50),<br>法撃防御(+50),<br>HP(+80)"
     },
     "ID01": {
         name_en: "Divine Will",
         name_jp: "ディバインウィル",
-        effect_en: "S-ATK(+20), R-ATK(+20), T-ATK(+20), PP(+5)",
+        effect_en: "MEL Pwr(+20), RNG Pwr(+20), TEC Pwr(+20), PP(+5)",
         effect_jp: "打撃力(+20),射撃力(+20),法撃力(+20),PP(+5)"
     },
     "ID02": {
         name_en: "Divine Order",
         name_jp: "ディバイン・オーダー",
-        effect_en: "S-ATK(+50), R-ATK(+50), T-ATK(+50), HP(+20), PP(+10)",
+        effect_en: "MEL Pwr(+50), RNG Pwr(+50), TEC Pwr(+50), HP(+20), PP(+10)",
         effect_jp: "打撃力(+50),射撃力(+50),法撃力(+50),HP(+20),PP(+10)"
     },
     "IE01": {
         name_en: "Exceed Energy",
         name_jp: "イクシード・エナジー",
-        effect_en: "S-ATK(+50), R-ATK(+50), T-ATK(+50), DEX(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+5)",
+        effect_en: "MEL Pwr(+50), RNG Pwr(+50), TEC Pwr(+50), DEX(+20), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+20), PP(+5)",
         effect_jp: "打撃力(+50),射撃力(+50),法撃力(+50),技量(+20),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+5)"
     },
     "YA01": {
-        name_en: "Sentence Power",
+        name_en: "Sentence Might",
         name_jp: "センテンス・パワー",
-        effect_en: "S-ATK(+20),<br>PP(+4)",
+        effect_en: "MEL Pwr(+20),<br>PP(+4)",
         effect_jp: "打撃力(+20),<br>PP(+4)"
     },
     "YA05": {
         name_en: "Sentence Arma",
         name_jp: "センテンス・アルマ",
-        effect_en: "S-ATK(+20),<br>HP(+20),<br>PP(+3)",
+        effect_en: "MEL Pwr(+20),<br>HP(+20),<br>PP(+3)",
         effect_jp: "打撃力(+20),<br>HP(+20),<br>PP(+3)"
     },
     "YA11": {
-        name_en: "Sentence Shoot",
+        name_en: "Sentence Precision",
         name_jp: "センテンス・シュート",
-        effect_en: "R-ATK(+20),<br>PP(+4)",
+        effect_en: "RNG Pwr(+20),<br>PP(+4)",
         effect_jp: "射撃力(+20),<br>PP(+4)"
     },
     "YA15": {
-        name_en: "Sentence Tiro",
+        name_en: "Sentence Tyro",
         name_jp: "センテンス・ティロ",
-        effect_en: "R-ATK(+20),<br>HP(+20),<br>PP(+3)",
+        effect_en: "RNG Pwr(+20),<br>HP(+20),<br>PP(+3)",
         effect_jp: "射撃力(+20),<br>HP(+20),<br>PP(+3)"
     },
     "YA21": {
         name_en: "Sentence Tech",
         name_jp: "センテンス・テクニック",
-        effect_en: "T-ATK(+20),<br>PP(+4)",
+        effect_en: "TEC Pwr(+20),<br>PP(+4)",
         effect_jp: "法撃力(+20),<br>PP(+4)"
     },
     "YA25": {
         name_en: "Sentence Magia",
         name_jp: "センテンス・マギア",
-        effect_en: "T-ATK(+20),<br>HP(+20),<br>PP(+3)",
+        effect_en: "TEC Pwr(+20),<br>HP(+20),<br>PP(+3)",
         effect_jp: "法撃力(+20),<br>HP(+20),<br>PP(+3)"
     },
     "YA31": {
         name_en: "Sentence Triple",
         name_jp: "センテンス・テクニック",
-        effect_en: "S-ATK(+30),R-ATK(+30),T-ATK(+30)",
+        effect_en: "MEL Pwr(+30),RNG Pwr(+30),TEC Pwr(+30)",
         effect_jp: "打撃力(+30),射撃力(+30),法撃力(+30)"
     },
     "YB41": {
@@ -4409,81 +4411,81 @@ const lang = Object.freeze({
         effect_jp: "状態異常の敵への威力+5%。"
     },
     "VA01": {
-        name_en: "Lucky Rise I",
+        name_en: "Lucky Charm I",
         name_jp: "ラッキーライズⅠ",
-        effect_en: "Item Drop Rate +5%.",
+        effect_en: "Rare drop rate increases +5%.",
         effect_jp: "レアドロップ倍率が増加を5％。"
     },
     "VA02": {
-        name_en: "Lucky Rise II",
+        name_en: "Lucky Charm II",
         name_jp: "ラッキーライズⅡ",
-        effect_en: "Item Drop Rate +7%.",
+        effect_en: "Rare drop rate increases +7%.",
         effect_jp: "レアドロップ倍率が増加を7％。"
     },
     "VA03": {
-        name_en: "Lucky Rise III",
+        name_en: "Lucky Charm III",
         name_jp: "ラッキーライズⅢ",
-        effect_en: "Item Drop Rate +10%.",
+        effect_en: "Rare drop rate increases +10%.",
         effect_jp: "レアドロップ倍率が増加を10％。"
     },
     "VB01": {
         name_en: "Meseta Fever I",
         name_jp: "メセタフィーバーⅠ",
-        effect_en: "Meseta Drop Amount +5%.",
+        effect_en: "Meseta drop increase +5%.",
         effect_jp: "メセタドロップ率が5％増加。"
     },
     "VZ02": {
         name_en: "Meseta Fever II",
         name_jp: "メセタフィーバーⅡ",
-        effect_en: "Meseta Drop Amount +10%.",
+        effect_en: "Meseta drop increase +10%.",
         effect_jp: "メセタドロップ率が10％増加。"
     },
     "VB03": {
         name_en: "Meseta Fever III",
         name_jp: "メセタフィーバーⅢ",
-        effect_en: "Meseta Drop Amount +15%.",
+        effect_en: "Meseta drop increase +15%.",
         effect_jp: "メセタドロップ率が15％増加。"
     },
     "VC01": {
-        name_en: "EXP Boost I",
+        name_en: "Increased EXP I",
         name_jp: "ＥＸＰブーストⅠ",
-        effect_en: "Experience Gain +5%.",
+        effect_en: "Earned EXP increases +5%.",
         effect_jp: "取得する経験値が増加を5％。"
     },
     "VC02": {
-        name_en: "EXP Boost II",
+        name_en: "Increased EXP II",
         name_jp: "ＥＸＰブーストⅡ",
-        effect_en: "Experience Gain +7%.",
+        effect_en: "Earned EXP increases +7%.",
         effect_jp: "取得する経験値が増加を7％。"
     },
     "VC03": {
-        name_en: "EXP Boost III",
+        name_en: "Increased EXP III",
         name_jp: "ＥＸＰブーストⅢ",
-        effect_en: "Experience Gain +10%.",
+        effect_en: "Earned EXP increases +10%.",
         effect_jp: "取得する経験値が増加を10％。"
     },
     "VD01": {
         name_en: "Temptation",
         name_jp: "テンプテーション",
-        effect_en: "Item Drop Rate +10%.",
+        effect_en: "Rare drop rate increases +10%.",
         effect_jp: "レアドロップ倍率が増加を10％。"
     },
     "VE01": {
-        name_en: "Another History",
+        name_en: "Alternate History",
         name_jp: "アナザーヒストリー",
-        effect_en: "Experience Gain +10%.",
+        effect_en: "Earned EXP increases +10%.",
         effect_jp: "取得する経験値が増加を10％。"
     },
     "VF01": {
         name_en: "Fresh Sign",
         name_jp: "フレッシュ・サイン",
-        effect_en: "Boost EXP by 30% until Lv30.",
+        effect_en: "Earned EXP increases 30% when under level 30.",
         effect_jp: "Lv30に到達するまで取得する経験値が増加するを30％。"
     },
     "VH01": {
         name_en: "Ultimate Buster",
         name_jp: "アルティメットバスター",
-        effect_en: "Boost damage in Ultimate +10%.",
+        effect_en: "Damage to Tainted increases 10%. No effect for 13* Weapons",
         effect_jp: "世壊種エネミーに与えるダメージが10%上昇。"
     },
     "VH11": {
@@ -4607,25 +4609,25 @@ const lang = Object.freeze({
         effect_jp: "新世武器強化時の経験値が25増加する。"
     },
     "VK01": {
-        name_en: "Emper Embrace",
+        name_en: "Empy Embrace",
         name_jp: "エンぺ・エンブレイス",
-        effect_en: "Adds 90 EXP to NT weapon grinds.",
+        effect_en: "Weapon Enhancement EXP +90.",
         effect_jp: "新世武器強化時の経験値が90増加する。"
     },
     "VO01": {
         name_en: "Guidance Trainer",
         name_jp: "錬成の導き",
-        effect_en: "Increase Special Ability Addition success rate by 5%.",
+        effect_en: "Increase the augmentation success rate by 5%.",
         effect_jp: "特殊能力の成功率を5％上昇させる。"
     },
     "VK05": {
-        name_en: "NT Weapon Booster",
+        name_en: "Weapon Booster",
         name_jp: "ＮＴウェポンブースト",
-        effect_en: "Adds 800 EXP to NT weapon grinds.",
+        effect_en: "Weapon Enhancement EXP +800.",
         effect_jp: "新世武器強化時の経験値が800増加する。"
     },
     "WA01": {
-        name_en: "Photon Collect",
+        name_en: "Photon Collection",
         name_jp: "フォトンコレクト",
         effect_en: "Boosts status effect affix rate.",
         effect_jp: "状態異常系特殊能力のランクアップ時に成功率を上昇させる。"
@@ -4687,19 +4689,19 @@ const lang = Object.freeze({
     "XI30": {
         name_en: "Attack Receptor",
         name_jp: "アタックレセプター",
-        effect_en: "Greatly increases affix rate of Power, Shoot, Technique, and Arm.<br>ALL(+5)",
+        effect_en: "Greatly increases affix rate of Might, Precision, Casting, and Deftness.<br>ALL(+5)",
         effect_jp: "パワー・シュート・テクニック系特殊能力の合成成功率を大幅に上昇。<br>ALL(+5)"
     },
     "XI31": {
         name_en: "Guard Receptor",
         name_jp: "ガードレセプター",
-        effect_en: "Greatly increases affix rate of Mind, Body, and React.<br>ALL(+5)",
+        effect_en: "Greatly increases affix rate of Genius, Toughness, and Reflex.<br>ALL(+5)",
         effect_jp: "マインド・ボディ・リアクト系特殊能力の合成成功率を大幅に上昇。<br>ALL(+5)"
     },
     "XI32": {
         name_en: "Photon Receptor",
         name_jp: "フォトンレセプター",
-        effect_en: "Greatly increases affix rate of Stamina and Spirita.<br>ALL(+5)",
+        effect_en: "Greatly increases affix rate of Stamina and Spirit.<br>ALL(+5)",
         effect_jp: "スタミナ・スピリタ系特殊能力の合成成功率を大幅に上昇。<br>ALL(+5)"
     },
     "XI02": {
@@ -4709,45 +4711,45 @@ const lang = Object.freeze({
         effect_jp: "HP(+45)"
     },
     "XI03": {
-        name_en: "Spirita Boost",
+        name_en: "Spirit Boost",
         name_jp: "スピリタ・ブースト",
         effect_en: "PP(+5)",
         effect_jp: "PP(+5)"
     },
     "XI04": {
-        name_en: "Power Boost",
+        name_en: "Might Boost",
         name_jp: "パワー・ブースト",
-        effect_en: "S-ATK(+25)",
+        effect_en: "MEL Pwr(+25)",
         effect_jp: "打撃力(+25)"
     },
     "XI05": {
-        name_en: "Shoot Boost",
+        name_en: "Precision Boost",
         name_jp: "シュート・ブースト",
-        effect_en: "R-ATK(+25)",
+        effect_en: "RNG Pwr(+25)",
         effect_jp: "射撃力(+25)"
     },
     "XI06": {
-        name_en: "Technique Boost",
+        name_en: "Casting Boost",
         name_jp: "テクニック・ブースト",
-        effect_en: "T-ATK(+25)",
+        effect_en: "TEC Pwr(+25)",
         effect_jp: "法撃力(+25)"
     },
     "XI0a": {
         name_en: "Tenora Boost",
         name_jp: "テノラ・ブースト",
-        effect_en: "S-ATK(+35)",
+        effect_en: "MEL Pwr(+35)",
         effect_jp: "打撃力(+35)"
     },
     "XI0b": {
         name_en: "GRM Boost",
         name_jp: "ＧＲＭ・ブースト",
-        effect_en: "R-ATK(+35)",
+        effect_en: "RNG Pwr(+35)",
         effect_jp: "射撃力(+35)"
     },
     "XI0c": {
         name_en: "Yohmei Boost",
         name_jp: "ヨウメイ・ブースト",
-        effect_en: "T-ATK(+35)",
+        effect_en: "TEC Pwr(+35)",
         effect_jp: "法撃力(+35)"
     },
     "XI10": {
@@ -4775,79 +4777,79 @@ const lang = Object.freeze({
         effect_jp: "HP(+100),PP(+6)"
     },
     "XI07": {
-        name_en: "Noble Power",
+        name_en: "Noble Might",
         name_jp: "ノーブル・パワー",
-        effect_en: "S-ATK(+30),PP(+3)",
+        effect_en: "MEL Pwr(+30),PP(+3)",
         effect_jp: "打撃力(+30),PP(+3)"
     },
     "XI11": {
-        name_en: "Elegant Power",
+        name_en: "Elegant Might",
         name_jp: "エレガント・パワー",
-        effect_en: "S-ATK(+40),PP(+4)",
+        effect_en: "MEL Pwr(+40),PP(+4)",
         effect_jp: "打撃力(+40),PP(+4)"
     },
     "XI52": {
-        name_en: "Grace Power",
+        name_en: "Grace Might",
         name_jp: "グレース・パワー",
-        effect_en: "S-ATK(+50),PP(+5)",
+        effect_en: "MEL Pwr(+50),PP(+5)",
         effect_jp: "打撃力(+50),PP(+5)"
     },
     "XI62": {
-        name_en: "Grand Power",
+        name_en: "Grand Might",
         name_jp: "グランド・パワー",
-        effect_en: "S-ATK(+60),HP(+20),PP(+5)",
+        effect_en: "MEL Pwr(+60),HP(+20),PP(+5)",
         effect_jp: "打撃力(+60),HP(+20),PP(+5)"
     },
     "XI08": {
-        name_en: "Noble Shoot",
+        name_en: "Noble Precision",
         name_jp: "ノーブル・シュート",
-        effect_en: "R-ATK(+30),PP(+3)",
+        effect_en: "RNG Pwr(+30),PP(+3)",
         effect_jp: "射撃力(+30),PP(+3)"
     },
     "XI12": {
-        name_en: "Elegant Shoot",
+        name_en: "Elegant Precision",
         name_jp: "エレガント・シュート",
-        effect_en: "R-ATK(+40),PP(+4)",
+        effect_en: "RNG Pwr(+40),PP(+4)",
         effect_jp: "射撃力(+40),PP(+4)"
     },
     "XI53": {
-        name_en: "Grace Shoot",
+        name_en: "Grace Precision",
         name_jp: "グレース・シュート",
-        effect_en: "R-ATK(+50),PP(+5)",
+        effect_en: "RNG Pwr(+50),PP(+5)",
         effect_jp: "射撃力(+50),PP(+5)"
     },
     "XI63": {
-        name_en: "Grand Shoot",
+        name_en: "Grand Precision",
         name_jp: "グランド・シュート",
-        effect_en: "R-ATK(+60),HP(+20),PP(+5)",
+        effect_en: "RNG Pwr(+60),HP(+20),PP(+5)",
         effect_jp: "射撃力(+60),HP(+20),PP(+5)"
     },
     "XI09": {
-        name_en: "Noble Technique",
+        name_en: "Noble Casting",
         name_jp: "ノーブル・テクニック",
-        effect_en: "T-ATK(+30),PP(+3)",
+        effect_en: "TEC Pwr(+30),PP(+3)",
         effect_jp: "法撃力(+30),PP(+3)"
     },
     "XI13": {
-        name_en: "Elegant Technique",
+        name_en: "Elegant Casting",
         name_jp: "エレガント・テクニック",
-        effect_en: "T-ATK(+40),PP(+4)",
+        effect_en: "TEC Pwr(+40),PP(+4)",
         effect_jp: "法撃力(+40),PP(+4)"
     },
     "XI54": {
-        name_en: "Grace Technique",
+        name_en: "Grace Casting",
         name_jp: "グレース・テクニック",
-        effect_en: "T-ATK(+50),PP(+5)",
+        effect_en: "TEC Pwr(+50),PP(+5)",
         effect_jp: "法撃力(+50),PP(+5)"
     },
     "XI64": {
-        name_en: "Grand Technique",
+        name_en: "Grand Casting",
         name_jp: "グランド・テクニック",
-        effect_en: "T-ATK(+60),HP(+20),PP(+5)",
+        effect_en: "TEC Pwr(+60),HP(+20),PP(+5)",
         effect_jp: "法撃力(+50),HP(+20),PP(+5)"
     },
     "XI60": {
-        name_en: "Grace Spirita",
+        name_en: "Grace Spirit",
         name_jp: "グランド・スピリタ",
         effect_en: "PP(+15)",
         effect_jp: "PP(+15)"
@@ -4855,25 +4857,25 @@ const lang = Object.freeze({
     "XI20": {
         name_en: "Offense Boost",
         name_jp: "オフェンス・ブースト",
-        effect_en: "S-ATK(+15),R-ATK(+15),T-ATK(+15),DEX(+25),PP(+1)",
+        effect_en: "MEL Pwr(+15),RNG Pwr(+15),TEC Pwr(+15),DEX(+25),PP(+1)",
         effect_jp: "打撃力(+15),射撃力(+15),法撃力(+15),技量(+25),PP(+1)"
     },
     "XI22": {
         name_en: "Attack Boost",
         name_jp: "アタックブースト",
-        effect_en: "S-ATK(+25),R-ATK(+25),T-ATK(+25),DEX(+40),PP(+3)",
+        effect_en: "MEL Pwr(+25),RNG Pwr(+25),TEC Pwr(+25),DEX(+40),PP(+3)",
         effect_jp: "打撃力(+25),射撃力(+25),法撃力(+25),技量(+40),PP(+3)"
     },
     "XI21": {
         name_en: "Defense Boost",
         name_jp: "ディフェンス・ブースト",
-        effect_en: "S-DEF(+25),R-DEF(+25),T-DEF(+25),HP(+55),PP(+1)",
+        effect_en: "MEL Def(+25),RNG Def(+25),TEC Def(+25),HP(+55),PP(+1)",
         effect_jp: "打撃防御(+25),射撃防御(+25),法撃防御(+25),HP(+55),PP(+1)"
     },
     "XI23": {
         name_en: "Guard Boost",
         name_jp: "ガードブースト",
-        effect_en: "S-DEF(+35),R-DEF(+35),T-DEF(+35),HP(+75),PP(+3)",
+        effect_en: "MEL Def(+35),RNG Def(+35),TEC Def(+35),HP(+75),PP(+3)",
         effect_jp: "打撃防御(+35),射撃防御(+35),法撃防御(+35),HP(+75),PP(+3)"
     },
     "ZA01": {
