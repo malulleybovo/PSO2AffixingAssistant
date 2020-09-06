@@ -25,7 +25,6 @@
  *
  */
  
- //tester
 
 const lang = Object.freeze({
     "app": {
