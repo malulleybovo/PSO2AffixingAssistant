@@ -24,7 +24,6 @@
  * for the JavaScript code in this page.
  *
  */
- 
 
 const lang = Object.freeze({
     "app": {
@@ -3846,31 +3845,31 @@ const lang = Object.freeze({
         effect_jp: "ALL(+15),<br>HP(+15),<br>PP(+2)"
     },
     "TE01": {
-        name_en: "Returner I",
+        name_en: "Veteran\'s Resolve I",
         name_jp: "リターナーⅠ",
         effect_en: "ALL(+3),<br>HP(+3),<br>PP(+1)",
         effect_jp: "ALL(+3),<br>HP(+3),<br>PP(+1)"
     },
     "TE02": {
-        name_en: "Returner II",
+        name_en: "Veteran\'s Resolve II",
         name_jp: "リターナーⅡ",
         effect_en: "ALL(+5),<br>HP(+5),<br>PP(+2)",
         effect_jp: "ALL(+5),<br>HP(+5),<br>PP(+2)"
     },
     "TE03": {
-        name_en: "Returner III",
+        name_en: "Veteran\'s Resolve III",
         name_jp: "リターナーⅢ",
         effect_en: "ALL(+10),<br>HP(+10),<br>PP(+3)",
         effect_jp: "ALL(+10),<br>HP(+10),<br>PP(+3)"
     },
     "TE04": {
-        name_en: "Returner IV",
+        name_en: "Veteran\'s Resolve IV",
         name_jp: "リターナーⅣ",
         effect_en: "ALL(+15),<br>HP(+15),<br>PP(+4)",
         effect_jp: "ALL(+15),<br>HP(+15),<br>PP(+4)"
     },
     "TE05": {
-        name_en: "Returner V",
+        name_en: "Veteran\'s Resolve V",
         name_jp: "リターナーⅤ",
         effect_en: "ALL(+30),<br>HP(+30),<br>PP(+5)",
         effect_jp: "ALL(+30),<br>HP(+30),<br>PP(+5)"
