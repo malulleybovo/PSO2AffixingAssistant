@@ -523,7 +523,7 @@ const lang = Object.freeze({
             en: "Add Ability (Grand HP)",
             jp: "特殊能力(グランドHP)"
         },
-        "Add Ability (MEL PwrK&PP)": {
+        "Add Ability (MEL Pwr&PP)": {
             en: "Add Ability (MEL Pwr&PP)",
             jp: "特殊能力追加(打撃&PP)"
         },
@@ -640,7 +640,7 @@ const lang = Object.freeze({
             jp: "特殊能力(テクニックⅥ)"
         },
         "Add Ability (Mastery IV)": {
-            en: "Add Ability (Ability IV)",
+            en: "Add Ability (Mastery IV)",
             jp: "特殊能力(アビリティⅣ)"
         },
         "Add Ability (Mark Joy)": {
@@ -1445,31 +1445,31 @@ const lang = Object.freeze({
         effect_jp: "ALL(+25)"
     },
     "HA01": {
-        name_en: "Impact Resist I",
+        name_en: "Impact Ward I",
         name_jp: "ブロウレジストⅠ",
         effect_en: "Strike Resist(+3)",
         effect_jp: "打撃耐性(+3)"
     },
     "HA02": {
-        name_en: "Impact Resist II",
+        name_en: "Impact Ward II",
         name_jp: "ブロウレジストⅡ",
         effect_en: "Strike Resist(+4)",
         effect_jp: "打撃耐性(+4)"
     },
     "HA03": {
-        name_en: "Impact Resist III",
+        name_en: "Impact Ward III",
         name_jp: "ブロウレジストⅢ",
         effect_en: "Strike Resist(+5)",
         effect_jp: "打撃耐性(+5)"
     },
     "HA04": {
-        name_en: "Impact Resist IV",
+        name_en: "Impact Ward IV",
         name_jp: "ブロウレジストⅣ",
         effect_en: "Strike Resist(+6)",
         effect_jp: "打撃耐性(+6)"
     },
     "HA05": {
-        name_en: "Impact Resist V",
+        name_en: "Impact Ward V",
         name_jp: "ブロウレジストⅤ",
         effect_en: "Strike Resist(+7)",
         effect_jp: "打撃耐性(+7)"
@@ -1505,31 +1505,31 @@ const lang = Object.freeze({
         effect_jp: "射撃耐性(+7)"
     },
     "HC01": {
-        name_en: "Genius Resist I",
+        name_en: "Technique Ward I",
         name_jp: "マインドレジストⅠ",
         effect_en: "Tech Resist(+3)",
         effect_jp: "法撃耐性(+3)"
     },
     "HC02": {
-        name_en: "Genius Resist II",
+        name_en: "Technique Ward II",
         name_jp: "マインドレジストⅡ",
         effect_en: "Tech Resist(+4)",
         effect_jp: "法撃耐性(+4)"
     },
     "HC03": {
-        name_en: "Genius Resist III",
+        name_en: "Technique Ward III",
         name_jp: "マインドレジストⅢ",
         effect_en: "Tech Resist(+5)",
         effect_jp: "法撃耐性(+5)"
     },
     "HC04": {
-        name_en: "Genius Resist IV",
+        name_en: "Technique Ward IV",
         name_jp: "マインドレジストⅣ",
         effect_en: "Tech Resist(+6)",
         effect_jp: "法撃耐性(+6)"
     },
     "HC05": {
-        name_en: "Genius Resist V",
+        name_en: "Technique Ward V",
         name_jp: "マインドレジストⅤ",
         effect_en: "Tech Resist(+7)",
         effect_jp: "法撃耐性(+7)"
@@ -1685,7 +1685,7 @@ const lang = Object.freeze({
         effect_jp: "光耐性(+7)"
     },
     "HN01": {
-        name_en: "Gloom Resist I",
+        name_en: "Umbral Ward I",
         name_jp: "グルームレジストⅠ",
         effect_en: "Dark Resist(+3)",
         effect_jp: "闇耐性(+3)"
@@ -4295,7 +4295,7 @@ const lang = Object.freeze({
         effect_jp: "打撃力(+40),<br>射撃力(+40),<br>法撃力(+40),<br>HP(+50)"
     },
     "UC11": {
-        name_en: "Mark Couragen",
+        name_en: "Mark Courage",
         name_jp: "マーク・カレジナ",
         effect_en: "MEL Pwr(+40),<br>RNG Pwr(+40),<br>TEC Pwr(+40),<br>PP(+5)",
         effect_jp: "打撃力(+40),<br>射撃力(+40),<br>法撃力(+40),<br>PP(+5)"
