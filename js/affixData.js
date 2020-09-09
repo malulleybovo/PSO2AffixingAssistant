@@ -118,7 +118,16 @@ let data = {
                 fn: function (a) {
                     return Math.min(a + 60, 100)
                 }
-            }
+            },
+			{
+                ref: 10,
+                id: "Ability Success Rate +65%",
+                name: "+65%",
+                value: "A11",
+                fn: function (a) {
+                    return Math.min(a + 65, 100)
+                }
+            },
         ],
         // List of Add Abilities
         additional: [
@@ -493,6 +502,14 @@ let data = {
                 value: "UC31",
                 extend: 100,
                 effect: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
+            },
+			{
+                ref: 325,
+                id: "Add Ability (Ether S)",
+                name: "Ether Soul",
+                value: "B43",
+                extend: 100,
+                effect: "ALL(+15),<br>HP(+15),<br>PP(+2)"
             },
             {
                 ref: 160,
@@ -2945,7 +2962,66 @@ let data = {
             ],
             ref: "TJ01",
             success: 10
-        }
+        },
+		{
+			base: [
+				"SA01",
+				"TG31",
+				"TK10",
+				"TN11"
+			],
+			ref: "SA02",
+			success: 10
+		},
+		{
+			base: [
+				"SA02",
+				"XA01"
+			],
+			ref: "SA02",
+			success: 10
+		},
+		{
+			base: [
+				"TN01",
+				"TN02",
+				"TN04",
+				"TN05"
+			],
+			ref: "VJ04",
+			success: 10
+		},
+		{
+			base: [
+				"TN02",
+				"TN03",
+				"TN04",
+				"TN05"
+			],
+			ref: "VJ04",
+			success: 10
+		},
+		{
+			base: [
+				"TN06",
+				"TN07",
+				"TN08",
+				"TN09"
+			],
+			ref: "TN0A",
+			success: 10
+		},
+		{
+			base: [
+				"VJ04",
+				"VJ04",
+				"VJ04",
+				"VJ04",
+				"TN0A"
+			],
+			ref: "TN11",
+			success: 60
+		}
     ],
     // Overall success rate multiplier per slot count (from 1 to maximum)
     extraSlot: [
@@ -9602,6 +9678,14 @@ let data = {
             effect: "ALL(+35),<br>HP(+35),<br>PP(+5)",
             tooltip: "Made by: 4x Soul Catalyst + Darkness Soul"
         },
+		{
+            ref: 644,
+            code: "SA02",
+            gid: "EA",
+            name: "Guardian Soul",
+            effect: "ALL(+70),<br>HP(+70),<br>PP(+7)",
+            tooltip: "Made by: Astral Soul + Ether Factor + Mana Reverie + Absolute Glare"
+        },
         {
             ref: 325,
             code: "SA11",
@@ -10270,6 +10354,55 @@ let data = {
             status: 1,
             effect: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
         },
+		{
+			ref:  645,
+			code: "VJ04",
+			gid: "YA",
+			name: "Glare Catalyst",
+			effect: "HP(+10),<br>PP(+1)",
+			tooltip: "Made from: Veluge Glare, Forduss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
+		},
+		{
+			ref:  646,
+			code: "TN08",
+			gid: "AC",
+			name: "Shiva Glare",
+			extend: [
+			30,
+			50
+			],
+			effect: "R-ATK(+30)<br>T-ATK(+30)<br>S-DEF(+20)<br>R-DEF(+20)<br>T-DEF(+20)<br>HP(+20)<br>PP(+2)",
+		},
+		{
+			ref:  647,
+			code: "TN09",
+			gid: "AC",
+			name: "Origin Glare",
+			extend: [
+			30,
+			50
+			],
+			effect: "S-ATK(+30)<br>R-ATK(+30)<br>T-ATK(+30)<br>S-DEF(+20)<br>R-DEF(+20)<br>T-DEF(+20)<br>HP(+20)<br>PP(+2)",
+		},
+		{
+			ref:  648,
+			code: "TN0A",
+			gid: "AC",
+			name: "Photoner Glare",
+			extend: [
+			30,
+			50
+			],
+			effect: "S-ATK(+30)<br>R-ATK(+30)<br>T-ATK(+30)<br>S-DEF(+20)<br>R-DEF(+20)<br>T-DEF(+20)<br>HP(+20)<br>PP(+2)",
+		},
+		{
+			ref:  649,
+			code: "TN11",
+			gid: "AC",
+			name: "Absolute Glare",
+			effect: "ALL(+40), HP(+30), PP(+3)",
+			tooltip: "Made from: 4x Glare Catalyst + Photoner Glare<br>Used for: Guardian Soul"
+		},
         {
             ref: 356,
             code: "TF01",

@@ -468,6 +468,10 @@ const lang = Object.freeze({
 		"Ability Success Rate +60%": {
             en: "Ability Success Rate +60%",
             jp: "能力追加成功率+60%"
+        },
+		"Ability Success Rate +65%": {
+            en: "Ability Success Rate +65%",
+            jp: "能力追加成功率+65%"
         }
     },
     "additional": {
@@ -658,6 +662,10 @@ const lang = Object.freeze({
         "Add Ability (Mark Grif)": {
             en: "Add Ability (Mark Grif)",
             jp: "特殊能力(マーク・グリフ)"
+        },
+		"Add Ability (Ether S)": {
+            en: "Add Ability (Ether S)",
+            jp: "特殊能力(エーテルS)"
         },
         "S1 Add: Photon Reduction 2": {
             en: "S1 Add: Photon Reduction 2",
@@ -3664,6 +3672,12 @@ const lang = Object.freeze({
         effect_en: "ALL(+35),<br>HP(+35),<br>PP(+5)",
         effect_jp: "ALL(+35),<br>HP(+35),<br>PP(+5)"
     },
+	"SA02": {
+        name_en: "Guardian Soul",
+        name_jp: "ガーディアン・ソール",
+        effect_en: "ALL(+70),<br>HP(+70),<br>PP(+7)",
+        effect_jp: "ALL(+70),<br>HP(+70),<br>PP(+7)"
+    },
     "SA11": {
         name_en: "Ether Soul",
         name_jp: "エーテル・ソール",
@@ -3945,6 +3959,36 @@ const lang = Object.freeze({
         name_jp: "ヴァルナ・グレア",
         effect_en: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
+    },
+	"TN08": {
+        name_en: "Shiva Glare",
+        name_jp: "シバ・グレア",
+        effect_en: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_jp: "射撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
+    },
+	"TN09": {
+        name_en: "Origin Glare",
+        name_jp: "オリジン・グレア",
+        effect_en: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_jp: "打撃力(+30), 射撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
+    },
+	"TN0A": {
+        name_en: "Photoner Glare",
+        name_jp: "フォトナー・グレア",
+        effect_en: "ALL(+15),<br>HP(+15),<br>PP(+2)",
+        effect_jp: "ALL(+15),<br>HP(+15),<br>PP(+2)"
+    },
+	"TN11": {
+        name_en: "Absolute Glare",
+        name_jp: "アブソリュート・グレア",
+        effect_en: "ALL(+40),<br>HP(+30),<br>PP(+3)",
+        effect_jp: "ALL(+40),<br>HP(+30),<br>PP(+3)"
+    },
+	"VJ04": {
+        name_en: "Glare Catalyst",
+        name_jp: "グレア・カタリスト",
+        effect_en: "HP(+10),<br>PP(+1)",
+        effect_jp: "HP(+10),<br>PP(+1)"
     },
     "TF01": {
         name_en: "Spirita Alpha",
