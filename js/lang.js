@@ -28,9 +28,9 @@
 const lang = Object.freeze({
     "app": {
         appTitle: {
-            en: "PSO2 Affixing Assistant",
+            en: "PSO2 Affixing Assistant(Fan Translations)",
             jp: "PSO2合成アシスタント",
-            glen: "PSO2 Affixing Assistant"
+            glen: "PSO2 Affixing Assistant(Global Translations)"
         },
         subHeader: {
             en: "How it works:",
