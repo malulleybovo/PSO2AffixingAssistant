@@ -40,7 +40,7 @@ let data = {
             },
             {
                 ref: 1,
-                id: "Augmentation Aid +5%",
+                id: "Ability Success Rate +5%",
                 name: "+5%",
                 value: "A02",
                 fn: function (a) {
@@ -49,7 +49,7 @@ let data = {
             },
             {
                 ref: 2,
-                id: "Augmentation Aid +10%",
+                id: "Ability Success Rate +10%",
                 name: "+10%",
                 value: "A03",
                 fn: function (a) {
@@ -58,7 +58,7 @@ let data = {
             },
             {
                 ref: 3,
-                id: "Augmentation Aid +20%",
+                id: "Ability Success Rate +20%",
                 name: "+20%",
                 value: "A04",
                 fn: function (a) {
@@ -67,7 +67,7 @@ let data = {
             },
             {
                 ref: 4,
-                id: "Augmentation Aid +30%",
+                id: "Ability Success Rate +30%",
                 name: "+30%",
                 value: "A05",
                 fn: function (a) {
@@ -76,7 +76,7 @@ let data = {
             },
             {
                 ref: 5,
-                id: "Augmentation Aid +40%",
+                id: "Ability Success Rate +40%",
                 name: "+40%",
                 value: "A06",
                 fn: function (a) {
@@ -85,7 +85,7 @@ let data = {
             },
             {
                 ref: 6,
-                id: "Augmentation Aid +45%",
+                id: "Ability Success Rate +45%",
                 name: "+45%",
                 value: "A07",
                 fn: function (a) {
@@ -94,7 +94,7 @@ let data = {
             },
             {
                 ref: 7,
-                id: "Augmentation Aid +50%",
+                id: "Ability Success Rate +50%",
                 name: "+50%",
                 value: "A08",
                 fn: function (a) {
@@ -103,7 +103,7 @@ let data = {
             },
             {
                 ref: 8,
-                id: "Augmentation Aid +55%",
+                id: "Ability Success Rate +55%",
                 name: "+55%",
                 value: "A09",
                 fn: function (a) {
@@ -112,7 +112,7 @@ let data = {
             },
             {
                 ref: 9,
-                id: "Augmentation Aid +60%",
+                id: "Ability Success Rate +60%",
                 name: "+60%",
                 value: "A10",
                 fn: function (a) {
@@ -137,7 +137,7 @@ let data = {
             {
                 ref: 463,
                 id: "Add Ability (PP)",
-                name: "Spirit Boost",
+                name: "Spirita Boost",
                 value: "B03",
                 extend: 100,
                 effect: "PP(+5)"
@@ -145,34 +145,34 @@ let data = {
             {
                 ref: 531,
                 id: "Add Ability (Grand PP)",
-                name: "Grace Spirit",
+                name: "Grace Spirita",
                 value: "B10d",
                 extend: 100,
                 effect: "PP(+15)"
             },
             {
                 ref: 464,
-                id: "Add Ability (MEL Pwr)",
-                name: "Might Boost",
+                id: "Add Ability (S-ATK)",
+                name: "Power Boost",
                 value: "B04",
                 extend: 100,
-                effect: "MEL Pwr(+25)"
+                effect: "S-ATK(+25)"
             },
             {
                 ref: 465,
-                id: "Add Ability (RNG Pwr)",
-                name: "Precision Boost",
+                id: "Add Ability (R-ATK)",
+                name: "Shoot Boost",
                 value: "B05",
                 extend: 100,
-                effect: "RNG Pwr(+25)"
+                effect: "R-ATK(+25)"
             },
             {
                 ref: 466,
-                id: "Add Ability (TEC Pwr)",
-                name: "Casting Boost",
+                id: "Add Ability (T-ATK)",
+                name: "Technique Boost",
                 value: "B06",
                 extend: 100,
-                effect: "TEC Pwr(+25)"
+                effect: "T-ATK(+25)"
             },
             {
                 ref: 467,
@@ -180,7 +180,7 @@ let data = {
                 name: "Tenora Boost",
                 value: "B8a",
                 extend: 100,
-                effect: "MEL Pwr(+35)"
+                effect: "S-ATK(+35)"
             },
             {
                 ref: 468,
@@ -188,7 +188,7 @@ let data = {
                 name: "GRM Boost",
                 value: "B8b",
                 extend: 100,
-                effect: "RNG Pwr(+35)"
+                effect: "R-ATK(+35)"
             },
             {
                 ref: 469,
@@ -196,7 +196,7 @@ let data = {
                 name: "Yohmei Boost",
                 value: "B8c",
                 extend: 100,
-                effect: "TEC Pwr(+35)"
+                effect: "T-ATK(+35)"
             },
             {
                 ref: 470,
@@ -232,115 +232,115 @@ let data = {
             },
             {
                 ref: 473,
-                id: "Add Ability (MEL Pwr&PP)",
-                name: "Noble Might",
+                id: "Add Ability (S-ATK&PP)",
+                name: "Noble Power",
                 value: "B11a",
                 extend: 100,
-                effect: "MEL Pwr(+30),PP(+3)"
+                effect: "S-ATK(+30),PP(+3)"
             },
             {
                 ref: 474,
-                id: "Add Ability (MEL Pwr&PP/2)",
-                name: "Elegant Might",
+                id: "Add Ability (S-ATK&PP/2)",
+                name: "Elegant Power",
                 value: "B11b",
                 extend: 100,
-                effect: "MEL Pwr(+40),PP(+4)"
+                effect: "S-ATK(+40),PP(+4)"
             },
             {
                 ref: 475,
-                id: "Add Ability (MEL Pwr&PP/3)",
-                name: "Grace Might",
+                id: "Add Ability (S-ATK&PP/3)",
+                name: "Grace Power",
                 value: "B11c",
                 extend: 100,
-                effect: "MEL Pwr(+50),PP(+5)"
+                effect: "S-ATK(+50),PP(+5)"
             },
             {
                 ref: 532,
                 id: "Add Ability (Grand P)",
-                name: "Grand Might",
+                name: "Grand Power",
                 value: "B11d",
                 extend: 100,
-                effect: "MEL Pwr(+60),HP(+20),PP(+5)"
+                effect: "S-ATK(+60),HP(+20),PP(+5)"
              },
             {
                 ref: 476,
-                id: "Add Ability (RNG Pwr&PP)",
-                name: "Noble Precision",
+                id: "Add Ability (R-ATK&PP)",
+                name: "Noble Shoot",
                 value: "B12a",
                 extend: 100,
-                effect: "RNG Pwr(+30),PP(+3)"
+                effect: "R-ATK(+30),PP(+3)"
             },
             {
                 ref: 477,
-                id: "Add Ability (RNG Pwr&PP/2)",
-                name: "Elegant Precision",
+                id: "Add Ability (R-ATK&PP/2)",
+                name: "Elegant Shoot",
                 value: "B12b",
                 extend: 100,
-                effect: "RNG Pwr(+40),PP(+4)"
+                effect: "R-ATK(+40),PP(+4)"
             },
             {
                 ref: 478,
-                id: "Add Ability (RNG Pwr&PP/3)",
-                name: "Grace Precision",
+                id: "Add Ability (R-ATK&PP/3)",
+                name: "Grace Shoot",
                 value: "B12c",
                 extend: 100,
-                effect: "RNG Pwr(+50),PP(+5)"
+                effect: "R-ATK(+50),PP(+5)"
             },
             {
                 ref: 533,
                 id: "Add Ability (Grand S)",
-                name: "Grand Precision",
+                name: "Grand Shoot",
                 value: "B12d",
                 extend: 100,
-                effect: "RNG Pwr(+60),HP(+20),PP(+5)"
+                effect: "R-ATK(+60),HP(+20),PP(+5)"
             },
             {
                 ref: 479,
-                id: "Add Ability (TEC Pwr&PP)",
-                name: "Noble Casting",
+                id: "Add Ability (T-ATK&PP)",
+                name: "Noble Technique",
                 value: "B13a",
                 extend: 100,
-                effect: "TEC Pwr(+30),PP(+3)"
+                effect: "T-ATK(+30),PP(+3)"
             },
             {
                 ref: 480,
-                id: "Add Ability (TEC Pwr&PP/2)",
-                name: "Elegant Casting",
+                id: "Add Ability (T-ATK&PP/2)",
+                name: "Elegant Technique",
                 value: "B13b",
                 extend: 100,
-                effect: "TEC Pwr(+40),PP(+4)"
+                effect: "T-ATK(+40),PP(+4)"
             },
             {
                 ref: 481,
-                id: "Add Ability (TEC Pwr&PP/3)",
-                name: "Grace Casting",
+                id: "Add Ability (T-ATK&PP/3)",
+                name: "Grace Technique",
                 value: "B13c",
                 extend: 100,
-                effect: "TEC Pwr(+50),PP(+5)"
+                effect: "T-ATK(+50),PP(+5)"
             },
             {
                 ref: 534,
                 id: "Add Ability (Grand T)",
-                name: "Grand Casting",
+                name: "Grand Technique",
                 value: "B13d",
                 extend: 100,
-                effect: "TEC Pwr(+60),HP(+20),PP(+5)"
+                effect: "T-ATK(+60),HP(+20),PP(+5)"
             },
             {
                 ref: 416,
                 id: "Add Ability (Sentence P)",
-                name: "Sentence Might",
+                name: "Sentence Power",
                 value: "B40",
                 extend: 100,
-                effect: "MEL Pwr(+20),PP(+4)"
+                effect: "S-ATK(+20),PP(+4)"
             },
             {
                 ref: 418,
                 id: "Add Ability (Sentence S)",
-                name: "Sentence Precision",
+                name: "Sentence Shoot",
                 value: "B41",
                 extend: 100,
-                effect: "RNG Pwr(+20),PP(+4)"
+                effect: "R-ATK(+20),PP(+4)"
             },
             {
                 ref: 420,
@@ -348,7 +348,7 @@ let data = {
                 name: "Sentence Tech",
                 value: "B42",
                 extend: 100,
-                effect: "TEC Pwr(+20),PP(+4)"
+                effect: "T-ATK(+20),PP(+4)"
             },
             {
                 ref: 482,
@@ -356,7 +356,7 @@ let data = {
                 name: "Offense Boost",
                 value: "B20",
                 extend: 100,
-                effect: "MEL Pwr(+15),RNG Pwr(+15),TEC Pwr(+15),DEX(+25),PP(+1)"
+                effect: "S-ATK(+15),R-ATK(+15),T-ATK(+15),DEX(+25),PP(+1)"
             },
             {
                 ref: 535,
@@ -364,7 +364,7 @@ let data = {
                 name: "Attack Boost",
                 value: "B14b",
                 extend: 100,
-                effect: "MEL Pwr(+25),RNG Pwr(+25),TEC Pwr(+25),DEX(+40),PP(+3)"
+                effect: "S-ATK(+25),R-ATK(+25),T-ATK(+25),DEX(+40),PP(+3)"
             },
             {
                 ref: 483,
@@ -432,64 +432,64 @@ let data = {
             },
             {
                 ref: 5,
-                id: "Add Ability (Might VI)",
-                name: "Might VI",
+                id: "Add Ability (Power VI)",
+                name: "Power VI",
                 value: "AA06",
                 extend: 100,
-                effect: "MEL Pwr(+45)"
+                effect: "S-ATK(+45)"
             },
             {
                 ref: 11,
-                id: "Add Ability (Precision VI)",
-                name: "Precision VI",
+                id: "Add Ability (Shoot VI)",
+                name: "Shoot VI",
                 value: "AB06",
                 extend: 100,
-                effect: "RNG Pwr(+45)"
+                effect: "R-ATK(+45)"
             },
             {
                 ref: 17,
-                id: "Add Ability (Casting VI)",
-                name: "Casting VI",
+                id: "Add Ability (Technique VI)",
+                name: "Technique VI",
                 value: "AC06",
                 extend: 100,
-                effect: "TEC Pwr(+45)"
+                effect: "T-ATK(+45)"
             },
             {
                 ref: 52,
-                id: "Add Ability (Mastery IV)",
-                name: "Mastery IV",
+                id: "Add Ability (Ability IV)",
+                name: "Ability IV",
                 value: "FA04",
                 extend: 100,
                 effect: "ALL(+20)"
             },
             {
                 ref: 412,
-                id: "Add Ability (Mark Joy)",
-                name: "Mark Joy",
+                id: "Add Ability (Mark Joyo)",
+                name: "Mark Joyo",
                 value: "UC01",
                 extend: 100,
-                effect: "MEL Pwr(+40),<br>RNG Pwr(+40),<br>TEC Pwr(+40),<br>HP(+50)"
+                effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+50)"
             },
             {
                 ref: 413,
-                id: "Add Ability (Mark Courage)",
-                name: "Mark Courage",
+                id: "Add Ability (Mark Couragena)",
+                name: "Mark Couragena",
                 value: "UC11",
                 extend: 100,
-                effect: "MEL Pwr(+40),<br>RNG Pwr(+40),<br>TEC Pwr(+40),<br>PP(+5)"
+                effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>PP(+5)"
             },
             {
                 ref: 414,
-                id: "Add Ability (Mark Anger)",
-                name: "Mark Anger",
+                id: "Add Ability (Mark Angar)",
+                name: "Mark Angar",
                 value: "UC21",
                 extend: 100,
-                effect: "MEL Pwr(+50),<br>RNG Pwr(+50),<br>TEC Pwr(+50),<br>DEX(+40)"
+                effect: "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>DEX(+40)"
             },
             {
                 ref: 415,
-                id: "Add Ability (Mark Grief)",
-                name: "Mark Grief",
+                id: "Add Ability (Mark Grif)",
+                name: "Mark Grif",
                 value: "UC31",
                 extend: 100,
                 effect: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
@@ -1248,24 +1248,24 @@ let data = {
             },
             {
                 ref: 574,
-                id: "S7 Add: MEL Pwr Up",
-                name: "S7:MEL Pwr Up",
+                id: "S7 Add: S-ATK Up",
+                name: "S7:S-ATK Up",
                 value: "",
                 extend: 100,
                 effect: ""
             },
             {
                 ref: 575,
-                id: "S7 Add: RNG Pwr Up",
-                name: "S7:RNG Pwr Up",
+                id: "S7 Add: R-ATK Up",
+                name: "S7:R-ATK Up",
                 value: "",
                 extend: 100,
                 effect: ""
             },
             {
                 ref: 576,
-                id: "S7 Add: TEC Pwr Up",
-                name: "S7:TEC Pwr Up",
+                id: "S7 Add: T-ATK Up",
+                name: "S7:T-ATK Up",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1288,8 +1288,8 @@ let data = {
             },
             {
                 ref: 601,
-                id: "S7 Add: Genius Merge",
-                name: "S7:Genius Merge",
+                id: "S7 Add: Mind Merge",
+                name: "S7:Mind Merge",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -3221,14 +3221,14 @@ let data = {
     boostdaySystem: {
         blow: [
             "Gunne Soul",
-            "Jigmol Soul",
+            "Zigmor Soul",
             "Vol Soul",
             "Gwana Soul",
             "Quartz Soul",
-            "Acto Di Soul",
+            "Act The Soul",
             "Deadlion Soul",
             "Leone Soul",
-            "Beari Soul",
+            "Bayari Soul",
             "Org Soul",
             "Meduna Soul",
             "Soma Soul",
@@ -3237,123 +3237,123 @@ let data = {
             "Ceremo Fever",
             "Love Fever",
             "Sonic Fever",
-            "Might Boost",
+            "Power Boost",
             "Tenora Boost",
-            "Noble Might",
-            "Elegant Might",
+            "Noble Power",
+            "Elegant Power",
             "Alter Arma",
             "Flict Arma",
-            "Sentence Might",
+            "Sentence Power",
             "Deus Factor",
-            "Might I",
-            "Might II",
-            "Might III",
-            "Might IV",
-            "Might V",
-            "Might VI",
+            "Power I",
+            "Power II",
+            "Power III",
+            "Power IV",
+            "Power V",
+            "Power VI",
             "Sentence Arma",
             "Elder Reverie",
-            "Grace Might",
-            "Lesser Might I",
-            "Lesser Might II",
-            "Lesser Might III",
-            "Lesser Might IV",
-            "Lesser Might V",
-            "EV Might HP",
-            "EV Might PP"
+            "Grace Power",
+            "Lesser Power I",
+            "Lesser Power II",
+            "Lesser Power III",
+            "Lesser Power IV",
+            "Lesser Power V",
+            "EV Power HP",
+            "EV Power PP"
         ],
         shot: [
-            "Idihta Soul",
+            "Idetta Soul",
             "Madu Soul",
-            "Ransa Soul",
+            "Ra'nsa Soul",
             "Fang Soul",
             "Mizer Soul",
-            "Tir Di Soul",
-            "Leopod Soul",
-            "Siogr Soul",
+            "Till The Soul",
+            "Leopard Soul",
+            "Siorg Soul",
             "Greuzoras Soul",
-            "Bar Soul",
-            "Vibras Soul",
+            "Bal Soul",
+            "Vibrace Soul",
             "Tagami Kazuchi Soul",
             "Egg Fever",
             "Noiya Fever",
-            "Santa Fever",
-            "Precision Boost",
+            "St. Fever",
+            "Shoot Boost",
             "GRM Boost",
-            "Noble Precision",
-            "Elegant Precision",
-            "Alter Tyro",
-            "Flict Tyro",
-            "Sentence Precision",
+            "Noble Shoot",
+            "Elegant Shoot",
+            "Alter Tiro",
+            "Flict Tiro",
+            "Sentence Shoot",
             "Yamato Factor",
-            "Precision I",
-            "Precision II",
-            "Precision III",
-            "Precision IV",
-            "Precision V",
-            "Precision VI",
-            "Sentence Tyro",
-            "Grace Precision",
-            "Apprentice Reverie",
-            "Lesser Precision I",
-            "Lesser Precision II",
-            "Lesser Precision III",
-            "Lesser Precision IV",
-            "Lesser Precision V",
-            "EV Precision HP",
-            "EV Precision PP"
+            "Shoot I",
+            "Shoot II",
+            "Shoot III",
+            "Shoot IV",
+            "Shoot V",
+            "Shoot VI",
+            "Sentence Tiro",
+            "Grace Shoot",
+            "Apprezina Reverie",
+            "Lesser Shoot I",
+            "Lesser Shoot II",
+            "Lesser Shoot III",
+            "Lesser Shoot IV",
+            "Lesser Shoot V",
+            "EV Shoot HP",
+            "EV Shoot PP"
         ],
         mind: [
-            "Jadeu Soul",
-            "Nept Soul",
+            "Jhadu Soul",
+            "Nepto Soul",
             "Ragne Soul",
             "Wolga Soul",
             "Elder Soul",
-            "Magia Di Soul",
+            "Magi The Soul",
             "Diabo Soul",
             "Duvals Soul",
-            "Granz Soul",
+            "Guranz Soul",
             "Ringa Soul",
-            "Luther Soul",
+            "Loser Soul",
             "Malluda Soul",
-            "Froggy Fever",
+            "Frog Fever",
             "Luna Fever",
             "Summer Fever",
-            "Rattan Fever",
-            "Casting Boost",
+            "Latan Fever",
+            "Technique Boost",
             "Yohmei Boost",
-            "Noble Casting",
-            "Elegant Casting",
+            "Noble Technique",
+            "Elegant Technique",
             "Alter Magia",
             "Flict Magia",
             "Sentence Tech",
             "Mother Factor",
-            "Casting I",
-            "Casting II",
-            "Casting III",
-            "Casting IV",
-            "Casting V",
-            "Casting VI",
+            "Technique I",
+            "Technique II",
+            "Technique III",
+            "Technique IV",
+            "Technique V",
+            "Technique VI",
             "Sentence Magia",
-            "Grace Casting",
-            "Luther Reverie",
-            "Lesser Casting I",
-            "Lesser Casting II",
-            "Lesser Casting III",
-            "Lesser Casting IV",
-            "Lesser Casting V",
-            "EV Casting HP",
-            "EV Casting PP"
+            "Grace Technique",
+            "Loser Reverie",
+            "Lesser Technique I",
+            "Lesser Technique II",
+            "Lesser Technique III",
+            "Lesser Technique IV",
+            "Lesser Technique V",
+            "EV Technique HP",
+            "EV Technique PP"
         ],
         hppp: [
             "Magatsu Soul",
-            "Gemini Soul",
+            "Double Soul",
             "Stamina Boost",
-            "Spirit Boost",
+            "Spirita Boost",
             "Noble Stamina",
             "Elegant Stamina",
             "Defense Boost",
-            "Spirit Alpha",
+            "Spirita Alpha",
             "Omega Reverie",
             "Fabula Soul",
             "Ares The Soul",
@@ -3362,11 +3362,11 @@ let data = {
             "Stamina III",
             "Stamina IV",
             "Stamina V",
-            "Spirit I",
-            "Spirit II",
-            "Spirit III",
-            "Spirit IV",
-            "Spirit V",
+            "Spirita I",
+            "Spirita II",
+            "Spirita III",
+            "Spirita IV",
+            "Spirita V",
             "Stigma",
             "Historia Soul",
             "Grace Stamina",
@@ -3375,16 +3375,16 @@ let data = {
             "Lesser Stamina III",
             "Lesser Stamina IV",
             "Lesser Stamina V",
-            "Lesser Spirit I",
-            "Lesser Spirit II",
-            "Lesser Spirit III",
-            "Lesser Spirit IV",
-            "Lesser Spirit V",
-            "Gemini Reverie"
+            "Lesser Spirita I",
+            "Lesser Spirita II",
+            "Lesser Spirita III",
+            "Lesser Spirita IV",
+            "Lesser Spirita V",
+            "Double Reverie"
         ],
         sp: [
             "Escarde Soul",
-            "FullVegas Soul",
+            "Full Vegas Soul",
             "Cougar Soul",
             "Gryphon Soul",
             "Knight Gear Soul",
@@ -3393,7 +3393,7 @@ let data = {
             "Apprentice Soul",
             "Ether Soul",
             "Toh'oh Soul",
-            "Soul of Darkness",
+            "Darkness Soul",
             "Astral Soul",
             "Sansan Fever",
             "Offense Boost",
@@ -3408,15 +3408,15 @@ let data = {
             "Ether Factor",
             "Vinculum",
             "Modulator",
-            "Veteran\'s Resolve I",
-            "Veteran\'s Resolve II",
-            "Veteran\'s Resolve III",
-            "Veteran\'s Resolve IV",
-            "Veteran\'s Resolve V",
-            "Mastery I",
-            "Mastery II",
-            "Mastery III",
-            "Mastery IV",
+            "Returner I",
+            "Returner II",
+            "Returner III",
+            "Returner IV",
+            "Returner V",
+            "Ability I",
+            "Ability II",
+            "Ability III",
+            "Ability IV",
             "Mutation I",
             "Mutation II",
             "Soul Catalyst",
@@ -3425,19 +3425,19 @@ let data = {
             "Doom Break I",
 			"Doom Break II",
             "Extreceptor",
-            "Sovereign Ward I",
-            "Sovereign Ward II",
-            "Sovereign Ward III",
-            "Lucky Charm I",
-            "Lucky Charm II",
-            "Lucky Charm III",
-            "Increased EXP I",
-            "Increased EXP II",
-            "Increased EXP III",
+            "All Resist I",
+            "All Resist II",
+            "All Resist III",
+            "Lucky Rise I",
+            "Lucky Rise II",
+            "Lucky Rise III",
+            "EXP Boost I",
+            "EXP Boost II",
+            "EXP Boost III",
             "Meseta Fever I",
             "Meseta Fever II",
             "Meseta Fever III",
-            "Alternate History",
+            "Another History",
             "Ultimate Buster",
             "ARKS Fever",
             "ARKS MAX",
@@ -3496,7 +3496,7 @@ let data = {
             ref: 0,
             code: "AA01",
             gid: "AA",
-            name: "Might I",
+            name: "Power I",
             lvup: "AA02",
             extend: [
                 100,
@@ -3504,7 +3504,7 @@ let data = {
                 100
             ],
             status: 1,
-            effect: "MEL Pwr(+10)",
+            effect: "S-ATK(+10)",
             tooltip: "EXT"
 
         },
@@ -3512,7 +3512,7 @@ let data = {
             ref: 1,
             code: "AA02",
             gid: "AA",
-            name: "Might II",
+            name: "Power II",
             lvup: "AA03",
             extend: [
                 60,
@@ -3524,13 +3524,13 @@ let data = {
                 80
             ],
             status: 1,
-            effect: "MEL Pwr(+20)"
+            effect: "S-ATK(+20)"
         },
         {
             ref: 2,
             code: "AA03",
             gid: "AA",
-            name: "Might III",
+            name: "Power III",
             lvup: "AA04",
             extend: [
                 60,
@@ -3542,13 +3542,13 @@ let data = {
                 50
             ],
             status: 1,
-            effect: "MEL Pwr(+30)"
+            effect: "S-ATK(+30)"
         },
         {
             ref: 3,
             code: "AA04",
             gid: "AA",
-            name: "Might IV",
+            name: "Power IV",
             lvup: "AA05",
             extend: [
                 40,
@@ -3560,13 +3560,13 @@ let data = {
                 40
             ],
             status: 1,
-            effect: "MEL Pwr(+35)"
+            effect: "S-ATK(+35)"
         },
         {
             ref: 4,
             code: "AA05",
             gid: "AA",
-            name: "Might V",
+            name: "Power V",
             extend: [
                 20,
                 40,
@@ -3577,21 +3577,21 @@ let data = {
                 30
             ],
             status: 1,
-            effect: "MEL Pwr(+40)"
+            effect: "S-ATK(+40)"
         },
         {
             ref: 5,
             code: "AA06",
             gid: "CB",
-            name: "Might VI",
+            name: "Power VI",
             status: 1,
-            effect: "MEL Pwr(+45)"
+            effect: "S-ATK(+45)"
         },
         {
             ref: 6,
             code: "AB01",
             gid: "AA",
-            name: "Precision I",
+            name: "Shoot I",
             lvup: "AB02",
             extend: [
                 100,
@@ -3599,13 +3599,13 @@ let data = {
                 100
             ],
             status: 1,
-            effect: "RNG Pwr(+10)"
+            effect: "R-ATK(+10)"
         },
         {
             ref: 7,
             code: "AB02",
             gid: "AA",
-            name: "Precision II",
+            name: "Shoot II",
             lvup: "AB03",
             extend: [
                 60,
@@ -3617,13 +3617,13 @@ let data = {
                 80
             ],
             status: 1,
-            effect: "RNG Pwr(+20)"
+            effect: "R-ATK(+20)"
         },
         {
             ref: 8,
             code: "AB03",
             gid: "AA",
-            name: "Precision III",
+            name: "Shoot III",
             lvup: "AB04",
             extend: [
                 60,
@@ -3635,13 +3635,13 @@ let data = {
                 50
             ],
             status: 1,
-            effect: "RNG Pwr(+30)"
+            effect: "R-ATK(+30)"
         },
         {
             ref: 9,
             code: "AB04",
             gid: "AA",
-            name: "Precision IV",
+            name: "Shoot IV",
             lvup: "AB05",
             extend: [
                 40,
@@ -3653,13 +3653,13 @@ let data = {
                 40
             ],
             status: 1,
-            effect: "RNG Pwr(+35)"
+            effect: "R-ATK(+35)"
         },
         {
             ref: 10,
             code: "AB05",
             gid: "AA",
-            name: "Precision V",
+            name: "Shoot V",
             extend: [
                 20,
                 40,
@@ -3670,21 +3670,21 @@ let data = {
                 30
             ],
             status: 1,
-            effect: "RNG Pwr(+40)"
+            effect: "R-ATK(+40)"
         },
         {
             ref: 11,
             code: "AB06",
             gid: "CB",
-            name: "Precision VI",
+            name: "Shoot VI",
             status: 1,
-            effect: "RNG Pwr(+45)"
+            effect: "R-ATK(+45)"
         },
         {
             ref: 12,
             code: "AC01",
             gid: "AA",
-            name: "Casting I",
+            name: "Technique I",
             lvup: "AC02",
             extend: [
                 100,
@@ -3692,13 +3692,13 @@ let data = {
                 100
             ],
             status: 1,
-            effect: "TEC Pwr(+10)"
+            effect: "T-ATK(+10)"
         },
         {
             ref: 13,
             code: "AC02",
             gid: "AA",
-            name: "Casting II",
+            name: "Technique II",
             lvup: "AC03",
             extend: [
                 60,
@@ -3710,13 +3710,13 @@ let data = {
                 80
             ],
             status: 1,
-            effect: "TEC Pwr(+20)"
+            effect: "T-ATK(+20)"
         },
         {
             ref: 14,
             code: "AC03",
             gid: "AA",
-            name: "Casting III",
+            name: "Technique III",
             lvup: "AC04",
             extend: [
                 60,
@@ -3728,13 +3728,13 @@ let data = {
                 50
             ],
             status: 1,
-            effect: "TEC Pwr(+30)"
+            effect: "T-ATK(+30)"
         },
         {
             ref: 15,
             code: "AC04",
             gid: "AA",
-            name: "Casting IV",
+            name: "Technique IV",
             lvup: "AC05",
             extend: [
                 40,
@@ -3746,13 +3746,13 @@ let data = {
                 40
             ],
             status: 1,
-            effect: "TEC Pwr(+35)"
+            effect: "T-ATK(+35)"
         },
         {
             ref: 16,
             code: "AC05",
             gid: "AA",
-            name: "Casting V",
+            name: "Technique V",
             extend: [
                 20,
                 40,
@@ -3763,21 +3763,21 @@ let data = {
                 30
             ],
             status: 1,
-            effect: "TEC Pwr(+40)"
+            effect: "T-ATK(+40)"
         },
         {
             ref: 17,
             code: "AC06",
             gid: "CB",
-            name: "Casting VI",
+            name: "Technique VI",
             status: 1,
-            effect: "TEC Pwr(+45)"
+            effect: "T-ATK(+45)"
         },
         {
             ref: 18,
             code: "AD01",
             gid: "AA",
-            name: "Deftness I",
+            name: "Arm I",
             lvup: "AD02",
             extend: [
                 100,
@@ -3791,7 +3791,7 @@ let data = {
             ref: 19,
             code: "AD02",
             gid: "AA",
-            name: "Deftness II",
+            name: "Arm II",
             lvup: "AD03",
             extend: [
                 60,
@@ -3809,7 +3809,7 @@ let data = {
             ref: 20,
             code: "AD03",
             gid: "AA",
-            name: "Deftness III",
+            name: "Arm III",
             lvup: "AD04",
             extend: [
                 60,
@@ -3827,7 +3827,7 @@ let data = {
             ref: 21,
             code: "AD04",
             gid: "AA",
-            name: "Deftness IV",
+            name: "Arm IV",
             lvup: "AD05",
             extend: [
                 40,
@@ -3845,7 +3845,7 @@ let data = {
             ref: 22,
             code: "AD05",
             gid: "AA",
-            name: "Deftness V",
+            name: "Arm V",
             extend: [
                 20,
                 40,
@@ -3862,7 +3862,7 @@ let data = {
             ref: 23,
             code: "BA01",
             gid: "AA",
-            name: "Toughness I",
+            name: "Body I",
             lvup: "BA02",
             extend: [
                 100,
@@ -3876,7 +3876,7 @@ let data = {
             ref: 24,
             code: "BA02",
             gid: "AA",
-            name: "Toughness II",
+            name: "Body II",
             lvup: "BA03",
             extend: [
                 60,
@@ -3894,7 +3894,7 @@ let data = {
             ref: 25,
             code: "BA03",
             gid: "AA",
-            name: "Toughness III",
+            name: "Body III",
             lvup: "BA04",
             extend: [
                 60,
@@ -3912,7 +3912,7 @@ let data = {
             ref: 26,
             code: "BA04",
             gid: "AA",
-            name: "Toughness IV",
+            name: "Body IV",
             lvup: "BA05",
             extend: [
                 40,
@@ -3930,7 +3930,7 @@ let data = {
             ref: 27,
             code: "BA05",
             gid: "AA",
-            name: "Toughness V",
+            name: "Body V",
             extend: [
                 20,
                 40,
@@ -3947,7 +3947,7 @@ let data = {
             ref: 28,
             code: "BB01",
             gid: "AA",
-            name: "Reflex I",
+            name: "React I",
             lvup: "BB02",
             extend: [
                 100,
@@ -3961,7 +3961,7 @@ let data = {
             ref: 29,
             code: "BB02",
             gid: "AA",
-            name: "Reflex II",
+            name: "React II",
             lvup: "BB03",
             extend: [
                 60,
@@ -3979,7 +3979,7 @@ let data = {
             ref: 30,
             code: "BB03",
             gid: "AA",
-            name: "Reflex III",
+            name: "React III",
             lvup: "BB04",
             extend: [
                 60,
@@ -3997,7 +3997,7 @@ let data = {
             ref: 31,
             code: "BB04",
             gid: "AA",
-            name: "Reflex IV",
+            name: "React IV",
             lvup: "BB05",
             extend: [
                 40,
@@ -4015,7 +4015,7 @@ let data = {
             ref: 32,
             code: "BB05",
             gid: "AA",
-            name: "Reflex V",
+            name: "React V",
             extend: [
                 20,
                 40,
@@ -4032,7 +4032,7 @@ let data = {
             ref: 33,
             code: "BC01",
             gid: "AA",
-            name: "Genius I",
+            name: "Mind I",
             lvup: "BC02",
             extend: [
                 100,
@@ -4046,7 +4046,7 @@ let data = {
             ref: 34,
             code: "BC02",
             gid: "AA",
-            name: "Genius II",
+            name: "Mind II",
             lvup: "BC03",
             extend: [
                 60,
@@ -4064,7 +4064,7 @@ let data = {
             ref: 35,
             code: "BC03",
             gid: "AA",
-            name: "Genius III",
+            name: "Mind III",
             lvup: "BC04",
             extend: [
                 60,
@@ -4082,7 +4082,7 @@ let data = {
             ref: 36,
             code: "BC04",
             gid: "AA",
-            name: "Genius IV",
+            name: "Mind IV",
             lvup: "BC05",
             extend: [
                 40,
@@ -4100,7 +4100,7 @@ let data = {
             ref: 37,
             code: "BC05",
             gid: "AA",
-            name: "Genius V",
+            name: "Mind V",
             extend: [
                 20,
                 40,
@@ -4210,7 +4210,7 @@ let data = {
             ref: 43,
             code: "EB01",
             gid: "AA",
-            name: "Spirit I",
+            name: "Spirita I",
             lvup: "EB02",
             extend: [
                 100,
@@ -4224,7 +4224,7 @@ let data = {
             ref: 44,
             code: "EB02",
             gid: "AA",
-            name: "Spirit II",
+            name: "Spirita II",
             lvup: "EB03",
             extend: [
                 60,
@@ -4242,7 +4242,7 @@ let data = {
             ref: 45,
             code: "EB03",
             gid: "AA",
-            name: "Spirit III",
+            name: "Spirita III",
             lvup: "EB04",
             extend: [
                 60,
@@ -4260,7 +4260,7 @@ let data = {
             ref: 46,
             code: "EB04",
             gid: "AA",
-            name: "Spirit IV",
+            name: "Spirita IV",
             lvup: "EB05",
             extend: [
                 40,
@@ -4278,7 +4278,7 @@ let data = {
             ref: 47,
             code: "EB05",
             gid: "AA",
-            name: "Spirit V",
+            name: "Spirita V",
             extend: [
                 20,
                 40,
@@ -4295,7 +4295,7 @@ let data = {
             ref: 48,
             code: "EB06",
             gid: "CB",
-            name: "Spirit VI",
+            name: "Spirita VI",
             status: 1,
             effect: "PP(+7)"
         },
@@ -4303,7 +4303,7 @@ let data = {
             ref: 49,
             code: "FA01",
             gid: "AC",
-            name: "Mastery I",
+            name: "Ability I",
             extend: [
                 100,
                 100,
@@ -4316,7 +4316,7 @@ let data = {
             ref: 50,
             code: "FA02",
             gid: "AC",
-            name: "Mastery II",
+            name: "Ability II",
             extend: [
                 20,
                 40,
@@ -4329,7 +4329,7 @@ let data = {
             ref: 51,
             code: "FA03",
             gid: "AC",
-            name: "Mastery III",
+            name: "Ability III",
             extend: [
                 10,
                 30,
@@ -4342,21 +4342,21 @@ let data = {
             ref: 52,
             code: "FA04",
             gid: "CB",
-            name: "Mastery IV",
+            name: "Ability IV",
             effect: "ALL(+20)"
         },
         {
             ref: 603,
             code: "FA05",
             gid: "CB",
-            name: "Mastery V",
+            name: "Ability V",
             effect: "ALL(+25)"
         },
         {
             ref: 53,
             code: "HA01",
             gid: "DA",
-            name: "Impact Ward I",
+            name: "Blow Resist I",
             lvup: "HA02",
             extend: [
                 100,
@@ -4370,7 +4370,7 @@ let data = {
             ref: 54,
             code: "HA02",
             gid: "DA",
-            name: "Impact Ward II",
+            name: "Blow Resist II",
             lvup: "HA03",
             extend: [
                 60,
@@ -4388,7 +4388,7 @@ let data = {
             ref: 55,
             code: "HA03",
             gid: "DA",
-            name: "Impact Ward III",
+            name: "Blow Resist III",
             lvup: "HA04",
             extend: [
                 60,
@@ -4406,7 +4406,7 @@ let data = {
             ref: 56,
             code: "HA04",
             gid: "DA",
-            name: "Impact Ward IV",
+            name: "Blow Resist IV",
             lvup: "HA05",
             extend: [
                 40,
@@ -4424,7 +4424,7 @@ let data = {
             ref: 57,
             code: "HA05",
             gid: "DA",
-            name: "Impact Ward V",
+            name: "Blow Resist V",
             extend: [
                 20,
                 40,
@@ -4441,7 +4441,7 @@ let data = {
             ref: 58,
             code: "HB01",
             gid: "DA",
-            name: "Projectile Ward I",
+            name: "Shoot Resist I",
             lvup: "HB02",
             extend: [
                 100,
@@ -4455,7 +4455,7 @@ let data = {
             ref: 59,
             code: "HB02",
             gid: "DA",
-            name: "Projectile Ward II",
+            name: "Shoot Resist II",
             lvup: "HB03",
             extend: [
                 60,
@@ -4473,7 +4473,7 @@ let data = {
             ref: 60,
             code: "HB03",
             gid: "DA",
-            name: "Projectile Ward III",
+            name: "Shoot Resist III",
             lvup: "HB04",
             extend: [
                 60,
@@ -4491,7 +4491,7 @@ let data = {
             ref: 61,
             code: "HB04",
             gid: "DA",
-            name: "Projectile Ward IV",
+            name: "Shoot Resist IV",
             lvup: "HB05",
             extend: [
                 40,
@@ -4509,7 +4509,7 @@ let data = {
             ref: 62,
             code: "HB05",
             gid: "DA",
-            name: "Projectile Ward V",
+            name: "Shoot Resist V",
             extend: [
                 20,
                 40,
@@ -4526,7 +4526,7 @@ let data = {
             ref: 63,
             code: "HC01",
             gid: "DA",
-            name: "Technique Ward I",
+            name: "Mind Resist I",
             lvup: "HC02",
             extend: [
                 100,
@@ -4540,7 +4540,7 @@ let data = {
             ref: 64,
             code: "HC02",
             gid: "DA",
-            name: "Technique Ward II",
+            name: "Mind Resist II",
             lvup: "HC03",
             extend: [
                 60,
@@ -4558,7 +4558,7 @@ let data = {
             ref: 65,
             code: "HC03",
             gid: "DA",
-            name: "Technique Ward III",
+            name: "Mind Resist III",
             lvup: "HC04",
             extend: [
                 60,
@@ -4576,7 +4576,7 @@ let data = {
             ref: 66,
             code: "HC04",
             gid: "DA",
-            name: "Technique Ward IV",
+            name: "Mind Resist IV",
             lvup: "HC05",
             extend: [
                 40,
@@ -4594,7 +4594,7 @@ let data = {
             ref: 67,
             code: "HC05",
             gid: "DA",
-            name: "Technique Ward V",
+            name: "Mind Resist V",
             extend: [
                 20,
                 40,
@@ -4611,7 +4611,7 @@ let data = {
             ref: 68,
             code: "HI01",
             gid: "DA",
-            name: "Wildfire Ward I",
+            name: "Fire Resist I",
             lvup: "HI02",
             extend: [
                 100,
@@ -4619,13 +4619,13 @@ let data = {
                 100
             ],
             status: 2,
-            effect: "Fire Resist(+3)"
+            effect: "Flame Resist(+3)"
         },
         {
             ref: 69,
             code: "HI02",
             gid: "DA",
-            name: "Wildfire Ward II",
+            name: "Fire Resist II",
             lvup: "HI03",
             extend: [
                 60,
@@ -4637,13 +4637,13 @@ let data = {
                 80
             ],
             status: 2,
-            effect: "Fire Resist(+4)"
+            effect: "Flame Resist(+4)"
         },
         {
             ref: 70,
             code: "HI03",
             gid: "DA",
-            name: "Wildfire Ward III",
+            name: "Fire Resist III",
             lvup: "HI04",
             extend: [
                 60,
@@ -4655,13 +4655,13 @@ let data = {
                 50
             ],
             status: 2,
-            effect: "Fire Resist(+5)"
+            effect: "Flame Resist(+5)"
         },
         {
             ref: 71,
             code: "HI04",
             gid: "DA",
-            name: "Wildfire Ward IV",
+            name: "Fire Resist IV",
             lvup: "HI05",
             extend: [
                 40,
@@ -4673,13 +4673,13 @@ let data = {
                 40
             ],
             status: 2,
-            effect: "Fire Resist(+6)"
+            effect: "Flame Resist(+6)"
         },
         {
             ref: 72,
             code: "HI05",
             gid: "DA",
-            name: "Wildfire Ward V",
+            name: "Fire Resist V",
             extend: [
                 20,
                 40,
@@ -4690,13 +4690,13 @@ let data = {
                 30
             ],
             status: 2,
-            effect: "Fire Resist(+7)"
+            effect: "Flame Resist(+7)"
         },
         {
             ref: 73,
             code: "HJ01",
             gid: "DA",
-            name: "Frost Ward I",
+            name: "Ice Resist I",
             lvup: "HJ02",
             extend: [
                 100,
@@ -4710,7 +4710,7 @@ let data = {
             ref: 74,
             code: "HJ02",
             gid: "DA",
-            name: "Frost Ward II",
+            name: "Ice Resist II",
             lvup: "HJ03",
             extend: [
                 60,
@@ -4728,7 +4728,7 @@ let data = {
             ref: 75,
             code: "HJ03",
             gid: "DA",
-            name: "Frost Ward III",
+            name: "Ice Resist III",
             lvup: "HJ04",
             extend: [
                 60,
@@ -4746,7 +4746,7 @@ let data = {
             ref: 76,
             code: "HJ04",
             gid: "DA",
-            name: "Frost Ward IV",
+            name: "Ice Resist IV",
             lvup: "HJ05",
             extend: [
                 40,
@@ -4764,7 +4764,7 @@ let data = {
             ref: 77,
             code: "HJ05",
             gid: "DA",
-            name: "Frost Ward V",
+            name: "Ice Resist V",
             extend: [
                 20,
                 40,
@@ -4781,7 +4781,7 @@ let data = {
             ref: 78,
             code: "HK01",
             gid: "DA",
-            name: "Lightning Ward I",
+            name: "Shock Resist I",
             lvup: "HK02",
             extend: [
                 100,
@@ -4795,7 +4795,7 @@ let data = {
             ref: 79,
             code: "HK02",
             gid: "DA",
-            name: "Lightning Ward II",
+            name: "Shock Resist II",
             lvup: "HK03",
             extend: [
                 60,
@@ -4813,7 +4813,7 @@ let data = {
             ref: 80,
             code: "HK03",
             gid: "DA",
-            name: "Lightning Ward III",
+            name: "Shock Resist III",
             lvup: "HK04",
             extend: [
                 60,
@@ -4831,7 +4831,7 @@ let data = {
             ref: 81,
             code: "HK04",
             gid: "DA",
-            name: "Lightning Ward IV",
+            name: "Shock Resist IV",
             lvup: "HK05",
             extend: [
                 40,
@@ -4849,7 +4849,7 @@ let data = {
             ref: 82,
             code: "HK05",
             gid: "DA",
-            name: "Lightning Ward V",
+            name: "Shock Resist V",
             extend: [
                 20,
                 40,
@@ -4866,7 +4866,7 @@ let data = {
             ref: 83,
             code: "HL01",
             gid: "DA",
-            name: "Gale Ward I",
+            name: "Wind Resist I",
             lvup: "HL02",
             extend: [
                 100,
@@ -4880,7 +4880,7 @@ let data = {
             ref: 84,
             code: "HL02",
             gid: "DA",
-            name: "Gale Ward II",
+            name: "Wind Resist II",
             lvup: "HL03",
             extend: [
                 60,
@@ -4898,7 +4898,7 @@ let data = {
             ref: 85,
             code: "HL03",
             gid: "DA",
-            name: "Gale Ward III",
+            name: "Wind Resist III",
             lvup: "HL04",
             extend: [
                 60,
@@ -4916,7 +4916,7 @@ let data = {
             ref: 86,
             code: "HL04",
             gid: "DA",
-            name: "Gale Ward IV",
+            name: "Wind Resist IV",
             lvup: "HL05",
             extend: [
                 40,
@@ -4934,7 +4934,7 @@ let data = {
             ref: 87,
             code: "HL05",
             gid: "DA",
-            name: "Gale Ward V",
+            name: "Wind Resist V",
             extend: [
                 20,
                 40,
@@ -4951,7 +4951,7 @@ let data = {
             ref: 88,
             code: "HM01",
             gid: "DA",
-            name: "Radiant Ward I",
+            name: "Light Resist I",
             lvup: "HM02",
             extend: [
                 100,
@@ -4965,7 +4965,7 @@ let data = {
             ref: 89,
             code: "HM02",
             gid: "DA",
-            name: "Radiant Ward II",
+            name: "Light Resist II",
             lvup: "HM03",
             extend: [
                 60,
@@ -4983,7 +4983,7 @@ let data = {
             ref: 90,
             code: "HM03",
             gid: "DA",
-            name: "Radiant Ward III",
+            name: "Light Resist III",
             lvup: "HM04",
             extend: [
                 60,
@@ -5001,7 +5001,7 @@ let data = {
             ref: 91,
             code: "HM04",
             gid: "DA",
-            name: "Radiant Ward IV",
+            name: "Light Resist IV",
             lvup: "HM05",
             extend: [
                 40,
@@ -5019,7 +5019,7 @@ let data = {
             ref: 92,
             code: "HM05",
             gid: "DA",
-            name: "Radiant Ward V",
+            name: "Light Resist V",
             extend: [
                 20,
                 40,
@@ -5036,7 +5036,7 @@ let data = {
             ref: 93,
             code: "HN01",
             gid: "DA",
-            name: "Umbral Ward I",
+            name: "Gloom Resist I",
             lvup: "HN02",
             extend: [
                 100,
@@ -5050,7 +5050,7 @@ let data = {
             ref: 94,
             code: "HN02",
             gid: "DA",
-            name: "Umbral Ward II",
+            name: "Gloom Resist II",
             lvup: "HN03",
             extend: [
                 60,
@@ -5068,7 +5068,7 @@ let data = {
             ref: 95,
             code: "HN03",
             gid: "DA",
-            name: "Umbral Ward III",
+            name: "Gloom Resist III",
             lvup: "HN04",
             extend: [
                 60,
@@ -5086,7 +5086,7 @@ let data = {
             ref: 96,
             code: "HN04",
             gid: "DA",
-            name: "Umbral Ward IV",
+            name: "Gloom Resist IV",
             lvup: "HN05",
             extend: [
                 40,
@@ -5104,7 +5104,7 @@ let data = {
             ref: 97,
             code: "HN05",
             gid: "DA",
-            name: "Umbral Ward V",
+            name: "Gloom Resist V",
             extend: [
                 20,
                 40,
@@ -5121,7 +5121,7 @@ let data = {
             ref: 98,
             code: "HZ01",
             gid: "DA",
-            name: "Sovereign Ward I",
+            name: "All Resist I",
             extend: [
                 30,
                 50,
@@ -5134,7 +5134,7 @@ let data = {
             ref: 99,
             code: "HZ02",
             gid: "DA",
-            name: "Sovereign Ward II",
+            name: "All Resist II",
             extend: [
                 20,
                 40,
@@ -5147,7 +5147,7 @@ let data = {
             ref: 100,
             code: "HZ03",
             gid: "DA",
-            name: "Sovereign Ward III",
+            name: "All Resist III",
             extend: [
                 10,
                 30,
@@ -5160,7 +5160,7 @@ let data = {
             ref: 101,
             code: "HZ04",
             gid: "DA",
-            name: "Sovereign Ward IV",
+            name: "All Resist IV",
             status: 2,
             effect: "All Resist(+4)"
         },
@@ -5168,7 +5168,7 @@ let data = {
             ref: 102,
             code: "HZ05",
             gid: "DA",
-            name: "Sovereign Ward V",
+            name: "All Resist V",
             status: 2,
             effect: "All Resist(+5)"
         },
@@ -5431,7 +5431,7 @@ let data = {
             ref: 118,
             code: "JD01",
             gid: "DB",
-            name: "Blind I",
+            name: "Mirage I",
             lvup: "JD02",
             extend: [
                 60,
@@ -5439,13 +5439,13 @@ let data = {
                 100
             ],
             status: 3,
-            effect: "Grants Blind Lv1"
+            effect: "Grants Mirage Lv1"
         },
         {
             ref: 119,
             code: "JD02",
             gid: "DB",
-            name: "Blind II",
+            name: "Mirage II",
             lvup: "JD03",
             extend: [
                 40,
@@ -5457,13 +5457,13 @@ let data = {
                 80
             ],
             status: 3,
-            effect: "Grants Blind Lv2"
+            effect: "Grants Mirage Lv2"
         },
         {
             ref: 120,
             code: "JD03",
             gid: "DB",
-            name: "Blind III",
+            name: "Mirage III",
             lvup: "JD04",
             extend: [
                 20,
@@ -5475,13 +5475,13 @@ let data = {
                 40
             ],
             status: 3,
-            effect: "Grants Blind Lv3"
+            effect: "Grants Mirage Lv3"
         },
         {
             ref: 121,
             code: "JD04",
             gid: "DB",
-            name: "Blind IV",
+            name: "Mirage IV",
             lvup: "JD05",
             extend: [
                 20,
@@ -5493,13 +5493,13 @@ let data = {
                 40
             ],
             status: 3,
-            effect: "Grants Blind Lv4"
+            effect: "Grants Mirage Lv4"
         },
         {
             ref: 122,
             code: "JD05",
             gid: "DB",
-            name: "Blind V",
+            name: "Mirage V",
             extend: [
                 10,
                 20,
@@ -5510,7 +5510,7 @@ let data = {
                 30
             ],
             status: 3,
-            effect: "Grants Blind Lv5"
+            effect: "Grants Mirage Lv5"
         },
         {
             ref: 123,
@@ -6058,7 +6058,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "Increase Might based on the Photon Blast Gauge.",
+            effect: "Increase Power based on the Photon Blast Gauge.",
             noEx: true
         },
         {
@@ -6114,7 +6114,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "Reduce HP by 5% every 20 seconds and increase Might by 4%.",
+            effect: "Reduce HP by 5% every 20 seconds and increase Power by 4%.",
             noEx: true
         },
         {
@@ -6128,7 +6128,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "Increase Might based on the number of Special Abilities attached to this weapon. Maxes at 4%.",
+            effect: "Increase Power based on the number of Special Abilities attached to this weapon. Maxes at 4%.",
             noEx: true
         },
         {
@@ -6142,7 +6142,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "Increase Might by 1% for every 60 MEL Pwr affixed to this weapon. Increase Might by an additional 2% if at least 200 MEL Pwr is affixed to this weapon.",
+            effect: "Increase Power by 1% for every 60 S-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 S-ATK is affixed to this weapon.",
             noEx: true
         },
         {
@@ -6150,13 +6150,13 @@ let data = {
             code: "LA92",
             simCode: "LA2K",
             gid: "L1",
-            name: "S1:Precision Boost",
+            name: "S1:Shoot Boost",
             extend: [
                 100,
                 100,
                 100
             ],
-            effect: "Increase Might by 1% for every 60 RNG Pwr affixed to this weapon. Increase Might by an additional 2% if at least 200 RNG Pwr is affixed to this weapon.",
+            effect: "Increase Power by 1% for every 60 R-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 R-ATK is affixed to this weapon.",
             noEx: true
         },
         {
@@ -6170,7 +6170,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "Increase Might by 1% for every 60 TEC Pwr affixed to this weapon. Increase Might by an additional 2% if at least 200 TEC Pwr is affixed to this weapon.",
+            effect: "Increase Power by 1% for every 60 T-ATK affixed to this weapon. Increase Power by an additional 2% if at least 200 T-ATK is affixed to this weapon.",
             noEx: true
         },
         {
@@ -6184,7 +6184,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "Increase Might every three times you are attacked. Upon being attacked a tenth time, release an explosion that incapacitates you and damages all nearby targets.",
+            effect: "Increase Power every three times you are attacked. Upon being attacked a tenth time, release an explosion that incapacitates you and damages all nearby targets.",
             noEx: true
         },
         {
@@ -6544,7 +6544,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "Increase Might by 3%<br>but take 6% more damage<br>when weapon is drawn.",
+            effect: "Increase Power by 3%<br>but take 6% more damage<br>when weapon is drawn.",
             noEx: true
         },
         {
@@ -6794,7 +6794,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "Reduce PP consumption for 30 seconds upon hitting with a PA/Casting. Has a low chance to grant amplified effects. Triggers Recast upon activation.",
+            effect: "Reduce PP consumption for 30 seconds upon hitting with a PA/Technique. Has a low chance to grant amplified effects. Triggers Recast upon activation.",
             noEx: true
         },
         {
@@ -7635,7 +7635,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "Bullet Bow damage is boosted by 3% during Rapid Precision.",
+            effect: "Bullet Bow damage is boosted by 3% during Rapid Shoot.",
             noEx: true
         },
         {
@@ -7827,7 +7827,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "Consume no Gear for 15s after performing a Just Guard. Increase Might by 2%. Wired Lance only.",
+            effect: "Consume no Gear for 15s after performing a Just Guard. Increase Power by 2%. Wired Lance only.",
             noEx: true
         },
         {
@@ -7838,7 +7838,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "Inflict damage while running. Unleash a shockwave attack when you stop running. Increase Might by 2%. Partizan only.",
+            effect: "Inflict damage while running. Unleash a shockwave attack when you stop running. Increase Power by 2%. Partizan only.",
             noEx: true
         },
         {
@@ -7860,7 +7860,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "Boost Gear Gauge and unleash a counterattack upon successfully blocking an attack with DS Wind Parrying.Increase Might by 2%. Double Saber only.",
+            effect: "Boost Gear Gauge and unleash a counterattack upon successfully blocking an attack with DS Wind Parrying.Increase Power by 2%. Double Saber only.",
             noEx: true
         },
         {
@@ -7871,7 +7871,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "Successfully evade an attack with Sway to summon a giant fist. Increase Might by 2%. Knuckles only.",
+            effect: "Successfully evade an attack with Sway to summon a giant fist. Increase Power by 2%. Knuckles only.",
             noEx: true
         },
         {
@@ -7882,7 +7882,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "Increase the damage of Counter by 15%. Restore Braver Gear Gauge to its maximum value when you successfully perform Katana Counter.Increase Might by 2%. Katana only.",
+            effect: "Increase the damage of Counter by 15%. Restore Braver Gear Gauge to its maximum value when you successfully perform Katana Counter.Increase Power by 2%. Katana only.",
             noEx: true
         },
         {
@@ -7893,7 +7893,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "When using a PA, lightning-charged Photon Blades are generated. (Might: ?%). Dual Blades only.",
+            effect: "When using a PA, lightning-charged Photon Blades are generated. (Power: ?%). Dual Blades only.",
             noEx: true
         },
         {
@@ -7904,7 +7904,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "Enhance the performance of End Attract with a one minute Recast. Recast resets upon successfully evading an attack with Dive Roll. Increase Might by 2%. Assault Rifle only.",
+            effect: "Enhance the performance of End Attract with a one minute Recast. Recast resets upon successfully evading an attack with Dive Roll. Increase Power by 2%. Assault Rifle only.",
             noEx: true
         },
         {
@@ -7915,7 +7915,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "Enhance the performance of Zero Distance with a one minute Recast. Recast resets upon successfully evading an attack with Dive Roll. Increase Might by 2%. Launcher only.",
+            effect: "Enhance the performance of Zero Distance with a one minute Recast. Recast resets upon successfully evading an attack with Dive Roll. Increase Power by 2%. Launcher only.",
             noEx: true
         },
         {
@@ -7948,7 +7948,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "Enhance the performance of Normal Attacks and increase the damage of Rod Precision by 100%. Rod only.",
+            effect: "Enhance the performance of Normal Attacks and increase the damage of Rod Shoot by 100%. Rod only.",
             noEx: true
         },
         {
@@ -7970,7 +7970,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "Generates a wave attack on the third Normal Attack. Increase Might by 2%. Wand only.",
+            effect: "Generates a wave attack on the third Normal Attack. Increase Power by 2%. Wand only.",
             noEx: true
         },
         {
@@ -8016,7 +8016,7 @@ let data = {
             extend: [
                 100
             ],
-            effect: "Casting damage is<br>decreased by 40%, but<br>using the same<br>Casting with a JA<br>substantially<br>decreases charge<br>time.",
+            effect: "Technique damage is<br>decreased by 40%, but<br>using the same<br>Technique with a JA<br>substantially<br>decreases charge<br>time.",
             noEx: true
         },
         {
@@ -8049,7 +8049,7 @@ let data = {
             extend: [
                 100
             ],
-            effect: "At maximum gear, no gear is consumed while airborne. Increase Might by 2%. Partizan only.",
+            effect: "At maximum gear, no gear is consumed while airborne. Increase Power by 2%. Partizan only.",
             noEx: true
         },
         {
@@ -8122,33 +8122,33 @@ let data = {
             ref: 563,
             code: "LF0G",
             gid: "L6",
-            name: "S6:MEL Pwr Up",
+            name: "S6:S-ATK Up",
             extend: [
               100
             ],
-            effect: "MEL Pwr(+30)",
+            effect: "S-ATK(+30)",
             noEx: true
         },
         {
             ref: 564,
             code: "LF0H",
             gid: "L6",
-            name: "S6:RNG Pwr Up",
+            name: "S6:R-ATK Up",
             extend: [
               100
             ],
-            effect: "RNG Pwr(+30)",
+            effect: "R-ATK(+30)",
             noEx: true
         },
         {
             ref: 565,
             code: "LF0I",
             gid: "L6",
-            name: "S6:TEC Pwr Up",
+            name: "S6:T-ATK Up",
             extend: [
               100
             ],
-            effect: "TEC Pwr(+30)",
+            effect: "T-ATK(+30)",
             noEx: true
         },
         {
@@ -8203,7 +8203,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "Increases Jump Might.",
+            effect: "Increases Jump Power.",
             noEx: true
         },
         {
@@ -8266,33 +8266,33 @@ let data = {
             ref: 574,
             code: "LG0B",
             gid: "L7",
-            name: "S7:MEL Pwr Up",
+            name: "S7:S-ATK Up",
             extend: [
               100
             ],
-            effect: "MEL Pwr(+30)",
+            effect: "S-ATK(+30)",
             noEx: true
         },
         {
             ref: 575,
             code: "LG0C",
             gid: "L7",
-            name: "S7:RNG Pwr Up",
+            name: "S7:R-ATK Up",
             extend: [
               100
             ],
-            effect: "RNG Pwr(+30)",
+            effect: "R-ATK(+30)",
             noEx: true
         },
         {
             ref: 576,
             code: "LG0D",
             gid: "L7",
-            name: "S7:TEC Pwr Up",
+            name: "S7:T-ATK Up",
             extend: [
               100
             ],
-            effect: "TEC Pwr(+30)",
+            effect: "T-ATK(+30)",
             noEx: true
         },
         {
@@ -8325,29 +8325,29 @@ let data = {
             extend: [
               100
             ],
-            effect: "MEL Pwr(+50)",
+            effect: "S-ATK(+50)",
             noEx: true
         },
         {
             ref: 580,
             code: "LG0H",
             gid: "L7",
-            name: "S7:RNG Pwr Up 2",
+            name: "S7:R-ATK Up 2",
             extend: [
               100
             ],
-            effect: "RNG Pwr(+50)",
+            effect: "R-ATK(+50)",
             noEx: true
         },
         {
             ref: 581,
             code: "LG0I",
             gid: "L7",
-            name: "S7:TEC Pwr Up 2",
+            name: "S7:T-ATK Up 2",
             extend: [
               100
             ],
-            effect: "TEC Pwr(+50)",
+            effect: "T-ATK(+50)",
             noEx: true
         },
         {
@@ -8358,7 +8358,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "MEL Pwr(+25),RNG Pwr(+25),TEC Pwr(+25)",
+            effect: "S-ATK(+25),R-ATK(+25),T-ATK(+25)",
             noEx: true
         },
         {
@@ -8369,7 +8369,7 @@ let data = {
             extend: [
               100
             ],
-            effect: "MEL Pwr(+45),RNG Pwr(+45),TEC Pwr(+45)",
+            effect: "S-ATK(+45),R-ATK(+45),T-ATK(+45)",
             noEx: true
         },
         {
@@ -8398,7 +8398,7 @@ let data = {
             ref: 601,
             code: "LG0N",
             gid: "L7",
-            name: "S7:Genius Merge",
+            name: "S7:Mind Merge",
             extend: [
                 100
             ],
@@ -8442,33 +8442,33 @@ let data = {
             ref: 587,
             code: "LH0C",
             gid: "L8",
-            name: "S8:MEL Pwr Up",
+            name: "S8:S-ATK Up",
             extend: [
               100
             ],
-            effect: "MEL Pwr(+30)",
+            effect: "S-ATK(+30)",
             noEx: true
         },
         {
             ref: 588,
             code: "LH0D",
             gid: "L8",
-            name: "S8:RNG Pwr Up",
+            name: "S8:R-ATK Up",
             extend: [
               100
             ],
-            effect: "RNG Pwr(+30)",
+            effect: "R-ATK(+30)",
             noEx: true
         },
         {
             ref: 589,
             code: "LH0E",
             gid: "L8",
-            name: "S8:TEC Pwr Up",
+            name: "S8:T-ATK Up",
             extend: [
               100
             ],
-            effect: "TEC Pwr(+30)",
+            effect: "T-ATK(+30)",
             noEx: true
         },
         {
@@ -8523,7 +8523,7 @@ let data = {
             extend: [
                 100
             ],
-            effect: "Reduce falling speed while charging a Casting in mid-air.",
+            effect: "Reduce falling speed while charging a Technique in mid-air.",
             noEx: true
         },
         {
@@ -8537,7 +8537,7 @@ let data = {
                 50,
                 80
             ],
-            effect: "MEL Pwr(+10),<br>RNG Pwr(+10),<br>TEC Pwr(+10),<br>HP(+10)"
+            effect: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+10)"
         },
         {
             ref: 266,
@@ -8555,7 +8555,7 @@ let data = {
                 30,
                 50
             ],
-            effect: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>HP(+15)"
+            effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>HP(+15)"
         },
         {
             ref: 267,
@@ -8573,14 +8573,14 @@ let data = {
                 "EA"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+15),<br>HP(+45)",
+            effect: "S-ATK(+15),<br>HP(+45)",
             cls: "zi-soul"
         },
         {
             ref: 268,
             code: "RA15",
             gid: "EA",
-            name: "Jigmol Soul",
+            name: "Zigmor Soul",
             extend: [
                 0,
                 50,
@@ -8593,7 +8593,7 @@ let data = {
                 "JF"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+15),<br>PP(+4)",
+            effect: "S-ATK(+15),<br>PP(+4)",
             cls: "zi-soul"
         },
         {
@@ -8613,7 +8613,7 @@ let data = {
                 "JA"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+30),<br>HP(+20)",
+            effect: "S-ATK(+30),<br>HP(+20)",
             cls: "zi-soul"
         },
         {
@@ -8632,7 +8632,7 @@ let data = {
                 "JF"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+30),<br>HP(+10),<br>PP(+2)"
+            effect: "S-ATK(+30),<br>HP(+10),<br>PP(+2)"
         },
         {
             ref: 271,
@@ -8651,7 +8651,7 @@ let data = {
                 "JE"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+30),<br>PP(+3)",
+            effect: "S-ATK(+30),<br>PP(+3)",
             cls: "zi-soul"
         },
         {
@@ -8668,7 +8668,7 @@ let data = {
                 "TA"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+35),<br>DEX(+5),<br>HP(+30)"
+            effect: "S-ATK(+35),<br>DEX(+5),<br>HP(+30)"
         },
         {
             ref: 273,
@@ -8684,13 +8684,13 @@ let data = {
                 "TA"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)"
+            effect: "S-ATK(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)"
         },
         {
             ref: 274,
             code: "RA33",
             gid: "EA",
-            name: "Beari Soul",
+            name: "Bayari Soul",
             extend: [
                 0,
                 50,
@@ -8700,13 +8700,13 @@ let data = {
                 "TA"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+35),<br>DEX(+5),<br>PP(+3)"
+            effect: "S-ATK(+35),<br>DEX(+5),<br>PP(+3)"
         },
         {
             ref: 275,
             code: "RB11",
             gid: "EA",
-            name: "Idihta Soul",
+            name: "Idetta Soul",
             extend: [
                 0,
                 50,
@@ -8719,7 +8719,7 @@ let data = {
                 "JB"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+15),<br>HP(+45)"
+            effect: "R-ATK(+15),<br>HP(+45)"
         },
         {
             ref: 276,
@@ -8736,13 +8736,13 @@ let data = {
                 "EB"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+15),<br>PP(+4)"
+            effect: "R-ATK(+15),<br>PP(+4)"
         },
         {
             ref: 277,
             code: "RB21",
             gid: "EA",
-            name: "Ransa Soul",
+            name: "Ra\'nsa Soul",
             extend: [
                 0,
                 50,
@@ -8755,7 +8755,7 @@ let data = {
                 "HM"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+30),<br>HP(+20)"
+            effect: "R-ATK(+30),<br>HP(+20)"
         },
         {
             ref: 278,
@@ -8773,7 +8773,7 @@ let data = {
                 "JC"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+30),<br>HP(+10),<br>PP(+2)",
+            effect: "R-ATK(+30),<br>HP(+10),<br>PP(+2)",
             cls: "zi-soul"
         },
         {
@@ -8793,13 +8793,13 @@ let data = {
                 "HB"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+30),<br>PP(+3)"
+            effect: "R-ATK(+30),<br>PP(+3)"
         },
         {
             ref: 280,
             code: "RB31",
             gid: "EA",
-            name: "Leopod Soul",
+            name: "Leopard Soul",
             extend: [
                 0,
                 50,
@@ -8809,13 +8809,13 @@ let data = {
                 "TA"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+35),<br>DEX(+5),<br>HP(+30)"
+            effect: "R-ATK(+35),<br>DEX(+5),<br>HP(+30)"
         },
         {
             ref: 281,
             code: "RB32",
             gid: "EA",
-            name: "Siogr Soul",
+            name: "Siorg Soul",
             extend: [
                 0,
                 50,
@@ -8825,7 +8825,7 @@ let data = {
                 "TA"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)"
+            effect: "R-ATK(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)"
         },
         {
             ref: 282,
@@ -8841,13 +8841,13 @@ let data = {
                 "TA"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+35),<br>DEX(+5),<br>PP(+3)"
+            effect: "R-ATK(+35),<br>DEX(+5),<br>PP(+3)"
         },
         {
             ref: 283,
             code: "RC11",
             gid: "EA",
-            name: "Jadeu Soul",
+            name: "Jhadu Soul",
             extend: [
                 0,
                 50,
@@ -8859,13 +8859,13 @@ let data = {
                 "EA"
             ],
             rel: "soul",
-            effect: "TEC Pwr(+15),<br>HP(+45)"
+            effect: "T-ATK(+15),<br>HP(+45)"
         },
         {
             ref: 284,
             code: "RC13",
             gid: "EA",
-            name: "Nept Soul",
+            name: "Nepto Soul",
             extend: [
                 0,
                 50,
@@ -8877,7 +8877,7 @@ let data = {
                 "HC"
             ],
             rel: "soul",
-            effect: "TEC Pwr(+15),<br>PP(+4)",
+            effect: "T-ATK(+15),<br>PP(+4)",
             cls: "zi-soul"
         },
         {
@@ -8897,7 +8897,7 @@ let data = {
                 "HN"
             ],
             rel: "soul",
-            effect: "TEC Pwr(+30),<br>HP(+20)"
+            effect: "T-ATK(+30),<br>HP(+20)"
         },
         {
             ref: 286,
@@ -8915,7 +8915,7 @@ let data = {
                 "HK"
             ],
             rel: "soul",
-            effect: "TEC Pwr(+30),<br>HP(+10),<br>PP(+2)"
+            effect: "T-ATK(+30),<br>HP(+10),<br>PP(+2)"
         },
         {
             ref: 287,
@@ -8933,7 +8933,7 @@ let data = {
                 "EB"
             ],
             rel: "soul",
-            effect: "TEC Pwr(+30),<br>PP(+3)",
+            effect: "T-ATK(+30),<br>PP(+3)",
             tooltip: "Used for: Soul Catalyst"
         },
         {
@@ -8950,7 +8950,7 @@ let data = {
                 "TA"
             ],
             rel: "soul",
-            effect: "TEC Pwr(+35),<br>DEX(+5),<br>HP(+30)"
+            effect: "T-ATK(+35),<br>DEX(+5),<br>HP(+30)"
         },
         {
             ref: 289,
@@ -8966,13 +8966,13 @@ let data = {
                 "TA"
             ],
             rel: "soul",
-            effect: "TEC Pwr(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)"
+            effect: "T-ATK(+35),<br>DEX(+5),<br>HP(+20),<br>PP(+1)"
         },
         {
             ref: 290,
             code: "RC33",
             gid: "EA",
-            name: "Granz Soul",
+            name: "Guranz Soul",
             extend: [
                 0,
                 50,
@@ -8982,7 +8982,7 @@ let data = {
                 "TA"
             ],
             rel: "soul",
-            effect: "TEC Pwr(+35),<br>DEX(+5),<br>PP(+3)"
+            effect: "T-ATK(+35),<br>DEX(+5),<br>PP(+3)"
         },
         {
             ref: 291,
@@ -9073,7 +9073,7 @@ let data = {
                 "JD"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+5),<br>DEX(+30),<br>HP(+25)<br>PP(+2)"
+            effect: "S-ATK(+5),<br>DEX(+30),<br>HP(+25)<br>PP(+2)"
         },
         {
             ref: 296,
@@ -9117,7 +9117,7 @@ let data = {
             ref: 298,
             code: "RH23",
             gid: "EA",
-            name: "X Soul",
+            name: "Ex Soul",
             extend: [
                 0,
                 50,
@@ -9137,7 +9137,7 @@ let data = {
             ref: 299,
             code: "RI21",
             gid: "EA",
-            name: "Marmoth Soul",
+            name: "Malmo Soul",
             extend: [
                 0,
                 50,
@@ -9175,7 +9175,7 @@ let data = {
             ref: 301,
             code: "RI23",
             gid: "EA",
-            name: "Varder Soul",
+            name: "Vardha Soul",
             extend: [
                 0,
                 50,
@@ -9195,7 +9195,7 @@ let data = {
             ref: 302,
             code: "RJ21",
             gid: "EA",
-            name: "Catre Soul",
+            name: "Cater Soul",
             extend: [
                 0,
                 50,
@@ -9215,7 +9215,7 @@ let data = {
             ref: 303,
             code: "RJ22",
             gid: "EA",
-            name: "Shraider Soul",
+            name: "Shrayda Soul",
             extend: [
                 0,
                 50,
@@ -9267,7 +9267,7 @@ let data = {
                 "EA"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>HP(+10)"
+            effect: "S-ATK(+20),<br>R-ATK(+20),<br>HP(+10)"
         },
         {
             ref: 306,
@@ -9285,7 +9285,7 @@ let data = {
                 "HJ"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>HP(+5),<br>PP(+1)",
+            effect: "S-ATK(+20),<br>R-ATK(+20),<br>HP(+5),<br>PP(+1)",
             cls: "zi-soul"
         },
         {
@@ -9305,7 +9305,7 @@ let data = {
                 "HI"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>PP(+2)"
+            effect: "S-ATK(+20),<br>R-ATK(+20),<br>PP(+2)"
         },
         {
             ref: 308,
@@ -9324,14 +9324,14 @@ let data = {
                 "HL"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+20),<br>TEC Pwr(+20),<br>HP(+10)",
+            effect: "S-ATK(+20),<br>T-ATK(+20),<br>HP(+10)",
             cls: "zi-soul"
         },
         {
             ref: 309,
             code: "ROC2",
             gid: "EA",
-            name: "Luther Soul",
+            name: "Loser Soul",
             extend: [
                 0,
                 50,
@@ -9342,7 +9342,7 @@ let data = {
                 "BC"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+20),<br>TEC Pwr(+20),<br>HP(+5),<br>PP(+1)",
+            effect: "S-ATK(+20),<br>T-ATK(+20),<br>HP(+5),<br>PP(+1)",
             tooltip: "Used for: Soul Catalyst"
         },
         {
@@ -9362,13 +9362,13 @@ let data = {
                 "JF"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+20),<br>TEC Pwr(+20),<br>PP(+2)"
+            effect: "S-ATK(+20),<br>T-ATK(+20),<br>PP(+2)"
         },
         {
             ref: 311,
             code: "ROE1",
             gid: "EA",
-            name: "Bar Soul",
+            name: "Bal Soul",
             extend: [
                 0,
                 50,
@@ -9381,14 +9381,14 @@ let data = {
                 "JB"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+20),<br>TEC Pwr(+20),<br>HP(+10)",
+            effect: "R-ATK(+20),<br>T-ATK(+20),<br>HP(+10)",
             cls: "zi-soul"
         },
         {
             ref: 312,
             code: "ROE2",
             gid: "EA",
-            name: "Vibras Soul",
+            name: "Vibrace Soul",
             extend: [
                 0,
                 50,
@@ -9400,7 +9400,7 @@ let data = {
                 "HN"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+20),<br>TEC Pwr(+20),<br>HP(+5),<br>PP(+1)"
+            effect: "R-ATK(+20),<br>T-ATK(+20),<br>HP(+5),<br>PP(+1)"
         },
         {
             ref: 313,
@@ -9419,7 +9419,7 @@ let data = {
                 "JC"
             ],
             rel: "soul",
-            effect: "RNG Pwr(+20),<br>TEC Pwr(+20),<br>PP(+2)"
+            effect: "R-ATK(+20),<br>T-ATK(+20),<br>PP(+2)"
         },
         {
             ref: 314,
@@ -9438,7 +9438,7 @@ let data = {
                 "HK"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+20),<br>S-DEF(+20),<br>HP(+20)"
+            effect: "S-ATK(+20),<br>S-DEF(+20),<br>HP(+20)"
         },
         {
             ref: 315,
@@ -9454,7 +9454,7 @@ let data = {
                 "AD"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>DEX(+15),<br>HP(+10),<br>PP(+2)"
+            effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>DEX(+15),<br>HP(+10),<br>PP(+2)"
         },
         {
             ref: 316,
@@ -9473,7 +9473,7 @@ let data = {
                 "HZ"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>DEX(+15),<br>HP(+5),<br>PP(+3)"
+            effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>DEX(+15),<br>HP(+5),<br>PP(+3)"
         },
         {
             ref: 317,
@@ -9489,7 +9489,7 @@ let data = {
                 "AD"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>DEX(+15),<br>PP(+4)"
+            effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>DEX(+15),<br>PP(+4)"
         },
         {
             ref: 318,
@@ -9502,7 +9502,7 @@ let data = {
                 80
             ],
             rel: "soul",
-            effect: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>TEC Pwr(+20),<br>PP(+2)"
+            effect: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(+2)"
         },
         {
             ref: 319,
@@ -9518,7 +9518,7 @@ let data = {
                 "TB"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>TEC Pwr(+20),<br>PP(+4)"
+            effect: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(+4)"
         },
         {
             ref: 320,
@@ -9534,7 +9534,7 @@ let data = {
                 "TC"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+40),<br>RNG Pwr(+40),<br>TEC Pwr(+40)",
+            effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40)",
             tooltip: "Used for: Soul Catalyst"
         },
         {
@@ -9558,7 +9558,7 @@ let data = {
             ref: 322,
             code: "RQ01",
             gid: "EA",
-            name: "Gemini Soul",
+            name: "Double Soul",
             extend: [
                 0,
                 50,
@@ -9581,7 +9581,7 @@ let data = {
             ref: 323,
             code: "RZ01",
             gid: "EA",
-            name: "Soul of Darkness",
+            name: "Darkness Soul",
             extend: [
                 0,
                 50,
@@ -9600,7 +9600,7 @@ let data = {
             gid: "EA",
             name: "Astral Soul",
             effect: "ALL(+35),<br>HP(+35),<br>PP(+5)",
-            tooltip: "Made by: 4x Soul Catalyst + Soul of Darkness"
+            tooltip: "Made by: 4x Soul Catalyst + Darkness Soul"
         },
         {
             ref: 325,
@@ -9613,7 +9613,7 @@ let data = {
                 80
             ],
             effect: "ALL(+15),<br>HP(+15),<br>PP(+2)",
-            tooltip: "Made by: 2 of the following: Escarde Soul, Toh\'oh Soul, FullVegas Soul<br>Used for: Ether Factor"
+            tooltip: "Made by: 2 of the following: Escarde Soul, Toh\'oh Soul, Full Vegas Soul<br>Used for: Ether Factor"
         },
         {
             ref: 326,
@@ -9637,7 +9637,7 @@ let data = {
             ref: 327,
             code: "SB02",
             gid: "EA",
-            name: "FullVegas Soul",
+            name: "Full Vegas Soul",
             extend: [
                 0,
                 60,
@@ -9647,7 +9647,7 @@ let data = {
                 "TG03"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15)",
+            effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15)",
             cls: "ef-soul",
             tooltip: "Used for: ___ The Soul, Ether Soul"
         },
@@ -9665,7 +9665,7 @@ let data = {
                 "TG04"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+10),<br>RNG Pwr(+10),<br>TEC Pwr(+10),<br>DEX(+20)",
+            effect: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+10),<br>DEX(+20)",
             cls: "ef-soul",
             tooltip: "Used for: ___ The Soul, Ether Soul"
         },
@@ -9683,7 +9683,7 @@ let data = {
                 "TK0"
             ],
             rel: "soul",
-            effect: "MEL Pwr(+10),<br>RNG Pwr(+10),<br>TEC Pwr(+10),<br>HP(+20)",
+            effect: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+20)",
             cls: "ef-soul",
             tooltip: "Used for: ___ The Soul, Omega Memoria"
         },
@@ -9709,39 +9709,39 @@ let data = {
             ref: 331,
             code: "SH10",
             gid: "EA",
-            name: "Acto Di Soul",
+            name: "Act The Soul",
             extend: [
                 0,
                 25,
                 40
             ],
-            effect: "MEL Pwr(+35),<br>PP(+3)",
+            effect: "S-ATK(+35),<br>PP(+3)",
             tooltip: "Made by: Earth/Omega Soul + Free Field Boss Soul"
         },
         {
             ref: 332,
             code: "SH20",
             gid: "EA",
-            name: "Tir Di Soul",
+            name: "Till The Soul",
             extend: [
                 0,
                 25,
                 40
             ],
-            effect: "RNG Pwr(+35),<br>PP(+3)",
+            effect: "R-ATK(+35),<br>PP(+3)",
             tooltip: "Made by: Earth/Omega Soul + Free Field Boss Soul"
         },
         {
             ref: 333,
             code: "SH30",
             gid: "EA",
-            name: "Magia Di Soul",
+            name: "Magi The Soul",
             extend: [
                 0,
                 25,
                 40
             ],
-            effect: "TEC Pwr(+35),<br>PP(+3)",
+            effect: "T-ATK(+35),<br>PP(+3)",
             tooltip: "Made by: Earth/Omega Soul + Free Field Boss Soul"
         },
         {
@@ -9754,7 +9754,7 @@ let data = {
                 25,
                 40
             ],
-            effect: "MEL Pwr(+25),<br>RNG Pwr(+25),<br>TEC Pwr(+25),<br>HP(+35),<br>PP(+3)",
+            effect: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>HP(+35),<br>PP(+3)",
             tooltip: "Made by: Earth/Omega Soul + Free Field Boss Soul"
         },
         {
@@ -9767,8 +9767,8 @@ let data = {
                 50,
                 80
             ],
-            effect: "MEL Pwr(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
-            tooltip: "Used for: Acto Di Soul"
+            effect: "S-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+            tooltip: "Used for: Act The Soul"
         },
         {
             ref: 501,
@@ -9780,8 +9780,8 @@ let data = {
                 50,
                 80
             ],
-            effect: "RNG Pwr(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
-            tooltip: "Used for: Tir Di Soul"
+            effect: "R-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+            tooltip: "Used for: Till The Soul"
         },
         {
             ref: 502,
@@ -9793,8 +9793,8 @@ let data = {
                 50,
                 80
             ],
-            effect: "TEC Pwr(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
-            tooltip: "Used for: Magia Di Soul"
+            effect: "T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+            tooltip: "Used for: Magi The Soul"
         },
         {
             ref: 503,
@@ -9806,7 +9806,7 @@ let data = {
                 50,
                 80
             ],
-            effect: "MEL Pwr(+20), RNG Pwr(+20), TEC Pwr(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+50), PP(+2)",
+            effect: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+50), PP(+2)",
             tooltip: "Used for: Ares The Soul"
         },
         {
@@ -9833,7 +9833,7 @@ let data = {
                 50
             ],
             status: 6,
-            effect: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>TEC Pwr(+20)"
+            effect: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+20)"
         },
         {
             ref: 337,
@@ -9846,7 +9846,7 @@ let data = {
                 80
             ],
             status: 7,
-            effect: "MEL Pwr(+30),<br>RNG Pwr(+30),<br>TEC Pwr(+30)"
+            effect: "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30)"
         },
         {
             ref: 338,
@@ -9858,7 +9858,7 @@ let data = {
                 30,
                 50
             ],
-            effect: "MEL Pwr(+25),<br>RNG Pwr(+25),<br>TEC Pwr(+25)",
+            effect: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25)",
             tooltip: "Made by: 2/3x ARKS Fever"
         },
         {
@@ -9872,7 +9872,7 @@ let data = {
                 50
             ],
             status: 6,
-            effect: "MEL Pwr(+10),<br>RNG Pwr(+20),<br>TEC Pwr(+10),<br>HP(+20),<br>PP(+1)",
+            effect: "S-ATK(+10),<br>R-ATK(+20),<br>T-ATK(+10),<br>HP(+20),<br>PP(+1)",
             tooltip: "Used for: Factor Catalyst"
         },
         {
@@ -9886,7 +9886,7 @@ let data = {
                 50
             ],
             status: 6,
-            effect: "MEL Pwr(+10),<br>RNG Pwr(+10),<br>TEC Pwr(+20),<br>HP(+20),<br>PP(+1)",
+            effect: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+20),<br>HP(+20),<br>PP(+1)",
             tooltip: "Used for: Factor Catalyst"
         },
         {
@@ -9900,7 +9900,7 @@ let data = {
                 50
             ],
             status: 6,
-            effect: "MEL Pwr(+20),<br>RNG Pwr(+10),<br>TEC Pwr(+10),<br>HP(+20),<br>PP(+1)",
+            effect: "S-ATK(+20),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+20),<br>PP(+1)",
             tooltip: "Used for: Factor Catalyst"
         },
         {
@@ -9922,7 +9922,7 @@ let data = {
                 50
             ],
             status: 6,
-            effect: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>HP(+20),<br>PP(+1)",
+            effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>HP(+20),<br>PP(+1)",
             tooltip: "Used for: Omega Memoria"
         },
         {
@@ -9936,46 +9936,46 @@ let data = {
                 50
             ],
             status: 6,
-            effect: "MEL Pwr(+40),<br>RNG Pwr(+20),<br>TEC Pwr(+20),<br>PP(-2)"
+            effect: "S-ATK(+40),<br>R-ATK(+20),<br>T-ATK(+20),<br>PP(-2)"
         },
         {
             ref: 345,
             code: "TK03",
             gid: "AC",
-            name: "Luther Reverie",
+            name: "Loser Reverie",
             extend: [
                 0,
                 30,
                 50
             ],
             status: 6,
-            effect: "MEL Pwr(+20),<br>RNG Pwr(+20),<br>TEC Pwr(+40),<br>HP(-20)"
+            effect: "S-ATK(+20),<br>R-ATK(+20),<br>T-ATK(+40),<br>HP(-20)"
         },
         {
             ref: 346,
             code: "TK04",
             gid: "AC",
-            name: "Apprentice Reverie",
+            name: "Apprezina Reverie",
             extend: [
                 0,
                 30,
                 50
             ],
             status: 6,
-            effect: "MEL Pwr(+20),<br>RNG Pwr(+40),<br>TEC Pwr(+20),<br>HP(-10),<br>PP(-1)"
+            effect: "S-ATK(+20),<br>R-ATK(+40),<br>T-ATK(+20),<br>HP(-10),<br>PP(-1)"
         },
         {
             ref: 347,
             code: "TK05",
             gid: "AC",
-            name: "Gemini Reverie",
+            name: "Double Reverie",
             extend: [
                 0,
                 30,
                 50
             ],
             status: 6,
-            effect: "MEL Pwr(-20),<br>RNG Pwr(-20),<br>TEC Pwr(-20),<br>HP(+50),<br>PP(+5)"
+            effect: "S-ATK(-20),<br>R-ATK(-20),<br>T-ATK(-20),<br>HP(+50),<br>PP(+5)"
         },
         {
             ref: 348,
@@ -9988,7 +9988,7 @@ let data = {
                 50
             ],
             status: 6,
-            effect: "MEL Pwr(+40),<br>RNG Pwr(+40),<br>TEC Pwr(+40),<br>S-DEF(-20),<br>R-DEF(-20),<br>T-DEF(-20)",
+            effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>S-DEF(-20),<br>R-DEF(-20),<br>T-DEF(-20)",
             tooltip: "Used for: Reverie Catalyst"
         },
         {
@@ -9997,7 +9997,7 @@ let data = {
             gid: "AC",
             name: "Mana Reverie",
             status: 6,
-            effect: "MEL Pwr(+50),<br>RNG Pwr(+50),<br>TEC Pwr(+50),<br>HP(+20),<br>PP(+4)",
+            effect: "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>HP(+20),<br>PP(+4)",
             tooltip: "Made by: Omega Memoria + 4x Reverie Catalyst"
         },
         {
@@ -10017,7 +10017,7 @@ let data = {
             ref: 351,
             code: "TE01",
             gid: "AC",
-            name: "Veteran\'s Resolve I",
+            name: "Returner I",
             lvup: "TE02",
             extend: [
                 0,
@@ -10031,7 +10031,7 @@ let data = {
             ref: 352,
             code: "TE02",
             gid: "AC",
-            name: "Veteran\'s Resolve II",
+            name: "Returner II",
             lvup: "TE03",
             extend: [
                 0,
@@ -10049,7 +10049,7 @@ let data = {
             ref: 353,
             code: "TE03",
             gid: "AC",
-            name: "Veteran\'s Resolve III",
+            name: "Returner III",
             lvup: "TE04",
             extend: [
                 0,
@@ -10067,7 +10067,7 @@ let data = {
             ref: 354,
             code: "TE04",
             gid: "AC",
-            name: "Veteran\'s Resolve IV",
+            name: "Returner IV",
             lvup: "TE05",
             extend: [
                 0,
@@ -10085,7 +10085,7 @@ let data = {
             ref: 355,
             code: "TE05",
             gid: "AC",
-            name: "Veteran\'s Resolve V",
+            name: "Returner V",
             extend: [
                 0,
                 30,
@@ -10110,7 +10110,7 @@ let data = {
                 100
             ],
             status: 4,
-            effect: "MEL Pwr(+3), RNG Pwr(+3), TEC Pwr(+3), S-DEF(+5), R-DEF(+5), T-DEF(+5), HP(+5), PP(+1)"
+            effect: "S-ATK(+3), R-ATK(+3), T-ATK(+3), S-DEF(+5), R-DEF(+5), T-DEF(+5), HP(+5), PP(+1)"
         },
         {
             ref: 505,
@@ -10128,7 +10128,7 @@ let data = {
                 70
             ],
             status: 4,
-            effect: "MEL Pwr(+5), RNG Pwr(+5), TEC Pwr(+5), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+10), PP(+1)"
+            effect: "S-ATK(+5), R-ATK(+5), T-ATK(+5), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+10), PP(+1)"
         },
         {
             ref: 506,
@@ -10146,7 +10146,7 @@ let data = {
                 50
             ],
             status: 4,
-            effect: "MEL Pwr(+10), RNG Pwr(+10), TEC Pwr(+10), S-DEF(+15), R-DEF(+15), T-DEF(+15), HP(+15), PP(+1)"
+            effect: "S-ATK(+10), R-ATK(+10), T-ATK(+10), S-DEF(+15), R-DEF(+15), T-DEF(+15), HP(+15), PP(+1)"
         },
         {
             ref: 507,
@@ -10164,7 +10164,7 @@ let data = {
                 30
             ],
             status: 4,
-            effect: "MEL Pwr(+15), RNG Pwr(+15), TEC Pwr(+15), S-DEF(+30), R-DEF(+30), T-DEF(+30), HP(+30), PP(+2)"
+            effect: "S-ATK(+15), R-ATK(+15), T-ATK(+15), S-DEF(+30), R-DEF(+30), T-DEF(+30), HP(+30), PP(+2)"
         },
         {
             ref: 508,
@@ -10181,7 +10181,7 @@ let data = {
                 20
             ],
             status: 4,
-            effect: "MEL Pwr(+30), RNG Pwr(+30), TEC Pwr(+30), S-DEF(+50), R-DEF(+50), T-DEF(+50), HP(+50), PP(+2)"
+            effect: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+50), R-DEF(+50), T-DEF(+50), HP(+50), PP(+2)"
         },
         {
             ref: 509,
@@ -10194,7 +10194,7 @@ let data = {
                 50
             ],
             status: 1,
-            effect: "MEL Pwr(+30), S-DEF(+40), R-DEF(+20), T-DEF(+20)"
+            effect: "S-ATK(+30), S-DEF(+40), R-DEF(+20), T-DEF(+20)"
         },
         {
             ref: 510,
@@ -10207,7 +10207,7 @@ let data = {
                 50
             ],
             status: 1,
-            effect: "RNG Pwr(+30), S-DEF(+20), R-DEF(+40), T-DEF(+20)"
+            effect: "R-ATK(+30), S-DEF(+20), R-DEF(+40), T-DEF(+20)"
         },
         {
             ref: 511,
@@ -10220,7 +10220,7 @@ let data = {
                 50
             ],
             status: 1,
-            effect: "TEC Pwr(+30), S-DEF(+20), R-DEF(+20), T-DEF(+40)"
+            effect: "T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+40)"
         },
         {
             ref: 595,
@@ -10244,7 +10244,7 @@ let data = {
                 50
             ],
             status: 1,
-            effect: "MEL Pwr(+20), RNG Pwr(+20), TEC Pwr(+20), S-DEF(+50), R-DEF(+50), T-DEF(+50)"
+            effect: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+50), R-DEF(+50), T-DEF(+50)"
         },
         {
             ref: 638,
@@ -10256,7 +10256,7 @@ let data = {
                 50
             ],
             status: 1,
-            effect: "MEL Pwr(+30), RNG Pwr(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
+            effect: "S-ATK(+30), R-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
         },
         {
             ref: 639,
@@ -10268,13 +10268,13 @@ let data = {
                 50
             ],
             status: 1,
-            effect: "MEL Pwr(+30), TEC Pwr(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
+            effect: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
         },
         {
             ref: 356,
             code: "TF01",
             gid: "AC",
-            name: "Spirit Alpha",
+            name: "Spirita Alpha",
             extend: [
                 30,
                 50,
@@ -10294,7 +10294,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "MEL Pwr(+5),<br>RNG Pwr(+5),<br>TEC Pwr(+5),<br>PP(+2)"
+            effect: "S-ATK(+5),<br>R-ATK(+5),<br>T-ATK(+5),<br>PP(+2)"
         },
         {
             ref: 358,
@@ -10311,7 +10311,7 @@ let data = {
                 "FA03"
             ],
             rel: "doom",
-            effect: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>PP(+2)"
+            effect: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>PP(+2)"
         },
         {
             ref: 359,
@@ -10333,7 +10333,7 @@ let data = {
                 "FA03"
             ],
             rel: "doom2",
-            effect: "MEL Pwr(+25),<br>RNG Pwr(+25),<br>TEC Pwr(+25),<br>PP(+3)",
+            effect: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
             tooltip: "Made by: 3-5x Doom Break"
         },
         {
@@ -10356,14 +10356,14 @@ let data = {
                 "FA03"
             ],
             rel: "doom2",
-            effect: "MEL Pwr(+30),<br>RNG Pwr(+30),<br>TEC Pwr(+30),<br>PP(+4)",
+            effect: "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
             tooltip: "Made from: 3-5x Doom Break 3"
         },
         {
             ref: 360,
             code: "LP01",
             gid: "AB",
-            name: "Lesser Might I",
+            name: "Lesser Power I",
             lvup: "LP02",
             extend: [
                 0,
@@ -10371,13 +10371,13 @@ let data = {
                 100
             ],
             status: 4,
-            effect: "MEL Pwr(+5)"
+            effect: "S-ATK(+5)"
         },
         {
             ref: 361,
             code: "LP02",
             gid: "AB",
-            name: "Lesser Might II",
+            name: "Lesser Power II",
             lvup: "LP03",
             extend: [
                 0,
@@ -10389,13 +10389,13 @@ let data = {
                 70
             ],
             status: 4,
-            effect: "MEL Pwr(+15)"
+            effect: "S-ATK(+15)"
         },
         {
             ref: 362,
             code: "LP03",
             gid: "AB",
-            name: "Lesser Might III",
+            name: "Lesser Power III",
             lvup: "LP04",
             extend: [
                 0,
@@ -10407,13 +10407,13 @@ let data = {
                 50
             ],
             status: 4,
-            effect: "MEL Pwr(+25)"
+            effect: "S-ATK(+25)"
         },
         {
             ref: 363,
             code: "LP04",
             gid: "AB",
-            name: "Lesser Might IV",
+            name: "Lesser Power IV",
             lvup: "LP05",
             extend: [
                 0,
@@ -10425,13 +10425,13 @@ let data = {
                 30
             ],
             status: 4,
-            effect: "MEL Pwr(+30)"
+            effect: "S-ATK(+30)"
         },
         {
             ref: 364,
             code: "LP05",
             gid: "AB",
-            name: "Lesser Might V",
+            name: "Lesser Power V",
             extend: [
                 0,
                 30,
@@ -10442,13 +10442,13 @@ let data = {
                 20
             ],
             status: 4,
-            effect: "MEL Pwr(+35)"
+            effect: "S-ATK(+35)"
         },
         {
             ref: 365,
             code: "LS01",
             gid: "AB",
-            name: "Lesser Precision I",
+            name: "Lesser Shoot I",
             lvup: "LS02",
             extend: [
                 0,
@@ -10456,13 +10456,13 @@ let data = {
                 100
             ],
             status: 4,
-            effect: "RNG Pwr(+5)"
+            effect: "R-ATK(+5)"
         },
         {
             ref: 366,
             code: "LS02",
             gid: "AB",
-            name: "Lesser Precision II",
+            name: "Lesser Shoot II",
             lvup: "LS03",
             extend: [
                 0,
@@ -10474,13 +10474,13 @@ let data = {
                 70
             ],
             status: 4,
-            effect: "RNG Pwr(+15)"
+            effect: "R-ATK(+15)"
         },
         {
             ref: 367,
             code: "LS03",
             gid: "AB",
-            name: "Lesser Precision III",
+            name: "Lesser Shoot III",
             lvup: "LS04",
             extend: [
                 0,
@@ -10492,13 +10492,13 @@ let data = {
                 50
             ],
             status: 4,
-            effect: "RNG Pwr(+25)"
+            effect: "R-ATK(+25)"
         },
         {
             ref: 368,
             code: "LS04",
             gid: "AB",
-            name: "Lesser Precision IV",
+            name: "Lesser Shoot IV",
             lvup: "LS05",
             extend: [
                 0,
@@ -10510,13 +10510,13 @@ let data = {
                 30
             ],
             status: 4,
-            effect: "RNG Pwr(+30)"
+            effect: "R-ATK(+30)"
         },
         {
             ref: 369,
             code: "LS05",
             gid: "AB",
-            name: "Lesser Precision V",
+            name: "Lesser Shoot V",
             extend: [
                 0,
                 30,
@@ -10527,13 +10527,13 @@ let data = {
                 20
             ],
             status: 4,
-            effect: "RNG Pwr(+35)"
+            effect: "R-ATK(+35)"
         },
         {
             ref: 370,
             code: "LT01",
             gid: "AB",
-            name: "Lesser Casting I",
+            name: "Lesser Technique I",
             lvup: "LT02",
             extend: [
                 0,
@@ -10541,13 +10541,13 @@ let data = {
                 100
             ],
             status: 4,
-            effect: "TEC Pwr(+5)"
+            effect: "T-ATK(+5)"
         },
         {
             ref: 371,
             code: "LT02",
             gid: "AB",
-            name: "Lesser Casting II",
+            name: "Lesser Technique II",
             lvup: "LT03",
             extend: [
                 0,
@@ -10559,13 +10559,13 @@ let data = {
                 70
             ],
             status: 4,
-            effect: "TEC Pwr(+15)"
+            effect: "T-ATK(+15)"
         },
         {
             ref: 372,
             code: "LT03",
             gid: "AB",
-            name: "Lesser Casting III",
+            name: "Lesser Technique III",
             lvup: "LT04",
             extend: [
                 0,
@@ -10577,13 +10577,13 @@ let data = {
                 50
             ],
             status: 4,
-            effect: "TEC Pwr(+25)"
+            effect: "T-ATK(+25)"
         },
         {
             ref: 373,
             code: "LT04",
             gid: "AB",
-            name: "Lesser Casting IV",
+            name: "Lesser Technique IV",
             lvup: "LT05",
             extend: [
                 0,
@@ -10595,13 +10595,13 @@ let data = {
                 30
             ],
             status: 4,
-            effect: "TEC Pwr(+30)"
+            effect: "T-ATK(+30)"
         },
         {
             ref: 374,
             code: "LT05",
             gid: "AB",
-            name: "Lesser Casting V",
+            name: "Lesser Technique V",
             extend: [
                 0,
                 30,
@@ -10612,7 +10612,7 @@ let data = {
                 20
             ],
             status: 4,
-            effect: "TEC Pwr(+35)"
+            effect: "T-ATK(+35)"
         },
         {
             ref: 375,
@@ -10703,7 +10703,7 @@ let data = {
             ref: 380,
             code: "LR01",
             gid: "AB",
-            name: "Lesser Spirit I",
+            name: "Lesser Spirita I",
             lvup: "LR02",
             extend: [
                 0,
@@ -10717,7 +10717,7 @@ let data = {
             ref: 381,
             code: "LR02",
             gid: "AB",
-            name: "Lesser Spirit II",
+            name: "Lesser Spirita II",
             lvup: "LR03",
             extend: [
                 0,
@@ -10735,7 +10735,7 @@ let data = {
             ref: 382,
             code: "LR03",
             gid: "AB",
-            name: "Lesser Spirit III",
+            name: "Lesser Spirita III",
             lvup: "LR04",
             extend: [
                 0,
@@ -10753,7 +10753,7 @@ let data = {
             ref: 383,
             code: "LR04",
             gid: "AB",
-            name: "Lesser Spirit IV",
+            name: "Lesser Spirita IV",
             lvup: "LR05",
             extend: [
                 0,
@@ -10771,7 +10771,7 @@ let data = {
             ref: 384,
             code: "LR05",
             gid: "AB",
-            name: "Lesser Spirit V",
+            name: "Lesser Spirita V",
             extend: [
                 0,
                 30,
@@ -10788,43 +10788,43 @@ let data = {
             ref: 385,
             code: "LP06",
             gid: "AB",
-            name: "EV Might HP",
-            effect: "MEL Pwr(+35),<br>HP(+60)"
+            name: "EV Power HP",
+            effect: "S-ATK(+35),<br>HP(+60)"
         },
         {
             ref: 386,
             code: "LP07",
             gid: "AB",
-            name: "EV Might PP",
-            effect: "MEL Pwr(+35),<br>PP(+4)"
+            name: "EV Power PP",
+            effect: "S-ATK(+35),<br>PP(+4)"
         },
         {
             ref: 387,
             code: "LS06",
             gid: "AB",
-            name: "EV Precision HP",
-            effect: "RNG Pwr(+35),<br>HP(+60)"
+            name: "EV Shoot HP",
+            effect: "R-ATK(+35),<br>HP(+60)"
         },
         {
             ref: 388,
             code: "LS07",
             gid: "AB",
-            name: "EV Precision PP",
-            effect: "RNG Pwr(+35),<br>PP(+4)"
+            name: "EV Shoot PP",
+            effect: "R-ATK(+35),<br>PP(+4)"
         },
         {
             ref: 389,
             code: "LT06",
             gid: "AB",
-            name: "EV Casting HP",
-            effect: "TEC Pwr(+35),<br>HP(+60)"
+            name: "EV Technique HP",
+            effect: "T-ATK(+35),<br>HP(+60)"
         },
         {
             ref: 390,
             code: "LT07",
             gid: "AB",
-            name: "EV Casting PP",
-            effect: "TEC Pwr(+35),<br>PP(+4)"
+            name: "EV Technique PP",
+            effect: "T-ATK(+35),<br>PP(+4)"
         },
         {
             ref: 391,
@@ -10836,7 +10836,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "MEL Pwr(+10),<br>DEX(+5),<br>HP(+10)"
+            effect: "S-ATK(+10),<br>DEX(+5),<br>HP(+10)"
         },
         {
             ref: 392,
@@ -10848,19 +10848,19 @@ let data = {
                 100,
                 100
             ],
-            effect: "RNG Pwr(+10),<br>DEX(+5),<br>HP(+10)"
+            effect: "R-ATK(+10),<br>DEX(+5),<br>HP(+10)"
         },
         {
             ref: 393,
             code: "TD03",
             gid: "EB",
-            name: "Froggy Fever",
+            name: "Frog Fever",
             extend: [
                 100,
                 100,
                 100
             ],
-            effect: "TEC Pwr(+10),<br>DEX(+5),<br>HP(+10)"
+            effect: "T-ATK(+10),<br>DEX(+5),<br>HP(+10)"
         },
         {
             ref: 394,
@@ -10872,31 +10872,31 @@ let data = {
                 100,
                 100
             ],
-            effect: "MEL Pwr(+10),<br>DEX(+5),<br>PP(+2)"
+            effect: "S-ATK(+10),<br>DEX(+5),<br>PP(+2)"
         },
         {
             ref: 395,
             code: "TD05",
             gid: "EB",
-            name: "Santa Fever",
+            name: "St. Fever",
             extend: [
                 100,
                 100,
                 100
             ],
-            effect: "RNG Pwr(+10),<br>DEX(+5),<br>PP(+2)"
+            effect: "R-ATK(+10),<br>DEX(+5),<br>PP(+2)"
         },
         {
             ref: 396,
             code: "TD06",
             gid: "EB",
-            name: "Rattan Fever",
+            name: "Latan Fever",
             extend: [
                 100,
                 100,
                 100
             ],
-            effect: "TEC Pwr(+10),<br>DEX(+5),<br>PP(+2)"
+            effect: "T-ATK(+10),<br>DEX(+5),<br>PP(+2)"
         },
         {
             ref: 397,
@@ -10908,7 +10908,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "TEC Pwr(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)"
+            effect: "T-ATK(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)"
         },
         {
             ref: 398,
@@ -10920,7 +10920,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "MEL Pwr(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)"
+            effect: "S-ATK(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)"
         },
         {
             ref: 399,
@@ -10932,7 +10932,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "RNG Pwr(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)"
+            effect: "R-ATK(+10),<br>DEX(+5),<br>HP(+5),<br>PP(+1)"
         },
         {
             ref: 400,
@@ -10968,7 +10968,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "MEL Pwr(+10),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)"
+            effect: "S-ATK(+10),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)"
         },
         {
             ref: 403,
@@ -10980,7 +10980,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "MEL Pwr(+5),<br>RNG Pwr(+5),<br>TEC Pwr(+5),<br>HP(+5),<br>PP(+1)"
+            effect: "S-ATK(+5),<br>R-ATK(+5),<br>T-ATK(+5),<br>HP(+5),<br>PP(+1)"
         },
         {
             ref: 404,
@@ -10992,7 +10992,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "TEC Pwr(+10),<br>HP(+10),<br>PP(+1)"
+            effect: "T-ATK(+10),<br>HP(+10),<br>PP(+1)"
         },
         {
             ref: 405,
@@ -11004,7 +11004,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "MEL Pwr(+5),<br>RNG Pwr(+5),<br>TEC Pwr(+5),<br>DEX(+5),<br>PP(+5)",
+            effect: "S-ATK(+5),<br>R-ATK(+5),<br>T-ATK(+5),<br>DEX(+5),<br>PP(+5)",
             tooltip: "Used for: ARKS Max"
         },
         {
@@ -11017,19 +11017,19 @@ let data = {
                 0,
                 80
             ],
-            effect: "MEL Pwr(+20),<br>PP(+3)"
+            effect: "S-ATK(+20),<br>PP(+3)"
         },
         {
             ref: 407,
             code: "UA11",
             gid: "AC",
-            name: "Flict Tyro",
+            name: "Flict Tiro",
             extend: [
                 0,
                 0,
                 80
             ],
-            effect: "RNG Pwr(+20),<br>PP(+3)"
+            effect: "R-ATK(+20),<br>PP(+3)"
         },
         {
             ref: 408,
@@ -11041,7 +11041,7 @@ let data = {
                 0,
                 80
             ],
-            effect: "TEC Pwr(+20),<br>PP(+3)"
+            effect: "T-ATK(+20),<br>PP(+3)"
         },
         {
             ref: 409,
@@ -11053,19 +11053,19 @@ let data = {
                 0,
                 80
             ],
-            effect: "MEL Pwr(+20),<br>HP(+30)"
+            effect: "S-ATK(+20),<br>HP(+30)"
         },
         {
             ref: 410,
             code: "UB11",
             gid: "AC",
-            name: "Alter Tyro",
+            name: "Alter Tiro",
             extend: [
                 0,
                 0,
                 80
             ],
-            effect: "RNG Pwr(+20),<br>HP(+30)"
+            effect: "R-ATK(+20),<br>HP(+30)"
         },
         {
             ref: 411,
@@ -11077,34 +11077,34 @@ let data = {
                 0,
                 80
             ],
-            effect: "TEC Pwr(+20),<br>HP(+30)"
+            effect: "T-ATK(+20),<br>HP(+30)"
         },
         {
             ref: 412,
             code: "UC01",
             gid: "AC",
-            name: "Mark Joy",
-            effect: "MEL Pwr(+40),<br>RNG Pwr(+40),<br>TEC Pwr(+40),<br>HP(+50)"
+            name: "Mark Joyo",
+            effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+50)"
         },
         {
             ref: 413,
             code: "UC11",
             gid: "AC",
-            name: "Mark Courage",
-            effect: "MEL Pwr(+40),<br>RNG Pwr(+40),<br>TEC Pwr(+40),<br>PP(+5)"
+            name: "Mark Couragena",
+            effect: "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>PP(+5)"
         },
         {
             ref: 414,
             code: "UC21",
             gid: "AC",
-            name: "Mark Anger",
-            effect: "MEL Pwr(+50),<br>RNG Pwr(+50),<br>TEC Pwr(+50),<br>DEX(+40)"
+            name: "Mark Angar",
+            effect: "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>DEX(+40)"
         },
         {
             ref: 415,
             code: "UC31",
             gid: "AC",
-            name: "Mark Grief",
+            name: "Mark Grif",
             effect: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
         },
         {
@@ -11116,7 +11116,7 @@ let data = {
                 "TN0"
             ],
             rel: "divinewill",
-            effect: "MEL Pwr(+20), RNG Pwr(+20), TEC Pwr(+20), PP(+5)"
+            effect: "S-ATK(+20), R-ATK(+20), T-ATK(+20), PP(+5)"
         },
         {
             ref: 513,
@@ -11127,63 +11127,63 @@ let data = {
                 "TN0"
             ],
             rel: "divineorder",
-            effect: "MEL Pwr(+50), RNG Pwr(+50), TEC Pwr(+50), HP(+20), PP(+10)"
+            effect: "S-ATK(+50), R-ATK(+50), T-ATK(+50), HP(+20), PP(+10)"
         },
         {
             ref: 514,
             code: "IE01",
             gid: "AC",
             name: "Exceed Energy",
-            effect: "MEL Pwr(+50), RNG Pwr(+50), TEC Pwr(+50), DEX(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+5)"
+            effect: "S-ATK(+50), R-ATK(+50), T-ATK(+50), DEX(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+5)"
         },
         {
             ref: 416,
             code: "YA01",
             gid: "AC",
-            name: "Sentence Might",
-            effect: "MEL Pwr(+20),<br>PP(+4)"
+            name: "Sentence Power",
+            effect: "S-ATK(+20),<br>PP(+4)"
         },
         {
             ref: 417,
             code: "YA05",
             gid: "CB",
             name: "Sentence Arma",
-            effect: "MEL Pwr(+20),<br>HP(+20),<br>PP(+3)"
+            effect: "S-ATK(+20),<br>HP(+20),<br>PP(+3)"
         },
         {
             ref: 418,
             code: "YA11",
             gid: "AC",
-            name: "Sentence Precision",
-            effect: "RNG Pwr(+20),<br>PP(+4)"
+            name: "Sentence Shoot",
+            effect: "R-ATK(+20),<br>PP(+4)"
         },
         {
             ref: 419,
             code: "YA15",
             gid: "CB",
-            name: "Sentence Tyro",
-            effect: "RNG Pwr(+20),<br>HP(+20),<br>PP(+3)"
+            name: "Sentence Tiro",
+            effect: "R-ATK(+20),<br>HP(+20),<br>PP(+3)"
         },
         {
             ref: 420,
             code: "YA21",
             gid: "AC",
             name: "Sentence Tech",
-            effect: "TEC Pwr(+20),<br>PP(+4)"
+            effect: "T-ATK(+20),<br>PP(+4)"
         },
         {
             ref: 421,
             code: "YA25",
             gid: "CB",
             name: "Sentence Magia",
-            effect: "TEC Pwr(+20),<br>HP(+20),<br>PP(+3)"
+            effect: "T-ATK(+20),<br>HP(+20),<br>PP(+3)"
         },
         {
             ref: 422,
             code: "YA31",
             gid: "CB",
             name: "Sentence Triple",
-            effect: "MEL Pwr(+30),RNG Pwr(+30),TEC Pwr(+30)"
+            effect: "S-ATK(+30),R-ATK(+30),T-ATK(+30)"
         },
         {
             ref: 423,
@@ -11231,7 +11231,7 @@ let data = {
             ref: 429,
             code: "VA01",
             gid: "YA",
-            name: "Lucky Charm I",
+            name: "Lucky Rise I",
             lvup: "VA02",
             extend: [
                 0,
@@ -11239,13 +11239,13 @@ let data = {
                 100
             ],
             require: "XC01",
-            effect: "Rare drop rate increases +5%"
+            effect: "Item Drop Rate +5%"
         },
         {
             ref: 430,
             code: "VA02",
             gid: "YA",
-            name: "Lucky Charm II",
+            name: "Lucky Rise II",
             lvup: "VA03",
             extend: [
                 0,
@@ -11257,13 +11257,13 @@ let data = {
                 60
             ],
             require: "XC01",
-            effect: "Rare drop rate increases +7%"
+            effect: "Item Drop Rate +7%"
         },
         {
             ref: 431,
             code: "VA03",
             gid: "YA",
-            name: "Lucky Charm III",
+            name: "Lucky Rise III",
             extend: [
                 0,
                 30,
@@ -11274,7 +11274,7 @@ let data = {
                 40
             ],
             require: "XC01",
-            effect: "Rare drop rate increases +10%"
+            effect: "Item Drop Rate +10%"
         },
         {
             ref: 432,
@@ -11288,7 +11288,7 @@ let data = {
                 100
             ],
             require: "XC01",
-            effect: "Meseta drop increase +5%"
+            effect: "Meseta Drop Amount +5%"
         },
         {
             ref: 433,
@@ -11306,7 +11306,7 @@ let data = {
                 60
             ],
             require: "XC01",
-            effect: "Meseta drop increase +10%"
+            effect: "Meseta Drop Amount +10%"
         },
         {
             ref: 434,
@@ -11323,13 +11323,13 @@ let data = {
                 40
             ],
             require: "XC01",
-            effect: "Meseta drop increase +15%"
+            effect: "Meseta Drop Amount +15%"
         },
         {
             ref: 435,
             code: "VC01",
             gid: "YA",
-            name: "Increased EXP I",
+            name: "EXP Boost I",
             lvup: "VC02",
             extend: [
                 0,
@@ -11337,13 +11337,13 @@ let data = {
                 100
             ],
             require: "XC01",
-            effect: "Earned EXP increases +5%"
+            effect: "Experience Gain +5%"
         },
         {
             ref: 436,
             code: "VC02",
             gid: "YA",
-            name: "Increased EXP II",
+            name: "EXP Boost II",
             lvup: "VC03",
             extend: [
                 0,
@@ -11355,13 +11355,13 @@ let data = {
                 60
             ],
             require: "XC01",
-            effect: "Earned EXP increases +7%"
+            effect: "Experience Gain +7%"
         },
         {
             ref: 437,
             code: "VC03",
             gid: "YA",
-            name: "Increased EXP III",
+            name: "EXP Boost III",
             extend: [
                 0,
                 30,
@@ -11372,7 +11372,7 @@ let data = {
                 40
             ],
             require: "XC01",
-            effect: "Earned EXP increases +10%"
+            effect: "Experience Gain +10%"
         },
         {
             ref: 438,
@@ -11385,8 +11385,8 @@ let data = {
             ref: 439,
             code: "VE01",
             gid: "YA",
-            name: "Alternate History",
-            effect: "Earned EXP increases +10%"
+            name: "Another History",
+            effect: "Experience Gain +10%"
         },
         {
             ref: 440,
@@ -11598,7 +11598,7 @@ let data = {
                 30
             ],
             effect: "HP(+10),<br>PP(+1)",
-            tooltip: "Made by: Elder Soul, Luther Soul, Apprentice Soul,<br>Gemini Soul, Persona Soul<br>Used for: Astral Soul"
+            tooltip: "Made by: Elder Soul, Loser Soul, Apprentice Soul,<br>Double Soul, Persona Soul<br>Used for: Astral Soul"
         },
         {
             ref: 444,
@@ -11624,7 +11624,7 @@ let data = {
                 30
             ],
             effect: "HP(+10),<br>PP(+1)",
-            tooltip: "Made by: Elder Reverie, Luther Reverie, Apprentice Reverie, Gemini Reverie, Persona Reverie<br>Used for: Mana Reverie"
+            tooltip: "Made by: Elder Reverie, Loser Reverie, Apprezina Reverie, Double Reverie, Persona Reverie<br>Used for: Mana Reverie"
         },
         {
             ref: 446,
@@ -11637,7 +11637,7 @@ let data = {
                 100,
                 100
             ],
-            effect: "Adds 25 EXP to weapon grinds."
+            effect: "Adds 25 EXP to NT weapon grinds."
         },
         {
             ref: 447,
@@ -11650,20 +11650,20 @@ let data = {
                 100,
                 100
             ],
-            effect: "Adds 25 EXP to weapon grinds."
+            effect: "Adds 25 EXP to NT weapon grinds."
         },
         {
             ref: 448,
             code: "VK01",
             simCode: "VN01",
             gid: "YA",
-            name: "Empy Embrace",
+            name: "Emper Embrace",
             extend: [
                 100,
                 100,
                 100
             ],
-            effect: "Adds 90 EXP to weapon grinds."
+            effect: "Adds 90 EXP to NT weapon grinds."
         },
         {
             ref: 449,
@@ -11675,26 +11675,26 @@ let data = {
                 50,
                 80
             ],
-            effect: "Boosts augment<br>transfer success rate onto this item by 5%."
+            effect: "Boosts Special Ability<br>transfer success rate onto this item by 5%."
         },
         {
             ref: 450,
             code: "VK05",
             simCode: "VP01",
             gid: "YA",
-            name: "Weapon Booster",
+            name: "NT Weapon Booster",
             extend: [
                 100,
                 100,
                 100
             ],
-            effect: "Adds 800 EXP to weapon grinds."
+            effect: "Adds 800 EXP to NT weapon grinds."
         },
         {
             ref: 451,
             code: "WA01",
             gid: "GB",
-            name: "Photon Collection",
+            name: "Photon Collect",
             effect: "Boosts status effect affix rate"
         },
         {
@@ -11776,21 +11776,21 @@ let data = {
             code: "XI30",
             gid: "GB",
             name: "Attack Receptor",
-            effect: "Greatly increases affix rate of <br>Might, Precision, Casting, Deftness<br>ALL(+5)"
+            effect: "Greatly increases affix rate of <br>Power, Shoot, Technique, Arm<br>ALL(+5)"
         },
         {
             ref: 460,
             code: "XI31",
             gid: "GB",
             name: "Guard Receptor",
-            effect: "Greatly increases affix rate of <br>Genius, Toughness, Reflex<br>ALL(+5)"
+            effect: "Greatly increases affix rate of <br>Mind, Body, React<br>ALL(+5)"
         },
         {
             ref: 461,
             code: "XI32",
             gid: "GB",
             name: "Photon Receptor",
-            effect: "Greatly increases affix rate of <br>Stamina, Spirit<br>ALL(+5)"
+            effect: "Greatly increases affix rate of <br>Stamina, Spirita<br>ALL(+5)"
         },
         {
             ref: 462,
@@ -11803,50 +11803,50 @@ let data = {
             ref: 463,
             code: "XI03",
             gid: "E",
-            name: "Spirit Boost",
+            name: "Spirita Boost",
             effect: "PP(+5)"
         },
         {
             ref: 464,
             code: "XI04",
             gid: "E",
-            name: "Might Boost",
-            effect: "MEL Pwr(+25)"
+            name: "Power Boost",
+            effect: "S-ATK(+25)"
         },
         {
             ref: 465,
             code: "XI05",
             gid: "E",
-            name: "Precision Boost",
-            effect: "RNG Pwr(+25)"
+            name: "Shoot Boost",
+            effect: "R-ATK(+25)"
         },
         {
             ref: 466,
             code: "XI06",
             gid: "E",
-            name: "Casting Boost",
-            effect: "TEC Pwr(+25)"
+            name: "Technique Boost",
+            effect: "T-ATK(+25)"
         },
         {
             ref: 467,
             code: "XI0a",
             gid: "E",
             name: "Tenora Boost",
-            effect: "MEL Pwr(+35)"
+            effect: "S-ATK(+35)"
         },
         {
             ref: 468,
             code: "XI0b",
             gid: "E",
             name: "GRM Boost",
-            effect: "RNG Pwr(+35)"
+            effect: "R-ATK(+35)"
         },
         {
             ref: 469,
             code: "XI0c",
             gid: "E",
             name: "Yohmei Boost",
-            effect: "TEC Pwr(+35)"
+            effect: "T-ATK(+35)"
         },
         {
             ref: 470,
@@ -11880,91 +11880,91 @@ let data = {
             ref: 473,
             code: "XI07",
             gid: "E",
-            name: "Noble Might",
-            effect: "MEL Pwr(+30),PP(+3)"
+            name: "Noble Power",
+            effect: "S-ATK(+30),PP(+3)"
         },
         {
             ref: 474,
             code: "XI11",
             gid: "E",
-            name: "Elegant Might",
-            effect: "MEL Pwr(+40),PP(+4)"
+            name: "Elegant Power",
+            effect: "S-ATK(+40),PP(+4)"
         },
         {
             ref: 475,
             code: "XI52",
             gid: "E",
-            name: "Grace Might",
-            effect: "MEL Pwr(+50),PP(+5)"
+            name: "Grace Power",
+            effect: "S-ATK(+50),PP(+5)"
         },
         {
             ref: 532,
             code: "XI62",
             gid: "E",
-            name: "Grand Might",
-            effect: "MEL Pwr(+60),HP(+20),PP(+5)"
+            name: "Grand Power",
+            effect: "S-ATK(+60),HP(+20),PP(+5)"
         },
         {
             ref: 476,
             code: "XI08",
             gid: "E",
-            name: "Noble Precision",
-            effect: "RNG Pwr(+30),PP(+3)"
+            name: "Noble Shoot",
+            effect: "R-ATK(+30),PP(+3)"
         },
         {
             ref: 477,
             code: "XI12",
             gid: "E",
-            name: "Elegant Precision",
-            effect: "RNG Pwr(+40),PP(+4)"
+            name: "Elegant Shoot",
+            effect: "R-ATK(+40),PP(+4)"
         },
         {
             ref: 478,
             code: "XI53",
             gid: "E",
-            name: "Grace Precision",
-            effect: "RNG Pwr(+50),PP(+5)"
+            name: "Grace Shoot",
+            effect: "R-ATK(+50),PP(+5)"
         },
         {
             ref: 533,
             code: "XI63",
             gid: "E",
-            name: "Grand Precision",
-            effect: "RNG Pwr(+60),HP(+20),PP(+5)"
+            name: "Grand Shoot",
+            effect: "R-ATK(+60),HP(+20),PP(+5)"
         },
         {
             ref: 479,
             code: "XI09",
             gid: "E",
-            name: "Noble Casting",
-            effect: "TEC Pwr(+30),PP(+3)"
+            name: "Noble Technique",
+            effect: "T-ATK(+30),PP(+3)"
         },
         {
             ref: 480,
             code: "XI13",
             gid: "E",
-            name: "Elegant Casting",
-            effect: "TEC Pwr(+40),PP(+4)"
+            name: "Elegant Technique",
+            effect: "T-ATK(+40),PP(+4)"
         },
         {
             ref: 481,
             code: "XI54",
             gid: "E",
-            name: "Grace Casting",
-            effect: "TEC Pwr(+50),PP(+5)"
+            name: "Grace Technique",
+            effect: "T-ATK(+50),PP(+5)"
         },
         {
             ref: 534,
             code: "XI64",
             gid: "E",
-            name: "Grand Casting",
-            effect: "TEC Pwr(+60),HP(+20),PP(+5)"
+            name: "Grand Technique",
+            effect: "T-ATK(+60),HP(+20),PP(+5)"
         },
         {
             ref: 531,
             code: "XI60",
             gid: "E",
-            name: "Grace Spirit",
+            name: "Grace Spirita",
             effect: "PP(+15)"
         },
         {
@@ -11972,14 +11972,14 @@ let data = {
             code: "XI20",
             gid: "E",
             name: "Offense Boost",
-            effect: "MEL Pwr(+15)<br>RNG Pwr(+15)<br>TEC Pwr(+15)<br>DEX(+25)<br>PP(+1)"
+            effect: "S-ATK(+15)<br>R-ATK(+15)<br>T-ATK(+15)<br>DEX(+25)<br>PP(+1)"
         },
         {
             ref: 535,
             code: "XI22",
             gid: "E",
             name: "Attack Boost",
-            effect: "MEL Pwr(+25),RNG Pwr(+25),TEC Pwr(+25),DEX(+40),PP(+3)"
+            effect: "S-ATK(+25),R-ATK(+25),T-ATK(+25),DEX(+40),PP(+3)"
         },
         {
             ref: 483,
@@ -12210,77 +12210,77 @@ let data = {
     ],
     // List of available Special Ability Factors (SAFs)
     abilityFactor: [
-        { name: `Might III`, jpName: `パワーⅢ` },
-        { name: `Might IV`, jpName: `パワーⅣ` },
-        { name: `Might V`, jpName: `パワーⅤ` },
-        { name: `Might VI`, jpName: `パワーVI` },
-        { name: `Precision III`, jpName: `シュートⅢ` },
-        { name: `Precision IV`, jpName: `シュートⅣ` },
-        { name: `Precision V`, jpName: `シュートⅤ` },
-        { name: `Precision VI`, jpName: `シュートⅥ` },
-        { name: `Casting III`, jpName: `テクニックⅢ` },
-        { name: `Casting IV`, jpName: `テクニックⅣ` },
-        { name: `Casting V`, jpName: `テクニックⅤ` },
-        { name: `Casting VI`, jpName: `テクニックⅥ` },
-        { name: `Deftness III`, jpName: `アームⅢ` },
-        { name: `Deftness IV`, jpName: `アームⅣ` },
-        { name: `Toughness III`, jpName: `ボディⅢ` },
-        { name: `Reflex III`, jpName: `リアクトⅢ` },
-        { name: `Genius III`, jpName: `マインドⅢ` },
-        { name: `Mastery III`, jpName: `アビリティⅢ` },
-        { name: `Mastery IV`, jpName: `アビリティⅣ` },
+        { name: `Power III`, jpName: `パワーⅢ` },
+        { name: `Power IV`, jpName: `パワーⅣ` },
+        { name: `Power V`, jpName: `パワーⅤ` },
+        { name: `Power VI`, jpName: `パワーVI` },
+        { name: `Shoot III`, jpName: `シュートⅢ` },
+        { name: `Shoot IV`, jpName: `シュートⅣ` },
+        { name: `Shoot V`, jpName: `シュートⅤ` },
+        { name: `Shoot VI`, jpName: `シュートⅥ` },
+        { name: `Technique III`, jpName: `テクニックⅢ` },
+        { name: `Technique IV`, jpName: `テクニックⅣ` },
+        { name: `Technique V`, jpName: `テクニックⅤ` },
+        { name: `Technique VI`, jpName: `テクニックⅥ` },
+        { name: `Arm III`, jpName: `アームⅢ` },
+        { name: `Arm IV`, jpName: `アームⅣ` },
+        { name: `Body III`, jpName: `ボディⅢ` },
+        { name: `React III`, jpName: `リアクトⅢ` },
+        { name: `Mind III`, jpName: `マインドⅢ` },
+        { name: `Ability III`, jpName: `アビリティⅢ` },
+        { name: `Ability IV`, jpName: `アビリティⅣ` },
         { name: `Stamina III`, jpName: `スタミナⅢ` },
         { name: `Stamina IV`, jpName: `スタミナⅣ` },
         { name: `Stamina V`, jpName: `スタミナⅤ` },
-        { name: `Spirit III`, jpName: `スピリタⅢ` },
-        { name: `Spirit IV`, jpName: `スピリタⅣ` },
-        { name: `Spirit V`, jpName: `スピリタⅤ` },
-        { name: `Spirit VI`, jpName: `スピリタⅥ` },
+        { name: `Spirita III`, jpName: `スピリタⅢ` },
+        { name: `Spirita IV`, jpName: `スピリタⅣ` },
+        { name: `Spirita V`, jpName: `スピリタⅤ` },
+        { name: `Spirita VI`, jpName: `スピリタⅥ` },
         { name: `Modulator`, jpName: `モデュレイター` },
         { name: `Mutation I`, jpName: `ミューテーションⅠ` },
         { name: `Mutation II`, jpName: `ミューテーションⅡ` },
         { name: `Vinculum`, jpName: `ウィンクルム` },
         { name: `Stigma`, jpName: `スティグマ` },
         { name: `Alter Arma`, jpName: `アルター・アルマ` },
-        { name: `Alter Tyro`, jpName: `アルター・ティロ` },
+        { name: `Alter Tiro`, jpName: `アルター・ティロ` },
         { name: `Alter Magia`, jpName: `アルター・マギア` },
         { name: `Flict Arma`, jpName: `フリクト・アルマ` },
-        { name: `Flict Tyro`, jpName: `フリクト・ティロ` },
+        { name: `Flict Tiro`, jpName: `フリクト・ティロ` },
         { name: `Flict Magia`, jpName: `フリクト・マギア` },
         { name: `Doom Break`, jpName: `ドゥームブレイク` },
         { name: `Doom Break 2`, jpName: `ドゥームブレイクII` },
-        { name: `Spirit Alpha`, jpName: `スピリタ・アルファ` },
-        { name: `Sentence Might`, jpName: `センテンス・パワー` },
-        { name: `Sentence Precision`, jpName: `センテンス・シュート` },
+        { name: `Spirita Alpha`, jpName: `スピリタ・アルファ` },
+        { name: `Sentence Power`, jpName: `センテンス・パワー` },
+        { name: `Sentence Shoot`, jpName: `センテンス・シュート` },
         { name: `Sentence Tech`, jpName: `センテンス・テクニック` },
         { name: `Sentence Triple`, jpName: `センテンス・トリプル` },
         { name: `Sentence Arma`, jpName: `センテンス・アルマ` },
-        { name: `Sentence Tyro`, jpName: `センテンス・ティロ` },
+        { name: `Sentence Tiro`, jpName: `センテンス・ティロ` },
         { name: `Sentence Magia`, jpName: `センテンス・マギア` },
-        { name: `Impact Ward III`, jpName: `ブロウレジストⅢ` },
-        { name: `Projectile Ward III`, jpName: `ショットレジストⅢ` },
-        { name: `Technique Ward III`, jpName: `マインドレジストⅢ` },
-        { name: `Sovereign Ward III`, jpName: `オルレジストⅢ` },
+        { name: `Blow Resist III`, jpName: `ブロウレジストⅢ` },
+        { name: `Shoot Resist III`, jpName: `ショットレジストⅢ` },
+        { name: `Mind Resist III`, jpName: `マインドレジストⅢ` },
+        { name: `All Resist III`, jpName: `オルレジストⅢ` },
         { name: `Burn III`, jpName: `バーンⅢ` },
         { name: `Burn V`, jpName: `バーンⅤ` },
         { name: `Freeze III`, jpName: `フリーズⅢ` },
         { name: `Freeze V`, jpName: `フリーズⅤ` },
         { name: `Shock III`, jpName: `ショックⅢ` },
         { name: `Shock V`, jpName: `ショックⅤ` },
-        { name: `Blind III`, jpName: `ミラージュⅢ` },
-        { name: `Blind V`, jpName: `ミラージュⅤ` },
+        { name: `Mirage III`, jpName: `ミラージュⅢ` },
+        { name: `Mirage V`, jpName: `ミラージュⅤ` },
         { name: `Poison III`, jpName: `ポイズンⅢ` },
         { name: `Poison V`, jpName: `ポイズンⅤ` },
         { name: `Panic III`, jpName: `パニックⅢ` },
         { name: `Panic V`, jpName: `パニックⅤ` },
-        { name: `Soul of Darkness`, jpName: `ダークネス・ソール` },
+        { name: `Darkness Soul`, jpName: `ダークネス・ソール` },
         { name: `Deadleon Soul`, jpName: `デッドリオン・ソール` },
         { name: `Greuzoras Soul`, jpName: `グリュゾラス・ソール` },
         { name: `Duvals Soul`, jpName: `ドゥバルス・ソール` },
         { name: `Astral Soul`, jpName: `アストラル・ソール` },
-        { name: `Acto Di Soul`, jpName: `アクト・ジ・ソール` },
-        { name: `Tir Di Soul`, jpName: `ティル・ジ・ソール` },
-        { name: `Magia Di Soul`, jpName: `マギー・ジ・ソール` },
+        { name: `Act The Soul`, jpName: `アクト・ジ・ソール` },
+        { name: `Till The Soul`, jpName: `ティル・ジ・ソール` },
+        { name: `Magi The Soul`, jpName: `マギー・ジ・ソール` },
         { name: `Persona Reverie`, jpName: `ペルソナ・レヴリー` },
         { name: `Reverie Catalyst`, jpName: `レヴリー・カタリスト` },
         { name: `S1:Photon Reduction`, jpName: `S1:光子縮減` },
@@ -12289,7 +12289,7 @@ let data = {
         { name: `S1:Sturdy Intent`, jpName: `S1:依属の志` },
         { name: `S1:Phantasmal Intent`, jpName: `S1:幻精の志` },
         { name: `S1:Strike Boost`, jpName: `S1:打撃増幅` },
-        { name: `S1:Precision Boost`, jpName: `S1:射撃増幅` },
+        { name: `S1:Shoot Boost`, jpName: `S1:射撃増幅` },
         { name: `S1:Tech Boost`, jpName: `S1:法撃増幅` },
         { name: `S1:Immediate Intent`, jpName: `S1:瞬連の志` },
         { name: "S1:Red Petal Flash", jpName: "S1:花ノ赤閃" },
@@ -12363,7 +12363,7 @@ let data = {
         { name: `Soul Receptor`, jpName: `ソールレセプター` },
         { name: `Extreceptor`, jpName: `エクストレセプター` },
         { name: `Factor Receptor`, jpName: `ファクターレセプター` },
-        { name: `Alternate History`, jpName: `アナザーヒストリー` },
+        { name: `Another History`, jpName: `アナザーヒストリー` },
         { name: `Phrase Weak`, jpName: `フレイズ・ウィーク` },
         { name: `Phrase Response`, jpName: `フレイズ・レスポンス` },
         { name: `Phrase Recovery`, jpName: `フレイズ・レスポンス` },
