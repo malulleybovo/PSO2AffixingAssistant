@@ -2872,7 +2872,7 @@ const lang = Object.freeze({
         name_glen: "S2:Immediate Profusion",
         effect_en: "Raises damage by 3% when Just<br>Attacking different PAs or <br>Techniques.",
         effect_jp: "別のPAやテクニックをジャストアタックすると与ダメージが3%上昇。",
-        effect_glen: "Raises damage by 3% when Just<br>Attacking different PAs or <br>Castings."
+        effect_glen: "Raises damage by 3% when Just<br>Attacking different PAs or <br>Techniques."
     },
     "LB09": {
         name_en: "S2:Spirited Response",
@@ -3112,7 +3112,7 @@ const lang = Object.freeze({
         name_glen: "S2:Instant Reduction",
         effect_en: "Reduces PP consumption by 12% when Just Attacking different PAs or Techniques.",
         effect_jp: "別のPAやテクニックをジャストアタックするとPP消費量を12%軽減。",
-        effect_glen: "Reduces PP consumption by 12% when Just Attacking different PAs or Castings."
+        effect_glen: "Reduces PP consumption by 12% when Just Attacking different PAs or Techniques."
     },
     "LB90": {
         name_en: "S2:Flaming Guard",
@@ -3144,7 +3144,7 @@ const lang = Object.freeze({
         name_glen: "S2:Skill Reduction",
         effect_en: "Reduce PP consumption for 30 seconds upon hitting with a PA/Technique. Has a low chance to grant amplified effects. Triggers Recast upon activation.",
         effect_jp: "フォトンアーツまたはテクニック命中後30秒間、PPの消費量を軽減。また、まれに大きく軽減することがある。効果発動後にリキャストが発生。",
-        effect_glen: "Reduce PP consumption for 30 seconds upon hitting with a PA/Casting. Has a low chance to grant amplified effects. Triggers Recast upon activation."
+        effect_glen: "Reduce PP consumption for 30 seconds upon hitting with a PA/Technique. Has a low chance to grant amplified effects. Triggers Recast upon activation."
     },
     "LB1W": {
         name_en: "S2:Lightning Guard",
@@ -3408,7 +3408,7 @@ const lang = Object.freeze({
         name_glen: "S3:Immediate Profusion",
         effect_en: "Raises damage by 3%<br>when Just Attacking different PAs or Techniques.",
         effect_jp: "別のPAやテクニックをジャストアタックすると与ダメージが3%上昇。",
-        effect_glen: "Raises damage by 3%<br>when Just Attacking different PAs or Castings."
+        effect_glen: "Raises damage by 3%<br>when Just Attacking different PAs or Techniques."
     },
     "LC1G": {
         name_en: "S3:Nature's Melody",
@@ -3896,7 +3896,7 @@ const lang = Object.freeze({
         name_glen: "S5:Speedy Support",
         effect_en: "Shorten the charge time of Support Techniques. The power of Zondeel is reduced. Talis only.",
         effect_jp: "補助テクニックのチャージ時間を短縮。ゾンディールの威力減少。導具限定。",
-        effect_glen: "Shorten the charge time of Support Castings. The power of Zondeel is reduced. Talis only."
+        effect_glen: "Shorten the charge time of Support Techniques. The power of Zondeel is reduced. Talis only."
     },
     "LE0F": {
         name_en: "S5:Calming Shockwave",
@@ -3936,7 +3936,7 @@ const lang = Object.freeze({
         name_glen: "S5:Instant Invocation",
         effect_en: "Technique damage is<br>decreased by 40%, but<br>using the same<br>Technique with a JA<br>substantially<br>decreases charge<br>time.",
         effect_jp: "テクニックの与ダメージが常時40%減少するがテクニック使用後に同属性テクニックJAでチャージ時間大幅短縮。",
-        effect_glen: "Casting damage is<br>decreased by 40%, but<br>using the same<br>Casting with a JA<br>substantially<br>decreases charge<br>time."
+        effect_glen: "Technique damage is<br>decreased by 40%, but<br>using the same<br>Technique with a JA<br>substantially<br>decreases charge<br>time."
     },
     "LE0J": {
         name_en: "S5:Vigorous Response",
@@ -4304,7 +4304,7 @@ const lang = Object.freeze({
         name_glen: "S8:High-Geniused",
         effect_en: "Reduce falling speed while charging a Technique in mid-air.",
         effect_jp: "空中でテクニックをチャージ中に落下速度が遅くなる。",
-        effect_glen: "Reduce falling speed while charging a Casting in mid-air."
+        effect_glen: "Reduce falling speed while charging a Technique in mid-air."
     },
     "OA01": {
         name_en: "Mutation I",
