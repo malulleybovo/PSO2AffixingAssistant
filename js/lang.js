@@ -1952,7 +1952,7 @@ const lang = Object.freeze({
         name_glen: "Fire Resist I",
         effect_en: "Flame Resist(+3)",
         effect_jp: "炎耐性(+3)",
-        effect_glen: "Flame Resist(+3)"
+        effect_glen: "Fire Resist(+3)"
     },
     "HI02": {
         name_en: "Fire Resist II",
@@ -1960,7 +1960,7 @@ const lang = Object.freeze({
         name_glen: "Fire Resist II",
         effect_en: "Flame Resist(+4)",
         effect_jp: "炎耐性(+4)",
-        effect_glen: "Flame Resist(+4)"
+        effect_glen: "Fire Resist(+4)"
     },
     "HI03": {
         name_en: "Fire Resist III",
@@ -1968,7 +1968,7 @@ const lang = Object.freeze({
         name_glen: "Fire Resist III",
         effect_en: "Flame Resist(+5)",
         effect_jp: "炎耐性(+5)",
-        effect_glen: "Flame Resist(+5)"
+        effect_glen: "Fire Resist(+5)"
     },
     "HI04": {
         name_en: "Fire Resist IV",
@@ -1976,7 +1976,7 @@ const lang = Object.freeze({
         name_glen: "Fire Resist IV",
         effect_en: "Flame Resist(+6)",
         effect_jp: "炎耐性(+6)",
-        effect_glen: "Flame Resist(+6)"
+        effect_glen: "Fire Resist(+6)"
     },
     "HI05": {
         name_en: "Fire Resist V",
@@ -1984,7 +1984,7 @@ const lang = Object.freeze({
         name_glen: "Fire Resist V",
         effect_en: "Flame Resist(+7)",
         effect_jp: "炎耐性(+7)",
-        effect_glen: "Flame Resist(+7)"
+        effect_glen: "Fire Resist(+7)"
     },
     "HJ01": {
         name_en: "Ice Resist I",
@@ -2072,7 +2072,7 @@ const lang = Object.freeze({
         name_glen: "Gale Ward I",
         effect_en: "Wind Resist(+3)",
         effect_jp: "風耐性(+3)",
-        effect_glen: "Gale Ward(+3)"
+        effect_glen: "Wind Resist(+3)"
     },
     "HL02": {
         name_en: "Wind Resist II",
@@ -2080,7 +2080,7 @@ const lang = Object.freeze({
         name_glen: "Gale Ward II",
         effect_en: "Wind Resist(+4)",
         effect_jp: "風耐性(+4)",
-        effect_glen: "Gale Ward(+4)"
+        effect_glen: "Wind Resist(+4)"
     },
     "HL03": {
         name_en: "Wind Resist III",
@@ -2088,7 +2088,7 @@ const lang = Object.freeze({
         name_glen: "Gale Ward III",
         effect_en: "Wind Resist(+5)",
         effect_jp: "風耐性(+5)",
-        effect_glen: "Gale Ward(+5)"
+        effect_glen: "Wind Resist(+5)"
     },
     "HL04": {
         name_en: "Wind Resist IV",
@@ -2096,7 +2096,7 @@ const lang = Object.freeze({
         name_glen: "Gale Ward IV",
         effect_en: "Wind Resist(+6)",
         effect_jp: "風耐性(+6)",
-        effect_glen: "Gale Ward(+6)"
+        effect_glen: "Wind Resist(+6)"
     },
     "HL05": {
         name_en: "Wind Resist V",
@@ -2104,7 +2104,7 @@ const lang = Object.freeze({
         name_glen: "Gale Ward V",
         effect_en: "Wind Resist(+7)",
         effect_jp: "風耐性(+7)",
-        effect_glen: "Gale Ward(+7)"
+        effect_glen: "Wind Resist(+7)"
     },
     "HM01": {
         name_en: "Light Resist I",
@@ -2221,7 +2221,7 @@ const lang = Object.freeze({
     "HZ05": {
         name_en: "All Resist V",
         name_jp: "オールレジストⅤ",
-        name_glen: "All Resist V",
+        name_glen: "Soverign Ward V",
         effect_en: "All Resist(+5)",
         effect_jp: "全耐性(+5)",
         effect_glen: "All Resist(+5)"
