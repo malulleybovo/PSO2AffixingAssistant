@@ -1,0 +1,470 @@
+{
+  "support": {
+    "outdatedInAst": [
+      {
+        "id": "Ability Success Rate +65%",
+        "name": "+65%",
+        "value": "A11",
+        "boost": 65
+      }
+    ]
+  },
+  "additional": {
+    "outdatedInAst": [
+      {
+        "id": "Add Ability (Ether S)",
+        "name": "Ether Soul",
+        "value": "B43",
+        "extend": 100,
+        "effect": "ALL(+15),<br>HP(+15),<br>PP(+2)"
+      },
+      {
+        "id": "Add Ability (Factor C)",
+        "name": "Factor Catalyst",
+        "value": "B44",
+        "extend": 100,
+        "effect": "ALL(+10),<br>PP(+1)"
+      },
+      {
+        "id": "Add Ability (Omega M)",
+        "name": "Omega Memoria",
+        "value": "B45",
+        "extend": 100,
+        "effect": "ALL(+15),<br>HP(+15),<br>PP(+2)"
+      },
+      {
+        "id": "Add Ability (Reverie C)",
+        "name": "Reverie Catalyst",
+        "value": "B46",
+        "extend": 100,
+        "effect": "ALL(+10),<br>PP(+1)"
+      }
+    ]
+  },
+  "extendAbility": {
+    "outdatedInAst": [
+      {
+        "base": [
+          "XA01",
+          "SA02"
+        ],
+        "ref": "SA02",
+        "success": 10
+      },
+      {
+        "base": [
+          "TN01",
+          "TN02",
+          "TN04",
+          "TN05"
+        ],
+        "ref": "VJ04",
+        "success": 10
+      },
+      {
+        "base": [
+          "TN02",
+          "TN03",
+          "TN04",
+          "TN05"
+        ],
+        "ref": "VJ04",
+        "success": 10
+      },
+      {
+        "base": [
+          "TN06",
+          "TN07",
+          "TN08",
+          "TN09"
+        ],
+        "ref": "TN0A",
+        "success": 10
+      },
+      {
+        "base": [
+          "VJ04",
+          "VJ04",
+          "VJ04",
+          "VJ04",
+          "TN0A"
+        ],
+        "ref": "TN11",
+        "success": 60
+      },
+      {
+        "base": [
+          "SA01",
+          "TG31",
+          "TK10",
+          "TN11"
+        ],
+        "ref": "SA02",
+        "success": 10
+      }
+    ]
+  },
+  "ability": {
+    "outdatedInSim": [
+      {
+        "ref": 136,
+        "code": "LA04",
+        "gid": "L1",
+        "name": "S1:Skilled Brilliance",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "Boosts damage by 3% while PP<br>at is 40% or above.",
+        "noEx": true
+      },
+      {
+        "ref": 147,
+        "code": "LA21",
+        "gid": "L1",
+        "name": "S1:Skilled Strike",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "+3% damage on Critical Hits.",
+        "noEx": true
+      },
+      {
+        "ref": 189,
+        "code": "LB1A",
+        "gid": "L2",
+        "name": "S2:Skilled Strike",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "Increase Critical Hit Damage by 3%.",
+        "noEx": true
+      },
+      {
+        "ref": 203,
+        "code": "LB1O",
+        "gid": "L2",
+        "name": "S2:Skilled Strike 2",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "Increase Critical Hit Damage by 4%.",
+        "noEx": true
+      },
+      {
+        "ref": 214,
+        "code": "LC04",
+        "gid": "L3",
+        "name": "S3:Skilled Strike",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "Increase Critical Hit Damage by 4%.",
+        "noEx": true
+      },
+      {
+        "ref": 619,
+        "code": "LC1O",
+        "gid": "L3",
+        "name": "S3:Skilled Strike 2",
+        "extend": [
+          100
+        ],
+        "effect": "Increase Critical Hit Damage by 5%.",
+        "noEx": true
+      },
+      {
+        "ref": 262,
+        "code": "LD0Q",
+        "gid": "L4",
+        "name": "S4:Mysterious Strike",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "Reduce Critical Hit Rate by 50% and increase the power of Critical Hits by 6%.",
+        "noEx": true
+      },
+      {
+        "ref": 556,
+        "code": "LE0H",
+        "gid": "L5",
+        "name": "S5:Mysterious Intent",
+        "extend": [
+          100
+        ],
+        "effect": "Increase Critical Hit Rate by 20%. On a Critical Hit, deal an additional 2% damage and recover 1% of damage dealt as HP (30 MAX).",
+        "noEx": true
+      }
+    ],
+    "outdatedInAst": [
+      {
+        "code": "LA04",
+        "gid": "L1",
+        "name": "S1:Brilliant Intent",
+        "extend": [
+          100
+        ],
+        "effect": "Boosts damage by 3% while PP<br>at is 40% or above.",
+        "noEx": true
+      },
+      {
+        "code": "LA21",
+        "gid": "L1",
+        "name": "S1:Skilled Intent",
+        "extend": [
+          100
+        ],
+        "effect": "+3% damage on Critical Hits.",
+        "noEx": true
+      },
+      {
+        "code": "LA2T",
+        "gid": "L1",
+        "name": "S1:Immediate Skill",
+        "extend": [
+          100
+        ],
+        "effect": "When you Just Guard<br>at less than 25% HP,<br>recovers HP by 50%<br>and PP by 30%",
+        "noEx": true
+      },
+      {
+        "code": "LB1A",
+        "gid": "L2",
+        "name": "S2:Skilled Intent",
+        "extend": [
+          100
+        ],
+        "effect": "Increase Critical Hit Damage by 3%.",
+        "noEx": true
+      },
+      {
+        "code": "LB1O",
+        "gid": "L2",
+        "name": "S2:Skilled Intent 2",
+        "extend": [
+          100
+        ],
+        "effect": "Increase Critical Hit Damage by 4%.",
+        "noEx": true
+      },
+      {
+        "code": "LB2L",
+        "gid": "L2",
+        "name": "S2:Brilliant Intent",
+        "extend": [
+          100
+        ],
+        "effect": "Boosts damage by 3%<br>while PP is at 40%<br>or above.",
+        "noEx": true
+      },
+      {
+        "code": "LC04",
+        "gid": "L3",
+        "name": "S3:Skilled Intent",
+        "extend": [
+          100
+        ],
+        "effect": "Increase Critical Hit Damage by 4%.",
+        "noEx": true
+      },
+      {
+        "code": "LC1O",
+        "gid": "L3",
+        "name": "S3:Skilled Intent 2",
+        "extend": [
+          100
+        ],
+        "effect": "Increase Critical Hit Damage by 5%.",
+        "noEx": true
+      },
+      {
+        "code": "LC1Y",
+        "gid": "L3",
+        "name": "S3:Immediate Brilliance",
+        "extend": [
+          100
+        ],
+        "effect": "Successful JA hits<br>boosts your PP<br>recovery amount by<br>3%. Cannot exceed<br>30%. Non-JA hits<br>are excluded.",
+        "noEx": true
+      },
+      {
+        "code": "LC1Z",
+        "gid": "L3",
+        "name": "S3:Puncturing Intent",
+        "extend": [
+          100
+        ],
+        "effect": "Upon landing a<br>Critical Hit on a<br>breakable part,<br>your power is<br>boosted by 9%.",
+        "noEx": true
+      },
+      {
+        "code": "LD0Q",
+        "gid": "L4",
+        "name": "S4:Skilled Balance",
+        "extend": [
+          100
+        ],
+        "effect": "Reduce Critical Hit Rate by 50% and<br>increase the power of Critical Hits by 6%.",
+        "noEx": true
+      },
+      {
+        "code": "LE0H",
+        "gid": "L5",
+        "name": "S5:Mysterious Purpose",
+        "extend": [
+          100
+        ],
+        "effect": "Boosts critical hit rate<br>by 20%. On a critical<br>hit, boosts damage by<br>2% and recovers 1%<br>of damage dealt as HP.<br>(Max. recovery: 30 HP)",
+        "noEx": true
+      },
+      {
+        "code": "LE0N",
+        "gid": "L5",
+        "name": "S5:Chained Radiance",
+        "extend": [
+          100
+        ],
+        "effect": "Recovers PP and boosts<br>damage by 3% for 60<br>seconds after activating<br>Chain Trigger.<br>Twin Machineguns only.",
+        "noEx": true
+      },
+      {
+        "code": "LE0O",
+        "gid": "L5",
+        "name": "S5:Calming Quartet",
+        "extend": [
+          100
+        ],
+        "effect": "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only.",
+        "noEx": true
+      },
+      {
+        "code": "LE0P",
+        "gid": "L5",
+        "name": "S5:Calming Expanse",
+        "extend": [
+          100
+        ],
+        "effect": "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only.",
+        "noEx": true
+      },
+      {
+        "code": "LE0Q",
+        "gid": "L5",
+        "name": "S5:Area Support",
+        "extend": [
+          100
+        ],
+        "effect": "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active.",
+        "noEx": true
+      },
+      {
+        "code": "LE0R",
+        "gid": "L5",
+        "name": "S5:Swift Radiance",
+        "extend": [
+          100
+        ],
+        "effect": "Reduces PP regeneration<br>to 0. Boosts attack PP<br>recovery by 50% and<br>recovers 100 PP on a<br>successful dodge.",
+        "noEx": true
+      },
+      {
+        "code": "LF0T",
+        "gid": "L6",
+        "name": "S6:Wondrous Encore",
+        "extend": [
+          100
+        ],
+        "effect": "Reduces Showtime's<br>hate increase. Once per<br>activation, reduces<br>damage taken and<br>maintains One More Time.",
+        "noEx": true
+      },
+      {
+        "code": "LG0P",
+        "gid": "L7",
+        "name": "S7:Descried Warrior",
+        "extend": [
+          100
+        ],
+        "effect": "Boosts damage by 1%<br>& reduces damage<br>taken by enemies<br>targeting you by<br>15%.",
+        "noEx": true
+      },
+      {
+        "code": "SA02",
+        "gid": "EA",
+        "name": "Guardian Soul",
+        "effect": "ALL(+70),<br>HP(+70),<br>PP(+7)",
+        "tooltip": "Made from: Astral Soul, Ether Factor, Mana Reverie, Absolute Glare"
+      },
+      {
+        "code": "TN08",
+        "gid": "AC",
+        "name": "Shiva Glare",
+        "extend": [
+          30,
+          50
+        ],
+        "status": 1,
+        "effect": "R-ATK(+30)<br>T-ATK(+30)<br>S-DEF(+20)<br>R-DEF(+20)<br>T-DEF(+20)<br>HP(+20)<br>PP(+2)",
+        "tooltip": "Used for: Photoner Glare"
+      },
+      {
+        "code": "TN09",
+        "gid": "AC",
+        "name": "Origin Glare",
+        "extend": [
+          30,
+          50
+        ],
+        "status": 1,
+        "effect": "S-ATK(+30)<br>R-ATK(+30)<br>T-ATK(+30)<br>S-DEF(+10)<br>R-DEF(+10)<br>T-DEF(+10)<br>HP(+20)<br>PP(+2)",
+        "tooltip": "Used for: Photoner Glare"
+      },
+      {
+        "code": "TN0A",
+        "gid": "AC",
+        "name": "Photoner Glare",
+        "extend": [
+          30,
+          50
+        ],
+        "status": 1,
+        "effect": "ALL(+15)<br>HP(+15)<br>PP(+2)",
+        "tooltip": "Made from: Mitra Glare, Varuna Glare, Shiva Glare, Origin Glare<br>Used for: Absolute Glare"
+      },
+      {
+        "code": "TN11",
+        "gid": "AC",
+        "name": "Absolute Glare",
+        "status": 1,
+        "effect": "ALL(+40)<br>HP(+30)<br>PP(+3)",
+        "tooltip": "Made from: 4x Glare Catalyst + Photoner Glare<br>Used for: Guardian Soul"
+      },
+      {
+        "code": "VJ04",
+        "gid": "YA",
+        "name": "Glare Catalyst",
+        "effect": "HP(+10),<br>PP(+1)",
+        "tooltip": "Made from: Veluge Glare, Forduss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
+      },
+      {
+        "code": "XK01",
+        "gid": "GB",
+        "name": "Exceed Receptor",
+        "effect": "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
+      }
+    ],
+    "codeChanges": [
+      "S5:Angelic Respite:LE97 -> S5:Angelic Respite:LE0M"
+    ]
+  }
+}

@@ -48,7 +48,7 @@ class ViewController {
         this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 3000;
         this.COLOR_PALETTE_SIZE = 25;
         this.URL_VER = 2;
-        this.languages = ['en', 'jp'];
+        this.languages = ['en', 'jp','glen'];
         this.affixesSelected = [];
         this.choicesSelected = [];
         this.assistant = assistant;
