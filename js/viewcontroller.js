@@ -48,7 +48,7 @@ class ViewController {
         this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 3000;
         this.COLOR_PALETTE_SIZE = 25;
         this.URL_VER = 2;
-        this.languages = ['glen', 'en','jp'];
+        this.languages = ['glen','en','jp'];
         this.affixesSelected = [];
         this.choicesSelected = [];
         this.assistant = assistant;
@@ -67,7 +67,7 @@ class ViewController {
             }
         }
         // Mutable variables
-        this.langCode = this.languages[2];
+        this.langCode = this.languages[0];
         this.filters = lang.filters[this.langCode];
         this.shouldUpslot = true;
         this.shouldSpread = true;
@@ -377,6 +377,7 @@ class ViewController {
                     let filter = $(this).siblings().last().text();
                     if (lang.synonyms[VIEW_CONTROLLER.langCode]) {
                         for (var key in lang.synonyms[VIEW_CONTROLLER.langCode]) {
+                            console.log(key);
                             if (lang.synonyms[VIEW_CONTROLLER.langCode][key]
                                 && lang.synonyms[VIEW_CONTROLLER.langCode][key].includes(filter)) {
                                 filter = `(${filter}|${key})`;

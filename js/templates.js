@@ -225,9 +225,9 @@ const LINK_TEMPLATE = ({ link, linkToSim, smallLink, langCode }) => {
         <div onclick="event.stopPropagation();">
             <div class="main-grid">
                 <div class="title bold">${lang.app.shareFormulaTitle[langCode]}</div>
-    			<input type="text" value="${link}" onfocus="this.setSelectionRange(0, this.value.length)">
+                <input type="text" value="${link}" onfocus="this.setSelectionRange(0, this.value.length)">
                 <div class="copy-button"><a>${lang.app.shareFormulaButton[langCode]}</a></div>
-				${ smallLink ?
+                ${ smallLink ?
                 `<input type="text" value="${smallLink}" onfocus="this.setSelectionRange(0, this.value.length)">
                 <div class="copy-button"><a>${lang.app.shareFormulaButtonShort[langCode]}</a></div>`
                 : ``}
@@ -339,7 +339,7 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode
     if (Array.isArray(datalist)) {
         for (var i = 0; i < datalist.length; i++) {
             if (datalist[i].code && lang[datalist[i].code]) {
-                filtersearch += `<li data-idx="${i}"><div title="${lang[datalist[i].code]['effect_' + langCode].replace(/<br>/g, ' ')}" data-code="${datalist[i].code}">${lang[datalist[i].code]['name_' + langCode]}</div></li>`;
+                filtersearch += `<li data-idx="${i}"><div title="${lang[datalist[i].code]['effect_' + langCode].replace(/<br>/g, ' ')}" data-code="${datalist[i].code}"  class="${lang[datalist[i].code]['name_' + langCode].charAt(0) == '*' ? 'unavailable' : ''}">${lang[datalist[i].code]['name_' + langCode]}</div></li>`;
             }
             else if (datalist[i].isAddAbilityItem && lang['additional'][datalist[i].name]) {
                 let choice = `<span${(!datalist[i].isSSA) ?

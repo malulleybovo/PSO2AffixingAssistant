@@ -503,18 +503,18 @@ const lang = Object.freeze({
         malulleybovo: {
             en: "by malulleybovo",
             jp: "malulleybovoから",
-            glen: "by malulleybovo"
+            glen: "by malulleybovo - Converted to Global by Ice Winter and Cor Vous"
         }
     },
     "filters": {
+        glen: ["All", "MEL Pwr", "RNG Pwr", "TEC Pwr", "PP", "HP", "DEX"],
         en: ["All", "S-ATK", "R-ATK", "T-ATK", "PP", "HP", "DEX"],
-        jp: ["全", "打撃力", "射撃力", "法撃力", "PP", "HP", "技量"],
-        glen: ["All", "MEL Pwr", "RNG Pwr", "TEC Pwr", "PP", "HP", "DEX"]
+        jp: ["全", "打撃力", "射撃力", "法撃力", "PP", "HP", "技量"]
     },
     "statsDisplayOrder": {
+        glen: ["MEL Pwr", "RNG Pwr", "TEC Pwr", "PP", "HP", "DEX", "MEL Def", "RNG Def", "TEC Def"], // Others follow after
         en: ["S-ATK", "R-ATK", "T-ATK", "PP", "HP", "DEX", "S-DEF", "R-DEF", "T-DEF"], // Others follow after
-        jp: ["打撃力", "射撃力", "法撃力", "PP", "HP", "技量", "打撃防御", "射撃防御", "法撃防御"], // Others follow after
-        glen: ["MEL Pwr", "RNG Pwr", "TEC Pwr", "PP", "HP", "DEX", "MEL Def", "RNG Def", "TEC Def"] // Others follow after
+        jp: ["打撃力", "射撃力", "法撃力", "PP", "HP", "技量", "打撃防御", "射撃防御", "法撃防御"] // Others follow after
     },
     "synonyms": {
         en: {
@@ -2965,7 +2965,7 @@ const lang = Object.freeze({
     "LB1A": {
         name_en: "S2:Skilled Strike",
         name_jp: "S2:妙撃の志",
-        name_glen: "*S2:Skilled Strike",
+        name_glen: "S2:Precision Will",
         effect_en: "Increase Critical Hit Damage by 3%.",
         effect_jp: "クリティカル時の与ダメージが3%上昇。",
         effect_glen: "Increase Critical Hit Damage by 3%."
@@ -2997,7 +2997,7 @@ const lang = Object.freeze({
     "LB1E": {
         name_en: "S2:Powering Intent",
         name_jp: "S2:強闘の志",
-        name_glen: "*S2:Mighting Intent",
+        name_glen: "S2:Goliathslayer's Resolve",
         effect_en: "Increase damage dealt to bosses by 3%.",
         effect_jp: "強敵への与ダメージが3%上昇する。",
         effect_glen: "Increase damage dealt to bosses by 3%."
@@ -3341,7 +3341,7 @@ const lang = Object.freeze({
     "LC17": {
         name_en: "S3:Guardian Armor",
         name_jp: "S3:守護の備",
-        name_glen: "*S3:Guardian Deftnessor",
+        name_glen: "S3:Guardian Gear",
         effect_en: "Reduces damage taken by 7%.",
         effect_jp: "被ダメージを7%軽減。",
         effect_glen: "Reduces damage taken by 7%."
@@ -4693,7 +4693,7 @@ const lang = Object.freeze({
     "ROE3": {
         name_en: "Tagami Kazuchi Soul",
         name_jp: "タガミカヅチ・ソール",
-        name_glen: "Tagami Kazuchi Soul",
+        name_glen: "Tagamikazuchi Soul",
         effect_en: "R-ATK(+20),<br>T-ATK(+20),<br>PP(+2)",
         effect_jp: "射撃力(+20),<br>法撃力(+20),<br>PP(+2)",
         effect_glen: "RNG Pwr(+20),<br>TEC Pwr(+20),<br>PP(+2)"
@@ -4709,7 +4709,7 @@ const lang = Object.freeze({
     "RP05": {
         name_en: "Cougar Soul",
         name_jp: "クーガー・ソール",
-        name_glen: "Cougar Soul",
+        name_glen: "*Cougar Soul",
         effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>DEX(+15),<br>HP(+10),<br>PP(+2)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15),<br>技量(+15),<br>HP(+10),<br>PP(+2)",
         effect_glen: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>DEX(+15),<br>HP(+10),<br>PP(+2)"
@@ -4789,7 +4789,7 @@ const lang = Object.freeze({
     "SA11": {
         name_en: "Ether Soul",
         name_jp: "エーテル・ソール",
-        name_glen: "Ether Soul",
+        name_glen: "Aether Soul",
         effect_en: "ALL(+15),<br>HP(+15),<br>PP(+2)",
         effect_jp: "ALL(+15),<br>HP(+15),<br>PP(+2)",
         effect_glen: "ALL(+15),<br>HP(+15),<br>PP(+2)"
@@ -4797,7 +4797,7 @@ const lang = Object.freeze({
     "SB01": {
         name_en: "Toh\'oh Soul",
         name_jp: "トウオウ・ソール",
-        name_glen: "*Toh\'oh Soul",
+        name_glen: "Eastern Soul",
         effect_en: "ALL(+10)",
         effect_jp: "ALL(+10)",
         effect_glen: "ALL(+10)"
@@ -4805,7 +4805,7 @@ const lang = Object.freeze({
     "SB02": {
         name_en: "Full Vegas Soul",
         name_jp: "フルベガス・ソール",
-        name_glen: "Full Vegas Soul",
+        name_glen: "Fullvegas Soul",
         effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15)",
         effect_glen: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15)"
@@ -4821,7 +4821,7 @@ const lang = Object.freeze({
     "SB04": {
         name_en: "Fabula Soul",
         name_jp: "ファーブラ・ソール",
-        name_glen: "Fabula Soul",
+        name_glen: "*Fabula Soul",
         effect_en: "S-ATK(+10),<br>R-ATK(+10),<br>T-ATK(+10),<br>HP(+20)",
         effect_jp: "打撃力(+10),<br>射撃力(+10),<br>法撃力(+10),<br>HP(+20)",
         effect_glen: "MEL Pwr(+10),<br>RNG Pwr(+10),<br>TEC Pwr(+10),<br>HP(+20)"
@@ -4829,7 +4829,7 @@ const lang = Object.freeze({
     "SB05": {
         name_en: "Historia Soul",
         name_jp: "イストリア・ソール",
-        name_glen: "Historia Soul",
+        name_glen: "*Historia Soul",
         effect_en: "S-DEF(+25),<br>R-DEF(+25),<br>T-DEF(+25),<br>HP(+30),<br>PP(+2)",
         effect_jp: "打撃防御(+25),<br>射撃防御(+25),<br>法撃防御(+25),<br>HP(+30),<br>PP(+2)",
         effect_glen: "MEL Def(+25),<br>RNG Def(+25),<br>TEC Def(+25),<br>HP(+30),<br>PP(+2)"
@@ -4957,7 +4957,7 @@ const lang = Object.freeze({
     "TG31": {
         name_en: "Ether Factor",
         name_jp: "エーテル・ファクター",
-        name_glen: "Ether Factor",
+        name_glen: "Aether Factor",
         effect_en: "ALL(+30),<br>HP(+10),<br>PP(+6)",
         effect_jp: "ALL(+30),<br>HP(+10),<br>PP(+6)",
         effect_glen: "ALL(+30),<br>HP(+10),<br>PP(+6)"
@@ -5181,7 +5181,7 @@ const lang = Object.freeze({
     "TH01": {
         name_en: "Doom Break",
         name_jp: "ドゥームブレイクⅠ",
-        name_glen: "Doom Break",
+        name_glen: "Doom Break I",
         effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>PP(+2)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15),<br>PP(+2)",
         effect_glen: "MEL Pwr(+15),<br>RNG Pwr(+15),<br>TEC Pwr(+15),<br>PP(+2)"
@@ -5189,7 +5189,7 @@ const lang = Object.freeze({
     "TH02": {
         name_en: "Doom Break 2",
         name_jp: "ドゥームブレイクⅡ",
-        name_glen: "Doom Break 2",
+        name_glen: "Doom Break II",
         effect_en: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
         effect_jp: "打撃力(+25),<br>射撃力(+25),<br>法撃力(+25),<br>PP(+3)",
         effect_glen: "MEL Pwr(+25),<br>RNG Pwr(+25),<br>TEC Pwr(+25),<br>PP(+3)"
@@ -5197,7 +5197,7 @@ const lang = Object.freeze({
     "TH03": {
         name_en: "Doom Break 3",
         name_jp: "ドゥームブレイクⅢ",
-        name_glen: "Doom Break 3",
+        name_glen: "Doom Break III",
         effect_en: "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
         effect_jp: "打撃力(+30),<br>射撃力(+30),<br>法撃力(+30),<br>PP(+4)",
         effect_glen: "MEL Pwr(+30),<br>RNG Pwr(+30),<br>TEC Pwr(+30),<br>PP(+4)"
@@ -5477,7 +5477,7 @@ const lang = Object.freeze({
     "TD04": {
         name_en: "Love Fever",
         name_jp: "ラブ・フィーバー",
-        name_glen: "Love Fever",
+        name_glen: "*Love Fever",
         effect_en: "S-ATK(+10),<br>DEX(+5),<br>PP(+2)",
         effect_jp: "打撃力(+10),<br>技量(+5),<br>PP(+2)",
         effect_glen: "MEL Pwr(+10),<br>DEX(+5),<br>PP(+2)"
@@ -5573,7 +5573,7 @@ const lang = Object.freeze({
     "UA01": {
         name_en: "Flict Arma",
         name_jp: "フリクト・アルマ",
-        name_glen: "Flict Deftnessa",
+        name_glen: "Flict Arma",
         effect_en: "S-ATK(+20),<br>PP(+3)",
         effect_jp: "打撃力(+20),<br>PP(+3)",
         effect_glen: "MEL Pwr(+20),<br>PP(+3)"
@@ -5597,7 +5597,7 @@ const lang = Object.freeze({
     "UB01": {
         name_en: "Alter Arma",
         name_jp: "アルター・アルマ",
-        name_glen: "Alter Deftnessa",
+        name_glen: "Alter Arma",
         effect_en: "S-ATK(+20),<br>HP(+30)",
         effect_jp: "打撃力(+20),<br>HP(+30)",
         effect_glen: "MEL Pwr(+20),<br>HP(+30)"
@@ -5757,7 +5757,7 @@ const lang = Object.freeze({
     "YB11": {
         name_en: "Phrase Weak",
         name_jp: "フレイズ・ウィーク",
-        name_glen: "*Phrase Weak",
+        name_glen: "Phrase Weak",
         effect_en: "+2% Elemental Weakness damage.",
         effect_jp: "弱点属性威力+2%。",
         effect_glen: "+2% Elemental Weakness damage."
@@ -5773,7 +5773,7 @@ const lang = Object.freeze({
     "YB31": {
         name_en: "Phrase Chase",
         name_jp: "フレイズ・チェイス",
-        name_glen: "*Phrase Chase",
+        name_glen: "Phrase Chase",
         effect_en: "+5% damage against enemies with Status Effects.",
         effect_jp: "状態異常の敵への威力+5%。",
         effect_glen: "+5% damage against enemies with Status Effects."
@@ -6005,7 +6005,7 @@ const lang = Object.freeze({
     "VJ01": {
         name_en: "Soul Catalyst",
         name_jp: "ソール・カタリスト",
-        name_glen: "*Soul Catalyst",
+        name_glen: "Soul Catalyst",
         effect_en: "HP(+10),<br>PP(+1)",
         effect_jp: "HP(+10),<br>PP(+1)",
         effect_glen: "HP(+10),<br>PP(+1)"
@@ -6013,7 +6013,7 @@ const lang = Object.freeze({
     "VJ02": {
         name_en: "Factor Catalyst",
         name_jp: "ファクター・カタリスト",
-        name_glen: "*Factor Catalyst",
+        name_glen: "Factor Catalyst",
         effect_en: "HP(+10),<br>PP(+1)",
         effect_jp: "HP(+10),<br>PP(+1)",
         effect_glen: "HP(+10),<br>PP(+1)"
@@ -6061,7 +6061,7 @@ const lang = Object.freeze({
     "VK05": {
         name_en: "NT Weapon Booster",
         name_jp: "ＮＴウェポンブースト",
-        name_glen: "Weapon Booster",
+        name_glen: "*Weapon Booster",
         effect_en: "Adds 800 EXP to NT weapon grinds.",
         effect_jp: "新世武器強化時の経験値が800増加する。",
         effect_glen: "Weapon Enhancement EXP +800."
@@ -6069,7 +6069,7 @@ const lang = Object.freeze({
     "WA01": {
         name_en: "Photon Collect",
         name_jp: "フォトンコレクト",
-        name_glen: "Photon Collection",
+        name_glen: "*Photon Collection",
         effect_en: "Boosts status effect affix rate.",
         effect_jp: "状態異常系特殊能力のランクアップ時に成功率を上昇させる。",
         effect_glen: "Boosts status effect affix rate."
@@ -6213,7 +6213,7 @@ const lang = Object.freeze({
     "XI0a": {
         name_en: "Tenora Boost",
         name_jp: "テノラ・ブースト",
-        name_glen: "Tenora Boost",
+        name_glen: "*Tenora Boost",
         effect_en: "S-ATK(+35)",
         effect_jp: "打撃力(+35)",
         effect_glen: "MEL Pwr(+35)"
@@ -6477,7 +6477,7 @@ const lang = Object.freeze({
     "LA99": {
         name_en: "S1:Junk",
         name_jp: "S1:ジャンク",
-        name_glen: "*S1:Junk",
+        name_glen: "S1:Junk",
         effect_en: "Represents any S1 ability.",
         effect_jp: "任意のS1能力を表します。",
         effect_glen: "Represents any S1 ability."
@@ -6485,7 +6485,7 @@ const lang = Object.freeze({
     "LB99": {
         name_en: "S2:Junk",
         name_jp: "S2:ジャンク",
-        name_glen: "*S2:Junk",
+        name_glen: "S2:Junk",
         effect_en: "Represents any S2 ability.",
         effect_jp: "任意のS2能力を表します。",
         effect_glen: "Represents any S2 ability."
@@ -6493,7 +6493,7 @@ const lang = Object.freeze({
     "LC99": {
         name_en: "S3:Junk",
         name_jp: "S3:ジャンク",
-        name_glen: "*S3:Junk",
+        name_glen: "S3:Junk",
         effect_en: "Represents any S3 ability.",
         effect_jp: "任意のS3能力を表します。",
         effect_glen: "Represents any S3 ability."
@@ -6501,7 +6501,7 @@ const lang = Object.freeze({
     "LD99": {
         name_en: "S4:Junk",
         name_jp: "S4:ジャンク",
-        name_glen: "*S4:Junk",
+        name_glen: "S4:Junk",
         effect_en: "Represents any S4 ability.",
         effect_jp: "任意のS4能力を表します。",
         effect_glen: "Represents any S4 ability."
@@ -6509,7 +6509,7 @@ const lang = Object.freeze({
     "LE99": {
         name_en: "S5:Junk",
         name_jp: "S5:ジャンク",
-        name_glen: "*S5:Junk",
+        name_glen: "S5:Junk",
         effect_en: "Represents any S5 ability.",
         effect_jp: "任意のS5能力を表します。",
         effect_glen: "Represents any S5 ability."
@@ -6517,7 +6517,7 @@ const lang = Object.freeze({
     "LF99": {
         name_en: "S6:Junk",
         name_jp: "S6:ジャンク",
-        name_glen: "*S6:Junk",
+        name_glen: "S6:Junk",
         effect_en: "Represents any S6 ability.",
         effect_jp: "任意のS6能力を表します。",
         effect_glen: "Represents any S6 ability."
@@ -6525,7 +6525,7 @@ const lang = Object.freeze({
     "LG99": {
         name_en: "S7:Junk",
         name_jp: "S7:ジャンク",
-        name_glen: "*S7:Junk",
+        name_glen: "S7:Junk",
         effect_en: "Represents any S7 ability.",
         effect_jp: "任意のS7能力を表します。",
         effect_glen: "Represents any S7 ability."
@@ -6533,7 +6533,7 @@ const lang = Object.freeze({
     "LH99": {
         name_en: "S8:Junk",
         name_jp: "S8:ジャンク",
-        name_glen: "*S8:Junk",
+        name_glen: "S8:Junk",
         effect_en: "Represents any S8 ability.",
         effect_jp: "任意のS8能力を表します。",
         effect_glen: "Represents any S8 ability."
