@@ -48,7 +48,7 @@ class ViewController {
         this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 3000;
         this.COLOR_PALETTE_SIZE = 25;
         this.URL_VER = 2;
-        this.languages = ['en', 'jp','glen'];
+        this.languages = ['glen', 'en','jp'];
         this.affixesSelected = [];
         this.choicesSelected = [];
         this.assistant = assistant;
@@ -67,7 +67,7 @@ class ViewController {
             }
         }
         // Mutable variables
-        this.langCode = this.languages[0];
+        this.langCode = this.languages[2];
         this.filters = lang.filters[this.langCode];
         this.shouldUpslot = true;
         this.shouldSpread = true;
@@ -1034,7 +1034,7 @@ class ViewController {
     updateURLParams() {
         if (!this.assistant || !(this.assistant instanceof Assistant)) return;
         let oldURL = '?' + decodeURIComponent(window.location.search.substring(1, window.location.search.length));
-        let newURL = `?${this.langCode != 'en' ? this.langCode : ''}` + this.assistant.toURL(this.URL_VER);
+        let newURL = `?${this.langCode != 'glen' ? this.langCode : ''}` + this.assistant.toURL(this.URL_VER);
         if (newURL == oldURL) return;
         window.history.pushState("test", "Title", newURL);
     }
