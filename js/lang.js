@@ -4365,7 +4365,7 @@ const lang = Object.freeze({
     "RA31": {
         name_en: "Deadleon Soul",
         name_jp: "デッドリオン・ソール",
-        name_glen: "Deadleon Soul",
+        name_glen: "Deadlion Soul",
         effect_en: "S-ATK(+35),<br>DEX(+5),<br>HP(+30)",
         effect_jp: "打撃力(+35),<br>技量(+5),<br>HP(+30)",
         effect_glen: "MEL Pwr(+35),<br>DEX(+5),<br>HP(+30)"
@@ -5685,7 +5685,7 @@ const lang = Object.freeze({
     "YA05": {
         name_en: "Sentence Arma",
         name_jp: "センテンス・アルマ",
-        name_glen: "Sentence Deftnessa",
+        name_glen: "Sentence Deftness",
         effect_en: "S-ATK(+20),<br>HP(+20),<br>PP(+3)",
         effect_jp: "打撃力(+20),<br>HP(+20),<br>PP(+3)",
         effect_glen: "MEL Pwr(+20),<br>HP(+20),<br>PP(+3)"
