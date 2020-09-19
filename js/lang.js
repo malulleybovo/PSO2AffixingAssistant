@@ -619,6 +619,10 @@ const lang = Object.freeze({
             en: "Add Ability (Catalyst Receptor)",
             jp: "特殊能力追加(カタリストレセプター)"
         },
+        "Add Ability (Ether S)": {
+            en: "Add Ability (Ether S)",
+            jp: "特殊能力追加(Ether S)"
+        },
         "Add Ability (Sentence P)": {
             en: "Add Ability (Sentence P)",
             jp: "特殊能力(センテンスP)"
