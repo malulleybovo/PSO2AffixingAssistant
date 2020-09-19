@@ -2508,7 +2508,7 @@ const lang = Object.freeze({
         effect_en: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Recovers 3% of your<br>HP every second.",
         effect_jp: "花・海・葉・月・雪・影のいずれかが発動中毎秒HPが3%回復。"
     },
-    "LB98": {
+    "LB2L": {
         name_en: "S2:Brilliant Intent",
         name_jp: "S2:輝充の志",
         effect_en: "Boosts damage by 3% while PP at is 40% or above.",
@@ -3060,7 +3060,7 @@ const lang = Object.freeze({
         effect_en: "Boosts damage by 3%<br>against enemies<br>inflicted with a<br>status effect. Also<br>gives a chance to<br>inflict Bind by 40%.",
         effect_jp: "状態異常中のエネミーに対して威力が3%上昇し40%の確率でバインド状態にする。"
     },
-    "LE97": {
+    "LE0M": {
         name_en: "S5:Angelic Respite",
         name_jp: "S5:槍機天悠",
         effect_en: "At maximum gear, no gear is consumed while airborne. Increase Power by 2%. Partizan only.",
@@ -3966,6 +3966,30 @@ const lang = Object.freeze({
         effect_en: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
+    "TN08": {
+        name_en: "Shiva Glare",
+        name_jp: "Shiva Glare",
+        effect_en: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_jp: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
+    },
+    "TN09": {
+        name_en: "Origin Glare",
+        name_jp: "Origin Glare",
+        effect_en: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)",
+        effect_jp: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)"
+    },
+    "TN0A": {
+        name_en: "Photoner Glare",
+        name_jp: "Photoner Glare",
+        effect_en: "ALL(+15), HP(+15), PP(+2)",
+        effect_jp: "ALL(+15), HP(+15), PP(+2)"
+    },
+    "TN11": {
+        name_en: "Absolute Glare",
+        name_jp: "Absolute Glare",
+        effect_en: "ALL(+40), HP(+30), PP(+3)",
+        effect_jp: "ALL(+40), HP(+30), PP(+3)"
+    },
     "TF01": {
         name_en: "Spirita Alpha",
         name_jp: "スピリタ・アルファ",
@@ -4611,6 +4635,12 @@ const lang = Object.freeze({
     "VJ03": {
         name_en: "Reverie Catalyst",
         name_jp: "レヴリー・カタリスト",
+        effect_en: "HP(+10),<br>PP(+1)",
+        effect_jp: "HP(+10),<br>PP(+1)"
+    },
+    "VJ04": {
+        name_en: "Glare Catalyst",
+        name_jp: "Glare Catalyst",
         effect_en: "HP(+10),<br>PP(+1)",
         effect_jp: "HP(+10),<br>PP(+1)"
     },

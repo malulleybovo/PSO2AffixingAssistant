@@ -1521,6 +1521,147 @@ let data = {
     },
     // Sets of abilities that together can produce another ability
     extendAbility: [
+        // Guardian soul update
+        {
+            "base": [
+              "XA01",
+              "SA02"
+            ],
+            "ref": "SA02",
+            "success": 10
+          },
+          {
+            "base": [
+              "TN01",
+              "TN02",
+              "TN04",
+              "TN05"
+            ],
+            "ref": "VJ04",
+            "success": 10
+          },
+          {
+            "base": [
+              "TN02",
+              "TN03",
+              "TN04",
+              "TN05"
+            ],
+            "ref": "VJ04",
+            "success": 10
+          },
+          {
+            "base": [
+              "TN06",
+              "TN07",
+              "TN08",
+              "TN09"
+            ],
+            "ref": "TN0A",
+            "success": 10
+          },
+          {
+            "base": [
+              "VJ04",
+              "VJ04",
+              "VJ04",
+              "VJ04",
+              "TN0A"
+            ],
+            "ref": "TN11",
+            "success": 60
+          },
+          {
+            "base": [
+              "SA01",
+              "TG31",
+              "TK10",
+              "TN11"
+            ],
+            "ref": "SA02",
+            "success": 10
+          },
+          {
+            "base": [
+              "XI30",
+              "AA01"
+            ],
+            "ref": "$$",
+            "success": 100
+          },
+          {
+            "base": [
+              "XI30",
+              "AB*"
+            ],
+            "ref": "$$",
+            "success": 100
+          },
+          {
+            "base": [
+              "XI30",
+              "AC*"
+            ],
+            "ref": "$$",
+            "success": 100
+          },
+          {
+            "base": [
+              "XI30",
+              "AD*"
+            ],
+            "ref": "$$",
+            "success": 100
+          },
+          {
+            "base": [
+              "XI31",
+              "BA*"
+            ],
+            "ref": "$$",
+            "success": 100
+          },
+          {
+            "base": [
+              "XI31",
+              "BB*"
+            ],
+            "ref": "$$",
+            "success": 100
+          },
+          {
+            "base": [
+              "XI31",
+              "BC*"
+            ],
+            "ref": "$$",
+            "success": 100
+          },
+          {
+            "base": [
+              "XI32",
+              "EA*"
+            ],
+            "ref": "$$",
+            "success": 100
+          },
+          {
+            "base": [
+              "XI32",
+              "EB*"
+            ],
+            "ref": "$$",
+            "success": 100
+          },
+          {
+            "base": [
+              "IE*",
+              "XK01"
+            ],
+            "ref": "$$",
+            "success": 100
+          },
+          // End of guardian soul update
         {
             base: [
                 "XI30",
@@ -3031,227 +3172,117 @@ let data = {
     // Increase in success rate depends on the type specified below.
     // Complex logic in affixDataParser
     boostPoint: {
-        photon: {
-            create: {
-                "2": [
-                    0,
-                    0,
-                    0,
-                    100,
-                    70,
-                    50
-                ],
-                "3": [
-                    0,
-                    0,
-                    0,
-                    100,
-                    70,
-                    50
-                ]
-            }
-        },
-        mutation1: {
-            create: {
-                "1": [
-                    0,
-                    0,
-                    0,
-                    30,
-                    0,
-                    0
-                ],
-                "2": [
-                    0,
-                    0,
-                    0,
-                    30,
-                    0,
-                    0
-                ],
-                "3": [
-                    0,
-                    0,
-                    0,
-                    40,
-                    0,
-                    0
-                ]
-            }
-        },
-        mutation2: {
-            create: {
-                "1": [
-                    0,
-                    0,
-                    0,
-                    40,
-                    30,
-                    0
-                ],
-                "2": [
-                    0,
-                    0,
-                    0,
-                    40,
-                    30,
-                    0
-                ],
-                "3": [
-                    0,
-                    0,
-                    0,
-                    50,
-                    30,
-                    0
-                ]
-            }
-        },
-        soul: {
-            create: {
-                "1": [
-                    0,
-                    0,
-                    0,
-                    20,
-                    20,
-                    0
-                ],
-                "2": [
-                    0,
-                    0,
-                    0,
-                    20,
-                    20,
-                    0
-                ],
-                "3": [
-                    0,
-                    0,
-                    0,
-                    30,
-                    20,
-                    0
-                ],
-                "4": [
-                    0,
-                    0,
-                    0,
-                    10,
-                    10,
-                    0
-                ]
+        "photon": {
+          "create": {
+            "2": {
+              "6": {
+                "valueInSim": 0
+              }
             },
-            extend: {
-                "1": [
-                    0,
-                    0,
-                    0,
-                    20,
-                    0,
-                    0
-                ],
-                "2": [
-                    0,
-                    0,
-                    0,
-                    20,
-                    0,
-                    0
-                ],
-                "3": [
-                    0,
-                    0,
-                    0,
-                    60,
-                    0,
-                    0
-                ],
-                "4": [
-                    0,
-                    0,
-                    0,
-                    10,
-                    10,
-                    0
-                ],
-                "6": [
-                    20
-                ],
-                "7": [
-                    10
-                ]
+            "3": {
+              "6": {
+                "valueInSim": 0
+              }
             }
+          }
         },
-        doom: {
-            create: {
-                "5": [
-                    0,
-                    0,
-                    0,
-                    20
-                ]
+        "mutation1": {
+          "create": {
+            "1": {
+              "6": {
+                "valueInSim": 0
+              }
             },
-            extend: {
-                "5": [
-                    0,
-                    0,
-                    0,
-                    20
-                ]
-            }
-        },
-        doom2: {
-            create: {
-                "5": [
-                    0,
-                    0,
-                    0,
-                    30
-                ]
+            "2": {
+              "6": {
+                "valueInSim": 0
+              }
             },
-            extend: {
-                "5": [
-                    0,
-                    0,
-                    0,
-                    30
-                ]
+            "3": {
+              "6": {
+                "valueInSim": 0
+              }
             }
+          }
         },
-        extreme: {
-            extend: {
-                "1": [
-                    0,
-                    0,
-                    0,
-                    0,
-                    {
-                        max: 80,
-                        boost: 20
-                    },
-                    {
-                        max: 60,
-                        boost: 20
-                    }
-                ]
+        "mutation2": {
+          "create": {
+            "1": {
+              "6": {
+                "valueInSim": 0
+              }
+            },
+            "2": {
+              "6": {
+                "valueInSim": 0
+              }
+            },
+            "3": {
+              "6": {
+                "valueInSim": 0
+              }
             }
+          }
         },
-        divinewill: {
-            extend: {
-                "1": [
-                    20
-                ]
+        "soul": {
+          "create": {
+            "1": {
+              "6": {
+                "valueInSim": 0
+              }
+            },
+            "2": {
+              "6": {
+                "valueInSim": 0
+              }
+            },
+            "3": {
+              "6": {
+                "valueInSim": 0
+              }
+            },
+            "4": {
+              "6": {
+                "valueInSim": 0
+              }
             }
+          },
+          "extend": {
+            "1": {
+              "6": {
+                "valueInSim": 0
+              }
+            },
+            "2": {
+              "6": {
+                "valueInSim": 0
+              }
+            },
+            "3": {
+              "6": {
+                "valueInSim": 0
+              }
+            },
+            "4": {
+              "6": {
+                "valueInSim": 0
+              }
+            }
+          }
         },
-        divineorder: {
-            extend: {
-                "1": [
-                    30
-                ]
+        "extreme": {
+          "extend": {
+            "1": {
+              "6": {
+                "valueInSim": {
+                  "max": 60,
+                  "boost": 20
+                }
+              }
             }
+          }
         }
-    },
+      },
     // Overall multiplier for when using the same equip as fodder during affixing
     sameBonusBoost: [
         1, // Using only main fodder (impossible)
@@ -6949,7 +6980,7 @@ let data = {
         },
         {
             ref: 642,
-            code: "LB98",
+            code: "LB2L",
             gid: "L2",
             name: "S2:Brilliant Intent",
             extend: [
@@ -8084,7 +8115,7 @@ let data = {
         },
         {
             ref: 643,
-            code: "LE97",
+            code: "LE0M",
             gid: "L5",
             name: "S5:Angelic Respite",
             extend: [
@@ -10312,6 +10343,54 @@ let data = {
             effect: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
         },
         {
+            ref: 644,
+            code: "TN08",
+            gid: "AC",
+            name: "Shiva Glare",
+            extend: [
+                30,
+                50
+            ],
+            status: 1,
+            effect: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
+        },
+        {
+            ref: 645,
+            code: "TN09",
+            gid: "AC",
+            name: "Origin Glare",
+            extend: [
+                30,
+                50
+            ],
+            status: 1,
+            effect: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)"
+        },
+        {
+            ref: 646,
+            code: "TN0A",
+            gid: "AC",
+            name: "Photoner Glare",
+            extend: [
+                30,
+                50
+            ],
+            status: 1,
+            effect: "ALL(+15), HP(+15), PP(+2)"
+        },
+        {
+            ref: 647,
+            code: "TN11",
+            gid: "AC",
+            name: "Absolute Glare",
+            extend: [
+                30,
+                50
+            ],
+            status: 1,
+            effect: "ALL(+40), HP(+30), PP(+3)"
+        },
+        {
             ref: 356,
             code: "TF01",
             gid: "AC",
@@ -11666,6 +11745,19 @@ let data = {
             ],
             effect: "HP(+10),<br>PP(+1)",
             tooltip: "Made by: Elder Reverie, Loser Reverie, Apprezina Reverie, Double Reverie, Persona Reverie<br>Used for: Mana Reverie"
+        },
+        {
+            ref: 648,
+            code: "VJ04",
+            gid: "CA",
+            name: "Glare Catalyst",
+            extend: [
+                0,
+                10,
+                30
+            ],
+            effect: "HP(+10),<br>PP(+1)",
+            tooltip: "Made from: Veluge Glare, Forduss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
         },
         {
             ref: 446,
