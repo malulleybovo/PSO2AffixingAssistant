@@ -10044,7 +10044,6 @@ let data = {
                 50,
                 80,
                 100,
-                100
             ],
             effect: "ALL(+15),<br>HP(+15),<br>PP(+2)",
             tooltip: "Made by: Fabula Soul, Historia Soul, Omega Reverie"
