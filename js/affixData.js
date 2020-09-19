@@ -448,6 +448,22 @@ let data = {
                 effect: "ALL(+15),HP(+15),PP(+2)"
             },
             {
+                ref: 444,
+                id: "Add Ability (Factor C)",
+                name: "Factor Catalyst",
+                value: "B44",
+                extend: 100,
+                effect: "ALL(+10),PP(+1)"
+            },
+            {
+                ref: 350,
+                id: "Add Ability (Omega M)",
+                name: "Omega Memoria",
+                value: "B45",
+                extend: 100,
+                effect: "ALL(+15),HP(+15),PP(+2)"
+            },
+            {
                 ref: 5,
                 id: "Add Ability (Power VI)",
                 name: "Power VI",
@@ -10026,7 +10042,8 @@ let data = {
             extend: [
                 0,
                 50,
-                80
+                80,
+                100
             ],
             effect: "ALL(+15),<br>HP(+15),<br>PP(+2)",
             tooltip: "Made by: Fabula Soul, Historia Soul, Omega Reverie"
@@ -11626,7 +11643,8 @@ let data = {
             extend: [
                 0,
                 10,
-                30
+                30,
+                100
             ],
             effect: "HP(+10),<br>PP(+1)",
             tooltip: "Made by: Deus Factor, Mother Factor, Yamato Factor<br>Used for: Ether Factor"

@@ -621,7 +621,15 @@ const lang = Object.freeze({
         },
         "Add Ability (Ether S)": {
             en: "Add Ability (Ether S)",
-            jp: "特殊能力追加(Ether S)"
+            jp: "特殊能力追加(エーテル・ソール)"
+        },
+        "Add Ability (Factor C)": {
+            en: "Add Ability (Factor C)",
+            jp: "特殊能力追加(ファクター・カタリスト)"
+        },
+        "Add Ability (Omega M)": {
+            en: "Add Ability (Omega M)",
+            jp: "特殊能力追加(オメガ・メモリア)"
         },
         "Add Ability (Sentence P)": {
             en: "Add Ability (Sentence P)",
