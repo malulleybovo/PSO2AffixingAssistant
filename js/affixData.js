@@ -3175,13 +3175,35 @@ let data = {
         "photon": {
           "create": {
             "2": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                100,
+                70,
+                50,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "3": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                100,
+                70,
+                50,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             }
           }
@@ -3189,18 +3211,51 @@ let data = {
         "mutation1": {
           "create": {
             "1": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                30,
+                0,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "2": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                30,
+                0,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "3": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                40,
+                0,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             }
           }
@@ -3208,18 +3263,51 @@ let data = {
         "mutation2": {
           "create": {
             "1": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                40,
+                30,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "2": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                40,
+                30,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "3": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                50,
+                30,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             }
           }
@@ -3227,58 +3315,234 @@ let data = {
         "soul": {
           "create": {
             "1": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                20,
+                20,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "2": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                20,
+                20,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "3": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                30,
+                20,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "4": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                10,
+                10,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             }
           },
           "extend": {
             "1": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                20,
+                0,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "2": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                20,
+                0,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "3": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                60,
+                0,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
             },
             "4": {
-              "6": {
-                "valueInSim": 0
+              "valueInSim": [
+                0,
+                0,
+                0,
+                10,
+                10,
+                0,
+                0
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": 0
+                }
               }
+            },
+            "6": {
+              "valueInSim": [
+                20
+              ]
+            },
+            "7": {
+              "valueInSim": [
+                10
+              ]
+            }
+          }
+        },
+        "doom": {
+          "valueInSim": {
+            "create": {
+              "5": [
+                0,
+                0,
+                0,
+                20
+              ]
+            },
+            "extend": {
+              "5": [
+                0,
+                0,
+                0,
+                20
+              ]
+            }
+          }
+        },
+        "doom2": {
+          "valueInSim": {
+            "create": {
+              "5": [
+                0,
+                0,
+                0,
+                30
+              ]
+            },
+            "extend": {
+              "5": [
+                0,
+                0,
+                0,
+                30
+              ]
             }
           }
         },
         "extreme": {
           "extend": {
             "1": {
-              "6": {
-                "valueInSim": {
+              "valueInSim": [
+                0,
+                0,
+                0,
+                0,
+                {
+                  "max": 80,
+                  "boost": 20
+                },
+                {
+                  "max": 60,
+                  "boost": 20
+                },
+                {
                   "max": 60,
                   "boost": 20
                 }
+              ],
+              "valueInAst": {
+                "6": {
+                  "valueInSim": {
+                    "max": 60,
+                    "boost": 20
+                  }
+                }
               }
+            }
+          }
+        },
+        "divinewill": {
+          "valueInSim": {
+            "extend": {
+              "1": [
+                20
+              ]
+            }
+          }
+        },
+        "divineorder": {
+          "valueInSim": {
+            "extend": {
+              "1": [
+                30
+              ]
             }
           }
         }
