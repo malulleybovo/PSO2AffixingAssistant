@@ -464,6 +464,14 @@ let data = {
                 effect: "ALL(+15),HP(+15),PP(+2)"
             },
             {
+                ref: 445,
+                id: "Add Ability (Reverie C)",
+                name: "Reverie Catalyst",
+                value: "B46",
+                extend: 100,
+                effect: "ALL(+15),HP(+15),PP(+2)"
+            },
+            {
                 ref: 5,
                 id: "Add Ability (Power VI)",
                 name: "Power VI",
@@ -617,8 +625,8 @@ let data = {
             },
             {
                 ref: 136,
-                id: "S1 Add: Skilled Brilliance",
-                name: "S1:Skilled Brilliance",
+                id: "S1 Add: Brilliant Intent",
+                name: "S1:Brilliant Intent",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -673,8 +681,8 @@ let data = {
             },
             {
                 ref: 147,
-                id: "S1 Add: Skilled Strike",
-                name: "S1:Skilled Strike",
+                id: "S1 Add: Skilled Intent",
+                name: "S1:Skilled Intent",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -769,8 +777,8 @@ let data = {
             },
             {
                 ref: 203,
-                id: "S2 Add: Skilled Strike 2",
-                name: "S2:Skilled Strike 2",
+                id: "S2 Add: Skilled Intent 2",
+                name: "S2:Skilled Intent 2",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -889,8 +897,8 @@ let data = {
             },
             {
                 ref: 642,
-                id: "S2 Add: Skilled Brilliance",
-                name: "S2:Skilled Brilliance",
+                id: "S2 Add: Brilliant Intent",
+                name: "S2:Brilliant Intent",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -985,8 +993,8 @@ let data = {
             },
             {
                 ref: 214,
-                id: "S3 Add: Skilled Strike",
-                name: "S3:Skilled Strike",
+                id: "S3 Add: Skilled Intent",
+                name: "S3:Skilled Intent",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -5769,7 +5777,7 @@ let data = {
             ref: 136,
             code: "LA04",
             gid: "L1",
-            name: "S1:Skilled Brilliance",
+            name: "S1:Brilliant Intent",
             extend: [
                 100,
                 100,
@@ -5923,7 +5931,7 @@ let data = {
             ref: 147,
             code: "LA21",
             gid: "L1",
-            name: "S1:Skilled Strike",
+            name: "S1:Skilled Intent",
             extend: [
                 100,
                 100,
@@ -6532,7 +6540,7 @@ let data = {
             ref: 189,
             code: "LB1A",
             gid: "L2",
-            name: "S2:Skilled Strike",
+            name: "S2:Skilled Intent",
             extend: [
                 100,
                 100,
@@ -6725,7 +6733,7 @@ let data = {
             ref: 203,
             code: "LB1O",
             gid: "L2",
-            name: "S2:Skilled Strike 2",
+            name: "S2:Skilled Intent 2",
             extend: [
                 100,
                 100,
@@ -6943,7 +6951,7 @@ let data = {
             ref: 642,
             code: "LB98",
             gid: "L2",
-            name: "S2:Skilled Brilliance",
+            name: "S2:Brilliant Intent",
             extend: [
                 100,
                 100,
@@ -7006,7 +7014,7 @@ let data = {
             ref: 214,
             code: "LC04",
             gid: "L3",
-            name: "S3:Skilled Strike",
+            name: "S3:Skilled Intent",
             extend: [
                 100,
                 100,
@@ -7019,7 +7027,7 @@ let data = {
             ref: 619,
             code: "LC1O",
             gid: "L3",
-            name: "S3:Skilled Strike 2",
+            name: "S3:Skilled Intent 2",
             extend: [
                 100
             ],
@@ -8021,7 +8029,7 @@ let data = {
             ref: 556,
             code: "LE0H",
             gid: "L5",
-            name: "S5:Mysterious Intent",
+            name: "S5:Mysterious Purpose",
             extend: [
               100
             ],
@@ -9643,8 +9651,7 @@ let data = {
             extend: [
                 0,
                 50,
-                80,
-                100
+                80
             ],
             effect: "ALL(+15),<br>HP(+15),<br>PP(+2)",
             tooltip: "Made by: 2 of the following: Escarde Soul, Toh\'oh Soul, Full Vegas Soul<br>Used for: Ether Factor"
@@ -10042,8 +10049,7 @@ let data = {
             extend: [
                 0,
                 50,
-                80,
-                100,
+                80
             ],
             effect: "ALL(+15),<br>HP(+15),<br>PP(+2)",
             tooltip: "Made by: Fabula Soul, Historia Soul, Omega Reverie"
@@ -11643,8 +11649,7 @@ let data = {
             extend: [
                 0,
                 10,
-                30,
-                100
+                30
             ],
             effect: "HP(+10),<br>PP(+1)",
             tooltip: "Made by: Deus Factor, Mother Factor, Yamato Factor<br>Used for: Ether Factor"
@@ -12335,7 +12340,7 @@ let data = {
         { name: `S2:Wise Skill`, jpName: `S2:妙技の巧` },
         { name: `S2:Radiant Strike`, jpName: `S2:輝剰の撃` },
         { name: `S2:Guardian Armor`, jpName: `S2:守護の備` },
-        { name: `S2:Skilled Strike`, jpName: `S2:妙撃の志` },
+        { name: `S2:Skilled Intent`, jpName: `S2:妙撃の志` },
         { name: `S2:Rupturing Intent`, jpName: `S2:裂砕の志` },
         { name: `S2:Powering Intent`, jpName: `S2:強闘の志` },
         { name: `S2:Instant Reduction`, jpName: `S2:瞬乱縮減` },
@@ -12384,7 +12389,7 @@ let data = {
         { name: "S5:Shining Cyclone", jpName: "S5:輝境の旋" },
         { name: "S5:Evasive Barrage", jpName: "S5:巧避連撃" },
         { name: "S5:Evasive Meteor", jpName: "S5:巧避巨拳" },
-        { name: "S5:Mysterious Intent", jpName: "S5:妙の巧志" },
+        { name: "S5:Mysterious Purpose", jpName: "S5:妙の巧志" },
         { name: "S5:Hangeki Edge", jpName: "S5:反撃鋭刃" },
         { name: "S5:Thundering Pursuit", jpName: "S5:雷光追撃" },
         { name: "S5:Fiery End", jpName: "S5:烈終焉弾" },

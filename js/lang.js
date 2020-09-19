@@ -631,6 +631,10 @@ const lang = Object.freeze({
             en: "Add Ability (Omega M)",
             jp: "特殊能力追加(オメガ・メモリア)"
         },
+        "Add Ability (Reverie C)": {
+            en: "Add Ability (Reverie C)",
+            jp: "特殊能力追加(レヴリー・カタリスト)"
+        },
         "Add Ability (Sentence P)": {
             en: "Add Ability (Sentence P)",
             jp: "特殊能力(センテンスP)"
@@ -719,8 +723,8 @@ const lang = Object.freeze({
             en: "S1 Add: Radiating Grace",
             jp: "S1追加:輝勢の恵"
         },
-        "S1 Add: Skilled Brilliance": {
-            en: "S1 Add: Skilled Brilliance",
+        "S1 Add: Brilliant Intent": {
+            en: "S1 Add: Brilliant Intent",
             jp: "S1追加:輝充の志"
         },
         "S1 Add: Red Petal Flash": {
@@ -747,8 +751,8 @@ const lang = Object.freeze({
             en: "S1 Add: Black Shadow Flash",
             jp: "S1追加:影ノ黒閃"
         },
-        "S1 Add: Skilled Strike": {
-            en: "S1 Add: Skilled Strike",
+        "S1 Add: Skilled Intent": {
+            en: "S1 Add: Skilled Intent",
             jp: "S1追加:妙撃の志"
         },
         "S1 Add: Flowing Exhilaration": {
@@ -795,8 +799,8 @@ const lang = Object.freeze({
             en: "S2 Add: Wise Skill 2",
             jp: "S2追加:妙技の巧2"
         },
-        "S2 Add: Skilled Strike 2": {
-            en: "S2 Add: Skilled Strike 2",
+        "S2 Add: Skilled Intent 2": {
+            en: "S2 Add: Skilled Intent 2",
             jp: "S2追加:妙撃の志2"
         },
         "S2 Add: Radiant Strike 2": {
@@ -855,8 +859,8 @@ const lang = Object.freeze({
             en: "S2 Add: Rainbow's Exhilaration",
             jp: "S2追加:六色の活与"
         },
-        "S2 Add: Skilled Brilliance": {
-            en: "S2 Add: Skilled Brilliance",
+        "S2 Add: Brilliant Intent": {
+            en: "S2 Add: Brilliant Intent",
             jp: "S2追加:輝充の志"
         },
         "S3 Add: Nature's Melody": {
@@ -903,8 +907,8 @@ const lang = Object.freeze({
             en: "S3 Add: Radiant Strike",
             jp: "S3追加:輝剰の撃"
         },
-        "S3 Add: Skilled Strike": {
-            en: "S3 Add: Skilled Strike",
+        "S3 Add: Skilled Intent": {
+            en: "S3 Add: Skilled Intent",
             jp: "S3追加:妙撃の志"
         },
         "S3 Add: Offensive Intent": {
@@ -1965,7 +1969,7 @@ const lang = Object.freeze({
         effect_jp: "クリティカル率が18%上昇する。"
     },
     "LA04": {
-        name_en: "S1:Skilled Brilliance",
+        name_en: "S1:Brilliant Intent",
         name_jp: "S1:輝充の志",
         effect_en: "Boosts damage by 3% while PP<br>at is 40% or above.",
         effect_jp: "PPが40%以上の時、与ダメージが3%上昇。"
@@ -2037,7 +2041,7 @@ const lang = Object.freeze({
         effect_jp: "一定の範囲内でエネミーが死亡した時、PPが回復する。"
     },
     "LA21": {
-        name_en: "S1:Skilled Strike",
+        name_en: "S1:Skilled Intent",
         name_jp: "S1:妙撃の志",
         effect_en: "+3% damage on Critical Hits.",
         effect_jp: "クリティカル時の与ダメージが3%上昇。"
@@ -2313,7 +2317,7 @@ const lang = Object.freeze({
         effect_jp: "与ダメージが2%上昇。"
     },
     "LB1A": {
-        name_en: "S2:Skilled Strike",
+        name_en: "S2:Skilled Intent",
         name_jp: "S2:妙撃の志",
         effect_en: "Increase Critical Hit Damage by 3%.",
         effect_jp: "クリティカル時の与ダメージが3%上昇。"
@@ -2403,7 +2407,7 @@ const lang = Object.freeze({
         effect_jp: "クリティカル率が15%上昇する。"
     },
     "LB1O": {
-        name_en: "S2:Skilled Strike 2",
+        name_en: "S2:Skilled Intent 2",
         name_jp: "S2:妙撃の志2",
         effect_en: "Increase Critical Hit Damage by 4%.",
         effect_jp: "クリティカル時の与ダメージが4%上昇。"
@@ -2505,7 +2509,7 @@ const lang = Object.freeze({
         effect_jp: "花・海・葉・月・雪・影のいずれかが発動中毎秒HPが3%回復。"
     },
     "LB98": {
-        name_en: "S2:Skilled Brilliance",
+        name_en: "S2:Brilliant Intent",
         name_jp: "S2:輝充の志",
         effect_en: "Boosts damage by 3% while PP at is 40% or above.",
         effect_jp: "PPが40%以上の時、与ダメージが3%上昇。"
@@ -2535,13 +2539,13 @@ const lang = Object.freeze({
         effect_jp: "攻撃時のPP回復量が23%上昇する。"
     },
     "LC04": {
-        name_en: "S3:Skilled Strike",
+        name_en: "S3:Skilled Intent",
         name_jp: "S3:妙撃の志",
         effect_en: "Increase Critical Hit Damage by 4%.",
         effect_jp: "クリティカル時の与ダメージが4%上昇。"
     },
     "LC1O": {
-        name_en: "S3:Skilled Strike 2",
+        name_en: "S3:Skilled Intent 2",
         name_jp: "S3:妙撃の志2",
         effect_en: "Increase Critical Hit Damage by 5%.",
         effect_jp: "クリティカル時の与ダメージが5%上昇。"
@@ -3027,7 +3031,7 @@ const lang = Object.freeze({
         effect_jp: "エレメンタルバーストの威力が30%上昇しPA派生攻撃時自動的に発動する。魔装脚限定。"
     },
     "LE0H": {
-        name_en: "S5:Mysterious Intent",
+        name_en: "S5:Mysterious Purpose",
         name_jp: "S5:妙の巧志",
         effect_en: "Increase Critical Hit Rate by 20%. On a Critical Hit, deal an additional 2% damage and recover 1% of damage dealt as HP (30 MAX).",
         effect_jp: "クリティカル率が20%上昇。発生時に威力2%上昇、与ダメージの1%をHP回復(上限30)"
