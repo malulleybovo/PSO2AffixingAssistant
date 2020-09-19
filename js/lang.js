@@ -469,6 +469,10 @@ const lang = Object.freeze({
             en: "Ability Success Rate +60%",
             jp: "能力追加成功率+60%"
         }
+		"Ability Success Rate +65%": {
+            en: "Ability Success Rate +65%",
+            jp: "能力追加成功率+65%"
+        }
     },
     "additional": {
         "Nothing": {

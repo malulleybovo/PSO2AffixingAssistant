@@ -118,7 +118,17 @@ let data = {
                 fn: function (a) {
                     return Math.min(a + 60, 100)
                 }
-            }
+            },
+			{
+                ref: 10,
+                id: "Ability Success Rate +65%",
+                name: "+65%",
+                value: "A11",
+                fn: function (a) {
+                    return Math.min(a + 65, 100)
+                }
+            },
+			
         ],
         // List of Add Abilities
         additional: [
@@ -429,6 +439,14 @@ let data = {
                 value: "XH01",
                 extend: 100,
                 effect: "ALL(+10)"
+            },
+			{
+                ref: 325,
+                id: "Add Ability (Ether S)",
+                name: "Ether Soul",
+                value: "B43",
+                extend: 100,
+                effect: "ALL(+15),HP(+15),PP(+2)"
             },
             {
                 ref: 5,
