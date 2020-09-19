@@ -9627,7 +9627,8 @@ let data = {
             extend: [
                 0,
                 50,
-                80
+                80,
+                100
             ],
             effect: "ALL(+15),<br>HP(+15),<br>PP(+2)",
             tooltip: "Made by: 2 of the following: Escarde Soul, Toh\'oh Soul, Full Vegas Soul<br>Used for: Ether Factor"
