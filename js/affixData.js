@@ -9675,6 +9675,14 @@ let data = {
             tooltip: "Made by: 4x Soul Catalyst + Darkness Soul"
         },
         {
+            ref: 649,
+            code: "SA02",
+            gid: "EA",
+            name: "Guardian Soul",
+            effect: "ALL(+70),<br>HP(+70),<br>PP(+7)",
+            tooltip: "Made from: Astral Soul, Ether Factor, Mana Reverie, Absolute Glare"
+        },
+        {
             ref: 325,
             code: "SA11",
             gid: "EA",
@@ -11903,6 +11911,13 @@ let data = {
             gid: "GB",
             name: "Catalyst Receptor",
             effect: "Boosts Catalyst-type ability.<br>ALL(+10)"
+        },
+        {
+            ref: 650,
+            code: "XK01",
+            gid: "GB",
+            name: "Exceed Receptor",
+            effect: "Boosts Exceed-type ability.<br>ALL(+10)"
         },
         {
             ref: 459,

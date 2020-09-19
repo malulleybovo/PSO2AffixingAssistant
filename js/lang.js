@@ -3684,6 +3684,12 @@ const lang = Object.freeze({
         effect_en: "ALL(+35),<br>HP(+35),<br>PP(+5)",
         effect_jp: "ALL(+35),<br>HP(+35),<br>PP(+5)"
     },
+    "SA02": {
+        name_en: "Guardian Soul",
+        name_jp: "Guardian Soul",
+        effect_en: "ALL(+70),<br>HP(+70),<br>PP(+7)",
+        effect_jp: "ALL(+70),<br>HP(+70),<br>PP(+7)"
+    },
     "SA11": {
         name_en: "Ether Soul",
         name_jp: "エーテル・ソール",
@@ -3768,6 +3774,7 @@ const lang = Object.freeze({
         effect_en: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+50), PP(+2)",
         effect_jp: "打撃力(+20),射撃力(+20),法撃力(+20),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+50),PP(+2)"
     },
+    
     "TA01": {
         name_en: "Stigma",
         name_jp: "スティグマ",
@@ -3968,9 +3975,9 @@ const lang = Object.freeze({
     },
     "TN08": {
         name_en: "Shiva Glare",
-        name_jp: "Shiva Glare",
+        name_jp: "シバ・グレア",
         effect_en: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
-        effect_jp: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
+        effect_jp: "法撃力(+30), 法撃力(+30), 打撃防御(+20), 射撃防御(+20), 法撃防御(+20), HP(+20), PP(+2)"
     },
     "TN09": {
         name_en: "Origin Glare",
@@ -4751,6 +4758,12 @@ const lang = Object.freeze({
         name_jp: "フォトンレセプター",
         effect_en: "Greatly increases affix rate of Stamina and Spirita.<br>ALL(+5)",
         effect_jp: "スタミナ・スピリタ系特殊能力の合成成功率を大幅に上昇。<br>ALL(+5)"
+    },
+    "XK01": {
+        name_en: "Exceed Receptor",
+        name_jp: "Exceed Receptor",
+        effect_en: "Boosts Exceed-type ability.<br>ALL(+10)",
+        effect_jp: "Boosts Exceed-type ability.<br>ALL(+10)"
     },
     "XI02": {
         name_en: "Stamina Boost",
