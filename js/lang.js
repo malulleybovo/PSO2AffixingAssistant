@@ -967,8 +967,8 @@ const lang = Object.freeze({
             en: "S4 Add: Calming Intent",
             jp: "S4追加:静心の志"
         },
-        "S4 Add: Mysterious Strike": {
-            en: "S4 Add: Mysterious Strike",
+        "S4 Add: Skilled Balance": {
+            en: "S4 Add: Skilled Balance",
             jp: "S4追加:妙撃の秤"
         },
         "S4 Add: Saint Shield": {
@@ -2875,7 +2875,7 @@ const lang = Object.freeze({
         effect_jp: "通常攻撃の威力が13%上昇。"
     },
     "LD0Q": {
-        name_en: "S4:Mysterious Strike",
+        name_en: "S4:Skilled Balance",
         name_jp: "S4:妙撃の秤",
         effect_en: "Reduce Critical Hit Rate by 50% and<br>increase the power of Critical Hits by 6%.",
         effect_jp: "クリティカル率を50%低下し、クリティカルの威力が6%上昇。"

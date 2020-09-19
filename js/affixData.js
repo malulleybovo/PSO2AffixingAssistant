@@ -1105,8 +1105,8 @@ let data = {
             },
             {
                 ref: 262,
-                id: "S4 Add: Mysterious Strike",
-                name: "S4:Mysterious Strike",
+                id: "S4 Add: Skilled Balance",
+                name: "S4:Skilled Balance",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -7735,7 +7735,7 @@ let data = {
             ref: 262,
             code: "LD0Q",
             gid: "L4",
-            name: "S4:Mysterious Strike",
+            name: "S4:Skilled Balance",
             extend: [
                 100,
                 100,
