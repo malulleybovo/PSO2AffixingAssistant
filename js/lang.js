@@ -621,15 +621,15 @@ const lang = Object.freeze({
         },
         "Add Ability (Ether S)": {
             en: "Add Ability (Ether S)",
-            jp: "特殊能力追加(エーテル・ソール)"
+            jp: "特殊能力(エーテルS)"
         },
         "Add Ability (Factor C)": {
             en: "Add Ability (Factor C)",
-            jp: "特殊能力追加(ファクター・カタリスト)"
+            jp: "特殊能力追加(ファクターC)"
         },
         "Add Ability (Omega M)": {
             en: "Add Ability (Omega M)",
-            jp: "特殊能力追加(オメガ・メモリア)"
+            jp: "特殊能力追加(オメガM)"
         },
         "Add Ability (Reverie C)": {
             en: "Add Ability (Reverie C)",
@@ -3686,7 +3686,7 @@ const lang = Object.freeze({
     },
     "SA02": {
         name_en: "Guardian Soul",
-        name_jp: "Guardian Soul",
+        name_jp: "ガーディアン・ソール",
         effect_en: "ALL(+70),<br>HP(+70),<br>PP(+7)",
         effect_jp: "ALL(+70),<br>HP(+70),<br>PP(+7)"
     },
@@ -3981,19 +3981,19 @@ const lang = Object.freeze({
     },
     "TN09": {
         name_en: "Origin Glare",
-        name_jp: "Origin Glare",
+        name_jp: "オリジン・グレア",
         effect_en: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)",
-        effect_jp: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)"
+        effect_jp: "打撃力(+30), 射撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
     "TN0A": {
         name_en: "Photoner Glare",
-        name_jp: "Photoner Glare",
+        name_jp: "フォトナー・グレア",
         effect_en: "ALL(+15), HP(+15), PP(+2)",
         effect_jp: "ALL(+15), HP(+15), PP(+2)"
     },
     "TN11": {
         name_en: "Absolute Glare",
-        name_jp: "Absolute Glare",
+        name_jp: "アブソリュート・グレア",
         effect_en: "ALL(+40), HP(+30), PP(+3)",
         effect_jp: "ALL(+40), HP(+30), PP(+3)"
     },
@@ -4647,7 +4647,7 @@ const lang = Object.freeze({
     },
     "VJ04": {
         name_en: "Glare Catalyst",
-        name_jp: "Glare Catalyst",
+        name_jp: "グレア・カタリスト",
         effect_en: "HP(+10),<br>PP(+1)",
         effect_jp: "HP(+10),<br>PP(+1)"
     },
