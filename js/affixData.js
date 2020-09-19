@@ -1523,143 +1523,143 @@ let data = {
     extendAbility: [
         // Guardian soul update
         {
-            "base": [
+            base: [
               "XA01",
               "SA02"
             ],
-            "ref": "SA02",
-            "success": 10
+            ref: "SA02",
+            success: 10
           },
           {
-            "base": [
+            base: [
               "TN01",
               "TN02",
               "TN04",
               "TN05"
             ],
-            "ref": "VJ04",
-            "success": 10
+            ref: "VJ04",
+            success: 10
           },
           {
-            "base": [
+            base: [
               "TN02",
               "TN03",
               "TN04",
               "TN05"
             ],
-            "ref": "VJ04",
-            "success": 10
+            ref: "VJ04",
+            success: 10
           },
           {
-            "base": [
+            base: [
               "TN06",
               "TN07",
               "TN08",
               "TN09"
             ],
-            "ref": "TN0A",
-            "success": 10
+            ref: "TN0A",
+            success: 10
           },
           {
-            "base": [
+            base: [
               "VJ04",
               "VJ04",
               "VJ04",
               "VJ04",
               "TN0A"
             ],
-            "ref": "TN11",
-            "success": 60
+            ref: "TN11",
+            success: 60
           },
           {
-            "base": [
+            base: [
               "SA01",
               "TG31",
               "TK10",
               "TN11"
             ],
-            "ref": "SA02",
-            "success": 10
+            ref: "SA02",
+            success: 10
           },
           {
-            "base": [
+            base: [
               "XI30",
               "AA01"
             ],
-            "ref": "$$",
-            "success": 100
+            ref: "$$",
+            success: 100
           },
           {
-            "base": [
+            base: [
               "XI30",
               "AB*"
             ],
-            "ref": "$$",
-            "success": 100
+            ref: "$$",
+            success: 100
           },
           {
-            "base": [
+            base: [
               "XI30",
               "AC*"
             ],
-            "ref": "$$",
-            "success": 100
+            ref: "$$",
+            success: 100
           },
           {
-            "base": [
+            base: [
               "XI30",
               "AD*"
             ],
-            "ref": "$$",
-            "success": 100
+            ref: "$$",
+            success: 100
           },
           {
-            "base": [
+            base: [
               "XI31",
               "BA*"
             ],
-            "ref": "$$",
-            "success": 100
+            ref: "$$",
+            success: 100
           },
           {
-            "base": [
+            base: [
               "XI31",
               "BB*"
             ],
-            "ref": "$$",
-            "success": 100
+            ref: "$$",
+            success: 100
           },
           {
-            "base": [
+            base: [
               "XI31",
               "BC*"
             ],
-            "ref": "$$",
-            "success": 100
+            ref: "$$",
+            success: 100
           },
           {
-            "base": [
+            base: [
               "XI32",
               "EA*"
             ],
-            "ref": "$$",
-            "success": 100
+            ref: "$$",
+            success: 100
           },
           {
-            "base": [
+            base: [
               "XI32",
               "EB*"
             ],
-            "ref": "$$",
-            "success": 100
+            ref: "$$",
+            success: 100
           },
           {
-            "base": [
+            base: [
               "IE*",
               "XK01"
             ],
-            "ref": "$$",
-            "success": 100
+            ref: "$$",
+            success: 100
           },
           // End of guardian soul update
         {
