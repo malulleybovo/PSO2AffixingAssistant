@@ -110,7 +110,7 @@ const lang = Object.freeze({
         factorLabel: {
             en: "Special Ability Factor",
             jp: "特殊能力因子",
-            glen: "Special Ability Factor"
+            glen: "Augment Factor"
         },
         fodderSuccessDivTitle: {
             en: "Success in making this equipment",
@@ -270,7 +270,7 @@ const lang = Object.freeze({
         transplantTitle: {
             en: "Special Ability Transplant",
             jp: "特殊能力移植",
-            glen: "Special Ability Transfer"
+            glen: "Augment Transfer"
         },
         transplantTooltip: {
             en: "<strong>WARNING</strong>: The formula below will cause the Material Fodder to lose some ability slots.",
@@ -5725,7 +5725,7 @@ const lang = Object.freeze({
     "YA31": {
         name_en: "Sentence Triple",
         name_jp: "センテンス・テクニック",
-        name_glen: "*Sentence Triple",
+        name_glen: "Sentence Triple",
         effect_en: "S-ATK(+30),R-ATK(+30),T-ATK(+30)",
         effect_jp: "打撃力(+30),射撃力(+30),法撃力(+30)",
         effect_glen: "MEL Pwr(+30),RNG Pwr(+30),TEC Pwr(+30)"
@@ -6056,7 +6056,7 @@ const lang = Object.freeze({
         name_glen: "*Guidance Trainer",
         effect_en: "Increase Special Ability Addition success rate by 5%.",
         effect_jp: "特殊能力の成功率を5％上昇させる。",
-        effect_glen: "Increase Special Ability Addition success rate by 5%."
+        effect_glen: "Increase Augment Addition success rate by 5%."
     },
     "VK05": {
         name_en: "NT Weapon Booster",
