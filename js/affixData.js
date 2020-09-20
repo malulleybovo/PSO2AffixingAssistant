@@ -439,6 +439,14 @@ let data = {
                 extend: 100,
                 effect: "ALL(+10)"
             },
+            {
+                ref: 650,
+                id: "Add Ability (Exceed Receptor)",
+                name: "Exceed Receptor",
+                value: "XK01",
+                extend: 100,
+                effect: "ALL(+10)"
+            },
 			{
                 ref: 325,
                 id: "Add Ability (Ether S)",
@@ -1655,8 +1663,8 @@ let data = {
           },
           {
             base: [
-              "IE*",
-              "XK01"
+                "XK01",
+                "IE*"
             ],
             ref: "$$",
             success: 100
@@ -4532,7 +4540,7 @@ let data = {
             code: "FA05",
             gid: "CB",
             name: "Ability V",
-            effect: "ALL(+25)"
+            effect: "ALL(+30)"
         },
         {
             ref: 53,
@@ -12487,6 +12495,7 @@ let data = {
         { name: `Mind III`, jpName: `マインドⅢ` },
         { name: `Ability III`, jpName: `アビリティⅢ` },
         { name: `Ability IV`, jpName: `アビリティⅣ` },
+        { name: `Ability V`, jpName: `アビリティⅤ` },
         { name: `Stamina III`, jpName: `スタミナⅢ` },
         { name: `Stamina IV`, jpName: `スタミナⅣ` },
         { name: `Stamina V`, jpName: `スタミナⅤ` },

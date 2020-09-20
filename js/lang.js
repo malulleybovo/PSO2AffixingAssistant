@@ -619,6 +619,10 @@ const lang = Object.freeze({
             en: "Add Ability (Catalyst Receptor)",
             jp: "特殊能力追加(カタリストレセプター)"
         },
+        "Add Ability (Exceed Receptor)": {
+            en: "Add Ability (Exceed Receptor)",
+            jp: "特殊能力追加(Exceed Receptor)"
+        },
         "Add Ability (Ether S)": {
             en: "Add Ability (Ether S)",
             jp: "特殊能力(エーテルS)"
@@ -1461,8 +1465,8 @@ const lang = Object.freeze({
     "FA05": {
         name_en: "Ability V",
         name_jp: "アビリティⅤ",
-        effect_en: "ALL(+25)",
-        effect_jp: "ALL(+25)"
+        effect_en: "ALL(+30)",
+        effect_jp: "ALL(+30)"
     },
     "HA01": {
         name_en: "Blow Resist I",
