@@ -544,6 +544,30 @@ let data = {
                 effect: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
             },
             {
+                ref: 349,
+                id: "Add Ability (Mana Reverie)",
+                name: "Mana Reverie",
+                value: "TK10",
+                extend: 100,
+                effect: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
+            },
+            {
+                ref: 342,
+                id: "Add Ability (Ether Factor)",
+                name: "Ether Factor",
+                value: "TG31",
+                extend: 100,
+                effect: "ALL(+30),<br>HP(+10),<br>PP(+6)"
+            },
+            {
+                ref: 324,
+                id: "Add Ability (Astral Soul)",
+                name: "Astral Soul",
+                value: "SA01",
+                extend: 100,
+                effect: "ALL(+35),<br>HP(+35),<br>PP(+5)"
+            },
+            {
                 ref: 160,
                 id: "S1 Add: Photon Reduction 2",
                 name: "S1:Photon Reduction 2",
@@ -12498,7 +12522,8 @@ let data = {
         { name: `Ability V`, jpName: `アビリティⅤ` },
         { name: `Stamina III`, jpName: `スタミナⅢ` },
         { name: `Stamina IV`, jpName: `スタミナⅣ` },
-        { name: `Stamina V`, jpName: `スタミナⅤ` },
+        { name: `Stamina V`, jpName: `スタミナⅤ` },   
+        { name: `Stamina VI`, jpName: `スタミナⅤI` },
         { name: `Spirita III`, jpName: `スピリタⅢ` },
         { name: `Spirita IV`, jpName: `スピリタⅣ` },
         { name: `Spirita V`, jpName: `スピリタⅤ` },
@@ -12540,6 +12565,10 @@ let data = {
         { name: `Poison V`, jpName: `ポイズンⅤ` },
         { name: `Panic III`, jpName: `パニックⅢ` },
         { name: `Panic V`, jpName: `パニックⅤ` },
+        { name: `Lesser Power IV`, jpName: `レッサー・パワーⅣ` },
+        { name: `Lesser Shoot IV`, jpName: `レッサー・シュートⅣ` },
+        { name: `Lesser Technique IV`, jpName: `レッサー・テクニックⅣ` },
+        { name: `Lesser Spirita IV`, jpName: `レッサー・スピリタⅣ` },
         { name: `Darkness Soul`, jpName: `ダークネス・ソール` },
         { name: `Deadleon Soul`, jpName: `デッドリオン・ソール` },
         { name: `Greuzoras Soul`, jpName: `グリュゾラス・ソール` },

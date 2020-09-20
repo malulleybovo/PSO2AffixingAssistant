@@ -639,6 +639,18 @@ const lang = Object.freeze({
             en: "Add Ability (Reverie C)",
             jp: "特殊能力追加(レヴリー・カタリスト)"
         },
+        "Add Ability (Mana Reverie)": {
+            en: "Add Ability (Mana Reverie)",
+            jp: "特殊能力追加(Mana Reverie)"
+        },
+        "Add Ability (Astral Soul)": {
+            en: "Add Ability (Astral Soul)",
+            jp: "特殊能力追加(Astral Soul)"
+        },
+        "Add Ability (Ether Factor)": {
+            en: "Add Ability (Ether Factor)",
+            jp: "特殊能力追加(Ether Factor)"
+        },
         "Add Ability (Sentence P)": {
             en: "Add Ability (Sentence P)",
             jp: "特殊能力(センテンスP)"
