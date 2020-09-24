@@ -6253,7 +6253,7 @@ const lang = Object.freeze({
     "XI51": {
         name_en: "Grace Stamina",
         name_jp: "グレース・スタミナ",
-        name_glen: "*Grace Stamina",
+        name_glen: "Graceful Stamina",
         effect_en: "HP(+80),PP(+5)",
         effect_jp: "HP(+80),PP(+5)",
         effect_glen: "HP(+80),PP(+5)"
@@ -6285,7 +6285,7 @@ const lang = Object.freeze({
     "XI52": {
         name_en: "Grace Power",
         name_jp: "グレース・パワー",
-        name_glen: "*Grace Might",
+        name_glen: "Graceful Might",
         effect_en: "S-ATK(+50),PP(+5)",
         effect_jp: "打撃力(+50),PP(+5)",
         effect_glen: "MEL Pwr(+50),PP(+5)"
@@ -6317,7 +6317,7 @@ const lang = Object.freeze({
     "XI53": {
         name_en: "Grace Shoot",
         name_jp: "グレース・シュート",
-        name_glen: "*Grace Precision",
+        name_glen: "Graceful Precision",
         effect_en: "R-ATK(+50),PP(+5)",
         effect_jp: "射撃力(+50),PP(+5)",
         effect_glen: "RNG Pwr(+50),PP(+5)"
@@ -6349,7 +6349,7 @@ const lang = Object.freeze({
     "XI54": {
         name_en: "Grace Technique",
         name_jp: "グレース・テクニック",
-        name_glen: "*Grace Casting",
+        name_glen: "Graceful Casting",
         effect_en: "T-ATK(+50),PP(+5)",
         effect_jp: "法撃力(+50),PP(+5)",
         effect_glen: "TEC Pwr(+50),PP(+5)"
@@ -6365,7 +6365,7 @@ const lang = Object.freeze({
     "XI60": {
         name_en: "Grace Spirita",
         name_jp: "グランド・スピリタ",
-        name_glen: "*Grace Spirit",
+        name_glen: "Graceful Spirit",
         effect_en: "PP(+15)",
         effect_jp: "PP(+15)",
         effect_glen: "PP(+15)"
