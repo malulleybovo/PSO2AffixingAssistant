@@ -581,6 +581,8 @@ class ViewController {
                         this.assistant.setGoal(this.affixesSelected);
                     }
                 }
+                // Completely recalculate addAbilityItemInUse when confirming new recipe, in case the new recipe does not use it
+                this.assistant.activeFodder.addAbilityItemInUse = null;
                 this.assistant.activeFodder.setAddAbilityInUse(this.choicesSelected);
                 // Add new page to the tree data structure
                 // And connect the produced fodder to the new page
