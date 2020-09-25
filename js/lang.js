@@ -1373,17 +1373,17 @@ const lang = Object.freeze({
         "Guidance of Life Lv1 (+2%)": {
             en: "Guidance of Life Lv1 (+2%)",
             jp: "生命の導きLv1(+2%)",
-            glen: "*Guidance of Life Lv1 (+2%)"
+            glen: "Life\'s Guidance Lv1 (+2%)"
         },
         "Guidance of Life Lv2 (+5%)": {
             en: "Guidance of Life Lv2 (+5%)",
             jp: "生命の導きLv2(+5%)",
-            glen: "*Guidance of Life Lv2 (+5%)"
+            glen: "Life\'s Guidance Lv2 (+5%)"
         },
         "Guidance of Life Lv3 (+10%)": {
             en: "Guidance of Life Lv3 (+10%)",
             jp: "生命の導きLv3(+10%)",
-            glen: "*Guidance of Life Lv3 (+10%)"
+            glen: "Life\'s Guidance Lv3 (+10%)"
         }
     },
     "AA01": {

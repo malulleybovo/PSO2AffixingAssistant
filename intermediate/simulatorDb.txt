@@ -1645,359 +1645,71 @@
         "XI30",
         "AA01"
       ],
-      "ref": "AA01",
+      "ref": "$$",
       "success": 100
     },
     {
       "base": [
         "XI30",
-        "AA02"
+        "AB*"
       ],
-      "ref": "AA02",
+      "ref": "$$",
       "success": 100
     },
     {
       "base": [
         "XI30",
-        "AA03"
+        "AC*"
       ],
-      "ref": "AA03",
+      "ref": "$$",
       "success": 100
     },
     {
       "base": [
         "XI30",
-        "AA04"
+        "AD*"
       ],
-      "ref": "AA04",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AA05"
-      ],
-      "ref": "AA05",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AB01"
-      ],
-      "ref": "AB01",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AB02"
-      ],
-      "ref": "AB02",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AB03"
-      ],
-      "ref": "AB03",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AB04"
-      ],
-      "ref": "AB04",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AB05"
-      ],
-      "ref": "AB05",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AC01"
-      ],
-      "ref": "AC01",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AC02"
-      ],
-      "ref": "AC02",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AC03"
-      ],
-      "ref": "AC03",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AC04"
-      ],
-      "ref": "AC04",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AC05"
-      ],
-      "ref": "AC05",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AD01"
-      ],
-      "ref": "AD01",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AD02"
-      ],
-      "ref": "AD02",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AD03"
-      ],
-      "ref": "AD03",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AD04"
-      ],
-      "ref": "AD04",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI30",
-        "AD05"
-      ],
-      "ref": "AD05",
+      "ref": "$$",
       "success": 100
     },
     {
       "base": [
         "XI31",
-        "BA01"
+        "BA*"
       ],
-      "ref": "BA01",
+      "ref": "$$",
       "success": 100
     },
     {
       "base": [
         "XI31",
-        "BA02"
+        "BB*"
       ],
-      "ref": "BA02",
+      "ref": "$$",
       "success": 100
     },
     {
       "base": [
         "XI31",
-        "BA03"
+        "BC*"
       ],
-      "ref": "BA03",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BA04"
-      ],
-      "ref": "BA04",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BA05"
-      ],
-      "ref": "BA05",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BB01"
-      ],
-      "ref": "BB01",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BB02"
-      ],
-      "ref": "BB02",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BB03"
-      ],
-      "ref": "BB03",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BB04"
-      ],
-      "ref": "BB04",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BB05"
-      ],
-      "ref": "BB05",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BC01"
-      ],
-      "ref": "BC01",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BC02"
-      ],
-      "ref": "BC02",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BC03"
-      ],
-      "ref": "BC03",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BC04"
-      ],
-      "ref": "BC04",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI31",
-        "BC05"
-      ],
-      "ref": "BC05",
+      "ref": "$$",
       "success": 100
     },
     {
       "base": [
         "XI32",
-        "EA01"
+        "EA*"
       ],
-      "ref": "EA01",
+      "ref": "$$",
       "success": 100
     },
     {
       "base": [
         "XI32",
-        "EA02"
+        "EB*"
       ],
-      "ref": "EA02",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI32",
-        "EA03"
-      ],
-      "ref": "EA03",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI32",
-        "EA04"
-      ],
-      "ref": "EA04",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI32",
-        "EA05"
-      ],
-      "ref": "EA05",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI32",
-        "EB01"
-      ],
-      "ref": "EB01",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI32",
-        "EB02"
-      ],
-      "ref": "EB02",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI32",
-        "EB03"
-      ],
-      "ref": "EB03",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI32",
-        "EB04"
-      ],
-      "ref": "EB04",
-      "success": 100
-    },
-    {
-      "base": [
-        "XI32",
-        "EB05"
-      ],
-      "ref": "EB05",
+      "ref": "$$",
       "success": 100
     },
     {
@@ -2013,6 +1725,30 @@
       "base": [
         "VJ*",
         "XH01"
+      ],
+      "ref": "$$",
+      "success": 100
+    },
+    {
+      "base": [
+        "UC*",
+        "XG01"
+      ],
+      "ref": "$$",
+      "success": 100
+    },
+    {
+      "base": [
+        "ID*",
+        "XJ01"
+      ],
+      "ref": "$$",
+      "success": 100
+    },
+    {
+      "base": [
+        "IE*",
+        "XK01"
       ],
       "ref": "$$",
       "success": 100
@@ -2065,7 +1801,8 @@
           0,
           100,
           70,
-          50
+          50,
+          0
         ],
         "3": [
           0,
@@ -2073,7 +1810,8 @@
           0,
           100,
           70,
-          50
+          50,
+          0
         ]
       }
     },
@@ -2085,6 +1823,7 @@
           0,
           30,
           0,
+          0,
           0
         ],
         "2": [
@@ -2093,6 +1832,7 @@
           0,
           30,
           0,
+          0,
           0
         ],
         "3": [
@@ -2100,6 +1840,7 @@
           0,
           0,
           40,
+          0,
           0,
           0
         ]
@@ -2113,6 +1854,7 @@
           0,
           40,
           30,
+          0,
           0
         ],
         "2": [
@@ -2121,6 +1863,7 @@
           0,
           40,
           30,
+          0,
           0
         ],
         "3": [
@@ -2129,6 +1872,7 @@
           0,
           50,
           30,
+          0,
           0
         ]
       }
@@ -2141,6 +1885,7 @@
           0,
           20,
           20,
+          0,
           0
         ],
         "2": [
@@ -2149,6 +1894,7 @@
           0,
           20,
           20,
+          0,
           0
         ],
         "3": [
@@ -2157,6 +1903,7 @@
           0,
           30,
           20,
+          0,
           0
         ],
         "4": [
@@ -2165,6 +1912,7 @@
           0,
           10,
           10,
+          0,
           0
         ]
       },
@@ -2175,6 +1923,7 @@
           0,
           20,
           0,
+          0,
           0
         ],
         "2": [
@@ -2182,6 +1931,7 @@
           0,
           0,
           20,
+          0,
           0,
           0
         ],
@@ -2191,6 +1941,7 @@
           0,
           60,
           0,
+          0,
           0
         ],
         "4": [
@@ -2199,6 +1950,7 @@
           0,
           10,
           10,
+          0,
           0
         ],
         "6": [
@@ -2254,6 +2006,10 @@
           0,
           {
             "max": 80,
+            "boost": 20
+          },
+          {
+            "max": 60,
             "boost": 20
           },
           {
@@ -2634,8 +2390,13 @@
     },
     {
       "code": "AA06",
-      "gid": "CB",
+      "gid": "AA",
       "name": "Power VI",
+      "extend": [
+        20,
+        40,
+        60
+      ],
       "status": 1,
       "effect": "S-ATK(+45)"
     },
@@ -2719,8 +2480,13 @@
     },
     {
       "code": "AB06",
-      "gid": "CB",
+      "gid": "AA",
       "name": "Shoot VI",
+      "extend": [
+        20,
+        40,
+        60
+      ],
       "status": 1,
       "effect": "R-ATK(+45)"
     },
@@ -2804,8 +2570,13 @@
     },
     {
       "code": "AC06",
-      "gid": "CB",
+      "gid": "AA",
       "name": "Technique VI",
+      "extend": [
+        20,
+        40,
+        60
+      ],
       "status": 1,
       "effect": "T-ATK(+45)"
     },
@@ -3201,8 +2972,13 @@
     },
     {
       "code": "EA06",
-      "gid": "CB",
+      "gid": "AA",
       "name": "Stamina VI",
+      "extend": [
+        20,
+        40,
+        60
+      ],
       "status": 1,
       "effect": "HP(+80)"
     },
@@ -3286,8 +3062,13 @@
     },
     {
       "code": "EB06",
-      "gid": "CB",
+      "gid": "AA",
       "name": "Spirita VI",
+      "extend": [
+        20,
+        40,
+        60
+      ],
       "status": 1,
       "effect": "PP(+7)"
     },
@@ -3327,13 +3108,13 @@
     },
     {
       "code": "FA04",
-      "gid": "CB",
+      "gid": "AD",
       "name": "Ability IV",
       "effect": "ALL(+20)"
     },
     {
       "code": "FA05",
-      "gid": "CB",
+      "gid": "AD",
       "name": "Ability V",
       "effect": "ALL(+30)"
     },
@@ -9465,50 +9246,30 @@
       "code": "UC01",
       "gid": "AC",
       "name": "Mark Joyo",
-      "effect": "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+50)",
-      "extend": [
-        100
-      ],
-      "require": "XG01"
+      "effect": "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>HP(+50)"
     },
     {
       "code": "UC11",
       "gid": "AC",
       "name": "Mark Couragena",
-      "effect": "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>PP(+5)",
-      "extend": [
-        100
-      ],
-      "require": "XG01"
+      "effect": "S-ATK(+40),<br>R-ATK(+40),<br>T-ATK(+40),<br>PP(+5)"
     },
     {
       "code": "UC21",
       "gid": "AC",
       "name": "Mark Angar",
-      "effect": "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>DEX(+40)",
-      "extend": [
-        100
-      ],
-      "require": "XG01"
+      "effect": "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>DEX(+40)"
     },
     {
       "code": "UC31",
       "gid": "AC",
       "name": "Mark Grif",
-      "effect": "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)",
-      "extend": [
-        100
-      ],
-      "require": "XG01"
+      "effect": "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
     },
     {
       "code": "ID01",
       "gid": "AC",
       "name": "Divine Will",
-      "extend": [
-        100
-      ],
-      "require": "XJ01",
       "extup": [
         "TN0"
       ],
@@ -9519,10 +9280,6 @@
       "code": "ID02",
       "gid": "AC",
       "name": "Divine Order",
-      "extend": [
-        100
-      ],
-      "require": "XJ01",
       "extup": [
         "TN0"
       ],
@@ -9533,10 +9290,6 @@
       "code": "IE01",
       "gid": "AC",
       "name": "Exceed Energy",
-      "extend": [
-        100
-      ],
-      "require": "XK01",
       "effect": "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>DEX(+20),<br>S-DEF(+20),<br>R-DEF(+20),<br>T-DEF(+20),<br>HP(+20),<br>PP(+5)"
     },
     {
@@ -9547,7 +9300,7 @@
     },
     {
       "code": "YA05",
-      "gid": "CB",
+      "gid": "AC",
       "name": "Sentence Arma",
       "effect": "S-ATK(+20),<br>HP(+20),<br>PP(+3)"
     },
@@ -9559,7 +9312,7 @@
     },
     {
       "code": "YA15",
-      "gid": "CB",
+      "gid": "AC",
       "name": "Sentence Tiro",
       "effect": "R-ATK(+20),<br>HP(+20),<br>PP(+3)"
     },
@@ -9571,55 +9324,55 @@
     },
     {
       "code": "YA25",
-      "gid": "CB",
+      "gid": "AC",
       "name": "Sentence Magia",
       "effect": "T-ATK(+20),<br>HP(+20),<br>PP(+3)"
     },
     {
       "code": "YA31",
-      "gid": "CB",
+      "gid": "AC",
       "name": "Sentence Triple",
-      "effect": "S-ATK(+30),R-ATK(+30),T-ATK(+30)"
+      "effect": "S-ATK(+30)<br>,R-ATK(+30)<br>,T-ATK(+30)"
     },
     {
       "code": "YB41",
-      "gid": "CB",
+      "gid": "CC",
       "name": "Phrase Reduce",
       "effect": "PP consumption decreases by 4%."
     },
     {
       "code": "YB51",
-      "gid": "CB",
+      "gid": "CC",
       "name": "Phrase Decay",
       "effect": "Boosts damage inflicted to enemies<br>affected by Jellen by 5%."
     },
     {
       "code": "YB01",
-      "gid": "CB",
+      "gid": "CC",
       "name": "Phrase Recovery",
       "effect": "+5% PP Recovery Rate"
     },
     {
       "code": "YB11",
-      "gid": "CB",
+      "gid": "CC",
       "name": "Phrase Weak",
       "effect": "+2% Elemental Weakness damage"
     },
     {
       "code": "YB21",
-      "gid": "CB",
+      "gid": "CC",
       "name": "Phrase Response",
       "effect": "+5% ATK PP Recovery"
     },
     {
       "code": "YB31",
-      "gid": "CB",
+      "gid": "CC",
       "name": "Phrase Chase",
       "effect": "+5% damage against enemies<BR>with Status Effects"
     },
     {
       "code": "VA01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Lucky Rise I",
       "lvup": "VA02",
       "extend": [
@@ -9632,7 +9385,7 @@
     },
     {
       "code": "VA02",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Lucky Rise II",
       "lvup": "VA03",
       "extend": [
@@ -9649,7 +9402,7 @@
     },
     {
       "code": "VA03",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Lucky Rise III",
       "extend": [
         0,
@@ -9665,7 +9418,7 @@
     },
     {
       "code": "VB01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Meseta Fever I",
       "lvup": "VZ02",
       "extend": [
@@ -9678,7 +9431,7 @@
     },
     {
       "code": "VZ02",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Meseta Fever II",
       "lvup": "VB03",
       "extend": [
@@ -9695,7 +9448,7 @@
     },
     {
       "code": "VB03",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Meseta Fever III",
       "extend": [
         0,
@@ -9711,7 +9464,7 @@
     },
     {
       "code": "VC01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "EXP Boost I",
       "lvup": "VC02",
       "extend": [
@@ -9724,7 +9477,7 @@
     },
     {
       "code": "VC02",
-      "gid": "YA",
+      "gid": "CC",
       "name": "EXP Boost II",
       "lvup": "VC03",
       "extend": [
@@ -9741,7 +9494,7 @@
     },
     {
       "code": "VC03",
-      "gid": "YA",
+      "gid": "CC",
       "name": "EXP Boost III",
       "extend": [
         0,
@@ -9757,25 +9510,25 @@
     },
     {
       "code": "VD01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Temptation",
       "effect": "Item Drop Rate +10%"
     },
     {
       "code": "VE01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Another History",
       "effect": "Experience Gain +10%"
     },
     {
       "code": "VF01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Fresh Sign",
       "effect": "Boost EXP by 30% until Lv.30"
     },
     {
       "code": "VH01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Ultimate Buster",
       "extend": [
         0,
@@ -9788,7 +9541,7 @@
     },
     {
       "code": "VH02",
-      "gid": "CB",
+      "gid": "CC",
       "name": "Omega Buster",
       "effect": "Boosts damage against Demons by 3%."
     },
@@ -9948,7 +9701,7 @@
     },
     {
       "code": "VJ01",
-      "gid": "YA",
+      "gid": "CA",
       "name": "Soul Catalyst",
       "extend": [
         0,
@@ -9960,7 +9713,7 @@
     },
     {
       "code": "VJ02",
-      "gid": "YA",
+      "gid": "CA",
       "name": "Factor Catalyst",
       "extend": [
         0,
@@ -9972,7 +9725,7 @@
     },
     {
       "code": "VJ03",
-      "gid": "YA",
+      "gid": "CA",
       "name": "Reverie Catalyst",
       "extend": [
         0,
@@ -9984,14 +9737,14 @@
     },
     {
       "code": "VJ04",
-      "gid": "YA",
+      "gid": "CA",
       "name": "Glare Catalyst",
       "effect": "HP(+10),<br>PP(+1)",
       "tooltip": "Made from: Veluge Glare, Forduss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
     },
     {
       "code": "VL01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Polytan Smile",
       "extend": [
         100
@@ -10000,7 +9753,7 @@
     },
     {
       "code": "VM01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Arkuma Smile",
       "extend": [
         100
@@ -10009,7 +9762,7 @@
     },
     {
       "code": "VN01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Emper Embrace",
       "extend": [
         100
@@ -10018,7 +9771,7 @@
     },
     {
       "code": "VO01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "Guidance Trainer",
       "extend": [
         0,
@@ -10029,7 +9782,7 @@
     },
     {
       "code": "VP01",
-      "gid": "YA",
+      "gid": "CC",
       "name": "NT Weapon Booster",
       "extend": [
         100

@@ -42,6 +42,368 @@
     ]
   },
   "extendAbility": {
+    "outdatedInSim": [
+      {
+        "base": [
+          "XI30",
+          "AA01"
+        ],
+        "ref": "AA01",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AA02"
+        ],
+        "ref": "AA02",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AA03"
+        ],
+        "ref": "AA03",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AA04"
+        ],
+        "ref": "AA04",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AB01"
+        ],
+        "ref": "AB01",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AB02"
+        ],
+        "ref": "AB02",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AB03"
+        ],
+        "ref": "AB03",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AB04"
+        ],
+        "ref": "AB04",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AC01"
+        ],
+        "ref": "AC01",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AC02"
+        ],
+        "ref": "AC02",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AC03"
+        ],
+        "ref": "AC03",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AC04"
+        ],
+        "ref": "AC04",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AD01"
+        ],
+        "ref": "AD01",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AD02"
+        ],
+        "ref": "AD02",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AD03"
+        ],
+        "ref": "AD03",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AD04"
+        ],
+        "ref": "AD04",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BA01"
+        ],
+        "ref": "BA01",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BA02"
+        ],
+        "ref": "BA02",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BA03"
+        ],
+        "ref": "BA03",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BA04"
+        ],
+        "ref": "BA04",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BB01"
+        ],
+        "ref": "BB01",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BB02"
+        ],
+        "ref": "BB02",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BB03"
+        ],
+        "ref": "BB03",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BB04"
+        ],
+        "ref": "BB04",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BC01"
+        ],
+        "ref": "BC01",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BC02"
+        ],
+        "ref": "BC02",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BC03"
+        ],
+        "ref": "BC03",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BC04"
+        ],
+        "ref": "BC04",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EA01"
+        ],
+        "ref": "EA01",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EA02"
+        ],
+        "ref": "EA02",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EA03"
+        ],
+        "ref": "EA03",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EA04"
+        ],
+        "ref": "EA04",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EB01"
+        ],
+        "ref": "EB01",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EB02"
+        ],
+        "ref": "EB02",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EB03"
+        ],
+        "ref": "EB03",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EB04"
+        ],
+        "ref": "EB04",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AA05"
+        ],
+        "ref": "AA05",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AB05"
+        ],
+        "ref": "AB05",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AC05"
+        ],
+        "ref": "AC05",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AD05"
+        ],
+        "ref": "AD05",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BA05"
+        ],
+        "ref": "BA05",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BB05"
+        ],
+        "ref": "BB05",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BC05"
+        ],
+        "ref": "BC05",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EA05"
+        ],
+        "ref": "EA05",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EB05"
+        ],
+        "ref": "EB05",
+        "success": 100
+      }
+    ],
     "outdatedInAst": [
       {
         "base": [
@@ -101,8 +463,200 @@
         ],
         "ref": "SA02",
         "success": 10
+      },
+      {
+        "base": [
+          "XI30",
+          "AA01"
+        ],
+        "ref": "$$",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AB*"
+        ],
+        "ref": "$$",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AC*"
+        ],
+        "ref": "$$",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI30",
+          "AD*"
+        ],
+        "ref": "$$",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BA*"
+        ],
+        "ref": "$$",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BB*"
+        ],
+        "ref": "$$",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI31",
+          "BC*"
+        ],
+        "ref": "$$",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EA*"
+        ],
+        "ref": "$$",
+        "success": 100
+      },
+      {
+        "base": [
+          "XI32",
+          "EB*"
+        ],
+        "ref": "$$",
+        "success": 100
+      },
+      {
+        "base": [
+          "IE*",
+          "XK01"
+        ],
+        "ref": "$$",
+        "success": 100
       }
     ]
+  },
+  "boostPoint": {
+    "photon": {
+      "create": {
+        "2": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "3": {
+          "6": {
+            "valueInSim": 0
+          }
+        }
+      }
+    },
+    "mutation1": {
+      "create": {
+        "1": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "2": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "3": {
+          "6": {
+            "valueInSim": 0
+          }
+        }
+      }
+    },
+    "mutation2": {
+      "create": {
+        "1": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "2": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "3": {
+          "6": {
+            "valueInSim": 0
+          }
+        }
+      }
+    },
+    "soul": {
+      "create": {
+        "1": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "2": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "3": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "4": {
+          "6": {
+            "valueInSim": 0
+          }
+        }
+      },
+      "extend": {
+        "1": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "2": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "3": {
+          "6": {
+            "valueInSim": 0
+          }
+        },
+        "4": {
+          "6": {
+            "valueInSim": 0
+          }
+        }
+      }
+    },
+    "extreme": {
+      "extend": {
+        "1": {
+          "6": {
+            "valueInSim": {
+              "max": 60,
+              "boost": 20
+            }
+          }
+        }
+      }
+    }
   },
   "ability": {
     "outdatedInSim": [
@@ -451,7 +1005,7 @@
       },
       {
         "code": "VJ04",
-        "gid": "YA",
+        "gid": "CA",
         "name": "Glare Catalyst",
         "effect": "HP(+10),<br>PP(+1)",
         "tooltip": "Made from: Veluge Glare, Forduss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
