@@ -10218,7 +10218,6 @@ let data = {
             code: "TK10",
             gid: "AC",
             name: "Mana Reverie",
-            status: 6,
             effect: "S-ATK(+50),<br>R-ATK(+50),<br>T-ATK(+50),<br>HP(+20),<br>PP(+4)",
             tooltip: "Made by: Omega Memoria + 4x Reverie Catalyst"
         },
@@ -10525,7 +10524,6 @@ let data = {
                 30,
                 50
             ],
-            status: 1,
             effect: "ALL(+15), HP(+15), PP(+2)"
         },
         {
@@ -10537,7 +10535,6 @@ let data = {
                 30,
                 50
             ],
-            status: 1,
             effect: "ALL(+40), HP(+30), PP(+3)"
         },
         {
