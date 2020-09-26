@@ -1793,6 +1793,16 @@ class Assistant {
                     let isMatch = true;
                     // Check if Add Ability
                     if (choice.isAddAbilityItem || affix.noEx) {
+                        // If no fodders in page using this add ability, ignore this option
+                        let skip = true;
+                        for(let f of page.fodders) {
+                            if (f.addAbilityItemInUse !== null && choice.ref === f.addAbilityItemInUse.ref) {
+                                skip = false;
+                                break;
+                            }
+                        }
+                        if(skip) continue;
+
                         abilitySuccessRates[k] = Math.min(Math.max(choice.transferRate, minRate), maxRate);
                         if (affix.noEx) {
                             abilitySuccessRates.length++;
