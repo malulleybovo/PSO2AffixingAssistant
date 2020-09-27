@@ -256,8 +256,7 @@ class AffixDataParser {
                                         case 0: // From extends
                                             if (data.boostPoint[thisAbility.rel].extend
                                                 && data.boostPoint[thisAbility.rel].extend.hasOwnProperty(abilityDB[code].abilityRef.status)) {
-                                                // Photoner glare is A, should parse to 10
-                                                let index = parseInt(code[thisAbility.code.length - 1], 36);
+                                                let index = parseInt(code[thisAbility.code.length - 1]);
                                                 if (index >= data.boostPoint[thisAbility.rel].extend[abilityDB[code].abilityRef.status].length) {
                                                     index = 0;
                                                 }

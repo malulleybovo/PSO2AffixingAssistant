@@ -6440,6 +6440,17 @@ let data = {
             noEx: true
         },
         {
+            ref: 651,
+            code: "LA2T",
+            gid: "L1",
+            name: "S1:Immediate Skill",
+            extend: [
+                100
+            ],
+            effect: "When you Just Guard<br>at less than 25% HP,<br>recovers HP by 50%<br>and PP by 30%",
+            noEx: true
+        },
+        {
             ref: 170,
             code: "LB01",
             gid: "L2",
@@ -7658,6 +7669,28 @@ let data = {
             noEx: true
         },
         {
+            ref: 652,
+            code: "LC1Y",
+            gid: "L3",
+            name: "S3:Immediate Brilliance",
+            extend: [
+                100
+            ],
+            effect: "Successful JA hits<br>boosts your PP<br>recovery amount by<br>3%. Cannot exceed<br>30%. Non-JA hits<br>are excluded.",
+            noEx: true
+        },
+        {
+            ref: 653,
+            code: "LC1Z",
+            gid: "L3",
+            name: "S3:Puncturing Intent",
+            extend: [
+                100
+            ],
+            effect: "Upon landing a<br>Critical Hit on a<br>breakable part,<br>your power is<br>boosted by 9%.",
+            noEx: true
+        },
+        {
             ref: 243,
             code: "LD07",
             gid: "L4",
@@ -8267,6 +8300,61 @@ let data = {
             noEx: true
         },
         {
+            ref: 654,
+            code: "LE0N",
+            gid: "L5",
+            name: "S5:Chained Radiance",
+            extend: [
+                100
+            ],
+            effect: "Recovers PP and boosts<br>damage by 3% for 60<br>seconds after activating<br>Chain Trigger.<br>Twin Machineguns only.",
+            noEx: true
+        },
+        {
+            ref: 655,
+            code: "LE0P",
+            gid: "L5",
+            name: "S5:Calming Expanse",
+            extend: [
+                100
+            ],
+            effect: "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only.",
+            noEx: true
+        },
+        {
+            ref: 656,
+            code: "LE0Q",
+            gid: "L5",
+            name: "S5:Area Support",
+            extend: [
+                100
+            ],
+            effect: "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active.",
+            noEx: true
+        },
+        {
+            ref: 657,
+            code: "LE0R",
+            gid: "L5",
+            name: "S5:Swift Radiance",
+            extend: [
+                100
+            ],
+            effect: "Reduces PP regeneration<br>to 0. Boosts attack PP<br>recovery by 50% and<br>recovers 100 PP on a<br>successful dodge.",
+            noEx: true
+        },
+        {
+            ref: 660,
+            code: "LE0O",
+            gid: "L5",
+            name: "S5:Calming Quartet",
+            extend: [
+                100
+            ],
+            effect: "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only.",
+            noEx: true
+        },
+        {
             ref: 557,
             code: "LF0A",
             gid: "L6",
@@ -8466,6 +8554,17 @@ let data = {
             noEx: true
         },
         {
+            ref: 658,
+            code: "LF0T",
+            gid: "L6",
+            name: "S6:Wondrous Encore",
+            extend: [
+                100
+            ],
+            effect: "Reduces Showtime's<br>hate increase. Once per<br>activation, reduces<br>damage taken and<br>maintains One More Time.",
+            noEx: true
+        },
+        {
             ref: 573,
             code: "LG0A",
             gid: "L7",
@@ -8628,6 +8727,17 @@ let data = {
                 100
             ],
             effect: "Upon a successful<br>Tech Charge Parry,<br>recover 5% HP & 10 PP.",
+            noEx: true
+        },
+        {
+            ref: 659,
+            code: "LG0P",
+            gid: "L7",
+            name: "S7:Descried Warrior",
+            extend: [
+                100
+            ],
+            effect: "Boosts damage by 1%<br>& reduces damage<br>taken by enemies<br>targeting you by<br>15%.",
             noEx: true
         },
         {

@@ -621,7 +621,7 @@ const lang = Object.freeze({
         },
         "Add Ability (Exceed Receptor)": {
             en: "Add Ability (Exceed Receptor)",
-            jp: "特殊能力追加(Exceed Receptor)"
+            jp: "特殊能力追加(イクシードレセプター)"
         },
         "Add Ability (Ether S)": {
             en: "Add Ability (Ether S)",
@@ -641,15 +641,15 @@ const lang = Object.freeze({
         },
         "Add Ability (Mana Reverie)": {
             en: "Add Ability (Mana Reverie)",
-            jp: "特殊能力追加(Mana Reverie)"
+            jp: "特殊能力追加(マナ・レヴリー )"
         },
         "Add Ability (Astral Soul)": {
             en: "Add Ability (Astral Soul)",
-            jp: "特殊能力追加(Astral Soul)"
+            jp: "特殊能力追加(アストラル・ソール)"
         },
         "Add Ability (Ether Factor)": {
             en: "Add Ability (Ether Factor)",
-            jp: "特殊能力追加(Ether Factor)"
+            jp: "特殊能力追加(エーテル・ファクター )"
         },
         "Add Ability (Sentence P)": {
             en: "Add Ability (Sentence P)",
@@ -2206,6 +2206,12 @@ const lang = Object.freeze({
         effect_en: "Reduces PP consumption, boosts critical rate and boosts power based on the number of people in your party (min. 2).",
         effect_jp: "パーティ人数が2人以上の場合、人数に応じて、PP消費軽減、クリティカル率上昇、威力上昇効果が発動。"
     },
+    "LA2T": {
+        name_en: "S1:Immediate Skill",
+        name_jp: "S1:戦友の加護",
+        effect_en: "When you Just Guard<br>at less than 25% HP,<br>recovers HP by 50%<br>and PP by 30%",
+        effect_jp: "HP25%以下でジャストガード成功時HP50%PP30%回復。"
+    },
     "LB01": {
         name_en: "S2:Sturdy Recovery",
         name_jp: "S2:剛乱活与",
@@ -2276,8 +2282,8 @@ const lang = Object.freeze({
         name_en: "S2:Flowing Grace",
         name_jp: "S2:時流の恵",
         effect_en: "Regenerate 10 PP every 4 seconds.",
-        effect_jp: "4秒ごとにPPを10回復する。"
-    },
+            effect_jp: "4秒ごとにPPを10回復する。"
+        },
     "LB11": {
         name_en: "S2:Nature's Skill",
         name_jp: "S2:花海雪の巧",
@@ -2529,6 +2535,18 @@ const lang = Object.freeze({
         name_jp: "S2:輝充の志",
         effect_en: "Boosts damage by 3% while PP at is 40% or above.",
         effect_jp: "PPが40%以上の時、与ダメージが3%上昇。"
+    },
+    "LC1Y": {
+        name_en: "S3:Immediate Brilliance",
+        name_jp: "S3:瞬連の輝",
+        effect_en: "Successful JA hits<br>boosts your PP<br>recovery amount by<br>3%. Cannot exceed<br>30%. Non-JA hits<br>are excluded.",
+        effect_jp: "JA攻撃が命中する度PP回復性能が3%上昇。最大で45%まで上昇。"
+    },
+    "LC1Z": {
+        name_en: "S3:Puncturing Intent",
+        name_jp: "S3:裂砕妙撃の志",
+        effect_en: "Upon landing a<br>Critical Hit on a<br>breakable part,<br>your power is<br>boosted by 9%.",
+        effect_jp: "破壊可能部位への攻撃でクリティカル発動時に威力が9%上昇。"
     },
     "LC01": {
         name_en: "S3:Offensive Intent",
@@ -3082,6 +3100,36 @@ const lang = Object.freeze({
         effect_en: "At maximum gear, no gear is consumed while airborne. Increase Power by 2%. Partizan only.",
         effect_jp: "ギア最大時、空中ではギアを消費しなくなる。威力2%上昇。長槍限定。"
     },
+    "LE0N": {
+        name_en: "S5:Chained Radiance",
+        name_jp: "S5:連鎖輝与",
+        effect_en: "Recovers PP and boosts<br>damage by 3% for 60<br>seconds after activating<br>Chain Trigger.<br>Twin Machineguns only.",
+        effect_jp: "PPを回復し、<br>チェーントリガーをアクティブにした後、<br> 60秒間、ダメージを3％増加させます。 <br>ツインマシンガンのみ。"
+    },
+    "LE0O": {
+        name_en: "S5:Calming Quartet",
+        name_jp: "S5:静心四連",
+        effect_en: "Decrease the Power of Normal Attacks by 67%, but change Normal Attack into four homing shells. Launcher only.",
+        effect_jp: "通常攻撃のパワーを67％減らしますが、通常攻撃を4つのホーミングシェルに変更します。 ランチャーのみ。"
+    },
+    "LE0P": {
+        name_en: "S5:Calming Expanse",
+        name_jp: "S5:静心拡域",
+        effect_en: "Add an extra attack to Normal Attacks that has a chance to inflict Stun. Increase Power by 2%. Assault Rifles only.",
+        effect_jp: "通常攻撃に範囲攻撃が追加され確率でスタン付与。威力2%上昇。長銃限定。"
+    },
+    "LE0Q": {
+        name_en: "S5:Area Support",
+        name_jp: "S5:領域加勢",
+        effect_en: "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active.",
+        effect_jp: "クリティカルフィールドとエレメンタルPPリストレイトFの効果が有効時、<br>フィールドごとに追加効果が発生する。"
+    },
+    "LE0R": {
+        name_en: "S5:Swift Radiance",
+        name_jp: "S5:回避輝与",
+        effect_en: "Reduces PP regeneration<br>to 0. Boosts attack PP<br>recovery by 50% and<br>recovers 100 PP on a<br>successful dodge. Knuckles only.",
+        effect_jp: "自然なPP再生を停止します。 SwayまたはStepによる攻撃をうまく回避すると、アクティブPPリカバリーが50％増加し、100 PPが復元されます。 パワーを2％増加させます。 ナックルのみ。"
+    },
     "LF0A": {
         name_en: "S6:Heroic Howl",
         name_jp: "S6:英雄咆哮",
@@ -3190,6 +3238,12 @@ const lang = Object.freeze({
         effect_en: "Boosts maximum HP by<br>50% while Limit Break<br>is active.",
         effect_jp: "リミットブレイク発動中最大HPが50%上昇する。"
     },
+    "LF0T": {
+        name_en: "S6:Wondrous Encore",
+        name_jp: "S6:奇跡再演",
+        effect_en: "Reduces Showtime's<br>hate increase. Once per<br>activation, reduces<br>damage taken and<br>maintains One More Time.",
+        effect_jp: "ショウタイム発動時のヘイト上昇率が軽減し、一度だけ被ダメージを軽減してワンモアタイムの発動条件を維持する"
+    },
     "LG0A": {
         name_en: "S7:Glowing Grace",
         name_jp: "S7:輝静の恵",
@@ -3279,6 +3333,12 @@ const lang = Object.freeze({
         name_jp: "S7:法護の与",
         effect_en: "Upon a successful<br>Tech Charge Parry,<br>recover 5% HP and 10 PP.",
         effect_jp: "テックCパリング成功時HPを5%回復しPPを10回復。"
+    },
+    "LG0P": {
+        name_en: "S7:Descried Warrior",
+        name_jp: "S7:視敵無双",
+        effect_en: "Boosts damage by 1%<br>& reduces damage<br>taken by enemies<br>targeting you by<br>15%.",
+        effect_jp: "自身を狙う敵に対して威力1%上昇し被ダメージ15%軽減。"
     },
     "LH0A": {
         name_en: "S8:Sky Dance's Boon",
