@@ -154,7 +154,7 @@ let data = {
             {
                 ref: 531,
                 id: "Add Ability (Grand PP)",
-                name: "Grace Spirita",
+                name: "Grand Spirita",
                 value: "B10d",
                 extend: 100,
                 effect: "PP(+15)"
@@ -12097,7 +12097,7 @@ let data = {
             ref: 531,
             code: "XI60",
             gid: "E",
-            name: "Grace Spirita",
+            name: "Grand Spirita",
             effect: "PP(+15)"
         },
         {

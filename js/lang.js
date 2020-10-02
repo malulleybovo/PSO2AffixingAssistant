@@ -4888,10 +4888,10 @@ const lang = Object.freeze({
         name_en: "Grand Technique",
         name_jp: "グランド・テクニック",
         effect_en: "T-ATK(+60),HP(+20),PP(+5)",
-        effect_jp: "法撃力(+50),HP(+20),PP(+5)"
+        effect_jp: "法撃力(+60),HP(+20),PP(+5)"
     },
     "XI60": {
-        name_en: "Grace Spirita",
+        name_en: "Grand Spirita",
         name_jp: "グランド・スピリタ",
         effect_en: "PP(+15)",
         effect_jp: "PP(+15)"
