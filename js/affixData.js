@@ -118,7 +118,16 @@ let data = {
                 fn: function (a) {
                     return Math.min(a + 60, 100)
                 }
-            }
+            },
+            {
+                ref: 10,
+                id: "Ability Success Rate +65%",
+                name: "+65%",
+                value: "A11",
+                fn: function (a) {
+                    return Math.min(a + 65, 100)
+                }
+            },
         ],
         // List of Add Abilities
         additional: [
@@ -145,7 +154,7 @@ let data = {
             {
                 ref: 531,
                 id: "Add Ability (Grand PP)",
-                name: "Grace Spirita",
+                name: "Grand Spirita",
                 value: "B10d",
                 extend: 100,
                 effect: "PP(+15)"
@@ -431,6 +440,38 @@ let data = {
                 effect: "ALL(+10)"
             },
             {
+                ref: 325,
+                id: "Add Ability (Ether S)",
+                name: "Ether Soul",
+                value: "B43",
+                extend: 100,
+                effect: "ALL(+15),HP(+15),PP(+2)"
+            },
+            {
+                ref: 444,
+                id: "Add Ability (Factor C)",
+                name: "Factor Catalyst",
+                value: "B44",
+                extend: 100,
+                effect: "ALL(+10),PP(+1)"
+            },
+            {
+                ref: 350,
+                id: "Add Ability (Omega M)",
+                name: "Omega Memoria",
+                value: "B45",
+                extend: 100,
+                effect: "ALL(+15),HP(+15),PP(+2)"
+            },
+            {
+                ref: 445,
+                id: "Add Ability (Reverie C)",
+                name: "Reverie Catalyst",
+                value: "B46",
+                extend: 100,
+                effect: "ALL(+15),HP(+15),PP(+2)"
+            },
+            {
                 ref: 5,
                 id: "Add Ability (Power VI)",
                 name: "Power VI",
@@ -493,6 +534,30 @@ let data = {
                 value: "UC31",
                 extend: 100,
                 effect: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
+            },
+            {
+                ref: 349,
+                id: "Add Ability (Mana Reverie)",
+                name: "Mana Reverie",
+                value: "TK10",
+                extend: 100,
+                effect: "S-DEF(+50),<br>R-DEF(+50),<br>T-DEF(+50),<br>HP(+80)"
+            },
+            {
+                ref: 342,
+                id: "Add Ability (Ether F)",
+                name: "Ether Factor",
+                value: "TG31",
+                extend: 100,
+                effect: "ALL(+30),<br>HP(+10),<br>PP(+6)"
+            },
+            {
+                ref: 324,
+                id: "Add Ability (Astral S)",
+                name: "Astral Soul",
+                value: "SA01",
+                extend: 100,
+                effect: "ALL(+35),<br>HP(+35),<br>PP(+5)"
             },
             {
                 ref: 160,
@@ -584,8 +649,8 @@ let data = {
             },
             {
                 ref: 136,
-                id: "S1 Add: Skilled Brilliance",
-                name: "S1:Skilled Brilliance",
+                id: "S1 Add: Brilliant Intent",
+                name: "S1:Brilliant Intent",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -640,8 +705,8 @@ let data = {
             },
             {
                 ref: 147,
-                id: "S1 Add: Skilled Strike",
-                name: "S1:Skilled Strike",
+                id: "S1 Add: Skilled Intent",
+                name: "S1:Skilled Intent",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -703,6 +768,14 @@ let data = {
                 effect: ""
             },
             {
+                ref: 657,
+                id: "S1 Add: Brilliant Intent 2",
+                name: "S1:Brilliant Intent 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 199,
                 id: "S2 Add: Umbrageous Melody",
                 name: "S2:Umbrageous Melody",
@@ -736,8 +809,8 @@ let data = {
             },
             {
                 ref: 203,
-                id: "S2 Add: Skilled Strike 2",
-                name: "S2:Skilled Strike 2",
+                id: "S2 Add: Skilled Intent 2",
+                name: "S2:Skilled Intent 2",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -856,8 +929,72 @@ let data = {
             },
             {
                 ref: 642,
-                id: "S2 Add: Skilled Brilliance",
-                name: "S2:Skilled Brilliance",
+                id: "S2 Add: Brilliant Intent",
+                name: "S2:Brilliant Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 178,
+                id: "S2 Add: Spirited Response",
+                name: "S2:Spirited Response",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 207,
+                id: "S2 Add: Flaming Guard",
+                name: "S2:Flaming Guard",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 208,
+                id: "S2 Add: Freezing Guard",
+                name: "S2:Freezing Guard",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 494,
+                id: "S2 Add: Lightning Guard",
+                name: "S2:Lightning Guard",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 495,
+                id: "S2 Add: Storm Guard",
+                name: "S2:Storm Guard",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 523,
+                id: "S2 Add: Shining Guard",
+                name: "S2:Shining Guard",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 537,
+                id: "S2 Add: Darkness Guard",
+                name: "S2:Darkness Guard",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 658,
+                id: "S2 Add: Heavenly Keeper 2",
+                name: "S2:Heavenly Keeper 2",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -952,8 +1089,8 @@ let data = {
             },
             {
                 ref: 214,
-                id: "S3 Add: Skilled Strike",
-                name: "S3:Skilled Strike",
+                id: "S3 Add: Skilled Intent",
+                name: "S3:Skilled Intent",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1047,6 +1184,38 @@ let data = {
                 effect: ""
             },
             {
+                ref: 645,
+                id: "S3 Add: Puncturing Intent",
+                name: "S3:Puncturing Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 659,
+                id: "S3 Add: Double-Edged Sword",
+                name: "S3:Double-Edged Sword",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 222,
+                id: "S3 Add: Photon Reduction",
+                name: "S3:Photon Reduction",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 644,
+                id: "S3 Add: Immediate Brilliance",
+                name: "S3:Immediate Brilliance",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 260,
                 id: "S4 Add: Heavenly Protection",
                 name: "S4:Heavenly Protection",
@@ -1064,8 +1233,8 @@ let data = {
             },
             {
                 ref: 262,
-                id: "S4 Add: Mysterious Strike",
-                name: "S4:Mysterious Strike",
+                id: "S4 Add: Skilled Balance",
+                name: "S4:Skilled Balance",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1183,6 +1352,22 @@ let data = {
                 effect: ""
             },
             {
+                ref: 646,
+                id: "S5 Add: Calming Expanse",
+                name: "S5:Calming Expanse",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 647,
+                id: "S5 Add: Area Support",
+                name: "S5:Area Support",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 560,
                 id: "S6 Add: Ironclad Illness",
                 name: "S6:Ironclad Illness",
@@ -1242,6 +1427,14 @@ let data = {
                 ref: 633,
                 id: "S6 Add: Overlimit",
                 name: "S6:Overlimit",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 649,
+                id: "S6 Add: Wondrous Encore",
+                name: "S6:Wondrous Encore",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1311,6 +1504,14 @@ let data = {
                 effect: ""
             },
             {
+                ref: 650,
+                id: "S7 Add: Descried Warrior",
+                name: "S7:Descried Warrior",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 590,
                 id: "S8 Add: HP Up",
                 name: "S8:HP Up",
@@ -1354,6 +1555,14 @@ let data = {
                 ref: 585,
                 id: "S8 Add: Sky Dance's Boon",
                 name: "S8:Sky Dance's Boon",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 593,
+                id: "S8 Add: PP Up 2",
+                name: "S8:PP Up 2",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1482,290 +1691,42 @@ let data = {
     extendAbility: [
         {
             base: [
-                "XI30",
-                "AA01"
+                "XI31",
+                "BA*"
             ],
-            ref: "AA01",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AA02"
-            ],
-            ref: "AA02",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AA03"
-            ],
-            ref: "AA03",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AA04"
-            ],
-            ref: "AA04",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AB01"
-            ],
-            ref: "AB01",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AB02"
-            ],
-            ref: "AB02",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AB03"
-            ],
-            ref: "AB03",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AB04"
-            ],
-            ref: "AB04",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AC01"
-            ],
-            ref: "AC01",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AC02"
-            ],
-            ref: "AC02",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AC03"
-            ],
-            ref: "AC03",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AC04"
-            ],
-            ref: "AC04",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AD01"
-            ],
-            ref: "AD01",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AD02"
-            ],
-            ref: "AD02",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AD03"
-            ],
-            ref: "AD03",
-            success: 100
-        },
-        {
-            base: [
-                "XI30",
-                "AD04"
-            ],
-            ref: "AD04",
+            ref: "$$",
             success: 100
         },
         {
             base: [
                 "XI31",
-                "BA01"
+                "BB*"
             ],
-            ref: "BA01",
+            ref: "$$",
             success: 100
         },
         {
             base: [
                 "XI31",
-                "BA02"
+                "BC*"
             ],
-            ref: "BA02",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BA03"
-            ],
-            ref: "BA03",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BA04"
-            ],
-            ref: "BA04",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BB01"
-            ],
-            ref: "BB01",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BB02"
-            ],
-            ref: "BB02",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BB03"
-            ],
-            ref: "BB03",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BB04"
-            ],
-            ref: "BB04",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BC01"
-            ],
-            ref: "BC01",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BC02"
-            ],
-            ref: "BC02",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BC03"
-            ],
-            ref: "BC03",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BC04"
-            ],
-            ref: "BC04",
+            ref: "$$",
             success: 100
         },
         {
             base: [
                 "XI32",
-                "EA01"
+                "EA*"
             ],
-            ref: "EA01",
+            ref: "$$",
             success: 100
         },
         {
             base: [
                 "XI32",
-                "EA02"
+                "EB*"
             ],
-            ref: "EA02",
-            success: 100
-        },
-        {
-            base: [
-                "XI32",
-                "EA03"
-            ],
-            ref: "EA03",
-            success: 100
-        },
-        {
-            base: [
-                "XI32",
-                "EA04"
-            ],
-            ref: "EA04",
-            success: 100
-        },
-        {
-            base: [
-                "XI32",
-                "EB01"
-            ],
-            ref: "EB01",
-            success: 100
-        },
-        {
-            base: [
-                "XI32",
-                "EB02"
-            ],
-            ref: "EB02",
-            success: 100
-        },
-        {
-            base: [
-                "XI32",
-                "EB03"
-            ],
-            ref: "EB03",
-            success: 100
-        },
-        {
-            base: [
-                "XI32",
-                "EB04"
-            ],
-            ref: "EB04",
+            ref: "$$",
             success: 100
         },
         {
@@ -1962,6 +1923,14 @@ let data = {
         },
         {
             base: [
+                "XA01",
+                "SA02"
+            ],
+            ref: "SA02",
+            success: 10
+        },
+        {
+            base: [
                 "XB01",
                 "UA*"
             ],
@@ -2026,6 +1995,14 @@ let data = {
         },
         {
             base: [
+                "XK01",
+                "IE*"
+            ],
+            ref: "$$",
+            success: 100
+        },
+        {
+            base: [
                 "XH01",
                 "VJ*"
             ],
@@ -2064,6 +2041,57 @@ let data = {
             ],
             ref: "SA01",
             success: 60
+        },
+        {
+            base: [
+                "TN01",
+                "TN02",
+                "TN04",
+                "TN05"
+            ],
+            ref: "VJ04",
+            success: 10
+        },
+        {
+            base: [
+                "TN02",
+                "TN03",
+                "TN04",
+                "TN05"
+            ],
+            ref: "VJ04",
+            success: 10
+        },
+        {
+            base: [
+                "TN06",
+                "TN07",
+                "TN08",
+                "TN09"
+            ],
+            ref: "TN0A",
+            success: 10
+        },
+        {
+            base: [
+                "VJ04",
+                "VJ04",
+                "VJ04",
+                "VJ04",
+                "TN0A"
+            ],
+            ref: "TN11",
+            success: 60
+        },
+        {
+            base: [
+                "SA01",
+                "TG31",
+                "TK10",
+                "TN11"
+            ],
+            ref: "SA02",
+            success: 10
         },
         {
             base: [
@@ -2868,73 +2896,33 @@ let data = {
         {
             base: [
                 "XI30",
-                "AA05"
+                "AA*"
             ],
-            ref: "AA05",
+            ref: "$$",
             success: 100
         },
         {
             base: [
                 "XI30",
-                "AB05"
+                "AB*"
             ],
-            ref: "AB05",
+            ref: "$$",
             success: 100
         },
         {
             base: [
                 "XI30",
-                "AC05"
+                "AC*"
             ],
-            ref: "AC05",
+            ref: "$$",
             success: 100
         },
         {
             base: [
                 "XI30",
-                "AD05"
+                "AD*"
             ],
-            ref: "AD05",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BA05"
-            ],
-            ref: "BA05",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BB05"
-            ],
-            ref: "BB05",
-            success: 100
-        },
-        {
-            base: [
-                "XI31",
-                "BC05"
-            ],
-            ref: "BC05",
-            success: 100
-        },
-        {
-            base: [
-                "XI32",
-                "EA05"
-            ],
-            ref: "EA05",
-            success: 100
-        },
-        {
-            base: [
-                "XI32",
-                "EB05"
-            ],
-            ref: "EB05",
+            ref: "$$",
             success: 100
         },
         {
@@ -2998,7 +2986,8 @@ let data = {
                     0,
                     100,
                     70,
-                    50
+                    50,
+                    0
                 ],
                 "3": [
                     0,
@@ -3006,7 +2995,8 @@ let data = {
                     0,
                     100,
                     70,
-                    50
+                    50,
+                    0
                 ]
             }
         },
@@ -3018,6 +3008,7 @@ let data = {
                     0,
                     30,
                     0,
+                    0,
                     0
                 ],
                 "2": [
@@ -3026,6 +3017,7 @@ let data = {
                     0,
                     30,
                     0,
+                    0,
                     0
                 ],
                 "3": [
@@ -3033,6 +3025,7 @@ let data = {
                     0,
                     0,
                     40,
+                    0,
                     0,
                     0
                 ]
@@ -3046,6 +3039,7 @@ let data = {
                     0,
                     40,
                     30,
+                    0,
                     0
                 ],
                 "2": [
@@ -3054,6 +3048,7 @@ let data = {
                     0,
                     40,
                     30,
+                    0,
                     0
                 ],
                 "3": [
@@ -3062,6 +3057,7 @@ let data = {
                     0,
                     50,
                     30,
+                    0,
                     0
                 ]
             }
@@ -3074,6 +3070,7 @@ let data = {
                     0,
                     20,
                     20,
+                    0,
                     0
                 ],
                 "2": [
@@ -3082,6 +3079,7 @@ let data = {
                     0,
                     20,
                     20,
+                    0,
                     0
                 ],
                 "3": [
@@ -3090,6 +3088,7 @@ let data = {
                     0,
                     30,
                     20,
+                    0,
                     0
                 ],
                 "4": [
@@ -3098,6 +3097,7 @@ let data = {
                     0,
                     10,
                     10,
+                    0,
                     0
                 ]
             },
@@ -3108,6 +3108,7 @@ let data = {
                     0,
                     20,
                     0,
+                    0,
                     0
                 ],
                 "2": [
@@ -3115,6 +3116,7 @@ let data = {
                     0,
                     0,
                     20,
+                    0,
                     0,
                     0
                 ],
@@ -3124,6 +3126,7 @@ let data = {
                     0,
                     60,
                     0,
+                    0,
                     0
                 ],
                 "4": [
@@ -3132,6 +3135,7 @@ let data = {
                     0,
                     10,
                     10,
+                    0,
                     0
                 ],
                 "6": [
@@ -3187,6 +3191,10 @@ let data = {
                     0,
                     {
                         max: 80,
+                        boost: 20
+                    },
+                    {
+                        max: 60,
                         boost: 20
                     },
                     {
@@ -3294,7 +3302,7 @@ let data = {
             "Shoot VI",
             "Sentence Tiro",
             "Grace Shoot",
-            "Apprezina Reverie",
+            "Appregina Reverie",
             "Lesser Shoot I",
             "Lesser Shoot II",
             "Lesser Shoot III",
@@ -3567,6 +3575,7 @@ let data = {
             code: "AA05",
             gid: "AA",
             name: "Power V",
+            lvup: "AA06",
             extend: [
                 20,
                 40,
@@ -3584,6 +3593,15 @@ let data = {
             code: "AA06",
             gid: "CB",
             name: "Power VI",
+            extend: [
+                20,
+                40,
+                60
+            ],
+            generate: [
+                10,
+                30
+            ],
             status: 1,
             effect: "S-ATK(+45)"
         },
@@ -3660,6 +3678,7 @@ let data = {
             code: "AB05",
             gid: "AA",
             name: "Shoot V",
+            lvup: "AB06",
             extend: [
                 20,
                 40,
@@ -3677,6 +3696,15 @@ let data = {
             code: "AB06",
             gid: "CB",
             name: "Shoot VI",
+            extend: [
+                20,
+                40,
+                60
+            ],
+            generate: [
+                10,
+                30
+            ],
             status: 1,
             effect: "R-ATK(+45)"
         },
@@ -3753,6 +3781,7 @@ let data = {
             code: "AC05",
             gid: "AA",
             name: "Technique V",
+            lvup: "AC06",
             extend: [
                 20,
                 40,
@@ -3770,6 +3799,15 @@ let data = {
             code: "AC06",
             gid: "CB",
             name: "Technique VI",
+            extend: [
+                20,
+                40,
+                60
+            ],
+            generate: [
+                10,
+                30
+            ],
             status: 1,
             effect: "T-ATK(+45)"
         },
@@ -4186,6 +4224,7 @@ let data = {
             code: "EA05",
             gid: "AA",
             name: "Stamina V",
+            lvup: "EA06",
             extend: [
                 20,
                 40,
@@ -4203,6 +4242,15 @@ let data = {
             code: "EA06",
             gid: "CB",
             name: "Stamina VI",
+            extend: [
+                20,
+                40,
+                60
+            ],
+            generate: [
+                10,
+                30
+            ],
             status: 1,
             effect: "HP(+80)"
         },
@@ -4279,6 +4327,7 @@ let data = {
             code: "EB05",
             gid: "AA",
             name: "Spirita V",
+            lvup: "EB06",
             extend: [
                 20,
                 40,
@@ -4296,6 +4345,15 @@ let data = {
             code: "EB06",
             gid: "CB",
             name: "Spirita VI",
+            extend: [
+                20,
+                40,
+                60
+            ],
+            generate: [
+                10,
+                30
+            ],
             status: 1,
             effect: "PP(+7)"
         },
@@ -4350,7 +4408,7 @@ let data = {
             code: "FA05",
             gid: "CB",
             name: "Ability V",
-            effect: "ALL(+25)"
+            effect: "ALL(+30)"
         },
         {
             ref: 53,
@@ -4441,7 +4499,7 @@ let data = {
             ref: 58,
             code: "HB01",
             gid: "DA",
-            name: "Shoot Resist I",
+            name: "Shot Resist I",
             lvup: "HB02",
             extend: [
                 100,
@@ -4455,7 +4513,7 @@ let data = {
             ref: 59,
             code: "HB02",
             gid: "DA",
-            name: "Shoot Resist II",
+            name: "Shot Resist II",
             lvup: "HB03",
             extend: [
                 60,
@@ -4473,7 +4531,7 @@ let data = {
             ref: 60,
             code: "HB03",
             gid: "DA",
-            name: "Shoot Resist III",
+            name: "Shot Resist III",
             lvup: "HB04",
             extend: [
                 60,
@@ -4491,7 +4549,7 @@ let data = {
             ref: 61,
             code: "HB04",
             gid: "DA",
-            name: "Shoot Resist IV",
+            name: "Shot Resist IV",
             lvup: "HB05",
             extend: [
                 40,
@@ -4509,7 +4567,7 @@ let data = {
             ref: 62,
             code: "HB05",
             gid: "DA",
-            name: "Shoot Resist V",
+            name: "Shot Resist V",
             extend: [
                 20,
                 40,
@@ -5736,7 +5794,7 @@ let data = {
             ref: 136,
             code: "LA04",
             gid: "L1",
-            name: "S1:Skilled Brilliance",
+            name: "S1:Brilliant Intent",
             extend: [
                 100,
                 100,
@@ -5890,7 +5948,7 @@ let data = {
             ref: 147,
             code: "LA21",
             gid: "L1",
-            name: "S1:Skilled Strike",
+            name: "S1:Skilled Intent",
             extend: [
                 100,
                 100,
@@ -6226,6 +6284,17 @@ let data = {
             noEx: true
         },
         {
+            ref: 657,
+            code: "LA2T",
+            gid: "L1",
+            name: "S1:Brilliant Intent 2",
+            extend: [
+                100
+            ],
+            effect: "Boosts damage by 5% while PP at is 40% or above.",
+            noEx: true
+        },
+        {
             ref: 170,
             code: "LB01",
             gid: "L2",
@@ -6499,7 +6568,7 @@ let data = {
             ref: 189,
             code: "LB1A",
             gid: "L2",
-            name: "S2:Skilled Strike",
+            name: "S2:Skilled Intent",
             extend: [
                 100,
                 100,
@@ -6692,7 +6761,7 @@ let data = {
             ref: 203,
             code: "LB1O",
             gid: "L2",
-            name: "S2:Skilled Strike 2",
+            name: "S2:Skilled Intent 2",
             extend: [
                 100,
                 100,
@@ -6909,14 +6978,28 @@ let data = {
         {
             ref: 642,
             code: "LB98",
+            simCode: "LB2L",
             gid: "L2",
-            name: "S2:Skilled Brilliance",
+            name: "S2:Brilliant Intent",
             extend: [
                 100,
                 100,
                 100
             ],
             effect: "Boosts damage by 3% while PP at is 40% or above.",
+            noEx: true
+        },
+        {
+            ref: 658,
+            code: "LB97",
+            gid: "L2",
+            name: "S2:Heavenly Keeper 2",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "In the air, reduces PP consumption by 15%. On the ground, boosts PP regeneration and attack PP recovery by 35%.",
             noEx: true
         },
         {
@@ -6973,7 +7056,7 @@ let data = {
             ref: 214,
             code: "LC04",
             gid: "L3",
-            name: "S3:Skilled Strike",
+            name: "S3:Skilled Intent",
             extend: [
                 100,
                 100,
@@ -6986,7 +7069,7 @@ let data = {
             ref: 619,
             code: "LC1O",
             gid: "L3",
-            name: "S3:Skilled Strike 2",
+            name: "S3:Skilled Intent 2",
             extend: [
                 100
             ],
@@ -7444,6 +7527,39 @@ let data = {
             noEx: true
         },
         {
+            ref: 644,
+            code: "LC1Y",
+            gid: "L3",
+            name: "S3:Immediate Brilliance",
+            extend: [
+                100
+            ],
+            effect: "Successful JA hits<br>boosts your PP<br>recovery amount by<br>3%. Cannot exceed<br>30%. Non-JA hits<br>are excluded.",
+            noEx: true
+        },
+        {
+            ref: 645,
+            code: "LC1Z",
+            gid: "L3",
+            name: "S3:Puncturing Intent",
+            extend: [
+                100
+            ],
+            effect: "Upon landing a<br>Critical Hit on a<br>breakable part,<br>your power is<br>boosted by 9%.",
+            noEx: true
+        },
+        {
+            ref: 659,
+            code: "LC1Q",
+            gid: "L3",
+            name: "S3:Double-Edged Sword",
+            extend: [
+                100
+            ],
+            effect: "Deal 4% more damage but take 8% more damage when weapon is drawn.",
+            noEx: true
+        },
+        {
             ref: 243,
             code: "LD07",
             gid: "L4",
@@ -7694,7 +7810,7 @@ let data = {
             ref: 262,
             code: "LD0Q",
             gid: "L4",
-            name: "S4:Mysterious Strike",
+            name: "S4:Skilled Balance",
             extend: [
                 100,
                 100,
@@ -7988,7 +8104,7 @@ let data = {
             ref: 556,
             code: "LE0H",
             gid: "L5",
-            name: "S5:Mysterious Intent",
+            name: "S5:Mysterious Purpose",
             extend: [
               100
             ],
@@ -8044,12 +8160,46 @@ let data = {
         {
             ref: 643,
             code: "LE97",
+            simCode: "LE0M",
             gid: "L5",
             name: "S5:Angelic Respite",
             extend: [
                 100
             ],
             effect: "At maximum gear, no gear is consumed while airborne. Increase Power by 2%. Partizan only.",
+            noEx: true
+        },
+        {
+            ref: 646,
+            code: "LE0P",
+            gid: "L5",
+            name: "S5:Calming Expanse",
+            extend: [
+                100
+            ],
+            effect: "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only.",
+            noEx: true
+        },
+        {
+            ref: 647,
+            code: "LE0Q",
+            gid: "L5",
+            name: "S5:Area Support",
+            extend: [
+                100
+            ],
+            effect: "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active.",
+            noEx: true
+        },
+        {
+            ref: 648,
+            code: "LE0O",
+            gid: "L5",
+            name: "S5:Calming Quartet",
+            extend: [
+                100
+            ],
+            effect: "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only.",
             noEx: true
         },
         {
@@ -8252,6 +8402,17 @@ let data = {
             noEx: true
         },
         {
+            ref: 649,
+            code: "LF0T",
+            gid: "L6",
+            name: "S6:Wondrous Encore",
+            extend: [
+                100
+            ],
+            effect: "Reduces Showtime's<br>hate increase. Once per<br>activation, reduces<br>damage taken and<br>maintains One More Time.",
+            noEx: true
+        },
+        {
             ref: 573,
             code: "LG0A",
             gid: "L7",
@@ -8414,6 +8575,17 @@ let data = {
                 100
             ],
             effect: "Upon a successful<br>Tech Charge Parry,<br>recover 5% HP & 10 PP.",
+            noEx: true
+        },
+        {
+            ref: 650,
+            code: "LG0P",
+            gid: "L7",
+            name: "S7:Descried Warrior",
+            extend: [
+                100
+            ],
+            effect: "Boosts damage by 1%<br>& reduces damage<br>taken by enemies<br>targeting you by<br>15%.",
             noEx: true
         },
         {
@@ -9603,6 +9775,14 @@ let data = {
             tooltip: "Made by: 4x Soul Catalyst + Darkness Soul"
         },
         {
+            ref: 651,
+            code: "SA02",
+            gid: "EA",
+            name: "Guardian Soul",
+            effect: "ALL(+70),<br>HP(+70),<br>PP(+7)",
+            tooltip: "Made from: Astral Soul, Ether Factor, Mana Reverie, Absolute Glare"
+        },
+        {
             ref: 325,
             code: "SA11",
             gid: "EA",
@@ -9955,7 +10135,7 @@ let data = {
             ref: 346,
             code: "TK04",
             gid: "AC",
-            name: "Apprezina Reverie",
+            name: "Appregina Reverie",
             extend: [
                 0,
                 30,
@@ -10271,6 +10451,52 @@ let data = {
             effect: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
         },
         {
+            ref: 652,
+            code: "TN08",
+            gid: "AC",
+            name: "Shiva Glare",
+            extend: [
+                30,
+                50
+            ],
+            status: 1,
+            effect: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
+        },
+        {
+            ref: 653,
+            code: "TN09",
+            gid: "AC",
+            name: "Origin Glare",
+            extend: [
+                30,
+                50
+            ],
+            status: 1,
+            effect: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)"
+        },
+        {
+            ref: 654,
+            code: "TN0A",
+            gid: "AC",
+            name: "Photoner Glare",
+            extend: [
+                30,
+                50
+            ],
+            effect: "ALL(+15), HP(+15), PP(+2)"
+        },
+        {
+            ref: 655,
+            code: "TN11",
+            gid: "AC",
+            name: "Absolute Glare",
+            extend: [
+                30,
+                50
+            ],
+            effect: "ALL(+40), HP(+30), PP(+3)"
+        },
+        {
             ref: 356,
             code: "TF01",
             gid: "AC",
@@ -10300,7 +10526,7 @@ let data = {
             ref: 358,
             code: "TH01",
             gid: "AC",
-            name: "Doom Break",
+            name: "Doom Break I",
             lvup: "TH02",
             extend: [
                 0,
@@ -10317,7 +10543,7 @@ let data = {
             ref: 359,
             code: "TH02",
             gid: "AC",
-            name: "Doom Break 2",
+            name: "Doom Break II",
             extend: [
                 0,
                 50,
@@ -10334,13 +10560,13 @@ let data = {
             ],
             rel: "doom2",
             effect: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
-            tooltip: "Made by: 3-5x Doom Break"
+            tooltip: "Made by: 3-5x Doom Break I"
         },
         {
             ref: 620,
             code: "TH03",
             gid: "AD",
-            name: "Doom Break 3",
+            name: "Doom Break III",
             extend: [
                 0,
                 50,
@@ -10357,7 +10583,7 @@ let data = {
             ],
             rel: "doom2",
             effect: "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
-            tooltip: "Made from: 3-5x Doom Break 3"
+            tooltip: "Made from: 3-5x Doom Break III"
         },
         {
             ref: 360,
@@ -11624,7 +11850,20 @@ let data = {
                 30
             ],
             effect: "HP(+10),<br>PP(+1)",
-            tooltip: "Made by: Elder Reverie, Loser Reverie, Apprezina Reverie, Double Reverie, Persona Reverie<br>Used for: Mana Reverie"
+            tooltip: "Made by: Elder Reverie, Loser Reverie, Appregina Reverie, Double Reverie, Persona Reverie<br>Used for: Mana Reverie"
+        },
+        {
+            ref: 656,
+            code: "VJ04",
+            gid: "CA",
+            name: "Glare Catalyst",
+            extend: [
+                0,
+                10,
+                30
+            ],
+            effect: "HP(+10),<br>PP(+1)",
+            tooltip: "Made from: Veluge Glare, Forduss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
         },
         {
             ref: 446,
@@ -11763,6 +12002,13 @@ let data = {
             gid: "GB",
             name: "Divine Receptor",
             effect: "Greatly increases affix rate of Divine-type ability.<br>ALL(+10)"
+        },
+        {
+            ref: 660,
+            code: "XK01",
+            gid: "GB",
+            name: "Exceed Receptor",
+            effect: "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
         },
         {
             ref: 636,
@@ -11964,7 +12210,7 @@ let data = {
             ref: 531,
             code: "XI60",
             gid: "E",
-            name: "Grace Spirita",
+            name: "Grand Spirita",
             effect: "PP(+15)"
         },
         {
@@ -12229,9 +12475,11 @@ let data = {
         { name: `Mind III`, jpName: `マインドⅢ` },
         { name: `Ability III`, jpName: `アビリティⅢ` },
         { name: `Ability IV`, jpName: `アビリティⅣ` },
+        { name: `Ability V`, jpName: `アビリティⅤ` },
         { name: `Stamina III`, jpName: `スタミナⅢ` },
         { name: `Stamina IV`, jpName: `スタミナⅣ` },
         { name: `Stamina V`, jpName: `スタミナⅤ` },
+        { name: `Stamina VI`, jpName: `スタミナⅤI` },
         { name: `Spirita III`, jpName: `スピリタⅢ` },
         { name: `Spirita IV`, jpName: `スピリタⅣ` },
         { name: `Spirita V`, jpName: `スピリタⅤ` },
@@ -12247,8 +12495,9 @@ let data = {
         { name: `Flict Arma`, jpName: `フリクト・アルマ` },
         { name: `Flict Tiro`, jpName: `フリクト・ティロ` },
         { name: `Flict Magia`, jpName: `フリクト・マギア` },
-        { name: `Doom Break`, jpName: `ドゥームブレイク` },
-        { name: `Doom Break 2`, jpName: `ドゥームブレイクII` },
+        { name: `Doom Break I`, jpName: `ドゥームブレイク` },
+        { name: `Doom Break II`, jpName: `ドゥームブレイクII` },
+        { name: `Doom Break III`, jpName: `ドゥームブレイクIII` },
         { name: `Spirita Alpha`, jpName: `スピリタ・アルファ` },
         { name: `Sentence Power`, jpName: `センテンス・パワー` },
         { name: `Sentence Shoot`, jpName: `センテンス・シュート` },
@@ -12258,7 +12507,7 @@ let data = {
         { name: `Sentence Tiro`, jpName: `センテンス・ティロ` },
         { name: `Sentence Magia`, jpName: `センテンス・マギア` },
         { name: `Blow Resist III`, jpName: `ブロウレジストⅢ` },
-        { name: `Shoot Resist III`, jpName: `ショットレジストⅢ` },
+        { name: `Shot Resist III`, jpName: `ショットレジストⅢ` },
         { name: `Mind Resist III`, jpName: `マインドレジストⅢ` },
         { name: `All Resist III`, jpName: `オルレジストⅢ` },
         { name: `Burn III`, jpName: `バーンⅢ` },
@@ -12281,8 +12530,6 @@ let data = {
         { name: `Act The Soul`, jpName: `アクト・ジ・ソール` },
         { name: `Till The Soul`, jpName: `ティル・ジ・ソール` },
         { name: `Magi The Soul`, jpName: `マギー・ジ・ソール` },
-        { name: `Persona Reverie`, jpName: `ペルソナ・レヴリー` },
-        { name: `Reverie Catalyst`, jpName: `レヴリー・カタリスト` },
         { name: `S1:Photon Reduction`, jpName: `S1:光子縮減` },
         { name: `S1:Offensive Intent`, jpName: `S1:剛撃の志` },
         { name: `S1:Brilliant Ruin`, jpName: `S1:滅域輝与` },
@@ -12296,10 +12543,11 @@ let data = {
         { name: "S1:Yellow Moon Flash", jpName: "S1:月ノ黄閃" },
         { name: "S1:Collaborator Liberator", jpName: "S1:戦友の加護" },
         { name: "S1:Green Leaf Flash", jpName: "S1:葉ノ緑閃" },
+        { name: "S1:Rupturing Excess", jpName: "S1:裂砕の剰" },
         { name: `S2:Wise Skill`, jpName: `S2:妙技の巧` },
         { name: `S2:Radiant Strike`, jpName: `S2:輝剰の撃` },
         { name: `S2:Guardian Armor`, jpName: `S2:守護の備` },
-        { name: `S2:Skilled Strike`, jpName: `S2:妙撃の志` },
+        { name: `S2:Skilled Intent`, jpName: `S2:妙撃の志` },
         { name: `S2:Rupturing Intent`, jpName: `S2:裂砕の志` },
         { name: `S2:Powering Intent`, jpName: `S2:強闘の志` },
         { name: `S2:Instant Reduction`, jpName: `S2:瞬乱縮減` },
@@ -12348,7 +12596,7 @@ let data = {
         { name: "S5:Shining Cyclone", jpName: "S5:輝境の旋" },
         { name: "S5:Evasive Barrage", jpName: "S5:巧避連撃" },
         { name: "S5:Evasive Meteor", jpName: "S5:巧避巨拳" },
-        { name: "S5:Mysterious Intent", jpName: "S5:妙の巧志" },
+        { name: "S5:Mysterious Purpose", jpName: "S5:妙の巧志" },
         { name: "S5:Hangeki Edge", jpName: "S5:反撃鋭刃" },
         { name: "S5:Thundering Pursuit", jpName: "S5:雷光追撃" },
         { name: "S5:Fiery End", jpName: "S5:烈終焉弾" },
@@ -12364,12 +12612,27 @@ let data = {
         { name: `Extreceptor`, jpName: `エクストレセプター` },
         { name: `Factor Receptor`, jpName: `ファクターレセプター` },
         { name: `Another History`, jpName: `アナザーヒストリー` },
+        { name: `Persona Reverie`, jpName: `ペルソナ・レヴリー` },
+        { name: `Soul Catalyst`, jpName: `ソール・カタリスト` },
+        { name: `Factor Catalyst`, jpName: `ファクター・カタリス` },
+        { name: `Reverie Catalyst`, jpName: `レヴリー・カタリスト` },
         { name: `Phrase Weak`, jpName: `フレイズ・ウィーク` },
         { name: `Phrase Response`, jpName: `フレイズ・レスポンス` },
         { name: `Phrase Recovery`, jpName: `フレイズ・レスポンス` },
         { name: `Phrase Chase`, jpName: `フレイズ・チェイス` },
         { name: `Phrase Reduce`, jpName: `フレイズ・リデュース` },
-        { name: `Phrase Decay`, jpName: `フレイズ・ディケイ` }
+        { name: `Phrase Decay`, jpName: `フレイズ・ディケイ` },
+        { name: `Lesser Power IV`, jpName: `レッサー・パワーⅣ` },
+        { name: `Lesser Shoot IV`, jpName: `レッサー・シュートⅣ` },
+        { name: `Lesser Technique IV`, jpName: `レッサー・テクニックⅣ` },
+        { name: `Lesser Spirita IV`, jpName: `レッサー・スピリタⅣ` },
+        { name: `Omega Reverie`, jpName: `オメガ・レヴリー` },
+        { name: `Ange Glare`, jpName: `アンジュール・グレア` },
+        { name: `Shiva Glare`, jpName: `シバ・グレア` },
+        { name: `Mitra Glare`, jpName: `ミトラ・グレア` },
+        { name: `Varuna Glare`, jpName: `ヴァルナ・グレア` },
+        { name: `Fabula Soul`, jpName: `ファーブラ・ソール` },
+        { name: `Historia Soul`, jpName: `イストリア・ソール` }
     ]
 }
 

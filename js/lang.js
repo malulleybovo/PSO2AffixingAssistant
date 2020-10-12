@@ -468,6 +468,10 @@ const lang = Object.freeze({
 		"Ability Success Rate +60%": {
             en: "Ability Success Rate +60%",
             jp: "能力追加成功率+60%"
+        },
+        "Ability Success Rate +65%": {
+            en: "Ability Success Rate +65%",
+            jp: "能力追加成功率+65%"
         }
     },
     "additional": {
@@ -659,6 +663,34 @@ const lang = Object.freeze({
             en: "Add Ability (Mark Grif)",
             jp: "特殊能力(マーク・グリフ)"
         },
+        'Add Ability (Ether S)': {
+            en: 'Add Ability (Ether S)',
+            jp: '特殊能力(エーテルS)'
+        },
+        'Add Ability (Factor C)': {
+            en: 'Add Ability (Factor C)',
+            jp: '特殊能力(ファクターC)'
+        },
+        'Add Ability (Omega M)': {
+            en: 'Add Ability (Omega M)',
+            jp: '特殊能力(オメガM)'
+        },
+        'Add Ability (Reverie C)': {
+            en: 'Add Ability (Reverie C)',
+            jp: '特殊能力(レヴリーC)'
+        },
+        'Add Ability (Mana Reverie)': {
+            en: 'Add Ability (Mana Reverie)',
+            jp: '特殊能力(マナレヴリー)'
+        },
+        'Add Ability (Ether F)': {
+            en: 'Add Ability (Ether F)',
+            jp: '特殊能力(エーテルF)'
+        },
+        'Add Ability (Astral S)': {
+            en: 'Add Ability (Astral S)',
+            jp: '特殊能力(アストラルS)'
+        },
         "S1 Add: Photon Reduction 2": {
             en: "S1 Add: Photon Reduction 2",
             jp: "S1追加:光子縮減2"
@@ -703,8 +735,8 @@ const lang = Object.freeze({
             en: "S1 Add: Radiating Grace",
             jp: "S1追加:輝勢の恵"
         },
-        "S1 Add: Skilled Brilliance": {
-            en: "S1 Add: Skilled Brilliance",
+        "S1 Add: Brilliant Intent": {
+            en: "S1 Add: Brilliant Intent",
             jp: "S1追加:輝充の志"
         },
         "S1 Add: Red Petal Flash": {
@@ -731,8 +763,8 @@ const lang = Object.freeze({
             en: "S1 Add: Black Shadow Flash",
             jp: "S1追加:影ノ黒閃"
         },
-        "S1 Add: Skilled Strike": {
-            en: "S1 Add: Skilled Strike",
+        "S1 Add: Skilled Intent": {
+            en: "S1 Add: Skilled Intent",
             jp: "S1追加:妙撃の志"
         },
         "S1 Add: Flowing Exhilaration": {
@@ -763,6 +795,10 @@ const lang = Object.freeze({
             en: "S1 Add: Radiant Strike",
             jp: "S1追加:輝剰の撃"
         },
+        "S1 Add: Brilliant Intent 2": {
+            "en": "S1 Add: Brilliant Intent 2",
+            "jp": "S1追加:輝充の志2"
+        },
         "S2 Add: Umbrageous Melody": {
             en: "S2 Add: Umbrageous Melody",
             jp: "S2追加:月葉影の歌"
@@ -779,8 +815,8 @@ const lang = Object.freeze({
             en: "S2 Add: Wise Skill 2",
             jp: "S2追加:妙技の巧2"
         },
-        "S2 Add: Skilled Strike 2": {
-            en: "S2 Add: Skilled Strike 2",
+        "S2 Add: Skilled Intent 2": {
+            en: "S2 Add: Skilled Intent 2",
             jp: "S2追加:妙撃の志2"
         },
         "S2 Add: Radiant Strike 2": {
@@ -839,9 +875,41 @@ const lang = Object.freeze({
             en: "S2 Add: Rainbow's Exhilaration",
             jp: "S2追加:六色の活与"
         },
-        "S2 Add: Skilled Brilliance": {
-            en: "S2 Add: Skilled Brilliance",
+        "S2 Add: Brilliant Intent": {
+            en: "S2 Add: Brilliant Intent",
             jp: "S2追加:輝充の志"
+        },
+        "S2 Add: Spirited Response": {
+            "en": "S2 Add: Spirited Response",
+            "jp": "S2追加:気輝応変"
+        },
+        "S2 Add: Flaming Guard": {
+            "en": "S2 Add: Flaming Guard",
+            "jp": "S2追加:火炎の備志"
+        },
+        "S2 Add: Freezing Guard": {
+            "en": "S2 Add: Freezing Guard",
+            "jp": "S2追加:氷雪の備志"
+        },
+        "S2 Add: Lightning Guard": {
+            "en": "S2 Add: Lightning Guard",
+            "jp": "S2追加:轟雷の備志"
+        },
+        "S2 Add: Storm Guard": {
+            "en": "S2 Add: Storm Guard",
+            "jp": "S2追加:暴風の備志"
+        },
+        "S2 Add: Shining Guard": {
+            "en": "S2 Add: Shining Guard",
+            "jp": "S2追加:光明の備志"
+        },
+        "S2 Add: Darkness Guard": {
+            "en": "S2 Add: Darkness Guard",
+            "jp": "S2追加:暗闇の備志"
+        },
+        "S2 Add: Heavenly Keeper 2": {
+            "en": "S2 Add: Heavenly Keeper 2",
+            "jp": "S2追加:保天輝地2"
         },
         "S3 Add: Nature's Melody": {
             en: "S3 Add: Nature's Melody",
@@ -887,8 +955,8 @@ const lang = Object.freeze({
             en: "S3 Add: Radiant Strike",
             jp: "S3追加:輝剰の撃"
         },
-        "S3 Add: Skilled Strike": {
-            en: "S3 Add: Skilled Strike",
+        "S3 Add: Skilled Intent": {
+            en: "S3 Add: Skilled Intent",
             jp: "S3追加:妙撃の志"
         },
         "S3 Add: Offensive Intent": {
@@ -939,6 +1007,22 @@ const lang = Object.freeze({
             en: "S3 Add: Nature's Melody 2",
             jp: "S3追加:花海雪の歌2"
         },
+        "S3 Add: Puncturing Intent": {
+            "en": "S3 Add: Puncturing Intent",
+            "jp": "S3追加:裂砕妙撃の志"
+        },
+        "S3 Add: Double-Edged Sword": {
+            "en": "S3 Add: Double-Edged Sword",
+            "jp": "S3追加:諸刃の撃"
+        },
+        "S3 Add: Photon Reduction": {
+            "en": "S3 Add: Photon Reduction",
+            "jp": "S3追加:光子縮減"
+        },
+        "S3 Add: Immediate Brilliance": {
+            "en": "S3 Add: Immediate Brilliance",
+            "jp": "S3追加:瞬連の輝"
+        },
         "S4 Add: Heavenly Protection": {
             en: "S4 Add: Heavenly Protection",
             jp: "S4追加:天輝の守護"
@@ -947,8 +1031,8 @@ const lang = Object.freeze({
             en: "S4 Add: Calming Intent",
             jp: "S4追加:静心の志"
         },
-        "S4 Add: Mysterious Strike": {
-            en: "S4 Add: Mysterious Strike",
+        "S4 Add: Skilled Balance": {
+            en: "S4 Add: Skilled Balance",
             jp: "S4追加:妙撃の秤"
         },
         "S4 Add: Saint Shield": {
@@ -1007,6 +1091,14 @@ const lang = Object.freeze({
             en: "S5 Add: Angelic Respite",
             jp: "S5追加:槍機天悠"
         },
+        "S5 Add: Calming Expanse": {
+            "en": "S5 Add: Calming Expanse",
+            "jp": "S5追加:静心拡域"
+        },
+        "S5 Add: Area Support": {
+            "en": "S5 Add: Area Support",
+            "jp": "S5追加:領域加勢"
+        },
         "S6 Add: Ironclad Illness": {
             en: "S6 Add: Ironclad Illness",
             jp: "S6追加:癒蝕頑強"
@@ -1038,6 +1130,10 @@ const lang = Object.freeze({
         "S6 Add: Overlimit": {
             en: "S6 Add: Overlimit",
             jp: "S6追加:超限活器"
+        },
+        "S6 Add: Wondrous Encore": {
+            "en": "S6 Add: Wondrous Encore",
+            "jp": "S6追加:奇跡再演"
         },
         "S7 Add: S-ATK Up": {
             en: "S7 Add: S-ATK Up",
@@ -1071,6 +1167,10 @@ const lang = Object.freeze({
             en: "S7 Add: Glowing Grace",
             jp: "S7追加:輝静の恵"
         },
+        "S7 Add: Descried Warrior": {
+            "en": "S7 Add: Descried Warrior",
+            "jp": "S7追加:視敵無双"
+        },
         "S8 Add: HP Up": {
             en: "S8 Add: HP Up",
             jp: "S8追加:活器上昇"
@@ -1094,6 +1194,10 @@ const lang = Object.freeze({
         "S8 Add: Sky Dance's Boon": {
             en: "S8 Add: Sky Dance's Boon",
             jp: "S8追加:舞空の援"
+        },
+        "S8 Add: PP Up 2": {
+            "en": "S8 Add: PP Up 2",
+            "jp": "S8追加:輝器上昇2"
         }
     },
     "potential": {
@@ -1475,31 +1579,31 @@ const lang = Object.freeze({
         effect_jp: "打撃耐性(+7)"
     },
     "HB01": {
-        name_en: "Shoot Resist I",
+        name_en: "Shot Resist I",
         name_jp: "ショットレジストⅠ",
         effect_en: "Range Resist(+3)",
         effect_jp: "射撃耐性(+3)"
     },
     "HB02": {
-        name_en: "Shoot Resist II",
+        name_en: "Shot Resist II",
         name_jp: "ショットレジストⅡ",
         effect_en: "Range Resist(+4)",
         effect_jp: "射撃耐性(+4)"
     },
     "HB03": {
-        name_en: "Shoot Resist III",
+        name_en: "Shot Resist III",
         name_jp: "ショットレジストⅢ",
         effect_en: "Range Resist(+5)",
         effect_jp: "射撃耐性(+5)"
     },
     "HB04": {
-        name_en: "Shoot Resist IV",
+        name_en: "Shot Resist IV",
         name_jp: "ショットレジストⅣ",
         effect_en: "Range Resist(+6)",
         effect_jp: "射撃耐性(+6)"
     },
     "HB05": {
-        name_en: "Shoot Resist V",
+        name_en: "Shot Resist V",
         name_jp: "ショットレジストⅤ",
         effect_en: "Range Resist(+7)",
         effect_jp: "射撃耐性(+7)"
@@ -1949,7 +2053,7 @@ const lang = Object.freeze({
         effect_jp: "クリティカル率が18%上昇する。"
     },
     "LA04": {
-        name_en: "S1:Skilled Brilliance",
+        name_en: "S1:Brilliant Intent",
         name_jp: "S1:輝充の志",
         effect_en: "Boosts damage by 3% while PP<br>at is 40% or above.",
         effect_jp: "PPが40%以上の時、与ダメージが3%上昇。"
@@ -2021,7 +2125,7 @@ const lang = Object.freeze({
         effect_jp: "一定の範囲内でエネミーが死亡した時、PPが回復する。"
     },
     "LA21": {
-        name_en: "S1:Skilled Strike",
+        name_en: "S1:Skilled Intent",
         name_jp: "S1:妙撃の志",
         effect_en: "+3% damage on Critical Hits.",
         effect_jp: "クリティカル時の与ダメージが3%上昇。"
@@ -2170,6 +2274,12 @@ const lang = Object.freeze({
         effect_en: "Reduces PP consumption, boosts critical rate and boosts power based on the number of people in your party (min. 2).",
         effect_jp: "パーティ人数が2人以上の場合、人数に応じて、PP消費軽減、クリティカル率上昇、威力上昇効果が発動。"
     },
+    LA2T: {
+        name_en: "S1:Brilliant Intent 2",
+        name_jp: "S1:輝充の志2",
+        effect_en: "Boosts damage by 5% while PP at is 40% or above.",
+        effect_jp: "PPが40%以上の時、与ダメージが5%上昇。"
+    },
     "LB01": {
         name_en: "S2:Sturdy Recovery",
         name_jp: "S2:剛乱活与",
@@ -2297,7 +2407,7 @@ const lang = Object.freeze({
         effect_jp: "与ダメージが2%上昇。"
     },
     "LB1A": {
-        name_en: "S2:Skilled Strike",
+        name_en: "S2:Skilled Intent",
         name_jp: "S2:妙撃の志",
         effect_en: "Increase Critical Hit Damage by 3%.",
         effect_jp: "クリティカル時の与ダメージが3%上昇。"
@@ -2387,7 +2497,7 @@ const lang = Object.freeze({
         effect_jp: "クリティカル率が15%上昇する。"
     },
     "LB1O": {
-        name_en: "S2:Skilled Strike 2",
+        name_en: "S2:Skilled Intent 2",
         name_jp: "S2:妙撃の志2",
         effect_en: "Increase Critical Hit Damage by 4%.",
         effect_jp: "クリティカル時の与ダメージが4%上昇。"
@@ -2489,10 +2599,16 @@ const lang = Object.freeze({
         effect_jp: "花・海・葉・月・雪・影のいずれかが発動中毎秒HPが3%回復。"
     },
     "LB98": {
-        name_en: "S2:Skilled Brilliance",
+        name_en: "S2:Brilliant Intent",
         name_jp: "S2:輝充の志",
         effect_en: "Boosts damage by 3% while PP at is 40% or above.",
         effect_jp: "PPが40%以上の時、与ダメージが3%上昇。"
+    },
+    LB97: {
+        name_en: "S2:Heavenly Keeper 2",
+        name_jp: "S2:保天輝地2",
+        effect_en: "In the air, reduces PP consumption by 15%. On the ground, boosts PP regeneration and attack PP recovery by 35%.",
+        effect_jp: "空中時では、PP消費量が15％軽減。地上時では自然PP回復量が25％かつ地上での攻撃時ではPP回復量が35％上昇。"
     },
     "LC01": {
         name_en: "S3:Offensive Intent",
@@ -2519,13 +2635,13 @@ const lang = Object.freeze({
         effect_jp: "攻撃時のPP回復量が23%上昇する。"
     },
     "LC04": {
-        name_en: "S3:Skilled Strike",
+        name_en: "S3:Skilled Intent",
         name_jp: "S3:妙撃の志",
         effect_en: "Increase Critical Hit Damage by 4%.",
         effect_jp: "クリティカル時の与ダメージが4%上昇。"
     },
     "LC1O": {
-        name_en: "S3:Skilled Strike 2",
+        name_en: "S3:Skilled Intent 2",
         name_jp: "S3:妙撃の志2",
         effect_en: "Increase Critical Hit Damage by 5%.",
         effect_jp: "クリティカル時の与ダメージが5%上昇。"
@@ -2740,6 +2856,24 @@ const lang = Object.freeze({
         effect_en: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Boosts PP regeneration<br>by 40%.",
         effect_jp: "花・海・葉・月・雪・影のいずれかが発動中PP自然回復量40%上昇。"
     },
+    LC1Y: {
+        name_en: "S3:Immediate Brilliance",
+        name_jp: "S3:瞬連の輝",
+        effect_en: "Successful JA hits<br>boosts your PP<br>recovery amount by<br>3%. Cannot exceed<br>30%. Non-JA hits<br>are excluded.",
+        effect_jp: "JA攻撃が命中する度PP回復性能が3%上昇。最大で45%まで上昇。"
+    },
+    LC1Z: {
+        name_en: "S3:Puncturing Intent",
+        name_jp: "S3:裂砕妙撃の志",
+        effect_en: "Upon landing a<br>Critical Hit on a<br>breakable part,<br>your power is<br>boosted by 9%.",
+        effect_jp: "破壊可能部位への攻撃でクリティカル発動時に威力が9%上昇。"
+    },
+    LC1Q: {
+        name_en: "S3:Double-Edged Sword",
+        name_jp: "S3:諸刃の撃",
+        effect_en: "Deal 4% more damage but take 8% more damage when weapon is drawn.",
+        effect_jp: "与ダメージが4%上昇し、抜刀時のみ被ダメージが8%増える。"
+    },
     "LD07": {
         name_en: "S4:Marvelous Aegis",
         name_jp: "S4:瞬護輝与",
@@ -2855,7 +2989,7 @@ const lang = Object.freeze({
         effect_jp: "通常攻撃の威力が13%上昇。"
     },
     "LD0Q": {
-        name_en: "S4:Mysterious Strike",
+        name_en: "S4:Skilled Balance",
         name_jp: "S4:妙撃の秤",
         effect_en: "Reduce Critical Hit Rate by 50% and<br>increase the power of Critical Hits by 6%.",
         effect_jp: "クリティカル率を50%低下し、クリティカルの威力が6%上昇。"
@@ -3046,6 +3180,30 @@ const lang = Object.freeze({
         effect_en: "At maximum gear, no gear is consumed while airborne. Increase Power by 2%. Partizan only.",
         effect_jp: "ギア最大時、空中ではギアを消費しなくなる。威力2%上昇。長槍限定。"
     },
+    LE0H: {
+        name_en: "S5:Mysterious Purpose",
+        name_jp: "S5:妙の巧志",
+        effect_en: "Increase Critical Hit Rate by 20%. On a Critical Hit, deal an additional 2% damage and recover 1% of damage dealt as HP (30 MAX).",
+        effect_jp: "クリティカル率が20%上昇。発生時に威力2%上昇、与ダメージの1%をHP回復(上限30)"
+    },
+    LE0P: {
+        name_en: "S5:Calming Expanse",
+        name_jp: "S5:静心拡域",
+        effect_en: "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only.",
+        effect_jp: "通常攻撃に範囲攻撃が追加され確率でスタン付与。威力2%上昇。長銃限定。"
+    },
+    LE0Q: {
+        name_en: "S5:Area Support",
+        name_jp: "S5:領域加勢",
+        effect_en: "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active.",
+        effect_jp: "クリティカルフィールドとエレメンタルPPリストレイトFの効果が有効時、フィールドごとに追加効果が発生する。"
+    },
+    LE0O: {
+        name_en: "S5:Calming Quartet",
+        name_jp: "S5:静心四連",
+        effect_en: "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only.",
+        effect_jp: "通常攻撃の威力が67％低下する代わりに攻撃が4発に変化。"
+    },
     "LF0A": {
         name_en: "S6:Heroic Howl",
         name_jp: "S6:英雄咆哮",
@@ -3154,6 +3312,12 @@ const lang = Object.freeze({
         effect_en: "Boosts maximum HP by<br>50% while Limit Break<br>is active.",
         effect_jp: "リミットブレイク発動中最大HPが50%上昇する。"
     },
+    LF0T: {
+        name_en: "S6:Wondrous Encore",
+        name_jp: "S6:奇跡再演",
+        effect_en: "Reduces Showtime's<br>hate increase. Once per<br>activation, reduces<br>damage taken and<br>maintains One More Time.",
+        effect_jp: "ショウタイム発動時のヘイト上昇率が軽減し、一度だけ被ダメージを軽減してワンモアタイムの発動条件を維持する。"
+    },
     "LG0A": {
         name_en: "S7:Glowing Grace",
         name_jp: "S7:輝静の恵",
@@ -3243,6 +3407,12 @@ const lang = Object.freeze({
         name_jp: "S7:法護の与",
         effect_en: "Upon a successful<br>Tech Charge Parry,<br>recover 5% HP and 10 PP.",
         effect_jp: "テックCパリング成功時HPを5%回復しPPを10回復。"
+    },
+    LG0P: {
+        name_en: "S7:Descried Warrior",
+        name_jp: "S7:視敵無双",
+        effect_en: "Boosts damage by 1%<br>& reduces damage<br>taken by enemies<br>targeting you by<br>15%.",
+        effect_jp: "自身を狙う敵に対して威力1%上昇し被ダメージ15%軽減。"
     },
     "LH0A": {
         name_en: "S8:Sky Dance's Boon",
@@ -3748,6 +3918,12 @@ const lang = Object.freeze({
         effect_en: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+50), PP(+2)",
         effect_jp: "打撃力(+20),射撃力(+20),法撃力(+20),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+50),PP(+2)"
     },
+    SA02: {
+        name_en: "Guardian Soul",
+        name_jp: "ガーディアン・ソール",
+        effect_en: "ALL(+70),<br>HP(+70),<br>PP(+7)",
+        effect_jp: "ALL(+70),<br>HP(+70),<br>PP(+7)"
+    },
     "TA01": {
         name_en: "Stigma",
         name_jp: "スティグマ",
@@ -3815,7 +3991,7 @@ const lang = Object.freeze({
         effect_jp: "打撃力(+20),<br>射撃力(+20),<br>法撃力(+40),<br>HP(-20)"
     },
     "TK04": {
-        name_en: "Apprezina Reverie",
+        name_en: "Appregina Reverie",
         name_jp: "アプレジナ・レヴリー",
         effect_en: "S-ATK(+20),<br>R-ATK(+40),<br>T-ATK(+20),<br>HP(-10),<br>PP(-1)",
         effect_jp: "打撃力(+20),<br>射撃力(+40),<br>法撃力(+20),<br>HP(-10),<br>PP(-1)"
@@ -3946,6 +4122,30 @@ const lang = Object.freeze({
         effect_en: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
+    TN08: {
+        name_en: "Shiva Glare",
+        name_jp: "シバ・グレア",
+        effect_en: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
+        effect_jp: "射撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
+    },
+    TN09: {
+        name_en: "Origin Glare",
+        name_jp: "オリジン・グレア",
+        effect_en: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)",
+        effect_jp: "打撃力(+30), 射撃力(+30), 法撃力(+30), 打撃防御(+10), 射撃防御(+10), 法撃防御(+10), HP(+20), PP(+2)"
+    },
+    TN0A: {
+        name_en: "Photoner Glare",
+        name_jp: "フォトナー・グレア",
+        effect_en: "ALL(+15), HP(+15), PP(+2)",
+        effect_jp: "ALL(+15), HP(+15), PP(+2)"
+    },
+    TN11: {
+        name_en: "Absolute Glare",
+        name_jp: "アブソリュート・グレア",
+        effect_en: "ALL(+40), HP(+30), PP(+3)",
+        effect_jp: "ALL(+40), HP(+30), PP(+3)"
+    },
     "TF01": {
         name_en: "Spirita Alpha",
         name_jp: "スピリタ・アルファ",
@@ -3959,19 +4159,19 @@ const lang = Object.freeze({
         effect_jp: "打撃力(+5),<br>射撃力(+5),<br>法撃力(+5),<br>PP(+2)"
     },
     "TH01": {
-        name_en: "Doom Break",
+        name_en: "Doom Break I",
         name_jp: "ドゥームブレイクⅠ",
         effect_en: "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>PP(+2)",
         effect_jp: "打撃力(+15),<br>射撃力(+15),<br>法撃力(+15),<br>PP(+2)"
     },
     "TH02": {
-        name_en: "Doom Break 2",
+        name_en: "Doom Break II",
         name_jp: "ドゥームブレイクⅡ",
         effect_en: "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
         effect_jp: "打撃力(+25),<br>射撃力(+25),<br>法撃力(+25),<br>PP(+3)"
     },
     "TH03": {
-        name_en: "Doom Break 3",
+        name_en: "Doom Break III",
         name_jp: "ドゥームブレイクⅢ",
         effect_en: "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
         effect_jp: "打撃力(+30),<br>射撃力(+30),<br>法撃力(+30),<br>PP(+4)"
@@ -4368,7 +4568,7 @@ const lang = Object.freeze({
     },
     "YA31": {
         name_en: "Sentence Triple",
-        name_jp: "センテンス・テクニック",
+        name_jp: "センテンス・トリプル",
         effect_en: "S-ATK(+30),R-ATK(+30),T-ATK(+30)",
         effect_jp: "打撃力(+30),射撃力(+30),法撃力(+30)"
     },
@@ -4594,6 +4794,12 @@ const lang = Object.freeze({
         effect_en: "HP(+10),<br>PP(+1)",
         effect_jp: "HP(+10),<br>PP(+1)"
     },
+    VJ04: {
+        name_en: "Glare Catalyst",
+        name_jp: "グレア・カタリスト",
+        effect_en: "HP(+10),<br>PP(+1)",
+        effect_jp: "HP(+10),<br>PP(+1)"
+    },
     "VK03": {
         name_en: "Polytan Smile",
         name_jp: "ポリタン・スマイル",
@@ -4639,8 +4845,8 @@ const lang = Object.freeze({
     "XB01": {
         name_en: "Extreceptor",
         name_jp: "エクストレセプター",
-        effect_en: "Greatly increases Flict and Alter affix rate.<br>ALL(+10)",
-        effect_jp: "アルター・フリクト系と特定の特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)"
+        effect_en: "Greatly increases Flict and Alter affix rate., ALL(+10)",
+        effect_jp: "アルター・フリクト系と特定の特殊能力の合成成功率を大幅に上昇。, ALL(+10)"
     },
     "XC01": {
         name_en: "Gift Receptor",
@@ -4651,56 +4857,62 @@ const lang = Object.freeze({
     "XD01": {
         name_en: "Sentence Receptor",
         name_jp: "センテンスレセプター",
-        effect_en: "Boosts transfer of Sentence affixes.<br>ALL(+10)",
-        effect_jp: "センテンス系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)"
+        effect_en: "Boosts transfer of Sentence affixes., ALL(+10)",
+        effect_jp: "センテンス系特殊能力の合成成功率を大幅に上昇。, ALL(+10)"
     },
     "XE01": {
         name_en: "Phrase Receptor",
         name_jp: "フレイズレセプター",
-        effect_en: "Boosts transfer of Phrase affixes.<br>ALL(+10)",
-        effect_jp: "フレイズ系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)"
+        effect_en: "Boosts transfer of Phrase affixes., ALL(+10)",
+        effect_jp: "フレイズ系特殊能力の合成成功率を大幅に上昇。, ALL(+10)"
     },
     "XF01": {
         name_en: "Factor Receptor",
         name_jp: "ファクターレセプター",
-        effect_en: "Boosts Factor-type ability transfer rates.<br>ALL(+10)",
-        effect_jp: "ファクター系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)"
+        effect_en: "Boosts Factor-type ability transfer rates., ALL(+10)",
+        effect_jp: "ファクター系特殊能力の合成成功率を大幅に上昇。, ALL(+10)"
     },
     "XG01": {
         name_en: "Mark Receptor",
         name_jp: "マークレセプター",
-        effect_en: "Allows transfer Mark-type ability.<br>ALL(+10)",
-        effect_jp: "マーク系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)"
+        effect_en: "Allows transfer Mark-type ability., ALL(+10)",
+        effect_jp: "マーク系特殊能力の合成成功率を大幅に上昇, ALL(+10)"
     },
     "XJ01": {
         name_en: "Divine Receptor",
         name_jp: "ディバインレセプター",
-        effect_en: "Greatly increases affix rate of Divine-type ability.<br>ALL(+10)",
-        effect_jp: "ディバイン系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)"
+        effect_en: "Greatly increases affix rate of Divine-type ability., ALL(+10)",
+        effect_jp: "ディバイン系特殊能力の合成成功率を大幅に上昇。, ALL(+10)"
+    },
+    XK01: {
+        name_en: "Exceed Receptor",
+        name_jp: "イクシードレセプター",
+        effect_en: "Greatly increases affix rate of Exceed-type ability., ALL(+10)",
+        effect_jp: "イクシード系特殊能力の継承成功率を大幅に上昇., ALL(+10)"
     },
     "XH01": {
         name_en: "Catalyst Receptor",
         name_jp: "カタリストレセプター",
-        effect_en: "Greatly increases affix rate of Catalyst-type ability.<br>ALL(+10)",
-        effect_jp: "カタリスト系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)"
+        effect_en: "Greatly increases affix rate of Catalyst-type ability., ALL(+10)",
+        effect_jp: "カタリスト系特殊能力の合成成功率を大幅に上昇。, ALL(+10)"
     },
     "XI30": {
         name_en: "Attack Receptor",
         name_jp: "アタックレセプター",
-        effect_en: "Greatly increases affix rate of Power, Shoot, Technique, and Arm.<br>ALL(+5)",
-        effect_jp: "パワー・シュート・テクニック系特殊能力の合成成功率を大幅に上昇。<br>ALL(+5)"
+        effect_en: "Greatly increases affix rate of Power, Shoot, Technique, and Arm., ALL(+5)",
+        effect_jp: "パワー・シュート・テクニック系特殊能力の合成成功率を大幅に上昇。, ALL(+5)"
     },
     "XI31": {
         name_en: "Guard Receptor",
         name_jp: "ガードレセプター",
-        effect_en: "Greatly increases affix rate of Mind, Body, and React.<br>ALL(+5)",
-        effect_jp: "マインド・ボディ・リアクト系特殊能力の合成成功率を大幅に上昇。<br>ALL(+5)"
+        effect_en: "Greatly increases affix rate of Mind, Body, and React., ALL(+5)",
+        effect_jp: "マインド・ボディ・リアクト系特殊能力の合成成功率を大幅に上昇。, ALL(+5)"
     },
     "XI32": {
         name_en: "Photon Receptor",
         name_jp: "フォトンレセプター",
-        effect_en: "Greatly increases affix rate of Stamina and Spirita.<br>ALL(+5)",
-        effect_jp: "スタミナ・スピリタ系特殊能力の合成成功率を大幅に上昇。<br>ALL(+5)"
+        effect_en: "Greatly increases affix rate of Stamina and Spirita., ALL(+5)",
+        effect_jp: "スタミナ・スピリタ系特殊能力の合成成功率を大幅に上昇。, ALL(+5)"
     },
     "XI02": {
         name_en: "Stamina Boost",
@@ -4847,7 +5059,7 @@ const lang = Object.freeze({
         effect_jp: "法撃力(+50),HP(+20),PP(+5)"
     },
     "XI60": {
-        name_en: "Grace Spirita",
+        name_en: "Grand Spirita",
         name_jp: "グランド・スピリタ",
         effect_en: "PP(+15)",
         effect_jp: "PP(+15)"
