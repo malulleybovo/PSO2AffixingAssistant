@@ -484,7 +484,7 @@ const TRANSPLANT_PANEL = ({ fodders, addAbilityChosen, langCode }) => {
     return panel;
 };
 
-const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, addAbilityChosen, transplantCost, isGlobalSearch, shouldUpslot, shouldSpread, shouldUseTrainer, langCode }) => {
+const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, successRateItems, addAbilityChosen, transplantCost, isGlobalSearch, shouldUpslot, shouldSpread, shouldUseTrainer, langCode }) => {
     let isAffixSelection = type == 'affixSelection';
     let isChoiceSelection = type == 'choiceSelection';
     let isReviewTweak = type == 'reviewTweak';
@@ -570,6 +570,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
     else if (isWishList) {
         layoutTemplate += WISH_LIST_TEMPLATE({
             fodderList: datalist,
+            successRateItems: successRateItems,
             transplantCost: transplantCost,
             langCode: langCode
         });
@@ -644,22 +645,20 @@ const FORMULA_SHEET_VIEW_TEMPLATE = ({ categories, abilityList, isGlobalSearch, 
     });
 };
 
-const WISH_LIST_VIEW_TEMPLATE = ({ fodderList, transplantCost, langCode }) => {
+const WISH_LIST_VIEW_TEMPLATE = ({ fodderList, successRateItems, transplantCost, langCode }) => {
     return SELECTION_MENU_TEMPLATE({
         type: 'wishList',
         datalist: fodderList,
+        successRateItems: successRateItems,
         transplantCost: transplantCost,
         langCode: langCode
     });
 };
 
-const WISH_LIST_TEMPLATE = ({ fodderList, transplantCost, langCode }) => {
+const WISH_LIST_TEMPLATE = ({ fodderList, successRateItems, transplantCost, langCode }) => {
     if (!fodderList || !Array.isArray(fodderList)) return '';
     let affixLists = [];
     let counts = [];
-    if (transplantCost > 0) {
-        affixLists.push(lang.app.wishListTransplantCostDescr[langCode](transplantCost));
-    }
     for (var i = 0; i < fodderList.length; i++) {
         if (!fodderList[i] || !(fodderList[i] instanceof Fodder)
             || fodderList[i].size() <= 0) continue;
@@ -676,6 +675,15 @@ const WISH_LIST_TEMPLATE = ({ fodderList, transplantCost, langCode }) => {
     }
     for (var i = 0; i < affixLists.length; i++) {
         affixLists[i] = lang.app.wishListAbilityDescription[langCode](counts[i], affixLists[i]);
+    }
+    if (transplantCost > 0) {
+        let descr = lang.app.wishListTransplantCostDescr[langCode](transplantCost);
+        affixLists = [descr, ...affixLists];
+    }
+    if (successRateItems !== undefined) {
+        for (var descr in successRateItems) {
+            affixLists.push(lang.app.wishListAbilityDescription[langCode](successRateItems[descr], descr));
+        }
     }
     return FILTER_SEARCH_TEMPLATE({
         datalist: affixLists,

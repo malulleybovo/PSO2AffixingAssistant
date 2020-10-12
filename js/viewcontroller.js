@@ -84,7 +84,7 @@ class ViewController {
 
     setup() {
         $("#malulleybovo").text(lang.app.malulleybovo[this.langCode]);
-        $("#ver").text("v1.2.0");
+        $("#ver").text("v1.2.1");
         $("#editor").children().first().panzoom({
             which: 1,
             minScale: 0.1,
@@ -1793,6 +1793,7 @@ class ViewController {
         $('body').append(
             WISH_LIST_VIEW_TEMPLATE({
                 fodderList: this.assistant.getToBuyList(),
+                successRateItems: this.assistant.getExtraItemCart(),
                 transplantCost: this.assistant.getTotalTransplantCost(),
                 langCode: this.langCode
             }));
