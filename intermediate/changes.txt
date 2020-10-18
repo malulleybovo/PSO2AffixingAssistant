@@ -467,7 +467,7 @@
       {
         "base": [
           "XI30",
-          "AA01"
+          "AA*"
         ],
         "ref": "$$",
         "success": 100
@@ -661,6 +661,91 @@
   "ability": {
     "outdatedInSim": [
       {
+        "ref": 58,
+        "code": "HB01",
+        "gid": "DA",
+        "name": "Shoot Resist I",
+        "lvup": "HB02",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "status": 1,
+        "effect": "Range Resist(+3)"
+      },
+      {
+        "ref": 59,
+        "code": "HB02",
+        "gid": "DA",
+        "name": "Shoot Resist II",
+        "lvup": "HB03",
+        "extend": [
+          60,
+          80,
+          100
+        ],
+        "generate": [
+          60,
+          80
+        ],
+        "status": 1,
+        "effect": "Range Resist(+4)"
+      },
+      {
+        "ref": 60,
+        "code": "HB03",
+        "gid": "DA",
+        "name": "Shoot Resist III",
+        "lvup": "HB04",
+        "extend": [
+          60,
+          80,
+          100
+        ],
+        "generate": [
+          30,
+          50
+        ],
+        "status": 1,
+        "effect": "Range Resist(+5)"
+      },
+      {
+        "ref": 61,
+        "code": "HB04",
+        "gid": "DA",
+        "name": "Shoot Resist IV",
+        "lvup": "HB05",
+        "extend": [
+          40,
+          60,
+          80
+        ],
+        "generate": [
+          20,
+          40
+        ],
+        "status": 1,
+        "effect": "Range Resist(+6)"
+      },
+      {
+        "ref": 62,
+        "code": "HB05",
+        "gid": "DA",
+        "name": "Shoot Resist V",
+        "extend": [
+          20,
+          40,
+          60
+        ],
+        "generate": [
+          10,
+          30
+        ],
+        "status": 1,
+        "effect": "Range Resist(+7)"
+      },
+      {
         "ref": 136,
         "code": "LA04",
         "gid": "L1",
@@ -713,6 +798,19 @@
         "noEx": true
       },
       {
+        "ref": 642,
+        "code": "LB98",
+        "gid": "L2",
+        "name": "S2:Skilled Brilliance",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "Boosts damage by 3% while PP at is 40% or above.",
+        "noEx": true
+      },
+      {
         "ref": 214,
         "code": "LC04",
         "gid": "L3",
@@ -759,9 +857,163 @@
         ],
         "effect": "Increase Critical Hit Rate by 20%. On a Critical Hit, deal an additional 2% damage and recover 1% of damage dealt as HP (30 MAX).",
         "noEx": true
+      },
+      {
+        "ref": 346,
+        "code": "TK04",
+        "gid": "AC",
+        "name": "Apprezina Reverie",
+        "extend": [
+          0,
+          30,
+          50
+        ],
+        "status": 6,
+        "effect": "S-ATK(+20),<br>R-ATK(+40),<br>T-ATK(+20),<br>HP(-10),<br>PP(-1)"
+      },
+      {
+        "ref": 358,
+        "code": "TH01",
+        "gid": "AC",
+        "name": "Doom Break",
+        "lvup": "TH02",
+        "extend": [
+          0,
+          50,
+          80
+        ],
+        "extup": [
+          "FA03"
+        ],
+        "rel": "doom",
+        "effect": "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>PP(+2)"
+      },
+      {
+        "ref": 359,
+        "code": "TH02",
+        "gid": "AC",
+        "name": "Doom Break 2",
+        "extend": [
+          0,
+          50,
+          80
+        ],
+        "generate": [
+          0,
+          10,
+          30,
+          50
+        ],
+        "extup": [
+          "FA03"
+        ],
+        "rel": "doom2",
+        "effect": "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
+        "tooltip": "Made by: 3-5x Doom Break"
+      },
+      {
+        "ref": 620,
+        "code": "TH03",
+        "gid": "AD",
+        "name": "Doom Break 3",
+        "extend": [
+          0,
+          50,
+          80
+        ],
+        "generate": [
+          0,
+          10,
+          30,
+          50
+        ],
+        "extup": [
+          "FA03"
+        ],
+        "rel": "doom2",
+        "effect": "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
+        "tooltip": "Made from: 3-5x Doom Break 3"
       }
     ],
     "outdatedInAst": [
+      {
+        "code": "HB01",
+        "gid": "DA",
+        "name": "Shot Resist I",
+        "lvup": "HB02",
+        "extend": [
+          100
+        ],
+        "status": 1,
+        "effect": "Range Resist(+3)"
+      },
+      {
+        "code": "HB02",
+        "gid": "DA",
+        "name": "Shot Resist II",
+        "lvup": "HB03",
+        "extend": [
+          60,
+          80,
+          100
+        ],
+        "generate": [
+          60,
+          80
+        ],
+        "status": 1,
+        "effect": "Range Resist(+4)"
+      },
+      {
+        "code": "HB03",
+        "gid": "DA",
+        "name": "Shot Resist III",
+        "lvup": "HB04",
+        "extend": [
+          60,
+          80,
+          100
+        ],
+        "generate": [
+          30,
+          50
+        ],
+        "status": 1,
+        "effect": "Range Resist(+5)"
+      },
+      {
+        "code": "HB04",
+        "gid": "DA",
+        "name": "Shot Resist IV",
+        "lvup": "HB05",
+        "extend": [
+          40,
+          60,
+          80
+        ],
+        "generate": [
+          20,
+          40
+        ],
+        "status": 1,
+        "effect": "Range Resist(+6)"
+      },
+      {
+        "code": "HB05",
+        "gid": "DA",
+        "name": "Shot Resist V",
+        "extend": [
+          20,
+          40,
+          60
+        ],
+        "generate": [
+          10,
+          30
+        ],
+        "status": 1,
+        "effect": "Range Resist(+7)"
+      },
       {
         "code": "LA04",
         "gid": "L1",
@@ -780,16 +1032,6 @@
           100
         ],
         "effect": "+3% damage on Critical Hits.",
-        "noEx": true
-      },
-      {
-        "code": "LA2T",
-        "gid": "L1",
-        "name": "S1:Immediate Skill",
-        "extend": [
-          100
-        ],
-        "effect": "When you Just Guard<br>at less than 25% HP,<br>recovers HP by 50%<br>and PP by 30%",
         "noEx": true
       },
       {
@@ -843,6 +1085,16 @@
         "noEx": true
       },
       {
+        "code": "LC1Q",
+        "gid": "L3",
+        "name": "S3:Double-Edged Sword",
+        "extend": [
+          100
+        ],
+        "effect": "Deal 4% more damage but take 8% more damage when weapon is drawn.",
+        "noEx": true
+      },
+      {
         "code": "LC1Y",
         "gid": "L3",
         "name": "S3:Immediate Brilliance",
@@ -883,16 +1135,6 @@
         "noEx": true
       },
       {
-        "code": "LE0N",
-        "gid": "L5",
-        "name": "S5:Chained Radiance",
-        "extend": [
-          100
-        ],
-        "effect": "Recovers PP and boosts<br>damage by 3% for 60<br>seconds after activating<br>Chain Trigger.<br>Twin Machineguns only.",
-        "noEx": true
-      },
-      {
         "code": "LE0O",
         "gid": "L5",
         "name": "S5:Calming Quartet",
@@ -923,16 +1165,6 @@
         "noEx": true
       },
       {
-        "code": "LE0R",
-        "gid": "L5",
-        "name": "S5:Swift Radiance",
-        "extend": [
-          100
-        ],
-        "effect": "Reduces PP regeneration<br>to 0. Boosts attack PP<br>recovery by 50% and<br>recovers 100 PP on a<br>successful dodge.",
-        "noEx": true
-      },
-      {
         "code": "LF0T",
         "gid": "L6",
         "name": "S6:Wondrous Encore",
@@ -958,6 +1190,19 @@
         "name": "Guardian Soul",
         "effect": "ALL(+70),<br>HP(+70),<br>PP(+7)",
         "tooltip": "Made from: Astral Soul, Ether Factor, Mana Reverie, Absolute Glare"
+      },
+      {
+        "code": "TK04",
+        "gid": "AC",
+        "name": "Appregina Reverie",
+        "extend": [
+          0,
+          30,
+          50
+        ],
+        "status": 6,
+        "effect": "S-ATK(+20),<br>R-ATK(+40),<br>T-ATK(+20),<br>HP(-10),<br>PP(-1)",
+        "tooltip": "Used for: Reverie Catalyst"
       },
       {
         "code": "TN08",
@@ -1004,6 +1249,67 @@
         "tooltip": "Made from: 4x Glare Catalyst + Photoner Glare<br>Used for: Guardian Soul"
       },
       {
+        "code": "TH01",
+        "gid": "AD",
+        "name": "Doom Break I",
+        "lvup": "TH02",
+        "extend": [
+          0,
+          50,
+          80
+        ],
+        "extup": [
+          "FA03"
+        ],
+        "rel": "doom",
+        "effect": "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>PP(+2)"
+      },
+      {
+        "code": "TH02",
+        "gid": "AD",
+        "name": "Doom Break II",
+        "lvup": "TH03",
+        "extend": [
+          0,
+          50,
+          80
+        ],
+        "generate": [
+          0,
+          10,
+          30,
+          50
+        ],
+        "extup": [
+          "FA03"
+        ],
+        "rel": "doom2",
+        "effect": "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
+        "tooltip": "Made from: 3-5x Doom Break I"
+      },
+      {
+        "code": "TH03",
+        "gid": "AD",
+        "name": "Doom Break III",
+        "extend": [
+          0,
+          50,
+          80
+        ],
+        "generate": [
+          0,
+          10,
+          30,
+          50
+        ],
+        "extup": [
+          "FA03"
+        ],
+        "rel": "doom2",
+        "effect": "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
+        "tooltip": "Made from: 3-5x Doom Break 3"
+      },
+      {
         "code": "VJ04",
         "gid": "CA",
         "name": "Glare Catalyst",
@@ -1020,5 +1326,93 @@
     "codeChanges": [
       "S5:Angelic Respite:LE97 -> S5:Angelic Respite:LE0M"
     ]
+  },
+  "abilityFactorsMissingInAst": [
+    {
+      "name": "S1:Rupturing Excess",
+      "jpName": "S1:裂砕の剰"
+    }
+  ],
+  "addAbilitiesMissingInAst": {
+    "{replace with english name for S1追加:輝充の志2}": {
+      "en": "{replace with english name for S1追加:輝充の志2}",
+      "jp": "S1追加:輝充の志2"
+    },
+    "S1 Add: Powering Intent": {
+      "en": "S1 Add: Powering Intent",
+      "jp": "S1追加:強闘の志"
+    },
+    "S2 Add: Spirited Response": {
+      "en": "S2 Add: Spirited Response",
+      "jp": "S2追加:気輝応変"
+    },
+    "S2 Add: Flaming Guard": {
+      "en": "S2 Add: Flaming Guard",
+      "jp": "S2追加:火炎の備志"
+    },
+    "S2 Add: Freezing Guard": {
+      "en": "S2 Add: Freezing Guard",
+      "jp": "S2追加:氷雪の備志"
+    },
+    "S2 Add: Lightning Guard": {
+      "en": "S2 Add: Lightning Guard",
+      "jp": "S2追加:轟雷の備志"
+    },
+    "S2 Add: Storm Guard": {
+      "en": "S2 Add: Storm Guard",
+      "jp": "S2追加:暴風の備志"
+    },
+    "S2 Add: Shining Guard": {
+      "en": "S2 Add: Shining Guard",
+      "jp": "S2追加:光明の備志"
+    },
+    "S2 Add: Darkness Guard": {
+      "en": "S2 Add: Darkness Guard",
+      "jp": "S2追加:暗闇の備志"
+    },
+    "{replace with english name for S2追加:保天輝地2}": {
+      "en": "{replace with english name for S2追加:保天輝地2}",
+      "jp": "S2追加:保天輝地2"
+    },
+    "{replace with english name for S3追加:裂砕妙撃の志}": {
+      "en": "{replace with english name for S3追加:裂砕妙撃の志}",
+      "jp": "S3追加:裂砕妙撃の志"
+    },
+    "{replace with english name for S3追加:諸刃の撃}": {
+      "en": "{replace with english name for S3追加:諸刃の撃}",
+      "jp": "S3追加:諸刃の撃"
+    },
+    "S3 Add: Photon Reduction": {
+      "en": "S3 Add: Photon Reduction",
+      "jp": "S3追加:光子縮減"
+    },
+    "{replace with english name for S3追加:瞬連の輝}": {
+      "en": "{replace with english name for S3追加:瞬連の輝}",
+      "jp": "S3追加:瞬連の輝"
+    },
+    "{replace with english name for S5追加:静心拡域}": {
+      "en": "{replace with english name for S5追加:静心拡域}",
+      "jp": "S5追加:静心拡域"
+    },
+    "{replace with english name for S5追加:領域加勢}": {
+      "en": "{replace with english name for S5追加:領域加勢}",
+      "jp": "S5追加:領域加勢"
+    },
+    "{replace with english name for S5追加:堅守の秤}": {
+      "en": "{replace with english name for S5追加:堅守の秤}",
+      "jp": "S5追加:堅守の秤"
+    },
+    "{replace with english name for S6追加:奇跡再演}": {
+      "en": "{replace with english name for S6追加:奇跡再演}",
+      "jp": "S6追加:奇跡再演"
+    },
+    "{replace with english name for S7追加:視敵無双}": {
+      "en": "{replace with english name for S7追加:視敵無双}",
+      "jp": "S7追加:視敵無双"
+    },
+    "S8 Add: PP Up 2": {
+      "en": "S8 Add: PP Up 2",
+      "jp": "S8追加:輝器上昇2"
+    }
   }
 }

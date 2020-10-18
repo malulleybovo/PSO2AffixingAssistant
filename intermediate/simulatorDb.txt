@@ -1643,7 +1643,7 @@
     {
       "base": [
         "XI30",
-        "AA01"
+        "AA*"
       ],
       "ref": "$$",
       "success": 100
@@ -2376,6 +2376,7 @@
       "code": "AA05",
       "gid": "AA",
       "name": "Power V",
+      "lvup": "AA06",
       "extend": [
         20,
         40,
@@ -2466,6 +2467,7 @@
       "code": "AB05",
       "gid": "AA",
       "name": "Shoot V",
+      "lvup": "AB06",
       "extend": [
         20,
         40,
@@ -2556,6 +2558,7 @@
       "code": "AC05",
       "gid": "AA",
       "name": "Technique V",
+      "lvup": "AC06",
       "extend": [
         20,
         40,
@@ -2958,6 +2961,7 @@
       "code": "EA05",
       "gid": "AA",
       "name": "Stamina V",
+      "lvup": "EA06",
       "extend": [
         20,
         40,
@@ -3048,6 +3052,7 @@
       "code": "EB05",
       "gid": "AA",
       "name": "Spirita V",
+      "lvup": "EB06",
       "extend": [
         20,
         40,
@@ -8336,7 +8341,7 @@
       "lvup": "TM02",
       "extend": [
         0,
-        30,
+        80,
         100
       ],
       "status": 4,
@@ -8349,7 +8354,7 @@
       "lvup": "TM03",
       "extend": [
         0,
-        30,
+        70,
         100
       ],
       "generate": [
@@ -8366,7 +8371,7 @@
       "lvup": "TM04",
       "extend": [
         0,
-        30,
+        50,
         100
       ],
       "generate": [
@@ -8383,7 +8388,7 @@
       "lvup": "TM05",
       "extend": [
         0,
-        30,
+        40,
         100
       ],
       "generate": [
@@ -8702,7 +8707,6 @@
         100
       ],
       "generate": [
-        70,
         70
       ],
       "status": 4,
@@ -8719,7 +8723,6 @@
         100
       ],
       "generate": [
-        50,
         50
       ],
       "status": 4,
@@ -8782,7 +8785,6 @@
         100
       ],
       "generate": [
-        70,
         70
       ],
       "status": 4,
