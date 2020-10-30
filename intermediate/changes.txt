@@ -1331,6 +1331,10 @@
     {
       "name": "S1:Rupturing Excess",
       "jpName": "S1:裂砕の剰"
+    },
+    {
+      "name": "S1:Photon Reduction 2",
+      "jpName": "S1:光子縮減2"
     }
   ],
   "addAbilitiesMissingInAst": {
@@ -1341,6 +1345,10 @@
     "S1 Add: Powering Intent": {
       "en": "S1 Add: Powering Intent",
       "jp": "S1追加:強闘の志"
+    },
+    "{replace with english name for S2追加:光子縮減3}": {
+      "en": "{replace with english name for S2追加:光子縮減3}",
+      "jp": "S2追加:光子縮減3"
     },
     "S2 Add: Spirited Response": {
       "en": "S2 Add: Spirited Response",
