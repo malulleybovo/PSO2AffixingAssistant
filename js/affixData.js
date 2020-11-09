@@ -775,6 +775,14 @@ let data = {
                 extend: 100,
                 effect: ""
             },
+			{
+                ref: 154,
+                id: "S1 Add: Powering Intent",
+                name: "S1:Powering Intent",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
             {
                 ref: 199,
                 id: "S2 Add: Umbrageous Melody",
@@ -12006,6 +12014,47 @@ let data = {
             name: "Exceed Receptor",
             effect: "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
         },
+		{
+            ref: 661,
+            code: "UD01",
+            gid: "AC",
+            name: "Ligand Arma",
+            effect: "S-ATK(+40),<br>HP(+30),<br>PP(+3)"
+        },
+		{
+            ref: 662,
+            code: "UD11",
+            gid: "AC",
+            name: "Ligand Tiro",
+            effect: "R-ATK(+40),<br>HP(+30),<br>PP(+3)"
+        },
+		{
+            ref: 663,
+            code: "UD21",
+            gid: "AC",
+            name: "Ligand Magia",
+            effect: "T-ATK(+40),<br>HP(+30),<br>PP(+3)"
+        },
+		{
+            ref: 664,
+            code: "TD0H",
+            gid: "EB",
+            name: "Turkey Fever",
+			extend: [
+			  100
+			],
+            effect: "DEX(+5),<br>T-DEF(+10),<br>HP(+5),<br>PP(+1)"
+        },
+		{
+            ref: 665,
+            code: "TD0G",
+            gid: "EB",
+            name: "Drago Fever",
+			extend: [
+			  100
+			],
+            effect: "DEX(+5),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)"
+        },
         {
             ref: 636,
             code: "XH01",
@@ -12540,6 +12589,7 @@ let data = {
         { name: "S1:Collaborator Liberator", jpName: "S1:戦友の加護" },
         { name: "S1:Green Leaf Flash", jpName: "S1:葉ノ緑閃" },
         { name: "S1:Rupturing Excess", jpName: "S1:裂砕の剰" },
+        { name: "S1:Photon Reduction 2", jpName: "S1:光子縮減2" },
         { name: `S2:Wise Skill`, jpName: `S2:妙技の巧` },
         { name: `S2:Radiant Strike`, jpName: `S2:輝剰の撃` },
         { name: `S2:Guardian Armor`, jpName: `S2:守護の備` },
