@@ -1479,8 +1479,8 @@ const lang = Object.freeze({
     "EA06": {
         name_en: "Stamina VI",
         name_jp: "スタミナⅤI",
-        effect_en: "HP(+70)",
-        effect_jp: "HP(+70)"
+        effect_en: "HP(+80)",
+        effect_jp: "HP(+80)"
     },
     "EB01": {
         name_en: "Spirita I",
