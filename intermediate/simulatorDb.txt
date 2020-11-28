@@ -82,7 +82,7 @@
       },
       {
         "id": "Add Ability (PP)",
-        "name": " Spirita Boost",
+        "name": "Spirita Boost",
         "value": "B03",
         "extend": 100,
         "effect": "PP(+5)"
@@ -2398,6 +2398,10 @@
         40,
         60
       ],
+      "generate": [
+        10,
+        30
+      ],
       "status": 1,
       "effect": "S-ATK(+45)"
     },
@@ -2489,6 +2493,10 @@
         40,
         60
       ],
+      "generate": [
+        10,
+        30
+      ],
       "status": 1,
       "effect": "R-ATK(+45)"
     },
@@ -2579,6 +2587,10 @@
         20,
         40,
         60
+      ],
+      "generate": [
+        10,
+        30
       ],
       "status": 1,
       "effect": "T-ATK(+45)"
@@ -2983,6 +2995,10 @@
         40,
         60
       ],
+      "generate": [
+        10,
+        30
+      ],
       "status": 1,
       "effect": "HP(+80)"
     },
@@ -3073,6 +3089,10 @@
         20,
         40,
         60
+      ],
+      "generate": [
+        10,
+        30
       ],
       "status": 1,
       "effect": "PP(+7)"
@@ -9179,6 +9199,24 @@
       "tooltip": "Used for: ARKS Max"
     },
     {
+      "code": "TD0G",
+      "gid": "EB",
+      "name": "Drago Fever",
+      "extend": [
+        100
+      ],
+      "effect": "DEX(+5),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)"
+    },
+    {
+      "code": "TD0H",
+      "gid": "EB",
+      "name": "Turkey Fever",
+      "extend": [
+        100
+      ],
+      "effect": "DEX(+5),<br>T-DEF(+10),<br>HP(+5),<br>PP(+1)"
+    },
+    {
       "code": "UA01",
       "gid": "AC",
       "name": "Flict Arma",
@@ -9243,6 +9281,24 @@
         80
       ],
       "effect": "T-ATK(+20),<br>HP(+30)"
+    },
+    {
+      "code": "UD01",
+      "gid": "AC",
+      "name": "Ligand Arma",
+      "effect": "S-ATK(+40),<br>HP(+30),<br>PP(+3)"
+    },
+    {
+      "code": "UD11",
+      "gid": "AC",
+      "name": "Ligand Tiro",
+      "effect": "R-ATK(+40),<br>HP(+30),<br>PP(+3)"
+    },
+    {
+      "code": "UD21",
+      "gid": "AC",
+      "name": "Ligand Magia",
+      "effect": "T-ATK(+40),<br>HP(+30),<br>PP(+3)"
     },
     {
       "code": "UC01",
@@ -9742,7 +9798,7 @@
       "gid": "CA",
       "name": "Glare Catalyst",
       "effect": "HP(+10),<br>PP(+1)",
-      "tooltip": "Made from: Veluge Glare, Forduss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
+      "tooltip": "Made from: Veluge Glare, Fordruss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
     },
     {
       "code": "VL01",

@@ -1310,11 +1310,47 @@
         "tooltip": "Made from: 3-5x Doom Break 3"
       },
       {
+        "code": "TD0G",
+        "gid": "EB",
+        "name": "Drago Fever",
+        "extend": [
+          100
+        ],
+        "effect": "DEX(+5),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)"
+      },
+      {
+        "code": "TD0H",
+        "gid": "EB",
+        "name": "Turkey Fever",
+        "extend": [
+          100
+        ],
+        "effect": "DEX(+5),<br>T-DEF(+10),<br>HP(+5),<br>PP(+1)"
+      },
+      {
+        "code": "UD01",
+        "gid": "AC",
+        "name": "Ligand Arma",
+        "effect": "S-ATK(+40),<br>HP(+30),<br>PP(+3)"
+      },
+      {
+        "code": "UD11",
+        "gid": "AC",
+        "name": "Ligand Tiro",
+        "effect": "R-ATK(+40),<br>HP(+30),<br>PP(+3)"
+      },
+      {
+        "code": "UD21",
+        "gid": "AC",
+        "name": "Ligand Magia",
+        "effect": "T-ATK(+40),<br>HP(+30),<br>PP(+3)"
+      },
+      {
         "code": "VJ04",
         "gid": "CA",
         "name": "Glare Catalyst",
         "effect": "HP(+10),<br>PP(+1)",
-        "tooltip": "Made from: Veluge Glare, Forduss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
+        "tooltip": "Made from: Veluge Glare, Fordruss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
       },
       {
         "code": "XK01",
@@ -1345,6 +1381,26 @@
     "S1 Add: Powering Intent": {
       "en": "S1 Add: Powering Intent",
       "jp": "S1追加:強闘の志"
+    },
+    "{replace with english name for S1追加:時流の恵}": {
+      "en": "{replace with english name for S1追加:時流の恵}",
+      "jp": "S1追加:時流の恵"
+    },
+    "{replace with english name for S1追加:光子の秤2}": {
+      "en": "{replace with english name for S1追加:光子の秤2}",
+      "jp": "S1追加:光子の秤2"
+    },
+    "{replace with english name for S1追加:戦友の加護2}": {
+      "en": "{replace with english name for S1追加:戦友の加護2}",
+      "jp": "S1追加:戦友の加護2"
+    },
+    "{replace with english name for S1追加:剛撃の志2}": {
+      "en": "{replace with english name for S1追加:剛撃の志2}",
+      "jp": "S1追加:剛撃の志2"
+    },
+    "{replace with english name for S2追加:月葉影の歌2}": {
+      "en": "{replace with english name for S2追加:月葉影の歌2}",
+      "jp": "S2追加:月葉影の歌2"
     },
     "{replace with english name for S2追加:光子縮減3}": {
       "en": "{replace with english name for S2追加:光子縮減3}",
@@ -1382,9 +1438,29 @@
       "en": "{replace with english name for S2追加:保天輝地2}",
       "jp": "S2追加:保天輝地2"
     },
+    "{replace with english name for S2追加:守護の備2}": {
+      "en": "{replace with english name for S2追加:守護の備2}",
+      "jp": "S2追加:守護の備2"
+    },
+    "{replace with english name for S2追加:瞬乱縮減2}": {
+      "en": "{replace with english name for S2追加:瞬乱縮減2}",
+      "jp": "S2追加:瞬乱縮減2"
+    },
+    "{replace with english name for S2追加:服薬の恵2}": {
+      "en": "{replace with english name for S2追加:服薬の恵2}",
+      "jp": "S2追加:服薬の恵2"
+    },
+    "{replace with english name for S3追加:輝剰の撃3}": {
+      "en": "{replace with english name for S3追加:輝剰の撃3}",
+      "jp": "S3追加:輝剰の撃3"
+    },
     "{replace with english name for S3追加:裂砕妙撃の志}": {
       "en": "{replace with english name for S3追加:裂砕妙撃の志}",
       "jp": "S3追加:裂砕妙撃の志"
+    },
+    "{replace with english name for S3追加:活実の志2}": {
+      "en": "{replace with english name for S3追加:活実の志2}",
+      "jp": "S3追加:活実の志2"
     },
     "{replace with english name for S3追加:諸刃の撃}": {
       "en": "{replace with english name for S3追加:諸刃の撃}",
@@ -1410,17 +1486,45 @@
       "en": "{replace with english name for S5追加:堅守の秤}",
       "jp": "S5追加:堅守の秤"
     },
+    "{replace with english name for S5追加:回避輝与}": {
+      "en": "{replace with english name for S5追加:回避輝与}",
+      "jp": "S5追加:回避輝与"
+    },
+    "{replace with english name for S5追加:静心四連}": {
+      "en": "{replace with english name for S5追加:静心四連}",
+      "jp": "S5追加:静心四連"
+    },
+    "{replace with english name for S5追加:連鎖輝与}": {
+      "en": "{replace with english name for S5追加:連鎖輝与}",
+      "jp": "S5追加:連鎖輝与"
+    },
     "{replace with english name for S6追加:奇跡再演}": {
       "en": "{replace with english name for S6追加:奇跡再演}",
       "jp": "S6追加:奇跡再演"
+    },
+    "{replace with english name for S6追加:累加拡域}": {
+      "en": "{replace with english name for S6追加:累加拡域}",
+      "jp": "S6追加:累加拡域"
+    },
+    "{replace with english name for S6追加:六色の盾}": {
+      "en": "{replace with english name for S6追加:六色の盾}",
+      "jp": "S6追加:六色の盾"
     },
     "{replace with english name for S7追加:視敵無双}": {
       "en": "{replace with english name for S7追加:視敵無双}",
       "jp": "S7追加:視敵無双"
     },
+    "{replace with english name for S7追加:六色の巧}": {
+      "en": "{replace with english name for S7追加:六色の巧}",
+      "jp": "S7追加:六色の巧"
+    },
     "S8 Add: PP Up 2": {
       "en": "S8 Add: PP Up 2",
       "jp": "S8追加:輝器上昇2"
+    },
+    "{replace with english name for S8追加:六色の蝕}": {
+      "en": "{replace with english name for S8追加:六色の蝕}",
+      "jp": "S8追加:六色の蝕"
     }
   }
 }
