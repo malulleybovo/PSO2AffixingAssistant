@@ -775,7 +775,7 @@ let data = {
                 extend: 100,
                 effect: ""
             },
-			{
+            {
                 ref: 154,
                 id: "S1 Add: Powering Intent",
                 name: "S1:Powering Intent",
@@ -12014,45 +12014,45 @@ let data = {
             name: "Exceed Receptor",
             effect: "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
         },
-		{
+        {
             ref: 661,
             code: "UD01",
             gid: "AC",
             name: "Ligand Arma",
             effect: "S-ATK(+40),<br>HP(+30),<br>PP(+3)"
         },
-		{
+        {
             ref: 662,
             code: "UD11",
             gid: "AC",
             name: "Ligand Tiro",
             effect: "R-ATK(+40),<br>HP(+30),<br>PP(+3)"
         },
-		{
+        {
             ref: 663,
             code: "UD21",
             gid: "AC",
             name: "Ligand Magia",
             effect: "T-ATK(+40),<br>HP(+30),<br>PP(+3)"
         },
-		{
+        {
             ref: 664,
             code: "TD0H",
             gid: "EB",
             name: "Turkey Fever",
-			extend: [
-			  100
-			],
+            extend: [
+                100
+            ],
             effect: "DEX(+5),<br>T-DEF(+10),<br>HP(+5),<br>PP(+1)"
         },
-		{
+        {
             ref: 665,
             code: "TD0G",
             gid: "EB",
             name: "Drago Fever",
-			extend: [
-			  100
-			],
+            extend: [
+                100
+            ],
             effect: "DEX(+5),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)"
         },
         {
