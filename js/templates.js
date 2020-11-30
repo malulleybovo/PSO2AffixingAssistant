@@ -179,7 +179,7 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
             <div class="divider"></div>
             ${((fodder && fodder.specialAbilityFactor) ? `<div class="affix special-ability-factor">${lang.app.factorLabel[langCode]}<br>(${lang[fodder.specialAbilityFactor.code]['name_' + langCode]})</div><div class="divider"></div>` : ``)}
             <div class="produce-button${((fodder.hasNonTransferableAffixes()) ? ` disabled">${lang.app.cannotAffixLabel[langCode]}` : `">${(produceLabel) ? produceLabel : ((dataConn >= 0 && fodder.connectedTo && fodder.connectedTo.transplantable !== true) ? lang.app.reAffixLabel[langCode] : lang.app.affixLabel[langCode])}`)}</div>
-            <div class="transplant-button${(fodder.affixes.filter(a => a.noEx !== true) === 0 ? ` disabled` : ``)}">${(fodder.affixes.filter(a => a.noEx !== true) === 0 ? lang.app.cannotTransplantLabel[langCode] : (dataConn >= 0 && fodder.connectedTo && fodder.connectedTo.transplantable === true) ? lang.app.reTransplantLabel[langCode] : lang.app.transplantLabel[langCode])}</div>
+            <div class="transplant-button${(fodder.affixes.filter(a => a.noEx !== true).length === 0 ? ` disabled` : ``)}">${(fodder.affixes.filter(a => a.noEx !== true).length === 0 ? lang.app.cannotTransplantLabel[langCode] : (dataConn >= 0 && fodder.connectedTo && fodder.connectedTo.transplantable === true) ? lang.app.reTransplantLabel[langCode] : lang.app.transplantLabel[langCode])}</div>
             ${(fodder.overallSuccessRate >= 0 || (fodder.connectedTo && fodder.connectedTo.transplantable === true && fodder.connectedTo.transplantCost >= 0)) ? `<div class="success-indicator" title="${lang.app.fodderSuccessDivTitle[langCode]}">
                 <div>${
                 (fodder.connectedTo && fodder.connectedTo.transplantable === true) ? lang.app.transplantTitle[langCode] : lang.app.affixingTitle[langCode]
@@ -455,7 +455,7 @@ const TRANSPLANT_PANEL = ({ fodders, addAbilityChosen, langCode }) => {
     if (numSsas > 0 || addAbilityChosen || addAbilityChoices.length > 0) {
         panel += `<div style="display: block;"><div>${lang.app.transplantOptionsLabel[langCode]}</div></div>`;
     }
-    if (numSsas > 0) {
+    if ((numSsas > 0 || addAbilityChosen) && fodders.length == 2 && fodders[0].size() > 1 && fodders[1].size() > 0) {
         panel += `<div class="transplant-slot-regulator">
                 <div class="button-decrease"><i class="fa fa-minus"></i></div>
                 <div>${lang.app.transplantMaterialSlotLabel[langCode]}</div>
@@ -580,7 +580,7 @@ const SELECTION_MENU_TEMPLATE = ({ type, affixesSelected, categories, datalist, 
                 <div>
                     ${(isAffixSelection || isChoiceSelection || isReviewTweak || isTransplantPanel) ?
                     `<div class="cancel-button">${lang.app.cancelButton[langCode]}</div>` : ``}
-                    ${(isAffixSelection) ? `<div class="confirm-button transplant-confirm-button">${lang.app.transplantButton[langCode]}</div>` : ``}
+                    ${(isAffixSelection) ? `<div class="confirm-button transplant-confirm-button${affixesSelected.filter(a => a.noEx !== true).length === 0 ? ` disabled` : ``}">${lang.app.transplantButton[langCode]}</div>` : ``}
                     <div class="confirm-button${(isAffixSelection) ? ` affix-confirm-button` : ``}${
                         (isAffixSelection) ? ` disabled">${lang.app.affixButton[langCode]}` :
                         (isChoiceSelection) ? ` disabled">${lang.app.confirmButton[langCode]}` :

@@ -799,6 +799,10 @@ const lang = Object.freeze({
             "en": "S1 Add: Brilliant Intent 2",
             "jp": "S1追加:輝充の志2"
         },
+        "S1 Add: Powering Intent": {
+            en: "S1 Add: Powering Intent",
+            jp: "S1追加:強闘の志"
+        },
         "S2 Add: Umbrageous Melody": {
             en: "S2 Add: Umbrageous Melody",
             jp: "S2追加:月葉影の歌"
@@ -1479,8 +1483,8 @@ const lang = Object.freeze({
     "EA06": {
         name_en: "Stamina VI",
         name_jp: "スタミナⅤI",
-        effect_en: "HP(+70)",
-        effect_jp: "HP(+70)"
+        effect_en: "HP(+80)",
+        effect_jp: "HP(+80)"
     },
     "EB01": {
         name_en: "Spirita I",
@@ -4122,29 +4126,59 @@ const lang = Object.freeze({
         effect_en: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
-    TN08: {
+    "TN08": {
         name_en: "Shiva Glare",
         name_jp: "シバ・グレア",
         effect_en: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
         effect_jp: "射撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)"
     },
-    TN09: {
+    "TN09": {
         name_en: "Origin Glare",
         name_jp: "オリジン・グレア",
         effect_en: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30), 射撃力(+30), 法撃力(+30), 打撃防御(+10), 射撃防御(+10), 法撃防御(+10), HP(+20), PP(+2)"
     },
-    TN0A: {
+    "TN0A": {
         name_en: "Photoner Glare",
         name_jp: "フォトナー・グレア",
         effect_en: "ALL(+15), HP(+15), PP(+2)",
         effect_jp: "ALL(+15), HP(+15), PP(+2)"
     },
-    TN11: {
+    "TN11": {
         name_en: "Absolute Glare",
         name_jp: "アブソリュート・グレア",
         effect_en: "ALL(+40), HP(+30), PP(+3)",
         effect_jp: "ALL(+40), HP(+30), PP(+3)"
+    },
+    "UD01": {
+        name_en: "Ligand Arma",
+        name_jp: "リガンド・アルマ",
+        effect_en: "S-ATK(+40),<br>HP(+30),<br>PP(+3)",
+        effect_jp: "打撃力(+40), HP(+30), PP(+3)"
+    },
+    "UD11": {
+        name_en: "Ligand Tiro",
+        name_jp: "リガンド・ティロ",
+        effect_en: "R-ATK(+40),<br>HP(+30),<br>PP(+3)",
+        effect_jp: "射撃力(+40),<br>HP(+30),<br>PP(+3)"
+    },
+    "UD21": {
+        name_en: "Ligand Magia",
+        name_jp: "リガンド・マギア",
+        effect_en: "T-ATK(+40),<br>HP(+30),<br>PP(+3)",
+        effect_jp: "法撃力(+40),<br>HP(+30),<br>PP(+3)"
+    },
+    "TD0H": {
+        name_en: "Turkey Fever",
+        name_jp: "リガンド・マギア",
+        effect_en: "DEX(+5),<br>T-DEF(+10),<br>HP(+5),<br>PP(+1)",
+        effect_jp: "技量(+5),<br>法撃防御(+10),<br>HP(+5),<br>PP(+1)"
+    },
+    "TD0G": {
+        name_en: "Drago Fever",
+        name_jp: "リガンド・マギア",
+        effect_en: "DEX(+5),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)",
+        effect_jp: "技量(+5),<br>射撃防御(+10),<br>HP(+5),<br>PP(+1)"
     },
     "TF01": {
         name_en: "Spirita Alpha",
