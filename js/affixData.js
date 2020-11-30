@@ -784,6 +784,38 @@ let data = {
                 effect: ""
             },
             {
+                ref: 666,
+                id: "S1 Add: Photon Balance 2",
+                name: "S1:Photon Balance 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 667,
+                id: "S1 Add: Collaborator Liberator 2",
+                name: "S1:Collaborator Liberator 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 668,
+                id: "S1 Add: Offensive Intent 2",
+                name: "S1:Offensive Intent 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 684,
+                id: "S1 Add: Flowing Grace",
+                name: "S1:Flowing Grace",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 199,
                 id: "S2 Add: Umbrageous Melody",
                 name: "S2:Umbrageous Melody",
@@ -1008,6 +1040,54 @@ let data = {
                 effect: ""
             },
             {
+                ref: 669,
+                id: "S2 Add: Umbrageous Melody 2",
+                name: "S2:Umbrageous Melody 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 670,
+                id: "S2 Add: Photon Reduction 3",
+                name: "S2:Photon Reduction 3",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 671,
+                id: "S2 Add: Guardian Armor 2",
+                name: "S2:Guardian Armor 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 672,
+                id: "S2 Add: Instant Reduction 2",
+                name: "S2:Instant Reduction 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 673,
+                id: "S2 Add: Instant Purpose",
+                name: "S2:Instant Purpose",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 674,
+                id: "S2 Add: Medicinal Wisdom 2",
+                name: "S2:Medicinal Wisdom 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 232,
                 id: "S3 Add: Nature's Melody",
                 name: "S3:Nature's Melody",
@@ -1224,6 +1304,22 @@ let data = {
                 effect: ""
             },
             {
+                ref: 675,
+                id: "S3 Add: Radiant Strike 3",
+                name: "S3:Radiant Strike 3",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 676,
+                id: "S3 Add: Vital Intent 2",
+                name: "S3:Vital Intent 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 260,
                 id: "S4 Add: Heavenly Protection",
                 name: "S4:Heavenly Protection",
@@ -1376,6 +1472,38 @@ let data = {
                 effect: ""
             },
             {
+                ref: 648,
+                id: "S5 Add: Calming Quartet",
+                name: "S5:Calming Quartet",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 677,
+                id: "S5 Add: Aegis Balance",
+                name: "S5:Aegis Balance",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 678,
+                id: "S5 Add: Swift Radiance",
+                name: "S5:Swift Radiance",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 679,
+                id: "S5 Add: Chained Radiance",
+                name: "S5:Chained Radiance",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 560,
                 id: "S6 Add: Ironclad Illness",
                 name: "S6:Ironclad Illness",
@@ -1443,6 +1571,22 @@ let data = {
                 ref: 649,
                 id: "S6 Add: Wondrous Encore",
                 name: "S6:Wondrous Encore",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 680,
+                id: "S6 Add: Raising Expanse",
+                name: "S6:Raising Expanse",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 681,
+                id: "S6 Add: Rainbow's Shield",
+                name: "S6:Rainbow's Shield",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -1520,6 +1664,14 @@ let data = {
                 effect: ""
             },
             {
+                ref: 682,
+                id: "S7 Add: Rainbow's Skill",
+                name: "S7:Rainbow's Skill",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
                 ref: 590,
                 id: "S8 Add: HP Up",
                 name: "S8:HP Up",
@@ -1571,6 +1723,14 @@ let data = {
                 ref: 593,
                 id: "S8 Add: PP Up 2",
                 name: "S8:PP Up 2",
+                value: "",
+                extend: 100,
+                effect: ""
+            },
+            {
+                ref: 683,
+                id: "S8 Add: Rainbow's Decay",
+                name: "S8:Rainbow's Decay",
                 value: "",
                 extend: 100,
                 effect: ""
@@ -6303,6 +6463,56 @@ let data = {
             noEx: true
         },
         {
+            ref: 666,
+            code: "LA98",
+            gid: "L1",
+            name: "S1:Photon Balance 2",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Increase PP Consumption by 4% but increase PA/Technique damage by 6%.",
+            noEx: true
+        },
+        {
+            ref: 667,
+            code: "LA97",
+            gid: "L1",
+            name: "S1:Collaborator Liberator 2",
+            extend: [
+                100
+            ],
+            effect: "If there are two or more party members, decrease PP consumption by 10% (2 Members), +?% Critical Hit Rate (3 Members), and increase Power by 4% (4 Members). Bonuses only work on self.",
+            noEx: true
+        },
+        {
+            ref: 668,
+            code: "LA96",
+            gid: "L1",
+            name: "S1:Offensive Intent 2",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Boosts damage by 4%.",
+            noEx: true
+        },
+        {
+            ref: 684,
+            code: "LA77",
+            gid: "L1",
+            name: "S1:Flowing Grace",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "Boosts damage by 4%.",
+            noEx: true
+        },
+        {
             ref: 170,
             code: "LB01",
             gid: "L2",
@@ -7011,6 +7221,84 @@ let data = {
             noEx: true
         },
         {
+            ref: 669,
+            code: "LB2K",
+            gid: "L2",
+            name: "S2:Umbrageous Melody 2",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
+            ref: 670,
+            code: "LB96",
+            gid: "L2",
+            name: "S2:Photon Reduction 3",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
+            ref: 671,
+            code: "LB95",
+            gid: "L2",
+            name: "S2:Guardian Armor 2",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
+            ref: 672,
+            code: "LB94",
+            gid: "L2",
+            name: "S2:Instant Reduction 2",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
+            ref: 673,
+            code: "LB88",
+            gid: "L2",
+            name: "S2:Instant Purpose",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
+            ref: 674,
+            code: "LB87",
+            gid: "L2",
+            name: "S2:Medicinal Wisdom 2",
+            extend: [
+                100,
+                100,
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
             ref: 211,
             code: "LC01",
             gid: "L3",
@@ -7565,6 +7853,28 @@ let data = {
                 100
             ],
             effect: "Deal 4% more damage but take 8% more damage when weapon is drawn.",
+            noEx: true
+        },
+        {
+            ref: 675,
+            code: "LC97",
+            gid: "L3",
+            name: "S3:Radiant Strike 3",
+            extend: [
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
+            ref: 676,
+            code: "LC96",
+            gid: "L3",
+            name: "S3:Vital Intent 2",
+            extend: [
+                100
+            ],
+            effect: "",
             noEx: true
         },
         {
@@ -8211,6 +8521,39 @@ let data = {
             noEx: true
         },
         {
+            ref: 677,
+            code: "LE96",
+            gid: "L5",
+            name: "S5:Aegis Balance",
+            extend: [
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
+            ref: 678,
+            code: "LE0R",
+            gid: "L5",
+            name: "S5:Swift Radiance",
+            extend: [
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
+            ref: 679,
+            code: "LE0N",
+            gid: "L5",
+            name: "S5:Chained Radiance",
+            extend: [
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
             ref: 557,
             code: "LF0A",
             gid: "L6",
@@ -8421,6 +8764,28 @@ let data = {
             noEx: true
         },
         {
+            ref: 680,
+            code: "LF98",
+            gid: "L6",
+            name: "S6:Raising Expanse",
+            extend: [
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
+            ref: 681,
+            code: "LF97",
+            gid: "L6",
+            name: "S6:Rainbow's Shield",
+            extend: [
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
             ref: 573,
             code: "LG0A",
             gid: "L7",
@@ -8597,6 +8962,17 @@ let data = {
             noEx: true
         },
         {
+            ref: 682,
+            code: "LG98",
+            gid: "L7",
+            name: "S7:Rainbow's Skill",
+            extend: [
+                100
+            ],
+            effect: "",
+            noEx: true
+        },
+        {
             ref: 585,
             code: "LH0A",
             gid: "L8",
@@ -8704,6 +9080,17 @@ let data = {
                 100
             ],
             effect: "Reduce falling speed while charging a Technique in mid-air.",
+            noEx: true
+        },
+        {
+            ref: 683,
+            code: "LH98",
+            gid: "L8",
+            name: "S8:Rainbow's Decay",
+            extend: [
+                100
+            ],
+            effect: "",
             noEx: true
         },
         {
