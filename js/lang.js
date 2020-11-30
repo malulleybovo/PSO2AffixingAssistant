@@ -799,7 +799,7 @@ const lang = Object.freeze({
             "en": "S1 Add: Brilliant Intent 2",
             "jp": "S1追加:輝充の志2"
         },
-		"S1 Add: Powering Intent": {
+        "S1 Add: Powering Intent": {
             en: "S1 Add: Powering Intent",
             jp: "S1追加:強闘の志"
         },
@@ -4150,31 +4150,31 @@ const lang = Object.freeze({
         effect_en: "ALL(+40), HP(+30), PP(+3)",
         effect_jp: "ALL(+40), HP(+30), PP(+3)"
     },
-	"UD01": {
+    "UD01": {
         name_en: "Ligand Arma",
         name_jp: "リガンド・アルマ",
         effect_en: "S-ATK(+40),<br>HP(+30),<br>PP(+3)",
         effect_jp: "打撃力(+40), HP(+30), PP(+3)"
     },
-	"UD11": {
+    "UD11": {
         name_en: "Ligand Tiro",
         name_jp: "リガンド・ティロ",
         effect_en: "R-ATK(+40),<br>HP(+30),<br>PP(+3)",
         effect_jp: "射撃力(+40),<br>HP(+30),<br>PP(+3)"
     },
-	"UD21": {
+    "UD21": {
         name_en: "Ligand Magia",
         name_jp: "リガンド・マギア",
         effect_en: "T-ATK(+40),<br>HP(+30),<br>PP(+3)",
         effect_jp: "法撃力(+40),<br>HP(+30),<br>PP(+3)"
     },
-	"TD0H": {
+    "TD0H": {
         name_en: "Turkey Fever",
         name_jp: "リガンド・マギア",
         effect_en: "DEX(+5),<br>T-DEF(+10),<br>HP(+5),<br>PP(+1)",
         effect_jp: "技量(+5),<br>法撃防御(+10),<br>HP(+5),<br>PP(+1)"
     },
-	"TD0G": {
+    "TD0G": {
         name_en: "Drago Fever",
         name_jp: "リガンド・マギア",
         effect_en: "DEX(+5),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)",
