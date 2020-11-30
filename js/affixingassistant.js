@@ -342,7 +342,7 @@ class Assistant {
         if (fodder === undefined || fodder === null || !(fodder instanceof Fodder)) return null;
         let choices = this.getTransplantChoicesFor(fodder, addAbilityIndex);
         let pageNumSlots = desiredSlotCount > fodder.size() ? fodder.size() :
-            (desiredSlotCount < choices.materialAbilities.required.length ? choices.materialAbilities.required.length : desiredSlotCount-1);
+            (desiredSlotCount < choices.materialAbilities.required.length ? choices.materialAbilities.required.length : desiredSlotCount);
         if (choices === null || pageNumSlots > choices.materialAbilities.required.length + choices.materialAbilities.optional.length)
             return null;
         let materialAbilities = choices.materialAbilities.required;
