@@ -646,7 +646,7 @@ const lang = Object.freeze({
         "Add Ability (Grand HP)": {
             en: "Add Ability (Grand HP)",
             jp: "特殊能力(グランドHP)",
-            glen:"*Affix Augment (Grand HP)"
+            glen:"*Affix Augment (Grand Stamina)"
         },
         "Add Ability (S-ATK&PP)": {
             en: "Add Ability (S-ATK&PP)",
@@ -666,7 +666,7 @@ const lang = Object.freeze({
         "Add Ability (Grand P)": {
             en: "Add Ability (Grand P)",
             jp: "特殊能力(グランドP)",
-            glen:"*Affix Augment (Grand P)"
+            glen:"*Affix Augment (Grand Might)"
         },
         "Add Ability (R-ATK&PP)": {
             en: "Add Ability (R-ATK&PP)",
@@ -686,7 +686,7 @@ const lang = Object.freeze({
         "Add Ability (Grand S)": {
             en: "Add Ability (Grand S)",
             jp: "特殊能力(グランドS)",
-            glen:"*Affix Augment (Grand S)"
+            glen:"*Affix Augment (Grand Might)"
         },
         "Add Ability (T-ATK&PP)": {
             en: "Add Ability (T-ATK&PP)",
@@ -706,12 +706,12 @@ const lang = Object.freeze({
         "Add Ability (Grand T)": {
             en: "Add Ability (Grand T)",
             jp: "特殊能力(グランドT)",
-            glen:"*Affix Augment (Grand T)"
+            glen:"*Affix Augment (Grand Casting)"
         },
         "Add Ability (Grand PP)": {
             en: "Add Ability (Grand PP)",
             jp: "特殊能力(グランドPP)",
-            glen:"*Affix Augment (Grand PP)"
+            glen:"*Affix Augment (Grand Spirit)"
         },
         "Add Ability (Offense Focus)": {
             en: "Add Ability (Offense Focus)",
@@ -6261,7 +6261,7 @@ const lang = Object.freeze({
     "XI61": {
         name_en: "Grand Stamina",
         name_jp: "グランド・スタミナ",
-        name_glen: "*Grand Stamina",
+        name_glen: "Grand Stamina",
         effect_en: "HP(+100),PP(+6)",
         effect_jp: "HP(+100),PP(+6)",
         effect_glen: "HP(+100),PP(+6)"
@@ -6293,7 +6293,7 @@ const lang = Object.freeze({
     "XI62": {
         name_en: "Grand Power",
         name_jp: "グランド・パワー",
-        name_glen: "*Grand Might",
+        name_glen: "Grand Might",
         effect_en: "S-ATK(+60),HP(+20),PP(+5)",
         effect_jp: "打撃力(+60),HP(+20),PP(+5)",
         effect_glen: "MEL Pwr(+60),HP(+20),PP(+5)"
@@ -6325,7 +6325,7 @@ const lang = Object.freeze({
     "XI63": {
         name_en: "Grand Shoot",
         name_jp: "グランド・シュート",
-        name_glen: "*Grand Precision",
+        name_glen: "Grand Precision",
         effect_en: "R-ATK(+60),HP(+20),PP(+5)",
         effect_jp: "射撃力(+60),HP(+20),PP(+5)",
         effect_glen: "RNG Pwr(+60),HP(+20),PP(+5)"
@@ -6357,7 +6357,7 @@ const lang = Object.freeze({
     "XI64": {
         name_en: "Grand Technique",
         name_jp: "グランド・テクニック",
-        name_glen: "*Grand Casting",
+        name_glen: "Grand Casting",
         effect_en: "T-ATK(+60),HP(+20),PP(+5)",
         effect_jp: "法撃力(+50),HP(+20),PP(+5)",
         effect_glen: "TEC Pwr(+60),HP(+20),PP(+5)"
@@ -6365,7 +6365,7 @@ const lang = Object.freeze({
     "XI60": {
         name_en: "Grace Spirita",
         name_jp: "グランド・スピリタ",
-        name_glen: "Graceful Spirit",
+        name_glen: "Grand Spirit",
         effect_en: "PP(+15)",
         effect_jp: "PP(+15)",
         effect_glen: "PP(+15)"
