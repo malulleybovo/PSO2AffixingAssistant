@@ -1446,6 +1446,10 @@
       "en": "{replace with english name for S2追加:瞬乱縮減2}",
       "jp": "S2追加:瞬乱縮減2"
     },
+    "{replace with english name for S2追加:瞬乱巧志}": {
+      "en": "{replace with english name for S2追加:瞬乱巧志}",
+      "jp": "S2追加:瞬乱巧志"
+    },
     "{replace with english name for S2追加:服薬の恵2}": {
       "en": "{replace with english name for S2追加:服薬の恵2}",
       "jp": "S2追加:服薬の恵2"
