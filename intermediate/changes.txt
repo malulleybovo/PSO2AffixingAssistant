@@ -1,750 +1,26 @@
 {
-  "support": {
-    "outdatedInAst": [
-      {
-        "id": "Ability Success Rate +65%",
-        "name": "+65%",
-        "value": "A11",
-        "boost": 65
-      }
-    ]
-  },
-  "additional": {
-    "outdatedInAst": [
-      {
-        "id": "Add Ability (Ether S)",
-        "name": "Ether Soul",
-        "value": "B43",
-        "extend": 100,
-        "effect": "ALL(+15),<br>HP(+15),<br>PP(+2)"
-      },
-      {
-        "id": "Add Ability (Factor C)",
-        "name": "Factor Catalyst",
-        "value": "B44",
-        "extend": 100,
-        "effect": "ALL(+10),<br>PP(+1)"
-      },
-      {
-        "id": "Add Ability (Omega M)",
-        "name": "Omega Memoria",
-        "value": "B45",
-        "extend": 100,
-        "effect": "ALL(+15),<br>HP(+15),<br>PP(+2)"
-      },
-      {
-        "id": "Add Ability (Reverie C)",
-        "name": "Reverie Catalyst",
-        "value": "B46",
-        "extend": 100,
-        "effect": "ALL(+10),<br>PP(+1)"
-      }
-    ]
-  },
   "extendAbility": {
-    "outdatedInSim": [
-      {
-        "base": [
-          "XI30",
-          "AA01"
-        ],
-        "ref": "AA01",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AA02"
-        ],
-        "ref": "AA02",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AA03"
-        ],
-        "ref": "AA03",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AA04"
-        ],
-        "ref": "AA04",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AB01"
-        ],
-        "ref": "AB01",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AB02"
-        ],
-        "ref": "AB02",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AB03"
-        ],
-        "ref": "AB03",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AB04"
-        ],
-        "ref": "AB04",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AC01"
-        ],
-        "ref": "AC01",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AC02"
-        ],
-        "ref": "AC02",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AC03"
-        ],
-        "ref": "AC03",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AC04"
-        ],
-        "ref": "AC04",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AD01"
-        ],
-        "ref": "AD01",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AD02"
-        ],
-        "ref": "AD02",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AD03"
-        ],
-        "ref": "AD03",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AD04"
-        ],
-        "ref": "AD04",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BA01"
-        ],
-        "ref": "BA01",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BA02"
-        ],
-        "ref": "BA02",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BA03"
-        ],
-        "ref": "BA03",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BA04"
-        ],
-        "ref": "BA04",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BB01"
-        ],
-        "ref": "BB01",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BB02"
-        ],
-        "ref": "BB02",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BB03"
-        ],
-        "ref": "BB03",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BB04"
-        ],
-        "ref": "BB04",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BC01"
-        ],
-        "ref": "BC01",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BC02"
-        ],
-        "ref": "BC02",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BC03"
-        ],
-        "ref": "BC03",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BC04"
-        ],
-        "ref": "BC04",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EA01"
-        ],
-        "ref": "EA01",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EA02"
-        ],
-        "ref": "EA02",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EA03"
-        ],
-        "ref": "EA03",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EA04"
-        ],
-        "ref": "EA04",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EB01"
-        ],
-        "ref": "EB01",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EB02"
-        ],
-        "ref": "EB02",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EB03"
-        ],
-        "ref": "EB03",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EB04"
-        ],
-        "ref": "EB04",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AA05"
-        ],
-        "ref": "AA05",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AB05"
-        ],
-        "ref": "AB05",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AC05"
-        ],
-        "ref": "AC05",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AD05"
-        ],
-        "ref": "AD05",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BA05"
-        ],
-        "ref": "BA05",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BB05"
-        ],
-        "ref": "BB05",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BC05"
-        ],
-        "ref": "BC05",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EA05"
-        ],
-        "ref": "EA05",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EB05"
-        ],
-        "ref": "EB05",
-        "success": 100
-      }
-    ],
     "outdatedInAst": [
       {
         "base": [
-          "XA01",
-          "SA02"
+          "XL01",
+          "TK0*"
         ],
-        "ref": "SA02",
+        "ref": "$$",
+        "success": 100
+      },
+      {
+        "base": [
+          "XL01",
+          "TK1*"
+        ],
+        "ref": "$$",
         "success": 10
-      },
-      {
-        "base": [
-          "TN01",
-          "TN02",
-          "TN04",
-          "TN05"
-        ],
-        "ref": "VJ04",
-        "success": 10
-      },
-      {
-        "base": [
-          "TN02",
-          "TN03",
-          "TN04",
-          "TN05"
-        ],
-        "ref": "VJ04",
-        "success": 10
-      },
-      {
-        "base": [
-          "TN06",
-          "TN07",
-          "TN08",
-          "TN09"
-        ],
-        "ref": "TN0A",
-        "success": 10
-      },
-      {
-        "base": [
-          "VJ04",
-          "VJ04",
-          "VJ04",
-          "VJ04",
-          "TN0A"
-        ],
-        "ref": "TN11",
-        "success": 60
-      },
-      {
-        "base": [
-          "SA01",
-          "TG31",
-          "TK10",
-          "TN11"
-        ],
-        "ref": "SA02",
-        "success": 10
-      },
-      {
-        "base": [
-          "XI30",
-          "AA*"
-        ],
-        "ref": "$$",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AB*"
-        ],
-        "ref": "$$",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AC*"
-        ],
-        "ref": "$$",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI30",
-          "AD*"
-        ],
-        "ref": "$$",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BA*"
-        ],
-        "ref": "$$",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BB*"
-        ],
-        "ref": "$$",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI31",
-          "BC*"
-        ],
-        "ref": "$$",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EA*"
-        ],
-        "ref": "$$",
-        "success": 100
-      },
-      {
-        "base": [
-          "XI32",
-          "EB*"
-        ],
-        "ref": "$$",
-        "success": 100
-      },
-      {
-        "base": [
-          "IE*",
-          "XK01"
-        ],
-        "ref": "$$",
-        "success": 100
       }
     ]
-  },
-  "boostPoint": {
-    "photon": {
-      "create": {
-        "2": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "3": {
-          "6": {
-            "valueInSim": 0
-          }
-        }
-      }
-    },
-    "mutation1": {
-      "create": {
-        "1": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "2": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "3": {
-          "6": {
-            "valueInSim": 0
-          }
-        }
-      }
-    },
-    "mutation2": {
-      "create": {
-        "1": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "2": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "3": {
-          "6": {
-            "valueInSim": 0
-          }
-        }
-      }
-    },
-    "soul": {
-      "create": {
-        "1": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "2": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "3": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "4": {
-          "6": {
-            "valueInSim": 0
-          }
-        }
-      },
-      "extend": {
-        "1": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "2": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "3": {
-          "6": {
-            "valueInSim": 0
-          }
-        },
-        "4": {
-          "6": {
-            "valueInSim": 0
-          }
-        }
-      }
-    },
-    "extreme": {
-      "extend": {
-        "1": {
-          "6": {
-            "valueInSim": {
-              "max": 60,
-              "boost": 20
-            }
-          }
-        }
-      }
-    }
   },
   "ability": {
     "outdatedInSim": [
-      {
-        "ref": 58,
-        "code": "HB01",
-        "gid": "DA",
-        "name": "Shoot Resist I",
-        "lvup": "HB02",
-        "extend": [
-          100,
-          100,
-          100
-        ],
-        "status": 1,
-        "effect": "Range Resist(+3)"
-      },
-      {
-        "ref": 59,
-        "code": "HB02",
-        "gid": "DA",
-        "name": "Shoot Resist II",
-        "lvup": "HB03",
-        "extend": [
-          60,
-          80,
-          100
-        ],
-        "generate": [
-          60,
-          80
-        ],
-        "status": 1,
-        "effect": "Range Resist(+4)"
-      },
-      {
-        "ref": 60,
-        "code": "HB03",
-        "gid": "DA",
-        "name": "Shoot Resist III",
-        "lvup": "HB04",
-        "extend": [
-          60,
-          80,
-          100
-        ],
-        "generate": [
-          30,
-          50
-        ],
-        "status": 1,
-        "effect": "Range Resist(+5)"
-      },
-      {
-        "ref": 61,
-        "code": "HB04",
-        "gid": "DA",
-        "name": "Shoot Resist IV",
-        "lvup": "HB05",
-        "extend": [
-          40,
-          60,
-          80
-        ],
-        "generate": [
-          20,
-          40
-        ],
-        "status": 1,
-        "effect": "Range Resist(+6)"
-      },
-      {
-        "ref": 62,
-        "code": "HB05",
-        "gid": "DA",
-        "name": "Shoot Resist V",
-        "extend": [
-          20,
-          40,
-          60
-        ],
-        "generate": [
-          10,
-          30
-        ],
-        "status": 1,
-        "effect": "Range Resist(+7)"
-      },
       {
         "ref": 133,
         "code": "LA01",
@@ -799,7 +75,7 @@
         "ref": 136,
         "code": "LA04",
         "gid": "L1",
-        "name": "S1:Skilled Brilliance",
+        "name": "S1:Brilliant Intent",
         "extend": [
           100,
           100,
@@ -953,7 +229,7 @@
         "ref": 147,
         "code": "LA21",
         "gid": "L1",
-        "name": "S1:Skilled Strike",
+        "name": "S1:Skilled Intent",
         "extend": [
           100,
           100,
@@ -1278,6 +554,56 @@
         "noEx": true
       },
       {
+        "ref": 666,
+        "code": "LA98",
+        "gid": "L1",
+        "name": "S1:Photon Balance 2",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "Increase PP Consumption by 4% but increase PA/Technique damage by 6%.",
+        "noEx": true
+      },
+      {
+        "ref": 667,
+        "code": "LA97",
+        "gid": "L1",
+        "name": "S1:Collaborator Liberator 2",
+        "extend": [
+          100
+        ],
+        "effect": "If there are two or more party members, decrease PP consumption by 10% (2 Members), +?% Critical Hit Rate (3 Members), and increase Power by 4% (4 Members). Bonuses only work on self.",
+        "noEx": true
+      },
+      {
+        "ref": 668,
+        "code": "LA96",
+        "gid": "L1",
+        "name": "S1:Offensive Intent 2",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "Boosts damage by 4%.",
+        "noEx": true
+      },
+      {
+        "ref": 684,
+        "code": "LA77",
+        "gid": "L1",
+        "name": "S1:Flowing Grace",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "Boosts damage by 4%.",
+        "noEx": true
+      },
+      {
         "ref": 170,
         "code": "LB01",
         "gid": "L2",
@@ -1551,7 +877,7 @@
         "ref": 189,
         "code": "LB1A",
         "gid": "L2",
-        "name": "S2:Skilled Strike",
+        "name": "S2:Skilled Intent",
         "extend": [
           100,
           100,
@@ -1744,7 +1070,7 @@
         "ref": 203,
         "code": "LB1O",
         "gid": "L2",
-        "name": "S2:Skilled Strike 2",
+        "name": "S2:Skilled Intent 2",
         "extend": [
           100,
           100,
@@ -1960,14 +1286,93 @@
       {
         "ref": 642,
         "code": "LB98",
+        "simCode": "LB2L",
         "gid": "L2",
-        "name": "S2:Skilled Brilliance",
+        "name": "S2:Brilliant Intent",
         "extend": [
           100,
           100,
           100
         ],
         "effect": "Boosts damage by 3% while PP at is 40% or above.",
+        "noEx": true
+      },
+      {
+        "ref": 669,
+        "code": "LB2K",
+        "gid": "L2",
+        "name": "S2:Umbrageous Melody 2",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
+        "ref": 670,
+        "code": "LB96",
+        "gid": "L2",
+        "name": "S2:Photon Reduction 3",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
+        "ref": 671,
+        "code": "LB95",
+        "gid": "L2",
+        "name": "S2:Guardian Armor 2",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
+        "ref": 672,
+        "code": "LB94",
+        "gid": "L2",
+        "name": "S2:Instant Reduction 2",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
+        "ref": 673,
+        "code": "LB88",
+        "gid": "L2",
+        "name": "S2:Instant Purpose",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
+        "ref": 674,
+        "code": "LB87",
+        "gid": "L2",
+        "name": "S2:Medicinal Wisdom 2",
+        "extend": [
+          100,
+          100,
+          100
+        ],
+        "effect": "",
         "noEx": true
       },
       {
@@ -2024,7 +1429,7 @@
         "ref": 214,
         "code": "LC04",
         "gid": "L3",
-        "name": "S3:Skilled Strike",
+        "name": "S3:Skilled Intent",
         "extend": [
           100,
           100,
@@ -2037,7 +1442,7 @@
         "ref": 619,
         "code": "LC1O",
         "gid": "L3",
-        "name": "S3:Skilled Strike 2",
+        "name": "S3:Skilled Intent 2",
         "extend": [
           100
         ],
@@ -2480,6 +1885,61 @@
         "noEx": true
       },
       {
+        "ref": 644,
+        "code": "LC1Y",
+        "gid": "L3",
+        "name": "S3:Immediate Brilliance",
+        "extend": [
+          100
+        ],
+        "effect": "Successful JA hits<br>boosts your PP<br>recovery amount by<br>3%. Cannot exceed<br>30%. Non-JA hits<br>are excluded.",
+        "noEx": true
+      },
+      {
+        "ref": 645,
+        "code": "LC1Z",
+        "gid": "L3",
+        "name": "S3:Puncturing Intent",
+        "extend": [
+          100
+        ],
+        "effect": "Upon landing a<br>Critical Hit on a<br>breakable part,<br>your power is<br>boosted by 9%.",
+        "noEx": true
+      },
+      {
+        "ref": 659,
+        "code": "LC1Q",
+        "gid": "L3",
+        "name": "S3:Double-Edged Sword",
+        "extend": [
+          100
+        ],
+        "effect": "Deal 4% more damage but take 8% more damage when weapon is drawn.",
+        "noEx": true
+      },
+      {
+        "ref": 675,
+        "code": "LC97",
+        "gid": "L3",
+        "name": "S3:Radiant Strike 3",
+        "extend": [
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
+        "ref": 676,
+        "code": "LC96",
+        "gid": "L3",
+        "name": "S3:Vital Intent 2",
+        "extend": [
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
         "ref": 243,
         "code": "LD07",
         "gid": "L4",
@@ -2730,7 +2190,7 @@
         "ref": 262,
         "code": "LD0Q",
         "gid": "L4",
-        "name": "S4:Mysterious Strike",
+        "name": "S4:Skilled Balance",
         "extend": [
           100,
           100,
@@ -3024,7 +2484,7 @@
         "ref": 556,
         "code": "LE0H",
         "gid": "L5",
-        "name": "S5:Mysterious Intent",
+        "name": "S5:Mysterious Purpose",
         "extend": [
           100
         ],
@@ -3080,12 +2540,79 @@
       {
         "ref": 643,
         "code": "LE97",
+        "simCode": "LE0M",
         "gid": "L5",
         "name": "S5:Angelic Respite",
         "extend": [
           100
         ],
         "effect": "At maximum gear, no gear is consumed while airborne. Increase Power by 2%. Partizan only.",
+        "noEx": true
+      },
+      {
+        "ref": 646,
+        "code": "LE0P",
+        "gid": "L5",
+        "name": "S5:Calming Expanse",
+        "extend": [
+          100
+        ],
+        "effect": "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only.",
+        "noEx": true
+      },
+      {
+        "ref": 647,
+        "code": "LE0Q",
+        "gid": "L5",
+        "name": "S5:Area Support",
+        "extend": [
+          100
+        ],
+        "effect": "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active.",
+        "noEx": true
+      },
+      {
+        "ref": 648,
+        "code": "LE0O",
+        "gid": "L5",
+        "name": "S5:Calming Quartet",
+        "extend": [
+          100
+        ],
+        "effect": "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only.",
+        "noEx": true
+      },
+      {
+        "ref": 677,
+        "code": "LE96",
+        "gid": "L5",
+        "name": "S5:Aegis Balance",
+        "extend": [
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
+        "ref": 678,
+        "code": "LE0R",
+        "gid": "L5",
+        "name": "S5:Swift Radiance",
+        "extend": [
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
+        "ref": 679,
+        "code": "LE0N",
+        "gid": "L5",
+        "name": "S5:Chained Radiance",
+        "extend": [
+          100
+        ],
+        "effect": "",
         "noEx": true
       },
       {
@@ -3288,6 +2815,39 @@
         "noEx": true
       },
       {
+        "ref": 649,
+        "code": "LF0T",
+        "gid": "L6",
+        "name": "S6:Wondrous Encore",
+        "extend": [
+          100
+        ],
+        "effect": "Reduces Showtime's<br>hate increase. Once per<br>activation, reduces<br>damage taken and<br>maintains One More Time.",
+        "noEx": true
+      },
+      {
+        "ref": 680,
+        "code": "LF98",
+        "gid": "L6",
+        "name": "S6:Raising Expanse",
+        "extend": [
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
+        "ref": 681,
+        "code": "LF97",
+        "gid": "L6",
+        "name": "S6:Rainbow's Shield",
+        "extend": [
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
         "ref": 573,
         "code": "LG0A",
         "gid": "L7",
@@ -3453,6 +3013,28 @@
         "noEx": true
       },
       {
+        "ref": 650,
+        "code": "LG0P",
+        "gid": "L7",
+        "name": "S7:Descried Warrior",
+        "extend": [
+          100
+        ],
+        "effect": "Boosts damage by 1%<br>& reduces damage<br>taken by enemies<br>targeting you by<br>15%.",
+        "noEx": true
+      },
+      {
+        "ref": 682,
+        "code": "LG98",
+        "gid": "L7",
+        "name": "S7:Rainbow's Skill",
+        "extend": [
+          100
+        ],
+        "effect": "",
+        "noEx": true
+      },
+      {
         "ref": 585,
         "code": "LH0A",
         "gid": "L8",
@@ -3563,161 +3145,18 @@
         "noEx": true
       },
       {
-        "ref": 346,
-        "code": "TK04",
-        "gid": "AC",
-        "name": "Apprezina Reverie",
+        "ref": 683,
+        "code": "LH98",
+        "gid": "L8",
+        "name": "S8:Rainbow's Decay",
         "extend": [
-          0,
-          30,
-          50
+          100
         ],
-        "status": 6,
-        "effect": "S-ATK(+20),<br>R-ATK(+40),<br>T-ATK(+20),<br>HP(-10),<br>PP(-1)"
-      },
-      {
-        "ref": 358,
-        "code": "TH01",
-        "gid": "AC",
-        "name": "Doom Break",
-        "lvup": "TH02",
-        "extend": [
-          0,
-          50,
-          80
-        ],
-        "extup": [
-          "FA03"
-        ],
-        "rel": "doom",
-        "effect": "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>PP(+2)"
-      },
-      {
-        "ref": 359,
-        "code": "TH02",
-        "gid": "AC",
-        "name": "Doom Break 2",
-        "extend": [
-          0,
-          50,
-          80
-        ],
-        "generate": [
-          0,
-          10,
-          30,
-          50
-        ],
-        "extup": [
-          "FA03"
-        ],
-        "rel": "doom2",
-        "effect": "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
-        "tooltip": "Made by: 3-5x Doom Break"
-      },
-      {
-        "ref": 620,
-        "code": "TH03",
-        "gid": "AD",
-        "name": "Doom Break 3",
-        "extend": [
-          0,
-          50,
-          80
-        ],
-        "generate": [
-          0,
-          10,
-          30,
-          50
-        ],
-        "extup": [
-          "FA03"
-        ],
-        "rel": "doom2",
-        "effect": "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
-        "tooltip": "Made from: 3-5x Doom Break 3"
+        "effect": "",
+        "noEx": true
       }
     ],
     "outdatedInAst": [
-      {
-        "code": "HB01",
-        "gid": "DA",
-        "name": "Shot Resist I",
-        "lvup": "HB02",
-        "extend": [
-          100
-        ],
-        "status": 1,
-        "effect": "Range Resist(+3)"
-      },
-      {
-        "code": "HB02",
-        "gid": "DA",
-        "name": "Shot Resist II",
-        "lvup": "HB03",
-        "extend": [
-          60,
-          80,
-          100
-        ],
-        "generate": [
-          60,
-          80
-        ],
-        "status": 1,
-        "effect": "Range Resist(+4)"
-      },
-      {
-        "code": "HB03",
-        "gid": "DA",
-        "name": "Shot Resist III",
-        "lvup": "HB04",
-        "extend": [
-          60,
-          80,
-          100
-        ],
-        "generate": [
-          30,
-          50
-        ],
-        "status": 1,
-        "effect": "Range Resist(+5)"
-      },
-      {
-        "code": "HB04",
-        "gid": "DA",
-        "name": "Shot Resist IV",
-        "lvup": "HB05",
-        "extend": [
-          40,
-          60,
-          80
-        ],
-        "generate": [
-          20,
-          40
-        ],
-        "status": 1,
-        "effect": "Range Resist(+6)"
-      },
-      {
-        "code": "HB05",
-        "gid": "DA",
-        "name": "Shot Resist V",
-        "extend": [
-          20,
-          40,
-          60
-        ],
-        "generate": [
-          10,
-          30
-        ],
-        "status": 1,
-        "effect": "Range Resist(+7)"
-      },
       {
         "code": "LA00",
         "gid": "L1",
@@ -3799,347 +3238,25 @@
         "noEx": true
       },
       {
-        "code": "SA02",
-        "gid": "EA",
-        "name": "Guardian Soul",
-        "effect": "ALL(+70),<br>HP(+70),<br>PP(+7)",
-        "tooltip": "Made from: Astral Soul, Ether Factor, Mana Reverie, Absolute Glare"
-      },
-      {
-        "code": "TK04",
-        "gid": "AC",
-        "name": "Appregina Reverie",
-        "extend": [
-          0,
-          30,
-          50
-        ],
-        "status": 6,
-        "effect": "S-ATK(+20),<br>R-ATK(+40),<br>T-ATK(+20),<br>HP(-10),<br>PP(-1)",
-        "tooltip": "Used for: Reverie Catalyst"
-      },
-      {
-        "code": "TN08",
-        "gid": "AC",
-        "name": "Shiva Glare",
-        "extend": [
-          30,
-          50
-        ],
-        "status": 1,
-        "effect": "R-ATK(+30)<br>T-ATK(+30)<br>S-DEF(+20)<br>R-DEF(+20)<br>T-DEF(+20)<br>HP(+20)<br>PP(+2)",
-        "tooltip": "Used for: Photoner Glare"
-      },
-      {
-        "code": "TN09",
-        "gid": "AC",
-        "name": "Origin Glare",
-        "extend": [
-          30,
-          50
-        ],
-        "status": 1,
-        "effect": "S-ATK(+30)<br>R-ATK(+30)<br>T-ATK(+30)<br>S-DEF(+10)<br>R-DEF(+10)<br>T-DEF(+10)<br>HP(+20)<br>PP(+2)",
-        "tooltip": "Used for: Photoner Glare"
-      },
-      {
-        "code": "TN0A",
-        "gid": "AC",
-        "name": "Photoner Glare",
-        "extend": [
-          30,
-          50
-        ],
-        "status": 1,
-        "effect": "ALL(+15)<br>HP(+15)<br>PP(+2)",
-        "tooltip": "Made from: Mitra Glare, Varuna Glare, Shiva Glare, Origin Glare<br>Used for: Absolute Glare"
-      },
-      {
-        "code": "TN11",
-        "gid": "AC",
-        "name": "Absolute Glare",
-        "status": 1,
-        "effect": "ALL(+40)<br>HP(+30)<br>PP(+3)",
-        "tooltip": "Made from: 4x Glare Catalyst + Photoner Glare<br>Used for: Guardian Soul"
-      },
-      {
-        "code": "TH01",
-        "gid": "AD",
-        "name": "Doom Break I",
-        "lvup": "TH02",
-        "extend": [
-          0,
-          50,
-          80
-        ],
-        "extup": [
-          "FA03"
-        ],
-        "rel": "doom",
-        "effect": "S-ATK(+15),<br>R-ATK(+15),<br>T-ATK(+15),<br>PP(+2)"
-      },
-      {
-        "code": "TH02",
-        "gid": "AD",
-        "name": "Doom Break II",
-        "lvup": "TH03",
-        "extend": [
-          0,
-          50,
-          80
-        ],
-        "generate": [
-          0,
-          10,
-          30,
-          50
-        ],
-        "extup": [
-          "FA03"
-        ],
-        "rel": "doom2",
-        "effect": "S-ATK(+25),<br>R-ATK(+25),<br>T-ATK(+25),<br>PP(+3)",
-        "tooltip": "Made from: 3-5x Doom Break I"
-      },
-      {
-        "code": "TH03",
-        "gid": "AD",
-        "name": "Doom Break III",
-        "extend": [
-          0,
-          50,
-          80
-        ],
-        "generate": [
-          0,
-          10,
-          30,
-          50
-        ],
-        "extup": [
-          "FA03"
-        ],
-        "rel": "doom2",
-        "effect": "S-ATK(+30),<br>R-ATK(+30),<br>T-ATK(+30),<br>PP(+4)",
-        "tooltip": "Made from: 3-5x Doom Break 3"
-      },
-      {
-        "code": "TD0G",
-        "gid": "EB",
-        "name": "Drago Fever",
-        "extend": [
-          100
-        ],
-        "effect": "DEX(+5),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)"
-      },
-      {
-        "code": "TD0H",
-        "gid": "EB",
-        "name": "Turkey Fever",
-        "extend": [
-          100
-        ],
-        "effect": "DEX(+5),<br>T-DEF(+10),<br>HP(+5),<br>PP(+1)"
-      },
-      {
-        "code": "UD01",
-        "gid": "AC",
-        "name": "Ligand Arma",
-        "effect": "S-ATK(+40),<br>HP(+30),<br>PP(+3)"
-      },
-      {
-        "code": "UD11",
-        "gid": "AC",
-        "name": "Ligand Tiro",
-        "effect": "R-ATK(+40),<br>HP(+30),<br>PP(+3)"
-      },
-      {
-        "code": "UD21",
-        "gid": "AC",
-        "name": "Ligand Magia",
-        "effect": "T-ATK(+40),<br>HP(+30),<br>PP(+3)"
-      },
-      {
-        "code": "VJ04",
-        "gid": "CA",
-        "name": "Glare Catalyst",
-        "effect": "HP(+10),<br>PP(+1)",
-        "tooltip": "Made from: Veluge Glare, Fordruss Glare, Execour Glare and (Ange Glare or Dominus Glare)<br>Used for: Absolute Glare"
-      },
-      {
-        "code": "XK01",
+        "code": "XL01",
         "gid": "GB",
-        "name": "Exceed Receptor",
-        "effect": "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
+        "name": "Reverie Receptor",
+        "effect": "Boosts Reverie-type ability transfer rates.<br>ALL(+10)"
       }
     ]
   },
-  "abilityFactorsMissingInAst": [
-    {
-      "name": "S1:Rupturing Excess",
-      "jpName": "S1:裂砕の剰"
-    },
-    {
-      "name": "S1:Photon Reduction 2",
-      "jpName": "S1:光子縮減2"
-    }
-  ],
   "addAbilitiesMissingInAst": {
-    "{replace with english name for S1追加:輝充の志2}": {
-      "en": "{replace with english name for S1追加:輝充の志2}",
-      "jp": "S1追加:輝充の志2"
+    "{replace with english name for S1追加:錬成の志2}": {
+      "en": "{replace with english name for S1追加:錬成の志2}",
+      "jp": "S1追加:錬成の志2"
     },
-    "S1 Add: Powering Intent": {
-      "en": "S1 Add: Powering Intent",
-      "jp": "S1追加:強闘の志"
+    "{replace with english name for S5追加:終撃応与}": {
+      "en": "{replace with english name for S5追加:終撃応与}",
+      "jp": "S5追加:終撃応与"
     },
-    "{replace with english name for S1追加:時流の恵}": {
-      "en": "{replace with english name for S1追加:時流の恵}",
-      "jp": "S1追加:時流の恵"
-    },
-    "{replace with english name for S1追加:光子の秤2}": {
-      "en": "{replace with english name for S1追加:光子の秤2}",
-      "jp": "S1追加:光子の秤2"
-    },
-    "{replace with english name for S1追加:戦友の加護2}": {
-      "en": "{replace with english name for S1追加:戦友の加護2}",
-      "jp": "S1追加:戦友の加護2"
-    },
-    "{replace with english name for S1追加:剛撃の志2}": {
-      "en": "{replace with english name for S1追加:剛撃の志2}",
-      "jp": "S1追加:剛撃の志2"
-    },
-    "{replace with english name for S2追加:月葉影の歌2}": {
-      "en": "{replace with english name for S2追加:月葉影の歌2}",
-      "jp": "S2追加:月葉影の歌2"
-    },
-    "{replace with english name for S2追加:光子縮減3}": {
-      "en": "{replace with english name for S2追加:光子縮減3}",
-      "jp": "S2追加:光子縮減3"
-    },
-    "S2 Add: Spirited Response": {
-      "en": "S2 Add: Spirited Response",
-      "jp": "S2追加:気輝応変"
-    },
-    "S2 Add: Flaming Guard": {
-      "en": "S2 Add: Flaming Guard",
-      "jp": "S2追加:火炎の備志"
-    },
-    "S2 Add: Freezing Guard": {
-      "en": "S2 Add: Freezing Guard",
-      "jp": "S2追加:氷雪の備志"
-    },
-    "S2 Add: Lightning Guard": {
-      "en": "S2 Add: Lightning Guard",
-      "jp": "S2追加:轟雷の備志"
-    },
-    "S2 Add: Storm Guard": {
-      "en": "S2 Add: Storm Guard",
-      "jp": "S2追加:暴風の備志"
-    },
-    "S2 Add: Shining Guard": {
-      "en": "S2 Add: Shining Guard",
-      "jp": "S2追加:光明の備志"
-    },
-    "S2 Add: Darkness Guard": {
-      "en": "S2 Add: Darkness Guard",
-      "jp": "S2追加:暗闇の備志"
-    },
-    "{replace with english name for S2追加:保天輝地2}": {
-      "en": "{replace with english name for S2追加:保天輝地2}",
-      "jp": "S2追加:保天輝地2"
-    },
-    "{replace with english name for S2追加:守護の備2}": {
-      "en": "{replace with english name for S2追加:守護の備2}",
-      "jp": "S2追加:守護の備2"
-    },
-    "{replace with english name for S2追加:瞬乱縮減2}": {
-      "en": "{replace with english name for S2追加:瞬乱縮減2}",
-      "jp": "S2追加:瞬乱縮減2"
-    },
-    "{replace with english name for S2追加:瞬乱巧志}": {
-      "en": "{replace with english name for S2追加:瞬乱巧志}",
-      "jp": "S2追加:瞬乱巧志"
-    },
-    "{replace with english name for S2追加:服薬の恵2}": {
-      "en": "{replace with english name for S2追加:服薬の恵2}",
-      "jp": "S2追加:服薬の恵2"
-    },
-    "{replace with english name for S3追加:輝剰の撃3}": {
-      "en": "{replace with english name for S3追加:輝剰の撃3}",
-      "jp": "S3追加:輝剰の撃3"
-    },
-    "{replace with english name for S3追加:裂砕妙撃の志}": {
-      "en": "{replace with english name for S3追加:裂砕妙撃の志}",
-      "jp": "S3追加:裂砕妙撃の志"
-    },
-    "{replace with english name for S3追加:活実の志2}": {
-      "en": "{replace with english name for S3追加:活実の志2}",
-      "jp": "S3追加:活実の志2"
-    },
-    "{replace with english name for S3追加:諸刃の撃}": {
-      "en": "{replace with english name for S3追加:諸刃の撃}",
-      "jp": "S3追加:諸刃の撃"
-    },
-    "S3 Add: Photon Reduction": {
-      "en": "S3 Add: Photon Reduction",
-      "jp": "S3追加:光子縮減"
-    },
-    "{replace with english name for S3追加:瞬連の輝}": {
-      "en": "{replace with english name for S3追加:瞬連の輝}",
-      "jp": "S3追加:瞬連の輝"
-    },
-    "{replace with english name for S5追加:静心拡域}": {
-      "en": "{replace with english name for S5追加:静心拡域}",
-      "jp": "S5追加:静心拡域"
-    },
-    "{replace with english name for S5追加:領域加勢}": {
-      "en": "{replace with english name for S5追加:領域加勢}",
-      "jp": "S5追加:領域加勢"
-    },
-    "{replace with english name for S5追加:堅守の秤}": {
-      "en": "{replace with english name for S5追加:堅守の秤}",
-      "jp": "S5追加:堅守の秤"
-    },
-    "{replace with english name for S5追加:回避輝与}": {
-      "en": "{replace with english name for S5追加:回避輝与}",
-      "jp": "S5追加:回避輝与"
-    },
-    "{replace with english name for S5追加:静心四連}": {
-      "en": "{replace with english name for S5追加:静心四連}",
-      "jp": "S5追加:静心四連"
-    },
-    "{replace with english name for S5追加:連鎖輝与}": {
-      "en": "{replace with english name for S5追加:連鎖輝与}",
-      "jp": "S5追加:連鎖輝与"
-    },
-    "{replace with english name for S6追加:奇跡再演}": {
-      "en": "{replace with english name for S6追加:奇跡再演}",
-      "jp": "S6追加:奇跡再演"
-    },
-    "{replace with english name for S6追加:累加拡域}": {
-      "en": "{replace with english name for S6追加:累加拡域}",
-      "jp": "S6追加:累加拡域"
-    },
-    "{replace with english name for S6追加:六色の盾}": {
-      "en": "{replace with english name for S6追加:六色の盾}",
-      "jp": "S6追加:六色の盾"
-    },
-    "{replace with english name for S7追加:視敵無双}": {
-      "en": "{replace with english name for S7追加:視敵無双}",
-      "jp": "S7追加:視敵無双"
-    },
-    "{replace with english name for S7追加:六色の巧}": {
-      "en": "{replace with english name for S7追加:六色の巧}",
-      "jp": "S7追加:六色の巧"
-    },
-    "S8 Add: PP Up 2": {
-      "en": "S8 Add: PP Up 2",
-      "jp": "S8追加:輝器上昇2"
-    },
-    "{replace with english name for S8追加:六色の蝕}": {
-      "en": "{replace with english name for S8追加:六色の蝕}",
-      "jp": "S8追加:六色の蝕"
+    "{replace with english name for S7追加:注技縮地}": {
+      "en": "{replace with english name for S7追加:注技縮地}",
+      "jp": "S7追加:注技縮地"
     }
   }
 }

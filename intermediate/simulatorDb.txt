@@ -758,6 +758,22 @@
     },
     {
       "base": [
+        "XL01",
+        "TK0*"
+      ],
+      "ref": "$$",
+      "success": 100
+    },
+    {
+      "base": [
+        "XL01",
+        "TK1*"
+      ],
+      "ref": "$$",
+      "success": 10
+    },
+    {
+      "base": [
         "RP55",
         "RC23",
         "ROC2",
@@ -7569,6 +7585,12 @@
       "gid": "GB",
       "name": "Exceed Receptor",
       "effect": "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
+    },
+    {
+      "code": "XL01",
+      "gid": "GB",
+      "name": "Reverie Receptor",
+      "effect": "Boosts Reverie-type ability transfer rates.<br>ALL(+10)"
     },
     {
       "code": "ZA01",

@@ -1791,45 +1791,47 @@ class Assistant {
                     let choice = Assistant.affixDB[affix.code].choices[m];
                     // set flag true
                     let isMatch = true;
-                    // Check if Add Ability
-                    if (choice.isAddAbilityItem || affix.noEx) {
+                    // Check if SSA
+                    if (affix.noEx) {
+						// Force 100% success regardless of upslot
                         abilitySuccessRates[k] = Math.min(Math.max(choice.transferRate, minRate), maxRate);
-                        if (affix.noEx) {
-                            abilitySuccessRates.length++;
-                            if (fodderSuccessRate < 0) fodderSuccessRate = (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
-                            else fodderSuccessRate *= (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
-                            break;
-                        }
+                        abilitySuccessRates.length++;
+                        if (fodderSuccessRate < 0) fodderSuccessRate = (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
+                        else fodderSuccessRate *= (abilitySuccessRates[k] - minRate) / (maxRate - minRate);
+                        break;
                     }
-                    else {
-                        // Check if affix in this fodder comes from some fodder with Special Ability Factor
-                        if (!fodder.affixIndicesFromFactor.includes(k)) {
-                            // If affix is not from factor, but choice is for factors, it is not a match
-                            if (choice.isAbilityFactor) {
-                                isMatch = false;
-                            }
-                            else {
-                                // count occurrences of each ability in choice
-                                let choiceCount = countOccurrences(choice.materials);
-                                // count occurrences of each ability in all abilities in page
-                                let abilityCount = countOccurrences(abilities);
-                                // for each different occurence in choice
-                                for (var code in choiceCount) {
-                                    // if all bilities have less than count
-                                    if (!abilityCount[code] || abilityCount[code] < choiceCount[code]) {
-                                        // does not match, so set flag false and break
-                                        isMatch = false;
-                                        break;
-                                    }
+					else if(choice.isAddAbilityItem){
+						if (fodder.addAbilityItemInUse === undefined
+                            || fodder.addAbilityItemInUse === null
+                            || fodder.addAbilityItemInUse.ref !== choice.ref) {
+                            isMatch = false;
+                        }
+					}
+					// Check if affix in this fodder does not come from some fodder with Special Ability Factor
+                    else if(!fodder.affixIndicesFromFactor.includes(k)){
+						// If affix is not from factor, but choice is for factors, it is not a match
+                        if (choice.isAbilityFactor) {
+                            isMatch = false;
+                        }
+						else{
+							// count occurrences of each ability in choice
+                            let choiceCount = countOccurrences(choice.materials);
+                            // count occurrences of each ability in all abilities in page
+                            let abilityCount = countOccurrences(abilities);
+                            // for each different occurence in choice
+                            for (var code in choiceCount) {
+                                // if all bilities have less than count
+                                if (!abilityCount[code] || abilityCount[code] < choiceCount[code]) {
+                                    // does not match, so set flag false and break
+                                    isMatch = false;
+                                    break;
                                 }
                             }
-                        }
-                        else {
-                            // If affix is from factor, but choice is not for factors, it is not a match
-                            if (!choice.isAbilityFactor) {
-                                isMatch = false;
-                            }
-                        }
+						}
+                    }
+					// If affix is from factor, but choice is not for factors, it is not a match
+                    else if (!choice.isAbilityFactor) {
+                        isMatch = false;
                     }
                     if (isMatch) {
                         // match was found, so save the success rate for affixA
@@ -2512,7 +2514,48 @@ class Assistant {
             }
         });
     }
-
+	
+    /**
+     * Gets the quantity of each extra item needed to
+     * achieve the goal (such as success rate boost
+     * items, and Add Ability Items).
+     *
+     * @returns {Object} Containing the name of each
+     * item needed in its keys, and each respective
+     * quantity in its values.
+     */
+    getExtraItemCart() {
+        let fodders = ASSISTANT.query({
+            dataClass: Fodder
+        });
+        let result = {};
+        fodders.forEach(fodder => {
+            let i = fodder.rateBoostIdx;
+            if (i > 0 && i < Assistant.rateBoostOptions.length) {
+                let name = Assistant.rateBoostOptions[fodder.rateBoostIdx].id;
+                if (result[name]) {
+                    result[name] += 1;
+                } else {
+                    result[name] = 1;
+                }
+            }
+        });
+        fodders.forEach(fodder => {
+            if (fodder.addAbilityItemInUse !== undefined
+                && fodder.addAbilityItemInUse !== null
+                && fodder.addAbilityItemInUse.name !== undefined
+                && fodder.addAbilityItemInUse.name !== null) {
+                let name = fodder.addAbilityItemInUse.name;
+                if (result[name]) {
+                    result[name] += 1;
+                } else {
+                    result[name] = 1;
+                }
+            }
+        });
+        return result;
+    }
+	
     /**
      * Gets the total transplant cost to complete the affixing formula.
      * @returns {Number} The cost.
@@ -2524,6 +2567,7 @@ class Assistant {
                 transplantable: true
             }
         });
+		if (transpPages.length === 0) return 0;
         return transpPages.map(a => a.transplantCost).reduce((tot, a) => a > 0 ? tot + a : tot);
     }
 

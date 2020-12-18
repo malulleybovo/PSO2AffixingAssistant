@@ -3,9 +3,11 @@
   # PSO2 Affixing Assistant
   Effortless affixing solutions to PSO2 problems
 
-  ## [Use the Assistant Here](https://malulleybovo.github.io/PSO2AffixingAssistant/)
-  #### [Like it? Check out my Symbol Art Editor Online here too!](https://www.github.com/malulleybovo/SymbolArtEditorOnline/)
-  #### Version 1.1.6
+  ## [Use the Global Translation version of the Affix Assistant Here](https://corvous.github.io/PSO2AffixingAssistant/)
+  #### Affix Assistant is developed by Malulleybovo while the global translations are translated by Cor Vous and Ice Winter
+  #### [You can go and found more of Malulleybovo work on their github such as their Symbol Art Editor here](https://www.github.com/malulleybovo)
+  
+  #### Version 1.2.2
   #### Compliant with version 1.93 of [Arks Layer's Affix Simulator](https://arks-layer.com/abilitysim/)
 
   ### NO HASSLE Affixing Formulas at the tip of your fingers
@@ -81,6 +83,10 @@
   1) Tap on the *bug* button on the side bar.
   2) Tell me what the bug was, and how I can reproduce the bug you found!
   3) A fix to the bug you found will come soon! Thanks for reporting!
+  
+  ### Found a Global Translation mistake or discoverd a augment that has been greyed out but is in the global verison of PSO2?
+  Then you can leave a issue report on the global translation github and it will soon be resolve.<br>
+  If you found a augment that has been greyed out in this verison of the affix assistant then also leave a screenshot of that augment to verify it
   
   ### Contribute
   Currently only accepting Pull Requests for Database Update.
