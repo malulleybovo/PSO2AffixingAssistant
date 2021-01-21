@@ -159,7 +159,7 @@
       },
       {
         "id": "Add Ability (Grand PP)",
-        "name": "Grace Spirita",
+        "name": "Grand Spirita",
         "value": "B10d",
         "extend": 100,
         "effect": "PP(+15)"

@@ -1271,7 +1271,7 @@ const lang = Object.freeze({
         "S3 Add: Brilliant Ruin": {
             en: "S3 Add: Brilliant Ruin",
             jp: "S3追加:滅域輝与",
-            glen: "*S3 Add: Lucent Domain"
+            glen: "S3 Add: Lucent Domain"
         },
         "S3 Add: Cursed Radiance": {
             en: "S3 Add: Cursed Radiance",
@@ -1341,12 +1341,12 @@ const lang = Object.freeze({
         "S4 Add: Heavenly Protection": {
             en: "S4 Add: Heavenly Protection",
             jp: "S4追加:天輝の守護",
-            glen: "*S4 Add: Heavenly Protection"
+            glen: "S4 Add: Heavenly Protection"
         },
         "S4 Add: Calming Intent": {
             en: "S4 Add: Calming Intent",
             jp: "S4追加:静心の志",
-            glen: "*S4 Add: Calming Intent"
+            glen: "S4 Add: Calming Intent"
         },
         "S4 Add: Skilled Balance": {
             en: "S4 Add: Skilled Balance",
@@ -1456,7 +1456,7 @@ const lang = Object.freeze({
         "S6 Add: Ironclad Illness": {
             en: "S6 Add: Ironclad Illness",
             jp: "S6追加:癒蝕頑強",
-            glen: "*S6 Add: Ironclad Illness"
+            glen: "S6 Add: Ironclad Illness"
         },
         "S6 Add: Guardian Armor": {
             en: "S6 Add: Guardian Armor",
@@ -2728,7 +2728,7 @@ const lang = Object.freeze({
     "LA2S": {
         name_en: "S1:Wise Skill 2",
         name_jp: "S1:妙技の巧2",
-        name_glen: "*S1:Skillful Adept 2",
+        name_glen: "S1:Skillful Adept 2",
         effect_en: "Increases critical rate by 18%.",
         effect_jp: "クリティカル率が18%上昇する。",
         effect_glen: "Increases critical hit rate by 18%."
@@ -2760,10 +2760,10 @@ const lang = Object.freeze({
     "LA2R": {
         name_en: "S1:Radiating Grace 2",
         name_jp: "S1:輝勢の恵2",
-        name_glen: "*S1:Radiating Grace 2",
+        name_glen: "S1:Luminous Grace 2",
         effect_en: "PP regeneration increases by 23%.",
         effect_jp: "PPの自然回復速度が23%上昇する。",
-        effect_glen: "PP regeneration increases by 23%."
+        effect_glen: "Increases natural PP recovery by 23%."
     },
     "LA11": {
         name_en: "S1:Immediate Intent",
@@ -3160,7 +3160,7 @@ const lang = Object.freeze({
     "LB0A": {
         name_en: "S2:Flowing Grace",
         name_jp: "S2:時流の恵",
-        name_glen: "*S2:Timeflow Grace",
+        name_glen: "S2:Timeflow Grace",
         effect_en: "Regenerate 10 PP every 4 seconds.",
         effect_jp: "4秒ごとにPPを10回復する。",
         effect_glen: "Regenerate 10 PP every 4 seconds."
@@ -3440,10 +3440,10 @@ const lang = Object.freeze({
     "LB1Z": {
         name_en: "S2:Aegis Gift",
         name_jp: "S2:瞬護の与",
-        name_glen: "*S2:Aegis Gift",
+        name_glen: "S2:Flashguard Boon",
         effect_en: "When you Just Guard at less than 25% HP, recovers HP by 50% and PP by 30%.",
         effect_jp: "HPを25％未満にすると、HPが50％、PPが30％回復します。",
-        effect_glen: "When you Just Guard at less than 25% HP<br>recovers HP by 50% and PP by 30%."
+        effect_glen: "Successfully performing a Perfect Guard while below 25% HP recovers 50% HP and 30% PP."
     },
     "LB2A": {
         name_en: "S2:Heavenly Keeper",
@@ -3584,10 +3584,10 @@ const lang = Object.freeze({
     "LC1P": {
         name_en: "S3:Radiant Strike 2",
         name_jp: "S3:輝剰の撃2",
-        name_glen: "*S3:Lustrous Strike 2",
+        name_glen: "S3:Lustrous Strike 2",
         effect_en: "Increase Attack PP Recovery by 23%.",
         effect_jp: "攻撃時のPP回復量が23%上昇する。",
-        effect_glen: "Increase Attack PP Recovery by 23%."
+        effect_glen: "Increase active PP Recovery by 23%."
     },
     "LC04": {
         name_en: "S3:Skilled Intent",
@@ -3600,7 +3600,7 @@ const lang = Object.freeze({
     "LC1O": {
         name_en: "S3:Skilled Intent 2",
         name_jp: "S3:妙撃の志2",
-        name_glen: "*S3:Precision Will 2",
+        name_glen: "S3:Precision Will 2",
         effect_en: "Increase Critical Hit Damage by 5%.",
         effect_jp: "クリティカル時の与ダメージが5%上昇。",
         effect_glen: "Increase Critical Hit Damage by 5%."
@@ -3864,10 +3864,10 @@ const lang = Object.freeze({
     "LC1V": {
         name_en: "S3:Rainbow's Reduction",
         name_jp: "S3:六色の縮減",
-        name_glen: "*S3:Rainbow's Reduction",
+        name_glen: "S3:Rainbow Descent",
         effect_en: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Reduces your PP<br>consumption by 20%.",
         effect_jp: "花・海・葉・月・雪・影のいずれかが発動中PP消費量を20%軽減。",
-        effect_glen: "While Petal, Ocean,<br>Leaf, Moon, Snow or<br>Shadow Flash is active:<br>Reduces your PP<br>consumption by 20%."
+        effect_glen: "While Petalgleam/Seagleam/Snowgleam/Moongleam/Leafgleam or Shadowgleam are active<br>PP consumption is reduce by 20%."
     },
     "LC1W": {
         name_en: "S3:Rainbow's Radiance",
@@ -4064,18 +4064,18 @@ const lang = Object.freeze({
     "LD0O": {
         name_en: "S4:Heavenly Protection",
         name_jp: "S4:天輝の守護",
-        name_glen: "*S4:Heavenly Protection",
+        name_glen: "S4:Luminous Protection",
         effect_en: "Bestow Natural PP Recovery and<br>increase PP recovery rate while Guarding.",
         effect_jp: "ガード中PPが自然回復しPP回復速度が上昇。",
-        effect_glen: "Bestow Natural PP Recovery and<br>increase PP recovery rate while Guarding."
+        effect_glen: "Bestow Natural PP Recovery and increase PP recovery rate by 300% while Guarding."
     },
     "LD0P": {
         name_en: "S4:Calming Intent",
         name_jp: "S4:静心の志",
-        name_glen: "*S4:Calming Intent",
+        name_glen: "S4:Steadfast Will",
         effect_en: "Increase the power of<br>Normal Attacks by 13%.",
         effect_jp: "通常攻撃の威力が13%上昇。",
-        effect_glen: "Increase the power of<br>Normal Attacks by 13%."
+        effect_glen: "Increases Normal Attack power by 13%"
     },
     "LD0Q": {
         name_en: "S4:Skilled Balance",
@@ -4088,10 +4088,10 @@ const lang = Object.freeze({
     "LD0R": {
         name_en: "S4:Saint Shield",
         name_jp: "S4:聖者の盾",
-        name_glen: "*S4:Saint Shield",
+        name_glen: "S4:Saintly Shield",
         effect_en: "Generates a barrier (-50% Damage Taken,<br>Negate Knockback) at regular intervals",
         effect_jp: "一定間隔で被ダメージを軽減するバリアを展開。",
-        effect_glen: "Generates a barrier (-50% Damage Taken,<br>Negate Knockback) at regular intervals"
+        effect_glen: "Deploys a barrier that reduces damage taken by 60% at regular intervals."
     },
     "LD0S": {
         name_en: "S4:Harmonized Rainbow",
@@ -4136,10 +4136,10 @@ const lang = Object.freeze({
     "LD0X": {
         name_en: "S4:Evasion Training",
         name_jp: "S4:回避訓練",
-        name_glen: "*S4:Evasion Training",
+        name_glen: "S4:Dodge Training",
         effect_en: "Perform an evasive maneuver when the two circles overlap to gain \"Successful Dodge (Counter)\" status.If you do not evade, recover 5% HP.",
         effect_jp: "二つの円が重なる際に回避すると「回避成功」状態となる。回避しなかった場合はHPを５％回復する。",
-        effect_glen: "Perform an evasive maneuver when the two circles overlap to gain \"Successful Dodge (Counter)\" status.If you do not evade, recover 5% HP."
+        effect_glen: "Perform an evasive maneuver when the two circles overlap to gain \"Successful Dodge (Counter)\" status. If you do not evade, recover 5% HP."
     },
     "LD0Y": {
         name_en: "S4:Radiant Eclipse",
@@ -4328,10 +4328,66 @@ const lang = Object.freeze({
     "LE97": {
         name_en: "S5:Angelic Respite",
         name_jp: "S5:槍機天悠",
-        name_glen: "*S5:Angelic Respite",
+        name_glen: "S5:Lance of Eternity",
         effect_en: "At maximum gear, no gear is consumed while airborne. Increase Power by 2%. Partizan only.",
         effect_jp: "ギア最大時、空中ではギアを消費しなくなる。威力2%上昇。長槍限定。",
-        effect_glen: "At maximum gear no gear is consumed while airborne. Increase Might by 2%. Partizan only."
+        effect_glen: "Increases Power by 2%.<br>When Focus Gauge is maxed, Partisan Focus Gauge will not be consumed while airborne.Partisan only."
+    },
+	"LE0H": {
+        name_en: "S5:Mysterious Purpose",
+        name_jp: "S5:妙の巧志",
+		name_glen: "S5:Skillful Adept Will",
+        effect_en: "Increase Critical Hit Rate by 20%. On a Critical Hit, deal an additional 2% damage and recover 1% of damage dealt as HP (30 MAX).",
+        effect_jp: "クリティカル率が20%上昇。発生時に威力2%上昇、与ダメージの1%をHP回復(上限30)",
+		effect_glen: "Increase Critical Hit Rate by 20%. On a Critical Hit, deal an additional 2% damage and recover 1% of damage dealt as HP (30 MAX)."
+    },
+    "LE0P": {
+        name_en: "S5:Calming Expanse",
+        name_jp: "S5:静心拡域",
+		name_glen: "*S5:Calming Expanse",
+        effect_en: "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only.",
+        effect_jp: "通常攻撃に範囲攻撃が追加され確率でスタン付与。威力2%上昇。長銃限定。",
+		effect_glen: "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only."
+    },
+    "LE0Q": {
+        name_en: "S5:Area Support",
+        name_jp: "S5:領域加勢",
+		name_glen: "*S5:Area Support",
+        effect_en: "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active.",
+        effect_jp: "クリティカルフィールドとエレメンタルPPリストレイトFの効果が有効時、フィールドごとに追加効果が発生する。",
+		effect_glen: "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active."
+    },
+    "LE0O": {
+        name_en: "S5:Calming Quartet",
+        name_jp: "S5:静心四連",
+		name_glen: "*S5:Calming Quartet",
+        effect_en: "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only.",
+        effect_jp: "通常攻撃の威力が67％低下する代わりに攻撃が4発に変化。",
+		effect_glen: "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only."
+    },
+    "LE96": {
+        name_en: "S5:Aegis Balance",
+        name_jp: "S5:堅守の秤",
+		name_glen: "*S5:Aegis Balance",
+        effect_en: "Increase Power by 4%. Reduce damage taken by 25% but consume 20 PP when taking damage. Force only.",
+        effect_jp: "威力が4%上昇。被ダメージ時PPを20消費してダメージを25%軽減する。フォース限定。",
+		effect_glen: "Increase Power by 4%. Reduce damage taken by 25% but consume 20 PP when taking damage. Force only."
+    },
+    "LE0R": {
+        name_en: "S5:Swift Radiance",
+        name_jp: "S5:回避輝与",
+		name_glen: "*S5:Swift Radiance",
+        effect_en: "Stop Natural PP Regeneration. Increase Active PP Recovery by 50% and restore 100 PP upon successfully evading an attack with Sway or Step. Increase Power by 2%. Knuckles only.",
+        effect_jp: "PP自然回復が停止。攻撃時PP回復量が50%上昇、回避成功時PPが100回復。威力2%上昇。鋼拳限定。",
+		effect_glen: "Stop Natural PP Regeneration. Increase Active PP Recovery by 50% and restore 100 PP upon successfully evading an attack with Sway or Step. Increase Power by 2%. Knuckles only."
+    },
+    "LE0N": {
+        name_en: "S5:Chained Radiance",
+        name_jp: "S5:連鎖輝与",
+		name_glen: "*S5:Chained Radiance",
+        effect_en: "On Chain Trigger activation, recover PP and increase Power by 3% for 60 seconds. Twin Machineguns only.",
+        effect_jp: "チェイントリガー開始時PPが回復し、60秒間威力3%上昇。双機銃限定",
+		effect_glen: "On Chain Trigger activation, recover PP and increase Power by 3% for 60 seconds. Twin Machineguns only."
     },
 	"LE0H": {
         name_en: "S5:Mysterious Purpose",
@@ -4416,10 +4472,10 @@ const lang = Object.freeze({
     "LF0D": {
         name_en: "S6:Ironclad Illness",
         name_jp: "S6:癒蝕頑強",
-        name_glen: "*S6:Ironclad Illness",
+        name_glen: "S6:Tenacious Healscourge",
         effect_en: "Become massive for 60 seconds after becoming affected by a status.",
         effect_jp: "状態異常になってから60秒間、頑強になる。",
-        effect_glen: "Become massive for 60 seconds after becoming affected by a status."
+        effect_glen: "Grants Super Armor for 60 seconds after being inflicted with a status ailment."
     },
     "LF0E": {
         name_en: "S6:Wise Skill",
@@ -4480,7 +4536,7 @@ const lang = Object.freeze({
     "LF0L": {
         name_en: "S6:Brilliant Ruin",
         name_jp: "S6:滅域輝与",
-        name_glen: "*S6:Lucent Domain",
+        name_glen: "S6:Lucent Domain",
         effect_en: "Recover 5 PP when an enemy near you is defeated.",
         effect_jp: "一定の範囲内でエネミーが死亡した時、PPが回復する。",
         effect_glen: "Recover 5 PP when an enemy near you is defeated."
@@ -4560,10 +4616,10 @@ const lang = Object.freeze({
     "LG0A": {
         name_en: "S7:Glowing Grace",
         name_jp: "S7:輝静の恵",
-        name_glen: "*S7:Glowing Grace",
+        name_glen: "S7:Still Grace",
         effect_en: "Recovers 4 PP per second when standing still for longer than 1 second.",
         effect_jp: "1秒間静止状態が続いた時、ppが1秒ごとに4回復。",
-        effect_glen: "Recovers 4 PP per second when standing still for longer than 1 second."
+        effect_glen: "Recover 4 PP per second while standing still for more than 1 second."
     },
     "LG0B": {
         name_en: "S7:S-ATK Up",
@@ -4600,7 +4656,7 @@ const lang = Object.freeze({
     "LG0F": {
         name_en: "S7:PP Up",
         name_jp: "S7:輝器上昇",
-        name_glen: "*S7:Fortified Photon V",
+        name_glen: "S7:Fortified Photon V",
         effect_en: "PP(+4)",
         effect_jp: "PP(+4)",
         effect_glen: "PP(+4)"
@@ -5616,7 +5672,7 @@ const lang = Object.freeze({
     "TN04": {
         name_en: "Fordruss Glare",
         name_jp: "フォードルス・グレア",
-        name_glen: "*Fordruss Glare",
+        name_glen: "Fodrus Glare",
         effect_en: "S-DEF(+35), R-DEF(+35), T-DEF(+35), HP(+40), PP(+4)",
         effect_jp: "打撃防御(+35),射撃防御(+35),法撃防御(+35),HP(+40),PP(+4)",
         effect_glen: "MEL Def(+35), RNG Def(+35), TEC Def(+35), HP(+40), PP(+4)"
@@ -5624,7 +5680,7 @@ const lang = Object.freeze({
     "TN05": {
         name_en: "Execour Glare",
         name_jp: "エクゼクル・グレア",
-        name_glen: "*Execour Glare",
+        name_glen: "Exegul Glare",
         effect_en: "S-ATK(+20), R-ATK(+20), T-ATK(+20), S-DEF(+50), R-DEF(+50), T-DEF(+50)",
         effect_jp: "打撃力(+20),射撃力(+20),法撃力(+20),打撃防御(+50),射撃防御(+50),法撃防御(+50)",
         effect_glen: "MEL Pwr(+20), RNG Pwr(+20), TEC Pwr(+20), MEL Def(+50), RNG Def(+50), TEC Def(+50)"
@@ -5632,7 +5688,7 @@ const lang = Object.freeze({
     "TN06": {
         name_en: "Mitra Glare",
         name_jp: "ミトラ・グレア",
-        name_glen: "*Mitra Glare",
+        name_glen: "Mitra Glare",
         effect_en: "S-ATK(+30), R-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30),射撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)",
         effect_glen: "MEL Pwr(+30), RNG Pwr(+30), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+20), PP(+2)"
@@ -5651,7 +5707,7 @@ const lang = Object.freeze({
 		name_glen: "*Shiva Glare",
         effect_en: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
         effect_jp: "射撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)",
-		effect_glen: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)"
+		effect_glen: "RNG Pwr(+30), TEC Pwr(+30), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+20), PP(+2)"
     },
     "TN09": {
         name_en: "Origin Glare",
@@ -5659,7 +5715,7 @@ const lang = Object.freeze({
 		name_glen: "*Origin Glare",
         effect_en: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30), 射撃力(+30), 法撃力(+30), 打撃防御(+10), 射撃防御(+10), 法撃防御(+10), HP(+20), PP(+2)",
-		effect_glen: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)"
+		effect_glen: "MEL Pwr(+30), RNG Pwr(+30), TEC Pwr(+30), MEL Def(+10), RNG Def(+10), TEC Def(+10), HP(+20), PP(+2)"
     },
     "TN0A": {
         name_en: "Photoner Glare",
@@ -5683,7 +5739,7 @@ const lang = Object.freeze({
 		name_glen: "*Ligand Arma",
         effect_en: "S-ATK(+40),<br>HP(+30),<br>PP(+3)",
         effect_jp: "打撃力(+40), HP(+30), PP(+3)",
-		effect_glen: "S-ATK(+40),<br>HP(+30),<br>PP(+3)"
+		effect_glen: "MEL Pwr(+40),<br>HP(+30),<br>PP(+3)"
     },
     "UD11": {
         name_en: "Ligand Tiro",
@@ -5691,7 +5747,7 @@ const lang = Object.freeze({
 		name_glen: "*Ligand Tiro",
         effect_en: "R-ATK(+40),<br>HP(+30),<br>PP(+3)",
         effect_jp: "射撃力(+40),<br>HP(+30),<br>PP(+3)",
-		effect_glen: "R-ATK(+40),<br>HP(+30),<br>PP(+3)"
+		effect_glen: "RNG Pwr(+40),<br>HP(+30),<br>PP(+3)"
     },
     "UD21": {
         name_en: "Ligand Magia",
@@ -5699,7 +5755,7 @@ const lang = Object.freeze({
 		name_glen: "*Ligand Magia",
         effect_en: "T-ATK(+40),<br>HP(+30),<br>PP(+3)",
         effect_jp: "法撃力(+40),<br>HP(+30),<br>PP(+3)",
-		effect_glen: "T-ATK(+40),<br>HP(+30),<br>PP(+3)"
+		effect_glen: "TEC Pwr(+40),<br>HP(+30),<br>PP(+3)"
     },
     "TD0H": {
         name_en: "Turkey Fever",
@@ -5707,15 +5763,15 @@ const lang = Object.freeze({
 		name_glen: "Turkey Fever",
         effect_en: "DEX(+5),<br>T-DEF(+10),<br>HP(+5),<br>PP(+1)",
         effect_jp: "技量(+5),<br>法撃防御(+10),<br>HP(+5),<br>PP(+1)",
-		effect_glen: "DEX(+5),<br>T-DEF(+10),<br>HP(+5),<br>PP(+1)"
+		effect_glen: "DEX(+5),<br>TEC Def(+10),<br>HP(+5),<br>PP(+1)"
     },
     "TD0G": {
         name_en: "Drago Fever",
         name_jp: "リガンド・マギア",
-		name_glen: "*Drago Fever",
+		name_glen: "Dragon Fever",
         effect_en: "DEX(+5),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)",
         effect_jp: "技量(+5),<br>射撃防御(+10),<br>HP(+5),<br>PP(+1)",
-		effect_glen: "DEX(+5),<br>R-DEF(+10),<br>HP(+5),<br>PP(+1)"
+		effect_glen: "DEX(+5),<br>RNG Def(+10),<br>HP(+5),<br>PP(+1)"
     },
     "TF01": {
         name_en: "Spirita Alpha",
@@ -6032,7 +6088,7 @@ const lang = Object.freeze({
     "TD04": {
         name_en: "Love Fever",
         name_jp: "ラブ・フィーバー",
-        name_glen: "*Love Fever",
+        name_glen: "Love Fever",
         effect_en: "S-ATK(+10),<br>DEX(+5),<br>PP(+2)",
         effect_jp: "打撃力(+10),<br>技量(+5),<br>PP(+2)",
         effect_glen: "MEL Pwr(+10),<br>DEX(+5),<br>PP(+2)"
@@ -6448,7 +6504,7 @@ const lang = Object.freeze({
     "PA01": {
         name_en: "Ripper/Ltn. Weak",
         name_jp: "リーパー／雷弱点",
-        name_glen: "*Reaper: Weak to Lighting",
+        name_glen: "Reaper: Weak to Lighting",
         effect_en: "Boost damage against enemies weak to Lightning. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "雷弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
         effect_glen: "Increases damage against enemies weak to Lightning. Effect is reduced as the Weapon Rarity increases."
@@ -6456,7 +6512,7 @@ const lang = Object.freeze({
     "PB02": {
         name_en: "Ripper/Fire Weak",
         name_jp: "リーパー／火弱点",
-        name_glen: "*Reaper: Weak to Fire",
+        name_glen: "Reaper: Weak to Fire",
         effect_en: "Boost damage against enemies weak to Fire. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "火弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
         effect_glen: "Increases damage against enemies weak to Fire. Effect is reduced as the Weapon Rarity increases."
@@ -6464,7 +6520,7 @@ const lang = Object.freeze({
     "PC03": {
         name_en: "Ripper/Ice Weak",
         name_jp: "リーパー／氷弱点",
-        name_glen: "*Reaper: Weak to Ice",
+        name_glen: "Reaper: Weak to Ice",
         effect_en: "Boost damage against enemies weak to Ice. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "氷弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
         effect_glen: "Increases damage against enemies weak to Ice. Effect is reduced as the Weapon Rarity increases."
@@ -6472,7 +6528,7 @@ const lang = Object.freeze({
     "PD04": {
         name_en: "Ripper/Wind Weak",
         name_jp: "リーパー／風弱点",
-        name_glen: "*Reaper: Weak to Wind",
+        name_glen: "Reaper: Weak to Wind",
         effect_en: "Boost damage against enemies weak to Wind. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "風弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
         effect_glen: "Increases damage against enemies weak to Wind. Effect is reduced as the Weapon Rarity increases."
@@ -6488,7 +6544,7 @@ const lang = Object.freeze({
     "PF06": {
         name_en: "Ripper/Dark Weak",
         name_jp: "リーパー／闇弱点",
-        name_glen: "*Reaper: Weak to Dark",
+        name_glen: "Reaper: Weak to Dark",
         effect_en: "Boost damage against enemies weak to Dark. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "闇弱点のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
         effect_glen: "Boost damage against enemies weak to Dark. Effect is reduced as the Weapon Rarity increases."
@@ -6496,23 +6552,23 @@ const lang = Object.freeze({
     "VQ01": {
         name_en: "Slayer/Armor Type",
         name_jp: "スレイヤー／機甲種",
-        name_glen: "*Slayer: Mechs",
+        name_glen: "Slayer: Automata",
         effect_en: "Boost damage against Lillipa Mechs. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "機甲種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
-        effect_glen: "Boost damage against Lillipa Mechs. Effect is reduced as the Weapon Rarity increases."
+        effect_glen: "Boost damage against Automatas. Effect is reduced as the Weapon Rarity increases."
     },
     "VQ02": {
         name_en: "Slayer/Beast Type",
         name_jp: "スレイヤー／野獣種",
-        name_glen: "*Slayer: Beast",
+        name_glen: "Slayer: Sylvant",
         effect_en: "Boost damage against Naberius Natives. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "野獣種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
-        effect_glen: "Boost damage against Naberius Natives. Effect is reduced as the Weapon Rarity increases."
+        effect_glen: "Boost damage against Sylvants. Effect is reduced as the Weapon Rarity increases."
     },
     "PJ13": {
         name_en: "Slayer/Ocean Type",
         name_jp: "スレイヤー／海王種",
-        name_glen: "*Slayer: Oceanic",
+        name_glen: "Slayer: Oceanids",
         effect_en: "Boost damage against Oceanids. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "海王種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
         effect_glen: "Boost damage against Oceanids. Effect is reduced as the Weapon Rarity increases."
@@ -6520,18 +6576,18 @@ const lang = Object.freeze({
     "PK14": {
         name_en: "Slayer/Kuronite Type",
         name_jp: "スレイヤー／黒の民",
-        name_glen: "*Slayer: Kuronite",
+        name_glen: "Slayer: Nightfaller",
         effect_en: "Boost damage against Kuronites. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "黒の民のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
-        effect_glen: "Boost damage against Kuronites. Effect is reduced as the Weapon Rarity increases."
+        effect_glen: "Boost damage against Nightfallers. Effect is reduced as the Weapon Rarity increases."
     },
     "PL15": {
         name_en: "Slayer/Phantoms Type",
         name_jp: "スレイヤー／幻創種",
-        name_glen: "*Slayer: Phantoms",
+        name_glen: "Slayer: Phantasm",
         effect_en: "Boost damage against Phantoms. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "幻創種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
-        effect_glen: "Boost damage against Phantoms. Effect is reduced as the Weapon Rarity increases."
+        effect_glen: "Boost damage against Phantasms. Effect is reduced as the Weapon Rarity increases."
     },
     "PM16": {
         name_en: "Slayer/Darkers",
@@ -6539,23 +6595,23 @@ const lang = Object.freeze({
         name_glen: "Slayer: Falspawn",
         effect_en: "Boost damage against Darkers. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "ダーカー種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
-        effect_glen: "Increase damage against Falspawn.<br>Effect is reduced as the Weapon Rarity increases."
+        effect_glen: "Increase damage against Falspawns.<br>Effect is reduced as the Weapon Rarity increases."
     },
     "PN17": {
         name_en: "Slayer/Dragonkin",
         name_jp: "スレイヤー／龍族種",
-        name_glen: "*Slayer: Dragonkin",
+        name_glen: "Slayer: Draconian",
         effect_en: "Boost damage against Dragonkin. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "龍族種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
-        effect_glen: "Boost damage against Dragonkin. Effect is reduced as the Weapon Rarity increases."
+        effect_glen: "Boost damage against Draconians. Effect is reduced as the Weapon Rarity increases."
     },
     "PO18": {
         name_en: "Slayer/Luminmech",
         name_jp: "スレイヤー／閃機種",
-        name_glen: "*Slayer: Luminmech",
+        name_glen: "Slayer: Luminmech",
         effect_en: "Boost damage against Luminmech. Effect is reduced as the Weapon Rarity increases.",
         effect_jp: "閃機種のエネミーを攻撃時威力が上昇。ただし武器のレアリティが高くなるほど威力の上昇量は減少。",
-        effect_glen: "Boost damage against Luminmech. Effect is reduced as the Weapon Rarity increases."
+        effect_glen: "Boost damage against Luminmechs. Effect is reduced as the Weapon Rarity increases."
     },
     "VJ01": {
         name_en: "Soul Catalyst",
@@ -6584,7 +6640,7 @@ const lang = Object.freeze({
     "VJ04": {
         name_en: "Glare Catalyst",
         name_jp: "グレア・カタリスト",
-		name_glen: "*Glare Catalyst",
+		    name_glen: "Glare Catalyst",
         effect_en: "HP(+10),<br>PP(+1)",
         effect_jp: "HP(+10),<br>PP(+1)",
 		effect_glen: "HP(+10),<br>PP(+1)"

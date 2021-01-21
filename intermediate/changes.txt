@@ -3245,6 +3245,12 @@
       }
     ]
   },
+  "abilityFactorsMissingInAst": [
+    {
+      "name": "S3:Skilled Intent 2",
+      "jpName": "S3:妙撃の志2"
+    }
+  ],
   "addAbilitiesMissingInAst": {
     "{replace with english name for S1追加:錬成の志2}": {
       "en": "{replace with english name for S1追加:錬成の志2}",
