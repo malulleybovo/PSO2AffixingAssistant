@@ -2155,6 +2155,22 @@ let data = {
         },
         {
             base: [
+                "XL01",
+                "TK0*"
+            ],
+            ref: "$$",
+            success: 100
+        },
+        {
+            base: [
+                "XL01",
+                "TK1*"
+            ],
+            ref: "$$",
+            success: 10
+        },
+        {
+            base: [
                 "XJ01",
                 "ID*"
             ],
@@ -3639,9 +3655,21 @@ let data = {
                 "XA",
                 "XF"
             ],
+            [ // Soul Receptor + Reverie Receptor
+                "XA",
+                "XL"
+            ],
             [ // Gift Receptor + Factor Receptor
                 "XC",
-                "XF"
+                "XL"
+            ],
+            [ // Gift Receptor + Reverie Receptor
+                "XC",
+                "XG"
+            ],
+            [ // Factor Receptor + Reverie Receptor
+                "XL",
+                "XG"
             ]
         ],
         lenient: [ // Only checked if explicitly told to (used for tweaks)
@@ -3651,6 +3679,10 @@ let data = {
             ],
             [ // Factor Receptor + Anything (due to Special Ability Factor)
                 "XF",
+                ""
+            ]
+            [ // Reverie Receptor + Anything (due to Special Ability Factor)
+                "XL",
                 ""
             ]
         ]
@@ -12388,6 +12420,13 @@ let data = {
             effect: "Allows transfer Mark-type ability.<br>ALL(+10)"
         },
         {
+            ref: 459,
+            code: "XL01",
+            gid: "GB",
+            name: "Reverie Receptor",
+            effect: "Boosts Reverie-type ability transfer rates.<br>ALL(+10)"
+        },
+        {
             ref: 635,
             code: "XJ01",
             gid: "GB",
@@ -12400,6 +12439,13 @@ let data = {
             gid: "GB",
             name: "Exceed Receptor",
             effect: "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
+        },
+        {
+            ref: 660,
+            code: "XL01",
+            gid: "GB",
+            name: "Reverie Receptor",
+            effect: "Greatly increases affix rate of Reverie-type ability.<br>ALL(+10)"
         },
         {
             ref: 661,
@@ -13044,6 +13090,7 @@ let data = {
         { name: `Soul Receptor`, jpName: `ソールレセプター` },
         { name: `Extreceptor`, jpName: `エクストレセプター` },
         { name: `Factor Receptor`, jpName: `ファクターレセプター` },
+        { name: `Reverie Receptor`, jpName: `レヴリーレセプター` },
         { name: `Another History`, jpName: `アナザーヒストリー` },
         { name: `Persona Reverie`, jpName: `ペルソナ・レヴリー` },
         { name: `Soul Catalyst`, jpName: `ソール・カタリスト` },
