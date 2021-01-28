@@ -224,6 +224,7 @@ class AffixDataParser {
                             if (abilityCode == "$$") {
                                 let code = allChoicesOfMaterials[n][allChoicesOfMaterials[n].length - 1].code;
                                 if (code == "TG31" && newChoice.transferRate == 100) continue; // Ignore exception for Factor Receptor + Ether Factor at 100%
+                                if (code == "TK10" && newChoice.transferRate == 100) continue; // Ignore exception for Reverie Receptor + Mana Reverie at 100%
                                 if (abilityDB[code]) {
                                     abilityDB[code].choices.push(newChoice);
                                 }
