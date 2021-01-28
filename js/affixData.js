@@ -3680,7 +3680,7 @@ let data = {
             [ // Factor Receptor + Anything (due to Special Ability Factor)
                 "XF",
                 ""
-            ]
+            ],
             [ // Reverie Receptor + Anything (due to Special Ability Factor)
                 "XL",
                 ""
@@ -12420,11 +12420,11 @@ let data = {
             effect: "Allows transfer Mark-type ability.<br>ALL(+10)"
         },
         {
-            ref: 459,
+            ref: 685,
             code: "XL01",
             gid: "GB",
             name: "Reverie Receptor",
-            effect: "Boosts Reverie-type ability transfer rates.<br>ALL(+10)"
+            effect: "Allows Reverie-type ability transfer rates.<br>ALL(+10)"
         },
         {
             ref: 635,
@@ -12439,13 +12439,6 @@ let data = {
             gid: "GB",
             name: "Exceed Receptor",
             effect: "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
-        },
-        {
-            ref: 660,
-            code: "XL01",
-            gid: "GB",
-            name: "Reverie Receptor",
-            effect: "Greatly increases affix rate of Reverie-type ability.<br>ALL(+10)"
         },
         {
             ref: 661,
