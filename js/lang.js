@@ -756,12 +756,12 @@ const lang = Object.freeze({
         "Add Ability (Mark Receptor)": {
             en: "Add Ability (Mark Receptor)",
             jp: "特殊能力追加(マークレセプター)",
-            glen:"*Affix Augment (Mark Receptor)"
+            glen:"Augment (Mark Succession)"
         },
         "Add Ability (Divine Receptor)": {
             en: "Add Ability (Divine Receptor)",
             jp: "特殊能力追加(ディバインレセプター)",
-            glen:"*Affix Augment (Divine Receptor)"
+            glen:"Augment (Divine Succession)"
         },
         "Add Ability (Catalyst Receptor)": {
             en: "Add Ability (Catalyst Receptor)",
@@ -1366,7 +1366,7 @@ const lang = Object.freeze({
         "S4 Add: Raising Pursuit": {
             en: "S4 Add: Raising Pursuit",
             jp: "S4追加:累加追撃",
-            glen: "*S4 Add: Raising Pursuit"
+            glen: "S4 Add: Escalating Pursuit"
         },
         "S4 Add: Pursuing Eclipse": {
             en: "S4 Add: Pursuing Eclipse",
@@ -3088,7 +3088,7 @@ const lang = Object.freeze({
     "LB2F": {
         name_en: "S2:Photon Reduction 2",
         name_jp: "S2:光子縮減2",
-        name_glen: "*S2:Photon Descent 2",
+        name_glen: "S2:Photon Descent 2",
         effect_en: "PP consumption is reduced by 13%.",
         effect_jp: "PP消費量を13%軽減。",
         effect_glen: "Reduces PP consumption by 13%."
@@ -3136,10 +3136,10 @@ const lang = Object.freeze({
     "LB2G": {
         name_en: "S2:Flowing Exhilaration 2",
         name_jp: "S2:時流活与2",
-        name_glen: "*S2:Timeflow Vitality 2",
+        name_glen: "S2:Timeflow Vitality 2",
         effect_en: "Recover 75% of your maximum HP at regular intervals.",
         effect_jp: "一定時間ごとにHPを75%回復する。",
-        effect_glen: "Recover 75% of your maximum HP at regular intervals."
+        effect_glen: "Restores 75% of your maximum HP every 40 seconds."
     },
     "LB08": {
         name_en: "S2:Immediate Profusion",
@@ -3496,7 +3496,7 @@ const lang = Object.freeze({
     "LB98": {
         name_en: "S2:Brilliant Intent",
         name_jp: "S2:輝充の志",
-        name_glen: "*S2:Photonic Will",
+        name_glen: "S2:Photonic Will",
         effect_en: "Boosts damage by 3% while PP at is 40% or above.",
         effect_jp: "PPが40%以上の時、与ダメージが3%上昇。",
         effect_glen: "Increases attack power by 3% while PP is at or above 40%."
@@ -3784,7 +3784,7 @@ const lang = Object.freeze({
     "LC88": {
         name_en: "S3:Rupturing Intent",
         name_jp: "S3:裂砕の志",
-        name_glen: "*S3:Partbreaker\'s Will",
+        name_glen: "S3:Partbreaker\'s Will",
         effect_en: "Increase damage against breakable parts by 4%.",
         effect_jp: "破壊可能な部位を攻撃した際、威力が4%上昇する。",
         effect_glen: "Increase damage against breakable parts by 4%."
@@ -3904,10 +3904,10 @@ const lang = Object.freeze({
     "LC1Q": {
         name_en: "S3:Double-Edged Sword",
         name_jp: "S3:諸刃の撃",
-		name_glen: "*S3:Two-edged Strike",
+		name_glen: "S3:Two-edged Strike",
         effect_en: "Deal 4% more damage but take 8% more damage when weapon is drawn.",
         effect_jp: "与ダメージが4%上昇し、抜刀時のみ被ダメージが8%増える。",
-		effect_glen: "Deal 4% more damage but take 8% more damage when weapon is drawn."
+		effect_glen: "Increases attack power by 4% but take 8% more damage when your weapon is drawn."
     },
 	"LC97": {
         name_en: "S3:Radiant Strike 3",
@@ -4104,10 +4104,10 @@ const lang = Object.freeze({
     "LD0T": {
         name_en: "S4:Raising Pursuit",
         name_jp: "S4:累加追撃",
-        name_glen: "*S4:Raising Pursuit",
+        name_glen: "S4:Escalating Pursuit",
         effect_en: "When you hit with a PA/Tech, boosts damage of the next PA/Tech based on the damage you deal in the next 4 seconds.",
         effect_jp: "PA・テクニックの命中後4秒間の与ダメージ量に応じて、次に命中したPA・テクニックに追加ダメージが発生。(上限25万、リキャスト10秒)",
-        effect_glen: "When you hit with a PA/Tech<br>boosts damage of the next PA/Tech based on the damage you deal in the next 4 seconds."
+        effect_glen: "Upon hitting with a PA/Technique, track 30% of damage dealt within the next four seconds, and add additional damage to the next PA/Technique based on the damage dealt."
     },
     "LD0U": {
         name_en: "S4:Pursuing Eclipse",
@@ -4332,62 +4332,6 @@ const lang = Object.freeze({
         effect_en: "At maximum gear, no gear is consumed while airborne. Increase Power by 2%. Partizan only.",
         effect_jp: "ギア最大時、空中ではギアを消費しなくなる。威力2%上昇。長槍限定。",
         effect_glen: "Increases Power by 2%.<br>When Focus Gauge is maxed, Partisan Focus Gauge will not be consumed while airborne.Partisan only."
-    },
-	"LE0H": {
-        name_en: "S5:Mysterious Purpose",
-        name_jp: "S5:妙の巧志",
-		name_glen: "S5:Skillful Adept Will",
-        effect_en: "Increase Critical Hit Rate by 20%. On a Critical Hit, deal an additional 2% damage and recover 1% of damage dealt as HP (30 MAX).",
-        effect_jp: "クリティカル率が20%上昇。発生時に威力2%上昇、与ダメージの1%をHP回復(上限30)",
-		effect_glen: "Increase Critical Hit Rate by 20%. On a Critical Hit, deal an additional 2% damage and recover 1% of damage dealt as HP (30 MAX)."
-    },
-    "LE0P": {
-        name_en: "S5:Calming Expanse",
-        name_jp: "S5:静心拡域",
-		name_glen: "*S5:Calming Expanse",
-        effect_en: "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only.",
-        effect_jp: "通常攻撃に範囲攻撃が追加され確率でスタン付与。威力2%上昇。長銃限定。",
-		effect_glen: "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only."
-    },
-    "LE0Q": {
-        name_en: "S5:Area Support",
-        name_jp: "S5:領域加勢",
-		name_glen: "*S5:Area Support",
-        effect_en: "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active.",
-        effect_jp: "クリティカルフィールドとエレメンタルPPリストレイトFの効果が有効時、フィールドごとに追加効果が発生する。",
-		effect_glen: "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active."
-    },
-    "LE0O": {
-        name_en: "S5:Calming Quartet",
-        name_jp: "S5:静心四連",
-		name_glen: "*S5:Calming Quartet",
-        effect_en: "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only.",
-        effect_jp: "通常攻撃の威力が67％低下する代わりに攻撃が4発に変化。",
-		effect_glen: "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only."
-    },
-    "LE96": {
-        name_en: "S5:Aegis Balance",
-        name_jp: "S5:堅守の秤",
-		name_glen: "*S5:Aegis Balance",
-        effect_en: "Increase Power by 4%. Reduce damage taken by 25% but consume 20 PP when taking damage. Force only.",
-        effect_jp: "威力が4%上昇。被ダメージ時PPを20消費してダメージを25%軽減する。フォース限定。",
-		effect_glen: "Increase Power by 4%. Reduce damage taken by 25% but consume 20 PP when taking damage. Force only."
-    },
-    "LE0R": {
-        name_en: "S5:Swift Radiance",
-        name_jp: "S5:回避輝与",
-		name_glen: "*S5:Swift Radiance",
-        effect_en: "Stop Natural PP Regeneration. Increase Active PP Recovery by 50% and restore 100 PP upon successfully evading an attack with Sway or Step. Increase Power by 2%. Knuckles only.",
-        effect_jp: "PP自然回復が停止。攻撃時PP回復量が50%上昇、回避成功時PPが100回復。威力2%上昇。鋼拳限定。",
-		effect_glen: "Stop Natural PP Regeneration. Increase Active PP Recovery by 50% and restore 100 PP upon successfully evading an attack with Sway or Step. Increase Power by 2%. Knuckles only."
-    },
-    "LE0N": {
-        name_en: "S5:Chained Radiance",
-        name_jp: "S5:連鎖輝与",
-		name_glen: "*S5:Chained Radiance",
-        effect_en: "On Chain Trigger activation, recover PP and increase Power by 3% for 60 seconds. Twin Machineguns only.",
-        effect_jp: "チェイントリガー開始時PPが回復し、60秒間威力3%上昇。双機銃限定",
-		effect_glen: "On Chain Trigger activation, recover PP and increase Power by 3% for 60 seconds. Twin Machineguns only."
     },
 	"LE0H": {
         name_en: "S5:Mysterious Purpose",
@@ -5696,7 +5640,7 @@ const lang = Object.freeze({
     "TN07": {
         name_en: "Varuna Glare",
         name_jp: "ヴァルナ・グレア",
-        name_glen: "*Varuna Glare",
+        name_glen: "Varuna Glare",
         effect_en: "S-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)",
         effect_glen: "MEL Pwr(+30), TEC Pwr(+30), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+20), PP(+2)"
@@ -6752,7 +6696,7 @@ const lang = Object.freeze({
     "XJ01": {
         name_en: "Divine Receptor",
         name_jp: "ディバインレセプター",
-        name_glen: "*Divine Receptor",
+        name_glen: "Divine Receptor",
         effect_en: "Greatly increases affix rate of Divine-type ability.<br>ALL(+10)",
         effect_jp: "ディバイン系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)",
         effect_glen: "Greatly increases affix rate of Divine-type ability.<br>ALL(+10)"
@@ -6760,7 +6704,7 @@ const lang = Object.freeze({
 	"XK01": {
         name_en: "Exceed Receptor",
         name_jp: "イクシードレセプター",
-		name_glen: "*Exceed Receptor",
+		name_glen: "Exceed Receptor",
         effect_en: "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)",
         effect_jp: "イクシード系特殊能力の継承成功率を大幅に上昇.<br>ALL(+10)",
 		effect_glen: "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
