@@ -1156,7 +1156,7 @@ const lang = Object.freeze({
         "S2 Add: Heavenly Keeper 2": {
             en: "S2 Add: Heavenly Keeper 2",
             jp: "S2追加:保天輝地2",
-			glen: "*S2 Add: Sky-Earth Lucency 2"
+			glen: "S2 Add: Sky-Earth Lucency 2"
         },
         "S2 Add: Umbrageous Melody 2": {
             en: "S2 Add: Umbrageous Melody 2",
@@ -1166,7 +1166,7 @@ const lang = Object.freeze({
         "S2 Add: Photon Reduction 3": {
             en: "S2 Add: Photon Reduction 3",
             jp: "S2追加:光子縮減3",
-			glen: "*S2 Add: Photon Descent 3"
+			glen: "S2 Add: Photon Descent 3"
         },
         "S2 Add: Guardian Armor 2": {
             en: "S2 Add: Guardian Armor 2",
@@ -1286,7 +1286,7 @@ const lang = Object.freeze({
         "S3 Add: Powering Intent": {
             en: "S3 Add: Powering Intent",
             jp: "S3追加:強闘の志",
-            glen: "*S3 Add: Goliathslayer\'s Will"
+            glen: "S3 Add: Goliathslayer\'s Will"
         },
         "S3 Add: Rainbow's Reduction": {
             en: "S3 Add: Rainbow's Reduction",
@@ -1321,7 +1321,7 @@ const lang = Object.freeze({
         "S3 Add: Photon Reduction": {
             en: "S3 Add: Photon Reduction",
             jp: "S3追加:光子縮減",
-			glen: "*S3 Add: Photon Descent"
+			glen: "S3 Add: Photon Descent"
         },
         "S3 Add: Immediate Brilliance": {
             en: "S3 Add: Immediate Brilliance",
@@ -1391,7 +1391,7 @@ const lang = Object.freeze({
         "S4 Add: Radiant Eclipse": {
             en: "S4 Add: Radiant Eclipse",
             jp: "S4追加:追蝕輝剰",
-            glen: "*S4 Add: Radiant Eclipse"
+            glen: "S4 Add: Lustrous Amplify"
         },
         "S4 Add: Shared Ruin": {
             en: "S4 Add: Shared Ruin",
@@ -1426,12 +1426,12 @@ const lang = Object.freeze({
 		"S5 Add: Calming Expanse": {
             en: "S5 Add: Calming Expanse",
             jp: "S5追加:静心拡域",
-			glen: "*S5 Add: Calming Expanse"
+			glen: "S5 Add: Steadfast Expanse"
         },
         "S5 Add: Area Support": {
             en: "S5 Add: Area Support",
             jp: "S5追加:領域加勢",
-			glen: "*S5 Add: Area Support"
+			glen: "S5 Add: Provincial Provision"
         },
         "S5 Add: Aegis Balance": {
             en: "S5 Add: Aegis Balance",
@@ -1576,7 +1576,7 @@ const lang = Object.freeze({
         "S8 Add: High-Minded": {
             en: "S8 Add: High-Minded",
             jp: "S8追加:一念滞空",
-            glen: "*S8 Add: High-Geniused"
+            glen: "S8 Add: Resolute Flight"
         },
         "S8 Add: HP Up 2": {
             en: "S8 Add: HP Up 2",
@@ -3504,7 +3504,7 @@ const lang = Object.freeze({
 	"LB97": {
         name_en: "S2:Heavenly Keeper 2",
         name_jp: "S2:保天輝地2",
-		name_glen: "*S2:Sky-Earth Lucency 2",
+		name_glen: "S2:Sky-Earth Lucency 2",
         effect_en: "In the air, reduces PP consumption by 15%. On the ground, boosts PP regeneration and attack PP recovery by 35%.",
         effect_jp: "空中時では、PP消費量が15％軽減。地上時では自然PP回復量が25％かつ地上での攻撃時ではPP回復量が35％上昇。",
 		effect_glen: "Reduces PP consumption by 15% while airborne.<br>Increases natural PP and active PP recovery by 35% while on the ground."
@@ -3520,7 +3520,7 @@ const lang = Object.freeze({
     "LB96": {
         name_en: "S2:Photon Reduction 3",
         name_jp: "S2:光子縮減3",
-		name_glen: "*S2:Photon Descent 3",
+		name_glen: "S2:Photon Descent 3",
         effect_en: "Reduce PP consumption by 15%.",
         effect_jp: "PP消費量を15%軽減。",
 		effect_glen: "Reduce PP consumption by 15%."
@@ -3856,7 +3856,7 @@ const lang = Object.freeze({
     "LC98": {
         name_en: "S3:Powering Intent",
         name_jp: "S3:強闘の志",
-        name_glen: "*S3:Goliathslayer\'s Will",
+        name_glen: "S3:Goliathslayer\'s Will",
         effect_en: "Increase damage dealt to bosses by 4%.",
         effect_jp: "強敵への与ダメージが3%上昇する。",
         effect_glen: "Increase damage dealt to bosses by 4%."
@@ -4144,10 +4144,10 @@ const lang = Object.freeze({
     "LD0Y": {
         name_en: "S4:Radiant Eclipse",
         name_jp: "S4:追蝕輝剰",
-        name_glen: "*S4:Radiant Eclipse",
+        name_glen: "S4:Lustrous Amplify",
         effect_en: "Increases active PP recovery by 60% when attacking an enemy affectedw by a Status Effect, Jellen, or Weak Bullet.",
         effect_jp: "状態異常、ジェルン、ウィークバレット効果が発生中のエネミー攻撃時、PP回復量が60%上昇。",
-        effect_glen: "Increases active PP recovery by 60% when attacking an enemy affectedw by a Status Effect<br>Jellen or Weak Bullet."
+        effect_glen: "Increases PP recovery amount by 60% when attacking enemies afflicted by a status ailment, Jellen, or Blight Rounds."
     },
     "LD0Z": {
         name_en: "S4:Shared Ruin",
@@ -4344,18 +4344,18 @@ const lang = Object.freeze({
     "LE0P": {
         name_en: "S5:Calming Expanse",
         name_jp: "S5:静心拡域",
-		name_glen: "*S5:Calming Expanse",
+		name_glen: "S5:Steadfast Expanse",
         effect_en: "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only.",
         effect_jp: "通常攻撃に範囲攻撃が追加され確率でスタン付与。威力2%上昇。長銃限定。",
-		effect_glen: "Adds an extra wide-area<br>attack and a chance to<br>stun to normal attacks.<br>Assault Rifles only."
+		effect_glen: "Increases power by 2%.<br>Adds an extra attack to normal attacks that has a chance to stun enemies.<br>Assault Rifles only."
     },
     "LE0Q": {
         name_en: "S5:Area Support",
         name_jp: "S5:領域加勢",
-		name_glen: "*S5:Area Support",
+		name_glen: "S5:Provincial Provision",
         effect_en: "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active.",
         effect_jp: "クリティカルフィールドとエレメンタルPPリストレイトFの効果が有効時、フィールドごとに追加効果が発生する。",
-		effect_glen: "Gain additional bonus<br>effects to Critical<br>Field and EPPR when<br>either are active."
+		effect_glen: "Grants bonus effects to Critical Field and Elemental PP Restorate (EPPR) Field when either are active"
     },
     "LE0O": {
         name_en: "S5:Calming Quartet",
@@ -4592,7 +4592,7 @@ const lang = Object.freeze({
     "LG0E": {
         name_en: "S7:HP Up",
         name_jp: "S7:活器上昇",
-        name_glen: "*S7:Fortified Life Vessel",
+        name_glen: "S7:Fortified Life Vessel",
         effect_en: "HP(+40)",
         effect_jp: "HP(+40)",
         effect_glen: "HP(+40)"
@@ -4672,10 +4672,10 @@ const lang = Object.freeze({
     "LG0O": {
         name_en: "S7:Sentinel's Gift",
         name_jp: "S7:法護の与",
-        name_glen: "*S7:Sentinel's Gift",
+        name_glen: "S7:Dharma Boon",
         effect_en: "Upon a successful<br>Tech Charge Parry,<br>recover 5% HP and 10 PP.",
         effect_jp: "テックCパリング成功時HPを5%回復しPPを10回復。",
-        effect_glen: "Upon a successful<br>Tech Charge Parry,<br>recover 5% HP and 10 PP."
+        effect_glen: "Recovers 5% of HP and 10 PP upon successful Technique Charge Parry."
     },
     "LG0P": {
         name_en: "S7:Descried Warrior",
@@ -4768,10 +4768,10 @@ const lang = Object.freeze({
     "LH0J": {
         name_en: "S8:High-Minded",
         name_jp: "S8:一念滞空",
-        name_glen: "*S8:High-Geniused",
+        name_glen: "S8:Resolute Flight",
         effect_en: "Reduce falling speed while charging a Technique in mid-air.",
         effect_jp: "空中でテクニックをチャージ中に落下速度が遅くなる。",
-        effect_glen: "Reduce falling speed while charging a Technique in mid-air."
+        effect_glen: "Reduces falling speed when charging a Technique in mid-air."
     },
     "LH98": {
         name_en: "S8:Rainbow's Decay",
@@ -5680,7 +5680,7 @@ const lang = Object.freeze({
 	"UD01": {
         name_en: "Ligand Arma",
         name_jp: "リガンド・アルマ",
-		name_glen: "*Ligand Arma",
+		name_glen: "Ligand Alma",
         effect_en: "S-ATK(+40),<br>HP(+30),<br>PP(+3)",
         effect_jp: "打撃力(+40), HP(+30), PP(+3)",
 		effect_glen: "MEL Pwr(+40),<br>HP(+30),<br>PP(+3)"
@@ -5688,7 +5688,7 @@ const lang = Object.freeze({
     "UD11": {
         name_en: "Ligand Tiro",
         name_jp: "リガンド・ティロ",
-		name_glen: "*Ligand Tiro",
+		name_glen: "Ligand Tyro",
         effect_en: "R-ATK(+40),<br>HP(+30),<br>PP(+3)",
         effect_jp: "射撃力(+40),<br>HP(+30),<br>PP(+3)",
 		effect_glen: "RNG Pwr(+40),<br>HP(+30),<br>PP(+3)"
@@ -5696,7 +5696,7 @@ const lang = Object.freeze({
     "UD21": {
         name_en: "Ligand Magia",
         name_jp: "リガンド・マギア",
-		name_glen: "*Ligand Magia",
+		name_glen: "Ligand Magia",
         effect_en: "T-ATK(+40),<br>HP(+30),<br>PP(+3)",
         effect_jp: "法撃力(+40),<br>HP(+30),<br>PP(+3)",
 		effect_glen: "TEC Pwr(+40),<br>HP(+30),<br>PP(+3)"
@@ -6680,7 +6680,7 @@ const lang = Object.freeze({
     "XF01": {
         name_en: "Factor Receptor",
         name_jp: "ファクターレセプター",
-        name_glen: "*Factor Receptor",
+        name_glen: "Factor Receptor",
         effect_en: "Boosts Factor-type ability transfer rates.<br>ALL(+10)",
         effect_jp: "ファクター系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)",
         effect_glen: "Boosts Factor-type ability transfer rates.<br>ALL(+10)"
