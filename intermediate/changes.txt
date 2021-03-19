@@ -3159,7 +3159,7 @@
     "outdatedInAst": [
       {
         "code": "LA00",
-        "gid": "L1",
+        "gid": "L",
         "name": "S1: Placeholder",
         "extend": [
           100
@@ -3169,7 +3169,7 @@
       },
       {
         "code": "LB00",
-        "gid": "L2",
+        "gid": "L",
         "name": "S2: Placeholder",
         "extend": [
           100
@@ -3179,7 +3179,7 @@
       },
       {
         "code": "LC00",
-        "gid": "L3",
+        "gid": "L",
         "name": "S3: Placeholder",
         "extend": [
           100
@@ -3189,7 +3189,7 @@
       },
       {
         "code": "LD00",
-        "gid": "L4",
+        "gid": "L",
         "name": "S4: Placeholder",
         "extend": [
           100
@@ -3199,7 +3199,7 @@
       },
       {
         "code": "LE00",
-        "gid": "L5",
+        "gid": "L",
         "name": "S5: Placeholder",
         "extend": [
           100
@@ -3209,7 +3209,7 @@
       },
       {
         "code": "LF00",
-        "gid": "L6",
+        "gid": "L",
         "name": "S6: Placeholder",
         "extend": [
           100
@@ -3219,7 +3219,7 @@
       },
       {
         "code": "LG00",
-        "gid": "L7",
+        "gid": "L",
         "name": "S7: Placeholder",
         "extend": [
           100
@@ -3229,7 +3229,7 @@
       },
       {
         "code": "LH00",
-        "gid": "L8",
+        "gid": "L",
         "name": "S8: Placeholder",
         "extend": [
           100
@@ -3255,6 +3255,10 @@
     "{replace with english name for S1追加:錬成の志2}": {
       "en": "{replace with english name for S1追加:錬成の志2}",
       "jp": "S1追加:錬成の志2"
+    },
+    "S3 Add: Calming Exhilaration": {
+      "en": "S3 Add: Calming Exhilaration",
+      "jp": "S3追加:静心活与"
     },
     "{replace with english name for S5追加:終撃応与}": {
       "en": "{replace with english name for S5追加:終撃応与}",

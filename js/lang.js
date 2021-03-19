@@ -621,17 +621,17 @@ const lang = Object.freeze({
         "Add Ability (Tenora)": {
             en: "Add Ability (Tenora)",
             jp: "特殊能力追加(テノラ)",
-            glen:"*Affix Augment (Tenora)"
+            glen:"Augment (Tenora)"
         },
         "Add Ability (GRM)": {
             en: "Add Ability (GRM)",
             jp: "特殊能力追加(GRM)",
-            glen:"*Affix Augment (GRM)"
+            glen:"Augment (GRM)"
         },
         "Add Ability (Yohmei)": {
             en: "Add Ability (Yohmei)",
             jp: "特殊能力追加(ヨウメイ)",
-            glen:"*Affix Augment (Yohmei)"
+            glen:"Augment (Yohmei)"
         },
         "Add Ability (HP&PP)": {
             en: "Add Ability (HP&PP)",
@@ -641,12 +641,12 @@ const lang = Object.freeze({
         "Add Ability (HP&PP/2)": {
             en: "Add Ability (HP&PP/2)",
             jp: "特殊能力(HP&PP/2)",
-            glen:"Affix Augment (HP & PP/2)"
+            glen:"Augment (HP & PP/2)"
         },
         "Add Ability (HP&PP/3)": {
             en: "Add Ability (HP&PP/3)",
             jp: "特殊能力(HP&PP/3)",
-            glen:"Affix Augment (HP & PP/3)"
+            glen:"Augment (HP & PP/3)"
         },
         "Add Ability (Grand HP)": {
             en: "Add Ability (Grand HP)",
@@ -661,12 +661,12 @@ const lang = Object.freeze({
         "Add Ability (S-ATK&PP/2)": {
             en: "Add Ability (S-ATK&PP/2)",
             jp: "特殊能力(打撃&PP/2)",
-            glen:"Affix Augment (Melee & PP/2)"
+            glen:"Augment (Melee & PP/2)"
         },
         "Add Ability (S-ATK&PP/3)": {
             en: "Add Ability (S-ATK&PP/3)",
             jp: "特殊能力(打撃&PP/3)",
-            glen:"Affix Augment (Melee & PP/3)"
+            glen:"Augment (Melee & PP/3)"
         },
         "Add Ability (Grand P)": {
             en: "Add Ability (Grand P)",
@@ -681,12 +681,12 @@ const lang = Object.freeze({
         "Add Ability (R-ATK&PP/2)": {
             en: "Add Ability (R-ATK&PP/2)",
             jp: "特殊能力(射撃&PP/2)",
-            glen:"Affix Augment (Range & PP/2)"
+            glen:"Augment (Range & PP/2)"
         },
         "Add Ability (R-ATK&PP/3)": {
             en: "Add Ability (R-ATK&PP/3)",
             jp: "特殊能力(射撃&PP/3)",
-            glen:"Affix Augment (Range & PP/3)"
+            glen:"Augment (Range & PP/3)"
         },
         "Add Ability (Grand S)": {
             en: "Add Ability (Grand S)",
@@ -701,12 +701,12 @@ const lang = Object.freeze({
         "Add Ability (T-ATK&PP/2)": {
             en: "Add Ability (T-ATK&PP/2)",
             jp: "特殊能力(法撃&PP/2)",
-            glen:"Affix Augment (Technique & PP/2)"
+            glen:"Augment (Technique & PP/2)"
         },
         "Add Ability (T-ATK&PP/3)": {
             en: "Add Ability (T-ATK&PP/3)",
             jp: "特殊能力(法撃&PP/3)",
-            glen:"Affix Augment (Technique & PP/3)"
+            glen:"Augment (Technique & PP/3)"
         },
         "Add Ability (Grand T)": {
             en: "Add Ability (Grand T)",
@@ -726,7 +726,7 @@ const lang = Object.freeze({
         "Add Ability (Offense Focus/2)": {
             en: "Add Ability (Offense Focus/2)",
             jp: "特殊能力追加(攻撃総合/2)",
-            glen:"Affix Augment (General Attack/2)"
+            glen:"Augment (General Attack/2)"
         },
         "Add Ability (Defense Focus)": {
             en: "Add Ability (Defense Focus)",
@@ -736,7 +736,7 @@ const lang = Object.freeze({
         "Add Ability (Defense Focus/2)": {
             en: "Add Ability (Defense Focus/2)",
             jp: "特殊能力追加(防御総合/2)",
-            glen:"Affix Augment (General Defense/2)"
+            glen:"Augment (General Defense/2)"
         },
         "Add Ability (Attack Inherit)": {
             en: "Add Ability (Attack Inherit)",
@@ -766,97 +766,97 @@ const lang = Object.freeze({
         "Add Ability (Catalyst Receptor)": {
             en: "Add Ability (Catalyst Receptor)",
             jp: "特殊能力追加(カタリストレセプター)",
-            glen:"*Affix Augment (Catalyst Receptor)"
+            glen:"Augment (Catalyst Receptor)"
         },
         "Add Ability (Sentence P)": {
             en: "Add Ability (Sentence P)",
             jp: "特殊能力(センテンスP)",
-            glen:"*Affix Augment (Sentence Might)"
+            glen:"Augment (Sentence Might)"
         },
         "Add Ability (Sentence S)": {
             en: "Add Ability (Sentence S)",
             jp: "特殊能力(センテンスS)",
-            glen:"*Affix Augment (Sentence Precision)"
+            glen:"Augment (Sentence Precision)"
         },
         "Add Ability (Sentence T)": {
             en: "Add Ability (Sentence T)",
             jp: "特殊能力(センテンスT)",
-            glen:"*Affix Augment (Sentence Casting)"
+            glen:"Augment (Sentence Casting)"
         },
         "Add Ability (Power VI)": {
             en: "Add Ability (Power VI)",
             jp: "特殊能力(パワーⅥ)",
-            glen:"*Affix Augment (Might VI)"
+            glen:"Augment (Might VI)"
         },
         "Add Ability (Shoot VI)": {
             en: "Add Ability (Shoot VI)",
             jp: "特殊能力(シュートⅥ)",
-            glen:"*Affix Augment (Precision VI)"
+            glen:"Augment (Precision VI)"
         },
         "Add Ability (Technique VI)": {
             en: "Add Ability (Technique VI)",
             jp: "特殊能力(テクニックⅥ)",
-            glen:"*Affix Augment (Casting VI)"
+            glen:"Augment (Casting VI)"
         },
         "Add Ability (Ability IV)": {
             en: "Add Ability (Ability IV)",
             jp: "特殊能力(アビリティⅣ)",
-            glen:"*Affix Augment (Mastery IV)"
+            glen:"Augment (Mastery IV)"
         },
         "Add Ability (Mark Joyo)": {
             en: "Add Ability (Mark Joyo)",
             jp: "特殊能力(マーク・ジョイオ)",
-            glen:"*Affix Augment (Mark Joy)"
+            glen:"Augment (Mark Joy)"
         },
         "Add Ability (Mark Couragena)": {
             en: "Add Ability (Mark Couragena)",
             jp: "特殊能力(マーク・カレジナ)",
-            glen:"*Affix Augment (Mark Courage)"
+            glen:"Augment (Mark Courage)"
         },
         "Add Ability (Mark Angar)": {
             en: "Add Ability (Mark Angar)",
             jp: "特殊能力(マーク・アンガル)",
-            glen:"*Affix Augment (Mark Anger)"
+            glen:"Augment (Mark Anger)"
         },
         "Add Ability (Mark Grif)": {
             en: "Add Ability (Mark Grif)",
             jp: "特殊能力(マーク・グリフ)",
-            glen:"*Affix Augment (Mark Grief)"
+            glen:"Augment (Mark Grief)"
         },
 		"Add Ability (Ether S)": {
             en: "Add Ability (Ether S)",
             jp: "特殊能力(エーテルS)",
-			glen:"*Affix Augment (Aether Soul)"
+			glen:"Augment (Aether Soul)"
         },
         'Add Ability (Factor C)': {
             en: "Add Ability (Factor C)",
             jp: "特殊能力(ファクターC)",
-			glen:"*Affix Augment (Factor Catalyst)"
+			glen:"Augment (Factor Catalyst)"
         },
         "Add Ability (Omega M)": {
             en: "Add Ability (Omega M)",
             jp: "特殊能力(オメガM)",
-			glen:"*Affix Augment (Omega Memoria)"
+			glen:"Augment (Omega Memoria)"
         },
         "Add Ability (Reverie C)": {
             en: "Add Ability (Reverie C)",
             jp: "特殊能力(レヴリーC)",
-			glen:"*Affix Augment (Reverie Catalyst)"
+			glen:"Augment (Reverie Catalyst)"
         },
         "Add Ability (Mana Reverie)": {
             en: "Add Ability (Mana Reverie)",
             jp: "特殊能力(マナレヴリー)",
-			glen:"*Affix Augment (Mana Reverie)"
+			glen:"Augment (Mana Reverie)"
         },
         "Add Ability (Ether F)": {
             en: "Add Ability (Ether F)",
             jp: "特殊能力(エーテルF)",
-			glen:"*Affix Augment (Aether Factor)"
+			glen:"Augment (Aether Factor)"
         },
         "Add Ability (Astral S)": {
             en: "Add Ability (Astral S)",
             jp: "特殊能力(アストラルS)",
-			glen:"*Affix Augment (Astral Soul)"
+			glen:"Augment (Astral Soul)"
         },
         "S1 Add: Photon Reduction 2": {
             en: "S1 Add: Photon Reduction 2",
@@ -991,7 +991,7 @@ const lang = Object.freeze({
 		"S1 Add: Brilliant Intent 2": {
             en: "S1 Add: Brilliant Intent 2",
             jp: "S1追加:輝充の志2",
-			glen: "*S1 Add: Photonic Will 2"
+			glen: "S1 Add: Photonic Will 2"
         },
         "S1 Add: Powering Intent": {
             en: "S1 Add: Powering Intent",
@@ -1091,7 +1091,7 @@ const lang = Object.freeze({
         "S2 Add: Flowing Grace": {
             en: "S2 Add: Flowing Grace",
             jp: "S2追加:時流の恵",
-            glen: "*S2 Add: Timeflow Grace"
+            glen: "S2 Add: Timeflow Grace"
         },
         "S2 Add: Rupturing Excess": {
             en: "S2 Add: Rupturing Excess",
@@ -1121,37 +1121,37 @@ const lang = Object.freeze({
 		"S2 Add: Spirited Response": {
             en: "S2 Add: Spirited Response",
             jp: "S2追加:気輝応変",
-			glen: "*S2 Add: Spirited Response"
+			glen: "S2 Add: Luminous Adaptation"
         },
         "S2 Add: Flaming Guard": {
             en: "S2 Add: Flaming Guard",
             jp: "S2追加:火炎の備志",
-			glen: "*S2 Add: Flaming Guard"
+			glen: "S2 Add: One with the Flame"
         },
         "S2 Add: Freezing Guard": {
             en: "S2 Add: Freezing Guard",
             jp: "S2追加:氷雪の備志",
-			glen: "*S2 Add: Freezing Guard"
+			glen: "S2 Add: One with the Tundra"
         },
         "S2 Add: Lightning Guard": {
             en: "S2 Add: Lightning Guard",
             jp: "S2追加:轟雷の備志",
-			glen: "*S2 Add: Lightning Guard"
+			glen: "S2 Add: One with the Thunder"
         },
         "S2 Add: Storm Guard": {
             en: "S2 Add: Storm Guard",
             jp: "S2追加:暴風の備志",
-			glen: "*S2 Add: Storm Guard"
+			glen: "S2 Add: One with the Storm"
         },
         "S2 Add: Shining Guard": {
             en: "S2 Add: Shining Guard",
             jp: "S2追加:光明の備志",
-			glen: "*S2 Add: Shining Guard"
+			glen: "S2 Add: One with the Light"
         },
         "S2 Add: Darkness Guard": {
             en: "S2 Add: Darkness Guard",
             jp: "S2追加:暗闇の備志",
-			glen: "*S2 Add: Darkness Guard"
+			glen: "S2 Add: One with the Dark"
         },
         "S2 Add: Heavenly Keeper 2": {
             en: "S2 Add: Heavenly Keeper 2",
@@ -1196,7 +1196,7 @@ const lang = Object.freeze({
         "S3 Add: Nature's Gleam 2": {
             en: "S3 Add: Nature's Gleam 2",
             jp: "S3追加:花海雪の輝勢2",
-            glen: "*S3 Add: Petalsea Lucentrush 2"
+            glen: "S3 Add: Petalsea Lucentrush 2"
         },
         "S3 Add: Flowing Grace": {
             en: "S3 Add: Flowing Grace",
@@ -1266,7 +1266,7 @@ const lang = Object.freeze({
         "S3 Add: Rupturing Intent": {
             en: "S3 Add: Rupturing Intent",
             jp: "S3追加:裂砕の志",
-            glen: "*S3 Add: Partbreaker\'s Will"
+            glen: "S3 Add: Partbreaker\'s Will"
         },
         "S3 Add: Brilliant Ruin": {
             en: "S3 Add: Brilliant Ruin",
@@ -1278,11 +1278,6 @@ const lang = Object.freeze({
             jp: "S3追加:災転輝与",
             glen: "S3 Add: Lucent Adversity"
         },
-        "S3 Add: Calming Exhilaration": {
-            en: "S3 Add: Calming Exhilaration",
-            jp: "S3追加:静心活与",
-            glen: "*S3 Add: Calming Exhilaration"
-        },
         "S3 Add: Powering Intent": {
             en: "S3 Add: Powering Intent",
             jp: "S3追加:強闘の志",
@@ -1291,7 +1286,7 @@ const lang = Object.freeze({
         "S3 Add: Rainbow's Reduction": {
             en: "S3 Add: Rainbow's Reduction",
             jp: "S3追加:六色の縮減",
-            glen: "*S3 Add: Rainbow's Reduction"
+            glen: "S3 Add: Rainbow Descent"
         },
         "S3 Add: Rainbow's Radiance": {
             en: "S3 Add: Rainbow's Radiance",
@@ -1316,7 +1311,7 @@ const lang = Object.freeze({
         "S3 Add: Double-Edged Sword": {
             en: "S3 Add: Double-Edged Sword",
             jp: "S3追加:諸刃の撃",
-			glen: "*S3 Add: Two-edged Strike"
+			glen: "S3 Add: Two-edged Strike"
         },
         "S3 Add: Photon Reduction": {
             en: "S3 Add: Photon Reduction",
@@ -1356,7 +1351,7 @@ const lang = Object.freeze({
         "S4 Add: Saint Shield": {
             en: "S4 Add: Saint Shield",
             jp: "S4追加:聖者の盾",
-            glen: "*S4 Add: Saint Shield"
+            glen: "S4 Add: Saintly Shield"
         },
         "S4 Add: Harmonized Rainbow": {
             en: "S4 Add: Harmonized Rainbow",
@@ -1386,7 +1381,7 @@ const lang = Object.freeze({
         "S4 Add: Evasion Training": {
             en: "S4 Add: Evasion Training",
             jp: "S4追加:回避訓練",
-            glen: "*S4 Add: Evasion Training"
+            glen: "S4 Add: Dodge Training"
         },
         "S4 Add: Radiant Eclipse": {
             en: "S4 Add: Radiant Eclipse",
@@ -1406,7 +1401,7 @@ const lang = Object.freeze({
         "S5 Add: Instant Invocation": {
             en: "S5 Add: Instant Invocation",
             jp: "S5追加:瞬術略唱",
-            glen: "*S5 Add: Instant Invocation"
+            glen: "S5 Add: Sleight Incantation"
         },
         "S5 Add: Tethered Eclipse": {
             en: "S5 Add: Tethered Eclipse",
@@ -1416,12 +1411,12 @@ const lang = Object.freeze({
         "S5 Add: Vigorous Response": {
             en: "S5 Add: Vigorous Response",
             jp: "S5追加:活器応変",
-            glen: "*S5 Add: Vigorous Response"
+            glen: "S5 Add: Life V Adapation"
         },
         "S5 Add: Angelic Respite": {
             en: "S5 Add: Angelic Respite",
             jp: "S5追加:槍機天悠",
-            glen: "*S5 Add: Angelic Respite"
+            glen: "S5 Add: Lance of Eternity"
         },
 		"S5 Add: Calming Expanse": {
             en: "S5 Add: Calming Expanse",
@@ -1436,22 +1431,22 @@ const lang = Object.freeze({
         "S5 Add: Aegis Balance": {
             en: "S5 Add: Aegis Balance",
             jp: "S5追加:堅守の秤",
-			glen: "*S5 Add: Aegis Balance"
+			glen: "S5 Add: Defensive Balance"
         },
         "S5 Add: Swift Radiance": {
             en: "S5 Add: Swift Radiance",
             jp: "S5追加:回避輝与",
-			glen: "*S5 Add: Swift Radiance"
+			glen: "S5 Add: Dodge Lucent"
         },
         "S5 Add: Calming Quartet": {
             en: "S5 Add: Calming Quartet",
             jp: "S5追加:静心四連",
-			glen: "*S5 Add: Calming Quartet"
+			glen: "S5 Add: Steadfast Quadrate"
         },
         "S5 Add: Chained Radiance": {
             en: "S5 Add: Chained Radiance",
             jp: "S5追加:連鎖輝与",
-			glen: "*S5 Add: Chained Radiance"
+			glen: "S5 Add: Chain Lucent"
         },
         "S6 Add: Ironclad Illness": {
             en: "S6 Add: Ironclad Illness",
@@ -3032,10 +3027,10 @@ const lang = Object.freeze({
 	"LA2T": {
         name_en: "S1:Brilliant Intent 2",
         name_jp: "S1:輝充の志2",
-		name_glen: "*S1:Photonic Will 2",
+		name_glen: "S1:Photonic Will 2",
         effect_en: "Boosts damage by 5% while PP at is 40% or above.",
         effect_jp: "PPが40%以上の時、与ダメージが5%上昇。",
-		effect_glen: "Boosts damage by 5% while PP at is 40% or above."
+		effect_glen: "Increases attack power by 5% while PP is at or above 40%."
     },
     "LA98": {
         name_en: "S1:Photon Balance 2",
@@ -4304,7 +4299,7 @@ const lang = Object.freeze({
     "LE98": {
         name_en: "S5:Instant Invocation",
         name_jp: "S5:錬成萌花",
-        name_glen: "S5:Sleight Incantation ",
+        name_glen: "S5:Sleight Incantation",
         effect_en: "Technique damage is<br>decreased by 40%, but<br>using the same<br>Technique with a JA<br>substantially<br>decreases charge<br>time.",
         effect_jp: "テクニックの与ダメージが常時40%減少するがテクニック使用後に同属性テクニックJAでチャージ時間大幅短縮。",
         effect_glen: "Reduces technique damage by 40%.<br>Same element techniques that are chained together with a Perfect Attack will have instant charge times."
@@ -4360,34 +4355,34 @@ const lang = Object.freeze({
     "LE0O": {
         name_en: "S5:Calming Quartet",
         name_jp: "S5:静心四連",
-		name_glen: "*S5:Calming Quartet",
+		name_glen: "S5:Steadfast Quadrate",
         effect_en: "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only.",
         effect_jp: "通常攻撃の威力が67％低下する代わりに攻撃が4発に変化。",
-		effect_glen: "Reduces the power of<br>normal attacks by 67%,<br>but makes each normal<br>attack fire 4 shots.<br>Launchers only."
+		effect_glen: "Changes normal attack into 4 homing shells but decreases the potency of normal attacks by 67%.<br>Launchers only."
     },
     "LE96": {
         name_en: "S5:Aegis Balance",
         name_jp: "S5:堅守の秤",
-		name_glen: "*S5:Aegis Balance",
+		name_glen: "S5:Defensive Balance",
         effect_en: "Increase Power by 4%. Reduce damage taken by 25% but consume 20 PP when taking damage. Force only.",
         effect_jp: "威力が4%上昇。被ダメージ時PPを20消費してダメージを25%軽減する。フォース限定。",
-		effect_glen: "Increase Power by 4%. Reduce damage taken by 25% but consume 20 PP when taking damage. Force only."
+		effect_glen: "Increases potency by 4%. Reduces damage taken by 25% but you lose 20 PP every time you take damage.<br>Force only."
     },
     "LE0R": {
         name_en: "S5:Swift Radiance",
         name_jp: "S5:回避輝与",
-		name_glen: "*S5:Swift Radiance",
+		name_glen: "S5:Dodge Lucent",
         effect_en: "Stop Natural PP Regeneration. Increase Active PP Recovery by 50% and restore 100 PP upon successfully evading an attack with Sway or Step. Increase Power by 2%. Knuckles only.",
         effect_jp: "PP自然回復が停止。攻撃時PP回復量が50%上昇、回避成功時PPが100回復。威力2%上昇。鋼拳限定。",
-		effect_glen: "Stop Natural PP Regeneration. Increase Active PP Recovery by 50% and restore 100 PP upon successfully evading an attack with Sway or Step. Increase Power by 2%. Knuckles only."
+		effect_glen: "Stop Natural PP Regeneration. Increase Active PP Recovery by 50% and restore 100 PP upon successfully evading an attack with a dodge<br>Increase Potency by 2%.<br>Knuckles only."
     },
     "LE0N": {
         name_en: "S5:Chained Radiance",
         name_jp: "S5:連鎖輝与",
-		name_glen: "*S5:Chained Radiance",
+		name_glen: "S5:Chain Lucent",
         effect_en: "On Chain Trigger activation, recover PP and increase Power by 3% for 60 seconds. Twin Machineguns only.",
         effect_jp: "チェイントリガー開始時PPが回復し、60秒間威力3%上昇。双機銃限定",
-		effect_glen: "On Chain Trigger activation, recover PP and increase Power by 3% for 60 seconds. Twin Machineguns only."
+		effect_glen: "On Chain Trigger activation, recover PP and increase Potency by 3% for 60 seconds.<br>Twin Machineguns only."
     },
     "LF0A": {
         name_en: "S6:Heroic Howl",
@@ -5376,10 +5371,10 @@ const lang = Object.freeze({
 	"SA02": {
         name_en: "Guardian Soul",
         name_jp: "ガーディアン・ソール",
-		name_glen: "*Guardian Soul",
+		name_glen: "Guardian Soul",
         effect_en: "ALL(+70),<br>HP(+70),<br>PP(+7)",
         effect_jp: "ALL(+70),<br>HP(+70),<br>PP(+7)",
-		effect_glen: "ALL(+70),<br>HP(+70),<br>PP(+7)"
+		effect_glen: "ALL(+70),HP(+70),PP(+7)"
     },
     "TA01": {
         name_en: "Stigma",
@@ -5648,7 +5643,7 @@ const lang = Object.freeze({
     "TN08": {
         name_en: "Shiva Glare",
         name_jp: "シバ・グレア",
-		name_glen: "*Shiva Glare",
+		name_glen: "Shiva Glare",
         effect_en: "R-ATK(+30), T-ATK(+30), S-DEF(+20), R-DEF(+20), T-DEF(+20), HP(+20), PP(+2)",
         effect_jp: "射撃力(+30),法撃力(+30),打撃防御(+20),射撃防御(+20),法撃防御(+20),HP(+20),PP(+2)",
 		effect_glen: "RNG Pwr(+30), TEC Pwr(+30), MEL Def(+20), RNG Def(+20), TEC Def(+20), HP(+20), PP(+2)"
@@ -5656,7 +5651,7 @@ const lang = Object.freeze({
     "TN09": {
         name_en: "Origin Glare",
         name_jp: "オリジン・グレア",
-		name_glen: "*Origin Glare",
+		name_glen: "Origin Glare",
         effect_en: "S-ATK(+30), R-ATK(+30), T-ATK(+30), S-DEF(+10), R-DEF(+10), T-DEF(+10), HP(+20), PP(+2)",
         effect_jp: "打撃力(+30), 射撃力(+30), 法撃力(+30), 打撃防御(+10), 射撃防御(+10), 法撃防御(+10), HP(+20), PP(+2)",
 		effect_glen: "MEL Pwr(+30), RNG Pwr(+30), TEC Pwr(+30), MEL Def(+10), RNG Def(+10), TEC Def(+10), HP(+20), PP(+2)"
@@ -5664,7 +5659,7 @@ const lang = Object.freeze({
     "TN0A": {
         name_en: "Photoner Glare",
         name_jp: "フォトナー・グレア",
-		name_glen: "*Photoner Glare",
+		name_glen: "Photoner Glare",
         effect_en: "ALL(+15), HP(+15), PP(+2)",
         effect_jp: "ALL(+15), HP(+15), PP(+2)",
 		effect_glen: "ALL(+15), HP(+15), PP(+2)"
@@ -5672,7 +5667,7 @@ const lang = Object.freeze({
     "TN11": {
         name_en: "Absolute Glare",
         name_jp: "アブソリュート・グレア",
-		name_glen: "*Absolute Glare",
+		name_glen: "Absolute Glare",
         effect_en: "ALL(+40), HP(+30), PP(+3)",
         effect_jp: "ALL(+40), HP(+30), PP(+3)",
 		effect_glen: "ALL(+40), HP(+30), PP(+3)"
@@ -6288,7 +6283,7 @@ const lang = Object.freeze({
     "YB41": {
         name_en: "Phrase Reduce",
         name_jp: "フレイズ・リデュース",
-        name_glen: "*Phrase Reduce",
+        name_glen: "Phrase Reduce",
         effect_en: "PP consumption decreases by 4%.",
         effect_jp: "PP消費量-4%。",
         effect_glen: "PP consumption decreases by 4%."
@@ -6643,12 +6638,12 @@ const lang = Object.freeze({
         name_glen: "Soul Receptor",
         effect_en: "Greatly increases Soul affix rate.",
         effect_jp: "ソール系特殊能力の合成成功率を大幅に上昇。",
-        effect_glen: "Greatly increases Soul affix rate."
+        effect_glen: "Greatly increases the Transfer rate of Soul-type Augments.<br>ALL(+10)"
     },
     "XB01": {
         name_en: "Extreceptor",
         name_jp: "エクストレセプター",
-        name_glen: "*Extreceptor",
+        name_glen: "Elegant Receptor",
         effect_en: "Greatly increases Flict and Alter affix rate.<br>ALL(+10)",
         effect_jp: "アルター・フリクト系と特定の特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)",
         effect_glen: "Greatly increases Flict and Alter affix rate.<br>ALL(+10)"
@@ -6656,10 +6651,10 @@ const lang = Object.freeze({
     "XC01": {
         name_en: "Gift Receptor",
         name_jp: "ギフトレセプター",
-        name_glen: "*Gift Receptor",
+        name_glen: "Gift Receptor",
         effect_en: "Allows transfer of Lucky Rise, EXP Boost, and Meseta Fever.",
         effect_jp: "ギフト系特殊能力の引き継ぎが可能になる",
-        effect_glen: "Allows transfer of Lucky Charm, EXP Boost, and Meseta Fever."
+        effect_glen: "Greatly increases the Transfer rate of Gift-type Augments(Lucky Charm, EXP Boost, and Meseta Fever).<br>ALL(+10)"
     },
     "XD01": {
         name_en: "Sentence Receptor",
@@ -6667,15 +6662,15 @@ const lang = Object.freeze({
         name_glen: "Sentence Receptor",
         effect_en: "Boosts transfer of Sentence affixes.<br>ALL(+10)",
         effect_jp: "センテンス系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)",
-        effect_glen: "Boosts transfer of Sentence affixes.<br>ALL(+10)"
+        effect_glen: "Greatly increases the Transfer rate of Sentence-type Augments.<br>ALL(+10)"
     },
     "XE01": {
         name_en: "Phrase Receptor",
         name_jp: "フレイズレセプター",
-        name_glen: "*Phrase Receptor",
+        name_glen: "Phrase Receptor",
         effect_en: "Boosts transfer of Phrase affixes.<br>ALL(+10)",
         effect_jp: "フレイズ系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)",
-        effect_glen: "Boosts transfer of Phrase affixes.<br>ALL(+10)"
+        effect_glen: "Greatly increases the Transfer rate of Phrase-type Augments.<br>ALL(+10)"
     },
     "XF01": {
         name_en: "Factor Receptor",
@@ -6683,7 +6678,7 @@ const lang = Object.freeze({
         name_glen: "Factor Receptor",
         effect_en: "Boosts Factor-type ability transfer rates.<br>ALL(+10)",
         effect_jp: "ファクター系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)",
-        effect_glen: "Boosts Factor-type ability transfer rates.<br>ALL(+10)"
+        effect_glen: "Greatly increases the Transfer rate of Factor-type Augments.<br>ALL(+10)"
     },
     "XG01": {
         name_en: "Mark Receptor",
@@ -6691,7 +6686,7 @@ const lang = Object.freeze({
         name_glen: "Mark Receptor",
         effect_en: "Allows transfer Mark-type ability.<br>ALL(+10)",
         effect_jp: "マーク系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)",
-        effect_glen: "Allows transfer Mark-type ability.<br>ALL(+10)"
+        effect_glen: "Greatly increases the Transfer rate of Mark-type Augments.<br>ALL(+10)"
     },
     "XJ01": {
         name_en: "Divine Receptor",
@@ -6699,7 +6694,7 @@ const lang = Object.freeze({
         name_glen: "Divine Receptor",
         effect_en: "Greatly increases affix rate of Divine-type ability.<br>ALL(+10)",
         effect_jp: "ディバイン系特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)",
-        effect_glen: "Greatly increases affix rate of Divine-type ability.<br>ALL(+10)"
+        effect_glen: "Greatly increases the Transfer rate of Divine-type Augments.<br>ALL(+10)"
     },
 	"XK01": {
         name_en: "Exceed Receptor",
@@ -6707,7 +6702,7 @@ const lang = Object.freeze({
 		name_glen: "Exceed Receptor",
         effect_en: "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)",
         effect_jp: "イクシード系特殊能力の継承成功率を大幅に上昇.<br>ALL(+10)",
-		effect_glen: "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
+		effect_glen: "Greatly increases the Transfer rate of Exceed Energy.<br>ALL(+10)"
     },
     "XH01": {
         name_en: "Catalyst Receptor",
@@ -6723,7 +6718,7 @@ const lang = Object.freeze({
         name_glen: "Attack Receptor",
         effect_en: "Greatly increases affix rate of Power, Shoot, Technique, and Arm.<br>ALL(+5)",
         effect_jp: "パワー・シュート・テクニック系特殊能力の合成成功率を大幅に上昇。<br>ALL(+5)",
-        effect_glen: "Greatly increases success rate for 3 types of attack-increasing Augment/Deftness transfers.<br>ALL(+5)"
+        effect_glen: "Greatly increases the Transfer rate of Attack-type Augments and Deftness.<br>ALL(+5)"
     },
     "XI31": {
         name_en: "Guard Receptor",
@@ -6731,7 +6726,7 @@ const lang = Object.freeze({
         name_glen: "Guard Receptor",
         effect_en: "Greatly increases affix rate of Mind, Body, and React.<br>ALL(+5)",
         effect_jp: "マインド・ボディ・リアクト系特殊能力の合成成功率を大幅に上昇。<br>ALL(+5)",
-        effect_glen: "Greatly increases success rate for Toughness, Reflex, and Genius Augment transfers.<br>ALL(+5)"
+        effect_glen: "Greatly increases the Transfer rate of Toughness, Reflex, and Genius.<br>ALL(+5)"
     },
     "XI32": {
         name_en: "Photon Receptor",
@@ -6739,7 +6734,7 @@ const lang = Object.freeze({
         name_glen: "Photon Receptor",
         effect_en: "Greatly increases affix rate of Stamina and Spirita.<br>ALL(+5)",
         effect_jp: "スタミナ・スピリタ系特殊能力の合成成功率を大幅に上昇。<br>ALL(+5)",
-        effect_glen: "Greatly increases succes rate for Stamina and Spirit Augment Transfers.<br>ALL(+5)"
+        effect_glen: "Greatly increases the Transfer rate of Stamina and Spirit.<br>ALL(+5)"
     },
     "XI02": {
         name_en: "Stamina Boost",
