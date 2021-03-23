@@ -1779,7 +1779,7 @@ let data = {
             }
         ],
         // List of boost week additional success rate (in %)
-        boostWeek: [0, 5, 10, 15]
+        boostWeek: [0, 5, 10, 15,20]
     },
     // Sets of abilities that cannot be put together in a fodder
     excludePattern: {

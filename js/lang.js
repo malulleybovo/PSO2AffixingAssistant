@@ -2339,7 +2339,7 @@ const lang = Object.freeze({
     "HM01": {
         name_en: "Light Resist I",
         name_jp: "ライトレジストⅠ",
-        name_glen: "Light Resist I",
+        name_glen: "Radiant Ward I",
         effect_en: "Light Resist(+3)",
         effect_jp: "光耐性(+3)",
         effect_glen: "Light Resist(+3)"
@@ -2347,7 +2347,7 @@ const lang = Object.freeze({
     "HM02": {
         name_en: "Light Resist II",
         name_jp: "ライトレジストⅡ",
-        name_glen: "Light Resist II",
+        name_glen: "Radiant Ward II",
         effect_en: "Light Resist(+4)",
         effect_jp: "光耐性(+4)",
         effect_glen: "Light Resist(+4)"
@@ -2355,7 +2355,7 @@ const lang = Object.freeze({
     "HM03": {
         name_en: "Light Resist III",
         name_jp: "ライトレジストⅢ",
-        name_glen: "Light Resist III",
+        name_glen: "Radiant Ward III",
         effect_en: "Light Resist(+5)",
         effect_jp: "光耐性(+5)",
         effect_glen: "Light Resist(+5)"
@@ -2363,7 +2363,7 @@ const lang = Object.freeze({
     "HM04": {
         name_en: "Light Resist IV",
         name_jp: "ライトレジストⅣ",
-        name_glen: "Light Resist IV",
+        name_glen: "Radiant Ward IV",
         effect_en: "Light Resist(+6)",
         effect_jp: "光耐性(+6)",
         effect_glen: "Light Resist(+6)"
@@ -2371,7 +2371,7 @@ const lang = Object.freeze({
     "HM05": {
         name_en: "Light Resist V",
         name_jp: "ライトレジストⅤ",
-        name_glen: "Light Resist V",
+        name_glen: "Radiant Ward V",
         effect_en: "Light Resist(+7)",
         effect_jp: "光耐性(+7)",
         effect_glen: "Light Resist(+7)"
@@ -6643,7 +6643,7 @@ const lang = Object.freeze({
     "XB01": {
         name_en: "Extreceptor",
         name_jp: "エクストレセプター",
-        name_glen: "Elegant Receptor",
+        name_glen: "Extreme Receptor",
         effect_en: "Greatly increases Flict and Alter affix rate.<br>ALL(+10)",
         effect_jp: "アルター・フリクト系と特定の特殊能力の合成成功率を大幅に上昇。<br>ALL(+10)",
         effect_glen: "Greatly increases Flict and Alter affix rate.<br>ALL(+10)"
@@ -6654,7 +6654,7 @@ const lang = Object.freeze({
         name_glen: "Gift Receptor",
         effect_en: "Allows transfer of Lucky Rise, EXP Boost, and Meseta Fever.",
         effect_jp: "ギフト系特殊能力の引き継ぎが可能になる",
-        effect_glen: "Greatly increases the Transfer rate of Gift-type Augments(Lucky Charm, EXP Boost, and Meseta Fever).<br>ALL(+10)"
+        effect_glen: "Greatly increases the Transfer rate of Gift-type Augments.<br>Lucky Charm | EXP Boost | Meseta Fever<br>ALL(+10)"
     },
     "XD01": {
         name_en: "Sentence Receptor",

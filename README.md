@@ -7,7 +7,7 @@
   #### Affix Assistant is developed by Malulleybovo while the global translations are translated by Cor Vous and Ice Winter
   #### [You can go and found more of Malulleybovo work on their github such as their Symbol Art Editor here](https://www.github.com/malulleybovo)
   
-  #### Version 1.2.2
+  #### Version 1.2.3
   #### Compliant with version 1.93 of [Arks Layer's Affix Simulator](https://arks-layer.com/abilitysim/)
 
   ### NO HASSLE Affixing Formulas at the tip of your fingers
