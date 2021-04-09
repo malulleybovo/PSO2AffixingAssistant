@@ -1001,27 +1001,27 @@ const lang = Object.freeze({
 		"S1 Add: Photon Balance 2": {
             en: "S1 Add: Photon Balance 2",
             jp: "S1追加:光子の秤2",
-			glen: "*S1 Add: Photon Balance 2"
+			glen: "S1 Add: Photon Balance 2"
         },
         "S1 Add: Collaborator Liberator 2": {
             en: "S1 Add: Collaborator Liberator 2",
             jp: "S1追加:戦友の加護2",
-			glen: "*S1 Add: Comrade\'s Blessing 2"
+			glen: "S1 Add: Comrade\'s Blessing 2"
         },
         "S1 Add: Offensive Intent 2": {
             en: "S1 Add: Offensive Intent 2",
             jp: "S1追加:剛撃の志2",
-			glen: "*S1 Add: Aggressive Will 2"
+			glen: "S1 Add: Aggressive Will 2"
         },
         "S1 Add: Flowing Grace": {
             en: "S1 Add: Flowing Grace",
             jp: "S1追加:時流の恵",
-			glen: "*S1 Add: Timeflow Grace"
+			glen: "S1 Add: Timeflow Grace"
         },
         "S2 Add: Umbrageous Melody": {
             en: "S2 Add: Umbrageous Melody",
             jp: "S2追加:月葉影の歌",
-            glen: "*S2 Add: Moonleaf Song"
+            glen: "S2 Add: Moonleaf Song"
         },
         "S2 Add: Nature's Reduction 2": {
             en: "S2 Add: Nature's Reduction 2",
@@ -1161,7 +1161,7 @@ const lang = Object.freeze({
         "S2 Add: Umbrageous Melody 2": {
             en: "S2 Add: Umbrageous Melody 2",
             jp: "S2追加:月葉影の歌2",
-			glen: "*S2 Add: Moonleaf Song 2"
+			glen: "S2 Add: Moonleaf Song 2"
         },
         "S2 Add: Photon Reduction 3": {
             en: "S2 Add: Photon Reduction 3",
@@ -1171,17 +1171,17 @@ const lang = Object.freeze({
         "S2 Add: Guardian Armor 2": {
             en: "S2 Add: Guardian Armor 2",
             jp: "S2追加:守護の備2",
-			glen: "*S2 Add: Guardian Shield 2"
+			glen: "S2 Add: Guardian Shield 2"
         },
         "S2 Add: Instant Reduction 2": {
             en: "S2 Add: Instant Reduction 2",
             jp: "S2追加:瞬乱縮減2",
-			glen: "*S2 Add: Perfect Descent 2"
+			glen: "S2 Add: Perfect Descent 2"
         },
         "S2 Add: Instant Purpose": {
             en: "S2 Add: Instant Purpose",
             jp: "S2追加:瞬乱巧志",
-			glen: "*S2 Add: Instant Purpose"
+			glen: "S2 Add: Perfect Adept Will"
         },
         "S2 Add: Medicinal Wisdom 2": {
             en: "S2 Add: Medicinal Wisdom 2",
@@ -1216,7 +1216,7 @@ const lang = Object.freeze({
         "S3 Add: Calming Exhilaration": {
             en: "S3 Add: Calming Exhilaration",
             jp: "S3追加:撃流の備",
-            glen: "*S3 Add: Calming Exhilaration"
+            glen: "S3 Add: Steadfast Vitality"
         },
         "S3 Add: Curtailed Strike": {
             en: "S3 Add: Curtailed Strike",
@@ -1326,12 +1326,12 @@ const lang = Object.freeze({
         "S3 Add: Radiant Strike 3": {
             en: "S3 Add: Radiant Strike 3",
             jp: "S3追加:輝剰の撃3",
-			glen: "*S3 Add: Lustrous Strike 3"
+			glen: "S3 Add: Lustrous Strike 3"
         },
         "S3 Add: Vital Intent 2": {
             en: "S3 Add: Vital Intent 2",
             jp: "S3追加:活実の志2",
-			glen: "*S3 Add: Axiom Will 2"
+			glen: "S3 Add: Axiom Will 2"
         },
         "S4 Add: Heavenly Protection": {
             en: "S4 Add: Heavenly Protection",
@@ -1466,17 +1466,17 @@ const lang = Object.freeze({
         "S6 Add: Soaring Ballet": {
             en: "S6 Add: Soaring Ballet",
             jp: "S6追加:翔機天舞",
-            glen: "*S6 Add: Soaring Heavendance"
+            glen: "S6 Add: Soaring Heavendance"
         },
         "S6 Add: Guardian's Essence": {
             en: "S6 Add: Guardian's Essence",
             jp: "S6追加:機魂の守護",
-            glen: "*S6 Add: Soul Protection"
+            glen: "S6 Add: Soul Protection"
         },
         "S6 Add: Evasion Whistle": {
             en: "S6 Add: Evasion Whistle",
             jp: "S6追加:回避の口笛",
-            glen: "*S6 Add: Dodging Whistle"
+            glen: "S6 Add: Dodging Whistle"
         },
         "S6 Add: Long Night Star": {
             en: "S6 Add: Long Night Star",
@@ -1486,7 +1486,7 @@ const lang = Object.freeze({
         "S6 Add: Overlimit": {
             en: "S6 Add: Overlimit",
             jp: "S6追加:超限活器",
-            glen: "*S6 Add: Overflowing Life V"
+            glen: "S6 Add: Overflowing Life V"
         },
         "S6 Add: Wondrous Encore": {
             en: "S6 Add: Wondrous Encore",
@@ -1496,12 +1496,12 @@ const lang = Object.freeze({
 		"S6 Add: Raising Expanse": {
             en: "S6 Add: Raising Expanse",
             jp: "S6追加:累加拡域",
-			glen: "*S6 Add: Raising Expanse"
+			glen: "S6 Add: Escalating Expanse"
         },
         "S6 Add: Rainbow's Shield": {
             en: "S6 Add: Rainbow's Shield",
             jp: "S6追加:六色の盾",
-			glen: "*S6 Add: Rainbow's Shield"
+			glen: "S6 Add: Rainbow Shield"
         },
         "S7 Add: S-ATK Up": {
             en: "S7 Add: S-ATK Up",
@@ -1536,22 +1536,22 @@ const lang = Object.freeze({
         "S7 Add: Sentinel's Gift": {
             en: "S7 Add: Sentinel's Gift",
             jp: "S7追加:法護の与",
-            glen: "*S7 Add: Sentinel's Gift"
+            glen: "S7 Add: Dharma Boon"
         },
         "S7 Add: Glowing Grace": {
             en: "S7 Add: Glowing Grace",
             jp: "S7追加:輝静の恵",
-            glen: "*S7 Add: Glowing Grace"
+            glen: "S7 Add: Still Grace"
         },
 		"S7 Add: Descried Warrior": {
             en: "S7 Add: Descried Warrior",
             jp: "S7追加:視敵無双",
-			glen: "*S7 Add: Descried Warrior"
+			glen: "S7 Add: Targeted Aggression"
         },
         "S7 Add: Rainbow's Skill": {
             en: "S7 Add: Rainbow's Skill",
             jp: "S7追加:六色の巧",
-			glen: "S7 Add: Rainbow's Skill"
+			glen: "S7 Add: Rainbow Skill"
         },
         "S8 Add: HP Up": {
             en: "S8 Add: HP Up",
@@ -1586,12 +1586,12 @@ const lang = Object.freeze({
 		"S8 Add: PP Up 2": {
             en: "S8 Add: PP Up 2",
             jp: "S8追加:輝器上昇2",
-			glen: "*S8 Add: PP Up 2"
+			glen: "S8 Add: PP Up 2"
         },
         "S8 Add: Rainbow's Decay": {
             en: "S8 Add: Rainbow's Decay",
             jp: "S8追加:六色の蝕",
-			glen: "*S8 Add: Rainbow's Decay"
+			glen: "S8 Add: Rainbow Erode"
         }
     },
     "potential": {
@@ -3035,7 +3035,7 @@ const lang = Object.freeze({
     "LA98": {
         name_en: "S1:Photon Balance 2",
         name_jp: "S1:光子の秤2",
-		name_glen: "*S1:Photon Balance 2",
+		name_glen: "S1:Photon Balance 2",
         effect_en: "Increase PP Consumption by 4% but increase PA/Technique damage by 6%.",
         effect_jp: "PP消費量が4％増加する代わりにPAとテクニックの威力が6％上昇する。",
 		effect_glen: "Increases pp consumption by 4% in exchange for 6% more damage on PAs and Techniques."
@@ -3043,7 +3043,7 @@ const lang = Object.freeze({
     "LA97": {
         name_en: "S1:Collaborator Liberator 2",
         name_jp: "S1:戦友の加護2",
-		name_glen: "*S1:Comrade\'s Blessing 2",
+		name_glen: "S1:Comrade\'s Blessing 2",
         effect_en: "If there are two or more party members, decrease PP consumption by 10% (2 Members), +?% Critical Hit Rate (3 Members), and increase Power by 4% (4 Members). Bonuses only work on self.",
         effect_jp: "パーティ人数が2人以上の場合、人数に応じて、PP消費軽減、クリティカル率上昇、威力上昇効果が発動。",
 		effect_glen: "Provides bonuses based on the number of party members.<br>2 Members: PP consumption -10%<br>3 Members: +?% critical hit rate<br>4 Members: Attack power +4% Bonuses only apply to yourself."
@@ -3051,7 +3051,7 @@ const lang = Object.freeze({
     "LA96": {
         name_en: "S1:Offensive Intent 2",
         name_jp: "S1:剛撃の志2",
-		name_glen: "*S1:Aggressive Will 2",
+		name_glen: "S1:Aggressive Will 2",
         effect_en: "Increase damage by 4%.",
         effect_jp: "与ダメージが4%上昇。",
 		effect_glen: "Increases attack power by 4%."
@@ -3059,7 +3059,7 @@ const lang = Object.freeze({
     "LA77": {
         name_en: "S1:Flowing Grace",
         name_jp: "S1:時流の恵",
-		name_glen: "*S1:Timeflow Grace",
+		name_glen: "S1:Timeflow Grace",
         effect_en: "Regenerate 10 PP every 4 seconds.",
         effect_jp: "4秒ごとにPPを10回復する。",
 		effect_glen: "Regenerate 10 PP every 4 seconds."
@@ -3318,7 +3318,7 @@ const lang = Object.freeze({
         name_glen: "S2:Moonleaf Song",
         effect_en: "Increase power over time when<br>S1:Yellow Moon Flash, S1:Green Leaf Flash,<br>or S1:Black Shadow Flash are active.<br>Maxes at 5%",
         effect_jp: "月ノ黄閃・葉ノ緑閃・影ノ黒閃が発動中、毎秒威力が上昇。最大で5%。",
-        effect_glen: "While Moongleam/Leafgleam or Shadowgleam are active<br>attack power increases every second.<br>Maxes out at 5% after 37.5 seconds."
+        effect_glen: "While Moongleam/Leafgleam or Shadowgleam are active the damage increases every second.<br>Maxes out at 5% after 37.5 seconds."
     },
     "LB1L": {
         name_en: "S2:Nature's Reduction 2",
@@ -3507,10 +3507,10 @@ const lang = Object.freeze({
     "LB2K": {
         name_en: "S2:Umbrageous Melody 2",
         name_jp: "S2:月葉影の歌2",
-		name_glen: "*S2:Moonleaf Song 2",
+		name_glen: "S2:Moonleaf Song 2",
         effect_en: "Increase power over time while S1:Yellow Moon Flash, S1: Green Leaf Flash, or S1:Black Shadow Flash are active. Maxes at 7%.",
         effect_jp: "月ノ黄閃・葉ノ緑閃・影ノ黒閃が発動中、毎秒威力が上昇。最大で7%。",
-		effect_glen: "While Moongleam/Leafgleam or Shadowgleam are active<br>attack power increases every second.<br>Maxes out at 7% after X seconds."
+		effect_glen: "While Moongleam/Leafgleam or Shadowgleam are active the damage increases every second.<br>Maxes out at 7% after 37.5 seconds."
     },
     "LB96": {
         name_en: "S2:Photon Reduction 3",
@@ -3523,7 +3523,7 @@ const lang = Object.freeze({
     "LB95": {
         name_en: "S2:Guardian Armor 2",
         name_jp: "S2:守護の備2",
-		name_glen: "*S2:Guardian Shield 2",
+		name_glen: "S2:Guardian Shield 2",
         effect_en: "Reduces damage taken by 10%.",
         effect_jp: "被ダメージを10%軽減。",
 		effect_glen: "Reduces damage taken by 10%."
@@ -3531,18 +3531,18 @@ const lang = Object.freeze({
     "LB94": {
         name_en: "S2:Instant Reduction 2",
         name_jp: "S2:瞬乱縮減2",
-		name_glen: "*S2:Perfect Descent 2",
+		name_glen: "S2:Perfect Descent 2",
         effect_en: "Reduces PP consumption by 20% when Just Attacking different PAs or Techniques.",
         effect_jp: "別のPAやテクニックをジャストアタックするとPP消費量を20%軽減。",
-		effect_glen: "Reduces PP consumption by 20% when Just Attacking different PAs or Techniques."
+		effect_glen: "Reduces PP consumption by 20% when consecutively chaining different PAs or Techniques with Perfect Attacks."
     },
     "LB88": {
         name_en: "S2:Instant Purpose",
         name_jp: "S2:瞬乱巧志",
-		name_glen: "*S2:Instant Purpose",
+		name_glen: "S2:Perfect Adept Will",
         effect_en: "Boosts critical hit damage by 2% and increases crit rate by 15% when Just Attacking different PAs and Techniques.",
         effect_jp: "別のPAやテクニックをジャストアタックするとクリティカル威力2%クリティカル率15%上昇。",
-		effect_glen: "Boosts critical hit damage by 2% and increases crit rate by 15% when Just Attacking different PAs and Techniques."
+		effect_glen: "Increases Critical Hit Rate by 15% and Critical Hit Power by 2% when consecutively chaining different PAs or Techniques with Perfect Attacks."
     },
     "LB87": {
         name_en: "S2:Medicinal Wisdom 2",
@@ -3795,10 +3795,10 @@ const lang = Object.freeze({
     "LC90": {
         name_en: "S3:Calming Exhilaration",
         name_jp: "S3:静心活与",
-        name_glen: "*S3:Calming Exhilaration",
+        name_glen: "S3:Steadfast Vitality",
         effect_en: "Recover 70 HP when you hit with a normal attack. Has a cooldown between uses.",
         effect_jp: "通常攻撃が命中した時HPが70回復。発動後リキャスト発生。",
-        effect_glen: "Recover 70 HP when you hit with a normal attack. Has a cooldown between uses."
+        effect_glen: "Recover 70 HP when you hit with a Normal Attack. Has a 1.2~1.3s cooldown between uses."
     },
     "LC91": {
         name_en: "S3:Fortifying Strike",
@@ -3907,7 +3907,7 @@ const lang = Object.freeze({
 	"LC97": {
         name_en: "S3:Radiant Strike 3",
         name_jp: "S3:輝剰の撃3",
-		name_glen: "*S3:Lustrous Strike 3",
+		name_glen: "S3:Lustrous Strike 3",
         effect_en: "Increase Active PP Recovery by 35%.",
         effect_jp: "攻撃時のPP回復量が35%上昇する",
 		effect_glen: "Increase Active PP Recovery by 35%."
@@ -3915,7 +3915,7 @@ const lang = Object.freeze({
     "LC96": {
         name_en: "S3:Vital Intent 2",
         name_jp: "S3:活実の志2",
-		name_glen: "*S3:Axiom Will 2",
+		name_glen: "S3:Axiom Will 2",
         effect_en: "Boosts damage by 5% while HP is 80% or more.",
         effect_jp: "HPが80%以上の時、与ダメージが5%上昇。",
 		effect_glen: "Increases attack power by 5% while HP is above 80%."
@@ -4539,18 +4539,18 @@ const lang = Object.freeze({
     "LF98": {
         name_en: "S6:Raising Expanse",
         name_jp: "S6:累加拡域",
-		name_glen: "*S6:Raising Expanse",
+		name_glen: "S6:Escalating Expanse",
         effect_en: "Alters the range of Raising Pursuit's bonus attack damage. (15m AoE, not nullified on part break, not treated as an attack from behind)",
         effect_jp: "累加追撃による追加ダメージが範囲攻撃に変化する。",
-		effect_glen: "Alters the range of Raising Pursuit's bonus attack damage. (15m AoE, not nullified on part break, not treated as an attack from behind)"
+		effect_glen: "Alters the range of Escalating Pursuit's bonus attack damage. 15m AoE | not nullified on Part Break | not treated as an attack from behind"
     },
     "LF97": {
         name_en: "S6:Rainbow's Shield",
         name_jp: "S6:六色の盾",
-		name_glen: "*S6:Rainbow's Shield",
+		name_glen: "S6:Rainbow Shield",
         effect_en: "While Petal, Ocean, Leaf, Moon, Snow or Shadow Flash is active: Grants a chance (~20%) to drastically reduce damage taken. (Reduced to 1 damage).",
         effect_jp: "花・海・葉・月・雪・影のいずれかが発動中、一定確率で被ダメージを大幅に軽減する。",
-		effect_glen: "While Petal, Ocean, Leaf, Moon, Snow or Shadow Flash is active: Grants a chance (~20%) to drastically reduce damage taken. (Reduced to 1 damage)."
+		effect_glen: "While Petalgleam/Seagleam/Snowgleam/Moongleam/Leafgleam or Shadowgleam is active: Grants a chance (~20%) to drastically reduce damage taken. (Reduced to 1 damage)."
     },
     "LG0A": {
         name_en: "S7:Glowing Grace",
@@ -4675,18 +4675,18 @@ const lang = Object.freeze({
     "LG0P": {
         name_en: "S7:Descried Warrior",
         name_jp: "S7:視敵無双",
-		name_glen: "*S7:Descried Warrior",
+		name_glen: "S7:Targeted Aggression",
         effect_en: "Boosts damage by 1%<br>& reduces damage<br>taken by enemies<br>targeting you by<br>15%.",
         effect_jp: "自身を狙う敵に対して威力1%上昇し被ダメージ15%軽減。",
-		effect_glen: "Boosts damage by 1%<br>& reduces damage<br>taken by enemies<br>targeting you by<br>15%."
+		effect_glen: "Increase Power by 1% and reduces damage taken by 15% from enemies targeting you."
     },
     "LG98": {
         name_en: "S7:Rainbow's Skill",
         name_jp: "S7:六色の巧",
-		name_glen: "*S7:Rainbow's Skill",
+		name_glen: "S7:Rainbow Skill",
         effect_en: "While Petal, Ocean, Leaf, Moon, Snow or Shadow Flash is active: Increases critical hit rate. (30%)",
         effect_jp: "花・海・葉・月・雪・影のいずれかが発動中、クリティカル率が30%上昇する。",
-		effect_glen: "While Petal, Ocean, Leaf, Moon, Snow or Shadow Flash is active: Increases critical hit rate. (30%)"
+		effect_glen: "While Petalgleam/Seagleam/Snowgleam/Moongleam/Leafgleam or Shadowgleam is active: Increases critical hit rate. (30%)"
     },
     "LH0A": {
         name_en: "S8:Sky Dance's Boon",
@@ -4771,10 +4771,10 @@ const lang = Object.freeze({
     "LH98": {
         name_en: "S8:Rainbow's Decay",
         name_jp: "S8:六色の蝕",
-		name_glen: "*S8:Rainbow's Decay",
+		name_glen: "S8:Rainbow Erode",
         effect_en: "While Petal, Ocean, Leaf, Moon, Snow or Shadow Flash is active: Makes attacks inflict random status effects.",
         effect_jp: "花・海・葉・月・雪・影のいずれかが発動中、攻撃時にランダムな状態異常にする。",
-		effect_glen: "While Petal, Ocean, Leaf, Moon, Snow or Shadow Flash is active: Makes attacks inflict random status effects."
+		effect_glen: "While Petalgleam/Seagleam/Snowgleam/Moongleam/Leafgleam or Shadowgleam is active: Makes attacks inflict random Status Ailments."
     },
     "OA01": {
         name_en: "Mutation I",

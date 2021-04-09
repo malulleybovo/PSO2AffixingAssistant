@@ -10681,7 +10681,7 @@ let data = {
             lvup: "TM02",
             extend: [
                 0,
-                30,
+                80,
                 100
             ],
             status: 4,
@@ -10695,7 +10695,7 @@ let data = {
             lvup: "TM03",
             extend: [
                 0,
-                30,
+                70,
                 100
             ],
             generate: [
@@ -10713,7 +10713,7 @@ let data = {
             lvup: "TM04",
             extend: [
                 0,
-                30,
+                50,
                 100
             ],
             generate: [
@@ -10731,7 +10731,7 @@ let data = {
             lvup: "TM05",
             extend: [
                 0,
-                30,
+                40,
                 100
             ],
             generate: [
