@@ -179,6 +179,8 @@ div.header div#settingslist.hidden {
     right: 16px;
     bottom: 12px;
     color: #696969;
+    max-width: 50%;
+    text-align: right;
 }
 
 #ver {

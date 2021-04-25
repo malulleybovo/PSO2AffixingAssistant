@@ -257,7 +257,7 @@ class AffixDataParser {
                                             if (data.boostPoint[thisAbility.rel].extend
                                                 && data.boostPoint[thisAbility.rel].extend.hasOwnProperty(abilityDB[code].abilityRef.status)) {
                                                 let index = parseInt(code[thisAbility.code.length - 1]);
-                                                if (index >= data.boostPoint[thisAbility.rel].extend[abilityDB[code].abilityRef.status].length) {
+                                                if (!index || index >= data.boostPoint[thisAbility.rel].extend[abilityDB[code].abilityRef.status].length) {
                                                     index = 0;
                                                 }
                                                 let additionalRate = data.boostPoint[thisAbility.rel].extend[abilityDB[code].abilityRef.status][index];

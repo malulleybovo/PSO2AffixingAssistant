@@ -84,6 +84,14 @@ class Assistant {
                 if (el.code) obj[el.ref] = el.code;
                 return obj;
             });
+        let deadRefs = [
+            { ref: 152, alterCode: 'LA99' },
+            { ref: 198, alterCode: 'LB99' },
+            { ref: 228, alterCode: 'LC99' }
+        ];
+        for (var i = 0; i < deadRefs.length; i++) {
+            this._relCodes[deadRefs[i].ref] = deadRefs[i].alterCode;
+        }
         return this._relCodes;
     }
 
@@ -1495,7 +1503,8 @@ class Assistant {
                 if (idx >= 0) (junkIdxNeeded[idx]) ? junkIdxNeeded[idx]++ : junkIdxNeeded[idx] = 1;
             }
         }
-        let clonedFoddersArr = page.fodders.slice(0).sort((a, b) => {
+        let mainFodderCount = 1;
+        let clonedFoddersArr = page.fodders.slice(mainFodderCount).sort((a, b) => {
             let numJunkInA = 0;
             for (var i = 0; i < a.size(); i++) {
                 let idx = Assistant.junkCodes.indexOf(a.affixes[i].code);
@@ -1510,7 +1519,7 @@ class Assistant {
         });
         var i = 0;
         let canRemove = false;
-        while (i < page.size() && page.size() > this.IDEAL_MIN_PAGE_SIZE) {
+        while (i < page.size() - mainFodderCount && page.size() > this.IDEAL_MIN_PAGE_SIZE) {
             let fodder = clonedFoddersArr[i];
             let hasOnlyJunk = fodder.specialAbilityFactor == null;
             for (var j = 0; j < fodder.size(); j++) {
@@ -1849,10 +1858,10 @@ class Assistant {
                             abilitySuccessRates[k] = Math.min(Math.max(Math.round(abilitySuccessRates[k] * sameGearFactor), minRate), maxRate);
                         }
                         if (fodder.rateBoostIdx >= 0 && fodder.rateBoostIdx < Assistant.rateBoostOptions.length) {
-                            abilitySuccessRates[k] = Math.min(Math.max(Assistant.data.optionList.support[fodder.rateBoostIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
+                            abilitySuccessRates[k] = Math.min(Math.max(Assistant.data.optionList.support[fodder.rateBoostIdx].boost + abilitySuccessRates[k], minRate), maxRate);
                         }
                         if (fodder.potentialIdx >= 0 && fodder.potentialIdx < Assistant.potentialOptions.length) {
-                            abilitySuccessRates[k] = Math.min(Math.max(Assistant.data.optionList.potential[fodder.potentialIdx].fn(abilitySuccessRates[k]), minRate), maxRate);
+                            abilitySuccessRates[k] = Math.min(Math.max(Assistant.data.optionList.potential[fodder.potentialIdx].boost + abilitySuccessRates[k], minRate), maxRate);
                         }
                         // Success rate up if main fodder (fodder0) has Guidance Trainer ability
                         if (pageConn.size() > 0 && pageConn.fodders[0].affixes.includes(Assistant.affixDB[Assistant.trainerCode].abilityRef)) {

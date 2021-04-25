@@ -48,7 +48,7 @@ class ViewController {
         this.NEWLY_PRODUCED_TIMEOUT_IN_MILLI = 3000;
         this.COLOR_PALETTE_SIZE = 25;
         this.URL_VER = 2;
-        this.languages = ['en', 'jp'];
+        this.languages = ['en', 'glen', 'jp'];
         this.affixesSelected = [];
         this.choicesSelected = [];
         this.assistant = assistant;
@@ -84,7 +84,7 @@ class ViewController {
 
     setup() {
         $("#malulleybovo").text(lang.app.malulleybovo[this.langCode]);
-        $("#ver").text("v1.2.2");
+        $("#ver").text("v1.3.0");
         $("#editor").children().first().panzoom({
             which: 1,
             minScale: 0.1,
@@ -861,12 +861,13 @@ class ViewController {
         urlParams = urlParams.substring(1, urlParams.length);
         urlParams = decodeURIComponent(urlParams);
         // Check language choice within params
-        if (/^(\/l=)?[a-z]{2}/.test(urlParams)) {
+        let urlLanguageRegEx = new RegExp('^(\/l=)?((' + this.languages.join(')|(') + '))');
+        if ((urlParams.match(urlLanguageRegEx) || []).length > 0) {
+            let match = urlParams.match(urlLanguageRegEx)[0];
             // Extract '/l=..' of the start of the params and get language '..'
-            let extraLen = urlParams.startsWith("/l=") ? 3 : 0;
-            let loadedLang = urlParams.slice(extraLen, 2 + extraLen);
+            let loadedLang = match.startsWith("/l=") ? match.slice(3) : match;
             // Remove language data from string for parsing
-            urlParams = urlParams.slice(2 + extraLen);
+            urlParams = urlParams.slice(match.length);
             if (this.languages.includes(loadedLang)) {
                 this.langCode = loadedLang;
             }
@@ -1351,15 +1352,25 @@ class ViewController {
                     lang[this.affixesSelected[i].code]['name_' + this.langCode] : lang[this.affixesSelected[i].code]['name_en'];
                 let effect = (lang[this.affixesSelected[i].code] && lang[this.affixesSelected[i].code]['effect_' + this.langCode]) ?
                     lang[this.affixesSelected[i].code]['effect_' + this.langCode] : lang[this.affixesSelected[i].code]['effect_en'];
-                let rawStats = effect.replace(/(,<br>)|(, )/g, ', ');
+                let rawStats = effect.replace(/(,?<br>)|(,\s?)/g, ', ');
                 $(slots[i]).attr('title', rawStats)
                     .attr('data-code', this.affixesSelected[i].code)
                     .removeClass('empty')
                     .find('span').text(name);
                 $(`div.affix-selection-container li > div[data-code="${this.affixesSelected[i].code}"]`)
                     .addClass('selected');
-                let stats = rawStats.split(', ');
-                if (stats.length == 1) stats = stats[0].split(',');
+                var stats = effect.match(new RegExp('(^|,|(<br>)|(,<br>))[a-zA-Z- ]{0,18}[a-zA-Z]\\(((\\+)|(-))[0-9]+\\)', 'g'));
+                if (stats && stats.length > 0) {
+                    for (var m = 0; m < stats.length; m++) {
+                        effect = effect.replace(stats[m], ' ');
+                        stats[m] = stats[m].replace('<br>', '').replace(',', '').trim();
+                    }
+                    effect = effect.trim();
+                }
+                stats = stats || [];
+                if (effect.length > 0) {
+                    stats.push(effect.replace(/<br>/g, ' '));
+                }
                 for (var j = 0; j < stats.length; j++) {
                     let stat = stats[j];
                     if (/(.)*\([\+-][0-9]+\)/.test(stat)) {
@@ -1390,9 +1401,10 @@ class ViewController {
             && Assistant.affixDB[a.code].choices.length === 0)
         var warningMsg = ''
         if (transpOnlyAbilities.length > 0) {
-            warningMsg = lang.app.warningMsg[this.langCode](transpOnlyAbilities
+            warningMsg = lang.app.warningMsg[this.langCode] + transpOnlyAbilities
                 .map(a => (lang[a.code] && lang[a.code]['name_' + this.langCode]) ?
-                    lang[a.code]['name_' + this.langCode] : lang[a.code]['name_en']));
+                    lang[a.code]['name_' + this.langCode] : lang[a.code]['name_en'])
+                .reduce((a, b, c) => a + (c === 0 ? '' : lang.app.wishListItemDivider[this.langCode]) + b);
         }
         $('div.affix-selection-container .warning-msg').text(warningMsg);
         // Translate package type stats into their synonyms, like ALL-type stats

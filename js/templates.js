@@ -167,14 +167,14 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
     `<div class="fodder" ${(dataConn >= 0) ? `data-conn="` + dataConn + `"` : ``}>
             <div class="title">${titleLabel}</div>
             <div class="affixes">
-                <div class="affix${(fodder && fodder.affixes[0] && fodder.affixes[0].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[0] && lang[fodder.affixes[0].code] && lang[fodder.affixes[0].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[0].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[0] && lang[fodder.affixes[0].code]) ? lang[fodder.affixes[0].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[0]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[0]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[0])}">${fodder.affixSuccessRates[0]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[1] && fodder.affixes[1].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[1] && lang[fodder.affixes[1].code] && lang[fodder.affixes[1].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[1].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[1] && lang[fodder.affixes[1].code]) ? lang[fodder.affixes[1].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[1]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[1]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[1])}">${fodder.affixSuccessRates[1]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[2] && fodder.affixes[2].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[2] && lang[fodder.affixes[2].code] && lang[fodder.affixes[2].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[2].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[2] && lang[fodder.affixes[2].code]) ? lang[fodder.affixes[2].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[2]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[2]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[2])}">${fodder.affixSuccessRates[2]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[3] && fodder.affixes[3].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[3] && lang[fodder.affixes[3].code] && lang[fodder.affixes[3].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[3].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[3] && lang[fodder.affixes[3].code]) ? lang[fodder.affixes[3].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[3]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[3]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[3])}">${fodder.affixSuccessRates[3]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[4] && fodder.affixes[4].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[4] && lang[fodder.affixes[4].code] && lang[fodder.affixes[4].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[4].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[4] && lang[fodder.affixes[4].code]) ? lang[fodder.affixes[4].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[4]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[4]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[4])}">${fodder.affixSuccessRates[4]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[5] && fodder.affixes[5].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[5] && lang[fodder.affixes[5].code] && lang[fodder.affixes[5].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[5].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[5] && lang[fodder.affixes[5].code]) ? lang[fodder.affixes[5].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[5]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[5]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[5])}">${fodder.affixSuccessRates[5]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[6] && fodder.affixes[6].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[6] && lang[fodder.affixes[6].code] && lang[fodder.affixes[6].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[6].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[6] && lang[fodder.affixes[6].code]) ? lang[fodder.affixes[6].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[6]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[6]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[6])}">${fodder.affixSuccessRates[6]}%</span>` : `` : ``}</div>
-                <div class="affix${(fodder && fodder.affixes[7] && fodder.affixes[7].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[7] && lang[fodder.affixes[7].code] && lang[fodder.affixes[7].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[7].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[7] && lang[fodder.affixes[7].code]) ? lang[fodder.affixes[7].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[7]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[7]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode](fodder.affixSuccessRates[7])}">${fodder.affixSuccessRates[7]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[0] && fodder.affixes[0].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[0] && lang[fodder.affixes[0].code] && lang[fodder.affixes[0].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[0].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[0] && lang[fodder.affixes[0].code]) ? lang[fodder.affixes[0].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[0]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[0]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode].format(fodder.affixSuccessRates[0])}">${fodder.affixSuccessRates[0]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[1] && fodder.affixes[1].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[1] && lang[fodder.affixes[1].code] && lang[fodder.affixes[1].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[1].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[1] && lang[fodder.affixes[1].code]) ? lang[fodder.affixes[1].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[1]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[1]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode].format(fodder.affixSuccessRates[1])}">${fodder.affixSuccessRates[1]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[2] && fodder.affixes[2].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[2] && lang[fodder.affixes[2].code] && lang[fodder.affixes[2].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[2].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[2] && lang[fodder.affixes[2].code]) ? lang[fodder.affixes[2].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[2]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[2]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode].format(fodder.affixSuccessRates[2])}">${fodder.affixSuccessRates[2]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[3] && fodder.affixes[3].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[3] && lang[fodder.affixes[3].code] && lang[fodder.affixes[3].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[3].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[3] && lang[fodder.affixes[3].code]) ? lang[fodder.affixes[3].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[3]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[3]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode].format(fodder.affixSuccessRates[3])}">${fodder.affixSuccessRates[3]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[4] && fodder.affixes[4].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[4] && lang[fodder.affixes[4].code] && lang[fodder.affixes[4].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[4].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[4] && lang[fodder.affixes[4].code]) ? lang[fodder.affixes[4].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[4]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[4]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode].format(fodder.affixSuccessRates[4])}">${fodder.affixSuccessRates[4]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[5] && fodder.affixes[5].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[5] && lang[fodder.affixes[5].code] && lang[fodder.affixes[5].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[5].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[5] && lang[fodder.affixes[5].code]) ? lang[fodder.affixes[5].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[5]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[5]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode].format(fodder.affixSuccessRates[5])}">${fodder.affixSuccessRates[5]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[6] && fodder.affixes[6].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[6] && lang[fodder.affixes[6].code] && lang[fodder.affixes[6].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[6].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[6] && lang[fodder.affixes[6].code]) ? lang[fodder.affixes[6].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[6]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[6]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode].format(fodder.affixSuccessRates[6])}">${fodder.affixSuccessRates[6]}%</span>` : `` : ``}</div>
+                <div class="affix${(fodder && fodder.affixes[7] && fodder.affixes[7].noEx) ? ` ssa` : ``}"${(fodder && fodder.affixes[7] && lang[fodder.affixes[7].code] && lang[fodder.affixes[7].code]['effect_' + langCode]) ? ` title="${lang[fodder.affixes[7].code]['effect_' + langCode].replace(/,<br>/g, ', ').replace(/<br>/g, ' : ')}"` : ``}>${(fodder && fodder.affixes[7] && lang[fodder.affixes[7].code]) ? lang[fodder.affixes[7].code]['name_' + langCode] : `&nbsp;`}${(fodder.affixes[7]) ? (fodder.affixSuccessRates && fodder.affixSuccessRates[7]) ? ` : <span title="${lang.app.abilitySuccessSpanTitle[langCode].format(fodder.affixSuccessRates[7])}">${fodder.affixSuccessRates[7]}%</span>` : `` : ``}</div>
             </div>
             <div class="divider"></div>
             ${((fodder && fodder.specialAbilityFactor) ? `<div class="affix special-ability-factor">${lang.app.factorLabel[langCode]}<br>(${lang[fodder.specialAbilityFactor.code]['name_' + langCode]})</div><div class="divider"></div>` : ``)}
@@ -214,7 +214,7 @@ const FODDER_TEMPLATE = ({ fodder, isGoal, titleLabel, dataConn, produceLabel, i
             `<div class="divider"></div><div class="boost-container global" >`
             + DROPDOWN_TEMPLATE({
                 type: 2,
-                options: boostWeekOptions.map(lang.app.boostWeekOption[langCode]),
+                options: boostWeekOptions.map(a => lang.app.boostWeekOption[langCode].format(a)),
                 selected: boostWeekIdx,
                 description: lang.app.boostWeekDescription[langCode]
                 }) + `</div>` : ''}
@@ -370,7 +370,7 @@ const FILTER_SEARCH_TEMPLATE = ({ categories, datalist, isGlobalSearch, langCode
                     if (j < datalist[i].withChoice.materials.length - 1) materials += ', ';
                 }
                 filtersearch += `<li data-idx="${i}"><div>${
-                    lang.app.affixUse[langCode](datalist[i].withChoice.transferRate,
+                    lang.app.affixUse[langCode].format(datalist[i].withChoice.transferRate,
                         lang[datalist[i].makeAffix.code]['name_' + langCode], materials
                     )}</div></li>`;
             }
@@ -662,9 +662,9 @@ const WISH_LIST_TEMPLATE = ({ fodderList, successRateItems, transplantCost, lang
     for (var i = 0; i < fodderList.length; i++) {
         if (!fodderList[i] || !(fodderList[i] instanceof Fodder)
             || fodderList[i].size() <= 0) continue;
-        let currList = lang.app.wishListAbilityItem[langCode](fodderList[i]);
+        let currList = lang.app.wishListAbilityItem[langCode].format(fodderList[i].size(), fodderList[i].affixes.filter(a => !a.code.startsWith('Z')).length == 0 ? lang.app.anyJunkTitle[langCode] : fodderList[i].affixes.filter(a => !a.code.startsWith('Z')).map(a => lang[a.code]['name_' + langCode]).sort().join(lang.app.wishListItemDivider[langCode]));
         if (fodderList[i].specialAbilityFactor && fodderList[i].specialAbilityFactor.code) {
-            currList += lang.app.wishListFactorDescription[langCode](lang[fodderList[i].specialAbilityFactor.code]['name_' + langCode]);
+            currList += lang.app.wishListFactorDescription[langCode].format(lang[fodderList[i].specialAbilityFactor.code]['name_' + langCode]);
         }
         let testIdx = affixLists.indexOf(currList);
         if (testIdx >= 0) counts[testIdx]++;
@@ -674,15 +674,15 @@ const WISH_LIST_TEMPLATE = ({ fodderList, successRateItems, transplantCost, lang
         }
     }
     for (var i = 0; i < affixLists.length; i++) {
-        affixLists[i] = lang.app.wishListAbilityDescription[langCode](counts[i], affixLists[i]);
+        affixLists[i] = (counts[i] > 1 ? lang.app.wishListAbilityDescription[langCode].format(counts[i]) : '') + affixLists[i];
     }
     if (transplantCost > 0) {
-        let descr = lang.app.wishListTransplantCostDescr[langCode](transplantCost);
+        let descr = lang.app.wishListTransplantCostDescr[langCode].format(transplantCost) + (transplantCost > 1 ? lang.app.wishListTransplantCostDescrMulti[langCode] : '');
         affixLists = [descr, ...affixLists];
     }
     if (successRateItems !== undefined) {
         for (var descr in successRateItems) {
-            affixLists.push(lang.app.wishListAbilityDescription[langCode](successRateItems[descr], descr));
+            affixLists.push((successRateItems[descr] > 1 ? lang.app.wishListAbilityDescription[langCode].format(successRateItems[descr]) : '') + descr);
         }
     }
     return FILTER_SEARCH_TEMPLATE({
@@ -724,3 +724,21 @@ const REPORT_ISSUE_TEMPLATE = ({ issuesLink, langCode }) =>
             </div>
         </div>
     </div>`;
+
+String.prototype.format = String.prototype.format || function () {
+    "use strict";
+    var str = this.toString();
+    if (arguments.length) {
+        var t = typeof arguments[0];
+        var key;
+        var args = ("string" === t || "number" === t) ?
+            Array.prototype.slice.call(arguments)
+            : arguments[0];
+
+        for (key in args) {
+            str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
+        }
+    }
+
+    return str;
+};

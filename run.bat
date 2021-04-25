@@ -1,0 +1,1 @@
+START C:\Windows\System32\cmd.exe /k "echo PSO2 Affixing Assistant & echo @author malulleybovo (since 2018) & echo @license GNU General Public License v3.0 & node --eval "require('./server.js')" & exit"

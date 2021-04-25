@@ -1,0 +1,164 @@
+﻿{
+  "itemsMissingTranslation": {
+    // When ability names in PSO2 swiki dont have english translation yet, use this to force untranslated abilities into the affixing database
+    // Format: 'jpNameInSwiki': { name: 'optional', effect: 'optional' }
+  },
+  "addItemsMissingTranslation": {
+    // When Add Items in PSO2 swiki dont have english translation yet, use this to force untranslated Add Items into the affixing database
+    // Format: 'jpNameInSwiki': { id: 'optional' }
+    "スピリタⅥ": { "id": "Add Ability (Spirita VI)" },
+    "イクシードレセプター": { "id": "Add Ability (Exceed Receptor)" }
+  },
+  "swikiToVisiphoneNameInconsistencies": {
+    // When the name of the same ability in PSO2 swiki and ARKs Visiphone diverge, use this to match the names
+    // Format: 'jpNameInSwiki': 'jpNameInVisiphone'
+    "S5:瞬駆突貫": "S5:疾駆突貫"
+  },
+  "assistantToVisiphoneNameInconsistencies": {
+    // When the name of the same ability in PSO2 Assistant and ARKs Visiphone diverge, use this to match the names
+    // Format: 'enNameInAssistant': 'enNameInVisiphone'
+    "S1:Violent Invigoration": "S1:Furious Inspiration",
+    "S2:Violent Invigoration": "S2:Furious Inspiration",
+    "S3:Puncturing Intent": "S3:Splintering Intent",
+    "S4:Pursuing Eclipse": "S4:Pursuing Skill",
+    "S4:Radiant Eclipse": "S4:Pursuing Radiance",
+    "S5:Evasive Barrage": "S5:Evasive Mirage",
+    "S5:Fiery Zero": "S5:Firey Zero",
+    "S5:Fiery End": "S5:Firey End"
+  },
+  "itemsWithOverridenData": {
+    // When incorrect data was posted to the source websites like ARKs Visiphone, use this to override the ability with correct information
+    // Format: 'jpNameInSwiki': { ...data }
+    "S5:烈零射砲": {
+      "name": "S5:Fiery Zero"
+    },
+    "S5:烈終焉弾": {
+      "name": "S5:Fiery End"
+    }
+  },
+  "itemsToKeepFromExistingVersion": [
+    // When the Assistant contains abilities that have yet to be added to the source websites, use this to force keep them in the affixing database
+    // Format: list of english ability names already existent in assistant
+    "S1:Phanatical Advantage",
+    "S2:Phanatical Advantage",
+    "S3:Phanatical Advantage"
+  ],
+  "potentialEnToJpTranslations": {
+    // When new potentials that affect affixing rates release, use this to include the JP name of the new potential to the affixing database
+    // Format: 'enPotentialName': 'jpPotentialName'
+    "Guidance of Life Lv1 (+2%)": "生命の導きLv1(+2%)",
+    "Guidance of Life Lv2 (+5%)": "生命の導きLv2(+5%)",
+    "Guidance of Life Lv3 (+10%)": "生命の導きLv3(+10%)"
+  },
+  "boostWeekPercentages": [
+    // When new boost week percentages are added to PSO2, use this to include the new option in the Assistant
+    // Format: List of boost week percentages (i.e.: 5 indicates 5%, etc.)
+    0,
+    5,
+    10,
+    15,
+    20
+  ],
+  "deadRefs": [
+    // If in any case some ability was published publicly to the Assistant and need to be removed, use this to remove it
+    // Format: List of ref identifier of abilities which are now gone from the Assistant
+    152,
+    198,
+    228
+  ],
+  "swikiToVisiDiscrepancies": {
+    // When ability data in PSO2 Swiki doesnt match the data in ARKs Visiphone, use this to correct the affected data
+    // Format: "jpNameInSwiki": { correct data that shouldve been in visiphone }
+    "ディバインレセプター": {
+      "enName": "Divine Receptor",
+      "effect": "Greatly increases affix rate of Divine-type ability.<br>ALL(+10)"
+    },
+    "カタリストレセプター": {
+      "enName": "Catalyst Receptor",
+      "effect": "Boosts Catalyst-type ability.<br>ALL(+10)"
+    },
+    "リガンド・アルマ": {
+      "enName": "Ligand Arma",
+      "effect": "S-ATK(+40),<br>HP(+30),<br>PP(+3)"
+    },
+    "リガンド・ティロ": {
+      "enName": "Ligand Tiro",
+      "effect": "R-ATK(+40),<br>HP(+30),<br>PP(+3)"
+    },
+    "リガンド・マギア": {
+      "enName": "Ligand Magia",
+      "effect": "T-ATK(+40),<br>HP(+30),<br>PP(+3)"
+    },
+    "リーパー／炎弱点": {
+      "enName": "Ripper/Fire Weak",
+      "effect": "Boost damage against enemies weak to Fire.<br>Effect is reduced<br>as the Weapon<br>Rarity increases."
+    },
+    "リーパー／雷弱点": {
+      "enName": "Ripper/Ltn. Weak",
+      "effect": "Boost damage against enemies weak to Lightning.<br>Effect is reduced<br>as the Weapon<br>Rarity increases."
+    },
+    "スレイヤー／龍族種": {
+      "enName": "Slayer/Dragonkin-Type",
+      "effect": "Boost damage against Dragonkin.<br>Effect is reduced<br>as the Weapon<br>Rarity increases."
+    },
+    "ベルージュ・グレア": {
+      "enName": "Veluge Glare",
+      "effect": "R-ATK(+30)<br>S-DEF(+20)<br>R-DEF(+40)<br>T-DEF(+20)"
+    },
+    "イクシードレセプター": {
+      "enName": "Exceed Receptor",
+      "effect": "Greatly increases affix rate of Exceed-type ability.<br>ALL(+10)"
+    },
+    "エンペ・エンブレイス": {
+      "enName": "Emper Embrace",
+      "effect": "Adds 90 EXP to NT weapon grinds."
+    }
+  },
+  "visiToSimDiscrepancies": {
+    // When ability name in ARKs Visiphone doesnt match the name in ARKs Layer Simulator, use this to indicate the name difference
+    // Format: "enNameInVisiphone": "enNameInSimulator"
+    "Flame Resist I": "Fire Resist I",
+    "Flame Resist II": "Fire Resist II",
+    "Flame Resist III": "Fire Resist III",
+    "Flame Resist IV": "Fire Resist IV",
+    "Flame Resist V": "Fire Resist V",
+    "Lesser Stam. I": "Lesser Stamina I",
+    "Lesser Stam. II": "Lesser Stamina II",
+    "Lesser Stam. III": "Lesser Stamina III",
+    "Lesser Stam. IV": "Lesser Stamina IV",
+    "Lesser Stam. V": "Lesser Stamina V",
+    "EV Tech/HP": "EV Technique HP",
+    "EV Tech/PP": "EV Technique PP",
+    "Shooting Boost": "Shoot Boost",
+    "Defense Receptor": "Guard Receptor",
+    "Zigmorde Soul": "Zigmor Soul",
+    "Lilli Soul": "Lili Soul",
+    "Izane Soul": "Izane Kazuchi Soul",
+    "Dragon Fever": "Drago Fever",
+    "Slayer/Native-Type": "Slayer/Beast Type",
+    "Slayer/Dragonkin-Type": "Slayer/Dragonkin",
+    "Slayer/Oceanids-Type": "Slayer/Ocean Type",
+    "Slayer/Phantom-Type": "Slayer/Phantoms Type",
+    "Slayer/Darker-Type": "Slayer/Darkers",
+    "Slayer/Luminmech-Type": "Slayer/Luminmech",
+    "Extreceptor": "Extreme Receptor",
+    "NT Weapon Boost": "NT Weapon Booster",
+    "Ceremo Fever": "Ceramo Fever"
+  },
+  "simToAstDiscrepancies": {
+    // When ability name in ARKs Layer Simulator that doesnt match the name in game (JP version), use this to indicate the name difference
+    // Format: "enNameInSimulator": "enNameInGame"
+    "Ceramo Fever": "Ceremo Fever",
+    "Extreme Receptor": "Extreceptor",
+    "Lili Soul": "Lilli Soul"
+  },
+  "internalLangKeys": [
+    // Keys in lang.js that are used internally by the Assistant, used to port over existing internal language into new builds
+    "app",
+    "filters",
+    "statsDisplayOrder",
+    "synonyms"
+  ],
+  "jsDependencies": "js/gaData.js js/lang.js js/templates.js js/viewcontroller.js js/affixData.js js/affixDataParser.js js/affixingassistant.js js/formulaEncoder.js js/app.js",
+  "cssDependencies": "css/themes.css css/stylesheet.css css/checkbox.css css/radiobutton.css css/dropdown.css css/filtersearch.css"
+}
