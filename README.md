@@ -3,10 +3,12 @@
   # PSO2 Affixing Assistant
   Effortless affixing solutions to PSO2 problems
 
-  ## [Use the Assistant Here](https://malulleybovo.github.io/PSO2AffixingAssistant/)
+  ## [Head to PSO2 Global Assistant](https://malulleybovo.github.io/PSO2AffixingAssistant/?glen)
+  ## [Head to PSO2 JP Assistant](https://malulleybovo.github.io/PSO2AffixingAssistant/)
   #### [Like it? Check out my Symbol Art Editor Online here too!](https://www.github.com/malulleybovo/SymbolArtEditorOnline/)
-  #### Version 1.2.2
-  #### Compliant with version 1.93 of [Arks Layer's Affix Simulator](https://arks-layer.com/abilitysim/)
+  #### Version 1.3.0
+  #### Compliant with [PSO2 Swiki JP](https://pso2.swiki.jp/) and [PSO2 ARKs Visiphone JP](https://pso2.arks-visiphone.com/) as of April 24, 2021
+  #### Compliant with version 1.94 of [Arks Layer's Affix Simulator JP](https://arks-layer.com/abilitysim/)
 
   ### NO HASSLE Affixing Formulas at the tip of your fingers
   The Affixing Assistant was designed to find the best affixing formulas to any affix you might need.
@@ -83,7 +85,8 @@
   3) A fix to the bug you found will come soon! Thanks for reporting!
   
   ### Contribute
-  Currently only accepting Pull Requests for Database Update.
+  Currently accepting Pull Requests for Database Update.
+  Any other Pull Request should be first proposed via an Issue as a feature request for further discussion.
   Find more information at [CONTRIBUTING.md](https://github.com/malulleybovo/PSO2AffixingAssistant/blob/master/CONTRIBUTING.md)
 
   

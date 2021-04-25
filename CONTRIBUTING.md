@@ -14,15 +14,23 @@ The PSO2 Affixing Assistant project strives for great community engagement to ke
 
 * Create an update branch based on the master branch.
 * Make commits of logical and atomic units.
-* (If on Windows OS) Execute rebuild.bat and follow the instructions within the command prompt that will be opened. The Update Manager will guide you through the great majority of the pending updates for the Assistant and issues it sees with your changes.
-* (If on MacOS) Open the terminal with NodeJS available, `cd` to the project folder, and execute the command: `node --eval "require('./updateManager.min.js')"`.
-* On the first execution, expect to be prompted to install any missing npm package dependencies before utilizing the Update Manager
-* Resolve all pending updates or issues indicated in the command prompt (if any). Only Pull Requests without any pending update or issue will be accepted.
-* Note that although the Update Manager facilitates updating, it is not perfect. For example, it does not check for new common Ability Factors and new common Add Ability Items (it checks SSAs only in these cases). So make sure nothing new is still missing. Consult PSO2 Swiki to check that.
-* If you reach a point in which the Update Manager insists there is a pending update but you know for certain that has been taken care of, include in the Pull Request description a copy of the Update Manager log and state why that has been taken care of. If the reason is valid, the particular case may be added to the Update Manager's ignore list. Note that pending update warnings do not prevent you from building the project.
-* Once the update and build process is complete, test the updated application to ensure everything works.
+* (If on Windows OS) Execute rebuild.bat.
+* (If on MacOS or Linux) Open the terminal with NodeJS available, `cd` to the project folder, and execute the command: `node --eval "require('./updateManager.min.js')"`.
+* Let the Update Manager do the magic of updating the Assistant.
+* Pay a lot of attention to any WARNING or ERROR that might show up in the terminal while the build process is ongoing. Many WARNINGs are purely informational and won't affect the functionaly of the Assistant, but that is not true for all WARNINGs since they might cause further problems later in the process. Be extra mindful of them.
+* Shall there be any issues while executing rebuild.bat, report it as soon as possible via an Issue [here](https://github.com/malulleybovo/PSO2AffixingAssistant/issues) as it might be due to structural changes in the source websites used to update the Assistant.
+* Once the application is built successfully, indicated by a "Build Complete!" message in the terminal at the end of execution, thoroughly test the application to ensure everything works as expected.
+
+## Testing the Update
+
+* Make sure you have [NodeJS express npm package installed](https://www.npmjs.com/package/express) before proceeding.
+* (If on Windows OS) Execute run.bat.
+* (If on MacOS or Linux) Open the terminal with NodeJS available, `cd` to the project folder, and execute the command: `node --eval "require('./server.js')"`.
+* Follow the instructions that show up in the terminal that will open.
+* Open the the link that will show up in the terminal in a browser (preferably an up to date version of Google Chrome or Firefox).
+* Test the updated version of the Assistant.
 
 ## Submitting Changes
 
-* When everything is tested and ready, submit a Pull Request including `Update Affix Database` in the title and explaining what has been done in the update.
+* When everything is tested and ready, submit a Pull Request including `Update Affix Database` in the title.
 * Feedback may be given if necessary after reviewing the submitted Pull Request. Please be patience for the review since not always do I have the time to put in this project.
